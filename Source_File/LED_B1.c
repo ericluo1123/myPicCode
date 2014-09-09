@@ -217,7 +217,7 @@
 		if(LED->GO)
 		{
 			LED->Time++;
-			if(LED->Time >= LEDTime)
+			if(LED->Time >= LEDTime/10)
 			{
 				LED->Time=0;
 				#ifdef LED1

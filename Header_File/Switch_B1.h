@@ -47,11 +47,10 @@
 		void Switch_Main();
 		void setSw_Initialization(char);
 		void setSw_Main(char);
-		void setSw_Enable(char,char);
+		void setSw_Enable(char);
 		void Switch_Exception(char);
 		void setSw_Status(char,char);
 		void Sw_Detect();
-
 
 		void Sw_DimmerOnFunc(char);
 		void Sw_DimmerOffFunc(char);
@@ -71,7 +70,7 @@
 		#define Switch_Main() ;
 		#define setSw_Initialization(char) ;
 		#define setSw_Main(char) ;
-		#define setSw_Enable(char,char) ;
+		#define setSw_Enable(char) ;
 		#define Switch_Exception(char) ;
 
 		#define setSw_Status(char,char) ;

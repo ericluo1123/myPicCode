@@ -75,7 +75,7 @@
 				Temp->Time++;
 				if(Temp->Time >= 500)//*10ms
 				{
-					if(getLoad_Safe(1) && getPF_Safe(1))
+					if(getLoad_Safe() && getPF_Safe(1))
 					{
 						Temp->Time=0;
 						Temp->ADtoGO=1;
@@ -151,15 +151,7 @@
 			//Lights_ERROR();
 			setLED(99,11);
 
-			#ifdef use_1KEY
-				setSw_Enable(1,0);
-			#endif
-			#ifdef use_2KEY
-				setSw_Enable(2,0);
-			#endif
-			#ifdef use_3KEY
-				setSw_Enable(3,0);
-			#endif
+			setSw_Enable(0);
 
 			#ifdef RadioFrequency1
 				setRF_Enable(1,0);
@@ -173,17 +165,7 @@
 			setLED(99,10);
 			//setBuz(1,2,BuzzerOnOffTime);
 
-			#ifdef use_1KEY
-				setSw_Enable(1,1);
-			#endif
-
-			#ifdef use_2KEY
-				setSw_Enable(2,1);
-			#endif
-
-			#ifdef use_3KEY
-				setSw_Enable(3,1);
-			#endif
+			setSw_Enable(1);
 
 			#ifdef RadioFrequency1
 				setRF_Enable(1,1);

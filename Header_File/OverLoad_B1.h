@@ -5,15 +5,15 @@
 	#if OverLoad_use == 1
 		
 		#if Switch_Class == 3		
-			#define LoadLimitValue 0x1a
+			#define LoadLimitValue 0x2e
 		#endif
 
 		#if Switch_Class == 2			
-			#define LoadLimitValue 0xffff//1a
+			#define LoadLimitValue 0x2e//1a
 		#endif
 
 		#if Switch_Class == 1			
-			#define LoadLimitValue 0x1a
+			#define LoadLimitValue 0x2e
 		#endif
 
 		//Global extern variable declaration
@@ -66,42 +66,33 @@
 
 		#define DetectCountValue 30
 
-		void LoadPointSelect(char);
 		void Load_Initialization();
 		void Load_Main();
-		void setLoad_Initialization(char);
-		void setLoad_Main(char);
-		void getLoad_AD(char,char);
-		void setLoad_ERROR(char,char);
-		void setLoad_Enable(char,char);
-		void setLoad_LightsCount(char,char);
-		void setLoad_AH_AL_Restore(char);
-		void setLoad_LightsStatus(char,char,char);
-		void setLoad_Count(char,char);
-		void setLoad_GO(char,char);
+		void getLoad_AD(char);
+		void setLoad_Exceptions(char);
+		void setLoad_Enable(char);
+		void setLoad_AH_AL_Restore();
+	//	void setLoad_LightsStatus(char,char);
+		void setLoad_Count(char);
+		void setLoad_GO(char);
 		void setLoad_StatusOn(char,char);
-		void setLoad_StatusOff(char,char,char); 
-		char getLoad_Safe(char); 
-		char getLoad_ERROR(char);
+		void setLoad_StatusOff(char,char); 
+		char getLoad_Safe(); 
+		char getLoad_ERROR();
 
 	#else
-		#define getLoad_Safe(char) 1 
-		#define getLoad_ERROR(char) 0
-		#define LoadPointSelect(char) ;
 		#define Load_Initialization() ;
 		#define Load_Main() ;
-		#define setLoad_Initialization(char) ;
-		#define setLoad_Main(char) ;
-		#define getLoad_AD(char,char) ;
-		#define setLoad_ERROR(char,char) ;
-		#define setLoad_Enable(char,char) ;
-		#define setLoad_LightsCount(char,char) ;
-		#define setLoad_AH_AL_Restore(char) ;
-		#define setLoad_LightsStatus(char,char,char) ;
-		#define setLoad_Count(char,char) ;
-		#define setLoad_GO(char,char) ;
+		#define getLoad_AD(char) ;
+		#define setLoad_Exceptions(char) ;
+		#define setLoad_Enable(char) ;
+		#define setLoad_AH_AL_Restore() ;
+		#define setLoad_Count(char) ;
+		#define setLoad_GO(char) ;
 		#define setLoad_StatusOn(char,char) ;
-		#define setLoad_StatusOff(char,char,char) ; 
+		#define setLoad_StatusOff(char,char) ; 
+		#define getLoad_Safe() 1
+		#define getLoad_ERROR() 0
 	#endif
 
 #endif

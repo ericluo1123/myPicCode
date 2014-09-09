@@ -48,21 +48,17 @@
 		#define BuzzerErrorTime		300	//*1ms 
 		#define BuzzerOnOffTime		100	//*1ms 
 
-		void BuzPointSelect(char);
 		void Buzzer_Initialization();
 		void Buzzer_Main();
-		void setBuz_Initialization(char);
 		void setBuz_Main(char);
-		void setBuz(char,char,int);	
-		void setBuz_Enable(char,char);
+		void setBuz(char,int);	
+		void setBuz_Enable(char);
 
 	#else
-		#define BuzPointSelect(char) ;
 		#define Buzzer_Initialization() ;
 		#define Buzzer_Main() ;
-		#define setBuz_Initialization(char) ;
 		#define setBuz_Main(char) ;
-		#define setBuz(char,char,int) ;	
+		#define setBuz(char,int) ;	
 		#define setBuz_Enable(char) ;
 	#endif
 

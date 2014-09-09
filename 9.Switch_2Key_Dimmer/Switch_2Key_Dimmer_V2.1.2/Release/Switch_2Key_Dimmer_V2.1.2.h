@@ -154,11 +154,11 @@
 	#define SYSC_use 0
 
 //OverTemperature
-	#define OverTemperature_use 1
+	#define OverTemperature_use 0
 
 //OverLoad
 	#define OverLoad_use 1
-	#define SafeCountValue 6
+	#define SafeCountValue 10
 
 //LED
 	#define LED_use 1
@@ -192,7 +192,7 @@
 	#define DelayOff_use 1
 
 //PowerFault
-	#define PowerFault_use 1
+	#define PowerFault_use 0
 
 //Dimmer Lights
 	#define Dimmer_use 1

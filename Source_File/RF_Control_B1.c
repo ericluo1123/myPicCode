@@ -88,7 +88,7 @@
 						UART_SetData();
 					#else 
 						getRxData(1);
-						ErrLED=~ErrLED;
+						//ErrLED=~ErrLED;
 					#endif
 				}
 				else
@@ -251,7 +251,7 @@
 		setProductData(12,RF_Data[12]);
 		setProductData(13,RF_Data[13]);
 		setProductData(14,RF_Data[14]);
-		setBuz(1,1,BuzzerOnOffTime);	
+		setBuz(1,BuzzerOnOffTime);	
 		RF->Learn=0;
 		if(TMain->First)
 		{
@@ -285,7 +285,7 @@
 			setProductData(11,0);
 			setProductData(15,0);
 			setProductData(17,0);
-			setBuz(1,1,BuzzerOnOffTime);
+			setBuz(1,BuzzerOnOffTime);
 			setTxData(1);
 		}
 		else if(RF_Data[15] == 0x20)
@@ -392,7 +392,7 @@
 				setDelayOff_GO(sw,0,0);
 			}
 		}
-		setBuz(1,1,BuzzerOnOffTime);
+		setBuz(1,BuzzerOnOffTime);
 		setTxData(1);
 	}
 	//*********************************************************

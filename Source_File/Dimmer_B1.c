@@ -89,7 +89,7 @@
 			setDimmer_Detect(1,0);
 			if(!getDimmerLights_StatusFlag())
 			{
-				setLoad_GO(1,0);
+				setLoad_GO(0);
 				setMemory_GO(1);
 			}
 		}
@@ -192,7 +192,7 @@
 					if(DimmerLights->AdjGo)
 					{
 						setDimmerLights_Adj(lights,1);
-						setBuz(1,1,BuzzerOnOffTime);
+						setBuz(1,BuzzerOnOffTime);
 					}
 					else
 					{
@@ -258,7 +258,7 @@
 		{	
 			if(getDimmerLights_StatusFlag())
 			{
-				setBuz(1,10,BuzzerErrorTime);
+				setBuz(10,BuzzerErrorTime);
 			}	
 
 			#ifdef use_1KEY
@@ -273,7 +273,7 @@
 		}
 		else if(getDimmer_LoadERROR(1))
 		{
-			setBuz(1,5,BuzzerErrorTime);
+			setBuz(5,BuzzerErrorTime);
 			setDimmerLights_ERROR(Dimmer->Load);
 		}
 		else if(getDimmer_PFERROR(1))
@@ -318,7 +318,7 @@
 			DimmerLights->StatusFlag=0;
 			DimmerLights->DimmingTimeValue=DimmingDelayTime;
 			DimmerLights->DimmingValue=DimmerLights->MinimumValue;
-			setLoad_StatusOff(1,lights,1);
+			setLoad_StatusOff(lights,1);
 			setLED(lights,1);
 			setSw_Status(lights,0);
 			setRFSW_Status(lights,0);
@@ -343,8 +343,7 @@
 			DimmerLights->Status=1;	
 			setLED(lights,0);
 			setLED2(0);
-			setLoad_StatusOn(1,1);
-			setLoad_Count(1,0);
+			setLoad_Count(0);
 			#if Dimmable_Func == 1
 				DimmerLights->Signal=1;
 				DimmerLights->DimmingTimeValue=DimmingDelayTime;
@@ -353,8 +352,7 @@
 			{
 				DimmerLights->StatusFlag=1;
 				setDimmer_Detect(1,1);
-				setLoad_GO(1,1);
-				setLoad_LightsStatus(1,lights,1);
+				setLoad_StatusOn(lights,1);
 
 				#if Serial_Number == 2
 					DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
@@ -381,8 +379,7 @@
 				DimmerLights->StatusFlag=0;
 				DimmerLights->Close=1;
 				Dimmer->Detect=1;
-				setLoad_StatusOff(1,1);
-				setLoad_LightsStatus(1,lights,0);
+				setLoad_StatusOff(lights,1);
 				setLED(lights,1);
 				setLED2(1);
 			#endif
@@ -405,7 +402,7 @@
 			{
 				DimmerLights->Signal=0;
 				DimmerLights->AdjFlag=0;
-				setLoad_StatusOff(1,0,1);
+				setLoad_StatusOff(0,1);
 				DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
 				setRF_DimmerLights(lights,1);
 				setTxData(1);
@@ -627,17 +624,7 @@
 			
 								setBuz(1,3,BuzzerPowerOnTime);
 			
-								#ifdef use_1KEY
-									setSw_Enable(1,1);
-								#endif
-		
-								#ifdef use_2KEY
-									setSw_Enable(2,1);
-								#endif
-	
-								#ifdef use_3KEY
-									setSw_Enable(3,1);
-								#endif
+								setSw_Enable(1);
 						
 								#ifdef RadioFrequency1
 									setRF_Enable(1,1);

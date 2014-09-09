@@ -36,7 +36,7 @@ void main()
 			#endif
 
 			#ifdef OverLoad1
-				getLoad_AD(1,OverLoad_Channel);
+				getLoad_AD(OverLoad_Channel);
 			#endif
 
 			#ifdef SYSC1
@@ -115,27 +115,17 @@ void MainT()
 				setTemp_Enable(1,1);
 			#endif
 
-			#ifdef SYSC1
-				setLoad_Enable(1,1);
+			#ifdef OverLoad1
+				setLoad_Enable(1);
 			#endif
 
 			#if Self_Test == 1
 				TMain->k=1;
 			#else
-				setBuz(1,3,BuzzerPowerOnTime);
+				setBuz(3,BuzzerPowerOnTime);
 				TMain->SelfTest=1;
 
-				#ifdef use_1KEY
-					setSw_Enable(1,1);
-				#endif
-
-				#ifdef use_2KEY
-					setSw_Enable(2,1);
-				#endif
-
-				#ifdef use_3KEY
-					setSw_Enable(3,1);
-				#endif
+				setSw_Enable(1);
 
 				#ifdef RadioFrequency1
 					setRF_Enable(1,1);
@@ -157,7 +147,8 @@ void MainT()
 			if(TMain->Count1 == 100)	//*10ms
 			{
 				TMain->Count1=0;
-				ErrLED=~ErrLED;
+				setTxData(1);
+			//	ErrLED=~ErrLED;
 			//	setProductData(2,Sw1->DebounceTime);
 			//	setProductData(3,Sw1->Hold3);
 			//	setProductData(4,Sw1->Hold2);
@@ -165,8 +156,6 @@ void MainT()
 			//	setProductData(6,Sw1->Debounce);
 			//	setProductData(7,Sw1->Flag);
 			//	setProductData(8,RF->Learn);		
-			//	setTxData();
-			//	ErrLED=~ErrLED;
 			//	TMain->Count3++;
 				if(TMain->Flag)
 				{
@@ -181,7 +170,7 @@ void MainT()
 				else
 				{
 					TMain->Flag=1;
-					setLED(99,11);
+				//	setLED(99,11);
 				//	setLights_Trigger(1,1);
 				//	setLights_Switch(1,0);
 				//	setLED(99,0);

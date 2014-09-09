@@ -83,10 +83,48 @@
 		#endif
 	}
 	//*********************************************************
-	void setSw_Enable(char sw,char command)
+	void setSw_Enable(char command)
 	{
-		SwPointSelect(sw);
-		Sw->Enable=command;
+
+		#ifdef use_1KEY
+			SwPointSelect(1);
+			if(command)
+			{
+				while(!Sw->Enable)
+					Sw->Enable=1;
+			}
+			else
+			{
+				Sw->Enable=0;
+			}
+		#endif
+	
+		#ifdef use_2KEY
+			SwPointSelect(2);
+			if(command)
+			{
+				while(!Sw->Enable)
+					Sw->Enable=1;
+			}
+			else
+			{
+				Sw->Enable=0;
+			}
+		#endif
+	
+		#ifdef use_3KEY
+			SwPointSelect(3);
+			if(command)
+			{
+				while(!Sw->Enable)
+					Sw->Enable=1;
+			}
+			else
+			{
+				Sw->Enable=0;
+			}
+		#endif
+
 	}
 	//*********************************************************
 	void setSw_Status(char sw,char command)
@@ -97,39 +135,40 @@
 	//*********************************************************
 	void setSw_Main(char sw)
 	{
-		SwPointSelect(sw);
-		#if	Switch_Class == 3
-			if(sw == 1)
-			{
-				Sw->Touch=(Key1)?1:0;
-			}
-			else if(sw == 2)
-			{
-				Sw->Touch=(Key2)?1:0;
-			}		
-			else if(sw == 3)
-			{
-				Sw->Touch=(Key3)?1:0;
-			}
-		#endif
-
-		#if Switch_Class == 2
-			if(sw == 1)
-			{
-				Sw->Touch=(Key1_1 || Key1_2)?1:0;
-			}
-			else if(sw == 2)
-			{
-				Sw->Touch=(Key2_1 || Key2_2)?1:0;
-			}
-		#endif
-
-		#if Switch_Class == 1	
-			Sw->Touch=(Key1_1 || Key1_2 || Key1_3 || Key1_4)?1:0;
-		#endif
-	
 		if(Sw->Enable)
 		{
+			SwPointSelect(sw);
+			#if	Switch_Class == 3
+				if(sw == 1)
+				{
+					Sw->Touch=(Key1)?1:0;
+				}
+				else if(sw == 2)
+				{
+					Sw->Touch=(Key2)?1:0;
+				}		
+				else if(sw == 3)
+				{
+					Sw->Touch=(Key3)?1:0;
+				}
+			#endif
+	
+			#if Switch_Class == 2
+				if(sw == 1)
+				{
+					Sw->Touch=(Key1_1 || Key1_2)?1:0;
+				}
+				else if(sw == 2)
+				{
+					Sw->Touch=(Key2_1 || Key2_2)?1:0;
+				}
+			#endif
+	
+			#if Switch_Class == 1	
+				Sw->Touch=(Key1_1 || Key1_2 || Key1_3 || Key1_4)?1:0;
+			#endif
+	
+
 			if(Sw->Touch)
 			{
 				if(!Sw->Debounce)
@@ -139,7 +178,7 @@
 					{
 						Sw->DebounceTime=0;
 						Sw->Debounce=1;
-						setBuz(1,1,BuzzerOnOffTime);
+						setBuz(1,BuzzerOnOffTime);
 						#if Dimmer_use == 1
 
 							Sw_DimmerOnFunc(sw);//key on function
@@ -296,7 +335,7 @@
 	//*********************************************************	
 	void Sw_Detect()
 	{
-		if(!getLoad_ERROR(1) && !getTemp_ERROR(1) && !getPF_ERROR(1) && TMain->SelfTest)
+		if(!getLoad_ERROR() && !getTemp_ERROR(1) && !getPF_ERROR(1) && TMain->SelfTest)
 		{	
 			#ifdef use_1KEY
 				SwPointSelect(1);

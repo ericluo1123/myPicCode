@@ -1,3 +1,6 @@
-HI-TECH C Compiler for PIC10/12/16 MCUs (Lite Mode)  V9.83
-Copyright (C) 2011 Microchip Technology Inc.
-(1273) Omniscient Code Generation not available in Lite mode (warning)
+Microchip MPLAB XC8 C Compiler (Free Mode) V1.32
+Part Support Version: 1.32 (A)
+Copyright (C) 2014 Microchip Technology Inc.
+License type: Node Configuration
+
+Warning [1273] ; . Omniscient Code Generation not available in Free mode

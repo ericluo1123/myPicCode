@@ -249,7 +249,7 @@
 											Dimmer->Detect=1;\
 											LED1=0;\
 											setLED2(1);\
-											setLoad_StatusOff(1,lights,1);\
+											setLoad_StatusOff(lights,1);\
 										}\
 									}\
 								}\
@@ -360,7 +360,7 @@
 											DimmerLights22->Clear=1;\
 											Dimmer->Detect=1;\
 											LED2=0;\
-											setLoad_StatusOff(1,lights,1);\
+											setLoad_StatusOff(lights,1);\
 										}\
 									}\
 								}\
@@ -471,7 +471,7 @@
 											DimmerLights33->Clear=1;\
 											Dimmer->Detect=1;\
 											LED3=0;\
-											setLoad_StatusOff(1,lights,1);\
+											setLoad_StatusOff(lights,1);\
 										}\
 									}\
 								}\

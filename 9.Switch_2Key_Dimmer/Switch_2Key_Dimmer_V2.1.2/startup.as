@@ -9,11 +9,12 @@
 	;
 	; -oSwitch_2Key_Dimmer_V2.1.2.cof -mSwitch_2Key_Dimmer_V2.1.2.map \
 	; --summary=default --output=default Buzzer_B1.p1 CC2500_B1.p1 \
-	; DelayOff_B1.p1 Dimmer_B1.p1 LED_B1.p1 main.p1 MCU_16f1518_B1.p1 \
-	; OverLoad_B1.p1 OverTemperature_B1.p1 PowerFault_B1.p1 \
-	; RF_Control_B1.p1 Switch_B1.p1 CDS_B1.p1 PIR_B1.p1 SYSC_B1.p1 \
-	; TriacRelay_B1.p1 --chip=16F1518 -IG:\Program\PIC\Header_File \
-	; -IG:\Program\PIC\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release \
+	; CDS_B1.p1 DelayOff_B1.p1 Dimmer_B1.p1 LED_B1.p1 main.p1 \
+	; MCU_16f1518_B1.p1 OverLoad_B1.p1 OverTemperature_B1.p1 PIR_B1.p1 \
+	; PowerFault_B1.p1 RF_Control_B1.p1 Switch_B1.p1 SYSC_B1.p1 \
+	; TriacRelay_B1.p1 --chip=16F1518 \
+	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\Header_File \
+	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release \
 	; -P --runtime=default --opt=default -N-1 -D__DEBUG=1 -g --asmlist \
 	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
 	; --warnformat=Warning [%n] %f; %l.%c %s
@@ -80,12 +81,12 @@ reset_vec:
 start
 
 ;Initialize the stack pointer (FSR1)
-;Stack space: 021D7h-0231Fh (329 bytes)
+;Stack space: 02133h-0231Fh (493 bytes)
 
 	fsr1l	equ	6
 	fsr1h	equ	7
 	global stacklo, stackhi
-	stacklo	equ	021D7h
+	stacklo	equ	02133h
 	stackhi	equ	0231Fh
 
 

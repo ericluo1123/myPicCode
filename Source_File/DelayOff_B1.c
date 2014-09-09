@@ -83,7 +83,7 @@
 					setDimmerLights_Trigger(sw,1);
 					setDimmerLights_Switch(sw,0);	
 					setTxData(1);
-					setBuz(1,1,BuzzerOnOffTime);
+					setBuz(1,BuzzerOnOffTime);
 				}
 			}
 		}
