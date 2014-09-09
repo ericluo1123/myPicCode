@@ -1,0 +1,27 @@
+___awdiv: CODE, 1110 0 109
+_IO_Set: CODE, 2016 0 22
+_I2C_Master_Transmission: CODE, 1316 0 96
+_ISR: CODE, 4 0 20
+_putch: CODE, 3997 0 12
+_SegmentDisplay_Initial: CODE, 4023 0 16
+_UART_Receive: CODE, 1616 0 55
+___awmod: CODE, 1219 0 97
+_main: CODE, 1843 0 49
+_MainT: CODE, 366 0 176
+_MainT_Initial: CODE, 1777 0 15
+_I2C_ISR: CODE, 4075 0 21
+_UART_Set: CODE, 1992 0 24
+___lwdiv: CODE, 1484 0 71
+_I2C_Master_Reception: CODE, 988 0 122
+_UART_ISR: CODE, 1412 0 72
+_UART_Main: CODE, 1892 0 42
+_printf: CODE, 542 0 171
+_TMR1_Set: CODE, 4039 0 16
+_I2C_Set: CODE, 4009 0 14
+_I2C_Main: CODE, 713 0 138
+_Mcu_Initial: CODE, 4055 0 20
+_setSegmentDisplayNumber: CODE, 27 0 339
+_TMR1_ISR: CODE, 1724 0 53
+_UART_Transmit: CODE, 1555 0 61
+_SegmentDisplay_Main: CODE, 851 0 137
+Total: 1968

@@ -1,0 +1,573 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+--edf=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\dat\en_msgs.txt -cs \
+  -h+PIR_Ceiling_Embed_V1.1.1.sym -z -Q16F723A -ol.obj \
+  -MPIR_Ceiling_Embed_V1.1.1.map -E1 -ACONST=00h-0FFhx16 -ACODE=00h-07FFhx2 \
+  -ASTRCODE=00h-0FFFh -AENTRY=00h-0FFhx16 -ASTRING=00h-0FFhx16 \
+  -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0120h-012Fh \
+  -ARAM=020h-06Fh,0A0h-0EFh,0120h-012Fh \
+  -AABS1=020h-07Fh,0A0h-0EFh,0120h-012Fh -ACOMMON=070h-07Fh -ASFR0=00h-01Fh \
+  -ASFR1=080h-09Fh -ASFR2=0100h-011Fh -ASFR3=0180h-01EFh \
+  -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pfunctab=CODE \
+  -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
+  -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -k startup.obj PIR_Ceiling_Embed_V1.1.1.obj 
+
+Object code version is 3.10
+
+Machine type is 16F723A
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+startup.obj     end_init                             11       11        2        8       0
+                reset_vec                             0        0        2        0       0
+PIR_Ceiling_Embed_V1.1.1.obj
+                intentry                              4        4        D        8       0
+                config                             2007     2007        2     400E       0
+                text1120                            39E      39E       33        8       0
+                text1119                            4C0      4C0       10        8       0
+                text1118                            3D1      3D1       27        8       0
+                text1117                            541      541        1        8       0
+                text1116                            540      540        1        8       0
+                text1115                            53F      53F        1        8       0
+                text1114                            207      207       61        8       0
+                text1113                            53E      53E        1        8       0
+                text1112                            53D      53D        1        8       0
+                text1111                            443      443       15        8       0
+                text1110                            415      415       19        8       0
+                text1109                            527      527        7        8       0
+                text1108                            42E      42E       15        8       0
+                text1107                            4DF      4DF        F        8       0
+                text1106                            4D0      4D0        F        8       0
+                text1105                            268      268       51        8       0
+                text1104                             AF       AF       86        8       0
+                text1103                            4B0      4B0       10        8       0
+                text1102                            4EE      4EE        E        8       0
+                text1101                            2B9      2B9       50        8       0
+                text1100                            49F      49F       11        8       0
+                text1099                            135      135       6A        8       0
+                text1098                            354      354       4A        8       0
+                text1097                            48E      48E       11        8       0
+                text1096                            47D      47D       11        8       0
+                text1095                            458      458       13        8       0
+                text1094                            509      509        D        8       0
+                text1093                            538      538        5        8       0
+                text1092                            309      309       4B        8       0
+                text1091                            3F8      3F8       1D        8       0
+                text1090                             13       13       9C        8       0
+                text1089                            4FC      4FC        D        8       0
+                text1088                            533      533        5        8       0
+                text1087                            516      516        9        8       0
+                text1086                            52E      52E        5        8       0
+                maintext                            19F      19F       68        8       0
+                cstackBANK0                          56       56        B       20       1
+                cstackCOMMON                         70       70        6       70       1
+                clrtext                             51F      51F        8        8       0
+                bssBANK1                             A0       A0       2F       A0       1
+                bssBANK0                             20       20       36       20       1
+                bssCOMMON                            76       76        2       70       1
+                cinit                               46B      46B       12        8       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CONST          
+
+        CLASS   CODE           
+                end_init                             11       11        2         0
+                intentry                              4        4        D         0
+                reset_vec                             0        0        2         0
+                text1120                            39E      39E       33         0
+                text1119                            4C0      4C0       10         0
+                text1118                            3D1      3D1       27         0
+                text1117                            541      541        1         0
+                text1116                            540      540        1         0
+                text1115                            53F      53F        1         0
+                text1114                            207      207       61         0
+                text1113                            53E      53E        1         0
+                text1112                            53D      53D        1         0
+                text1111                            443      443       15         0
+                text1110                            415      415       19         0
+                text1109                            527      527        7         0
+                text1108                            42E      42E       15         0
+                text1107                            4DF      4DF        F         0
+                text1106                            4D0      4D0        F         0
+                text1105                            268      268       51         0
+                text1104                             AF       AF       86         0
+                text1103                            4B0      4B0       10         0
+                text1102                            4EE      4EE        E         0
+                text1101                            2B9      2B9       50         0
+                text1100                            49F      49F       11         0
+                text1099                            135      135       6A         0
+                text1098                            354      354       4A         0
+                text1097                            48E      48E       11         0
+                text1096                            47D      47D       11         0
+                text1095                            458      458       13         0
+                text1094                            509      509        D         0
+                text1093                            538      538        5         0
+                text1092                            309      309       4B         0
+                text1091                            3F8      3F8       1D         0
+                text1090                             13       13       9C         0
+                text1089                            4FC      4FC        D         0
+                text1088                            533      533        5         0
+                text1087                            516      516        9         0
+                text1086                            52E      52E        5         0
+                maintext                            19F      19F       68         0
+                clrtext                             51F      51F        8         0
+                cinit                               46B      46B       12         0
+
+        CLASS   STRCODE        
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+
+        CLASS   BANK0          
+                cstackBANK0                          56       56        B         1
+                bssBANK0                             20       20       36         1
+
+        CLASS   BANK1          
+                bssBANK1                             A0       A0       2F         1
+
+        CLASS   BANK2          
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               7E       7E        2         1
+
+        CLASS   COMMON         
+                cstackCOMMON                         70       70        6         1
+                bssCOMMON                            76       76        2         1
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   SFR2           
+
+        CLASS   SFR3           
+
+        CLASS   CONFIG         
+                config                             2007     2007        2         0
+
+        CLASS   IDLOC          
+
+        CLASS   BANK3          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                intentry                       000004  00053E  000542         8       0  CODE        2
+                bssBANK0                       000020  000041  000061        20       1  BANK0       1
+                cstackCOMMON                   000070  000008  000078        70       1  COMMON      1
+                bssBANK1                       0000A0  00002F  0000CF        A0       1  BANK1       1
+                config                         002007  000002  002009      400E       0  CONFIG      2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            0061-006F              F           1
+        BANK1            00CF-00EF             21           1
+        BANK2            0120-012F             10           1
+        CODE             0002-0003              2           2
+                         0542-0FFF            2BE
+        COMMON           0078-007D              6           1
+        CONST            0002-0003              2           2
+                         0542-0FFF            100
+        ENTRY            0002-0003              2           2
+                         0542-0FFF            100
+        IDLOC            2000-2003              4           2
+        RAM              0061-006F              F           1
+                         00CF-00EF             21
+                         0120-012F             10
+        SFR0             0000-001F             20           1
+        SFR1             0080-009F             20           1
+        SFR2             0100-011F             20           1
+        SFR3             0180-01EF             70           1
+        STRCODE          0002-0003              2           2
+                         0542-0FFF            ABE
+        STRING           0002-0003              2           2
+                         0542-0FFF            100
+
+                                  Symbol Table
+
+??_ADC_Set                         cstackCOMMON 0076
+??_CDS_Initialization              cstackCOMMON 0076
+??_CDS_Main                        cstackCOMMON 0076
+??_IO_Set                          cstackCOMMON 0076
+??_ISR                             cstackCOMMON 0072
+??_LED_Initialization              cstackCOMMON 0076
+??_LED_Main                        cstackCOMMON 0076
+??_LedPointSelect                  cstackBANK0  0056
+??_LightsPointSelect               cstackBANK0  0056
+??_Lights_Control                  cstackBANK0  0058
+??_Lights_Initialization           cstackCOMMON 0076
+??_Lights_Main                     cstackCOMMON 0076
+??_MainT                           cstackBANK0  0056
+??_MainT_Initialization            cstackBANK0  0056
+??_Mcu_Initialization              cstackCOMMON 0076
+??_PIR_Initialization              cstackCOMMON 0076
+??_PIR_Main                        cstackCOMMON 0076
+??_SYSC_Initialization             cstackCOMMON 0076
+??_SYSC_Main                       cstackCOMMON 0076
+??_TMR0_ISR                        cstackCOMMON 0070
+??_TMR0_Set                        cstackBANK0  0056
+??_getAD                           cstackCOMMON 0076
+??_getCDS_AD                       cstackBANK0  005A
+??_getPIR_AD                       cstackCOMMON 0076
+??_main                            cstackBANK0  005F
+??_setCDSPoint                     cstackBANK0  0056
+??_setCDS_Initialization           cstackCOMMON 0076
+??_setCDS_Main                     cstackBANK0  005A
+??_setLED                          cstackCOMMON 0076
+??_setLED_Initialization           cstackCOMMON 0076
+??_setLED_Main                     cstackBANK0  0058
+??_setLights                       cstackBANK0  0059
+??_setLights_Initialization        cstackCOMMON 0076
+??_setLights_Main                  cstackCOMMON 0076
+??_setLights_Switch                cstackCOMMON 0076
+??_setLights_Trigger               cstackCOMMON 0076
+?_ADC_Set                          cstackCOMMON 0070
+?_CDS_Initialization               cstackCOMMON 0070
+?_CDS_Main                         cstackCOMMON 0070
+?_IO_Set                           cstackCOMMON 0070
+?_ISR                              cstackCOMMON 0070
+?_LED_Initialization               cstackCOMMON 0070
+?_LED_Main                         cstackCOMMON 0070
+?_LedPointSelect                   cstackCOMMON 0070
+?_LightsPointSelect                cstackCOMMON 0070
+?_Lights_Control                   cstackCOMMON 0070
+?_Lights_Initialization            cstackCOMMON 0070
+?_Lights_Main                      cstackCOMMON 0070
+?_MainT                            cstackCOMMON 0070
+?_MainT_Initialization             cstackCOMMON 0070
+?_Mcu_Initialization               cstackCOMMON 0070
+?_PIR_Initialization               cstackCOMMON 0070
+?_PIR_Main                         cstackCOMMON 0070
+?_SYSC_Initialization              cstackCOMMON 0070
+?_SYSC_Main                        cstackCOMMON 0070
+?_TMR0_ISR                         cstackCOMMON 0070
+?_TMR0_Set                         cstackCOMMON 0070
+?_getAD                            cstackBANK0  0056
+?_getCDS_AD                        cstackBANK0  0058
+?_getPIR_AD                        cstackBANK0  0056
+?_main                             cstackCOMMON 0070
+?_setCDSPoint                      cstackCOMMON 0070
+?_setCDS_Initialization            cstackCOMMON 0070
+?_setCDS_Main                      cstackCOMMON 0070
+?_setLED                           cstackBANK0  0058
+?_setLED_Initialization            cstackCOMMON 0070
+?_setLED_Main                      cstackCOMMON 0070
+?_setLights                        cstackBANK0  0058
+?_setLights_Initialization         cstackCOMMON 0070
+?_setLights_Main                   cstackCOMMON 0070
+?_setLights_Switch                 cstackBANK0  0058
+?_setLights_Trigger                cstackBANK0  0058
+LedPointSelect@led                 cstackBANK0  0057
+LightsPointSelect@lights           cstackBANK0  0057
+Lights_Control@lights              cstackBANK0  005A
+_ADCON0                            (abs)        001F
+_ADCON1                            (abs)        009F
+_ADC_Set                           text1109     0527
+_ADRES                             (abs)        001E
+_ANSELA                            (abs)        0185
+_ANSELB                            (abs)        0186
+_CDS                               bssBANK0     0020
+_CDS_Initialization                text1088     0533
+_CDS_Main                          text1086     052E
+_FVRCON                            (abs)        009D
+_GIE                               (abs)        005F
+_GO_nDONE                          (abs)        00F9
+_IO_Set                            text1111     0443
+_ISR                               text1119     04C0
+_LED                               bssBANK0     0021
+_LED_Initialization                text1089     04FC
+_LED_Main                          text1094     0509
+_LedPointSelect                    text1118     03D1
+_Lights                            bssBANK0     0022
+_Lights1                           bssBANK0     0035
+_LightsPointSelect                 text1107     04DF
+_Lights_Control                    text1099     0135
+_Lights_Initialization             text1093     0538
+_Lights_Main                       text1087     0516
+_MainT                             text1114     0207
+_MainT_Initialization              text1103     04B0
+_Mcu_Initialization                text1102     04EE
+_OPTION_REG                        (abs)        0081
+_OSCCON                            (abs)        0090
+_PIR                               bssCOMMON    0076
+_PIR_Initialization                text1116     0540
+_PIR_Main                          text1112     053D
+_PORTA                             (abs)        0005
+_PORTB                             (abs)        0006
+_PORTC                             (abs)        0007
+_RA4                               (abs)        002C
+_RA5                               (abs)        002D
+_RB2                               (abs)        0032
+_RB3                               (abs)        0033
+_RB4                               (abs)        0034
+_RB5                               (abs)        0035
+_SYSC                              bssBANK0     0023
+_SYSC_Initialization               text1117     0541
+_SYSC_Main                         text1113     053E
+_TMR0                              (abs)        0001
+_TMR0IE                            (abs)        005D
+_TMR0IF                            (abs)        005A
+_TMR0_ISR                          text1120     039E
+_TMR0_Set                          text1110     0415
+_TMain                             bssBANK0     0024
+_TRISA                             (abs)        0085
+_TRISB                             (abs)        0086
+_TRISC                             (abs)        0087
+_Timer0                            bssCOMMON    0077
+_VarErrLED                         bssBANK0     004A
+_VarLED1                           bssBANK0     004E
+_VarLED2                           bssBANK0     0052
+_VarTMain                          bssBANK0     0025
+_VarTimer0                         bssBANK0     003E
+__CDS1                             bssBANK0     0045
+__Habs1                            abs1         0000
+__Hbank0                           bank0        0000
+__Hbank1                           bank1        0000
+__Hbank2                           bank2        0000
+__Hbank3                           bank3        0000
+__HbssBANK0                        bssBANK0     0000
+__HbssBANK1                        bssBANK1     0000
+__HbssCOMMON                       bssCOMMON    0000
+__Hcinit                           cinit        0000
+__Hclrtext                         clrtext      0000
+__Hcode                            code         0000
+__Hcommon                          common       0000
+__Hconfig                          config       2009
+__HcstackBANK0                     cstackBANK0  0000
+__HcstackCOMMON                    cstackCOMMON 0000
+__Heeprom_data                     eeprom_data  0000
+__Hend_init                        end_init     0013
+__Hfunctab                         functab      0000
+__Hidloc                           idloc        0000
+__Hinit                            init         0011
+__Hintentry                        intentry     0011
+__Hmaintext                        maintext     0000
+__Hpowerup                         powerup      0000
+__Hram                             ram          0000
+__Hreset_vec                       reset_vec    0002
+__Hsfr0                            sfr0         0000
+__Hsfr1                            sfr1         0000
+__Hsfr2                            sfr2         0000
+__Hsfr3                            sfr3         0000
+__Hstrings                         strings      0000
+__Htext                            text         0000
+__Labs1                            abs1         0000
+__Lbank0                           bank0        0000
+__Lbank1                           bank1        0000
+__Lbank2                           bank2        0000
+__Lbank3                           bank3        0000
+__LbssBANK0                        bssBANK0     0000
+__LbssBANK1                        bssBANK1     0000
+__LbssCOMMON                       bssCOMMON    0000
+__Lcinit                           cinit        0000
+__Lclrtext                         clrtext      0000
+__Lcode                            code         0000
+__Lcommon                          common       0000
+__Lconfig                          config       2007
+__LcstackBANK0                     cstackBANK0  0000
+__LcstackCOMMON                    cstackCOMMON 0000
+__Leeprom_data                     eeprom_data  0000
+__Lend_init                        end_init     0011
+__Lfunctab                         functab      0000
+__Lidloc                           idloc        0000
+__Linit                            init         0011
+__Lintentry                        intentry     0004
+__Lmaintext                        maintext     0000
+__Lpowerup                         powerup      0000
+__Lram                             ram          0000
+__Lreset_vec                       reset_vec    0000
+__Lsfr0                            sfr0         0000
+__Lsfr1                            sfr1         0000
+__Lsfr2                            sfr2         0000
+__Lsfr3                            sfr3         0000
+__Lstrings                         strings      0000
+__Ltext                            text         0000
+__PIR1                             bssBANK1     00A0
+__S0                               (abs)        2009
+__S1                               (abs)        00CF
+__end_of_ADC_Set                   text1109     052E
+__end_of_CDS_Initialization        text1088     0538
+__end_of_CDS_Main                  text1086     0533
+__end_of_IO_Set                    text1111     0458
+__end_of_ISR                       text1119     04D0
+__end_of_LED_Initialization        text1089     0509
+__end_of_LED_Main                  text1094     0516
+__end_of_LedPointSelect            text1118     03F8
+__end_of_LightsPointSelect         text1107     04EE
+__end_of_Lights_Control            text1099     019F
+__end_of_Lights_Initialization     text1093     053D
+__end_of_Lights_Main               text1087     051F
+__end_of_MainT                     text1114     0268
+__end_of_MainT_Initialization      text1103     04C0
+__end_of_Mcu_Initialization        text1102     04FC
+__end_of_PIR_Initialization        text1116     0541
+__end_of_PIR_Main                  text1112     053E
+__end_of_SYSC_Initialization       text1117     0542
+__end_of_SYSC_Main                 text1113     053F
+__end_of_TMR0_ISR                  text1120     03D1
+__end_of_TMR0_Set                  text1110     042E
+__end_of_getAD                     text1108     0443
+__end_of_getCDS_AD                 text1101     0309
+__end_of_getPIR_AD                 text1115     0540
+__end_of_main                      maintext     0207
+__end_of_setCDSPoint               text1106     04DF
+__end_of_setCDS_Initialization     text1091     0415
+__end_of_setCDS_Main               text1090     00AF
+__end_of_setLED                    text1104     0135
+__end_of_setLED_Initialization     text1095     046B
+__end_of_setLED_Main               text1105     02B9
+__end_of_setLights                 text1098     039E
+__end_of_setLights_Initialization  text1100     04B0
+__end_of_setLights_Main            text1092     0354
+__end_of_setLights_Switch          text1096     048E
+__end_of_setLights_Trigger         text1097     049F
+__pbssBANK0                        bssBANK0     0020
+__pbssBANK1                        bssBANK1     00A0
+__pbssCOMMON                       bssCOMMON    0076
+__pcstackBANK0                     cstackBANK0  0056
+__pcstackCOMMON                    cstackCOMMON 0070
+__pintentry                        intentry     0004
+__pmaintext                        maintext     019F
+__ptext1085                        text1085     0000
+__ptext1086                        text1086     052E
+__ptext1087                        text1087     0516
+__ptext1088                        text1088     0533
+__ptext1089                        text1089     04FC
+__ptext1090                        text1090     0013
+__ptext1091                        text1091     03F8
+__ptext1092                        text1092     0309
+__ptext1093                        text1093     0538
+__ptext1094                        text1094     0509
+__ptext1095                        text1095     0458
+__ptext1096                        text1096     047D
+__ptext1097                        text1097     048E
+__ptext1098                        text1098     0354
+__ptext1099                        text1099     0135
+__ptext1100                        text1100     049F
+__ptext1101                        text1101     02B9
+__ptext1102                        text1102     04EE
+__ptext1103                        text1103     04B0
+__ptext1104                        text1104     00AF
+__ptext1105                        text1105     0268
+__ptext1106                        text1106     04D0
+__ptext1107                        text1107     04DF
+__ptext1108                        text1108     042E
+__ptext1109                        text1109     0527
+__ptext1110                        text1110     0415
+__ptext1111                        text1111     0443
+__ptext1112                        text1112     053D
+__ptext1113                        text1113     053E
+__ptext1114                        text1114     0207
+__ptext1115                        text1115     053F
+__ptext1116                        text1116     0540
+__ptext1117                        text1117     0541
+__ptext1118                        text1118     03D1
+__ptext1119                        text1119     04C0
+__ptext1120                        text1120     039E
+__ptext1121                        text1121     0000
+__size_of_ADC_Set                  (abs)        0000
+__size_of_CDS_Initialization       (abs)        0000
+__size_of_CDS_Main                 (abs)        0000
+__size_of_IO_Set                   (abs)        0000
+__size_of_ISR                      (abs)        0000
+__size_of_LED_Initialization       (abs)        0000
+__size_of_LED_Main                 (abs)        0000
+__size_of_LedPointSelect           (abs)        0000
+__size_of_LightsPointSelect        (abs)        0000
+__size_of_Lights_Control           (abs)        0000
+__size_of_Lights_Initialization    (abs)        0000
+__size_of_Lights_Main              (abs)        0000
+__size_of_MainT                    (abs)        0000
+__size_of_MainT_Initialization     (abs)        0000
+__size_of_Mcu_Initialization       (abs)        0000
+__size_of_PIR_Initialization       (abs)        0000
+__size_of_PIR_Main                 (abs)        0000
+__size_of_SYSC_Initialization      (abs)        0000
+__size_of_SYSC_Main                (abs)        0000
+__size_of_TMR0_ISR                 (abs)        0000
+__size_of_TMR0_Set                 (abs)        0000
+__size_of_getAD                    (abs)        0000
+__size_of_getCDS_AD                (abs)        0000
+__size_of_getPIR_AD                (abs)        0000
+__size_of_main                     (abs)        0000
+__size_of_setCDSPoint              (abs)        0000
+__size_of_setCDS_Initialization    (abs)        0000
+__size_of_setCDS_Main              (abs)        0000
+__size_of_setLED                   (abs)        0000
+__size_of_setLED_Initialization    (abs)        0000
+__size_of_setLED_Main              (abs)        0000
+__size_of_setLights                (abs)        0000
+__size_of_setLights_Initialization (abs)        0000
+__size_of_setLights_Main           (abs)        0000
+__size_of_setLights_Switch         (abs)        0000
+__size_of_setLights_Trigger        (abs)        0000
+_exit                              init         0011
+_getAD                             text1108     042E
+_getCDS_AD                         text1101     02B9
+_getPIR_AD                         text1115     053F
+_main                              maintext     019F
+_setCDSPoint                       text1106     04D0
+_setCDS_Initialization             text1091     03F8
+_setCDS_Main                       text1090     0013
+_setLED                            text1104     00AF
+_setLED_Initialization             text1095     0458
+_setLED_Main                       text1105     0268
+_setLights                         text1098     0354
+_setLights_Initialization          text1100     049F
+_setLights_Main                    text1092     0309
+_setLights_Switch                  text1096     047D
+_setLights_Trigger                 text1097     048E
+btemp                              (abs)        007E
+clear_ram                          clrtext      051F
+end_of_initialization              cinit        047A
+getAD@adcon0                       cstackBANK0  0057
+getAD@adcon1                       cstackBANK0  0056
+getCDS_AD@cds                      cstackBANK0  005E
+getCDS_AD@channel1                 cstackBANK0  0058
+getCDS_AD@channel2                 cstackBANK0  0059
+getCDS_AD@i                        cstackBANK0  005C
+getCDS_AD@j                        cstackBANK0  005D
+getPIR_AD@channel1                 cstackBANK0  0056
+getPIR_AD@charchannel2             cstackBANK0  0057
+interrupt_function                 intentry     0004
+intlevel0                          functab      0000
+intlevel1                          functab      0000
+intlevel2                          functab      0000
+intlevel3                          functab      0000
+intlevel4                          functab      0000
+intlevel5                          functab      0000
+reset_vec                          reset_vec    0000
+saved_w                            (abs)        007E
+setCDSPoint@cds                    cstackBANK0  0057
+setCDS_Initialization@cds          cstackBANK0  005A
+setCDS_Main@cds                    cstackBANK0  005D
+setLED@command                     cstackBANK0  0058
+setLED@led                         cstackBANK0  0059
+setLED_Initialization@led          cstackBANK0  005A
+setLED_Main@led                    cstackBANK0  005A
+setLights@command                  cstackBANK0  0058
+setLights@lights                   cstackBANK0  005A
+setLights_Initialization@lights    cstackBANK0  0058
+setLights_Main@close               cstackBANK0  005C
+setLights_Main@lights              cstackBANK0  005D
+setLights_Main@open                cstackBANK0  005B
+setLights_Switch@command           cstackBANK0  0058
+setLights_Switch@lights            cstackBANK0  0059
+setLights_Trigger@command          cstackBANK0  0058
+setLights_Trigger@lights           cstackBANK0  0059
+start                              init         0011
+start_initialization               cinit        046B
+wtemp0                             (abs)        007E

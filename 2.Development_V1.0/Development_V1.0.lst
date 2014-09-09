@@ -1,0 +1,3293 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.83 build 10920 
+                                                                                               Mon Jun 09 08:51:03 2014
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 10920
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 10920"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F1516
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0001                     indf1	equ	1
+    35  0002                     pc	equ	2
+    36  0002                     pcl	equ	2
+    37  0003                     status	equ	3
+    38  0004                     fsr0l	equ	4
+    39  0005                     fsr0h	equ	5
+    40  0006                     fsr1l	equ	6
+    41  0007                     fsr1h	equ	7
+    42  0008                     bsr	equ	8
+    43  0009                     wreg	equ	9
+    44  000B                     intcon	equ	11
+    45  0001                     c	equ	1
+    46  0000                     z	equ	0
+    47  000A                     pclath	equ	10
+    48                           # 13 "G:\Program\PIC\Source_File\MCU_16f1516.c"
+    49                           	psect config,class=CONFIG,delta=2 ;#
+    50                           # 13 "G:\Program\PIC\Source_File\MCU_16f1516.c"
+    51  8007  FFE4               	dw 0xFFFC & 0xFFE7 ;#
+    52                           # 14 "G:\Program\PIC\Source_File\MCU_16f1516.c"
+    53                           	psect config,class=CONFIG,delta=2 ;#
+    54                           # 14 "G:\Program\PIC\Source_File\MCU_16f1516.c"
+    55  8008  FFFF               	dw 0xFFFF ;#
+    56                           	FNCALL	_main,_MCU_Initial
+    57                           	FNCALL	_main,_Display_Initial
+    58                           	FNCALL	_main,_Display_Main
+    59                           	FNCALL	_main,_CDS_Get
+    60                           	FNCALL	_main,_Display_Setting
+    61                           	FNCALL	_Display_Setting,___lwdiv
+    62                           	FNCALL	_Display_Setting,___lwmod
+    63                           	FNROOT	_main
+    64                           	FNCALL	intlevel1,_ISR
+    65                           	global	intlevel1
+    66                           	FNROOT	intlevel1
+    67                           	global	_VarUart
+    68                           	global	_Read_Data
+    69                           	global	_Touch
+    70                           	global	_Uart
+    71                           	global	_Momery_OK
+    72                           	global	_TouchPower
+    73                           	global	_Memory
+    74                           	global	_VarSegment
+    75                           	global	_VarTouch
+    76                           	global	_VarIntr
+    77                           	global	_Intr
+    78                           psect	nvBANK0,class=BANK0,space=1
+    79                           global __pnvBANK0
+    80  0064                     __pnvBANK0:
+    81  0064                     _Intr:
+    82  0064                            ds      1
+    83                           
+    84                           	global	_Segment
+    85  0065                     _Segment:
+    86  0065                            ds      1
+    87                           
+    88                           	global	_PORTA
+    89  000C                     _PORTA	set	12
+    90                           	global	_PORTB
+    91  000D                     _PORTB	set	13
+    92                           	global	_PORTC
+    93  000E                     _PORTC	set	14
+    94                           	global	_TMR0
+    95  0015                     _TMR0	set	21
+    96                           	global	_GIE
+    97  005F                     _GIE	set	95
+    98                           	global	_PEIE
+    99  005E                     _PEIE	set	94
+   100                           	global	_RA1
+   101  0061                     _RA1	set	97
+   102                           	global	_RA3
+   103  0063                     _RA3	set	99
+   104                           	global	_RCIF
+   105  008D                     _RCIF	set	141
+   106                           	global	_SSPIF
+   107  008B                     _SSPIF	set	139
+   108                           	global	_TMR0IE
+   109  005D                     _TMR0IE	set	93
+   110                           	global	_TMR0IF
+   111  005A                     _TMR0IF	set	90
+   112                           	global	_TXIF
+   113  008C                     _TXIF	set	140
+   114                           	global	_ADCON0
+   115  009D                     _ADCON0	set	157
+   116                           	global	_ADCON1
+   117  009E                     _ADCON1	set	158
+   118                           	global	_ADRESH
+   119  009C                     _ADRESH	set	156
+   120                           	global	_ADRESL
+   121  009B                     _ADRESL	set	155
+   122                           	global	_OPTION_REG
+   123  0095                     _OPTION_REG	set	149
+   124                           	global	_OSCCON
+   125  0099                     _OSCCON	set	153
+   126                           	global	_TRISA
+   127  008C                     _TRISA	set	140
+   128                           	global	_TRISB
+   129  008D                     _TRISB	set	141
+   130                           	global	_TRISC
+   131  008E                     _TRISC	set	142
+   132                           	global	_GO_nDONE
+   133  04E9                     _GO_nDONE	set	1257
+   134                           	global	_RCIE
+   135  048D                     _RCIE	set	1165
+   136                           	global	_SSPIE
+   137  048B                     _SSPIE	set	1163
+   138                           	global	_TXIE
+   139  048C                     _TXIE	set	1164
+   140                           	global	_FVRCON
+   141  0117                     _FVRCON	set	279
+   142                           	global	_LATA
+   143  010C                     _LATA	set	268
+   144                           	global	_LATB
+   145  010D                     _LATB	set	269
+   146                           	global	_LATC
+   147  010E                     _LATC	set	270
+   148                           	global	_ANSELA
+   149  018C                     _ANSELA	set	396
+   150                           	global	_ANSELB
+   151  018D                     _ANSELB	set	397
+   152                           	global	_ANSELC
+   153  018E                     _ANSELC	set	398
+   154                           	global	_PMADRH
+   155  0192                     _PMADRH	set	402
+   156                           	global	_PMADRL
+   157  0191                     _PMADRL	set	401
+   158                           	global	_PMCON2
+   159  0196                     _PMCON2	set	406
+   160                           	global	_PMDATH
+   161  0194                     _PMDATH	set	404
+   162                           	global	_PMDATL
+   163  0193                     _PMDATL	set	403
+   164                           	global	_RCREG
+   165  0199                     _RCREG	set	409
+   166                           	global	_TXREG
+   167  019A                     _TXREG	set	410
+   168                           	global	_CFGS
+   169  0CAE                     _CFGS	set	3246
+   170                           	global	_FREE
+   171  0CAC                     _FREE	set	3244
+   172                           	global	_LWLO
+   173  0CAD                     _LWLO	set	3245
+   174                           	global	_RCIDL
+   175  0CFE                     _RCIDL	set	3326
+   176                           	global	_RD
+   177  0CA8                     _RD	set	3240
+   178                           	global	_WR
+   179  0CA9                     _WR	set	3241
+   180                           	global	_WREN
+   181  0CAA                     _WREN	set	3242
+   182                           	global	_SSPADD
+   183  0212                     _SSPADD	set	530
+   184                           	global	_SSPBUF
+   185  0211                     _SSPBUF	set	529
+   186                           	global	_R_nW
+   187  10A2                     _R_nW	set	4258
+   188                           	global	_SEN
+   189  10B0                     _SEN	set	4272
+   190                           	file	"Development_V1.0.as"
+   191                           	line	#
+   192                           psect cinit,class=CODE,delta=2
+   193                           global start_initialization
+   194  0441                     start_initialization:
+   195                           
+   196                           psect	bitbssCOMMON,class=COMMON,bit,space=1
+   197                           global __pbitbssCOMMON
+   198  03C0                     __pbitbssCOMMON:
+   199  03C0                     _Momery_OK:
+   200  03C0                            ds      1
+   201                           
+   202  03C1                     _TouchPower:
+   203  03C1                            ds      1
+   204                           
+   205                           psect	bssCOMMON,class=COMMON,space=1
+   206                           global __pbssCOMMON
+   207  0079                     __pbssCOMMON:
+   208  0079                     _Touch:
+   209  0079                            ds      1
+   210                           
+   211  007A                     _Uart:
+   212  007A                            ds      1
+   213                           
+   214                           psect	bssBANK0,class=BANK0,space=1
+   215                           global __pbssBANK0
+   216  0020                     __pbssBANK0:
+   217  0020                     _VarUart:
+   218  0020                            ds      9
+   219                           
+   220  0029                     _Read_Data:
+   221  0029                            ds      1
+   222                           
+   223  002A                     _VarSegment:
+   224  002A                            ds      27
+   225                           
+   226  0045                     _VarTouch:
+   227  0045                            ds      8
+   228                           
+   229  004D                     _VarIntr:
+   230  004D                            ds      7
+   231                           
+   232                           psect	bssBANK1,class=BANK1,space=1
+   233                           global __pbssBANK1
+   234  00A0                     __pbssBANK1:
+   235  00A0                     _Memory:
+   236  00A0                            ds      32
+   237                           
+   238                           psect clrtext,class=CODE,delta=2
+   239                           global clear_ram
+   240                           ;	Called with FSR0 containing the base address, and
+   241                           ;	WREG with the size to clear
+   242  0457                     clear_ram:
+   243  0457  0064               	clrwdt			;clear the watchdog before getting into this loop
+   244  0458                     clrloop:
+   245  0458  0180               	clrf	indf0		;clear RAM location pointed to by FSR
+   246  0459  3101               	addfsr	0,1
+   247  045A  0B89               	decfsz wreg		;Have we reached the end of clearing yet?
+   248  045B  2C58               	goto clrloop	;have we reached the end yet?
+   249  045C  3400               	retlw	0		;all done for this memory range, return
+   250                           ; Clear objects allocated to BITCOMMON
+   251                           psect cinit,class=CODE,delta=2
+   252                           	global __pbitbssCOMMON
+   253  0441  01F8               	clrf	((__pbitbssCOMMON/8)+0)&07Fh
+   254                           ; Clear objects allocated to COMMON
+   255                           psect cinit,class=CODE,delta=2
+   256                           	global __pbssCOMMON
+   257  0442  01F9               	clrf	((__pbssCOMMON)+0)&07Fh
+   258  0443  01FA               	clrf	((__pbssCOMMON)+1)&07Fh
+   259                           ; Clear objects allocated to BANK0
+   260                           psect cinit,class=CODE,delta=2
+   261                           	global __pbssBANK0
+   262  0444  3020               	movlw	low(__pbssBANK0)
+   263  0445  0084               	movwf	fsr0l
+   264  0446  3000               	movlw	high(__pbssBANK0)
+   265  0447  0085               	movwf	fsr0h
+   266  0448  3034               	movlw	034h
+   267  0449  3184  2457  3184   	fcall	clear_ram
+   268                           ; Clear objects allocated to BANK1
+   269                           psect cinit,class=CODE,delta=2
+   270                           	global __pbssBANK1
+   271  044C  30A0               	movlw	low(__pbssBANK1)
+   272  044D  0084               	movwf	fsr0l
+   273  044E  3000               	movlw	high(__pbssBANK1)
+   274  044F  0085               	movwf	fsr0h
+   275  0450  3020               	movlw	020h
+   276  0451  3184  2457  3184   	fcall	clear_ram
+   277                           psect cinit,class=CODE,delta=2
+   278                           global end_of_initialization
+   279                           
+   280                           ;End of C runtime variable initialization code
+   281                           
+   282  0454                     end_of_initialization:
+   283  0454  0020               movlb 0
+   284  0455  3182  2A52         ljmp _main	;jump to C main() function
+   285                           psect	cstackCOMMON,class=COMMON,space=1
+   286                           global __pcstackCOMMON
+   287  0070                     __pcstackCOMMON:
+   288                           	global	?_ISR
+   289  0070                     ?_ISR:	; 0 bytes @ 0x0
+   290                           	global	??_ISR
+   291  0070                     ??_ISR:	; 0 bytes @ 0x0
+   292                           	global	?_MCU_Initial
+   293  0070                     ?_MCU_Initial:	; 0 bytes @ 0x0
+   294                           	global	?_Display_Initial
+   295  0070                     ?_Display_Initial:	; 0 bytes @ 0x0
+   296                           	global	?_Display_Main
+   297  0070                     ?_Display_Main:	; 0 bytes @ 0x0
+   298                           	global	?_main
+   299  0070                     ?_main:	; 0 bytes @ 0x0
+   300  0070                     	ds	3
+   301                           	global	??_MCU_Initial
+   302  0073                     ??_MCU_Initial:	; 0 bytes @ 0x3
+   303                           	global	??_Display_Initial
+   304  0073                     ??_Display_Initial:	; 0 bytes @ 0x3
+   305                           	global	??_Display_Main
+   306  0073                     ??_Display_Main:	; 0 bytes @ 0x3
+   307                           	global	?_CDS_Get
+   308  0073                     ?_CDS_Get:	; 2 bytes @ 0x3
+   309                           	global	?___lwdiv
+   310  0073                     ?___lwdiv:	; 2 bytes @ 0x3
+   311                           	global	?___lwmod
+   312  0073                     ?___lwmod:	; 2 bytes @ 0x3
+   313                           	global	___lwdiv@divisor
+   314  0073                     ___lwdiv@divisor:	; 2 bytes @ 0x3
+   315                           	global	___lwmod@divisor
+   316  0073                     ___lwmod@divisor:	; 2 bytes @ 0x3
+   317  0073                     	ds	2
+   318                           	global	Display_Main@j
+   319  0075                     Display_Main@j:	; 1 bytes @ 0x5
+   320                           	global	CDS_Get@i
+   321  0075                     CDS_Get@i:	; 2 bytes @ 0x5
+   322                           	global	___lwdiv@dividend
+   323  0075                     ___lwdiv@dividend:	; 2 bytes @ 0x5
+   324                           	global	___lwmod@dividend
+   325  0075                     ___lwmod@dividend:	; 2 bytes @ 0x5
+   326  0075                     	ds	1
+   327                           	global	Display_Main@i
+   328  0076                     Display_Main@i:	; 1 bytes @ 0x6
+   329  0076                     	ds	1
+   330                           	global	??___lwdiv
+   331  0077                     ??___lwdiv:	; 0 bytes @ 0x7
+   332                           	global	??___lwmod
+   333  0077                     ??___lwmod:	; 0 bytes @ 0x7
+   334  0077                     	ds	1
+   335                           psect	cstackBANK0,class=BANK0,space=1
+   336                           global __pcstackBANK0
+   337  0054                     __pcstackBANK0:
+   338                           	global	??_CDS_Get
+   339  0054                     ??_CDS_Get:	; 0 bytes @ 0x0
+   340                           	global	___lwdiv@counter
+   341  0054                     ___lwdiv@counter:	; 1 bytes @ 0x0
+   342                           	global	___lwmod@counter
+   343  0054                     ___lwmod@counter:	; 1 bytes @ 0x0
+   344  0054                     	ds	1
+   345                           	global	___lwdiv@quotient
+   346  0055                     ___lwdiv@quotient:	; 2 bytes @ 0x1
+   347  0055                     	ds	2
+   348                           	global	?_Display_Setting
+   349  0057                     ?_Display_Setting:	; 0 bytes @ 0x3
+   350                           	global	Display_Setting@Data
+   351  0057                     Display_Setting@Data:	; 2 bytes @ 0x3
+   352  0057                     	ds	2
+   353                           	global	??_Display_Setting
+   354  0059                     ??_Display_Setting:	; 0 bytes @ 0x5
+   355  0059                     	ds	3
+   356                           	global	Display_Setting@i
+   357  005C                     Display_Setting@i:	; 1 bytes @ 0x8
+   358  005C                     	ds	1
+   359                           	global	??_main
+   360  005D                     ??_main:	; 0 bytes @ 0x9
+   361  005D                     	ds	2
+   362                           	global	main@l
+   363  005F                     main@l:	; 1 bytes @ 0xB
+   364  005F                     	ds	1
+   365                           	global	main@i
+   366  0060                     main@i:	; 2 bytes @ 0xC
+   367  0060                     	ds	2
+   368                           	global	main@j
+   369  0062                     main@j:	; 1 bytes @ 0xE
+   370  0062                     	ds	1
+   371                           	global	main@k
+   372  0063                     main@k:	; 1 bytes @ 0xF
+   373  0063                     	ds	1
+   374 ;;Data sizes: Strings 0, constant 0, data 0, bss 86, persistent 2 stack 0
+   375 ;;Auto spaces:   Size  Autos    Used
+   376 ;; COMMON          14      8      11
+   377 ;; BANK0           80     16      70
+   378 ;; BANK1           80      0      32
+   379 ;; BANK2           80      0       0
+   380 ;; BANK3           80      0       0
+   381 ;; BANK4           80      0       0
+   382 ;; BANK5           80      0       0
+   383 ;; BANK6           16      0       0
+   384                           
+   385 ;;
+   386 ;; Pointer list with targets:
+   387                           
+   388 ;; ?_CDS_Get	int  size(1) Largest target is 0
+   389 ;;
+   390 ;; ?___lwmod	unsigned int  size(1) Largest target is 0
+   391 ;;
+   392 ;; ?___lwdiv	unsigned int  size(1) Largest target is 0
+   393 ;;
+   394 ;; Touch	PTR struct Touch size(1) Largest target is 8
+   395 ;;		 -> NULL(NULL[0]), VarTouch(BANK0[8]), 
+   396 ;;
+   397 ;; Segment	PTR struct Segment size(1) Largest target is 27
+   398 ;;		 -> NULL(NULL[0]), VarSegment(BANK0[27]), 
+   399 ;;
+   400 ;; Uart	PTR struct UART size(1) Largest target is 0
+   401 ;;		 -> NULL(NULL[0]), 
+   402 ;;
+   403 ;; Intr	PTR struct ISR size(1) Largest target is 7
+   404 ;;		 -> NULL(NULL[0]), VarIntr(BANK0[7]), 
+   405 ;;
+   406                           
+   407                           
+   408 ;;
+   409 ;; Critical Paths under _main in COMMON
+   410 ;;
+   411 ;;   _Display_Setting->___lwdiv
+   412 ;;   _Display_Setting->___lwmod
+   413 ;;
+   414 ;; Critical Paths under _ISR in COMMON
+   415 ;;
+   416 ;;   None.
+   417 ;;
+   418 ;; Critical Paths under _main in BANK0
+   419 ;;
+   420 ;;   _main->_Display_Setting
+   421 ;;   _Display_Setting->___lwdiv
+   422 ;;
+   423 ;; Critical Paths under _ISR in BANK0
+   424 ;;
+   425 ;;   None.
+   426 ;;
+   427 ;; Critical Paths under _main in BANK1
+   428 ;;
+   429 ;;   None.
+   430 ;;
+   431 ;; Critical Paths under _ISR in BANK1
+   432 ;;
+   433 ;;   None.
+   434 ;;
+   435 ;; Critical Paths under _main in BANK2
+   436 ;;
+   437 ;;   None.
+   438 ;;
+   439 ;; Critical Paths under _ISR in BANK2
+   440 ;;
+   441 ;;   None.
+   442 ;;
+   443 ;; Critical Paths under _main in BANK3
+   444 ;;
+   445 ;;   None.
+   446 ;;
+   447 ;; Critical Paths under _ISR in BANK3
+   448 ;;
+   449 ;;   None.
+   450 ;;
+   451 ;; Critical Paths under _main in BANK4
+   452 ;;
+   453 ;;   None.
+   454 ;;
+   455 ;; Critical Paths under _ISR in BANK4
+   456 ;;
+   457 ;;   None.
+   458 ;;
+   459 ;; Critical Paths under _main in BANK5
+   460 ;;
+   461 ;;   None.
+   462 ;;
+   463 ;; Critical Paths under _ISR in BANK5
+   464 ;;
+   465 ;;   None.
+   466 ;;
+   467 ;; Critical Paths under _main in BANK6
+   468 ;;
+   469 ;;   None.
+   470 ;;
+   471 ;; Critical Paths under _ISR in BANK6
+   472 ;;
+   473 ;;   None.
+   474                           
+   475 ;;
+   476 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   477 ;;
+   478                           
+   479 ;;
+   480 ;;Call Graph Tables:
+   481 ;;
+   482 ;; ---------------------------------------------------------------------------------
+   483 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   484 ;; ---------------------------------------------------------------------------------
+   485 ;; (0) _main                                                 7     7      0    1182
+   486 ;;                                              9 BANK0      7     7      0
+   487 ;;                        _MCU_Initial
+   488 ;;                    _Display_Initial
+   489 ;;                       _Display_Main
+   490 ;;                            _CDS_Get
+   491 ;;                    _Display_Setting
+   492 ;; ---------------------------------------------------------------------------------
+   493 ;; (1) _Display_Setting                                      6     4      2     953
+   494 ;;                                              3 BANK0      6     4      2
+   495 ;;                            ___lwdiv
+   496 ;;                            ___lwmod
+   497 ;; ---------------------------------------------------------------------------------
+   498 ;; (2) ___lwmod                                              6     2      4     232
+   499 ;;                                              3 COMMON     5     1      4
+   500 ;;                                              0 BANK0      1     1      0
+   501 ;; ---------------------------------------------------------------------------------
+   502 ;; (2) ___lwdiv                                              8     4      4     241
+   503 ;;                                              3 COMMON     5     1      4
+   504 ;;                                              0 BANK0      3     3      0
+   505 ;; ---------------------------------------------------------------------------------
+   506 ;; (1) _CDS_Get                                              8     6      2      37
+   507 ;;                                              3 COMMON     4     2      2
+   508 ;;                                              0 BANK0      4     4      0
+   509 ;; ---------------------------------------------------------------------------------
+   510 ;; (1) _Display_Main                                         4     4      0      72
+   511 ;;                                              3 COMMON     4     4      0
+   512 ;; ---------------------------------------------------------------------------------
+   513 ;; (1) _Display_Initial                                      1     1      0       0
+   514 ;;                                              3 COMMON     1     1      0
+   515 ;; ---------------------------------------------------------------------------------
+   516 ;; (1) _MCU_Initial                                          1     1      0       0
+   517 ;;                                              3 COMMON     1     1      0
+   518 ;; ---------------------------------------------------------------------------------
+   519 ;; Estimated maximum stack depth 2
+   520 ;; ---------------------------------------------------------------------------------
+   521 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   522 ;; ---------------------------------------------------------------------------------
+   523 ;; (3) _ISR                                                  3     3      0       0
+   524 ;;                                              0 COMMON     3     3      0
+   525 ;; ---------------------------------------------------------------------------------
+   526 ;; Estimated maximum stack depth 3
+   527 ;; ---------------------------------------------------------------------------------
+   528                           
+   529 ;; Call Graph Graphs:
+   530                           
+   531 ;; _main (ROOT)
+   532 ;;   _MCU_Initial
+   533 ;;   _Display_Initial
+   534 ;;   _Display_Main
+   535 ;;   _CDS_Get
+   536 ;;   _Display_Setting
+   537 ;;     ___lwdiv
+   538 ;;     ___lwmod
+   539 ;;
+   540 ;; _ISR (ROOT)
+   541 ;;
+   542                           
+   543 ;; Address spaces:
+   544                           
+   545 ;;Name               Size   Autos  Total    Cost      Usage
+   546 ;;BIGRAM             1F0      0       0       0        0.0%
+   547 ;;NULL                 0      0       0       0        0.0%
+   548 ;;CODE                 0      0       0       0        0.0%
+   549 ;;BITCOMMON            E      0       1       1        7.1%
+   550 ;;BITSFR0              0      0       0       1        0.0%
+   551 ;;SFR0                 0      0       0       1        0.0%
+   552 ;;COMMON               E      8       B       2       78.6%
+   553 ;;BITSFR1              0      0       0       2        0.0%
+   554 ;;SFR1                 0      0       0       2        0.0%
+   555 ;;BITSFR2              0      0       0       3        0.0%
+   556 ;;SFR2                 0      0       0       3        0.0%
+   557 ;;STACK                0      0       2       3        0.0%
+   558 ;;BITSFR3              0      0       0       4        0.0%
+   559 ;;SFR3                 0      0       0       4        0.0%
+   560 ;;ABS                  0      0      71       4        0.0%
+   561 ;;BITBANK0            50      0       0       5        0.0%
+   562 ;;BITSFR4              0      0       0       5        0.0%
+   563 ;;SFR4                 0      0       0       5        0.0%
+   564 ;;BANK0               50     10      46       6       87.5%
+   565 ;;BITSFR5              0      0       0       6        0.0%
+   566 ;;SFR5                 0      0       0       6        0.0%
+   567 ;;BITBANK1            50      0       0       7        0.0%
+   568 ;;BITSFR6              0      0       0       7        0.0%
+   569 ;;SFR6                 0      0       0       7        0.0%
+   570 ;;BANK1               50      0      20       8       40.0%
+   571 ;;BITSFR7              0      0       0       8        0.0%
+   572 ;;SFR7                 0      0       0       8        0.0%
+   573 ;;BITBANK2            50      0       0       9        0.0%
+   574 ;;BITSFR8              0      0       0       9        0.0%
+   575 ;;SFR8                 0      0       0       9        0.0%
+   576 ;;BANK2               50      0       0      10        0.0%
+   577 ;;BITSFR9              0      0       0      10        0.0%
+   578 ;;SFR9                 0      0       0      10        0.0%
+   579 ;;BITBANK3            50      0       0      11        0.0%
+   580 ;;BITSFR10             0      0       0      11        0.0%
+   581 ;;SFR10                0      0       0      11        0.0%
+   582 ;;BANK3               50      0       0      12        0.0%
+   583 ;;BITSFR11             0      0       0      12        0.0%
+   584 ;;SFR11                0      0       0      12        0.0%
+   585 ;;BITBANK4            50      0       0      13        0.0%
+   586 ;;BITSFR12             0      0       0      13        0.0%
+   587 ;;SFR12                0      0       0      13        0.0%
+   588 ;;BANK4               50      0       0      14        0.0%
+   589 ;;BITSFR13             0      0       0      14        0.0%
+   590 ;;SFR13                0      0       0      14        0.0%
+   591 ;;BITBANK5            50      0       0      15        0.0%
+   592 ;;BITSFR14             0      0       0      15        0.0%
+   593 ;;SFR14                0      0       0      15        0.0%
+   594 ;;BANK5               50      0       0      16        0.0%
+   595 ;;BITSFR15             0      0       0      16        0.0%
+   596 ;;SFR15                0      0       0      16        0.0%
+   597 ;;BITBANK6            10      0       0      17        0.0%
+   598 ;;BITSFR16             0      0       0      17        0.0%
+   599 ;;SFR16                0      0       0      17        0.0%
+   600 ;;BANK6               10      0       0      18        0.0%
+   601 ;;BITSFR17             0      0       0      18        0.0%
+   602 ;;SFR17                0      0       0      18        0.0%
+   603 ;;BITSFR18             0      0       0      19        0.0%
+   604 ;;SFR18                0      0       0      19        0.0%
+   605 ;;DATA                 0      0      73      19        0.0%
+   606 ;;BITSFR19             0      0       0      20        0.0%
+   607 ;;SFR19                0      0       0      20        0.0%
+   608 ;;BITSFR20             0      0       0      21        0.0%
+   609 ;;SFR20                0      0       0      21        0.0%
+   610 ;;BITSFR21             0      0       0      22        0.0%
+   611 ;;SFR21                0      0       0      22        0.0%
+   612 ;;BITSFR22             0      0       0      23        0.0%
+   613 ;;SFR22                0      0       0      23        0.0%
+   614 ;;BITSFR23             0      0       0      24        0.0%
+   615 ;;SFR23                0      0       0      24        0.0%
+   616 ;;BITSFR24             0      0       0      25        0.0%
+   617 ;;SFR24                0      0       0      25        0.0%
+   618 ;;BITSFR25             0      0       0      26        0.0%
+   619 ;;SFR25                0      0       0      26        0.0%
+   620 ;;BITSFR26             0      0       0      27        0.0%
+   621 ;;SFR26                0      0       0      27        0.0%
+   622 ;;BITSFR27             0      0       0      28        0.0%
+   623 ;;SFR27                0      0       0      28        0.0%
+   624 ;;BITSFR28             0      0       0      29        0.0%
+   625 ;;SFR28                0      0       0      29        0.0%
+   626 ;;BITSFR29             0      0       0      30        0.0%
+   627 ;;SFR29                0      0       0      30        0.0%
+   628 ;;BITSFR30             0      0       0      31        0.0%
+   629 ;;SFR30                0      0       0      31        0.0%
+   630 ;;BITSFR31             0      0       0      32        0.0%
+   631 ;;SFR31                0      0       0      32        0.0%
+   632                           
+   633                           	global	_main
+   634                           psect	maintext,global,class=CODE,delta=2
+   635                           global __pmaintext
+   636  0252                     __pmaintext:
+   637                           
+   638 ;; *************** function _main *****************
+   639 ;; Defined at:
+   640 ;;		line 55 in file "G:\Program\PIC\2.Development_V1.0\Release\Development_V1.0.c"
+   641 ;; Parameters:    Size  Location     Type
+   642 ;;		None
+   643 ;; Auto vars:     Size  Location     Type
+   644 ;;  i               2   12[BANK0 ] int 
+   645 ;;  k               1   15[BANK0 ] unsigned char 
+   646 ;;  j               1   14[BANK0 ] unsigned char 
+   647 ;;  l               1   11[BANK0 ] unsigned char 
+   648 ;; Return value:  Size  Location     Type
+   649 ;;		None               void
+   650 ;; Registers used:
+   651 ;;		wreg, fsr1l, fsr1h, status,2, status,0, btemp+1, pclath, cstack
+   652 ;; Tracked objects:
+   653 ;;		On entry : 17F/0
+   654 ;;		On exit  : 0/0
+   655 ;;		Unchanged: 0/0
+   656 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+   657 ;;      Params:         0       0       0       0       0       0       0       0
+   658 ;;      Locals:         0       5       0       0       0       0       0       0
+   659 ;;      Temps:          0       2       0       0       0       0       0       0
+   660 ;;      Totals:         0       7       0       0       0       0       0       0
+   661 ;;Total ram usage:        7 bytes
+   662 ;; Hardware stack levels required when called:    3
+   663 ;; This function calls:
+   664 ;;		_MCU_Initial
+   665 ;;		_Display_Initial
+   666 ;;		_Display_Main
+   667 ;;		_CDS_Get
+   668 ;;		_Display_Setting
+   669 ;; This function is called by:
+   670 ;;		Startup code after reset
+   671 ;; This function uses a non-reentrant model
+   672 ;;
+   673                           psect	maintext
+   674                           	file	"G:\Program\PIC\2.Development_V1.0\Release\Development_V1.0.c"
+   675                           	line	55
+   676                           	global	__size_of_main
+   677  008F                     	__size_of_main	equ	__end_of_main-_main
+   678                           	
+   679  0252                     _main:	
+   680                           	opt	stack 13
+   681                           ; Regs used in _main: [wreg+fsr1l-status,0+btemp+1+pclath+cstack]
+   682                           	line	58
+   683                           	
+   684  0252                     l8332:	
+   685                           ;Development_V1.0.c: 56: int i;
+   686                           ;Development_V1.0.c: 57: char j,k,l;
+   687                           ;Development_V1.0.c: 58: i=0;
+   688  0252  0020               	movlb 0	; select bank0
+   689  0253  01E0               	clrf	(main@i)
+   690  0254  01E1               	clrf	(main@i+1)
+   691                           	line	59
+   692                           	
+   693  0255                     l8334:	
+   694                           ;Development_V1.0.c: 59: j=0;
+   695  0255  01E2               	clrf	(main@j)
+   696                           	line	60
+   697                           	
+   698  0256                     l8336:	
+   699                           ;Development_V1.0.c: 60: k=0;
+   700  0256  01E3               	clrf	(main@k)
+   701                           	line	61
+   702                           	
+   703  0257                     l8338:	
+   704                           ;Development_V1.0.c: 61: l=0;
+   705  0257  01DF               	clrf	(main@l)
+   706                           	line	62
+   707                           	
+   708  0258                     l8340:	
+   709                           ;Development_V1.0.c: 62: MCU_Initial();
+   710  0258  3183  23F0  3182   	fcall	_MCU_Initial
+   711                           	line	63
+   712                           	
+   713  025B                     l8342:	
+   714                           ;Development_V1.0.c: 63: Display_Initial();
+   715  025B  3181  21BB  3182   	fcall	_Display_Initial
+   716  025E  2A5F               	goto	l8344
+   717                           	line	76
+   718                           ;Development_V1.0.c: 76: while(1)
+   719                           	
+   720  025F                     l6176:	
+   721                           	line	89
+   722                           	
+   723  025F                     l8344:	
+   724                           ;Development_V1.0.c: 77: {
+   725                           ;Development_V1.0.c: 89: if(Intr->Timeout==1)
+   726  025F  0020               	movlb 0	; select bank0
+   727  0260  0864               	movf	(_Intr),w
+   728  0261  0086               	movwf	fsr1l
+   729  0262  0187               	clrf fsr1h	
+   730                           	
+   731  0263  1C01               	btfss	indf1,0
+   732  0264  2A66               	goto	u3311
+   733  0265  2A67               	goto	u3310
+   734  0266                     u3311:
+   735  0266  2A5F               	goto	l8344
+   736  0267                     u3310:
+   737                           	line	91
+   738                           	
+   739  0267                     l8346:	
+   740                           ;Development_V1.0.c: 90: {
+   741                           ;Development_V1.0.c: 91: Intr->Timeout=0;
+   742  0267  0864               	movf	(_Intr),w
+   743  0268  0086               	movwf	fsr1l
+   744  0269  0187               	clrf fsr1h	
+   745                           	
+   746  026A  1001               	bcf	indf1,0
+   747                           	line	93
+   748                           	
+   749  026B                     l8348:	
+   750                           ;Development_V1.0.c: 93: Display_Main();
+   751  026B  3182  22E1  3182   	fcall	_Display_Main
+   752                           	line	97
+   753                           	
+   754  026E                     l8350:	
+   755                           ;Development_V1.0.c: 97: j++;
+   756  026E  3001               	movlw	(01h)
+   757  026F  0020               	movlb 0	; select bank0
+   758  0270  00DD               	movwf	(??_main+0)+0
+   759  0271  085D               	movf	(??_main+0)+0,w
+   760  0272  07E2               	addwf	(main@j),f
+   761                           	line	98
+   762                           	
+   763  0273                     l8352:	
+   764                           ;Development_V1.0.c: 98: if(j>=20)
+   765  0273  3014               	movlw	(014h)
+   766  0274  0262               	subwf	(main@j),w
+   767  0275  1C03               	skipc
+   768  0276  2A78               	goto	u3321
+   769  0277  2A79               	goto	u3320
+   770  0278                     u3321:
+   771  0278  2AB7               	goto	l8370
+   772  0279                     u3320:
+   773                           	line	100
+   774                           	
+   775  0279                     l8354:	
+   776                           ;Development_V1.0.c: 99: {
+   777                           ;Development_V1.0.c: 100: j=0;
+   778  0279  01E2               	clrf	(main@j)
+   779                           	line	101
+   780                           	
+   781  027A                     l8356:	
+   782                           ;Development_V1.0.c: 101: if(k==0)
+   783  027A  08E3               	movf	(main@k),f
+   784  027B  1D03               	skipz
+   785  027C  2A7E               	goto	u3331
+   786  027D  2A7F               	goto	u3330
+   787  027E                     u3331:
+   788  027E  2AA2               	goto	l8366
+   789  027F                     u3330:
+   790                           	line	103
+   791                           	
+   792  027F                     l8358:	
+   793                           ;Development_V1.0.c: 102: {
+   794                           ;Development_V1.0.c: 103: if(CDS_Get()<=0x40)
+   795  027F  3184  241B  3182   	fcall	_CDS_Get
+   796  0282  0874               	movf	(1+(?_CDS_Get)),w
+   797  0283  3A80               	xorlw	80h
+   798  0284  00FF               	movwf	btemp+1
+   799  0285  3080               	movlw	(high(041h))^80h
+   800  0286  027F               	subwf	btemp+1,w
+   801  0287  1D03               	skipz
+   802  0288  2A8B               	goto	u3345
+   803  0289  3041               	movlw	low(041h)
+   804  028A  0273               	subwf	(0+(?_CDS_Get)),w
+   805  028B                     u3345:
+   806                           
+   807  028B  1803               	skipnc
+   808  028C  2A8E               	goto	u3341
+   809  028D  2A8F               	goto	u3340
+   810  028E                     u3341:
+   811  028E  2AB7               	goto	l8370
+   812  028F                     u3340:
+   813                           	line	105
+   814                           	
+   815  028F                     l8360:	
+   816                           ;Development_V1.0.c: 104: {
+   817                           ;Development_V1.0.c: 105: k=1;
+   818  028F  0020               	movlb 0	; select bank0
+   819  0290  01E3               	clrf	(main@k)
+   820  0291  1403               	bsf	status,0
+   821  0292  0DE3               	rlf	(main@k),f
+   822                           	line	106
+   823                           	
+   824  0293                     l8362:	
+   825                           ;Development_V1.0.c: 106: i++;
+   826  0293  3001               	movlw	low(01h)
+   827  0294  07E0               	addwf	(main@i),f
+   828  0295  3000               	movlw	high(01h)
+   829  0296  3DE1               	addwfc	(main@i+1),f
+   830                           	line	107
+   831                           	
+   832  0297                     l8364:	
+   833                           ;Development_V1.0.c: 107: Display_Setting(i);
+   834  0297  0861               	movf	(main@i+1),w
+   835  0298  01D8               	clrf	(?_Display_Setting+1)
+   836  0299  07D8               	addwf	(?_Display_Setting+1)
+   837  029A  0860               	movf	(main@i),w
+   838  029B  01D7               	clrf	(?_Display_Setting)
+   839  029C  07D7               	addwf	(?_Display_Setting)
+   840                           
+   841  029D  3180  20C6  3182   	fcall	_Display_Setting
+   842  02A0  2AB7               	goto	l8370
+   843                           	line	108
+   844                           	
+   845  02A1                     l6180:	
+   846                           	line	109
+   847                           ;Development_V1.0.c: 108: }
+   848                           ;Development_V1.0.c: 109: }
+   849  02A1  2AB7               	goto	l8370
+   850                           	line	110
+   851                           	
+   852  02A2                     l6179:	
+   853                           	line	112
+   854                           	
+   855  02A2                     l8366:	
+   856                           ;Development_V1.0.c: 110: else
+   857                           ;Development_V1.0.c: 111: {
+   858                           ;Development_V1.0.c: 112: if(CDS_Get()>=0x80)
+   859  02A2  3184  241B  3182   	fcall	_CDS_Get
+   860  02A5  0874               	movf	(1+(?_CDS_Get)),w
+   861  02A6  3A80               	xorlw	80h
+   862  02A7  00FF               	movwf	btemp+1
+   863  02A8  3080               	movlw	(high(080h))^80h
+   864  02A9  027F               	subwf	btemp+1,w
+   865  02AA  1D03               	skipz
+   866  02AB  2AAE               	goto	u3355
+   867  02AC  3080               	movlw	low(080h)
+   868  02AD  0273               	subwf	(0+(?_CDS_Get)),w
+   869  02AE                     u3355:
+   870                           
+   871  02AE  1C03               	skipc
+   872  02AF  2AB1               	goto	u3351
+   873  02B0  2AB2               	goto	u3350
+   874  02B1                     u3351:
+   875  02B1  2AB7               	goto	l8370
+   876  02B2                     u3350:
+   877                           	line	113
+   878                           	
+   879  02B2                     l8368:	
+   880                           ;Development_V1.0.c: 113: k=0;
+   881  02B2  0020               	movlb 0	; select bank0
+   882  02B3  01E3               	clrf	(main@k)
+   883  02B4  2AB7               	goto	l8370
+   884                           	
+   885  02B5                     l6182:	
+   886  02B5  2AB7               	goto	l8370
+   887                           	line	114
+   888                           	
+   889  02B6                     l6181:	
+   890  02B6  2AB7               	goto	l8370
+   891                           	line	115
+   892                           	
+   893  02B7                     l6178:	
+   894                           	line	119
+   895                           	
+   896  02B7                     l8370:	
+   897                           ;Development_V1.0.c: 114: }
+   898                           ;Development_V1.0.c: 115: }
+   899                           ;Development_V1.0.c: 119: if(Intr->Count1<200)
+   900  02B7  0020               	movlb 0	; select bank0
+   901  02B8  0864               	movf	(_Intr),w
+   902  02B9  3E03               	addlw	03h
+   903  02BA  0086               	movwf	fsr1l
+   904  02BB  0187               	clrf fsr1h	
+   905                           	
+   906  02BC  3F40               	moviw	[0]fsr1
+   907  02BD  00DD               	movwf	(??_main+0)+0
+   908  02BE  3F41               	moviw	[1]fsr1
+   909  02BF  00DE               	movwf	(??_main+0)+0+1
+   910  02C0  3000               	movlw	high(0C8h)
+   911  02C1  025E               	subwf	1+(??_main+0)+0,w
+   912  02C2  30C8               	movlw	low(0C8h)
+   913  02C3  1903               	skipnz
+   914  02C4  025D               	subwf	0+(??_main+0)+0,w
+   915  02C5  1803               	skipnc
+   916  02C6  2AC8               	goto	u3361
+   917  02C7  2AC9               	goto	u3360
+   918  02C8                     u3361:
+   919  02C8  2AD3               	goto	l8374
+   920  02C9                     u3360:
+   921                           	line	120
+   922                           	
+   923  02C9                     l8372:	
+   924                           ;Development_V1.0.c: 120: Intr->Count1++;
+   925  02C9  0864               	movf	(_Intr),w
+   926  02CA  3E03               	addlw	03h
+   927  02CB  0086               	movwf	fsr1l
+   928  02CC  0187               	clrf fsr1h	
+   929                           	
+   930  02CD  3001               	movlw	01h
+   931  02CE  0781               	addwf	indf1,f
+   932  02CF  3141               	addfsr	fsr1,1
+   933  02D0  1803               	skipnc
+   934  02D1  0A81               	incf	indf1,f
+   935  02D2  2A5F               	goto	l8344
+   936                           	line	121
+   937                           	
+   938  02D3                     l6183:	
+   939                           	line	124
+   940                           	
+   941  02D3                     l8374:	
+   942                           ;Development_V1.0.c: 121: else
+   943                           ;Development_V1.0.c: 122: {
+   944                           ;Development_V1.0.c: 124: Intr->Count1=0;
+   945  02D3  0864               	movf	(_Intr),w
+   946  02D4  3E03               	addlw	03h
+   947  02D5  0086               	movwf	fsr1l
+   948  02D6  0187               	clrf fsr1h	
+   949                           	
+   950  02D7  3000               	movlw	low(0)
+   951  02D8  3FC0               	movwi	[0]fsr1
+   952  02D9  3000               	movlw	high(0)
+   953  02DA  3FC1               	movwi	[1]fsr1
+   954  02DB  2A5F               	goto	l8344
+   955                           	line	141
+   956                           	
+   957  02DC                     l6184:	
+   958  02DC  2A5F               	goto	l8344
+   959                           	line	142
+   960                           	
+   961  02DD                     l6177:	
+   962  02DD  2A5F               	goto	l8344
+   963                           	line	143
+   964                           	
+   965  02DE                     l6185:	
+   966                           	line	76
+   967  02DE  2A5F               	goto	l8344
+   968                           	
+   969  02DF                     l6186:	
+   970                           	line	144
+   971                           	
+   972  02DF                     l6187:	
+   973                           	global	start
+   974  02DF  3180  28C3         	ljmp	start
+   975                           	opt stack 0
+   976                           GLOBAL	__end_of_main
+   977  02E1                     	__end_of_main:
+   978 ;; =============== function _main ends ============
+   979                           
+   980                           	signat	_main,88
+   981                           	global	_Display_Setting
+   982                           psect	text371,local,class=CODE,delta=2
+   983                           global __ptext371
+   984  00C6                     __ptext371:
+   985                           
+   986 ;; *************** function _Display_Setting *****************
+   987 ;; Defined at:
+   988 ;;		line 41 in file "G:\Program\PIC\Source_File\SegmentDisplay.c"
+   989 ;; Parameters:    Size  Location     Type
+   990 ;;  Data            2    3[BANK0 ] unsigned int 
+   991 ;; Auto vars:     Size  Location     Type
+   992 ;;  i               1    8[BANK0 ] unsigned char 
+   993 ;; Return value:  Size  Location     Type
+   994 ;;		None               void
+   995 ;; Registers used:
+   996 ;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+   997 ;; Tracked objects:
+   998 ;;		On entry : 0/0
+   999 ;;		On exit  : 0/0
+  1000 ;;		Unchanged: 0/0
+  1001 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1002 ;;      Params:         0       2       0       0       0       0       0       0
+  1003 ;;      Locals:         0       1       0       0       0       0       0       0
+  1004 ;;      Temps:          0       3       0       0       0       0       0       0
+  1005 ;;      Totals:         0       6       0       0       0       0       0       0
+  1006 ;;Total ram usage:        6 bytes
+  1007 ;; Hardware stack levels used:    1
+  1008 ;; Hardware stack levels required when called:    2
+  1009 ;; This function calls:
+  1010 ;;		___lwdiv
+  1011 ;;		___lwmod
+  1012 ;; This function is called by:
+  1013 ;;		_main
+  1014 ;; This function uses a non-reentrant model
+  1015 ;;
+  1016                           psect	text371
+  1017                           	file	"G:\Program\PIC\Source_File\SegmentDisplay.c"
+  1018                           	line	41
+  1019                           	global	__size_of_Display_Setting
+  1020  00F5                     	__size_of_Display_Setting	equ	__end_of_Display_Setting-_Display_Setting
+  1021                           	
+  1022  00C6                     _Display_Setting:	
+  1023                           	opt	stack 13
+  1024                           ; Regs used in _Display_Setting: [wreg+fsr1l-status,0+pclath+cstack]
+  1025                           	line	43
+  1026                           	
+  1027  00C6                     l8298:	
+  1028                           ;SegmentDisplay.c: 42: char i;
+  1029                           ;SegmentDisplay.c: 43: Segment->GO=1;
+  1030  00C6  0020               	movlb 0	; select bank0
+  1031  00C7  0865               	movf	(_Segment),w
+  1032  00C8  0086               	movwf	fsr1l
+  1033  00C9  0187               	clrf fsr1h	
+  1034                           	
+  1035  00CA  1481               	bsf	indf1,1
+  1036                           	line	46
+  1037                           ;SegmentDisplay.c: 46: if(Segment->DecToHex==1)
+  1038  00CB  0865               	movf	(_Segment),w
+  1039  00CC  0086               	movwf	fsr1l
+  1040  00CD  0187               	clrf fsr1h	
+  1041                           	
+  1042  00CE  1D81               	btfss	indf1,3
+  1043  00CF  28D1               	goto	u3251
+  1044  00D0  28D2               	goto	u3250
+  1045  00D1                     u3251:
+  1046  00D1  2909               	goto	l8306
+  1047  00D2                     u3250:
+  1048                           	line	48
+  1049                           	
+  1050  00D2                     l8300:	
+  1051                           ;SegmentDisplay.c: 47: {
+  1052                           ;SegmentDisplay.c: 48: Segment->Num[0] = Data & 0x000f;
+  1053  00D2  0857               	movf	(Display_Setting@Data),w
+  1054  00D3  390F               	andlw	0Fh
+  1055  00D4  00D9               	movwf	(??_Display_Setting+0)+0
+  1056  00D5  0865               	movf	(_Segment),w
+  1057  00D6  3E15               	addlw	015h
+  1058  00D7  0086               	movwf	fsr1l
+  1059  00D8  0187               	clrf fsr1h	
+  1060                           	
+  1061  00D9  0859               	movf	(??_Display_Setting+0)+0,w
+  1062  00DA  0081               	movwf	indf1
+  1063                           	line	49
+  1064                           	
+  1065  00DB                     l8302:	
+  1066                           ;SegmentDisplay.c: 49: Segment->Num[1] = (Data>>4) & 0x000f;
+  1067  00DB  0858               	movf	(Display_Setting@Data+1),w
+  1068  00DC  00DA               	movwf	(??_Display_Setting+0)+0+1
+  1069  00DD  0857               	movf	(Display_Setting@Data),w
+  1070  00DE  00D9               	movwf	(??_Display_Setting+0)+0
+  1071  00DF  3004               	movlw	04h
+  1072  00E0                     u3265:
+  1073  00E0  36DA               	lsrf	(??_Display_Setting+0)+1,f
+  1074  00E1  0CD9               	rrf	(??_Display_Setting+0)+0,f
+  1075  00E2  0B89               	decfsz	wreg,f
+  1076  00E3  28E0               	goto	u3265
+  1077  00E4  0859               	movf	0+(??_Display_Setting+0)+0,w
+  1078  00E5  390F               	andlw	0Fh
+  1079  00E6  00DB               	movwf	(??_Display_Setting+2)+0
+  1080  00E7  0865               	movf	(_Segment),w
+  1081  00E8  3E16               	addlw	016h
+  1082  00E9  0086               	movwf	fsr1l
+  1083  00EA  0187               	clrf fsr1h	
+  1084                           	
+  1085  00EB  085B               	movf	(??_Display_Setting+2)+0,w
+  1086  00EC  0081               	movwf	indf1
+  1087                           	line	50
+  1088                           	
+  1089  00ED                     l8304:	
+  1090                           ;SegmentDisplay.c: 50: Segment->Num[2] = (Data>>8) & 0x000f;
+  1091  00ED  0858               	movf	(Display_Setting@Data+1),w
+  1092  00EE  390F               	andlw	0Fh
+  1093  00EF  00D9               	movwf	(??_Display_Setting+0)+0
+  1094  00F0  0865               	movf	(_Segment),w
+  1095  00F1  3E17               	addlw	017h
+  1096  00F2  0086               	movwf	fsr1l
+  1097  00F3  0187               	clrf fsr1h	
+  1098                           	
+  1099  00F4  0859               	movf	(??_Display_Setting+0)+0,w
+  1100  00F5  0081               	movwf	indf1
+  1101                           	line	51
+  1102                           ;SegmentDisplay.c: 51: Segment->Num[3] = (Data>>12) & 0x000f;
+  1103  00F6  0858               	movf	(Display_Setting@Data+1),w
+  1104  00F7  00DA               	movwf	(??_Display_Setting+0)+0+1
+  1105  00F8  0857               	movf	(Display_Setting@Data),w
+  1106  00F9  00D9               	movwf	(??_Display_Setting+0)+0
+  1107  00FA  300C               	movlw	0Ch
+  1108  00FB                     u3275:
+  1109  00FB  36DA               	lsrf	(??_Display_Setting+0)+1,f
+  1110  00FC  0CD9               	rrf	(??_Display_Setting+0)+0,f
+  1111  00FD  0B89               	decfsz	wreg,f
+  1112  00FE  28FB               	goto	u3275
+  1113  00FF  0859               	movf	0+(??_Display_Setting+0)+0,w
+  1114  0100  390F               	andlw	0Fh
+  1115  0101  00DB               	movwf	(??_Display_Setting+2)+0
+  1116  0102  0865               	movf	(_Segment),w
+  1117  0103  3E18               	addlw	018h
+  1118  0104  0086               	movwf	fsr1l
+  1119  0105  0187               	clrf fsr1h	
+  1120                           	
+  1121  0106  085B               	movf	(??_Display_Setting+2)+0,w
+  1122  0107  0081               	movwf	indf1
+  1123                           	line	52
+  1124                           ;SegmentDisplay.c: 52: }
+  1125  0108  29BA               	goto	l2072
+  1126                           	line	53
+  1127                           	
+  1128  0109                     l2066:	
+  1129                           	line	55
+  1130                           	
+  1131  0109                     l8306:	
+  1132                           ;SegmentDisplay.c: 53: else
+  1133                           ;SegmentDisplay.c: 54: {
+  1134                           ;SegmentDisplay.c: 55: if(Data > 0x270f)
+  1135  0109  3027               	movlw	high(02710h)
+  1136  010A  0258               	subwf	(Display_Setting@Data+1),w
+  1137  010B  3010               	movlw	low(02710h)
+  1138  010C  1903               	skipnz
+  1139  010D  0257               	subwf	(Display_Setting@Data),w
+  1140  010E  1C03               	skipc
+  1141  010F  2911               	goto	u3281
+  1142  0110  2912               	goto	u3280
+  1143  0111                     u3281:
+  1144  0111  2932               	goto	l8320
+  1145  0112                     u3280:
+  1146                           	line	57
+  1147                           	
+  1148  0112                     l8308:	
+  1149                           ;SegmentDisplay.c: 56: {
+  1150                           ;SegmentDisplay.c: 57: for(i=0;i<4;i++)
+  1151  0112  01DC               	clrf	(Display_Setting@i)
+  1152                           	
+  1153  0113                     l8310:	
+  1154  0113  3004               	movlw	(04h)
+  1155  0114  025C               	subwf	(Display_Setting@i),w
+  1156  0115  1C03               	skipc
+  1157  0116  2918               	goto	u3291
+  1158  0117  2919               	goto	u3290
+  1159  0118                     u3291:
+  1160  0118  291B               	goto	l8314
+  1161  0119                     u3290:
+  1162  0119  29BA               	goto	l2072
+  1163                           	
+  1164  011A                     l8312:	
+  1165  011A  29BA               	goto	l2072
+  1166                           	line	58
+  1167                           	
+  1168  011B                     l2069:	
+  1169                           	
+  1170  011B                     l8314:	
+  1171                           ;SegmentDisplay.c: 58: Segment->Num[i]=16;
+  1172  011B  3010               	movlw	(010h)
+  1173  011C  00D9               	movwf	(??_Display_Setting+0)+0
+  1174  011D  085C               	movf	(Display_Setting@i),w
+  1175  011E  3E15               	addlw	015h
+  1176  011F  0765               	addwf	(_Segment),w
+  1177  0120  00DA               	movwf	(??_Display_Setting+1)+0
+  1178  0121  085A               	movf	0+(??_Display_Setting+1)+0,w
+  1179  0122  0086               	movwf	fsr1l
+  1180  0123  0187               	clrf fsr1h	
+  1181                           	
+  1182  0124  0859               	movf	(??_Display_Setting+0)+0,w
+  1183  0125  0081               	movwf	indf1
+  1184                           	line	57
+  1185                           	
+  1186  0126                     l8316:	
+  1187  0126  3001               	movlw	(01h)
+  1188  0127  00D9               	movwf	(??_Display_Setting+0)+0
+  1189  0128  0859               	movf	(??_Display_Setting+0)+0,w
+  1190  0129  07DC               	addwf	(Display_Setting@i),f
+  1191                           	
+  1192  012A                     l8318:	
+  1193  012A  3004               	movlw	(04h)
+  1194  012B  025C               	subwf	(Display_Setting@i),w
+  1195  012C  1C03               	skipc
+  1196  012D  292F               	goto	u3301
+  1197  012E  2930               	goto	u3300
+  1198  012F                     u3301:
+  1199  012F  291B               	goto	l8314
+  1200  0130                     u3300:
+  1201  0130  29BA               	goto	l2072
+  1202                           	
+  1203  0131                     l2070:	
+  1204                           	line	59
+  1205                           ;SegmentDisplay.c: 59: }
+  1206  0131  29BA               	goto	l2072
+  1207                           	line	60
+  1208                           	
+  1209  0132                     l2068:	
+  1210                           	line	62
+  1211                           	
+  1212  0132                     l8320:	
+  1213                           ;SegmentDisplay.c: 60: else
+  1214                           ;SegmentDisplay.c: 61: {
+  1215                           ;SegmentDisplay.c: 62: Segment->Num[3] = Data/1000;
+  1216  0132  30E8               	movlw	low(03E8h)
+  1217  0133  00F3               	movwf	(?___lwdiv)
+  1218  0134  3003               	movlw	high(03E8h)
+  1219  0135  00F4               	movwf	((?___lwdiv))+1
+  1220  0136  0858               	movf	(Display_Setting@Data+1),w
+  1221  0137  01F6               	clrf	1+(?___lwdiv)+02h
+  1222  0138  07F6               	addwf	1+(?___lwdiv)+02h
+  1223  0139  0857               	movf	(Display_Setting@Data),w
+  1224  013A  01F5               	clrf	0+(?___lwdiv)+02h
+  1225  013B  07F5               	addwf	0+(?___lwdiv)+02h
+  1226                           
+  1227  013C  3183  236A  3180   	fcall	___lwdiv
+  1228  013F  0873               	movf	(0+(?___lwdiv)),w
+  1229  0140  0020               	movlb 0	; select bank0
+  1230  0141  00D9               	movwf	(??_Display_Setting+0)+0
+  1231  0142  0865               	movf	(_Segment),w
+  1232  0143  3E18               	addlw	018h
+  1233  0144  0086               	movwf	fsr1l
+  1234  0145  0187               	clrf fsr1h	
+  1235                           	
+  1236  0146  0859               	movf	(??_Display_Setting+0)+0,w
+  1237  0147  0081               	movwf	indf1
+  1238                           	line	63
+  1239                           	
+  1240  0148                     l8322:	
+  1241                           ;SegmentDisplay.c: 63: Data %= 1000;
+  1242  0148  30E8               	movlw	low(03E8h)
+  1243  0149  00F3               	movwf	(?___lwmod)
+  1244  014A  3003               	movlw	high(03E8h)
+  1245  014B  00F4               	movwf	((?___lwmod))+1
+  1246  014C  0858               	movf	(Display_Setting@Data+1),w
+  1247  014D  01F6               	clrf	1+(?___lwmod)+02h
+  1248  014E  07F6               	addwf	1+(?___lwmod)+02h
+  1249  014F  0857               	movf	(Display_Setting@Data),w
+  1250  0150  01F5               	clrf	0+(?___lwmod)+02h
+  1251  0151  07F5               	addwf	0+(?___lwmod)+02h
+  1252                           
+  1253  0152  3183  23B1  3180   	fcall	___lwmod
+  1254  0155  0874               	movf	(1+(?___lwmod)),w
+  1255  0156  0020               	movlb 0	; select bank0
+  1256  0157  01D8               	clrf	(Display_Setting@Data+1)
+  1257  0158  07D8               	addwf	(Display_Setting@Data+1)
+  1258  0159  0873               	movf	(0+(?___lwmod)),w
+  1259  015A  01D7               	clrf	(Display_Setting@Data)
+  1260  015B  07D7               	addwf	(Display_Setting@Data)
+  1261                           
+  1262                           	line	64
+  1263                           	
+  1264  015C                     l8324:	
+  1265                           ;SegmentDisplay.c: 64: Segment->Num[2] = Data/100;
+  1266  015C  3064               	movlw	low(064h)
+  1267  015D  00F3               	movwf	(?___lwdiv)
+  1268  015E  3000               	movlw	high(064h)
+  1269  015F  00F4               	movwf	((?___lwdiv))+1
+  1270  0160  0858               	movf	(Display_Setting@Data+1),w
+  1271  0161  01F6               	clrf	1+(?___lwdiv)+02h
+  1272  0162  07F6               	addwf	1+(?___lwdiv)+02h
+  1273  0163  0857               	movf	(Display_Setting@Data),w
+  1274  0164  01F5               	clrf	0+(?___lwdiv)+02h
+  1275  0165  07F5               	addwf	0+(?___lwdiv)+02h
+  1276                           
+  1277  0166  3183  236A  3180   	fcall	___lwdiv
+  1278  0169  0873               	movf	(0+(?___lwdiv)),w
+  1279  016A  0020               	movlb 0	; select bank0
+  1280  016B  00D9               	movwf	(??_Display_Setting+0)+0
+  1281  016C  0865               	movf	(_Segment),w
+  1282  016D  3E17               	addlw	017h
+  1283  016E  0086               	movwf	fsr1l
+  1284  016F  0187               	clrf fsr1h	
+  1285                           	
+  1286  0170  0859               	movf	(??_Display_Setting+0)+0,w
+  1287  0171  0081               	movwf	indf1
+  1288                           	line	65
+  1289                           ;SegmentDisplay.c: 65: Data %= 100;
+  1290  0172  3064               	movlw	low(064h)
+  1291  0173  00F3               	movwf	(?___lwmod)
+  1292  0174  3000               	movlw	high(064h)
+  1293  0175  00F4               	movwf	((?___lwmod))+1
+  1294  0176  0858               	movf	(Display_Setting@Data+1),w
+  1295  0177  01F6               	clrf	1+(?___lwmod)+02h
+  1296  0178  07F6               	addwf	1+(?___lwmod)+02h
+  1297  0179  0857               	movf	(Display_Setting@Data),w
+  1298  017A  01F5               	clrf	0+(?___lwmod)+02h
+  1299  017B  07F5               	addwf	0+(?___lwmod)+02h
+  1300                           
+  1301  017C  3183  23B1  3180   	fcall	___lwmod
+  1302  017F  0874               	movf	(1+(?___lwmod)),w
+  1303  0180  0020               	movlb 0	; select bank0
+  1304  0181  01D8               	clrf	(Display_Setting@Data+1)
+  1305  0182  07D8               	addwf	(Display_Setting@Data+1)
+  1306  0183  0873               	movf	(0+(?___lwmod)),w
+  1307  0184  01D7               	clrf	(Display_Setting@Data)
+  1308  0185  07D7               	addwf	(Display_Setting@Data)
+  1309                           
+  1310                           	line	66
+  1311                           	
+  1312  0186                     l8326:	
+  1313                           ;SegmentDisplay.c: 66: Segment->Num[1] = Data/10;
+  1314  0186  300A               	movlw	low(0Ah)
+  1315  0187  00F3               	movwf	(?___lwdiv)
+  1316  0188  3000               	movlw	high(0Ah)
+  1317  0189  00F4               	movwf	((?___lwdiv))+1
+  1318  018A  0858               	movf	(Display_Setting@Data+1),w
+  1319  018B  01F6               	clrf	1+(?___lwdiv)+02h
+  1320  018C  07F6               	addwf	1+(?___lwdiv)+02h
+  1321  018D  0857               	movf	(Display_Setting@Data),w
+  1322  018E  01F5               	clrf	0+(?___lwdiv)+02h
+  1323  018F  07F5               	addwf	0+(?___lwdiv)+02h
+  1324                           
+  1325  0190  3183  236A  3180   	fcall	___lwdiv
+  1326  0193  0873               	movf	(0+(?___lwdiv)),w
+  1327  0194  0020               	movlb 0	; select bank0
+  1328  0195  00D9               	movwf	(??_Display_Setting+0)+0
+  1329  0196  0865               	movf	(_Segment),w
+  1330  0197  3E16               	addlw	016h
+  1331  0198  0086               	movwf	fsr1l
+  1332  0199  0187               	clrf fsr1h	
+  1333                           	
+  1334  019A  0859               	movf	(??_Display_Setting+0)+0,w
+  1335  019B  0081               	movwf	indf1
+  1336                           	line	67
+  1337                           	
+  1338  019C                     l8328:	
+  1339                           ;SegmentDisplay.c: 67: Data %= 10;
+  1340  019C  300A               	movlw	low(0Ah)
+  1341  019D  00F3               	movwf	(?___lwmod)
+  1342  019E  3000               	movlw	high(0Ah)
+  1343  019F  00F4               	movwf	((?___lwmod))+1
+  1344  01A0  0858               	movf	(Display_Setting@Data+1),w
+  1345  01A1  01F6               	clrf	1+(?___lwmod)+02h
+  1346  01A2  07F6               	addwf	1+(?___lwmod)+02h
+  1347  01A3  0857               	movf	(Display_Setting@Data),w
+  1348  01A4  01F5               	clrf	0+(?___lwmod)+02h
+  1349  01A5  07F5               	addwf	0+(?___lwmod)+02h
+  1350                           
+  1351  01A6  3183  23B1  3180   	fcall	___lwmod
+  1352  01A9  0874               	movf	(1+(?___lwmod)),w
+  1353  01AA  0020               	movlb 0	; select bank0
+  1354  01AB  01D8               	clrf	(Display_Setting@Data+1)
+  1355  01AC  07D8               	addwf	(Display_Setting@Data+1)
+  1356  01AD  0873               	movf	(0+(?___lwmod)),w
+  1357  01AE  01D7               	clrf	(Display_Setting@Data)
+  1358  01AF  07D7               	addwf	(Display_Setting@Data)
+  1359                           
+  1360                           	line	68
+  1361                           	
+  1362  01B0                     l8330:	
+  1363                           ;SegmentDisplay.c: 68: Segment->Num[0] = Data;
+  1364  01B0  0857               	movf	(Display_Setting@Data),w
+  1365  01B1  00D9               	movwf	(??_Display_Setting+0)+0
+  1366  01B2  0865               	movf	(_Segment),w
+  1367  01B3  3E15               	addlw	015h
+  1368  01B4  0086               	movwf	fsr1l
+  1369  01B5  0187               	clrf fsr1h	
+  1370                           	
+  1371  01B6  0859               	movf	(??_Display_Setting+0)+0,w
+  1372  01B7  0081               	movwf	indf1
+  1373  01B8  29BA               	goto	l2072
+  1374                           	line	69
+  1375                           	
+  1376  01B9                     l2071:	
+  1377  01B9  29BA               	goto	l2072
+  1378                           	line	70
+  1379                           	
+  1380  01BA                     l2067:	
+  1381                           	line	71
+  1382                           	
+  1383  01BA                     l2072:	
+  1384  01BA  0008               	return
+  1385                           	opt stack 0
+  1386                           GLOBAL	__end_of_Display_Setting
+  1387  01BB                     	__end_of_Display_Setting:
+  1388 ;; =============== function _Display_Setting ends ============
+  1389                           
+  1390                           	signat	_Display_Setting,4216
+  1391                           	global	___lwmod
+  1392                           psect	text372,local,class=CODE,delta=2
+  1393                           global __ptext372
+  1394  03B1                     __ptext372:
+  1395                           
+  1396 ;; *************** function ___lwmod *****************
+  1397 ;; Defined at:
+  1398 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwmod.c"
+  1399 ;; Parameters:    Size  Location     Type
+  1400 ;;  divisor         2    3[COMMON] unsigned int 
+  1401 ;;  dividend        2    5[COMMON] unsigned int 
+  1402 ;; Auto vars:     Size  Location     Type
+  1403 ;;  counter         1    0[BANK0 ] unsigned char 
+  1404 ;; Return value:  Size  Location     Type
+  1405 ;;                  2    3[COMMON] unsigned int 
+  1406 ;; Registers used:
+  1407 ;;		wreg, status,2, status,0
+  1408 ;; Tracked objects:
+  1409 ;;		On entry : 0/0
+  1410 ;;		On exit  : 0/0
+  1411 ;;		Unchanged: 0/0
+  1412 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1413 ;;      Params:         4       0       0       0       0       0       0       0
+  1414 ;;      Locals:         0       1       0       0       0       0       0       0
+  1415 ;;      Temps:          1       0       0       0       0       0       0       0
+  1416 ;;      Totals:         5       1       0       0       0       0       0       0
+  1417 ;;Total ram usage:        6 bytes
+  1418 ;; Hardware stack levels used:    1
+  1419 ;; Hardware stack levels required when called:    1
+  1420 ;; This function calls:
+  1421 ;;		Nothing
+  1422 ;; This function is called by:
+  1423 ;;		_Display_Setting
+  1424 ;; This function uses a non-reentrant model
+  1425 ;;
+  1426                           psect	text372
+  1427                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwmod.c"
+  1428                           	line	5
+  1429                           	global	__size_of___lwmod
+  1430  003F                     	__size_of___lwmod	equ	__end_of___lwmod-___lwmod
+  1431                           	
+  1432  03B1                     ___lwmod:	
+  1433                           	opt	stack 13
+  1434                           ; Regs used in ___lwmod: [wreg+status,2+status,0]
+  1435                           	line	8
+  1436                           	
+  1437  03B1                     l8276:	
+  1438  03B1  0874               	movf	(___lwmod@divisor+1),w
+  1439  03B2  0473               	iorwf	(___lwmod@divisor),w
+  1440  03B3  1903               	skipnz
+  1441  03B4  2BB6               	goto	u3191
+  1442  03B5  2BB7               	goto	u3190
+  1443  03B6                     u3191:
+  1444  03B6  2BE8               	goto	l8294
+  1445  03B7                     u3190:
+  1446                           	line	9
+  1447                           	
+  1448  03B7                     l8278:	
+  1449  03B7  0020               	movlb 0	; select bank0
+  1450  03B8  01D4               	clrf	(___lwmod@counter)
+  1451  03B9  1403               	bsf	status,0
+  1452  03BA  0DD4               	rlf	(___lwmod@counter),f
+  1453                           	line	10
+  1454  03BB  2BC6               	goto	l8284
+  1455                           	
+  1456  03BC                     l6220:	
+  1457                           	line	11
+  1458                           	
+  1459  03BC                     l8280:	
+  1460  03BC  3001               	movlw	01h
+  1461                           	
+  1462  03BD                     u3205:
+  1463  03BD  35F3               	lslf	(___lwmod@divisor),f
+  1464  03BE  0DF4               	rlf	(___lwmod@divisor+1),f
+  1465  03BF  0B89               	decfsz	wreg,f
+  1466  03C0  2BBD               	goto	u3205
+  1467                           	line	12
+  1468                           	
+  1469  03C1                     l8282:	
+  1470  03C1  3001               	movlw	(01h)
+  1471  03C2  00F7               	movwf	(??___lwmod+0)+0
+  1472  03C3  0877               	movf	(??___lwmod+0)+0,w
+  1473  03C4  07D4               	addwf	(___lwmod@counter),f
+  1474  03C5  2BC6               	goto	l8284
+  1475                           	line	13
+  1476                           	
+  1477  03C6                     l6219:	
+  1478                           	line	10
+  1479                           	
+  1480  03C6                     l8284:	
+  1481  03C6  1FF4               	btfss	(___lwmod@divisor+1),(15)&7
+  1482  03C7  2BC9               	goto	u3211
+  1483  03C8  2BCA               	goto	u3210
+  1484  03C9                     u3211:
+  1485  03C9  2BBC               	goto	l8280
+  1486  03CA                     u3210:
+  1487  03CA  2BCC               	goto	l8286
+  1488                           	
+  1489  03CB                     l6221:	
+  1490  03CB  2BCC               	goto	l8286
+  1491                           	line	14
+  1492                           	
+  1493  03CC                     l6222:	
+  1494                           	line	15
+  1495                           	
+  1496  03CC                     l8286:	
+  1497  03CC  0874               	movf	(___lwmod@divisor+1),w
+  1498  03CD  0276               	subwf	(___lwmod@dividend+1),w
+  1499  03CE  1D03               	skipz
+  1500  03CF  2BD2               	goto	u3225
+  1501  03D0  0873               	movf	(___lwmod@divisor),w
+  1502  03D1  0275               	subwf	(___lwmod@dividend),w
+  1503  03D2                     u3225:
+  1504  03D2  1C03               	skipc
+  1505  03D3  2BD5               	goto	u3221
+  1506  03D4  2BD6               	goto	u3220
+  1507  03D5                     u3221:
+  1508  03D5  2BDB               	goto	l8290
+  1509  03D6                     u3220:
+  1510                           	line	16
+  1511                           	
+  1512  03D6                     l8288:	
+  1513  03D6  0873               	movf	(___lwmod@divisor),w
+  1514  03D7  02F5               	subwf	(___lwmod@dividend),f
+  1515  03D8  0874               	movf	(___lwmod@divisor+1),w
+  1516  03D9  3BF6               	subwfb	(___lwmod@dividend+1),f
+  1517  03DA  2BDB               	goto	l8290
+  1518                           	
+  1519  03DB                     l6223:	
+  1520                           	line	17
+  1521                           	
+  1522  03DB                     l8290:	
+  1523  03DB  3001               	movlw	01h
+  1524                           	
+  1525  03DC                     u3235:
+  1526  03DC  36F4               	lsrf	(___lwmod@divisor+1),f
+  1527  03DD  0CF3               	rrf	(___lwmod@divisor),f
+  1528  03DE  0B89               	decfsz	wreg,f
+  1529  03DF  2BDC               	goto	u3235
+  1530                           	line	18
+  1531                           	
+  1532  03E0                     l8292:	
+  1533  03E0  3001               	movlw	low(01h)
+  1534  03E1  02D4               	subwf	(___lwmod@counter),f
+  1535  03E2  1D03               	btfss	status,2
+  1536  03E3  2BE5               	goto	u3241
+  1537  03E4  2BE6               	goto	u3240
+  1538  03E5                     u3241:
+  1539  03E5  2BCC               	goto	l8286
+  1540  03E6                     u3240:
+  1541  03E6  2BE8               	goto	l8294
+  1542                           	
+  1543  03E7                     l6224:	
+  1544  03E7  2BE8               	goto	l8294
+  1545                           	line	19
+  1546                           	
+  1547  03E8                     l6218:	
+  1548                           	line	20
+  1549                           	
+  1550  03E8                     l8294:	
+  1551  03E8  0876               	movf	(___lwmod@dividend+1),w
+  1552  03E9  01F4               	clrf	(?___lwmod+1)
+  1553  03EA  07F4               	addwf	(?___lwmod+1)
+  1554  03EB  0875               	movf	(___lwmod@dividend),w
+  1555  03EC  01F3               	clrf	(?___lwmod)
+  1556  03ED  07F3               	addwf	(?___lwmod)
+  1557                           
+  1558  03EE  2BEF               	goto	l6225
+  1559                           	
+  1560  03EF                     l8296:	
+  1561                           	line	21
+  1562                           	
+  1563  03EF                     l6225:	
+  1564  03EF  0008               	return
+  1565                           	opt stack 0
+  1566                           GLOBAL	__end_of___lwmod
+  1567  03F0                     	__end_of___lwmod:
+  1568 ;; =============== function ___lwmod ends ============
+  1569                           
+  1570                           	signat	___lwmod,8314
+  1571                           	global	___lwdiv
+  1572                           psect	text373,local,class=CODE,delta=2
+  1573                           global __ptext373
+  1574  036A                     __ptext373:
+  1575                           
+  1576 ;; *************** function ___lwdiv *****************
+  1577 ;; Defined at:
+  1578 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwdiv.c"
+  1579 ;; Parameters:    Size  Location     Type
+  1580 ;;  divisor         2    3[COMMON] unsigned int 
+  1581 ;;  dividend        2    5[COMMON] unsigned int 
+  1582 ;; Auto vars:     Size  Location     Type
+  1583 ;;  quotient        2    1[BANK0 ] unsigned int 
+  1584 ;;  counter         1    0[BANK0 ] unsigned char 
+  1585 ;; Return value:  Size  Location     Type
+  1586 ;;                  2    3[COMMON] unsigned int 
+  1587 ;; Registers used:
+  1588 ;;		wreg, status,2, status,0
+  1589 ;; Tracked objects:
+  1590 ;;		On entry : 0/0
+  1591 ;;		On exit  : 0/0
+  1592 ;;		Unchanged: 0/0
+  1593 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1594 ;;      Params:         4       0       0       0       0       0       0       0
+  1595 ;;      Locals:         0       3       0       0       0       0       0       0
+  1596 ;;      Temps:          1       0       0       0       0       0       0       0
+  1597 ;;      Totals:         5       3       0       0       0       0       0       0
+  1598 ;;Total ram usage:        8 bytes
+  1599 ;; Hardware stack levels used:    1
+  1600 ;; Hardware stack levels required when called:    1
+  1601 ;; This function calls:
+  1602 ;;		Nothing
+  1603 ;; This function is called by:
+  1604 ;;		_Display_Setting
+  1605 ;; This function uses a non-reentrant model
+  1606 ;;
+  1607                           psect	text373
+  1608                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwdiv.c"
+  1609                           	line	5
+  1610                           	global	__size_of___lwdiv
+  1611  0047                     	__size_of___lwdiv	equ	__end_of___lwdiv-___lwdiv
+  1612                           	
+  1613  036A                     ___lwdiv:	
+  1614                           	opt	stack 13
+  1615                           ; Regs used in ___lwdiv: [wreg+status,2+status,0]
+  1616                           	line	9
+  1617                           	
+  1618  036A                     l8250:	
+  1619  036A  0020               	movlb 0	; select bank0
+  1620  036B  01D5               	clrf	(___lwdiv@quotient)
+  1621  036C  01D6               	clrf	(___lwdiv@quotient+1)
+  1622                           	line	10
+  1623                           	
+  1624  036D                     l8252:	
+  1625  036D  0874               	movf	(___lwdiv@divisor+1),w
+  1626  036E  0473               	iorwf	(___lwdiv@divisor),w
+  1627  036F  1903               	skipnz
+  1628  0370  2B72               	goto	u3121
+  1629  0371  2B73               	goto	u3120
+  1630  0372                     u3121:
+  1631  0372  2BA9               	goto	l8272
+  1632  0373                     u3120:
+  1633                           	line	11
+  1634                           	
+  1635  0373                     l8254:	
+  1636  0373  01D4               	clrf	(___lwdiv@counter)
+  1637  0374  1403               	bsf	status,0
+  1638  0375  0DD4               	rlf	(___lwdiv@counter),f
+  1639                           	line	12
+  1640  0376  2B81               	goto	l8260
+  1641                           	
+  1642  0377                     l6210:	
+  1643                           	line	13
+  1644                           	
+  1645  0377                     l8256:	
+  1646  0377  3001               	movlw	01h
+  1647                           	
+  1648  0378                     u3135:
+  1649  0378  35F3               	lslf	(___lwdiv@divisor),f
+  1650  0379  0DF4               	rlf	(___lwdiv@divisor+1),f
+  1651  037A  0B89               	decfsz	wreg,f
+  1652  037B  2B78               	goto	u3135
+  1653                           	line	14
+  1654                           	
+  1655  037C                     l8258:	
+  1656  037C  3001               	movlw	(01h)
+  1657  037D  00F7               	movwf	(??___lwdiv+0)+0
+  1658  037E  0877               	movf	(??___lwdiv+0)+0,w
+  1659  037F  07D4               	addwf	(___lwdiv@counter),f
+  1660  0380  2B81               	goto	l8260
+  1661                           	line	15
+  1662                           	
+  1663  0381                     l6209:	
+  1664                           	line	12
+  1665                           	
+  1666  0381                     l8260:	
+  1667  0381  1FF4               	btfss	(___lwdiv@divisor+1),(15)&7
+  1668  0382  2B84               	goto	u3141
+  1669  0383  2B85               	goto	u3140
+  1670  0384                     u3141:
+  1671  0384  2B77               	goto	l8256
+  1672  0385                     u3140:
+  1673  0385  2B87               	goto	l8262
+  1674                           	
+  1675  0386                     l6211:	
+  1676  0386  2B87               	goto	l8262
+  1677                           	line	16
+  1678                           	
+  1679  0387                     l6212:	
+  1680                           	line	17
+  1681                           	
+  1682  0387                     l8262:	
+  1683  0387  3001               	movlw	01h
+  1684                           	
+  1685  0388                     u3155:
+  1686  0388  35D5               	lslf	(___lwdiv@quotient),f
+  1687  0389  0DD6               	rlf	(___lwdiv@quotient+1),f
+  1688  038A  0B89               	decfsz	wreg,f
+  1689  038B  2B88               	goto	u3155
+  1690                           	line	18
+  1691  038C  0874               	movf	(___lwdiv@divisor+1),w
+  1692  038D  0276               	subwf	(___lwdiv@dividend+1),w
+  1693  038E  1D03               	skipz
+  1694  038F  2B92               	goto	u3165
+  1695  0390  0873               	movf	(___lwdiv@divisor),w
+  1696  0391  0275               	subwf	(___lwdiv@dividend),w
+  1697  0392                     u3165:
+  1698  0392  1C03               	skipc
+  1699  0393  2B95               	goto	u3161
+  1700  0394  2B96               	goto	u3160
+  1701  0395                     u3161:
+  1702  0395  2B9C               	goto	l8268
+  1703  0396                     u3160:
+  1704                           	line	19
+  1705                           	
+  1706  0396                     l8264:	
+  1707  0396  0873               	movf	(___lwdiv@divisor),w
+  1708  0397  02F5               	subwf	(___lwdiv@dividend),f
+  1709  0398  0874               	movf	(___lwdiv@divisor+1),w
+  1710  0399  3BF6               	subwfb	(___lwdiv@dividend+1),f
+  1711                           	line	20
+  1712                           	
+  1713  039A                     l8266:	
+  1714  039A  1455               	bsf	(___lwdiv@quotient)+(0/8),(0)&7
+  1715  039B  2B9C               	goto	l8268
+  1716                           	line	21
+  1717                           	
+  1718  039C                     l6213:	
+  1719                           	line	22
+  1720                           	
+  1721  039C                     l8268:	
+  1722  039C  3001               	movlw	01h
+  1723                           	
+  1724  039D                     u3175:
+  1725  039D  36F4               	lsrf	(___lwdiv@divisor+1),f
+  1726  039E  0CF3               	rrf	(___lwdiv@divisor),f
+  1727  039F  0B89               	decfsz	wreg,f
+  1728  03A0  2B9D               	goto	u3175
+  1729                           	line	23
+  1730                           	
+  1731  03A1                     l8270:	
+  1732  03A1  3001               	movlw	low(01h)
+  1733  03A2  02D4               	subwf	(___lwdiv@counter),f
+  1734  03A3  1D03               	btfss	status,2
+  1735  03A4  2BA6               	goto	u3181
+  1736  03A5  2BA7               	goto	u3180
+  1737  03A6                     u3181:
+  1738  03A6  2B87               	goto	l8262
+  1739  03A7                     u3180:
+  1740  03A7  2BA9               	goto	l8272
+  1741                           	
+  1742  03A8                     l6214:	
+  1743  03A8  2BA9               	goto	l8272
+  1744                           	line	24
+  1745                           	
+  1746  03A9                     l6208:	
+  1747                           	line	25
+  1748                           	
+  1749  03A9                     l8272:	
+  1750  03A9  0856               	movf	(___lwdiv@quotient+1),w
+  1751  03AA  01F4               	clrf	(?___lwdiv+1)
+  1752  03AB  07F4               	addwf	(?___lwdiv+1)
+  1753  03AC  0855               	movf	(___lwdiv@quotient),w
+  1754  03AD  01F3               	clrf	(?___lwdiv)
+  1755  03AE  07F3               	addwf	(?___lwdiv)
+  1756                           
+  1757  03AF  2BB0               	goto	l6215
+  1758                           	
+  1759  03B0                     l8274:	
+  1760                           	line	26
+  1761                           	
+  1762  03B0                     l6215:	
+  1763  03B0  0008               	return
+  1764                           	opt stack 0
+  1765                           GLOBAL	__end_of___lwdiv
+  1766  03B1                     	__end_of___lwdiv:
+  1767 ;; =============== function ___lwdiv ends ============
+  1768                           
+  1769                           	signat	___lwdiv,8314
+  1770                           	global	_CDS_Get
+  1771                           psect	text374,local,class=CODE,delta=2
+  1772                           global __ptext374
+  1773  041B                     __ptext374:
+  1774                           
+  1775 ;; *************** function _CDS_Get *****************
+  1776 ;; Defined at:
+  1777 ;;		line 147 in file "G:\Program\PIC\2.Development_V1.0\Release\Development_V1.0.c"
+  1778 ;; Parameters:    Size  Location     Type
+  1779 ;;		None
+  1780 ;; Auto vars:     Size  Location     Type
+  1781 ;;  i               2    5[COMMON] int 
+  1782 ;; Return value:  Size  Location     Type
+  1783 ;;                  2    3[COMMON] int 
+  1784 ;; Registers used:
+  1785 ;;		wreg, status,2, status,0, btemp+1
+  1786 ;; Tracked objects:
+  1787 ;;		On entry : 0/0
+  1788 ;;		On exit  : 0/0
+  1789 ;;		Unchanged: 0/0
+  1790 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1791 ;;      Params:         2       0       0       0       0       0       0       0
+  1792 ;;      Locals:         2       0       0       0       0       0       0       0
+  1793 ;;      Temps:          0       4       0       0       0       0       0       0
+  1794 ;;      Totals:         4       4       0       0       0       0       0       0
+  1795 ;;Total ram usage:        8 bytes
+  1796 ;; Hardware stack levels used:    1
+  1797 ;; Hardware stack levels required when called:    1
+  1798 ;; This function calls:
+  1799 ;;		Nothing
+  1800 ;; This function is called by:
+  1801 ;;		_main
+  1802 ;; This function uses a non-reentrant model
+  1803 ;;
+  1804                           psect	text374
+  1805                           	file	"G:\Program\PIC\2.Development_V1.0\Release\Development_V1.0.c"
+  1806                           	line	147
+  1807                           	global	__size_of_CDS_Get
+  1808  0026                     	__size_of_CDS_Get	equ	__end_of_CDS_Get-_CDS_Get
+  1809                           	
+  1810  041B                     _CDS_Get:	
+  1811                           	opt	stack 14
+  1812                           ; Regs used in _CDS_Get: [wreg+status,2+status,0+btemp+1]
+  1813                           	line	148
+  1814                           	
+  1815  041B                     l8238:	
+  1816                           ;Development_V1.0.c: 148: int i=0;
+  1817  041B  01F5               	clrf	(CDS_Get@i)
+  1818  041C  01F6               	clrf	(CDS_Get@i+1)
+  1819                           	line	149
+  1820                           	
+  1821  041D                     l8240:	
+  1822                           ;Development_V1.0.c: 149: ADCON0=0x01;
+  1823  041D  3001               	movlw	(01h)
+  1824  041E  0021               	movlb 1	; select bank1
+  1825  041F  009D               	movwf	(157)^080h	;volatile
+  1826                           	line	151
+  1827                           	
+  1828  0420                     l8242:	
+  1829                           ;Development_V1.0.c: 151: GO_nDONE=1;
+  1830  0420  149D               	bsf	(1257/8)^080h,(1257)&7
+  1831                           	line	152
+  1832                           ;Development_V1.0.c: 152: while(GO_nDONE);
+  1833  0421  2C22               	goto	l6190
+  1834                           	
+  1835  0422                     l6191:	
+  1836                           	
+  1837  0422                     l6190:	
+  1838  0422  189D               	btfsc	(1257/8)^080h,(1257)&7
+  1839  0423  2C25               	goto	u3111
+  1840  0424  2C26               	goto	u3110
+  1841  0425                     u3111:
+  1842  0425  2C22               	goto	l6190
+  1843  0426                     u3110:
+  1844  0426  2C27               	goto	l8244
+  1845                           	
+  1846  0427                     l6192:	
+  1847                           	line	153
+  1848                           	
+  1849  0427                     l8244:	
+  1850                           ;Development_V1.0.c: 153: i=((ADRESH*256)+ADRESL);
+  1851  0427  081B               	movf	(155)^080h,w	;volatile
+  1852  0428  0020               	movlb 0	; select bank0
+  1853  0429  00D4               	movwf	(??_CDS_Get+0)+0
+  1854  042A  01D5               	clrf	(??_CDS_Get+0)+0+1
+  1855  042B  0021               	movlb 1	; select bank1
+  1856  042C  081C               	movf	(156)^080h,w	;volatile
+  1857  042D  0020               	movlb 0	; select bank0
+  1858  042E  00D6               	movwf	(??_CDS_Get+2)+0
+  1859  042F  01D7               	clrf	(??_CDS_Get+2)+0+1
+  1860  0430  0856               	movf	(??_CDS_Get+2)+0,w
+  1861  0431  00D7               	movwf	(??_CDS_Get+2)+1
+  1862  0432  01D6               	clrf	(??_CDS_Get+2)+0
+  1863  0433  0854               	movf	0+(??_CDS_Get+0)+0,w
+  1864  0434  0756               	addwf	0+(??_CDS_Get+2)+0,w
+  1865  0435  00F5               	movwf	(CDS_Get@i)
+  1866  0436  0855               	movf	1+(??_CDS_Get+0)+0,w
+  1867  0437  3D57               	addwfc	1+(??_CDS_Get+2)+0,w
+  1868  0438  00F6               	movwf	1+(CDS_Get@i)
+  1869                           	line	156
+  1870                           	
+  1871  0439                     l8246:	
+  1872                           ;Development_V1.0.c: 156: return i;
+  1873  0439  0876               	movf	(CDS_Get@i+1),w
+  1874  043A  01F4               	clrf	(?_CDS_Get+1)
+  1875  043B  07F4               	addwf	(?_CDS_Get+1)
+  1876  043C  0875               	movf	(CDS_Get@i),w
+  1877  043D  01F3               	clrf	(?_CDS_Get)
+  1878  043E  07F3               	addwf	(?_CDS_Get)
+  1879                           
+  1880  043F  2C40               	goto	l6193
+  1881                           	
+  1882  0440                     l8248:	
+  1883                           	line	157
+  1884                           	
+  1885  0440                     l6193:	
+  1886  0440  0008               	return
+  1887                           	opt stack 0
+  1888                           GLOBAL	__end_of_CDS_Get
+  1889  0441                     	__end_of_CDS_Get:
+  1890 ;; =============== function _CDS_Get ends ============
+  1891                           
+  1892                           	signat	_CDS_Get,90
+  1893                           	global	_Display_Main
+  1894                           psect	text375,local,class=CODE,delta=2
+  1895                           global __ptext375
+  1896  02E1                     __ptext375:
+  1897                           
+  1898 ;; *************** function _Display_Main *****************
+  1899 ;; Defined at:
+  1900 ;;		line 74 in file "G:\Program\PIC\Source_File\SegmentDisplay.c"
+  1901 ;; Parameters:    Size  Location     Type
+  1902 ;;		None
+  1903 ;; Auto vars:     Size  Location     Type
+  1904 ;;  i               1    6[COMMON] unsigned char 
+  1905 ;;  j               1    5[COMMON] unsigned char 
+  1906 ;; Return value:  Size  Location     Type
+  1907 ;;		None               void
+  1908 ;; Registers used:
+  1909 ;;		wreg, fsr1l, fsr1h, status,2, status,0
+  1910 ;; Tracked objects:
+  1911 ;;		On entry : 0/0
+  1912 ;;		On exit  : 0/0
+  1913 ;;		Unchanged: 0/0
+  1914 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  1915 ;;      Params:         0       0       0       0       0       0       0       0
+  1916 ;;      Locals:         2       0       0       0       0       0       0       0
+  1917 ;;      Temps:          2       0       0       0       0       0       0       0
+  1918 ;;      Totals:         4       0       0       0       0       0       0       0
+  1919 ;;Total ram usage:        4 bytes
+  1920 ;; Hardware stack levels used:    1
+  1921 ;; Hardware stack levels required when called:    1
+  1922 ;; This function calls:
+  1923 ;;		Nothing
+  1924 ;; This function is called by:
+  1925 ;;		_main
+  1926 ;; This function uses a non-reentrant model
+  1927 ;;
+  1928                           psect	text375
+  1929                           	file	"G:\Program\PIC\Source_File\SegmentDisplay.c"
+  1930                           	line	74
+  1931                           	global	__size_of_Display_Main
+  1932  0089                     	__size_of_Display_Main	equ	__end_of_Display_Main-_Display_Main
+  1933                           	
+  1934  02E1                     _Display_Main:	
+  1935                           	opt	stack 14
+  1936                           ; Regs used in _Display_Main: [wreg+fsr1l-status,0]
+  1937                           	line	76
+  1938                           	
+  1939  02E1                     l8010:	
+  1940                           ;SegmentDisplay.c: 75: char i,j;
+  1941                           ;SegmentDisplay.c: 76: i=0x10;
+  1942  02E1  3010               	movlw	(010h)
+  1943  02E2  00F3               	movwf	(??_Display_Main+0)+0
+  1944  02E3  0873               	movf	(??_Display_Main+0)+0,w
+  1945  02E4  00F6               	movwf	(Display_Main@i)
+  1946                           	line	77
+  1947                           	
+  1948  02E5                     l8012:	
+  1949                           ;SegmentDisplay.c: 77: if(Segment->Enable==1 && Segment->GO==1)
+  1950  02E5  0020               	movlb 0	; select bank0
+  1951  02E6  0865               	movf	(_Segment),w
+  1952  02E7  0086               	movwf	fsr1l
+  1953  02E8  0187               	clrf fsr1h	
+  1954                           	
+  1955  02E9  1C01               	btfss	indf1,0
+  1956  02EA  2AEC               	goto	u2691
+  1957  02EB  2AED               	goto	u2690
+  1958  02EC                     u2691:
+  1959  02EC  2B69               	goto	l2084
+  1960  02ED                     u2690:
+  1961                           	
+  1962  02ED                     l8014:	
+  1963  02ED  0865               	movf	(_Segment),w
+  1964  02EE  0086               	movwf	fsr1l
+  1965  02EF  0187               	clrf fsr1h	
+  1966                           	
+  1967  02F0  1C81               	btfss	indf1,1
+  1968  02F1  2AF3               	goto	u2701
+  1969  02F2  2AF4               	goto	u2700
+  1970  02F3                     u2701:
+  1971  02F3  2B69               	goto	l2084
+  1972  02F4                     u2700:
+  1973                           	line	79
+  1974                           	
+  1975  02F4                     l8016:	
+  1976                           ;SegmentDisplay.c: 78: {
+  1977                           ;SegmentDisplay.c: 79: if(Segment->Num[3]>0)
+  1978  02F4  0865               	movf	(_Segment),w
+  1979  02F5  3E18               	addlw	018h
+  1980  02F6  0086               	movwf	fsr1l
+  1981  02F7  0187               	clrf fsr1h	
+  1982                           	
+  1983  02F8  0801               	movf	indf1,w
+  1984  02F9  3A00               	xorlw	0&0ffh
+  1985  02FA  1903               	skipnz
+  1986  02FB  2AFD               	goto	u2711
+  1987  02FC  2AFE               	goto	u2710
+  1988  02FD                     u2711:
+  1989  02FD  2B03               	goto	l8020
+  1990  02FE                     u2710:
+  1991                           	line	80
+  1992                           	
+  1993  02FE                     l8018:	
+  1994                           ;SegmentDisplay.c: 80: j=3;
+  1995  02FE  3003               	movlw	(03h)
+  1996  02FF  00F3               	movwf	(??_Display_Main+0)+0
+  1997  0300  0873               	movf	(??_Display_Main+0)+0,w
+  1998  0301  00F5               	movwf	(Display_Main@j)
+  1999  0302  2B24               	goto	l8028
+  2000                           	line	81
+  2001                           	
+  2002  0303                     l2076:	
+  2003                           	
+  2004  0303                     l8020:	
+  2005                           ;SegmentDisplay.c: 81: else if(Segment->Num[2]>0)
+  2006  0303  0865               	movf	(_Segment),w
+  2007  0304  3E17               	addlw	017h
+  2008  0305  0086               	movwf	fsr1l
+  2009  0306  0187               	clrf fsr1h	
+  2010                           	
+  2011  0307  0801               	movf	indf1,w
+  2012  0308  3A00               	xorlw	0&0ffh
+  2013  0309  1903               	skipnz
+  2014  030A  2B0C               	goto	u2721
+  2015  030B  2B0D               	goto	u2720
+  2016  030C                     u2721:
+  2017  030C  2B12               	goto	l8024
+  2018  030D                     u2720:
+  2019                           	line	82
+  2020                           	
+  2021  030D                     l8022:	
+  2022                           ;SegmentDisplay.c: 82: j=2;
+  2023  030D  3002               	movlw	(02h)
+  2024  030E  00F3               	movwf	(??_Display_Main+0)+0
+  2025  030F  0873               	movf	(??_Display_Main+0)+0,w
+  2026  0310  00F5               	movwf	(Display_Main@j)
+  2027  0311  2B24               	goto	l8028
+  2028                           	line	83
+  2029                           	
+  2030  0312                     l2078:	
+  2031                           	
+  2032  0312                     l8024:	
+  2033                           ;SegmentDisplay.c: 83: else if(Segment->Num[1]>0)
+  2034  0312  0865               	movf	(_Segment),w
+  2035  0313  3E16               	addlw	016h
+  2036  0314  0086               	movwf	fsr1l
+  2037  0315  0187               	clrf fsr1h	
+  2038                           	
+  2039  0316  0801               	movf	indf1,w
+  2040  0317  3A00               	xorlw	0&0ffh
+  2041  0318  1903               	skipnz
+  2042  0319  2B1B               	goto	u2731
+  2043  031A  2B1C               	goto	u2730
+  2044  031B                     u2731:
+  2045  031B  2B20               	goto	l2080
+  2046  031C                     u2730:
+  2047                           	line	84
+  2048                           	
+  2049  031C                     l8026:	
+  2050                           ;SegmentDisplay.c: 84: j=1;
+  2051  031C  01F5               	clrf	(Display_Main@j)
+  2052  031D  1403               	bsf	status,0
+  2053  031E  0DF5               	rlf	(Display_Main@j),f
+  2054  031F  2B24               	goto	l8028
+  2055                           	line	85
+  2056                           	
+  2057  0320                     l2080:	
+  2058                           	line	86
+  2059                           ;SegmentDisplay.c: 85: else
+  2060                           ;SegmentDisplay.c: 86: j=0;
+  2061  0320  01F5               	clrf	(Display_Main@j)
+  2062  0321  2B24               	goto	l8028
+  2063                           	
+  2064  0322                     l2081:	
+  2065  0322  2B24               	goto	l8028
+  2066                           	
+  2067  0323                     l2079:	
+  2068  0323  2B24               	goto	l8028
+  2069                           	
+  2070  0324                     l2077:	
+  2071                           	line	88
+  2072                           	
+  2073  0324                     l8028:	
+  2074                           ;SegmentDisplay.c: 88: if(Segment->ComCount<j)
+  2075  0324  0865               	movf	(_Segment),w
+  2076  0325  3E01               	addlw	01h
+  2077  0326  0086               	movwf	fsr1l
+  2078  0327  0187               	clrf fsr1h	
+  2079                           	
+  2080  0328  0875               	movf	(Display_Main@j),w
+  2081  0329  0201               	subwf	indf1,w
+  2082  032A  1803               	skipnc
+  2083  032B  2B2D               	goto	u2741
+  2084  032C  2B2E               	goto	u2740
+  2085  032D                     u2741:
+  2086  032D  2B37               	goto	l8032
+  2087  032E                     u2740:
+  2088                           	line	89
+  2089                           	
+  2090  032E                     l8030:	
+  2091                           ;SegmentDisplay.c: 89: Segment->ComCount++;
+  2092  032E  3001               	movlw	(01h)
+  2093  032F  00F3               	movwf	(??_Display_Main+0)+0
+  2094  0330  0865               	movf	(_Segment),w
+  2095  0331  3E01               	addlw	01h
+  2096  0332  0086               	movwf	fsr1l
+  2097  0333  0187               	clrf fsr1h	
+  2098                           	
+  2099  0334  0873               	movf	(??_Display_Main+0)+0,w
+  2100  0335  0781               	addwf	indf1,f
+  2101  0336  2B3D               	goto	l8034
+  2102                           	line	90
+  2103                           	
+  2104  0337                     l2082:	
+  2105                           	line	91
+  2106                           	
+  2107  0337                     l8032:	
+  2108                           ;SegmentDisplay.c: 90: else
+  2109                           ;SegmentDisplay.c: 91: Segment->ComCount=0;
+  2110  0337  0865               	movf	(_Segment),w
+  2111  0338  3E01               	addlw	01h
+  2112  0339  0086               	movwf	fsr1l
+  2113  033A  0187               	clrf fsr1h	
+  2114                           	
+  2115  033B  0181               	clrf	indf1
+  2116  033C  2B3D               	goto	l8034
+  2117                           	
+  2118  033D                     l2083:	
+  2119                           	line	93
+  2120                           	
+  2121  033D                     l8034:	
+  2122                           ;SegmentDisplay.c: 93: PORTA &= 0x0f;
+  2123  033D  300F               	movlw	(0Fh)
+  2124  033E  00F3               	movwf	(??_Display_Main+0)+0
+  2125  033F  0873               	movf	(??_Display_Main+0)+0,w
+  2126  0340  058C               	andwf	(12),f	;volatile
+  2127                           	line	94
+  2128                           	
+  2129  0341                     l8036:	
+  2130                           ;SegmentDisplay.c: 94: i = i<< Segment->ComCount;
+  2131  0341  0876               	movf	(Display_Main@i),w
+  2132  0342  00F3               	movwf	(??_Display_Main+0)+0
+  2133  0343  0865               	movf	(_Segment),w
+  2134  0344  3E01               	addlw	01h
+  2135  0345  0086               	movwf	fsr1l
+  2136  0346  0187               	clrf fsr1h	
+  2137                           	
+  2138  0347  0A01               	incf	indf1,w
+  2139  0348  2B4A               	goto	u2754
+  2140  0349                     u2755:
+  2141  0349  35F3               	lslf	(??_Display_Main+0)+0,f
+  2142  034A                     u2754:
+  2143  034A  0B89               	decfsz	wreg,f
+  2144  034B  2B49               	goto	u2755
+  2145  034C  0873               	movf	0+(??_Display_Main+0)+0,w
+  2146  034D  00F4               	movwf	(??_Display_Main+1)+0
+  2147  034E  0874               	movf	(??_Display_Main+1)+0,w
+  2148  034F  00F6               	movwf	(Display_Main@i)
+  2149                           	line	95
+  2150                           	
+  2151  0350                     l8038:	
+  2152                           ;SegmentDisplay.c: 95: PORTA ^= i;
+  2153  0350  0876               	movf	(Display_Main@i),w
+  2154  0351  00F3               	movwf	(??_Display_Main+0)+0
+  2155  0352  0873               	movf	(??_Display_Main+0)+0,w
+  2156  0353  068C               	xorwf	(12),f	;volatile
+  2157                           	line	96
+  2158                           	
+  2159  0354                     l8040:	
+  2160                           ;SegmentDisplay.c: 96: PORTB=Segment->Display[Segment->Num[Segment->ComCount]];
+  2161  0354  0865               	movf	(_Segment),w
+  2162  0355  3E01               	addlw	01h
+  2163  0356  0086               	movwf	fsr1l
+  2164  0357  0187               	clrf fsr1h	
+  2165                           	
+  2166  0358  0801               	movf	indf1,w
+  2167  0359  3E15               	addlw	015h
+  2168  035A  0765               	addwf	(_Segment),w
+  2169  035B  00F3               	movwf	(??_Display_Main+0)+0
+  2170  035C  0873               	movf	0+(??_Display_Main+0)+0,w
+  2171  035D  0086               	movwf	fsr1l
+  2172  035E  0187               	clrf fsr1h	
+  2173                           	
+  2174  035F  0801               	movf	indf1,w
+  2175  0360  3E04               	addlw	04h
+  2176  0361  0765               	addwf	(_Segment),w
+  2177  0362  00F4               	movwf	(??_Display_Main+1)+0
+  2178  0363  0874               	movf	0+(??_Display_Main+1)+0,w
+  2179  0364  0086               	movwf	fsr1l
+  2180  0365  0187               	clrf fsr1h	
+  2181                           	
+  2182  0366  0801               	movf	indf1,w
+  2183  0367  008D               	movwf	(13)	;volatile
+  2184  0368  2B69               	goto	l2084
+  2185                           	line	97
+  2186                           	
+  2187  0369                     l2075:	
+  2188                           	line	98
+  2189                           	
+  2190  0369                     l2084:	
+  2191  0369  0008               	return
+  2192                           	opt stack 0
+  2193                           GLOBAL	__end_of_Display_Main
+  2194  036A                     	__end_of_Display_Main:
+  2195 ;; =============== function _Display_Main ends ============
+  2196                           
+  2197                           	signat	_Display_Main,88
+  2198                           	global	_Display_Initial
+  2199                           psect	text376,local,class=CODE,delta=2
+  2200                           global __ptext376
+  2201  01BB                     __ptext376:
+  2202                           
+  2203 ;; *************** function _Display_Initial *****************
+  2204 ;; Defined at:
+  2205 ;;		line 14 in file "G:\Program\PIC\Source_File\SegmentDisplay.c"
+  2206 ;; Parameters:    Size  Location     Type
+  2207 ;;		None
+  2208 ;; Auto vars:     Size  Location     Type
+  2209 ;;		None
+  2210 ;; Return value:  Size  Location     Type
+  2211 ;;		None               void
+  2212 ;; Registers used:
+  2213 ;;		wreg, fsr1l, fsr1h
+  2214 ;; Tracked objects:
+  2215 ;;		On entry : 0/0
+  2216 ;;		On exit  : 0/0
+  2217 ;;		Unchanged: 0/0
+  2218 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2219 ;;      Params:         0       0       0       0       0       0       0       0
+  2220 ;;      Locals:         0       0       0       0       0       0       0       0
+  2221 ;;      Temps:          1       0       0       0       0       0       0       0
+  2222 ;;      Totals:         1       0       0       0       0       0       0       0
+  2223 ;;Total ram usage:        1 bytes
+  2224 ;; Hardware stack levels used:    1
+  2225 ;; Hardware stack levels required when called:    1
+  2226 ;; This function calls:
+  2227 ;;		Nothing
+  2228 ;; This function is called by:
+  2229 ;;		_main
+  2230 ;; This function uses a non-reentrant model
+  2231 ;;
+  2232                           psect	text376
+  2233                           	file	"G:\Program\PIC\Source_File\SegmentDisplay.c"
+  2234                           	line	14
+  2235                           	global	__size_of_Display_Initial
+  2236  0097                     	__size_of_Display_Initial	equ	__end_of_Display_Initial-_Display_Initial
+  2237                           	
+  2238  01BB                     _Display_Initial:	
+  2239                           	opt	stack 14
+  2240                           ; Regs used in _Display_Initial: [wregfsr1]
+  2241                           	line	15
+  2242                           	
+  2243  01BB                     l7968:	
+  2244                           ;SegmentDisplay.c: 15: Segment=&VarSegment;
+  2245  01BB  302A               	movlw	(_VarSegment)&0ffh
+  2246  01BC  00F3               	movwf	(??_Display_Initial+0)+0
+  2247  01BD  0873               	movf	(??_Display_Initial+0)+0,w
+  2248  01BE  0020               	movlb 0	; select bank0
+  2249  01BF  00E5               	movwf	(_Segment)
+  2250                           	line	16
+  2251                           	
+  2252  01C0                     l7970:	
+  2253                           ;SegmentDisplay.c: 16: Segment->Enable=1;
+  2254  01C0  0865               	movf	(_Segment),w
+  2255  01C1  0086               	movwf	fsr1l
+  2256  01C2  0187               	clrf fsr1h	
+  2257                           	
+  2258  01C3  1401               	bsf	indf1,0
+  2259                           	line	17
+  2260                           	
+  2261  01C4                     l7972:	
+  2262                           ;SegmentDisplay.c: 17: Segment->DecToHex=1;
+  2263  01C4  0865               	movf	(_Segment),w
+  2264  01C5  0086               	movwf	fsr1l
+  2265  01C6  0187               	clrf fsr1h	
+  2266                           	
+  2267  01C7  1581               	bsf	indf1,3
+  2268                           	line	18
+  2269                           	
+  2270  01C8                     l7974:	
+  2271                           ;SegmentDisplay.c: 18: RA1=1;
+  2272  01C8  148C               	bsf	(97/8),(97)&7
+  2273                           	line	20
+  2274                           	
+  2275  01C9                     l7976:	
+  2276                           ;SegmentDisplay.c: 20: Segment->Display[0]=0xc0;
+  2277  01C9  30C0               	movlw	(0C0h)
+  2278  01CA  00F3               	movwf	(??_Display_Initial+0)+0
+  2279  01CB  0865               	movf	(_Segment),w
+  2280  01CC  3E04               	addlw	04h
+  2281  01CD  0086               	movwf	fsr1l
+  2282  01CE  0187               	clrf fsr1h	
+  2283                           	
+  2284  01CF  0873               	movf	(??_Display_Initial+0)+0,w
+  2285  01D0  0081               	movwf	indf1
+  2286                           	line	21
+  2287                           	
+  2288  01D1                     l7978:	
+  2289                           ;SegmentDisplay.c: 21: Segment->Display[1]=0xf9;
+  2290  01D1  30F9               	movlw	(0F9h)
+  2291  01D2  00F3               	movwf	(??_Display_Initial+0)+0
+  2292  01D3  0865               	movf	(_Segment),w
+  2293  01D4  3E05               	addlw	05h
+  2294  01D5  0086               	movwf	fsr1l
+  2295  01D6  0187               	clrf fsr1h	
+  2296                           	
+  2297  01D7  0873               	movf	(??_Display_Initial+0)+0,w
+  2298  01D8  0081               	movwf	indf1
+  2299                           	line	22
+  2300                           	
+  2301  01D9                     l7980:	
+  2302                           ;SegmentDisplay.c: 22: Segment->Display[2]=0xa4;
+  2303  01D9  30A4               	movlw	(0A4h)
+  2304  01DA  00F3               	movwf	(??_Display_Initial+0)+0
+  2305  01DB  0865               	movf	(_Segment),w
+  2306  01DC  3E06               	addlw	06h
+  2307  01DD  0086               	movwf	fsr1l
+  2308  01DE  0187               	clrf fsr1h	
+  2309                           	
+  2310  01DF  0873               	movf	(??_Display_Initial+0)+0,w
+  2311  01E0  0081               	movwf	indf1
+  2312                           	line	23
+  2313                           	
+  2314  01E1                     l7982:	
+  2315                           ;SegmentDisplay.c: 23: Segment->Display[3]=0xb0;
+  2316  01E1  30B0               	movlw	(0B0h)
+  2317  01E2  00F3               	movwf	(??_Display_Initial+0)+0
+  2318  01E3  0865               	movf	(_Segment),w
+  2319  01E4  3E07               	addlw	07h
+  2320  01E5  0086               	movwf	fsr1l
+  2321  01E6  0187               	clrf fsr1h	
+  2322                           	
+  2323  01E7  0873               	movf	(??_Display_Initial+0)+0,w
+  2324  01E8  0081               	movwf	indf1
+  2325                           	line	24
+  2326                           	
+  2327  01E9                     l7984:	
+  2328                           ;SegmentDisplay.c: 24: Segment->Display[4]=0x99;
+  2329  01E9  3099               	movlw	(099h)
+  2330  01EA  00F3               	movwf	(??_Display_Initial+0)+0
+  2331  01EB  0865               	movf	(_Segment),w
+  2332  01EC  3E08               	addlw	08h
+  2333  01ED  0086               	movwf	fsr1l
+  2334  01EE  0187               	clrf fsr1h	
+  2335                           	
+  2336  01EF  0873               	movf	(??_Display_Initial+0)+0,w
+  2337  01F0  0081               	movwf	indf1
+  2338                           	line	25
+  2339                           	
+  2340  01F1                     l7986:	
+  2341                           ;SegmentDisplay.c: 25: Segment->Display[5]=0x92;
+  2342  01F1  3092               	movlw	(092h)
+  2343  01F2  00F3               	movwf	(??_Display_Initial+0)+0
+  2344  01F3  0865               	movf	(_Segment),w
+  2345  01F4  3E09               	addlw	09h
+  2346  01F5  0086               	movwf	fsr1l
+  2347  01F6  0187               	clrf fsr1h	
+  2348                           	
+  2349  01F7  0873               	movf	(??_Display_Initial+0)+0,w
+  2350  01F8  0081               	movwf	indf1
+  2351                           	line	26
+  2352                           	
+  2353  01F9                     l7988:	
+  2354                           ;SegmentDisplay.c: 26: Segment->Display[6]=0x82;
+  2355  01F9  3082               	movlw	(082h)
+  2356  01FA  00F3               	movwf	(??_Display_Initial+0)+0
+  2357  01FB  0865               	movf	(_Segment),w
+  2358  01FC  3E0A               	addlw	0Ah
+  2359  01FD  0086               	movwf	fsr1l
+  2360  01FE  0187               	clrf fsr1h	
+  2361                           	
+  2362  01FF  0873               	movf	(??_Display_Initial+0)+0,w
+  2363  0200  0081               	movwf	indf1
+  2364                           	line	27
+  2365                           	
+  2366  0201                     l7990:	
+  2367                           ;SegmentDisplay.c: 27: Segment->Display[7]=0xd8;
+  2368  0201  30D8               	movlw	(0D8h)
+  2369  0202  00F3               	movwf	(??_Display_Initial+0)+0
+  2370  0203  0865               	movf	(_Segment),w
+  2371  0204  3E0B               	addlw	0Bh
+  2372  0205  0086               	movwf	fsr1l
+  2373  0206  0187               	clrf fsr1h	
+  2374                           	
+  2375  0207  0873               	movf	(??_Display_Initial+0)+0,w
+  2376  0208  0081               	movwf	indf1
+  2377                           	line	28
+  2378                           	
+  2379  0209                     l7992:	
+  2380                           ;SegmentDisplay.c: 28: Segment->Display[8]=0x80;
+  2381  0209  3080               	movlw	(080h)
+  2382  020A  00F3               	movwf	(??_Display_Initial+0)+0
+  2383  020B  0865               	movf	(_Segment),w
+  2384  020C  3E0C               	addlw	0Ch
+  2385  020D  0086               	movwf	fsr1l
+  2386  020E  0187               	clrf fsr1h	
+  2387                           	
+  2388  020F  0873               	movf	(??_Display_Initial+0)+0,w
+  2389  0210  0081               	movwf	indf1
+  2390                           	line	29
+  2391                           	
+  2392  0211                     l7994:	
+  2393                           ;SegmentDisplay.c: 29: Segment->Display[9]=0x90;
+  2394  0211  3090               	movlw	(090h)
+  2395  0212  00F3               	movwf	(??_Display_Initial+0)+0
+  2396  0213  0865               	movf	(_Segment),w
+  2397  0214  3E0D               	addlw	0Dh
+  2398  0215  0086               	movwf	fsr1l
+  2399  0216  0187               	clrf fsr1h	
+  2400                           	
+  2401  0217  0873               	movf	(??_Display_Initial+0)+0,w
+  2402  0218  0081               	movwf	indf1
+  2403                           	line	30
+  2404                           	
+  2405  0219                     l7996:	
+  2406                           ;SegmentDisplay.c: 30: Segment->Display[10]=0x88;
+  2407  0219  3088               	movlw	(088h)
+  2408  021A  00F3               	movwf	(??_Display_Initial+0)+0
+  2409  021B  0865               	movf	(_Segment),w
+  2410  021C  3E0E               	addlw	0Eh
+  2411  021D  0086               	movwf	fsr1l
+  2412  021E  0187               	clrf fsr1h	
+  2413                           	
+  2414  021F  0873               	movf	(??_Display_Initial+0)+0,w
+  2415  0220  0081               	movwf	indf1
+  2416                           	line	31
+  2417                           	
+  2418  0221                     l7998:	
+  2419                           ;SegmentDisplay.c: 31: Segment->Display[11]=0x83;
+  2420  0221  3083               	movlw	(083h)
+  2421  0222  00F3               	movwf	(??_Display_Initial+0)+0
+  2422  0223  0865               	movf	(_Segment),w
+  2423  0224  3E0F               	addlw	0Fh
+  2424  0225  0086               	movwf	fsr1l
+  2425  0226  0187               	clrf fsr1h	
+  2426                           	
+  2427  0227  0873               	movf	(??_Display_Initial+0)+0,w
+  2428  0228  0081               	movwf	indf1
+  2429                           	line	32
+  2430                           	
+  2431  0229                     l8000:	
+  2432                           ;SegmentDisplay.c: 32: Segment->Display[12]=0xa7;
+  2433  0229  30A7               	movlw	(0A7h)
+  2434  022A  00F3               	movwf	(??_Display_Initial+0)+0
+  2435  022B  0865               	movf	(_Segment),w
+  2436  022C  3E10               	addlw	010h
+  2437  022D  0086               	movwf	fsr1l
+  2438  022E  0187               	clrf fsr1h	
+  2439                           	
+  2440  022F  0873               	movf	(??_Display_Initial+0)+0,w
+  2441  0230  0081               	movwf	indf1
+  2442                           	line	33
+  2443                           	
+  2444  0231                     l8002:	
+  2445                           ;SegmentDisplay.c: 33: Segment->Display[13]=0xa1;
+  2446  0231  30A1               	movlw	(0A1h)
+  2447  0232  00F3               	movwf	(??_Display_Initial+0)+0
+  2448  0233  0865               	movf	(_Segment),w
+  2449  0234  3E11               	addlw	011h
+  2450  0235  0086               	movwf	fsr1l
+  2451  0236  0187               	clrf fsr1h	
+  2452                           	
+  2453  0237  0873               	movf	(??_Display_Initial+0)+0,w
+  2454  0238  0081               	movwf	indf1
+  2455                           	line	34
+  2456                           	
+  2457  0239                     l8004:	
+  2458                           ;SegmentDisplay.c: 34: Segment->Display[14]=0x86;
+  2459  0239  3086               	movlw	(086h)
+  2460  023A  00F3               	movwf	(??_Display_Initial+0)+0
+  2461  023B  0865               	movf	(_Segment),w
+  2462  023C  3E12               	addlw	012h
+  2463  023D  0086               	movwf	fsr1l
+  2464  023E  0187               	clrf fsr1h	
+  2465                           	
+  2466  023F  0873               	movf	(??_Display_Initial+0)+0,w
+  2467  0240  0081               	movwf	indf1
+  2468                           	line	35
+  2469                           	
+  2470  0241                     l8006:	
+  2471                           ;SegmentDisplay.c: 35: Segment->Display[15]=0x8e;
+  2472  0241  308E               	movlw	(08Eh)
+  2473  0242  00F3               	movwf	(??_Display_Initial+0)+0
+  2474  0243  0865               	movf	(_Segment),w
+  2475  0244  3E13               	addlw	013h
+  2476  0245  0086               	movwf	fsr1l
+  2477  0246  0187               	clrf fsr1h	
+  2478                           	
+  2479  0247  0873               	movf	(??_Display_Initial+0)+0,w
+  2480  0248  0081               	movwf	indf1
+  2481                           	line	36
+  2482                           	
+  2483  0249                     l8008:	
+  2484                           ;SegmentDisplay.c: 36: Segment->Display[16]=0xbf;
+  2485  0249  30BF               	movlw	(0BFh)
+  2486  024A  00F3               	movwf	(??_Display_Initial+0)+0
+  2487  024B  0865               	movf	(_Segment),w
+  2488  024C  3E14               	addlw	014h
+  2489  024D  0086               	movwf	fsr1l
+  2490  024E  0187               	clrf fsr1h	
+  2491                           	
+  2492  024F  0873               	movf	(??_Display_Initial+0)+0,w
+  2493  0250  0081               	movwf	indf1
+  2494                           	line	39
+  2495                           	
+  2496  0251                     l2063:	
+  2497  0251  0008               	return
+  2498                           	opt stack 0
+  2499                           GLOBAL	__end_of_Display_Initial
+  2500  0252                     	__end_of_Display_Initial:
+  2501 ;; =============== function _Display_Initial ends ============
+  2502                           
+  2503                           	signat	_Display_Initial,88
+  2504                           	global	_MCU_Initial
+  2505                           psect	text377,local,class=CODE,delta=2
+  2506                           global __ptext377
+  2507  03F0                     __ptext377:
+  2508                           
+  2509 ;; *************** function _MCU_Initial *****************
+  2510 ;; Defined at:
+  2511 ;;		line 122 in file "G:\Program\PIC\Source_File\MCU_16f1516.c"
+  2512 ;; Parameters:    Size  Location     Type
+  2513 ;;		None
+  2514 ;; Auto vars:     Size  Location     Type
+  2515 ;;		None
+  2516 ;; Return value:  Size  Location     Type
+  2517 ;;		None               void
+  2518 ;; Registers used:
+  2519 ;;		wreg, status,2
+  2520 ;; Tracked objects:
+  2521 ;;		On entry : 0/0
+  2522 ;;		On exit  : 0/0
+  2523 ;;		Unchanged: 0/0
+  2524 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2525 ;;      Params:         0       0       0       0       0       0       0       0
+  2526 ;;      Locals:         0       0       0       0       0       0       0       0
+  2527 ;;      Temps:          1       0       0       0       0       0       0       0
+  2528 ;;      Totals:         1       0       0       0       0       0       0       0
+  2529 ;;Total ram usage:        1 bytes
+  2530 ;; Hardware stack levels used:    1
+  2531 ;; Hardware stack levels required when called:    1
+  2532 ;; This function calls:
+  2533 ;;		Nothing
+  2534 ;; This function is called by:
+  2535 ;;		_main
+  2536 ;; This function uses a non-reentrant model
+  2537 ;;
+  2538                           psect	text377
+  2539                           	file	"G:\Program\PIC\Source_File\MCU_16f1516.c"
+  2540                           	line	122
+  2541                           	global	__size_of_MCU_Initial
+  2542  002B                     	__size_of_MCU_Initial	equ	__end_of_MCU_Initial-_MCU_Initial
+  2543                           	
+  2544  03F0                     _MCU_Initial:	
+  2545                           	opt	stack 14
+  2546                           ; Regs used in _MCU_Initial: [wreg+status,2]
+  2547                           	line	123
+  2548                           	
+  2549  03F0                     l7876:	
+  2550                           ;MCU_16f1516.c: 123: Intr=&VarIntr;
+  2551  03F0  304D               	movlw	(_VarIntr)&0ffh
+  2552  03F1  00F3               	movwf	(??_MCU_Initial+0)+0
+  2553  03F2  0873               	movf	(??_MCU_Initial+0)+0,w
+  2554  03F3  0020               	movlb 0	; select bank0
+  2555  03F4  00E4               	movwf	(_Intr)
+  2556                           	line	126
+  2557                           ;MCU_16f1516.c: 126: TRISA=0x09;
+  2558  03F5  3009               	movlw	(09h)
+  2559  03F6  0021               	movlb 1	; select bank1
+  2560  03F7  008C               	movwf	(140)^080h	;volatile
+  2561                           	line	127
+  2562                           	
+  2563  03F8                     l7878:	
+  2564                           ;MCU_16f1516.c: 127: TRISB=0x00;
+  2565  03F8  018D               	clrf	(141)^080h	;volatile
+  2566                           	line	128
+  2567                           	
+  2568  03F9                     l7880:	
+  2569                           ;MCU_16f1516.c: 128: TRISC=0x00;
+  2570  03F9  018E               	clrf	(142)^080h	;volatile
+  2571                           	line	130
+  2572                           	
+  2573  03FA                     l7882:	
+  2574                           ;MCU_16f1516.c: 130: LATA=0x00;
+  2575  03FA  0022               	movlb 2	; select bank2
+  2576  03FB  018C               	clrf	(268)^0100h	;volatile
+  2577                           	line	131
+  2578                           	
+  2579  03FC                     l7884:	
+  2580                           ;MCU_16f1516.c: 131: LATB=0x00;
+  2581  03FC  018D               	clrf	(269)^0100h	;volatile
+  2582                           	line	132
+  2583                           	
+  2584  03FD                     l7886:	
+  2585                           ;MCU_16f1516.c: 132: LATC=0x00;
+  2586  03FD  018E               	clrf	(270)^0100h	;volatile
+  2587                           	line	134
+  2588                           	
+  2589  03FE                     l7888:	
+  2590                           ;MCU_16f1516.c: 134: ANSELA=0x01;
+  2591  03FE  3001               	movlw	(01h)
+  2592  03FF  0023               	movlb 3	; select bank3
+  2593  0400  008C               	movwf	(396)^0180h	;volatile
+  2594                           	line	135
+  2595                           ;MCU_16f1516.c: 135: ANSELB=0x00;
+  2596  0401  018D               	clrf	(397)^0180h	;volatile
+  2597                           	line	136
+  2598                           ;MCU_16f1516.c: 136: ANSELC=0x00;
+  2599  0402  018E               	clrf	(398)^0180h	;volatile
+  2600                           	line	138
+  2601                           	
+  2602  0403                     l7890:	
+  2603                           ;MCU_16f1516.c: 138: PORTA=0x09;
+  2604  0403  3009               	movlw	(09h)
+  2605  0404  0020               	movlb 0	; select bank0
+  2606  0405  008C               	movwf	(12)	;volatile
+  2607                           	line	139
+  2608                           	
+  2609  0406                     l7892:	
+  2610                           ;MCU_16f1516.c: 139: PORTB=0x00;
+  2611  0406  018D               	clrf	(13)	;volatile
+  2612                           	line	140
+  2613                           	
+  2614  0407                     l7894:	
+  2615                           ;MCU_16f1516.c: 140: PORTC=0x00;
+  2616  0407  018E               	clrf	(14)	;volatile
+  2617                           	line	143
+  2618                           	
+  2619  0408                     l7896:	
+  2620                           ;MCU_16f1516.c: 143: OSCCON=0x78;
+  2621  0408  3078               	movlw	(078h)
+  2622  0409  0021               	movlb 1	; select bank1
+  2623  040A  0099               	movwf	(153)^080h	;volatile
+  2624                           	line	145
+  2625                           	
+  2626  040B                     l7898:	
+  2627                           ;MCU_16f1516.c: 145: OPTION_REG=0x01;
+  2628  040B  3001               	movlw	(01h)
+  2629  040C  0095               	movwf	(149)^080h	;volatile
+  2630                           	line	147
+  2631                           	
+  2632  040D                     l7900:	
+  2633                           ;MCU_16f1516.c: 147: GIE=1;
+  2634  040D  178B               	bsf	(95/8),(95)&7
+  2635                           	line	148
+  2636                           	
+  2637  040E                     l7902:	
+  2638                           ;MCU_16f1516.c: 148: PEIE=1;
+  2639  040E  170B               	bsf	(94/8),(94)&7
+  2640                           	line	149
+  2641                           	
+  2642  040F                     l7904:	
+  2643                           ;MCU_16f1516.c: 149: TMR0IE=1;
+  2644  040F  168B               	bsf	(93/8),(93)&7
+  2645                           	line	156
+  2646                           	
+  2647  0410                     l7906:	
+  2648                           ;MCU_16f1516.c: 156: TMR0=256-100;
+  2649  0410  309C               	movlw	(09Ch)
+  2650  0411  0020               	movlb 0	; select bank0
+  2651  0412  0095               	movwf	(21)	;volatile
+  2652                           	line	157
+  2653                           	
+  2654  0413                     l7908:	
+  2655                           ;MCU_16f1516.c: 157: TMR0IF=0;
+  2656  0413  110B               	bcf	(90/8),(90)&7
+  2657                           	line	160
+  2658                           	
+  2659  0414                     l7910:	
+  2660                           ;MCU_16f1516.c: 160: ADCON1=0xf0;
+  2661  0414  30F0               	movlw	(0F0h)
+  2662  0415  0021               	movlb 1	; select bank1
+  2663  0416  009E               	movwf	(158)^080h	;volatile
+  2664                           	line	161
+  2665                           	
+  2666  0417                     l7912:	
+  2667                           ;MCU_16f1516.c: 161: FVRCON=0xc0;
+  2668  0417  30C0               	movlw	(0C0h)
+  2669  0418  0022               	movlb 2	; select bank2
+  2670  0419  0097               	movwf	(279)^0100h	;volatile
+  2671                           	line	202
+  2672                           	
+  2673  041A                     l1035:	
+  2674  041A  0008               	return
+  2675                           	opt stack 0
+  2676                           GLOBAL	__end_of_MCU_Initial
+  2677  041B                     	__end_of_MCU_Initial:
+  2678 ;; =============== function _MCU_Initial ends ============
+  2679                           
+  2680                           	signat	_MCU_Initial,88
+  2681                           	global	_ISR
+  2682                           psect	intentry,class=CODE,delta=2
+  2683                           global __pintentry
+  2684  0004                     __pintentry:
+  2685                           
+  2686 ;; *************** function _ISR *****************
+  2687 ;; Defined at:
+  2688 ;;		line 21 in file "G:\Program\PIC\Source_File\MCU_16f1516.c"
+  2689 ;; Parameters:    Size  Location     Type
+  2690 ;;		None
+  2691 ;; Auto vars:     Size  Location     Type
+  2692 ;;		None
+  2693 ;; Return value:  Size  Location     Type
+  2694 ;;		None               void
+  2695 ;; Registers used:
+  2696 ;;		wreg, fsr1l, fsr1h, status,2, status,0
+  2697 ;; Tracked objects:
+  2698 ;;		On entry : 0/0
+  2699 ;;		On exit  : 0/0
+  2700 ;;		Unchanged: 0/0
+  2701 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2702 ;;      Params:         0       0       0       0       0       0       0       0
+  2703 ;;      Locals:         0       0       0       0       0       0       0       0
+  2704 ;;      Temps:          3       0       0       0       0       0       0       0
+  2705 ;;      Totals:         3       0       0       0       0       0       0       0
+  2706 ;;Total ram usage:        3 bytes
+  2707 ;; Hardware stack levels used:    1
+  2708 ;; This function calls:
+  2709 ;;		Nothing
+  2710 ;; This function is called by:
+  2711 ;;		Interrupt level 1
+  2712 ;; This function uses a non-reentrant model
+  2713 ;;
+  2714                           psect	intentry
+  2715                           	file	"G:\Program\PIC\Source_File\MCU_16f1516.c"
+  2716                           	line	21
+  2717                           	global	__size_of_ISR
+  2718  00BF                     	__size_of_ISR	equ	__end_of_ISR-_ISR
+  2719                           	
+  2720  0004                     _ISR:	
+  2721                           	opt	stack 13
+  2722                           ; Regs used in _ISR: [wreg+fsr1l-status,0]
+  2723                           psect	intentry
+  2724  0004  3180               	pagesel	$
+  2725  0005  0020               	movlb 0	; select bank0
+  2726  0006  087F               	movf	btemp+1,w
+  2727  0007  00F2               	movwf	(??_ISR+2)
+  2728                           	line	22
+  2729                           	
+  2730  0008                     i1l7830:	
+  2731                           ;MCU_16f1516.c: 22: if(TMR0IE && TMR0IF)
+  2732  0008  1E8B               	btfss	(93/8),(93)&7
+  2733  0009  280B               	goto	u254_21
+  2734  000A  280C               	goto	u254_20
+  2735  000B                     u254_21:
+  2736  000B  2844               	goto	i1l7846
+  2737  000C                     u254_20:
+  2738                           	
+  2739  000C                     i1l7832:	
+  2740  000C  1D0B               	btfss	(90/8),(90)&7
+  2741  000D  280F               	goto	u255_21
+  2742  000E  2810               	goto	u255_20
+  2743  000F                     u255_21:
+  2744  000F  2844               	goto	i1l7846
+  2745  0010                     u255_20:
+  2746                           	line	24
+  2747                           	
+  2748  0010                     i1l7834:	
+  2749                           ;MCU_16f1516.c: 23: {
+  2750                           ;MCU_16f1516.c: 24: if(Intr->Count<50)
+  2751  0010  0864               	movf	(_Intr),w
+  2752  0011  3E01               	addlw	01h
+  2753  0012  0086               	movwf	fsr1l
+  2754  0013  0187               	clrf fsr1h	
+  2755                           	
+  2756  0014  3F40               	moviw	[0]fsr1
+  2757  0015  00F0               	movwf	(??_ISR+0)+0
+  2758  0016  3F41               	moviw	[1]fsr1
+  2759  0017  00F1               	movwf	(??_ISR+0)+0+1
+  2760  0018  3000               	movlw	high(032h)
+  2761  0019  0271               	subwf	1+(??_ISR+0)+0,w
+  2762  001A  3032               	movlw	low(032h)
+  2763  001B  1903               	skipnz
+  2764  001C  0270               	subwf	0+(??_ISR+0)+0,w
+  2765  001D  1803               	skipnc
+  2766  001E  2820               	goto	u256_21
+  2767  001F  2821               	goto	u256_20
+  2768  0020                     u256_21:
+  2769  0020  282B               	goto	i1l7838
+  2770  0021                     u256_20:
+  2771                           	line	25
+  2772                           	
+  2773  0021                     i1l7836:	
+  2774                           ;MCU_16f1516.c: 25: Intr->Count++;
+  2775  0021  0864               	movf	(_Intr),w
+  2776  0022  3E01               	addlw	01h
+  2777  0023  0086               	movwf	fsr1l
+  2778  0024  0187               	clrf fsr1h	
+  2779                           	
+  2780  0025  3001               	movlw	01h
+  2781  0026  0781               	addwf	indf1,f
+  2782  0027  3141               	addfsr	fsr1,1
+  2783  0028  1803               	skipnc
+  2784  0029  0A81               	incf	indf1,f
+  2785  002A  2840               	goto	i1l7842
+  2786                           	line	26
+  2787                           	
+  2788  002B                     i1l1016:	
+  2789                           	line	28
+  2790                           	
+  2791  002B                     i1l7838:	
+  2792                           ;MCU_16f1516.c: 26: else
+  2793                           ;MCU_16f1516.c: 27: {
+  2794                           ;MCU_16f1516.c: 28: if(Intr->Timeout==0)
+  2795  002B  0864               	movf	(_Intr),w
+  2796  002C  0086               	movwf	fsr1l
+  2797  002D  0187               	clrf fsr1h	
+  2798                           	
+  2799  002E  1801               	btfsc	indf1,0
+  2800  002F  2831               	goto	u257_21
+  2801  0030  2832               	goto	u257_20
+  2802  0031                     u257_21:
+  2803  0031  2840               	goto	i1l7842
+  2804  0032                     u257_20:
+  2805                           	line	30
+  2806                           	
+  2807  0032                     i1l7840:	
+  2808                           ;MCU_16f1516.c: 29: {
+  2809                           ;MCU_16f1516.c: 30: Intr->Count=0;
+  2810  0032  0864               	movf	(_Intr),w
+  2811  0033  3E01               	addlw	01h
+  2812  0034  0086               	movwf	fsr1l
+  2813  0035  0187               	clrf fsr1h	
+  2814                           	
+  2815  0036  3000               	movlw	low(0)
+  2816  0037  3FC0               	movwi	[0]fsr1
+  2817  0038  3000               	movlw	high(0)
+  2818  0039  3FC1               	movwi	[1]fsr1
+  2819                           	line	31
+  2820                           ;MCU_16f1516.c: 31: Intr->Timeout=1;
+  2821  003A  0864               	movf	(_Intr),w
+  2822  003B  0086               	movwf	fsr1l
+  2823  003C  0187               	clrf fsr1h	
+  2824                           	
+  2825  003D  1401               	bsf	indf1,0
+  2826  003E  2840               	goto	i1l7842
+  2827                           	line	32
+  2828                           	
+  2829  003F                     i1l1018:	
+  2830  003F  2840               	goto	i1l7842
+  2831                           	line	33
+  2832                           	
+  2833  0040                     i1l1017:	
+  2834                           	line	35
+  2835                           	
+  2836  0040                     i1l7842:	
+  2837                           ;MCU_16f1516.c: 32: }
+  2838                           ;MCU_16f1516.c: 33: }
+  2839                           ;MCU_16f1516.c: 35: TMR0=256-100;
+  2840  0040  309C               	movlw	(09Ch)
+  2841  0041  0095               	movwf	(21)	;volatile
+  2842                           	line	36
+  2843                           	
+  2844  0042                     i1l7844:	
+  2845                           ;MCU_16f1516.c: 36: TMR0IF=0;
+  2846  0042  110B               	bcf	(90/8),(90)&7
+  2847  0043  2844               	goto	i1l7846
+  2848                           	line	37
+  2849                           	
+  2850  0044                     i1l1015:	
+  2851                           	line	60
+  2852                           	
+  2853  0044                     i1l7846:	
+  2854                           ;MCU_16f1516.c: 37: }
+  2855                           ;MCU_16f1516.c: 60: if(SSPIE && SSPIF)
+  2856  0044  0021               	movlb 1	; select bank1
+  2857  0045  1D91               	btfss	(1163/8)^080h,(1163)&7
+  2858  0046  2848               	goto	u258_21
+  2859  0047  2849               	goto	u258_20
+  2860  0048                     u258_21:
+  2861  0048  284F               	goto	i1l1019
+  2862  0049                     u258_20:
+  2863                           	
+  2864  0049                     i1l7848:	
+  2865  0049  0020               	movlb 0	; select bank0
+  2866  004A  1D91               	btfss	(139/8),(139)&7
+  2867  004B  284D               	goto	u259_21
+  2868  004C  284E               	goto	u259_20
+  2869  004D                     u259_21:
+  2870  004D  284F               	goto	i1l1019
+  2871  004E                     u259_20:
+  2872                           	line	62
+  2873                           	
+  2874  004E                     i1l7850:	
+  2875                           ;MCU_16f1516.c: 61: {
+  2876                           ;MCU_16f1516.c: 62: SSPIF = 0;
+  2877  004E  1191               	bcf	(139/8),(139)&7
+  2878                           	line	65
+  2879                           	
+  2880  004F                     i1l1019:	
+  2881                           	line	66
+  2882                           ;MCU_16f1516.c: 65: }
+  2883                           ;MCU_16f1516.c: 66: if(RCIE && RCIF)
+  2884  004F  0021               	movlb 1	; select bank1
+  2885  0050  1E91               	btfss	(1165/8)^080h,(1165)&7
+  2886  0051  2853               	goto	u260_21
+  2887  0052  2854               	goto	u260_20
+  2888  0053                     u260_21:
+  2889  0053  28B9               	goto	i1l7872
+  2890  0054                     u260_20:
+  2891                           	
+  2892  0054                     i1l7852:	
+  2893  0054  0020               	movlb 0	; select bank0
+  2894  0055  1E91               	btfss	(141/8),(141)&7
+  2895  0056  2858               	goto	u261_21
+  2896  0057  2859               	goto	u261_20
+  2897  0058                     u261_21:
+  2898  0058  28B9               	goto	i1l7872
+  2899  0059                     u261_20:
+  2900                           	line	68
+  2901                           	
+  2902  0059                     i1l7854:	
+  2903                           ;MCU_16f1516.c: 67: {
+  2904                           ;MCU_16f1516.c: 68: if(Uart->ReceiverOK == 0)
+  2905  0059  087A               	movf	(_Uart),w
+  2906  005A  0086               	movwf	fsr1l
+  2907  005B  0187               	clrf fsr1h	
+  2908                           	
+  2909  005C  1881               	btfsc	indf1,1
+  2910  005D  285F               	goto	u262_21
+  2911  005E  2860               	goto	u262_20
+  2912  005F                     u262_21:
+  2913  005F  28B9               	goto	i1l7872
+  2914  0060                     u262_20:
+  2915  0060  2862               	goto	i1l1022
+  2916                           	line	70
+  2917                           	
+  2918  0061                     i1l7856:	
+  2919                           ;MCU_16f1516.c: 69: {
+  2920                           ;MCU_16f1516.c: 70: while(RCIDL==0);
+  2921  0061  2862               	goto	i1l1022
+  2922                           	
+  2923  0062                     i1l1023:	
+  2924                           	
+  2925  0062                     i1l1022:	
+  2926  0062  0023               	movlb 3	; select bank3
+  2927  0063  1F1F               	btfss	(3326/8)^0180h,(3326)&7
+  2928  0064  2866               	goto	u263_21
+  2929  0065  2867               	goto	u263_20
+  2930  0066                     u263_21:
+  2931  0066  2862               	goto	i1l1022
+  2932  0067                     u263_20:
+  2933  0067  2868               	goto	i1l7858
+  2934                           	
+  2935  0068                     i1l1024:	
+  2936                           	line	71
+  2937                           	
+  2938  0068                     i1l7858:	
+  2939                           ;MCU_16f1516.c: 71: Uart->RxData[Uart->Number]=RCREG;
+  2940  0068  0819               	movf	(409)^0180h,w	;volatile
+  2941  0069  00F0               	movwf	(??_ISR+0)+0
+  2942  006A  087A               	movf	(_Uart),w
+  2943  006B  3E01               	addlw	01h
+  2944  006C  0086               	movwf	fsr1l
+  2945  006D  0187               	clrf fsr1h	
+  2946                           	
+  2947  006E  0801               	movf	indf1,w
+  2948  006F  3E08               	addlw	08h
+  2949  0070  077A               	addwf	(_Uart),w
+  2950  0071  00F1               	movwf	(??_ISR+1)+0
+  2951  0072  0871               	movf	0+(??_ISR+1)+0,w
+  2952  0073  0086               	movwf	fsr1l
+  2953  0074  0187               	clrf fsr1h	
+  2954                           	
+  2955  0075  0870               	movf	(??_ISR+0)+0,w
+  2956  0076  0081               	movwf	indf1
+  2957                           	line	79
+  2958                           ;MCU_16f1516.c: 79: Uart->RxLength++;
+  2959  0077  3001               	movlw	(01h)
+  2960  0078  00F0               	movwf	(??_ISR+0)+0
+  2961  0079  087A               	movf	(_Uart),w
+  2962  007A  3E07               	addlw	07h
+  2963  007B  0086               	movwf	fsr1l
+  2964  007C  0187               	clrf fsr1h	
+  2965                           	
+  2966  007D  0870               	movf	(??_ISR+0)+0,w
+  2967  007E  0781               	addwf	indf1,f
+  2968                           	line	80
+  2969                           ;MCU_16f1516.c: 80: Uart->Number++;
+  2970  007F  3001               	movlw	(01h)
+  2971  0080  00F0               	movwf	(??_ISR+0)+0
+  2972  0081  087A               	movf	(_Uart),w
+  2973  0082  3E01               	addlw	01h
+  2974  0083  0086               	movwf	fsr1l
+  2975  0084  0187               	clrf fsr1h	
+  2976                           	
+  2977  0085  0870               	movf	(??_ISR+0)+0,w
+  2978  0086  0781               	addwf	indf1,f
+  2979                           	line	81
+  2980                           ;MCU_16f1516.c: 81: while(RCIDL==1 && Uart->ReceiverOK == 0)
+  2981  0087  28A5               	goto	i1l7866
+  2982                           	
+  2983  0088                     i1l1026:	
+  2984                           	line	83
+  2985                           	
+  2986  0088                     i1l7860:	
+  2987                           ;MCU_16f1516.c: 82: {
+  2988                           ;MCU_16f1516.c: 83: Uart->WaitTime++;
+  2989  0088  3001               	movlw	(01h)
+  2990  0089  00F0               	movwf	(??_ISR+0)+0
+  2991  008A  087A               	movf	(_Uart),w
+  2992  008B  3E08               	addlw	08h
+  2993  008C  0086               	movwf	fsr1l
+  2994  008D  0187               	clrf fsr1h	
+  2995                           	
+  2996  008E  0870               	movf	(??_ISR+0)+0,w
+  2997  008F  0781               	addwf	indf1,f
+  2998                           	line	84
+  2999                           	
+  3000  0090                     i1l7862:	
+  3001                           ;MCU_16f1516.c: 84: if(Uart->WaitTime==10)
+  3002  0090  087A               	movf	(_Uart),w
+  3003  0091  3E08               	addlw	08h
+  3004  0092  0086               	movwf	fsr1l
+  3005  0093  0187               	clrf fsr1h	
+  3006                           	
+  3007  0094  0801               	movf	indf1,w
+  3008  0095  3A0A               	xorlw	0Ah&0ffh
+  3009  0096  1D03               	skipz
+  3010  0097  2899               	goto	u264_21
+  3011  0098  289A               	goto	u264_20
+  3012  0099                     u264_21:
+  3013  0099  28A5               	goto	i1l7866
+  3014  009A                     u264_20:
+  3015                           	line	86
+  3016                           	
+  3017  009A                     i1l7864:	
+  3018                           ;MCU_16f1516.c: 85: {
+  3019                           ;MCU_16f1516.c: 86: Uart->WaitTime=0;
+  3020  009A  087A               	movf	(_Uart),w
+  3021  009B  3E08               	addlw	08h
+  3022  009C  0086               	movwf	fsr1l
+  3023  009D  0187               	clrf fsr1h	
+  3024                           	
+  3025  009E  0181               	clrf	indf1
+  3026                           	line	87
+  3027                           ;MCU_16f1516.c: 87: Uart->ReceiverOK=1;
+  3028  009F  087A               	movf	(_Uart),w
+  3029  00A0  0086               	movwf	fsr1l
+  3030  00A1  0187               	clrf fsr1h	
+  3031                           	
+  3032  00A2  1481               	bsf	indf1,1
+  3033  00A3  28A5               	goto	i1l7866
+  3034                           	line	88
+  3035                           	
+  3036  00A4                     i1l1027:	
+  3037  00A4  28A5               	goto	i1l7866
+  3038                           	line	89
+  3039                           	
+  3040  00A5                     i1l1025:	
+  3041                           	line	81
+  3042                           	
+  3043  00A5                     i1l7866:	
+  3044  00A5  1F1F               	btfss	(3326/8)^0180h,(3326)&7
+  3045  00A6  28A8               	goto	u265_21
+  3046  00A7  28A9               	goto	u265_20
+  3047  00A8                     u265_21:
+  3048  00A8  28B2               	goto	i1l7870
+  3049  00A9                     u265_20:
+  3050                           	
+  3051  00A9                     i1l7868:	
+  3052  00A9  087A               	movf	(_Uart),w
+  3053  00AA  0086               	movwf	fsr1l
+  3054  00AB  0187               	clrf fsr1h	
+  3055                           	
+  3056  00AC  1C81               	btfss	indf1,1
+  3057  00AD  28AF               	goto	u266_21
+  3058  00AE  28B0               	goto	u266_20
+  3059  00AF                     u266_21:
+  3060  00AF  2888               	goto	i1l7860
+  3061  00B0                     u266_20:
+  3062  00B0  28B2               	goto	i1l7870
+  3063                           	
+  3064  00B1                     i1l1029:	
+  3065  00B1  28B2               	goto	i1l7870
+  3066                           	
+  3067  00B2                     i1l1030:	
+  3068                           	line	90
+  3069                           	
+  3070  00B2                     i1l7870:	
+  3071                           ;MCU_16f1516.c: 88: }
+  3072                           ;MCU_16f1516.c: 89: }
+  3073                           ;MCU_16f1516.c: 90: Uart->WaitTime=0;
+  3074  00B2  087A               	movf	(_Uart),w
+  3075  00B3  3E08               	addlw	08h
+  3076  00B4  0086               	movwf	fsr1l
+  3077  00B5  0187               	clrf fsr1h	
+  3078                           	
+  3079  00B6  0181               	clrf	indf1
+  3080  00B7  28B9               	goto	i1l7872
+  3081                           	line	91
+  3082                           	
+  3083  00B8                     i1l1021:	
+  3084  00B8  28B9               	goto	i1l7872
+  3085                           	line	93
+  3086                           	
+  3087  00B9                     i1l1020:	
+  3088                           	line	96
+  3089                           	
+  3090  00B9                     i1l7872:	
+  3091                           ;MCU_16f1516.c: 91: }
+  3092                           ;MCU_16f1516.c: 93: }
+  3093                           ;MCU_16f1516.c: 96: if(TXIE && TXIF)
+  3094  00B9  0021               	movlb 1	; select bank1
+  3095  00BA  1E11               	btfss	(1164/8)^080h,(1164)&7
+  3096  00BB  28BD               	goto	u267_21
+  3097  00BC  28BE               	goto	u267_20
+  3098  00BD                     u267_21:
+  3099  00BD  28BF               	goto	i1l1032
+  3100  00BE                     u267_20:
+  3101                           	
+  3102  00BE                     i1l7874:	
+  3103  00BE  28BF               	goto	i1l1032
+  3104                           	line	117
+  3105                           ;MCU_16f1516.c: 97: {
+  3106                           	
+  3107  00BF                     i1l1031:	
+  3108                           	line	118
+  3109                           	
+  3110  00BF                     i1l1032:	
+  3111  00BF  0872               	movf	(??_ISR+2),w
+  3112  00C0  0020               	movlb 0	; select bank0
+  3113  00C1  00FF               	movwf	btemp+1
+  3114  00C2  0009               	retfie
+  3115                           	opt stack 0
+  3116                           GLOBAL	__end_of_ISR
+  3117  00C3                     	__end_of_ISR:
+  3118 ;; =============== function _ISR ends ============
+  3119                           
+  3120                           	signat	_ISR,88
+  3121                           psect	intentry
+  3122                           	global	btemp
+  3123  007E                     	btemp set 07Eh
+  3124                           
+  3125                           	DABS	1,126,2	;btemp
+  3126                           	global	wtemp0
+  3127  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Mon Jun 09 08:51:03 2014
+
+                      _RD 0CA8                        _WR 0CA9                       _GIE 005F  
+                     _RA1 0061                       _RA3 0063                       _ISR 0004  
+                     _SEN 10B0                       wreg 0009           __end_of_CDS_Get 0441  
+                    ?_ISR 0070                      l1035 041A                      l2070 0131  
+                    l2063 0251                      l2071 01B9                      l2080 0320  
+                    l2072 01BA                      l2081 0322                      l2082 0337  
+                    l2066 0109                      l2075 0369                      l2083 033D  
+                    l2067 01BA                      l2076 0303                      l2084 0369  
+                    l2068 0132                      l2077 0324                      l2069 011B  
+                    l2078 0312                      l2079 0323                      l6210 0377  
+                    l6211 0386                      l6212 0387                      l6220 03BC  
+                    l6213 039C                      l6221 03CB                      l6214 03A8  
+                    l6222 03CC                      l6215 03B0                      l6223 03DB  
+                    l8000 0229                      l6208 03A9                      l6224 03E7  
+                    l6209 0381                      l6225 03EF                      l8002 0231  
+                    l8010 02E1                      l6218 03E8                      l6219 03C6  
+                    l8004 0239                      l8020 0303                      l8012 02E5  
+                    l6180 02A1                      l6181 02B6                      l8006 0241  
+                    l8030 032E                      l8022 030D                      l8014 02ED  
+                    l6190 0422                      l6182 02B5                      l6191 0422  
+                    l6183 02D3                      l8008 0249                      l8040 0354  
+                    l8032 0337                      l8024 0312                      l8016 02F4  
+                    l6192 0427                      l6184 02DC                      l6176 025F  
+                    l6193 0440                      l6185 02DE                      l6177 02DD  
+                    l8034 033D                      l8026 031C                      l8018 02FE  
+                    l6186 02DF                      l6178 02B7                      l6187 02DF  
+                    l6179 02A2                      l8036 0341                      l8028 0324  
+                    l8300 00D2                      l8038 0350                      l8310 0113  
+                    l8302 00DB                      l8240 041D                      l8312 011A  
+                    l8320 0132                      l8304 00ED                      l8242 0420  
+                    l8250 036A                      l8330 01B0                      l8322 0148  
+                    l8314 011B                      l8306 0109                      l8244 0427  
+                    l8260 0381                      l8252 036D                      l8324 015C  
+                    l8316 0126                      l8308 0112                      l8340 0258  
+                    l8332 0252                      l8246 0439                      l8238 041B  
+                    l8270 03A1                      l8262 0387                      l8254 0373  
+                    l8326 0186                      l8318 012A                      l8350 026E  
+                    l8342 025B                      l8334 0255                      l8248 0440  
+                    l8264 0396                      l8256 0377                      l8272 03A9  
+                    l8280 03BC                      l8328 019C                      l8360 028F  
+                    l8352 0273                      l8344 025F                      l8336 0256  
+                    l8274 03B0                      l8266 039A                      l8258 037C  
+                    l8290 03DB                      l8282 03C1                      l8362 0293  
+                    l8354 0279                      l8370 02B7                      l8346 0267  
+                    l8338 0257                      l7900 040D                      l8268 039C  
+                    l8292 03E0                      l8284 03C6                      l8276 03B1  
+                    l8372 02C9                      l8364 0297                      l8356 027A  
+                    l8348 026B                      l7910 0414                      l7902 040E  
+                    l8286 03CC                      l8278 03B7                      l8294 03E8  
+                    l8374 02D3                      l8358 027F                      l8366 02A2  
+                    l7912 0417                      l7904 040F                      l8296 03EF  
+                    l8288 03D6                      l8368 02B2                      l7906 0410  
+                    l8298 00C6                      l7908 0413                      l7880 03F9  
+                    l7890 0403                      l7882 03FA                      l7970 01C0  
+                    l7892 0406                      l7884 03FC                      l7876 03F0  
+                    l7980 01D9                      l7972 01C4                      l7894 0407  
+                    l7886 03FD                      l7878 03F8                      l7990 0201  
+                    l7982 01E1                      l7974 01C8                      l7896 0408  
+                    l7888 03FE                      l7992 0209                      l7984 01E9  
+                    l7976 01C9                      l7968 01BB                      _CFGS 0CAE  
+                    l7898 040B                      l7994 0211                      l7986 01F1  
+                    l7978 01D1                      l7996 0219                      l7988 01F9  
+                    l7998 0221                      _FREE 0CAC                      _LATA 010C  
+                    u3110 0426                      _LATB 010D                      u3111 0425  
+                    _LATC 010E                      u3120 0373                      u3121 0372  
+                    u3210 03CA                      u3211 03C9                      u3140 0385  
+                    u3220 03D6                      u3300 0130                      u3141 0384  
+                    u3221 03D5                      u3205 03BD                      u3301 012F  
+                    u3310 0267                      u3135 0378                      u3311 0266  
+                    u3160 0396                      u3240 03E6                      u3320 0279  
+                    u3161 0395                      u3241 03E5                      u3225 03D2  
+                    u3321 0278                      u3250 00D2                      u3330 027F  
+                    u3155 0388                      u3235 03DC                      u3251 00D1  
+                    u3331 027E                      u2700 02F4                      u3180 03A7  
+                    u3340 028F                      u2701 02F3                      u3181 03A6  
+                    u3165 0392                      u3341 028E                      u2710 02FE  
+                    u3190 03B7                      u3350 02B2                      u2711 02FD  
+                    u3175 039D                      u3191 03B6                      u3351 02B1  
+                    u2720 030D                      u3280 0112                      u3360 02C9  
+                    u2721 030C                      u3281 0111                      u3265 00E0  
+                    u3361 02C8                      u3345 028B                      u2730 031C  
+                    u3290 0119                      u2731 031B                      u3291 0118  
+                    u3275 00FB                      u3355 02AE                      u2740 032E  
+                    u2741 032D                      u2754 034A                      u2690 02ED  
+                    u2755 0349                      u2691 02EC                      _PEIE 005E  
+                    _RCIE 048D                      _RCIF 008D                      _LWLO 0CAD  
+                    _TMR0 0015                      _TXIE 048C                      _WREN 0CAA  
+                    _TXIF 008C                      _R_nW 10A2                      _Intr 0064  
+                    _Uart 007A                      _main 0252                      fsr0h 0005  
+                    fsr1h 0007                      fsr0l 0004                      indf0 0000  
+                    indf1 0001                      fsr1l 0006                      btemp 007E  
+                    start 00C3                     ??_ISR 0070                     ?_main 0070  
+         __end_of___lwdiv 03B1           __end_of___lwmod 03F0                     _RCIDL 0CFE  
+                   _RCREG 0199                     _PORTA 000C                     _PORTB 000D  
+                   _PORTC 000E                     _TRISA 008C                     _TRISB 008D  
+                   _TRISC 008E                     _SSPIE 048B                     _SSPIF 008B  
+                   _TXREG 019A                     _Touch 0079              ?_MCU_Initial 0070  
+                   main@i 0060                     main@j 0062                     main@k 0063  
+                   main@l 005F          Display_Setting@i 005C            __pbitbssCOMMON 03C0  
+                   status 0003                     wtemp0 007E              __end_of_main 02E1  
+                  ??_main 005D                 ??_CDS_Get 0054      __end_of_Display_Main 036A  
+                  _ADCON0 009D                    _ADCON1 009E                    _ADRESH 009C  
+                  _ADRESL 009B                    _ANSELA 018C                    _ANSELB 018D  
+                  _ANSELC 018E                    i1l1020 00B9                    i1l1021 00B8  
+                  i1l1030 00B2                    i1l1022 0062                    i1l1031 00BF  
+                  i1l1023 0062                    i1l1015 0044                    i1l1032 00BF  
+                  i1l1024 0068                    i1l1016 002B                    i1l1025 00A5  
+                  i1l1017 0040                    i1l1026 0088                    i1l1018 003F  
+                  i1l1027 00A4                    i1l1019 004F                    i1l1029 00B1  
+                  i1l7830 0008                    i1l7840 0032                    i1l7832 000C  
+                  i1l7850 004E                    i1l7842 0040                    i1l7834 0010  
+                  i1l7860 0088                    i1l7852 0054                    i1l7844 0042  
+                  i1l7836 0021                    i1l7870 00B2                    i1l7862 0090  
+                  i1l7854 0059                    i1l7838 002B                    i1l7846 0044  
+                  i1l7864 009A                    i1l7856 0061                    i1l7872 00B9  
+                  i1l7848 0049                    i1l7874 00BE                    i1l7866 00A5  
+                  i1l7858 0068                    i1l7868 00A9                    _FVRCON 0117  
+                  u260_20 0054                    u260_21 0053                    u261_20 0059  
+                  u261_21 0058                    u262_20 0060                    u254_20 000C  
+                  u262_21 005F                    u254_21 000B                    u263_20 0067  
+                  u255_20 0010                    u263_21 0066                    u255_21 000F  
+                  u264_20 009A                    u256_20 0021                    u264_21 0099  
+                  u256_21 0020                    _PMADRH 0192                    u265_20 00A9  
+                  u257_20 0032                    _PMADRL 0191                    u265_21 00A8  
+                  u257_21 0031                    u266_20 00B0                    u258_20 0049  
+                  u266_21 00AF                    u258_21 0048                    _PMDATH 0194  
+                  u267_20 00BE                    u259_20 004E                    _PMDATL 0193  
+                  u267_21 00BD                    u259_21 004D                    _PMCON2 0196  
+                  _OSCCON 0099                _VarSegment 002A                    _TMR0IE 005D  
+                  _TMR0IF 005A                    _SSPADD 0212                    _SSPBUF 0211  
+                  _Memory 00A0                 ??___lwdiv 0077                 ??___lwmod 0077  
+                  clrloop 0458           _Display_Initial 01BB           _Display_Setting 00C6  
+              _TouchPower 03C1            __pcstackCOMMON 0070                __pbssBANK0 0020  
+              __pbssBANK1 00A0      __size_of_MCU_Initial 002B                __pmaintext 0252  
+              __pintentry 0004   __end_of_Display_Initial 0252     __size_of_Display_Main 0089  
+                 _CDS_Get 041B   __end_of_Display_Setting 01BB                   _VarIntr 004D  
+                 _Segment 0065                   _VarUart 0020              _Display_Main 02E1  
+                 ___lwdiv 036A                   ___lwmod 03B1              __size_of_ISR 00BF  
+    end_of_initialization 0454          ?_Display_Initial 0070          ?_Display_Setting 0057  
+     start_initialization 0441               __end_of_ISR 00C3                 _Read_Data 0029  
+               _Momery_OK 03C0                  CDS_Get@i 0075                  ?_CDS_Get 0073  
+             __pbssCOMMON 0079             __pcstackBANK0 0054             ??_MCU_Initial 0073  
+               __pnvBANK0 0064          ___lwdiv@dividend 0075                 __ptext371 00C6  
+               __ptext372 03B1                 __ptext373 036A                 __ptext374 041B  
+               __ptext375 02E1                 __ptext376 01BB                 __ptext377 03F0  
+                ?___lwdiv 0073                  ?___lwmod 0073          ___lwdiv@quotient 0055  
+     __end_of_MCU_Initial 041B                  _GO_nDONE 04E9          __size_of_CDS_Get 0026  
+                _VarTouch 0045          __size_of___lwdiv 0047          __size_of___lwmod 003F  
+         ___lwdiv@divisor 0073  __size_of_Display_Initial 0097           ___lwdiv@counter 0054  
+             _MCU_Initial 03F0  __size_of_Display_Setting 00F5             __size_of_main 008F  
+                clear_ram 0457             Display_Main@i 0076             Display_Main@j 0075  
+     Display_Setting@Data 0057                  intlevel1 0000          ___lwmod@dividend 0075  
+           ?_Display_Main 0070                _OPTION_REG 0095           ___lwmod@divisor 0073  
+         ___lwmod@counter 0054         ??_Display_Initial 0073         ??_Display_Setting 0059  
+          ??_Display_Main 0073  

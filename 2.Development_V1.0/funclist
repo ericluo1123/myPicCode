@@ -1,0 +1,10 @@
+_ISR: CODE, 4 0 191
+_main: CODE, 594 0 143
+_Display_Initial: CODE, 443 0 151
+_Display_Setting: CODE, 198 0 245
+___lwdiv: CODE, 874 0 71
+___lwmod: CODE, 945 0 63
+_CDS_Get: CODE, 1051 0 38
+_MCU_Initial: CODE, 1008 0 43
+_Display_Main: CODE, 737 0 137
+Total: 1082
