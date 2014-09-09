@@ -1,0 +1,178 @@
+
+# 1 "G:\Program\PIC\Source_File\CC2500_A.c"
+
+# 12 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
+typedef int ptrdiff_t;
+typedef unsigned size_t;
+typedef unsigned short wchar_t;
+
+# 31 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma inline(__va_start)
+extern void * __va_start(void);
+
+#pragma inline(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 27 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
+extern int errno;
+
+# 58
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 17 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\conio.h"
+extern int errno;
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern bit kbhit(void);
+
+# 31
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 103 "C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+# 195
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...);
+extern int sscanf(const char *, const char *, ...);
+extern int vprintf(const char *, va_list);
+extern int vsprintf(char *, const char *, va_list);
+extern int vscanf(const char *, va_list ap);
+extern int vsscanf(const char *, const char *, va_list);
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 18 "G:\Program\PIC\6.Swtich_2KEY_TRIAC\Relese\../Release/Switch_2Key_Triac.h"
+struct Product
+{
+unsigned char Data[21];
+};
+struct Product *Product;
+struct Product VarProduct=
+{
+{0,0,0,0,0,0,0,0,0,0,
+0,0,0xff,0xff,0xff,0,0,0,0,0,
+2
+}
+};
+
+
+
+
+struct TMain
+{
+unsigned PowerON:1;
+unsigned T0_Timerout:1;
+unsigned T1_Timerout:1;
+unsigned Flag:1;
+unsigned GO:1;
+unsigned int PowerCount;
+unsigned int Count;
+unsigned int Count1;
+unsigned int Count2;
+unsigned int Count3;
+unsigned char IOC_Count;
+}
+struct TMain VarTMain;
+struct TMain *TMain;
+
+
+
+
+void MainT_Initial();
+void MainT();
+
+# 118
+typedef int ADtype;
+
+# 31 "G:\Program\PIC\Header_File\../Header_File/Switch_A.h"
+struct Switch
+{
+unsigned Enable:1;
+unsigned Debounce:1;
+unsigned LearnRun:1;
+unsigned LearnStop:1;
+unsigned DimmerRun:1;
+
+unsigned char DebounceTime;
+unsigned int LearnTime;
+
+unsigned Key1Status:1;
+unsigned Key1Flag:1;
+
+unsigned Key2Status:1;
+unsigned Key2Flag:1;
+
+unsigned Key3Status:1;
+unsigned Key3Flag:1;
+};
+struct Switch VarSwitch;
+struct Switch *Switch;
+
+# 23 "G:\Program\PIC\Header_File\../Header_File/Buzzer_A1.h"
+struct Buzzer
+{
+unsigned Enable:1;
+unsigned GO:1;
+unsigned PowerON:1;
+unsigned BufferStatus:1;
+unsigned int Time;
+unsigned char Count;
+unsigned char CountBuffer;
+unsigned int TimeValue;
+unsigned char TimeValueBuffer;
+};
+struct Buzzer VarBuzzer;
+struct Buzzer *Buzzer;
+
+# 54
+void setBuzzer(char,char);
+void setBuzEnable(char);
+
+void Buzzer_Main();
+void Buzzer_Initial();
+
+# 23 "G:\Program\PIC\Header_File\../Header_File/LED_A.h"
+struct LED
+{
+unsigned Enable:1;
+unsigned GO:1;
+unsigned int Time;
+unsigned char Number;
+};
+struct LED VarErrLED;
+struct LED *_ErrLED;
+
+# 114
+struct LED VarLED1;
+struct LED *_LED1;
+struct LED VarLED2;
+struct LED *_LED2;
+struct LED VarLED3;
+struct LED *_LED3;
+
+# 6 "G:\Program\PIC\Header_File\../Header_File/SYSC_A.h"
+bit MSYSC_Signal;

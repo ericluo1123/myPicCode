@@ -1,0 +1,11 @@
+_ISR: CODE, 4 0 63
+_putch: CODE, 1679 0 12
+_main: CODE, 70 0 661
+_MainT: CODE, 731 0 249
+_MainT_Initial: CODE, 1691 0 10
+_setOverLoadtoEnable: CODE, 1717 0 2
+___lwdiv: CODE, 1475 0 70
+_printf: CODE, 980 0 211
+___lwmod: CODE, 1545 0 63
+_CDS_Get: CODE, 1644 0 35
+Total: 1376

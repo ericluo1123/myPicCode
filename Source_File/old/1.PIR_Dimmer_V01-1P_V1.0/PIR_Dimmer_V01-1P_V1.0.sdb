@@ -1,0 +1,5135 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F723A ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S32 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S40 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S44 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S70 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S79 . 1 `S70 1 . 1 0 ]
+"182
+[s S100 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S109 . 1 `S100 1 . 1 0 ]
+"208
+[s S130 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S139 . 1 `S130 1 . 1 0 ]
+"227
+[s S153 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S156 . 1 `S153 1 . 1 0 ]
+"238
+[s S163 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S165 . 1 `S163 1 . 1 0 ]
+"262
+[s S183 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S192 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S199 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S228 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S237 . 1 `S228 1 . 1 0 ]
+"315
+[s S251 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S253 . 1 `S251 1 . 1 0 ]
+"347
+[s S271 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S278 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S286 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S289 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S321 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S325 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S333 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S359 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S365 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S370 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S397 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S401 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S408 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S412 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S445 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S454 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S458 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S461 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S464 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S503 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S506 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S513 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S517 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S547 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S551 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S555 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S562 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S565 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S568 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S605 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S612 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S616 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S640 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S649 . 1 `S640 1 . 1 0 ]
+"699
+[s S670 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S679 . 1 `S670 1 . 1 0 ]
+"725
+[s S700 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S709 . 1 `S700 1 . 1 0 ]
+"744
+[s S723 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S728 . 1 `S723 1 . 1 0 ]
+"766
+[s S745 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S754 . 1 `S745 1 . 1 0 ]
+"785
+[s S768 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S770 . 1 `S768 1 . 1 0 ]
+"799
+[s S779 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S782 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S784 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S806 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S814 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S822 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S827 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S830 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S833 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S872 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S877 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S881 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S901 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S903 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S910 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S949 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S958 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S967 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S972 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S978 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S983 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S988 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S993 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S998 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S1075 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S1084 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S1093 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S1133 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S1142 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S1151 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S1184 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S1193 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S1197 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S1200 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S1230 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S1239 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S1254 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S1257 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S1269 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S1277 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S1280 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S1301 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S1305 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S1312 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S1333 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S1339 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S1343 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S1362 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S1364 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S1369 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S1385 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S1387 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S1393 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S1395 . 1 `S163 1 . 1 0 ]
+"1326
+[s S1407 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S1409 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S1416 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S1436 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S1438 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S1445 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S1461 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S1463 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S1465 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S1473 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S1486 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S1495 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S1540 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S1587 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S1604 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S1683 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S1691 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S1695 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S1709 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S1718 . 1 `S70 1 . 1 0 ]
+"182
+[s S1730 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S1739 . 1 `S100 1 . 1 0 ]
+"208
+[s S1751 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S1760 . 1 `S130 1 . 1 0 ]
+"227
+[s S1765 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S1768 . 1 `S153 1 . 1 0 ]
+"238
+[s S1772 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S1774 . 1 `S163 1 . 1 0 ]
+"262
+[s S1790 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S1799 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S1806 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S1819 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S1828 . 1 `S228 1 . 1 0 ]
+"315
+[s S1833 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S1835 . 1 `S251 1 . 1 0 ]
+"347
+[s S1851 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S1858 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S1866 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S1869 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S1883 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S1887 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S1895 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S1909 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S1915 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S1920 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S1936 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S1940 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S1947 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S1951 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S1969 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S1978 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S1982 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S1985 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S1988 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S2008 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S2011 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S2018 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S2022 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S2038 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S2042 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S2046 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S2053 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S2056 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S2059 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S2075 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S2082 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S2086 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S2099 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S2108 . 1 `S640 1 . 1 0 ]
+"699
+[s S2120 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S2129 . 1 `S670 1 . 1 0 ]
+"725
+[s S2141 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S2150 . 1 `S700 1 . 1 0 ]
+"744
+[s S2155 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S2160 . 1 `S723 1 . 1 0 ]
+"766
+[s S2172 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S2181 . 1 `S745 1 . 1 0 ]
+"785
+[s S2186 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S2188 . 1 `S768 1 . 1 0 ]
+"799
+[s S2195 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S2198 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S2200 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S2217 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S2225 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S2233 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S2238 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S2241 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S2244 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S2256 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S2261 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S2265 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S2276 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S2278 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S2285 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S2315 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S2324 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S2333 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S2338 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S2344 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S2349 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S2354 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S2359 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S2364 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S2392 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S2401 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S2410 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S2432 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S2441 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S2450 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S2465 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S2474 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S2478 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S2481 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S2495 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S2504 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S2510 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S2513 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S2522 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S2530 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S2533 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S2543 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S2547 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S2554 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S2564 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S2570 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S2574 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S2583 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S2585 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S2590 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S2599 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S2601 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S2605 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S2607 . 1 `S163 1 . 1 0 ]
+"1326
+[s S2617 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S2619 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S2626 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S2637 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S2639 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S2646 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S2653 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S2655 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S2657 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S2661 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S2669 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S2675 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S2699 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S2724 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S2734 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"16 G:\Program\PIC\Source_File\MCU_16F723A.c
+[v F1452 `(v  1 t 0 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S2770 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S2778 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S2782 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S2796 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S2805 . 1 `S70 1 . 1 0 ]
+"182
+[s S2817 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S2826 . 1 `S100 1 . 1 0 ]
+"208
+[s S2838 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S2847 . 1 `S130 1 . 1 0 ]
+"227
+[s S2852 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S2855 . 1 `S153 1 . 1 0 ]
+"238
+[s S2859 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S2861 . 1 `S163 1 . 1 0 ]
+"262
+[s S2877 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S2886 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S2893 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S2906 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S2915 . 1 `S228 1 . 1 0 ]
+"315
+[s S2920 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S2922 . 1 `S251 1 . 1 0 ]
+"347
+[s S2938 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S2945 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S2953 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S2956 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S2970 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S2974 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S2982 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S2996 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S3002 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S3007 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S3023 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S3027 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S3034 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S3038 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S3056 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S3065 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S3069 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S3072 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S3075 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S3095 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S3098 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S3105 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S3109 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S3125 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S3129 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S3133 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S3140 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S3143 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S3146 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S3162 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S3169 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S3173 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S3186 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S3195 . 1 `S640 1 . 1 0 ]
+"699
+[s S3207 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S3216 . 1 `S670 1 . 1 0 ]
+"725
+[s S3228 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S3237 . 1 `S700 1 . 1 0 ]
+"744
+[s S3242 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S3247 . 1 `S723 1 . 1 0 ]
+"766
+[s S3259 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S3268 . 1 `S745 1 . 1 0 ]
+"785
+[s S3273 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S3275 . 1 `S768 1 . 1 0 ]
+"799
+[s S3282 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S3285 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S3287 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S3304 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S3312 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S3320 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S3325 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S3328 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S3331 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S3343 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S3348 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S3352 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S3363 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S3365 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S3372 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S3402 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S3411 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S3420 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S3425 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S3431 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S3436 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S3441 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S3446 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S3451 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S3479 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S3488 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S3497 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S3519 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S3528 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S3537 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S3552 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S3561 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S3565 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S3568 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S3582 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S3591 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S3597 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S3600 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S3609 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S3617 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S3620 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S3630 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S3634 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S3641 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S3651 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S3657 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S3661 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S3670 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S3672 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S3677 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S3686 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S3688 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S3692 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S3694 . 1 `S163 1 . 1 0 ]
+"1326
+[s S3704 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S3706 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S3713 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S3724 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S3726 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S3733 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S3740 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S3742 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S3744 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S3748 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Header_File\../Header_File/Buzzer.h
+[s S3756 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Header_File\../Header_File/LED.h
+[s S3762 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Header_File\../Header_File/Dimmer.h
+[s S3786 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Header_File\../Header_File/Sensor_PIR+CDS.h
+[s S3811 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S3821 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S3887 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S3895 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S3899 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S3913 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S3922 . 1 `S70 1 . 1 0 ]
+"182
+[s S3934 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S3943 . 1 `S100 1 . 1 0 ]
+"208
+[s S3955 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S3964 . 1 `S130 1 . 1 0 ]
+"227
+[s S3969 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S3972 . 1 `S153 1 . 1 0 ]
+"238
+[s S3976 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S3978 . 1 `S163 1 . 1 0 ]
+"262
+[s S3994 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S4003 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S4010 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S4023 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S4032 . 1 `S228 1 . 1 0 ]
+"315
+[s S4037 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S4039 . 1 `S251 1 . 1 0 ]
+"347
+[s S4055 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S4062 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S4070 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S4073 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S4087 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S4091 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S4099 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S4113 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S4119 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S4124 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S4140 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S4144 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S4151 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S4155 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S4173 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S4182 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S4186 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S4189 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S4192 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S4212 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S4215 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S4222 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S4226 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S4242 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S4246 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S4250 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S4257 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S4260 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S4263 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S4279 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S4286 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S4290 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S4303 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S4312 . 1 `S640 1 . 1 0 ]
+"699
+[s S4324 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S4333 . 1 `S670 1 . 1 0 ]
+"725
+[s S4345 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S4354 . 1 `S700 1 . 1 0 ]
+"744
+[s S4359 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S4364 . 1 `S723 1 . 1 0 ]
+"766
+[s S4376 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S4385 . 1 `S745 1 . 1 0 ]
+"785
+[s S4390 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S4392 . 1 `S768 1 . 1 0 ]
+"799
+[s S4399 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S4402 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S4404 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S4421 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S4429 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S4437 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S4442 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S4445 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S4448 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S4460 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S4465 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S4469 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S4480 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S4482 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S4489 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S4519 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S4528 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S4537 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S4542 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S4548 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S4553 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S4558 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S4563 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S4568 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S4596 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S4605 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S4614 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S4636 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S4645 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S4654 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S4669 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S4678 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S4682 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S4685 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S4699 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S4708 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S4714 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S4717 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S4726 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S4734 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S4737 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S4747 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S4751 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S4758 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S4768 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S4774 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S4778 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S4787 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S4789 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S4794 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S4803 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S4805 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S4809 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S4811 . 1 `S163 1 . 1 0 ]
+"1326
+[s S4821 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S4823 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S4830 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S4841 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S4843 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S4850 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S4857 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S4859 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S4861 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S4865 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S4873 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S4879 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S4903 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S4928 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S4938 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S4965 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S4973 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S4977 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S4991 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S5000 . 1 `S70 1 . 1 0 ]
+"182
+[s S5012 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S5021 . 1 `S100 1 . 1 0 ]
+"208
+[s S5033 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S5042 . 1 `S130 1 . 1 0 ]
+"227
+[s S5047 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S5050 . 1 `S153 1 . 1 0 ]
+"238
+[s S5054 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S5056 . 1 `S163 1 . 1 0 ]
+"262
+[s S5072 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S5081 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S5088 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S5101 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S5110 . 1 `S228 1 . 1 0 ]
+"315
+[s S5115 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S5117 . 1 `S251 1 . 1 0 ]
+"347
+[s S5133 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S5140 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S5148 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S5151 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S5165 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S5169 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S5177 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S5191 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S5197 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S5202 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S5218 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S5222 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S5229 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S5233 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S5251 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S5260 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S5264 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S5267 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S5270 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S5290 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S5293 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S5300 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S5304 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S5320 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S5324 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S5328 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S5335 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S5338 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S5341 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S5357 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S5364 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S5368 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S5381 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S5390 . 1 `S640 1 . 1 0 ]
+"699
+[s S5402 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S5411 . 1 `S670 1 . 1 0 ]
+"725
+[s S5423 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S5432 . 1 `S700 1 . 1 0 ]
+"744
+[s S5437 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S5442 . 1 `S723 1 . 1 0 ]
+"766
+[s S5454 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S5463 . 1 `S745 1 . 1 0 ]
+"785
+[s S5468 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S5470 . 1 `S768 1 . 1 0 ]
+"799
+[s S5477 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S5480 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S5482 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S5499 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S5507 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S5515 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S5520 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S5523 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S5526 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S5538 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S5543 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S5547 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S5558 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S5560 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S5567 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S5597 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S5606 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S5615 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S5620 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S5626 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S5631 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S5636 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S5641 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S5646 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S5674 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S5683 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S5692 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S5714 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S5723 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S5732 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S5747 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S5756 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S5760 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S5763 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S5777 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S5786 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S5792 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S5795 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S5804 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S5812 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S5815 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S5825 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S5829 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S5836 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S5846 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S5852 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S5856 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S5865 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S5867 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S5872 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S5881 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S5883 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S5887 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S5889 . 1 `S163 1 . 1 0 ]
+"1326
+[s S5899 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S5901 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S5908 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S5919 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S5921 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S5928 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S5935 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S5937 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S5939 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S5943 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S5951 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S5957 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S5981 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S6006 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S6016 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S6043 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S6051 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S6055 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S6069 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S6078 . 1 `S70 1 . 1 0 ]
+"182
+[s S6090 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S6099 . 1 `S100 1 . 1 0 ]
+"208
+[s S6111 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S6120 . 1 `S130 1 . 1 0 ]
+"227
+[s S6125 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S6128 . 1 `S153 1 . 1 0 ]
+"238
+[s S6132 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S6134 . 1 `S163 1 . 1 0 ]
+"262
+[s S6150 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S6159 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S6166 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S6179 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S6188 . 1 `S228 1 . 1 0 ]
+"315
+[s S6193 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S6195 . 1 `S251 1 . 1 0 ]
+"347
+[s S6211 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S6218 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S6226 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S6229 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S6243 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S6247 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S6255 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S6269 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S6275 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S6280 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S6296 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S6300 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S6307 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S6311 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S6329 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S6338 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S6342 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S6345 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S6348 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S6368 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S6371 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S6378 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S6382 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S6398 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S6402 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S6406 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S6413 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S6416 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S6419 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S6435 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S6442 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S6446 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S6459 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S6468 . 1 `S640 1 . 1 0 ]
+"699
+[s S6480 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S6489 . 1 `S670 1 . 1 0 ]
+"725
+[s S6501 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S6510 . 1 `S700 1 . 1 0 ]
+"744
+[s S6515 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S6520 . 1 `S723 1 . 1 0 ]
+"766
+[s S6532 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S6541 . 1 `S745 1 . 1 0 ]
+"785
+[s S6546 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S6548 . 1 `S768 1 . 1 0 ]
+"799
+[s S6555 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S6558 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S6560 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S6577 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S6585 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S6593 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S6598 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S6601 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S6604 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S6616 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S6621 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S6625 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S6636 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S6638 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S6645 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S6675 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S6684 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S6693 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S6698 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S6704 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S6709 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S6714 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S6719 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S6724 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S6752 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S6761 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S6770 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S6792 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S6801 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S6810 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S6825 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S6834 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S6838 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S6841 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S6855 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S6864 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S6870 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S6873 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S6882 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S6890 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S6893 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S6903 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S6907 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S6914 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S6924 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S6930 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S6934 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S6943 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S6945 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S6950 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S6959 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S6961 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S6965 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S6967 . 1 `S163 1 . 1 0 ]
+"1326
+[s S6977 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S6979 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S6986 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S6997 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S6999 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S7006 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S7013 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S7015 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S7017 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S7021 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S7029 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S7035 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S7059 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S7084 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S7094 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"122 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[s S7128 . 1 `uc 1 C 1 0 :1:0 
+`uc 1 DC 1 0 :1:1 
+`uc 1 Z 1 0 :1:2 
+`uc 1 nPD 1 0 :1:3 
+`uc 1 nTO 1 0 :1:4 
+`uc 1 RP 1 0 :2:5 
+`uc 1 IRP 1 0 :1:7 
+]
+[s S7136 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RP0 1 0 :1:5 
+`uc 1 RP1 1 0 :1:6 
+]
+[u S7140 . 1 `S32 1 . 1 0 `S40 1 . 1 0 ]
+"156
+[s S7154 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S7163 . 1 `S70 1 . 1 0 ]
+"182
+[s S7175 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S7184 . 1 `S100 1 . 1 0 ]
+"208
+[s S7196 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S7205 . 1 `S130 1 . 1 0 ]
+"227
+[s S7210 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RE3 1 0 :1:3 
+]
+[u S7213 . 1 `S153 1 . 1 0 ]
+"238
+[s S7217 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S7219 . 1 `S163 1 . 1 0 ]
+"262
+[s S7235 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S7244 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S7251 . 1 `S183 1 . 1 0 `S192 1 . 1 0 ]
+"296
+[s S7264 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+[u S7273 . 1 `S228 1 . 1 0 ]
+"315
+[s S7278 . 1 `uc 1 CCP2IF 1 0 :1:0 
+]
+[u S7280 . 1 `S251 1 . 1 0 ]
+"347
+[s S7296 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 T1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[s S7303 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+[s S7311 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+]
+[u S7314 . 1 `S271 1 . 1 0 `S278 1 . 1 0 `S286 1 . 1 0 ]
+"387
+[s S7328 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+[s S7332 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S7340 . 1 `S321 1 . 1 0 `S325 1 . 1 0 ]
+"421
+[s S7354 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+[s S7360 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S7365 . 1 `S359 1 . 1 0 `S365 1 . 1 0 ]
+"462
+[s S7381 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 DC1B 1 0 :2:4 
+`uc 1 . 1 0 :2:6 
+]
+[s S7385 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+`uc 1 DC1B0 1 0 :1:4 
+`uc 1 DC1B1 1 0 :1:5 
+]
+[s S7392 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+[u S7396 . 1 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 ]
+"500
+[s S7414 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+[s S7423 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S7427 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S7430 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S7433 . 1 `S445 1 . 1 0 `S454 1 . 1 0 `S458 1 . 1 0 `S461 1 . 1 0 ]
+"559
+[s S7453 . 1 `uc 1 CCP2M 1 0 :4:0 
+`uc 1 DC2B 1 0 :2:4 
+]
+[s S7456 . 1 `uc 1 CCP2M0 1 0 :1:0 
+`uc 1 CCP2M1 1 0 :1:1 
+`uc 1 CCP2M2 1 0 :1:2 
+`uc 1 CCP2M3 1 0 :1:3 
+`uc 1 DC2B0 1 0 :1:4 
+`uc 1 DC2B1 1 0 :1:5 
+]
+[s S7463 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CCP2Y 1 0 :1:4 
+`uc 1 CCP2X 1 0 :1:5 
+]
+[u S7467 . 1 `S503 1 . 1 0 `S506 1 . 1 0 `S513 1 . 1 0 ]
+"597
+[s S7483 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S7487 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+]
+[s S7491 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S7498 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S7501 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S7504 . 1 `S547 1 . 1 0 `S551 1 . 1 0 `S555 1 . 1 0 `S562 1 . 1 0 `S565 1 . 1 0 ]
+"644
+[s S7520 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S7527 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S7531 . 1 `S605 1 . 1 0 `S612 1 . 1 0 ]
+"673
+[s S7544 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+[u S7553 . 1 `S640 1 . 1 0 ]
+"699
+[s S7565 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+[u S7574 . 1 `S670 1 . 1 0 ]
+"725
+[s S7586 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+[u S7595 . 1 `S700 1 . 1 0 ]
+"744
+[s S7600 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+[u S7605 . 1 `S723 1 . 1 0 ]
+"766
+[s S7617 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+[u S7626 . 1 `S745 1 . 1 0 ]
+"785
+[s S7631 . 1 `uc 1 CCP2IE 1 0 :1:0 
+]
+[u S7633 . 1 `S768 1 . 1 0 ]
+"799
+[s S7640 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+]
+[s S7643 . 1 `uc 1 nBO 1 0 :1:0 
+]
+[u S7645 . 1 `S779 1 . 1 0 `S782 1 . 1 0 ]
+"826
+[s S7662 . 1 `uc 1 T1GSS 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+[s S7670 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1G1SE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S7678 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 T1G_nDONE 1 0 :1:3 
+]
+[s S7683 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_DONE 1 0 :1:3 
+]
+[s S7686 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S7689 . 1 `S806 1 . 1 0 `S814 1 . 1 0 `S822 1 . 1 0 `S827 1 . 1 0 `S830 1 . 1 0 ]
+"870
+[s S7701 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ICSS 1 0 :1:2 
+`uc 1 ICSL 1 0 :1:3 
+`uc 1 IRCF 1 0 :2:4 
+]
+[s S7706 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+]
+[u S7710 . 1 `S872 1 . 1 0 `S877 1 . 1 0 ]
+"895
+[s S7721 . 1 `uc 1 TUN 1 0 :6:0 
+]
+[s S7723 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S7730 . 1 `S901 1 . 1 0 `S903 1 . 1 0 ]
+"948
+[s S7760 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S7769 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 . 1 0 :1:7 
+]
+[s S7778 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S7783 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S7789 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S7794 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S7799 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S7804 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S7809 . 1 `S949 1 . 1 0 `S958 1 . 1 0 `S967 1 . 1 0 `S972 1 . 1 0 `S978 1 . 1 0 `S983 1 . 1 0 `S988 1 . 1 0 `S993 1 . 1 0 ]
+"1030
+[s S7837 . 1 `uc 1 WPUB0 1 0 :1:0 
+`uc 1 WPUB1 1 0 :1:1 
+`uc 1 WPUB2 1 0 :1:2 
+`uc 1 WPUB3 1 0 :1:3 
+`uc 1 WPUB4 1 0 :1:4 
+`uc 1 WPUB5 1 0 :1:5 
+`uc 1 WPUB6 1 0 :1:6 
+`uc 1 WPUB7 1 0 :1:7 
+]
+[s S7846 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 WPU3 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+`uc 1 WPU6 1 0 :1:6 
+`uc 1 WPU7 1 0 :1:7 
+]
+[u S7855 . 1 `S1075 1 . 1 0 `S1084 1 . 1 0 ]
+"1075
+[s S7877 . 1 `uc 1 IOCB0 1 0 :1:0 
+`uc 1 IOCB1 1 0 :1:1 
+`uc 1 IOCB2 1 0 :1:2 
+`uc 1 IOCB3 1 0 :1:3 
+`uc 1 IOCB4 1 0 :1:4 
+`uc 1 IOCB5 1 0 :1:5 
+`uc 1 IOCB6 1 0 :1:6 
+`uc 1 IOCB7 1 0 :1:7 
+]
+[s S7886 . 1 `uc 1 IOC0 1 0 :1:0 
+`uc 1 IOC1 1 0 :1:1 
+`uc 1 IOC2 1 0 :1:2 
+`uc 1 IOC3 1 0 :1:3 
+`uc 1 IOC4 1 0 :1:4 
+`uc 1 IOC5 1 0 :1:5 
+`uc 1 IOC6 1 0 :1:6 
+`uc 1 IOC7 1 0 :1:7 
+]
+[u S7895 . 1 `S1133 1 . 1 0 `S1142 1 . 1 0 ]
+"1113
+[s S7910 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+[s S7919 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S7923 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S7926 . 1 `S1184 1 . 1 0 `S1193 1 . 1 0 `S1197 1 . 1 0 ]
+"1148
+[s S7940 . 1 `uc 1 BRG0 1 0 :1:0 
+`uc 1 BRG1 1 0 :1:1 
+`uc 1 BRG2 1 0 :1:2 
+`uc 1 BRG3 1 0 :1:3 
+`uc 1 BRG4 1 0 :1:4 
+`uc 1 BRG5 1 0 :1:5 
+`uc 1 BRG6 1 0 :1:6 
+`uc 1 BRG7 1 0 :1:7 
+]
+[u S7949 . 1 `S1230 1 . 1 0 ]
+"1168
+[s S7955 . 1 `uc 1 CCP2SEL 1 0 :1:0 
+`uc 1 SSSEL 1 0 :1:1 
+]
+[u S7958 . 1 `S1254 1 . 1 0 ]
+"1185
+[s S7967 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 . 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 FVREN 1 0 :1:6 
+`uc 1 FVRRDY 1 0 :1:7 
+]
+[s S7975 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 FVRST 1 0 :1:7 
+]
+[u S7978 . 1 `S1269 1 . 1 0 `S1277 1 . 1 0 ]
+"1211
+[s S7988 . 1 `uc 1 ADREF 1 0 :2:0 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS 1 0 :3:4 
+]
+[s S7992 . 1 `uc 1 ADREF0 1 0 :1:0 
+`uc 1 ADREF1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S7999 . 1 `S1301 1 . 1 0 `S1305 1 . 1 0 ]
+"1242
+[s S8009 . 1 `uc 1 T0XCS 1 0 :1:0 
+`uc 1 CPSOUT 1 0 :1:1 
+`uc 1 CPSRNG 1 0 :2:2 
+`uc 1 . 1 0 :3:4 
+`uc 1 CPSON 1 0 :1:7 
+]
+[s S8015 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 CPSRNG0 1 0 :1:2 
+`uc 1 CPSRNG1 1 0 :1:3 
+]
+[u S8019 . 1 `S1333 1 . 1 0 `S1339 1 . 1 0 ]
+"1266
+[s S8028 . 1 `uc 1 CPSCH 1 0 :4:0 
+]
+[s S8030 . 1 `uc 1 CPSCH0 1 0 :1:0 
+`uc 1 CPSCH1 1 0 :1:1 
+`uc 1 CPSCH2 1 0 :1:2 
+`uc 1 CPSCH3 1 0 :1:3 
+]
+[u S8035 . 1 `S1362 1 . 1 0 `S1364 1 . 1 0 ]
+"1292
+[s S8044 . 1 `uc 1 . 1 0 :6:0 
+]
+[u S8046 . 1 `S1385 1 . 1 0 ]
+"1303
+[s S8050 . 1 `uc 1 . 1 0 :5:0 
+]
+[u S8052 . 1 `S163 1 . 1 0 ]
+"1326
+[s S8062 . 1 `uc 1 ANSA 1 0 :6:0 
+]
+[s S8064 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+[u S8071 . 1 `S1407 1 . 1 0 `S1409 1 . 1 0 ]
+"1351
+[s S8082 . 1 `uc 1 ANSB 1 0 :6:0 
+]
+[s S8084 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+]
+[u S8091 . 1 `S1436 1 . 1 0 `S1438 1 . 1 0 ]
+"1372
+[s S8098 . 1 `uc 1 RD 1 0 :1:0 
+]
+[s S8100 . 1 `uc 1 PMRD 1 0 :1:0 
+]
+[u S8102 . 1 `S1461 1 . 1 0 `S1463 1 . 1 0 ]
+"1381
+[s S8106 Buzzer 4 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Count 1 1 `uc 1 Register 1 2 `uc 1 Time 1 3 ]
+"31 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[s S8114 LED 2 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 ]
+"29 G:\Program\PIC\Source_File\../Header_File/LED.h
+[s S8120 Dimmer 14 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 ADOK 1 0 :1:2 
+`uc 1 ADValue 1 1 `uc 1 VRAD_Vref 1 2 `uc 1 Compare 1 3 `uc 1 VRAD 1 4 `uc 1 Input 1 5 :1:0 
+`uc 1 Ready 1 5 :1:1 
+`uc 1 GO 1 5 :1:2 
+`uc 1 Count 1 6 `uc 1 DimmingTime 1 7 `uc 1 DimmingTimeValue 1 8 `uc 1 DimmingValue 1 9 `uc 1 Signal 1 10 :1:0 
+`uc 1 Lights 1 10 :1:1 
+`uc 1 Triac 1 10 :1:2 
+`uc 1 Phase2 1 10 :1:3 
+`uc 1 Maxmum 1 11 `uc 1 Minimum 1 12 `uc 1 Offset 1 13 ]
+"69 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[s S8144 PIR 32 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 VRAD 1 1 `uc 1 VRAD1 1 2 `uc 1 SignalAD 1 3 `uc 1 Time 1 4 `uc 1 ADCount 1 5 `uc 1 CenterVoltage 1 6 `[10]uc 1 TenAverage 10 7 `ui 1 TenAverageValue 2 17 `uc 1 GO 1 19 :1:0 
+`uc 1 OK 1 19 :1:1 
+`uc 1 Switch 1 19 :1:2 
+`ui 1 Count 2 20 `ui 1 CloseTime 2 22 `ui 1 CloseTimeValue 2 24 `uc 1 RangeRun 1 26 :1:0 
+`uc 1 RangeTime 1 27 `uc 1 RangeTime1 1 28 `uc 1 RangeCount 1 29 `uc 1 RangeValue 1 30 `uc 1 RangeCount1 1 31 ]
+"61 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[s S8169 CDS 6 `uc 1 Enable 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 Time 1 1 `uc 1 OK 1 2 :1:0 
+`uc 1 VRAD 1 3 `uc 1 SignalAD 1 4 `uc 1 GO_nDONE 1 5 ]
+"78
+[s S8179 Timer1 9 `uc 1 PowerON 1 0 :1:0 
+`uc 1 Trigger 1 0 :1:1 
+`uc 1 Timeout 1 0 :1:2 
+`uc 1 Intr_Timerout 1 0 :1:3 
+`ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 Count2 2 5 `ui 1 Count3 2 7 ]
+"3 bmul.c
+[v ___bmul `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abdiv.c
+[v ___abdiv `(c  1 e 1 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abmod.c
+[v ___abmod `(c  1 e 1 0 ]
+"34 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\abtoft.c
+[v ___abtoft `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\aldiv.c
+[v ___aldiv `(l  1 e 4 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\almod.c
+[v ___almod `(l  1 e 4 0 ]
+"43 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\altoft.c
+[v ___altoft `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\atdiv.c
+[v ___atdiv `(m  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\atmod.c
+[v ___atmod `(m  1 e 3 0 ]
+"38 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\attoft.c
+[v ___attoft `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\awdiv.c
+[v ___awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\awmod.c
+[v ___awmod `(i  1 e 2 0 ]
+"33 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\awtoft.c
+[v ___awtoft `(f  1 e 3 0 ]
+"63 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\float.c
+[v ___ftpack `(f  1 e 3 0 ]
+"87 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftadd.c
+[v ___ftadd `(f  1 e 3 0 ]
+"50 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftdiv.c
+[v ___ftdiv `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftge.c
+[v ___ftge `(b  1 e 0 0 ]
+"52 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftmul.c
+[v ___ftmul `(f  1 e 3 0 ]
+"16 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftneg.c
+[v ___ftneg `(f  1 e 3 0 ]
+"17 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ftsub.c
+[v ___ftsub `(f  1 e 3 0 ]
+"45 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\fttol.c
+[v ___fttol `(l  1 e 4 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lbdiv.c
+[v ___lbdiv `(uc  1 e 1 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lbmod.c
+[v ___lbmod `(uc  1 e 1 0 ]
+"28 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lbtoft.c
+[v ___lbtoft `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lldiv.c
+[v ___lldiv `(ul  1 e 4 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\llmod.c
+[v ___llmod `(ul  1 e 4 0 ]
+"36 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lltoft.c
+[v ___lltoft `(f  1 e 3 0 ]
+"3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lmul.c
+[v ___lmul `(ul  1 e 4 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ltdiv.c
+[v ___ltdiv `(um  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\ltmod.c
+[v ___ltmod `(um  1 e 3 0 ]
+"31 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lttoft.c
+[v ___lttoft `(f  1 e 3 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwdiv.c
+[v ___lwdiv `(ui  1 e 2 0 ]
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwmod.c
+[v ___lwmod `(ui  1 e 2 0 ]
+"29 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwtoft.c
+[v ___lwtoft `(f  1 e 3 0 ]
+"3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\tmul.c
+[v ___tmul `(um  1 e 3 0 ]
+"3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\wmul.c
+[v ___wmul `(ui  1 e 2 0 ]
+"7 G:\Program\PIC\Source_File\1.PIR_Dimmer_V01-1P_V1.0\PIR_Dimmer_V01-1P_V1.0.c
+[v _main `(v  1 e 0 0 ]
+"9 G:\Program\PIC\Source_File\Buzzer.c
+[v _Buzzer_Setting `(v  1 e 0 0 ]
+"25
+[v _Buzzer_Main `(v  1 e 0 0 ]
+"9 G:\Program\PIC\Source_File\Dimmer.c
+[v _Dimmer_Main `(v  1 e 0 0 ]
+"103
+[v _Dimmer_Control `(v  1 e 0 0 ]
+"127
+[v _Dimmer_ReadAD `(v  1 e 0 0 ]
+"9 G:\Program\PIC\Source_File\LED.c
+[v _LED_Setting `(v  1 e 0 0 ]
+"35
+[v _LED_Main `(v  1 e 0 0 ]
+"16 G:\Program\PIC\Source_File\MCU_16F723A.c
+[v _ISR `I(v  1 e 0 0 ]
+"73
+[v _Mcu_Initial `(v  1 e 0 0 ]
+"9 G:\Program\PIC\Source_File\Sensor_PIR+CDS.c
+[v _CDS_Main `(v  1 e 0 0 ]
+"62
+[v _PIR_Main `(v  1 e 0 0 ]
+"211
+[v _PIR_Switch `(v  1 e 0 0 ]
+"8 G:\Program\PIC\Source_File\Timer1.c
+[v _TMR1_Main `(v  1 e 0 0 ]
+"101 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f723a.h
+[v _INDF `VEuc  1 e 1 @0 ]
+"105
+[v _TMR0 `VEuc  1 e 1 @1 ]
+"109
+[v _PCL `VEuc  1 e 1 @2 ]
+"113
+[v _STATUS `VEuc  1 e 1 @3 ]
+"115
+[v _CARRY `VEb  1 e 0 @24 ]
+"116
+[v _DC `VEb  1 e 0 @25 ]
+"117
+[v _ZERO `VEb  1 e 0 @26 ]
+"118
+[v _nPD `VEb  1 e 0 @27 ]
+"119
+[v _nTO `VEb  1 e 0 @28 ]
+"120
+[v _IRP `VEb  1 e 0 @31 ]
+"121
+[v _RP0 `VEb  1 e 0 @29 ]
+"122
+[v _RP1 `VEb  1 e 0 @30 ]
+"139
+[v _STATUSbits `VES44  1 e 1 @3 ]
+"143
+[v _FSR `VEuc  1 e 1 @4 ]
+"147
+[v _PORTA `VEuc  1 e 1 @5 ]
+"149
+[v _RA0 `VEb  1 e 0 @40 ]
+"150
+[v _RA1 `VEb  1 e 0 @41 ]
+"151
+[v _RA2 `VEb  1 e 0 @42 ]
+"152
+[v _RA3 `VEb  1 e 0 @43 ]
+"153
+[v _RA4 `VEb  1 e 0 @44 ]
+"154
+[v _RA5 `VEb  1 e 0 @45 ]
+"155
+[v _RA6 `VEb  1 e 0 @46 ]
+"156
+[v _RA7 `VEb  1 e 0 @47 ]
+"169
+[v _PORTAbits `VES79  1 e 1 @5 ]
+"173
+[v _PORTB `VEuc  1 e 1 @6 ]
+"175
+[v _RB0 `VEb  1 e 0 @48 ]
+"176
+[v _RB1 `VEb  1 e 0 @49 ]
+"177
+[v _RB2 `VEb  1 e 0 @50 ]
+"178
+[v _RB3 `VEb  1 e 0 @51 ]
+"179
+[v _RB4 `VEb  1 e 0 @52 ]
+"180
+[v _RB5 `VEb  1 e 0 @53 ]
+"181
+[v _RB6 `VEb  1 e 0 @54 ]
+"182
+[v _RB7 `VEb  1 e 0 @55 ]
+"195
+[v _PORTBbits `VES79  1 e 1 @6 ]
+"199
+[v _PORTC `VEuc  1 e 1 @7 ]
+"201
+[v _RC0 `VEb  1 e 0 @56 ]
+"202
+[v _RC1 `VEb  1 e 0 @57 ]
+"203
+[v _RC2 `VEb  1 e 0 @58 ]
+"204
+[v _RC3 `VEb  1 e 0 @59 ]
+"205
+[v _RC4 `VEb  1 e 0 @60 ]
+"206
+[v _RC5 `VEb  1 e 0 @61 ]
+"207
+[v _RC6 `VEb  1 e 0 @62 ]
+"208
+[v _RC7 `VEb  1 e 0 @63 ]
+"221
+[v _PORTCbits `VES79  1 e 1 @7 ]
+"225
+[v _PORTE `VEuc  1 e 1 @9 ]
+"227
+[v _RE3 `VEb  1 e 0 @75 ]
+"234
+[v _PORTEbits `VES156  1 e 1 @9 ]
+"238
+[v _PCLATH `VEuc  1 e 1 @10 ]
+"245
+[v _PCLATHbits `VES165  1 e 1 @10 ]
+"249
+[v _INTCON `VEuc  1 e 1 @11 ]
+"251
+[v _RBIF `VEb  1 e 0 @88 ]
+"252
+[v _INTF `VEb  1 e 0 @89 ]
+"253
+[v _T0IF `VEb  1 e 0 @90 ]
+"254
+[v _RBIE `VEb  1 e 0 @91 ]
+"255
+[v _INTE `VEb  1 e 0 @92 ]
+"256
+[v _T0IE `VEb  1 e 0 @93 ]
+"257
+[v _PEIE `VEb  1 e 0 @94 ]
+"258
+[v _GIE `VEb  1 e 0 @95 ]
+"259
+[v _IOCIF `VEb  1 e 0 @88 ]
+"260
+[v _TMR0IF `VEb  1 e 0 @90 ]
+"261
+[v _IOCIE `VEb  1 e 0 @91 ]
+"262
+[v _TMR0IE `VEb  1 e 0 @93 ]
+"283
+[v _INTCONbits `VES199  1 e 1 @11 ]
+"287
+[v _PIR1 `VEuc  1 e 1 @12 ]
+"289
+[v _TMR1IF `VEb  1 e 0 @96 ]
+"290
+[v _TMR2IF `VEb  1 e 0 @97 ]
+"291
+[v _CCP1IF `VEb  1 e 0 @98 ]
+"292
+[v _SSPIF `VEb  1 e 0 @99 ]
+"293
+[v _TXIF `VEb  1 e 0 @100 ]
+"294
+[v _RCIF `VEb  1 e 0 @101 ]
+"295
+[v _ADIF `VEb  1 e 0 @102 ]
+"296
+[v _TMR1GIF `VEb  1 e 0 @103 ]
+"309
+[v _PIR1bits `VES79  1 e 1 @12 ]
+"313
+[v _PIR2 `VEuc  1 e 1 @13 ]
+"315
+[v _CCP2IF `VEb  1 e 0 @104 ]
+"321
+[v _PIR2bits `VES253  1 e 1 @13 ]
+"326
+[v _TMR1L `VEuc  1 e 1 @14 ]
+"330
+[v _TMR1H `VEuc  1 e 1 @15 ]
+"334
+[v _TMR1 `VEui  1 e 2 @14 ]
+"337
+[v _T1CON `VEuc  1 e 1 @16 ]
+"339
+[v _TMR1ON `VEb  1 e 0 @128 ]
+"340
+[v _T1SYNC `VEb  1 e 0 @130 ]
+"341
+[v _T1OSCEN `VEb  1 e 0 @131 ]
+"342
+[v _nT1SYNC `VEb  1 e 0 @130 ]
+"343
+[v _T1CKPS0 `VEb  1 e 0 @132 ]
+"344
+[v _T1CKPS1 `VEb  1 e 0 @133 ]
+"345
+[v _TMR1CS0 `VEb  1 e 0 @134 ]
+"346
+[v _TMR1CS1 `VEb  1 e 0 @135 ]
+"347
+[v _T1INSYNC `VEb  1 e 0 @130 ]
+"371
+[v _T1CONbits `VES289  1 e 1 @16 ]
+"375
+[v _TMR2 `VEuc  1 e 1 @17 ]
+"379
+[v _T2CON `VEuc  1 e 1 @18 ]
+"381
+[v _TMR2ON `VEb  1 e 0 @146 ]
+"382
+[v _T2CKPS0 `VEb  1 e 0 @144 ]
+"383
+[v _T2CKPS1 `VEb  1 e 0 @145 ]
+"384
+[v _TOUTPS0 `VEb  1 e 0 @147 ]
+"385
+[v _TOUTPS1 `VEb  1 e 0 @148 ]
+"386
+[v _TOUTPS2 `VEb  1 e 0 @149 ]
+"387
+[v _TOUTPS3 `VEb  1 e 0 @150 ]
+"404
+[v _T2CONbits `VES333  1 e 1 @18 ]
+"408
+[v _SSPBUF `VEuc  1 e 1 @19 ]
+"412
+[v _SSPCON `VEuc  1 e 1 @20 ]
+"414
+[v _CKP `VEb  1 e 0 @164 ]
+"415
+[v _SSPEN `VEb  1 e 0 @165 ]
+"416
+[v _SSPOV `VEb  1 e 0 @166 ]
+"417
+[v _WCOL `VEb  1 e 0 @167 ]
+"418
+[v _SSPM0 `VEb  1 e 0 @160 ]
+"419
+[v _SSPM1 `VEb  1 e 0 @161 ]
+"420
+[v _SSPM2 `VEb  1 e 0 @162 ]
+"421
+[v _SSPM3 `VEb  1 e 0 @163 ]
+"437
+[v _SSPCONbits `VES370  1 e 1 @20 ]
+"442
+[v _CCPR1L `VEuc  1 e 1 @21 ]
+"446
+[v _CCPR1H `VEuc  1 e 1 @22 ]
+"450
+[v _CCPR1 `VEui  1 e 2 @21 ]
+"453
+[v _CCP1CON `VEuc  1 e 1 @23 ]
+"455
+[v _CCP1M0 `VEb  1 e 0 @184 ]
+"456
+[v _CCP1M1 `VEb  1 e 0 @185 ]
+"457
+[v _CCP1M2 `VEb  1 e 0 @186 ]
+"458
+[v _CCP1M3 `VEb  1 e 0 @187 ]
+"459
+[v _DC1B0 `VEb  1 e 0 @188 ]
+"460
+[v _DC1B1 `VEb  1 e 0 @189 ]
+"461
+[v _CCP1Y `VEb  1 e 0 @188 ]
+"462
+[v _CCP1X `VEb  1 e 0 @189 ]
+"483
+[v _CCP1CONbits `VES412  1 e 1 @23 ]
+"487
+[v _RCSTA `VEuc  1 e 1 @24 ]
+"489
+[v _RX9D `VEb  1 e 0 @192 ]
+"490
+[v _OERR `VEb  1 e 0 @193 ]
+"491
+[v _FERR `VEb  1 e 0 @194 ]
+"492
+[v _ADDEN `VEb  1 e 0 @195 ]
+"493
+[v _CREN `VEb  1 e 0 @196 ]
+"494
+[v _SREN `VEb  1 e 0 @197 ]
+"495
+[v _RX9 `VEb  1 e 0 @198 ]
+"496
+[v _SPEN `VEb  1 e 0 @199 ]
+"497
+[v _RCD8 `VEb  1 e 0 @192 ]
+"498
+[v _RC9 `VEb  1 e 0 @198 ]
+"499
+[v _nRC8 `VEb  1 e 0 @198 ]
+"500
+[v _RC8_9 `VEb  1 e 0 @198 ]
+"526
+[v _RCSTAbits `VES464  1 e 1 @24 ]
+"530
+[v _TXREG `VEuc  1 e 1 @25 ]
+"534
+[v _RCREG `VEuc  1 e 1 @26 ]
+"539
+[v _CCPR2L `VEuc  1 e 1 @27 ]
+"543
+[v _CCPR2H `VEuc  1 e 1 @28 ]
+"547
+[v _CCPR2 `VEui  1 e 2 @27 ]
+"550
+[v _CCP2CON `VEuc  1 e 1 @29 ]
+"552
+[v _CCP2M0 `VEb  1 e 0 @232 ]
+"553
+[v _CCP2M1 `VEb  1 e 0 @233 ]
+"554
+[v _CCP2M2 `VEb  1 e 0 @234 ]
+"555
+[v _CCP2M3 `VEb  1 e 0 @235 ]
+"556
+[v _DC2B0 `VEb  1 e 0 @236 ]
+"557
+[v _DC2B1 `VEb  1 e 0 @237 ]
+"558
+[v _CCP2Y `VEb  1 e 0 @236 ]
+"559
+[v _CCP2X `VEb  1 e 0 @237 ]
+"579
+[v _CCP2CONbits `VES517  1 e 1 @29 ]
+"583
+[v _ADRES `VEuc  1 e 1 @30 ]
+"587
+[v _ADCON0 `VEuc  1 e 1 @31 ]
+"589
+[v _ADON `VEb  1 e 0 @248 ]
+"590
+[v _GO_nDONE `VEb  1 e 0 @249 ]
+"591
+[v _GO `VEb  1 e 0 @249 ]
+"592
+[v _CHS0 `VEb  1 e 0 @250 ]
+"593
+[v _CHS1 `VEb  1 e 0 @251 ]
+"594
+[v _CHS2 `VEb  1 e 0 @252 ]
+"595
+[v _CHS3 `VEb  1 e 0 @253 ]
+"596
+[v _nDONE `VEb  1 e 0 @249 ]
+"597
+[v _GO_DONE `VEb  1 e 0 @249 ]
+"626
+[v _ADCON0bits `VES568  1 e 1 @31 ]
+"635
+[v _OPTION_REG `VEuc  1 e 1 @129 ]
+"637
+[v _PSA `VEb  1 e 0 @1035 ]
+"638
+[v _T0SE `VEb  1 e 0 @1036 ]
+"639
+[v _T0CS `VEb  1 e 0 @1037 ]
+"640
+[v _INTEDG `VEb  1 e 0 @1038 ]
+"641
+[v _nRBPU `VEb  1 e 0 @1039 ]
+"642
+[v _PS0 `VEb  1 e 0 @1032 ]
+"643
+[v _PS1 `VEb  1 e 0 @1033 ]
+"644
+[v _PS2 `VEb  1 e 0 @1034 ]
+"660
+[v _OPTION_REGbits `VES616  1 e 1 @129 ]
+"664
+[v _TRISA `VEuc  1 e 1 @133 ]
+"666
+[v _TRISA0 `VEb  1 e 0 @1064 ]
+"667
+[v _TRISA1 `VEb  1 e 0 @1065 ]
+"668
+[v _TRISA2 `VEb  1 e 0 @1066 ]
+"669
+[v _TRISA3 `VEb  1 e 0 @1067 ]
+"670
+[v _TRISA4 `VEb  1 e 0 @1068 ]
+"671
+[v _TRISA5 `VEb  1 e 0 @1069 ]
+"672
+[v _TRISA6 `VEb  1 e 0 @1070 ]
+"673
+[v _TRISA7 `VEb  1 e 0 @1071 ]
+"686
+[v _TRISAbits `VES79  1 e 1 @133 ]
+"690
+[v _TRISB `VEuc  1 e 1 @134 ]
+"692
+[v _TRISB0 `VEb  1 e 0 @1072 ]
+"693
+[v _TRISB1 `VEb  1 e 0 @1073 ]
+"694
+[v _TRISB2 `VEb  1 e 0 @1074 ]
+"695
+[v _TRISB3 `VEb  1 e 0 @1075 ]
+"696
+[v _TRISB4 `VEb  1 e 0 @1076 ]
+"697
+[v _TRISB5 `VEb  1 e 0 @1077 ]
+"698
+[v _TRISB6 `VEb  1 e 0 @1078 ]
+"699
+[v _TRISB7 `VEb  1 e 0 @1079 ]
+"712
+[v _TRISBbits `VES79  1 e 1 @134 ]
+"716
+[v _TRISC `VEuc  1 e 1 @135 ]
+"718
+[v _TRISC0 `VEb  1 e 0 @1080 ]
+"719
+[v _TRISC1 `VEb  1 e 0 @1081 ]
+"720
+[v _TRISC2 `VEb  1 e 0 @1082 ]
+"721
+[v _TRISC3 `VEb  1 e 0 @1083 ]
+"722
+[v _TRISC4 `VEb  1 e 0 @1084 ]
+"723
+[v _TRISC5 `VEb  1 e 0 @1085 ]
+"724
+[v _TRISC6 `VEb  1 e 0 @1086 ]
+"725
+[v _TRISC7 `VEb  1 e 0 @1087 ]
+"738
+[v _TRISCbits `VES79  1 e 1 @135 ]
+"742
+[v _TRISE `VEuc  1 e 1 @137 ]
+"744
+[v _TRISE3 `VEb  1 e 0 @1099 ]
+"753
+[v _TRISEbits `VES728  1 e 1 @137 ]
+"757
+[v _PIE1 `VEuc  1 e 1 @140 ]
+"759
+[v _TMR1IE `VEb  1 e 0 @1120 ]
+"760
+[v _TMR2IE `VEb  1 e 0 @1121 ]
+"761
+[v _CCP1IE `VEb  1 e 0 @1122 ]
+"762
+[v _SSPIE `VEb  1 e 0 @1123 ]
+"763
+[v _TXIE `VEb  1 e 0 @1124 ]
+"764
+[v _RCIE `VEb  1 e 0 @1125 ]
+"765
+[v _ADIE `VEb  1 e 0 @1126 ]
+"766
+[v _TMR1GIE `VEb  1 e 0 @1127 ]
+"779
+[v _PIE1bits `VES79  1 e 1 @140 ]
+"783
+[v _PIE2 `VEuc  1 e 1 @141 ]
+"785
+[v _CCP2IE `VEb  1 e 0 @1128 ]
+"791
+[v _PIE2bits `VES253  1 e 1 @141 ]
+"795
+[v _PCON `VEuc  1 e 1 @142 ]
+"797
+[v _nBOR `VEb  1 e 0 @1136 ]
+"798
+[v _nPOR `VEb  1 e 0 @1137 ]
+"799
+[v _nBO `VEb  1 e 0 @1136 ]
+"809
+[v _PCONbits `VES784  1 e 1 @142 ]
+"813
+[v _T1GCON `VEuc  1 e 1 @143 ]
+"815
+[v _T1GVAL `VEb  1 e 0 @1146 ]
+"816
+[v _T1GGO_nDONE `VEb  1 e 0 @1147 ]
+"817
+[v _T1GSPM `VEb  1 e 0 @1148 ]
+"818
+[v _T1GTM `VEb  1 e 0 @1149 ]
+"819
+[v _T1GPOL `VEb  1 e 0 @1150 ]
+"820
+[v _TMR1GE `VEb  1 e 0 @1151 ]
+"821
+[v _T1G1SE `VEb  1 e 0 @1148 ]
+"822
+[v _T1GSS0 `VEb  1 e 0 @1144 ]
+"823
+[v _T1GSS1 `VEb  1 e 0 @1145 ]
+"824
+[v _T1G_nDONE `VEb  1 e 0 @1147 ]
+"825
+[v _T1GGO_DONE `VEb  1 e 0 @1147 ]
+"826
+[v _T1GGO `VEb  1 e 0 @1147 ]
+"861
+[v _T1GCONbits `VES833  1 e 1 @143 ]
+"865
+[v _OSCCON `VEuc  1 e 1 @144 ]
+"867
+[v _ICSS `VEb  1 e 0 @1154 ]
+"868
+[v _ICSL `VEb  1 e 0 @1155 ]
+"869
+[v _IRCF0 `VEb  1 e 0 @1156 ]
+"870
+[v _IRCF1 `VEb  1 e 0 @1157 ]
+"884
+[v _OSCCONbits `VES881  1 e 1 @144 ]
+"888
+[v _OSCTUNE `VEuc  1 e 1 @145 ]
+"890
+[v _TUN0 `VEb  1 e 0 @1160 ]
+"891
+[v _TUN1 `VEb  1 e 0 @1161 ]
+"892
+[v _TUN2 `VEb  1 e 0 @1162 ]
+"893
+[v _TUN3 `VEb  1 e 0 @1163 ]
+"894
+[v _TUN4 `VEb  1 e 0 @1164 ]
+"895
+[v _TUN5 `VEb  1 e 0 @1165 ]
+"909
+[v _OSCTUNEbits `VES910  1 e 1 @145 ]
+"913
+[v _PR2 `VEuc  1 e 1 @146 ]
+"917
+[v _SSPADD `VEuc  1 e 1 @147 ]
+"921
+[v _SSPMSK `VEuc  1 e 1 @147 ]
+"925
+[v _SSPSTAT `VEuc  1 e 1 @148 ]
+"927
+[v _BF `VEb  1 e 0 @1184 ]
+"928
+[v _UA `VEb  1 e 0 @1185 ]
+"929
+[v _R_nW `VEb  1 e 0 @1186 ]
+"930
+[v _S `VEb  1 e 0 @1187 ]
+"931
+[v _P `VEb  1 e 0 @1188 ]
+"932
+[v _D_nA `VEb  1 e 0 @1189 ]
+"933
+[v _CKE `VEb  1 e 0 @1190 ]
+"934
+[v _SMP `VEb  1 e 0 @1191 ]
+"935
+[v _R `VEb  1 e 0 @1186 ]
+"936
+[v _D `VEb  1 e 0 @1189 ]
+"937
+[v _I2C_READ `VEb  1 e 0 @1186 ]
+"938
+[v _I2C_START `VEb  1 e 0 @1187 ]
+"939
+[v _I2C_STOP `VEb  1 e 0 @1188 ]
+"940
+[v _I2C_DATA `VEb  1 e 0 @1189 ]
+"941
+[v _nW `VEb  1 e 0 @1186 ]
+"942
+[v _nA `VEb  1 e 0 @1189 ]
+"943
+[v _nWRITE `VEb  1 e 0 @1186 ]
+"944
+[v _nADDRESS `VEb  1 e 0 @1189 ]
+"945
+[v _R_W `VEb  1 e 0 @1186 ]
+"946
+[v _D_A `VEb  1 e 0 @1189 ]
+"947
+[v _READ_WRITE `VEb  1 e 0 @1186 ]
+"948
+[v _DATA_ADDRESS `VEb  1 e 0 @1189 ]
+"1008
+[v _SSPSTATbits `VES998  1 e 1 @148 ]
+"1012
+[v _WPUB `VEuc  1 e 1 @149 ]
+"1013
+[v _WPU `VEuc  1 e 1 @149 ]
+"1015
+[v _WPUB0 `VEb  1 e 0 @1192 ]
+"1016
+[v _WPUB1 `VEb  1 e 0 @1193 ]
+"1017
+[v _WPUB2 `VEb  1 e 0 @1194 ]
+"1018
+[v _WPUB3 `VEb  1 e 0 @1195 ]
+"1019
+[v _WPUB4 `VEb  1 e 0 @1196 ]
+"1020
+[v _WPUB5 `VEb  1 e 0 @1197 ]
+"1021
+[v _WPUB6 `VEb  1 e 0 @1198 ]
+"1022
+[v _WPUB7 `VEb  1 e 0 @1199 ]
+"1023
+[v _WPU0 `VEb  1 e 0 @1192 ]
+"1024
+[v _WPU1 `VEb  1 e 0 @1193 ]
+"1025
+[v _WPU2 `VEb  1 e 0 @1194 ]
+"1026
+[v _WPU3 `VEb  1 e 0 @1195 ]
+"1027
+[v _WPU4 `VEb  1 e 0 @1196 ]
+"1028
+[v _WPU5 `VEb  1 e 0 @1197 ]
+"1029
+[v _WPU6 `VEb  1 e 0 @1198 ]
+"1030
+[v _WPU7 `VEb  1 e 0 @1199 ]
+"1053
+[v _WPUBbits `VES1093  1 e 1 @149 ]
+"1057
+[v _IOCB `VEuc  1 e 1 @150 ]
+"1058
+[v _IOC `VEuc  1 e 1 @150 ]
+"1060
+[v _IOCB0 `VEb  1 e 0 @1200 ]
+"1061
+[v _IOCB1 `VEb  1 e 0 @1201 ]
+"1062
+[v _IOCB2 `VEb  1 e 0 @1202 ]
+"1063
+[v _IOCB3 `VEb  1 e 0 @1203 ]
+"1064
+[v _IOCB4 `VEb  1 e 0 @1204 ]
+"1065
+[v _IOCB5 `VEb  1 e 0 @1205 ]
+"1066
+[v _IOCB6 `VEb  1 e 0 @1206 ]
+"1067
+[v _IOCB7 `VEb  1 e 0 @1207 ]
+"1068
+[v _IOC0 `VEb  1 e 0 @1200 ]
+"1069
+[v _IOC1 `VEb  1 e 0 @1201 ]
+"1070
+[v _IOC2 `VEb  1 e 0 @1202 ]
+"1071
+[v _IOC3 `VEb  1 e 0 @1203 ]
+"1072
+[v _IOC4 `VEb  1 e 0 @1204 ]
+"1073
+[v _IOC5 `VEb  1 e 0 @1205 ]
+"1074
+[v _IOC6 `VEb  1 e 0 @1206 ]
+"1075
+[v _IOC7 `VEb  1 e 0 @1207 ]
+"1098
+[v _IOCBbits `VES1093  1 e 1 @150 ]
+"1102
+[v _TXSTA `VEuc  1 e 1 @152 ]
+"1104
+[v _TX9D `VEb  1 e 0 @1216 ]
+"1105
+[v _TRMT `VEb  1 e 0 @1217 ]
+"1106
+[v _BRGH `VEb  1 e 0 @1218 ]
+"1107
+[v _SYNC `VEb  1 e 0 @1220 ]
+"1108
+[v _TXEN `VEb  1 e 0 @1221 ]
+"1109
+[v _TX9 `VEb  1 e 0 @1222 ]
+"1110
+[v _CSRC `VEb  1 e 0 @1223 ]
+"1111
+[v _TXD8 `VEb  1 e 0 @1216 ]
+"1112
+[v _nTX8 `VEb  1 e 0 @1222 ]
+"1113
+[v _TX8_9 `VEb  1 e 0 @1222 ]
+"1135
+[v _TXSTAbits `VES1200  1 e 1 @152 ]
+"1139
+[v _SPBRG `VEuc  1 e 1 @153 ]
+"1141
+[v _BRG0 `VEb  1 e 0 @1224 ]
+"1142
+[v _BRG1 `VEb  1 e 0 @1225 ]
+"1143
+[v _BRG2 `VEb  1 e 0 @1226 ]
+"1144
+[v _BRG3 `VEb  1 e 0 @1227 ]
+"1145
+[v _BRG4 `VEb  1 e 0 @1228 ]
+"1146
+[v _BRG5 `VEb  1 e 0 @1229 ]
+"1147
+[v _BRG6 `VEb  1 e 0 @1230 ]
+"1148
+[v _BRG7 `VEb  1 e 0 @1231 ]
+"1161
+[v _SPBRGbits `VES79  1 e 1 @153 ]
+"1165
+[v _APFCON `VEuc  1 e 1 @156 ]
+"1167
+[v _CCP2SEL `VEb  1 e 0 @1248 ]
+"1168
+[v _SSSEL `VEb  1 e 0 @1249 ]
+"1175
+[v _APFCONbits `VES1257  1 e 1 @156 ]
+"1179
+[v _FVRCON `VEuc  1 e 1 @157 ]
+"1181
+[v _ADFVR0 `VEb  1 e 0 @1256 ]
+"1182
+[v _ADFVR1 `VEb  1 e 0 @1257 ]
+"1183
+[v _FVREN `VEb  1 e 0 @1262 ]
+"1184
+[v _FVRRDY `VEb  1 e 0 @1263 ]
+"1185
+[v _FVRST `VEb  1 e 0 @1263 ]
+"1201
+[v _FVRCONbits `VES1280  1 e 1 @157 ]
+"1205
+[v _ADCON1 `VEuc  1 e 1 @159 ]
+"1207
+[v _ADREF0 `VEb  1 e 0 @1272 ]
+"1208
+[v _ADREF1 `VEb  1 e 0 @1273 ]
+"1209
+[v _ADCS0 `VEb  1 e 0 @1276 ]
+"1210
+[v _ADCS1 `VEb  1 e 0 @1277 ]
+"1211
+[v _ADCS2 `VEb  1 e 0 @1278 ]
+"1227
+[v _ADCON1bits `VES1312  1 e 1 @159 ]
+"1236
+[v _CPSCON0 `VEuc  1 e 1 @264 ]
+"1238
+[v _T0XCS `VEb  1 e 0 @2112 ]
+"1239
+[v _CPSOUT `VEb  1 e 0 @2113 ]
+"1240
+[v _CPSON `VEb  1 e 0 @2119 ]
+"1241
+[v _CPSRNG0 `VEb  1 e 0 @2114 ]
+"1242
+[v _CPSRNG1 `VEb  1 e 0 @2115 ]
+"1257
+[v _CPSCON0bits `VES1343  1 e 1 @264 ]
+"1261
+[v _CPSCON1 `VEuc  1 e 1 @265 ]
+"1263
+[v _CPSCH0 `VEb  1 e 0 @2120 ]
+"1264
+[v _CPSCH1 `VEb  1 e 0 @2121 ]
+"1265
+[v _CPSCH2 `VEb  1 e 0 @2122 ]
+"1266
+[v _CPSCH3 `VEb  1 e 0 @2123 ]
+"1278
+[v _CPSCON1bits `VES1369  1 e 1 @265 ]
+"1282
+[v _PMDATL `VEuc  1 e 1 @268 ]
+"1283
+[v _PMDATA `VEuc  1 e 1 @268 ]
+"1287
+[v _PMADRL `VEuc  1 e 1 @269 ]
+"1288
+[v _PMADR `VEuc  1 e 1 @269 ]
+"1292
+[v _PMDATH `VEuc  1 e 1 @270 ]
+"1299
+[v _PMDATHbits `VES1387  1 e 1 @270 ]
+"1303
+[v _PMADRH `VEuc  1 e 1 @271 ]
+"1310
+[v _PMADRHbits `VES165  1 e 1 @271 ]
+"1319
+[v _ANSELA `VEuc  1 e 1 @389 ]
+"1321
+[v _ANSA0 `VEb  1 e 0 @3112 ]
+"1322
+[v _ANSA1 `VEb  1 e 0 @3113 ]
+"1323
+[v _ANSA2 `VEb  1 e 0 @3114 ]
+"1324
+[v _ANSA3 `VEb  1 e 0 @3115 ]
+"1325
+[v _ANSA4 `VEb  1 e 0 @3116 ]
+"1326
+[v _ANSA5 `VEb  1 e 0 @3117 ]
+"1340
+[v _ANSELAbits `VES910  1 e 1 @389 ]
+"1344
+[v _ANSELB `VEuc  1 e 1 @390 ]
+"1346
+[v _ANSB0 `VEb  1 e 0 @3120 ]
+"1347
+[v _ANSB1 `VEb  1 e 0 @3121 ]
+"1348
+[v _ANSB2 `VEb  1 e 0 @3122 ]
+"1349
+[v _ANSB3 `VEb  1 e 0 @3123 ]
+"1350
+[v _ANSB4 `VEb  1 e 0 @3124 ]
+"1351
+[v _ANSB5 `VEb  1 e 0 @3125 ]
+"1365
+[v _ANSELBbits `VES910  1 e 1 @390 ]
+"1369
+[v _PMCON1 `VEuc  1 e 1 @396 ]
+"1371
+[v _RD `VEb  1 e 0 @3168 ]
+"1372
+[v _PMRD `VEb  1 e 0 @3168 ]
+"1381
+[v _PMCON1bits `VES1465  1 e 1 @396 ]
+"30 G:\Program\PIC\Source_File\../Header_File/Buzzer.h
+[v _VarBuzzer `S1473  1 e 4 0 ]
+"31
+[v _Buzzer `*.0S1473  1 e 1 0 ]
+"68 G:\Program\PIC\Source_File\../Header_File/Dimmer.h
+[v _VarDimmer `S1495  1 e 14 0 ]
+"69
+[v _Dimmer `*.0S1495  1 e 1 0 ]
+"28 G:\Program\PIC\Source_File\../Header_File/LED.h
+[v _VarLED `S1486  1 e 2 0 ]
+"29
+[v _LED `*.0S1486  1 e 1 0 ]
+"6 G:\Program\PIC\Source_File\../Header_File/PIR_Dimmer_V01-1P_V1.0.h
+[v _PIRSwitch `uc  1 e 1 0 ]
+"60 G:\Program\PIC\Source_File\../Header_File/Sensor_PIR+CDS.h
+[v _VarPIR `S1540  1 e 32 0 ]
+"61
+[v _PIR `*.0S1540  1 e 1 0 ]
+"77
+[v _VarCDS `S1587  1 e 6 0 ]
+"78
+[v _CDS `*.0S1587  1 e 1 0 ]
+"21 G:\Program\PIC\Source_File\../Header_File/Timer1.h
+[v _VarTimer1 `S1604  1 e 9 0 ]
+"22
+[v _Timer1 `*.0S1604  1 e 1 0 ]
+"7 G:\Program\PIC\Source_File\1.PIR_Dimmer_V01-1P_V1.0\PIR_Dimmer_V01-1P_V1.0.c
+[v _main `(v  1 e 0 0 ]
+{
+"27
+} 0
+"62 G:\Program\PIC\Source_File\Sensor_PIR+CDS.c
+[v _PIR_Main `(v  1 e 0 0 ]
+{
+"63
+[v PIR_Main@i `uc  1 a 1 13 ]
+"207
+} 0
+"211
+[v _PIR_Switch `(v  1 e 0 0 ]
+{
+"229
+} 0
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\awdiv.c
+[v ___awdiv `(i  1 e 2 0 ]
+{
+"6
+[v ___awdiv@quotient `i  1 a 2 7 ]
+"7
+[v ___awdiv@sign `uc  1 a 1 6 ]
+[v ___awdiv@counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend `i  1 p 2 2 ]
+"37
+} 0
+"5 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\lwdiv.c
+[v ___lwdiv `(ui  1 e 2 0 ]
+{
+"6
+[v ___lwdiv@quotient `ui  1 a 2 5 ]
+"7
+[v ___lwdiv@counter `uc  1 a 1 7 ]
+"5
+[v ___lwdiv@divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend `ui  1 p 2 2 ]
+"26
+} 0
+"3 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\wmul.c
+[v ___wmul `(ui  1 e 2 0 ]
+{
+"4
+[v ___wmul@product `ui  1 a 2 4 ]
+"3
+[v ___wmul@multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand `ui  1 p 2 2 ]
+"13
+} 0
+"9 G:\Program\PIC\Source_File\Sensor_PIR+CDS.c
+[v _CDS_Main `(v  1 e 0 0 ]
+{
+"58
+} 0
+"25 G:\Program\PIC\Source_File\Buzzer.c
+[v _Buzzer_Main `(v  1 e 0 0 ]
+{
+"54
+} 0
+"35 G:\Program\PIC\Source_File\LED.c
+[v _LED_Main `(v  1 e 0 0 ]
+{
+"45
+} 0
+"8 G:\Program\PIC\Source_File\Timer1.c
+[v _TMR1_Main `(v  1 e 0 0 ]
+{
+"63
+} 0
+"9 G:\Program\PIC\Source_File\LED.c
+[v _LED_Setting `(v  1 e 0 0 ]
+{
+[v LED_Setting@number `uc  1 a 1 wreg ]
+[v LED_Setting@number `uc  1 a 1 wreg ]
+"32
+} 0
+"73 G:\Program\PIC\Source_File\MCU_16F723A.c
+[v _Mcu_Initial `(v  1 e 0 0 ]
+{
+"106
+} 0
+"103 G:\Program\PIC\Source_File\Dimmer.c
+[v _Dimmer_Control `(v  1 e 0 0 ]
+{
+[v Dimmer_Control@number `uc  1 a 1 wreg ]
+[v Dimmer_Control@number `uc  1 a 1 wreg ]
+"123
+} 0
+"16 G:\Program\PIC\Source_File\MCU_16F723A.c
+[v _ISR `I(v  1 e 0 0 ]
+{
+"68
+} 0
+"9 G:\Program\PIC\Source_File\Dimmer.c
+[v _Dimmer_Main `(v  1 e 0 0 ]
+{
+"100
+} 0
