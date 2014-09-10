@@ -114,7 +114,7 @@
 					}
 					else
 					{
-						if(RF->RxStatus == 0 && Rx_Enable)//設置為接收模式
+						if(!RF->RxStatus && Rx_Enable)//設置為接收模式
 						{
 							RF->RxStatus=1;
 							CC2500_WriteCommand(CC2500_SIDLE);// idle
@@ -135,11 +135,10 @@
 		{
 			if(RF->TransceiveGO == 0 && Tx_Enable)
 			{
-
 				RF->TransceiveGO=1;
-				RF_Data[0]=0x63;		//Command
-				RF_Data[1]=0x02;		//Command
-				for(i=2 ;i< 21 ;i++)
+			//	RF_Data[0]=0x63;		//Command
+			//	RF_Data[1]=0x02;		//Command
+				for(i=0 ;i< 21 ;i++)
 				{
 					RF_Data[i]=Product->Data[i];
 				}
@@ -173,18 +172,21 @@
 	void setRF_Enable(char rf,char command)
 	{
 		RfPointSelect(rf);
-		if(command)
+		RF->Enable=command;
+		if(!command)
 		{
-			RF->Enable=1;
-		}
-		else
-		{
-			RF->Enable=0;
 			RF->Learn=0;
 			Transceive_GO=0;
 			CC2500_WriteCommand(CC2500_SIDLE);// idle
-			CC2500_WriteCommand(CC2500_SFTX);// clear TXFIFO data	
-			RF_RxDisable(1);
+			CC2500_WriteCommand(CC2500_SFTX);// clear TXFIFO data
+	
+			RF->RxStatus=0;
+			RF->ReceiveGO=0;
+			RF->DebounceTime=0;
+			RF->Debounce=0;
+			CC2500_WriteCommand(CC2500_SIDLE);// idle
+			CC2500_WriteCommand(CC2500_SFRX);// clear RXFIFO data
+			setINT_GO(0);
 		}
 	}
 	//*********************************************************

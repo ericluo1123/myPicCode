@@ -104,7 +104,7 @@
 		void DimmerLightsPointSelect(char);
 		void DimmerLights_Initialization();
 		void DimmerLights_Main();
-		void DimmerLights_ERROR();
+		void DimmerLights_Exceptions(char);
 		void DimmerLights_Close();
 
 		void setDimmerLights_Initialization(char);
@@ -127,16 +127,17 @@
 		char getDimmerLights_Trigger();
 
 		void setDimmerLights_Clear(char,char);
-		char getDimmerLights_Clear(char);
-		void setDimmerLights_Close(char,char);
-		char getDimmerLights_Close(char);	
+	//	char getDimmerLights_Clear(char);
+	/*	void setDimmerLights_Close(char,char);
+		char getDimmerLights_Close(char);
+	*/	
 
 		//Global extern variable declaration
 		struct Dimmer
 		{
-			unsigned LoadERROR:1;
-			unsigned TempERROR:1;
-			unsigned PFERROR:1;
+		//	unsigned LoadERROR:1;
+		//	unsigned TempERROR:1;
+		//	unsigned PFERROR:1;
 			unsigned Detect:1;
 			unsigned char Load;
 			unsigned char Correction;
@@ -147,15 +148,19 @@
 			struct Dimmer Dimmer1;	
 		#endif
 	
-		void DimmerPointSelect(char);
+		void Dimmer_Initialization();
+//		void DimmerPointSelect(char);
+/*
 		void setDimmer_TempERROR(char,char); 	
 		void setDimmer_LoadERROR(char,char); 
 		void setDimmer_PFERROR(char,char);
+
 		char getDimmer_TempERROR(char);
 		char getDimmer_LoadERROR(char);
 		char getDimmer_PFERROR(char);
-		void setDimmer_Detect(char,char);
-		char getDimmer_Detect(char);
+*/
+	//	void setDimmer_Detect(char,char);
+	//	char getDimmer_Detect(char);
 
 	//*********************************************************
 		#ifdef Triac1
@@ -598,7 +603,7 @@
 		#define DimmerLightsPointSelect(char) ;
 		#define DimmerLights_Initialization() ;
 		#define DimmerLights_Main() ;
-		#define DimmerLights_ERROR() ;
+		#define DimmerLights_Exceptions(char) ;
 		#define DimmerLights_Close() ;
 
 		#define setDimmerLights_Initialization(char) ;
@@ -621,17 +626,19 @@
 		#define getDimmerLights_StatusFlag() ;
 		#define getDimmerLights_Trigger() ;
 
-		#define setDimmerLights_Open(char,char);
-		#define getDimmerLights_Open(char);
-		#define setDimmerLights_Close(char,char);
-		#define getDimmerLights_Close(char);	
+		#define setDimmerLights_Detect(char,char) ;
+//		#define setDimmerLights_Open(char,char);
+//		#define getDimmerLights_Open(char);
+//		#define setDimmerLights_Close(char,char);
+//		#define getDimmerLights_Close(char);	
 
-		#define DimmerPointSelect(char) ;
-		#define setDimmer_TempERROR(char,char) ; 	
-		#define setDimmer_LoadERROR(char,char) ; 
-		#define setDimmer_PFERROR(char,char) ;
-		#define setDimmer_Detect(char,char) ;
-		#define getDimmer_Detect(char) ;
+		#define Dimmer_Initialization() ;
+	//	#define DimmerPointSelect(char) ;
+	//	#define setDimmer_TempERROR(char,char) ; 	
+	//	#define setDimmer_LoadERROR(char,char) ; 
+	//	#define setDimmer_PFERROR(char,char) ;
+	//	#define setDimmer_Detect(char,char) ;
+	//	#define getDimmer_Detect(char) ;
 
 	#endif
 

@@ -38,28 +38,28 @@
 
 
 
-		void TempPointSelect(char);
+	//	void TempPointSelect(char);
 		void Temp_Initialization();
 		void Temp_Main();
-		void setTemp_Initialization(char);
-		void setTemp_Main(char);
-		void getTemp_AD(char,char);
-		void setOverTemp_ERROR(char,char);
-		void setTemp_Enable(char,char);
-		char getTemp_Safe(char);
-		char getTemp_ERROR(char);
+		void setTemp_Main();
+		void setTemp_Initialization();
+		void getTemp_AD(char);
+		void setOverTemp_Exceptions(char);
+		void setTemp_Enable(char);
+		char getTemp_Safe();
+		char getTemp_ERROR();
 	#else
 		//NOP
-		#define getTemp_Safe(char) 1
-		#define getTemp_ERROR(char) 0
-		#define TempPointSelect(char) ;
+		#define getTemp_Safe() 1
+		#define getTemp_ERROR() 0
+		#define TempPointSelect() ;
 		#define Temp_Initialization() ;
 		#define Temp_Main() ;
-		#define setTemp_Initialization(char) ;
-		#define setTemp_Main(char) ;
-		#define getTemp_AD(char,char) ;
-		#define setOverTemp_ERROR(char,char) ;
-		#define setTemp_Enable(char,char) ;
+		#define setTemp_Main() ;
+		#define setTemp_Initialization() ;
+		#define getTemp_AD(char) ;
+		#define setOverTemp_Exceptions(char) ;
+		#define setTemp_Enable(char) ;
 
 	#endif
 				

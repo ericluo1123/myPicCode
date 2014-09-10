@@ -434,10 +434,10 @@
 		struct FlashMemory *Memory;
 		struct FlashMemory VarMemory={
 			{
-			 0xff,0xff,0xff,0,0,0,0,0,
 			 0,0,0,0,0,0,0,0,
 			 0,0,0,0,0,0,0,0,
-			 0,0,0,0,0,0,0,0xaa,
+			 0,0,0,0,0,0,0,0,
+			 0,0,0,0,0,0,0,0,
 			}
 		};
 		#define PMADRH_Value 0x30

@@ -22,27 +22,27 @@
 		#endif
 		
 
-		void PowerFaultPointSelect(char);
+	//	void PowerFaultPointSelect(char);
 		void PowerFault_Initialization();
 		void PowerFault_Main();
-		void getPowerFault_AD(char,char);
-		void setPowerFault_Initialization(char);
-		void setPowerFault_Main(char);
-		void setPowerFault_ERROR(char,char);
-		void setPF_Enable(char,char);
-		char getPF_Safe(char);
-		char getPF_ERROR(char);
+		void getPowerFault_AD(char);
+		void setPowerFault_Initialization();
+		void setPowerFault_Main();
+		void setPowerFault_Exceptions(char);
+		void setPF_Enable(char);
+		char getPF_Safe();
+		char getPF_ERROR();
 	#else
-		#define getPF_Safe(char) 1
-		#define getPF_ERROR(char) 0
-		#define PowerFaultPointSelect(char) ;
+		#define getPF_Safe() 1
+		#define getPF_ERROR() 0
+//		#define PowerFaultPointSelect(char) ;
 		#define PowerFault_Initialization() ;
 		#define PowerFault_Main() ;
-		#define getPowerFault_AD(char,char) ;
-		#define setPowerFault_Initialization(char) ;
-		#define setPowerFault_Main(char) ;
-		#define setPowerFault_ERROR(char,char) ;
-		#define setPF_Enable(char,char) ;
+		#define getPowerFault_AD(char) ;
+		#define setPowerFault_Initialization() ;
+		#define setPowerFault_Main() ;
+		#define setPowerFault_Exceptions(char) ;
+		#define setPF_Enable(char) ;
 
 	#endif
 

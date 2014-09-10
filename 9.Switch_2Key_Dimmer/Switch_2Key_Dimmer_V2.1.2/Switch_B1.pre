@@ -75,7 +75,7 @@ typedef int ADtype;
 # 249
 struct Product
 {
-unsigned char Data[30];
+unsigned char Data[32];
 };
 struct Product *Product;
 struct Product VarProduct=
@@ -83,11 +83,12 @@ struct Product VarProduct=
 {
 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+0x00,0x00
 }
 };
 
-# 296
+# 297
 struct TMain
 {
 unsigned PowerON:1;
@@ -233,6 +234,40 @@ void LedPointSelect(char);
 void setLED_Initialization(char);
 void setLED_Main(char);
 void setLED(char,char);
+
+# 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverTemperature_B1.h"
+struct OverTemp
+{
+unsigned Enable:1;
+unsigned ERROR:1;
+unsigned ADtoGO:1;
+unsigned LoadADGO:1;
+unsigned Safe:1;
+
+unsigned int Time;
+unsigned char Count;
+unsigned ADtype AD;
+unsigned ADtype ADH[2];
+unsigned ADtype ADRES;
+unsigned char AD1;
+unsigned char AD2;
+};
+
+struct OverTemp *Temp;
+
+# 36
+struct OverTemp Temp1;
+
+# 42
+void Temp_Initialization();
+void Temp_Main();
+void setTemp_Main();
+void setTemp_Initialization();
+void getTemp_AD(char);
+void setOverTemp_Exceptions(char);
+void setTemp_Enable(char);
+char getTemp_Safe();
+char getTemp_ERROR();
 
 # 161 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 const unsigned char CC2500_rfSettings[47] =
@@ -446,6 +481,70 @@ struct RFSW RFSW2;
 void setRF_DimmerValue(char);
 void setRF_DimmerLights(char,char);
 
+# 20 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h"
+struct OverLoad
+{
+unsigned Enable:1;
+unsigned GO:1;
+unsigned LightsON:1;
+unsigned Safe:1;
+unsigned ADtoGO:1;
+unsigned ERROR:1;
+unsigned int Time;
+unsigned int ErrorTime;
+unsigned char ErrorStatus;
+
+unsigned ADtype TotalLoad;
+unsigned ADtype AH[9];
+unsigned ADtype AL[9];
+unsigned ADtype AD;
+unsigned ADtype ADH;
+unsigned ADtype ADL;
+unsigned ADtype ADRES;
+
+unsigned int LightsJudgeValue;
+unsigned int JudgeValue;
+unsigned int Judge;
+
+unsigned char Count;
+unsigned char OffCount;
+unsigned char ErrorCount;
+unsigned char UpdateCount;
+unsigned char LightsCount;
+unsigned char NumberCount;
+unsigned char CloseCount;
+unsigned char ADCount;
+unsigned char SafeCount;
+
+unsigned char Lights1Status;
+unsigned char Lights2Status;
+unsigned char Lights3Status;
+unsigned StatusOn:1;
+unsigned StatusOff:1;
+};
+
+struct OverLoad *Load;
+
+
+struct OverLoad Load1;
+
+
+
+
+void Load_Initialization();
+void Load_Main();
+void getLoad_AD(char);
+void setLoad_Exceptions(char);
+void setLoad_Enable(char);
+void setLoad_AH_AL_Restore();
+
+void setLoad_Count(char);
+void setLoad_GO(char);
+void setLoad_StatusOn(char,char);
+void setLoad_StatusOff(char,char);
+char getLoad_Safe();
+char getLoad_ERROR();
+
 # 32 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
 struct DimmerLights
 {
@@ -496,7 +595,7 @@ struct DimmerLights DimmerLights2;
 void DimmerLightsPointSelect(char);
 void DimmerLights_Initialization();
 void DimmerLights_Main();
-void DimmerLights_ERROR();
+void DimmerLights_Exceptions(char);
 void DimmerLights_Close();
 
 void setDimmerLights_Initialization(char);
@@ -519,16 +618,13 @@ char getDimmerLights_StatusFlag();
 char getDimmerLights_Trigger();
 
 void setDimmerLights_Clear(char,char);
-char getDimmerLights_Clear(char);
-void setDimmerLights_Close(char,char);
-char getDimmerLights_Close(char);
 
-
+# 136
 struct Dimmer
 {
-unsigned LoadERROR:1;
-unsigned TempERROR:1;
-unsigned PFERROR:1;
+
+
+
 unsigned Detect:1;
 unsigned char Load;
 unsigned char Correction;
@@ -539,15 +635,7 @@ struct Dimmer *Dimmer;
 struct Dimmer Dimmer1;
 
 
-void DimmerPointSelect(char);
-void setDimmer_TempERROR(char,char);
-void setDimmer_LoadERROR(char,char);
-void setDimmer_PFERROR(char,char);
-char getDimmer_TempERROR(char);
-char getDimmer_LoadERROR(char);
-char getDimmer_PFERROR(char);
-void setDimmer_Detect(char,char);
-char getDimmer_Detect(char);
+void Dimmer_Initialization();
 
 # 19 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h"
 struct DelayOff
@@ -574,6 +662,36 @@ char DelayTimejudge(char);
 void DlyOff_Initialization(char);
 void DlyOff_Main(char);
 void setDelayOff_GO(char,char,char);
+
+# 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h"
+struct PF
+{
+unsigned Enable:1;
+unsigned ERROR:1;
+unsigned Safe:1;
+unsigned ADtoGO:1;
+unsigned ADtype AD;
+unsigned ADtype ADRES;
+unsigned char Count;
+unsigned int Time;
+};
+struct PF *PF;
+
+
+struct PF PF1;
+
+
+
+
+void PowerFault_Initialization();
+void PowerFault_Main();
+void getPowerFault_AD(char);
+void setPowerFault_Initialization();
+void setPowerFault_Main();
+void setPowerFault_Exceptions(char);
+void setPF_Enable(char);
+char getPF_Safe();
+char getPF_ERROR();
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.32\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3108,10 +3226,10 @@ unsigned int Time;
 struct FlashMemory *Memory;
 struct FlashMemory VarMemory={
 {
-0xff,0xff,0xff,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0xaa,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
 }
 };
 
@@ -3188,30 +3306,14 @@ void setSw_Enable(char command)
 
 
 SwPointSelect(1);
-if(command)
-{
-while(!Sw->Enable)
-Sw->Enable=1;
-}
-else
-{
-Sw->Enable=0;
-}
+Sw->Enable=command;
 
 
 
 SwPointSelect(2);
-if(command)
-{
-while(!Sw->Enable)
-Sw->Enable=1;
-}
-else
-{
-Sw->Enable=0;
-}
+Sw->Enable=command;
 
-# 128
+# 104
 }
 
 void setSw_Status(char sw,char command)
@@ -3226,7 +3328,7 @@ if(Sw->Enable)
 {
 SwPointSelect(sw);
 
-# 157
+# 133
 if(sw == 1)
 {
 Sw->Touch=(RA0 || RB1)?1:0;
@@ -3236,7 +3338,7 @@ else if(sw == 2)
 Sw->Touch=(RA6 || RA4)?1:0;
 }
 
-# 172
+# 148
 if(Sw->Touch)
 {
 if(!Sw->Debounce)
@@ -3282,7 +3384,7 @@ Sw->Hold2=1;
 
 setRF_Learn(1,1);
 
-# 223
+# 199
 }
 }
 else
@@ -3398,7 +3500,7 @@ setDimmerLights_AdjGo(sw,1);
 
 void Sw_Detect()
 {
-if(!0 && !0 && !0 && TMain->SelfTest)
+if(!getLoad_ERROR() && !getTemp_ERROR() && !getPF_ERROR() && TMain->SelfTest)
 {
 
 SwPointSelect(1);
@@ -3415,7 +3517,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 364
+# 340
 }
 }
 

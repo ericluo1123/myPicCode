@@ -45,6 +45,11 @@
 			DimmerLights33=&DimmerLights3;
 			setDimmerLights_Initialization(3);
 		#endif
+
+		#ifdef DimmerReference1
+			Dimmer_Initialization();
+		#endif
+
 	}
 	void setDimmerLights_Initialization(char lights)
 	{
@@ -84,9 +89,9 @@
 	//*********************************************************	
 	void DimmerLights_Close()
 	{
-		if(getDimmer_Detect(1))
+		if(Dimmer->Detect)
 		{
-			setDimmer_Detect(1,0);
+			Dimmer->Detect=0;
 			if(!getDimmerLights_StatusFlag())
 			{
 				setLoad_GO(0);
@@ -159,12 +164,13 @@
 				}
 			#endif
 		
+		
+
 			if(clear)
 			{
 				if(DimmerLights->Switch)
 				{
 					DimmerLights->Trigger=0;
-					DimmerLights->Clear=0;
 					setDimmerLights(lights,1);
 
 					#if OverLoad_use == 1
@@ -175,6 +181,7 @@
 				{
 					DimmerLights->Trigger=0;
 					setDimmerLights(lights,0);
+
 					#if OverLoad_use == 1
 						DimmerLights->Clear=0;
 					#endif
@@ -205,56 +212,60 @@
 	//*********************************************************
 	char getDimmerLights_StatusFlag()
 	{
-		char Status=0,i,length;
-		#ifdef use_3KEY
-			length=3;
-		#else
-			#ifdef use_2KEY
-				length=2;
-			#else
-				length=1;		
-			#endif
-		#endif
-	
-			
-		for(i=0 ; i<length ; i++)
-		{
-			DimmerLightsPointSelect(i+1);
-			if(DimmerLights->StatusFlag)
+		char Status=0;
+		#if Switch_Class == 3
+			if(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag || DimmerLights33->StatusFlag)
 			{
 				Status=1;
 			}
-		}
+		#endif
+
+		#if Switch_Class == 2
+			if(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)
+			{
+				Status=1;
+			}
+		#endif
+
+		#if Switch_Class == 1
+			if(DimmerLights11->StatusFlag)
+			{
+				Status=1;
+			}
+		#endif
+
 		return Status;
 	}
 	//*********************************************************
 	char getDimmerLights_Trigger()
 	{
-		char Status=0,i,length;
-		#ifdef use_3KEY
-			length=3;
-		#else
-			#ifdef use_2KEY
-				length=2;
-			#else
-				length=1;		
-			#endif
-		#endif
-			
-		for(i=0 ; i<length ; i++)
-		{
-			DimmerLightsPointSelect(i+1);
-			if(DimmerLights->Trigger)
+		char Status=0;
+		#if Switch_Class == 3
+			if(DimmerLights11->Trigger || DimmerLights22->Trigger || DimmerLights33->Trigger)
 			{
 				Status=1;
 			}
-		}
+		#endif
+
+		#if Switch_Class == 2
+			if(DimmerLights11->Trigger || DimmerLights22->Trigger)
+			{
+				Status=1;
+			}
+		#endif
+
+		#if Switch_Class == 1
+			if(DimmerLights11->Trigger)
+			{
+				Status=1;
+			}
+		#endif
 		return Status;
 	}
 	//*********************************************************
-	void DimmerLights_ERROR()
+	void DimmerLights_Exceptions(char status)
 	{
-		if(getDimmer_TempERROR(1))
+		if(status == 1)//temp
 		{	
 			if(getDimmerLights_StatusFlag())
 			{
@@ -271,12 +282,12 @@
 				setDimmerLights_ERROR(3);
 			#endif	
 		}
-		else if(getDimmer_LoadERROR(1))
+		else if(status == 2)//Load
 		{
 			setBuz(5,BuzzerErrorTime);
 			setDimmerLights_ERROR(Dimmer->Load);
 		}
-		else if(getDimmer_PFERROR(1))
+		else if(status == 3)//power fail
 		{
 			#ifdef use_1KEY
 				setDimmerLights_ERROR(1);
@@ -288,6 +299,7 @@
 				setDimmerLights_ERROR(3);
 			#endif	
 		}
+
 		#ifdef use_1KEY
 			setDimmerLights_TriggerERROR(1,0);
 		#endif
@@ -318,6 +330,7 @@
 			DimmerLights->StatusFlag=0;
 			DimmerLights->DimmingTimeValue=DimmingDelayTime;
 			DimmerLights->DimmingValue=DimmerLights->MinimumValue;
+			Dimmer->Detect=1;
 			setLoad_StatusOff(lights,1);
 			setLED(lights,1);
 			setSw_Status(lights,0);
@@ -351,7 +364,6 @@
 			if(!DimmerLights->StatusFlag)
 			{
 				DimmerLights->StatusFlag=1;
-				setDimmer_Detect(1,1);
 				setLoad_StatusOn(lights,1);
 
 				#if Serial_Number == 2
@@ -456,11 +468,11 @@
 		DimmerLightsPointSelect(lights);
 		DimmerLights->Clear=command;
 	}
-	char getDimmerLights_Clear(char lights)
+/*	char getDimmerLights_Clear(char lights)
 	{
 		DimmerLightsPointSelect(lights);
 		return DimmerLights->Clear;
-	}
+	}*/
 
 /*
 	void setDimmerLights_Open(char lights,char command)
@@ -515,7 +527,11 @@
 		#endif
 	}
 	//*********************************************************
-	void DimmerPointSelect(char dimmer)
+	void Dimmer_Initialization()
+	{
+		Dimmer=&Dimmer1;
+	}
+/*	void DimmerPointSelect(char dimmer)
 	{
 
 		#ifdef DimmerReference1
@@ -525,7 +541,8 @@
 			}
 		#endif
 	}
-	void setDimmer_TempERROR(char dimmer,char command)
+*/
+/*	void setDimmer_TempERROR(char dimmer,char command)
 	{
 		DimmerPointSelect(dimmer);
 		Dimmer->TempERROR=command;
@@ -540,12 +557,13 @@
 		DimmerPointSelect(dimmer);
 		Dimmer->PFERROR=command;
 	}
-	void setDimmer_Detect(char dimmer,char command)
+*/
+/*	void setDimmer_Detect(char dimmer,char command)
 	{
 		DimmerPointSelect(dimmer);
 		Dimmer->Detect=command;
-	}
-	char getDimmer_TempERROR(char dimmer)
+	}*/
+/*	char getDimmer_TempERROR(char dimmer)
 	{
 		DimmerPointSelect(dimmer);
 		return Dimmer->TempERROR;
@@ -560,11 +578,12 @@
 		DimmerPointSelect(dimmer);
 		return Dimmer->PFERROR;
 	}
-	char getDimmer_Detect(char dimmer)
+*/
+/*	char getDimmer_Detect(char dimmer)
 	{
 		DimmerPointSelect(dimmer);
 		return Dimmer->Detect;
-	}
+	}*/
 	#if Self_Test == 1
 		void DimmerLightsOpenShow()
 		{

@@ -315,11 +315,11 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		return ADC_ADRES;
 	}
 	//*********************************************************
-	void setADCGO()
+/*	void setADCGO()
 	{
 		ADGO=1;
 		while(ADGO);
-	}
+	}*/
 #endif
 //*********************************************************
 
@@ -453,9 +453,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		else
 		{
 			i=setPercentValue(Dimmer_Maxum);
-			setMemoryData(3,i);
-			setMemoryData(4,i);
-			setMemoryData(5,i);
+			setMemoryData(0,0xff);
+			setMemoryData(1,0xff);
+			setMemoryData(2,0xff);
+			setMemoryData(3,0xff);
+			setMemoryData(4,0xff);
+			setMemoryData(5,0xff);
+			setMemoryData(31,0xaa);
 			Product->Data[21]=i;
 			Product->Data[22]=i;
 			Product->Data[23]=i;
@@ -472,12 +476,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			if(Memory->Modify)
 			{
 				Memory->Time++;
-				if(Memory->Time == 50)//*5ms
+				if(Memory->Time == 25)//*10ms
 				{
 					Memory->Time=0;
 					Memory->Modify=0;
 					Memory->GO=0;
 					Flash_Memory_Modify();
+					ErrLED=ErrLED;
 				}
 			}
 			else

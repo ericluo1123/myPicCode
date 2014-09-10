@@ -5,46 +5,35 @@
 
 #if OverTemperature_use == 1
 
-	void TempPointSelect(char temp)
+/*	void TempPointSelect(char temp)
 	{
 		#ifdef SYSC1
 			Temp=&Temp1;
 		#endif
-	}
-	//*********************************************************
-	void Temp_Main()
-	{
-		#ifdef SYSC1
-			setTemp_Main(1);
-		#endif
-	}
+	}*/
 	//*********************************************************
 	void Temp_Initialization()
 	{
 		#ifdef SYSC1
-			setTemp_Initialization(1);
+			setTemp_Initialization();
 		#endif
 	}
 	//*********************************************************
-	void setTemp_Enable(char temp,char command)
+	void setTemp_Enable(char command)
 	{
-		TempPointSelect(temp);
 		Temp->Enable=command;
 	}
-	char getTemp_Safe(char temp)
+	char getTemp_Safe()
 	{
-		TempPointSelect(temp);
 		return Temp->Safe;
 	} 
-	char getTemp_ERROR(char temp)
+	char getTemp_ERROR()
 	{
-		TempPointSelect(temp);
 		return Temp->ERROR;
 	} 
 	//*********************************************************
-	void getTemp_AD(char temp,char channel)
+	void getTemp_AD(char channel)
 	{
-		TempPointSelect(temp);
 		if(Temp->ADtoGO)
 		{
 			Temp->ADRES=getAD(channel,ADCON1_VDD);
@@ -59,15 +48,21 @@
 		}
 	}
 	//*********************************************************
-	void setTemp_Initialization(char temp)
+	void setTemp_Initialization()
 	{
-		TempPointSelect(temp);
+		Temp=&Temp1;
 		Temp->Safe=1;
 	}
 	//*********************************************************
-	void setTemp_Main(char temp)
+	void Temp_Main()
 	{
-		TempPointSelect(temp);
+		#ifdef SYSC1
+			setTemp_Main();		
+		#endif	
+	}
+	//*********************************************************
+	void setTemp_Main()
+	{
 		if(Temp->Enable)
 		{
 			if(Temp->ADtoGO == 0)
@@ -75,7 +70,7 @@
 				Temp->Time++;
 				if(Temp->Time >= 500)//*10ms
 				{
-					if(getLoad_Safe() && getPF_Safe(1))
+					if(getLoad_Safe() && getPF_Safe())
 					{
 						Temp->Time=0;
 						Temp->ADtoGO=1;
@@ -103,7 +98,7 @@
 							if(Temp->Count >= TempCountValue)
 							{
 								Temp->Count=0;
-								setOverTemp_ERROR(1,0);
+								setOverTemp_Exceptions(0);
 							}
 						}
 						else
@@ -119,7 +114,7 @@
 							if(Temp->Count >= TempCountValue)
 							{
 								Temp->Count=0;
-								setOverTemp_ERROR(1,1);
+								setOverTemp_Exceptions(1);
 							}
 						}
 						else
@@ -140,36 +135,24 @@
 		}
 	}
 	//*********************************************************
-	void setOverTemp_ERROR(char temp,char command)
+	void setOverTemp_Exceptions(char command)
 	{
-		TempPointSelect(temp);
 		if(command)
 		{
-			Temp->ERROR=1;
-			setDimmer_TempERROR(1,1);
-			DimmerLights_ERROR();
-			//Lights_ERROR();
-			setLED(99,11);
-
-			setSw_Enable(0);
-
-			#ifdef RadioFrequency1
-				setRF_Enable(1,0);
-			#endif
+			DimmerLights_Exceptions(1);
 		}
-		else if(command == 0)
-		{
-			Temp->ERROR=0;
-			setDimmer_TempERROR(1,0);
-			Temp->Safe=1;
-			setLED(99,10);
-			//setBuz(1,2,BuzzerOnOffTime);
+		Temp->ERROR=command;
+		//Lights_ERROR();
+		setLED(99,command+10);
 
-			setSw_Enable(1);
+		Temp->Safe=(~command) & 0x01;
+		setSw_Enable((~command) & 0x01);
 
-			#ifdef RadioFrequency1
-				setRF_Enable(1,1);
-			#endif
-		}		
+		#ifdef RadioFrequency1
+			setRF_Enable(1,(~command) & 0x01);
+		#endif
+
+		//setBuz(2,BuzzerOnOffTime);
+		
 	}
 #endif

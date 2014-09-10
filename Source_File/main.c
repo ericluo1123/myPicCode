@@ -40,11 +40,11 @@ void main()
 			#endif
 
 			#ifdef SYSC1
-				getTemp_AD(1,OverTemp_Channel);
+				getTemp_AD(OverTemp_Channel);
 			#endif
 
 			#ifdef PFV1
-				getPowerFault_AD(1,PFV_Channel);
+				getPowerFault_AD(PFV_Channel);
 			#endif
 
 			#ifdef CDS_1
@@ -112,7 +112,7 @@ void MainT()
 			TMain->PowerON=1;
 			
 			#ifdef SYSC1
-				setTemp_Enable(1,1);
+				setTemp_Enable(1);
 			#endif
 
 			#ifdef OverLoad1

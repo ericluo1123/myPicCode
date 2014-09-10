@@ -172,7 +172,7 @@
 						Load->LightsON=1;
 						Load->Safe=0;
 					}
-					if(getTemp_Safe(1) && getPF_Safe(1))
+					if(getTemp_Safe() && getPF_Safe())
 					{
 						Load->ADtoGO=1;
 					}
@@ -230,32 +230,17 @@
 		Load->ErrorStatus=command;
 
 		setLED(99,command+10);
-		setDimmer_LoadERROR(1,command);	
-
 		if(command)
 		{
-
-			DimmerLights_ERROR();
-
-			Load->Safe=0;
-
-			setSw_Enable(0);
-		
-			#ifdef RadioFrequency1
-				setRF_Enable(1,0);
-			#endif
+			DimmerLights_Exceptions(2);
 		}
-		else
-		{
-			Load->Safe=1;
+		Load->Safe=(~command) & 0x01;
 
-			setSw_Enable(1);
+		setSw_Enable((~command) & 0x01);
 		
-			#ifdef RadioFrequency1
-				setRF_Enable(1,1);
-			#endif
-
-		}
+		#ifdef RadioFrequency1
+			setRF_Enable(1,(~command) & 0x01);
+		#endif
 	}
 	//*********************************************************
 	void setLoad_Count(char command)

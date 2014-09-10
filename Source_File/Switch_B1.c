@@ -88,41 +88,17 @@
 
 		#ifdef use_1KEY
 			SwPointSelect(1);
-			if(command)
-			{
-				while(!Sw->Enable)
-					Sw->Enable=1;
-			}
-			else
-			{
-				Sw->Enable=0;
-			}
+			Sw->Enable=command;
 		#endif
 	
 		#ifdef use_2KEY
 			SwPointSelect(2);
-			if(command)
-			{
-				while(!Sw->Enable)
-					Sw->Enable=1;
-			}
-			else
-			{
-				Sw->Enable=0;
-			}
+			Sw->Enable=command;
 		#endif
 	
 		#ifdef use_3KEY
 			SwPointSelect(3);
-			if(command)
-			{
-				while(!Sw->Enable)
-					Sw->Enable=1;
-			}
-			else
-			{
-				Sw->Enable=0;
-			}
+			Sw->Enable=command;
 		#endif
 
 	}
@@ -335,7 +311,7 @@
 	//*********************************************************	
 	void Sw_Detect()
 	{
-		if(!getLoad_ERROR() && !getTemp_ERROR(1) && !getPF_ERROR(1) && TMain->SelfTest)
+		if(!getLoad_ERROR() && !getTemp_ERROR() && !getPF_ERROR() && TMain->SelfTest)
 		{	
 			#ifdef use_1KEY
 				SwPointSelect(1);

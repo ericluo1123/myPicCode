@@ -154,7 +154,7 @@
 	#define SYSC_use 0
 
 //OverTemperature
-	#define OverTemperature_use 0
+	#define OverTemperature_use 1
 
 //OverLoad
 	#define OverLoad_use 1
@@ -192,7 +192,7 @@
 	#define DelayOff_use 1
 
 //PowerFault
-	#define PowerFault_use 0
+	#define PowerFault_use 1
 
 //Dimmer Lights
 	#define Dimmer_use 1
@@ -248,7 +248,7 @@
 //Global extern variable declaration
 	struct Product
 	{
-		unsigned char Data[30];
+		unsigned char Data[32];
 	};
 	struct Product *Product;
 	struct Product VarProduct=
@@ -256,7 +256,8 @@
 		{
 		 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 		 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-		 KeyID,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+		 KeyID,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+		 0x00,0x00
 		}
 	};
 	//0=Command	
