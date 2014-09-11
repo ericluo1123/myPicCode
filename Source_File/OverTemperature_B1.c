@@ -152,7 +152,7 @@
 			setRF_Enable(1,(~command) & 0x01);
 		#endif
 
-		//setBuz(2,BuzzerOnOffTime);
+		setBuz(2,BuzzerOnOffTime);
 		
 	}
 #endif

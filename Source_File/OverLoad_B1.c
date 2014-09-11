@@ -90,7 +90,7 @@
 								}
 								else
 								{
-									Load->JudgeValue=LoadLimitValue+Load->TotalLoad;
+									Load->JudgeValue=(LoadLimitValue+Load->TotalLoad)-0x08;
 								}		
 							}
 						}
@@ -103,11 +103,12 @@
 								Load->ErrorCount=0;
 								setLoad_Exceptions(1);
 								
-								setProductData(4,(Load->AD >> 8));
+							/*	setProductData(4,(Load->AD >> 8));
 								setProductData(5,Load->AD);
 								setProductData(16,(Load->JudgeValue >> 8));
 								setProductData(17,Load->JudgeValue);
 								setProductData(8,Load->LightsCount);
+							*/
 								
 							}
 						}
@@ -152,7 +153,7 @@
 					}	
 					setLoad_AH_AL_Restore();
 					
-					setProductData(2,(Load->AD >> 8));
+				/*	setProductData(2,(Load->AD >> 8));
 					setProductData(3,Load->AD);
 					setProductData(8,Load->LightsCount);
 					setProductData(10,Load->TotalLoad);
@@ -160,6 +161,7 @@
 					setProductData(17,Load->JudgeValue);
 					setProductData(18,Load->ErrorStatus);
 					setProductData(19,Load->Count);
+				*/
 					
 				}
 			}		
@@ -204,7 +206,7 @@
 							setDimmerLights_Clear(3,1);
 						#endif	
 						
-						setProductData(2,(Load->AD >> 8));
+					/*	setProductData(2,(Load->AD >> 8));
 						setProductData(3,Load->AD);
 						//setProductData(4,(Load->ADH >> 8));
 						//setProductData(5,Load->ADH);
@@ -216,6 +218,7 @@
 						setProductData(17,Load->JudgeValue);
 						setProductData(18,Load->ErrorStatus);
 						setProductData(19,Load->Count);
+					*/
 						
 					}	
 				}

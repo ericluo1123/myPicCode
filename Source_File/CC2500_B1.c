@@ -61,7 +61,7 @@ void CC2500_RxData(void)
 //	while(CC2500_GDO0==0);            		// wait for data 
 	if(CC2500_GDO0 == 1)  	 				// Check whether have data
 	{		
-		while(CC2500_GDO0 == 1);			 // wait for receive c`omplete	  		 
+		while(CC2500_GDO0 == 1);			 // wait for receive complete	  		 
 	}				 
 	CC2500_ReadStatus(CC2500_RXBYTES);
 	if(s_data != 0)
@@ -266,7 +266,7 @@ void CC2500_WriteCommand(unsigned char command)
 //-----------------------------------------------------------------------------
 void CC2500_ReadStatus(unsigned char status_addr)
 {
-    CC2500_CSN=0;
+   	CC2500_CSN=0;
 	SPI0Buffer=status_addr+0xC0;	//read status +0xc0
 
 	while(CC2500_SO==1);   			

@@ -98,8 +98,16 @@
 			if(command)
 			{
 				DelayOff->Value=DelayTimejudge(value);
+				if(((value%16)==5 || !(value%16)) && value <= 0x25)
+				{	
+					setProductData(26+sw,value);
+				}
+				else
+				{
+					setProductData(26+sw,0x05);
+				}
 			}
-			else if(command == 0)
+			else if(!command)
 			{
 				setProductData(sw+26,0);
 			}

@@ -3383,7 +3383,7 @@ setSw_Enable((~command) & 0x01);
 setRF_Enable(1,(~command) & 0x01);
 
 
-
+setBuz(2,100);
 
 }
 

@@ -3296,7 +3296,7 @@ DelayOffPointSelect(sw);
 if(DelayOff->GO)
 {
 DelayOff->SecondTime++;
-if(DelayOff->SecondTime >= 5400)
+if(DelayOff->SecondTime >= 5650)
 {
 DelayOff->SecondTime=0;
 DelayOff->MinuteTime++;
@@ -3325,8 +3325,16 @@ DelayOff->GO=command;
 if(command)
 {
 DelayOff->Value=DelayTimejudge(value);
+if(((value%16)==5 || !(value%16)) && value <= 0x25)
+{
+Product->Data[26+sw]=value;
 }
-else if(command == 0)
+else
+{
+Product->Data[26+sw]=0x05;
+}
+}
+else if(!command)
 {
 Product->Data[sw+26]=0;
 }

@@ -3326,8 +3326,8 @@ Product=&VarProduct;
 
 
 TMain=&VarTMain;
-TMain->FirstOpen=1;
-TMain->First=1;
+
+
 }
 
 void MainT()
@@ -3369,7 +3369,6 @@ TMain->Count1++;
 if(TMain->Count1 == 100)
 {
 TMain->Count1=0;
-setTxData(1);
 
 # 160
 if(TMain->Flag)

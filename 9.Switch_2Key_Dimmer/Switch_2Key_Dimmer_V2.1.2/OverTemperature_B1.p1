@@ -64,6 +64,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
 "62 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
+"54 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
+[v _setBuz `(v ~T0 @X0 0 ef2`uc`i ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -3280,6 +3282,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverTemperature_B1.c: 152: setRF_Enable(1,(~command) & 0x01);
 "152
 [e ( _setRF_Enable (2 , -> -> 1 `i `uc -> & ~ -> _command `i -> 1 `i `uc ]
+[; ;OverTemperature_B1.c: 155: setBuz(2,100);
+"155
+[e ( _setBuz (2 , -> -> 2 `i `uc -> 100 `i ]
 [; ;OverTemperature_B1.c: 157: }
 "157
 [e :UE 277 ]

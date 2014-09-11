@@ -2972,9 +2972,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;DelayOff_B1.c: 71: DelayOff->SecondTime++;
 "71
 [e ++ . *U _DelayOff 3 -> -> 1 `i `ui ]
-[; ;DelayOff_B1.c: 72: if(DelayOff->SecondTime >= 5400)
+[; ;DelayOff_B1.c: 72: if(DelayOff->SecondTime >= 5650)
 "72
-[e $ ! >= . *U _DelayOff 3 -> -> 5400 `i `ui 258  ]
+[e $ ! >= . *U _DelayOff 3 -> -> 5650 `i `ui 258  ]
 [; ;DelayOff_B1.c: 73: {
 "73
 {
@@ -3067,147 +3067,173 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;DelayOff_B1.c: 100: DelayOff->Value=DelayTimejudge(value);
 "100
 [e = . *U _DelayOff 2 ( _DelayTimejudge (1 _value ]
+[; ;DelayOff_B1.c: 101: if(((value%16)==5 || !(value%16)) && value <= 0x25)
 "101
-}
-[; ;DelayOff_B1.c: 101: }
-[e $U 263  ]
+[e $ ! && || == % -> _value `i -> 16 `i -> 5 `i ! != % -> _value `i -> 16 `i -> 0 `i <= -> _value `i -> 37 `i 263  ]
+[; ;DelayOff_B1.c: 102: {
 "102
-[e :U 262 ]
-[; ;DelayOff_B1.c: 102: else if(command == 0)
-[e $ ! == -> _command `i -> 0 `i 264  ]
-[; ;DelayOff_B1.c: 103: {
-"103
 {
-[; ;DelayOff_B1.c: 104: Product->Data[sw+26]=0;
+[; ;DelayOff_B1.c: 103: Product->Data[26+sw]=value;
+"103
+[e = *U + &U . *U _Product 0 * -> -> + -> 26 `i -> _sw `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _value ]
 "104
-[e = *U + &U . *U _Product 0 * -> -> + -> _sw `i -> 26 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 0 `i `uc ]
-"105
 }
-[e :U 264 ]
-"106
+[; ;DelayOff_B1.c: 104: }
+[e $U 264  ]
+"105
 [e :U 263 ]
-[; ;DelayOff_B1.c: 105: }
-[; ;DelayOff_B1.c: 106: DelayOff->SecondTime=0;
-[e = . *U _DelayOff 3 -> -> 0 `i `ui ]
-[; ;DelayOff_B1.c: 107: DelayOff->MinuteTime=0;
+[; ;DelayOff_B1.c: 105: else
+[; ;DelayOff_B1.c: 106: {
+"106
+{
+[; ;DelayOff_B1.c: 107: Product->Data[26+sw]=0x05;
 "107
-[e = . *U _DelayOff 4 -> -> 0 `i `uc ]
+[e = *U + &U . *U _Product 0 * -> -> + -> 26 `i -> _sw `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 5 `i `uc ]
 "108
 }
-[e :U 261 ]
+[e :U 264 ]
+"109
+}
 [; ;DelayOff_B1.c: 108: }
 [; ;DelayOff_B1.c: 109: }
-"109
+[e $U 265  ]
+"110
+[e :U 262 ]
+[; ;DelayOff_B1.c: 110: else if(!command)
+[e $ ! ! != -> _command `i -> -> -> 0 `i `uc `i 266  ]
+[; ;DelayOff_B1.c: 111: {
+"111
+{
+[; ;DelayOff_B1.c: 112: Product->Data[sw+26]=0;
+"112
+[e = *U + &U . *U _Product 0 * -> -> + -> _sw `i -> 26 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 0 `i `uc ]
+"113
+}
+[e :U 266 ]
+"114
+[e :U 265 ]
+[; ;DelayOff_B1.c: 113: }
+[; ;DelayOff_B1.c: 114: DelayOff->SecondTime=0;
+[e = . *U _DelayOff 3 -> -> 0 `i `ui ]
+[; ;DelayOff_B1.c: 115: DelayOff->MinuteTime=0;
+"115
+[e = . *U _DelayOff 4 -> -> 0 `i `uc ]
+"116
+}
+[e :U 261 ]
+[; ;DelayOff_B1.c: 116: }
+[; ;DelayOff_B1.c: 117: }
+"117
 [e :UE 260 ]
 }
-"111
-[v _DelayTimejudge `(uc ~T0 @X0 1 ef1`uc ]
-"112
-{
-[; ;DelayOff_B1.c: 111: char DelayTimejudge(char value)
-[; ;DelayOff_B1.c: 112: {
-[e :U _DelayTimejudge ]
-"111
-[v _value `uc ~T0 @X0 1 r1 ]
-"112
-[f ]
-"113
-[v _i `uc ~T0 @X0 1 a ]
-[; ;DelayOff_B1.c: 113: char i=5;
-[e = _i -> -> 5 `i `uc ]
-[; ;DelayOff_B1.c: 114: if(value == 0x05)
-"114
-[e $ ! == -> _value `i -> 5 `i 266  ]
-[; ;DelayOff_B1.c: 115: {
-"115
-{
-[; ;DelayOff_B1.c: 116: i=5;
-"116
-[e = _i -> -> 5 `i `uc ]
-"117
-}
-[; ;DelayOff_B1.c: 117: }
-[e $U 267  ]
-"118
-[e :U 266 ]
-[; ;DelayOff_B1.c: 118: else if(value == 0x10)
-[e $ ! == -> _value `i -> 16 `i 268  ]
-[; ;DelayOff_B1.c: 119: {
 "119
-{
-[; ;DelayOff_B1.c: 120: i=10;
+[v _DelayTimejudge `(uc ~T0 @X0 1 ef1`uc ]
 "120
-[e = _i -> -> 10 `i `uc ]
+{
+[; ;DelayOff_B1.c: 119: char DelayTimejudge(char value)
+[; ;DelayOff_B1.c: 120: {
+[e :U _DelayTimejudge ]
+"119
+[v _value `uc ~T0 @X0 1 r1 ]
+"120
+[f ]
 "121
-}
-[; ;DelayOff_B1.c: 121: }
-[e $U 269  ]
+[v _i `uc ~T0 @X0 1 a ]
+[; ;DelayOff_B1.c: 121: char i=5;
+[e = _i -> -> 5 `i `uc ]
+[; ;DelayOff_B1.c: 122: if(value == 0x05)
 "122
-[e :U 268 ]
-[; ;DelayOff_B1.c: 122: else if(value == 0x15)
-[e $ ! == -> _value `i -> 21 `i 270  ]
+[e $ ! == -> _value `i -> 5 `i 268  ]
 [; ;DelayOff_B1.c: 123: {
 "123
 {
-[; ;DelayOff_B1.c: 124: i=15;
+[; ;DelayOff_B1.c: 124: i=5;
 "124
-[e = _i -> -> 15 `i `uc ]
+[e = _i -> -> 5 `i `uc ]
 "125
 }
 [; ;DelayOff_B1.c: 125: }
-[e $U 271  ]
+[e $U 269  ]
 "126
-[e :U 270 ]
-[; ;DelayOff_B1.c: 126: else if(value == 0x20)
-[e $ ! == -> _value `i -> 32 `i 272  ]
+[e :U 268 ]
+[; ;DelayOff_B1.c: 126: else if(value == 0x10)
+[e $ ! == -> _value `i -> 16 `i 270  ]
 [; ;DelayOff_B1.c: 127: {
 "127
 {
-[; ;DelayOff_B1.c: 128: i=20;
+[; ;DelayOff_B1.c: 128: i=10;
 "128
-[e = _i -> -> 20 `i `uc ]
+[e = _i -> -> 10 `i `uc ]
 "129
 }
 [; ;DelayOff_B1.c: 129: }
-[e $U 273  ]
+[e $U 271  ]
 "130
-[e :U 272 ]
-[; ;DelayOff_B1.c: 130: else if(value == 0x25)
-[e $ ! == -> _value `i -> 37 `i 274  ]
+[e :U 270 ]
+[; ;DelayOff_B1.c: 130: else if(value == 0x15)
+[e $ ! == -> _value `i -> 21 `i 272  ]
 [; ;DelayOff_B1.c: 131: {
 "131
 {
-[; ;DelayOff_B1.c: 132: i=25;
+[; ;DelayOff_B1.c: 132: i=15;
 "132
-[e = _i -> -> 25 `i `uc ]
+[e = _i -> -> 15 `i `uc ]
 "133
 }
 [; ;DelayOff_B1.c: 133: }
-[e $U 275  ]
+[e $U 273  ]
 "134
-[e :U 274 ]
-[; ;DelayOff_B1.c: 134: else if(value == 0x30)
-[e $ ! == -> _value `i -> 48 `i 276  ]
+[e :U 272 ]
+[; ;DelayOff_B1.c: 134: else if(value == 0x20)
+[e $ ! == -> _value `i -> 32 `i 274  ]
 [; ;DelayOff_B1.c: 135: {
 "135
 {
-[; ;DelayOff_B1.c: 136: i=30;
+[; ;DelayOff_B1.c: 136: i=20;
 "136
-[e = _i -> -> 30 `i `uc ]
+[e = _i -> -> 20 `i `uc ]
 "137
 }
-[e :U 276 ]
+[; ;DelayOff_B1.c: 137: }
+[e $U 275  ]
 "138
+[e :U 274 ]
+[; ;DelayOff_B1.c: 138: else if(value == 0x25)
+[e $ ! == -> _value `i -> 37 `i 276  ]
+[; ;DelayOff_B1.c: 139: {
+"139
+{
+[; ;DelayOff_B1.c: 140: i=25;
+"140
+[e = _i -> -> 25 `i `uc ]
+"141
+}
+[; ;DelayOff_B1.c: 141: }
+[e $U 277  ]
+"142
+[e :U 276 ]
+[; ;DelayOff_B1.c: 142: else if(value == 0x30)
+[e $ ! == -> _value `i -> 48 `i 278  ]
+[; ;DelayOff_B1.c: 143: {
+"143
+{
+[; ;DelayOff_B1.c: 144: i=30;
+"144
+[e = _i -> -> 30 `i `uc ]
+"145
+}
+[e :U 278 ]
+"146
+[e :U 277 ]
 [e :U 275 ]
 [e :U 273 ]
 [e :U 271 ]
 [e :U 269 ]
-[e :U 267 ]
-[; ;DelayOff_B1.c: 137: }
-[; ;DelayOff_B1.c: 138: return i;
+[; ;DelayOff_B1.c: 145: }
+[; ;DelayOff_B1.c: 146: return i;
 [e ) _i ]
-[e $UE 265  ]
-[; ;DelayOff_B1.c: 139: }
-"139
-[e :UE 265 ]
+[e $UE 267  ]
+[; ;DelayOff_B1.c: 147: }
+"147
+[e :UE 267 ]
 }

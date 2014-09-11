@@ -9,7 +9,7 @@
 		#endif
 
 		#if	Switch_Class == 2
-			#define SecondTimeValue 5400	//*10ms
+			#define SecondTimeValue 5650	//*10ms
 		#endif
 
 		#if	Switch_Class == 3

@@ -109,8 +109,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
 "62 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
-"60
-[v _setTxData `(v ~T0 @X0 0 ef1`uc ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -3058,12 +3056,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 98: TMain=&VarTMain;
 "98
 [e = _TMain &U _VarTMain ]
-[; ;main.c: 99: TMain->FirstOpen=1;
-"99
-[e = . *U _TMain 5 -> -> 1 `i `uc ]
-[; ;main.c: 100: TMain->First=1;
-"100
-[e = . *U _TMain 8 -> -> 1 `i `uc ]
 [; ;main.c: 101: }
 "101
 [e :UE 256 ]
@@ -3141,9 +3133,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 149: TMain->Count1=0;
 "149
 [e = . *U _TMain 10 -> -> 0 `i `ui ]
-[; ;main.c: 150: setTxData(1);
-"150
-[e ( _setTxData (1 -> -> 1 `i `uc ]
 [; ;main.c: 160: if(TMain->Flag)
 "160
 [e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 262  ]

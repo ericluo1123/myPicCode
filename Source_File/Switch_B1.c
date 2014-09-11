@@ -8,7 +8,7 @@
 	#ifdef TTPW
 		void TouchPower()
 		{
-			while(TTPW == 0)
+			while(!TTPW)
 				TTPW=1;
 		}
 	#endif
@@ -171,10 +171,10 @@
 						{
 							Sw->Hold1Time=0;
 							Sw->Hold1=1;
-							#if Dimmer_use == 1 && Dimmable_Func == 1
-
-								Sw_DimmerAdjFunc(sw);//key on function
-		
+							#if Dimmer_use == 1 
+								#if Dimmable_Func == 1
+									Sw_DimmerAdjFunc(sw);//key on function
+								#endif
 							#endif
 						}
 					}
@@ -187,14 +187,15 @@
 							{
 								Sw->Hold2Time=0;
 								Sw->Hold2=1;
-								#if CC2500_use == 1
-									setRF_Learn(1,1);
-									#if Dimmer_Use == 1
-										if(TMain->First)
-										{
-											setBuz(1,2,BuzzerOnOffTime);
-										}
+
+								#if Dimmer_use == 1
+									#if CC2500_use == 1
+										setRF_Learn(1,1);
 									#endif
+									if(TMain->First)
+									{
+										setBuz(2,BuzzerOnOffTime);
+									}
 								#endif
 							}
 						}
@@ -207,8 +208,10 @@
 								{
 									Sw->Hold3Time=0;
 									Sw->Hold3=1;
-									#if CC2500_use == 1
-										setRF_Learn(1,0);
+									#if Dimmer_use == 1
+										#if CC2500_use == 1
+											setRF_Learn(1,0);
+										#endif
 									#endif
 								}
 							}
@@ -231,14 +234,14 @@
 						Sw->Hold2=0;
 						Sw->Hold3Time=0;
 						Sw->Hold3=0;
-						setRF_Learn(1,0);
 						#if Dimmer_use == 1
 
 							Sw_DimmerOffFunc(sw);//key on function
 
 						#endif
+						setRF_Learn(1,0);
 					}
-				}	
+				}
 			}
 		}
 	}
@@ -280,7 +283,7 @@
 					setProductData(17,Product->Data[26+sw]);
 					setRF_DimmerLights(sw,Sw->Status);
 					setTxData(1);
-		
+
 				}
 			}
 			else
@@ -288,8 +291,8 @@
 				setDimmerLights_Trigger(sw,1);
 				setDimmerLights_Switch(sw,0);
 
-				setRF_DimmerLights(sw,Sw->Status);
 				setDelayOff_GO(sw,0,0);	
+				setRF_DimmerLights(sw,Sw->Status);
 				setTxData(1);		
 			}	
 		}

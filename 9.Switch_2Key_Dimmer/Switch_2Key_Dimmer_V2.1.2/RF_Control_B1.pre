@@ -3301,7 +3301,7 @@ if(RF->Enable)
 {
 
 # 68
-RF->Key=((RA0 || RB1 || RA6 || RA4 ) && RF->Learn == 0)?1:0;
+RF->Key=((RA6 || RA4 || RA0 || RB1 ) && !RF->Learn)?1:0;
 
 # 75
 if(RF->Key)
@@ -3343,13 +3343,15 @@ CC2500_TxData();
 }
 else
 {
-if(!RF->RxStatus && 1)
+
+if(!RF->RxStatus)
 {
 RF->RxStatus=1;
 CC2500_WriteCommand(0x36);
 CC2500_WriteCommand(0x34);
 setINT_GO(1);
 }
+
 }
 }
 }
@@ -3362,18 +3364,36 @@ char i;
 RfPointSelect(rf);
 if(RF->Enable)
 {
-if(RF->TransceiveGO == 0 && 1)
+
+if(!RF->TransceiveGO)
 {
 RF->TransceiveGO=1;
 
+# 150
+RF_Data[0]=0x63;
+RF_Data[1]=0x02;
+RF_Data[2]=Product->Data[2];
+RF_Data[3]=Product->Data[3];
+RF_Data[4]=Product->Data[4];
+RF_Data[5]=Product->Data[5];
+RF_Data[6]=Product->Data[6];
+RF_Data[7]=Product->Data[7];
+RF_Data[8]=Product->Data[8];
+RF_Data[9]=Product->Data[9];
+RF_Data[10]=Product->Data[10];
+RF_Data[11]=Product->Data[11];
+RF_Data[12]=Product->Data[12];
+RF_Data[13]=Product->Data[13];
+RF_Data[14]=Product->Data[14];
+RF_Data[15]=Product->Data[15];
+RF_Data[16]=Product->Data[16];
+RF_Data[17]=Product->Data[17];
+RF_Data[18]=Product->Data[18];
+RF_Data[19]=Product->Data[19];
+RF_Data[20]=2;
 
-for(i=0 ;i< 21 ;i++)
-{
-RF_Data[i]=Product->Data[i];
 }
 
-# 168
-}
 }
 }
 
@@ -3392,7 +3412,7 @@ RF->RxStatus=0;
 RF->ReceiveGO=0;
 RF->DebounceTime=0;
 RF->Debounce=0;
-CC2500_WriteCommand(0x36);
+
 CC2500_WriteCommand(0x3A);
 setINT_GO(0);
 }
@@ -3449,7 +3469,7 @@ else if(RF_Data[0] == 0x0 && RF_Data[1] == 0x65)
 ;
 }
 
-# 247
+# 252
 }
 }
 
@@ -3483,7 +3503,7 @@ setDimmerLights(2,0);
 setRFSW_Status(2,0);
 setSw_Status(2,0);
 
-# 286
+# 291
 Product->Data[9]=0;
 Product->Data[11]=0;
 Product->Data[15]=0;
@@ -3522,7 +3542,7 @@ else if(RF_Data[15] == 0x21)
 setRFSW_AdjControl(2);
 }
 
-# 338
+# 343
 }
 
 void RfSWPointSelect(char sw)
@@ -3539,30 +3559,31 @@ if(sw == 2)
 RFSW=&RFSW2;
 }
 
-# 360
+# 365
 }
 
 void setRFSW_Control(char sw)
 {
 RfSWPointSelect(sw);
+if(!RFSW->Status)
+{
 if(RF_Data[16] == 0x80)
 {
 setDelayOff_GO(sw,1,RF_Data[17]);
-Product->Data[26+sw]=RF_Data[17];
 }
-if(RFSW->Status == 0)
-{
 RFSW->Status=1;
 setSw_Status(sw,1);
 
 setDimmerLights_Trigger(sw,1);
 setDimmerLights_Switch(sw,1);
+
 setRF_DimmerLights(sw,RFSW->Status);
 }
 else
 {
 if(RF_Data[16] == 0x80)
 {
+setDelayOff_GO(sw,1,RF_Data[17]);
 setRF_DimmerLights(sw,1);
 }
 else
@@ -3573,8 +3594,8 @@ setSw_Status(sw,0);
 setDimmerLights_Trigger(sw,1);
 setDimmerLights_Switch(sw,RFSW->Status);
 
-setRF_DimmerLights(sw,0);
 setDelayOff_GO(sw,0,0);
+setRF_DimmerLights(sw,0);
 }
 }
 setBuz(1,100);

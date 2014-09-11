@@ -41,20 +41,20 @@
 	#endif
 
 //MCU
-	#define	Key1_1				RA0		//pin2  1	
+	#define	Key2_1				RA0		//pin2  1	
   	#define OverLoad1			RA1		//pin3	1	
  	#define SYSC1				RA2		//pin4	1		
- 	#define	LED2				RA3		//pin5	0	
-	#define	Key2_2				RA4		//pin6 	1	
+ 	#define	LED1				RA3		//pin5	0	
+	#define	Key1_2				RA4		//pin6 	1	
 	#define PFV1				RA5		//pin7	1
-	#define	Key2_1				RA6		//pin10 1			
-	#define	Triac2				RA7		//pin9	0		
+	#define	Key1_1				RA6		//pin10 1			
+	#define	Triac1				RA7		//pin9	0		
 		
 	#define CC2500_GDO0			RB0		//pin21 1	
-	#define Key1_2				RB1		//pin22 1	
+	#define Key2_2				RB1		//pin22 1	
 	#define DimmerReference1	RB2		//pin23 1
 	#define Buzzer1				RB3		//pin24	0
-	#define Triac1				RB4		//pin25 0	
+	#define Triac2				RB4		//pin25 0	
 	#define ErrLED				RB5		//pin26	0
 	#define PinEmpty1			RB6		//pin27	0	
 	#define PinEmpty2			RB7		//pin28 0	
@@ -66,7 +66,7 @@
 	#define CC2500_CSN			RC4		//pin15	0	
 	#define	TTPW				RC5		//pin16	0	
 //	#define LED3				RC6		//pin17	0	
-	#define	LED1				RC7		//pin18	0	
+	#define	LED2				RC7		//pin18	0	
 
 	//I/O
 	#define _TRISA 	0b01110111;
@@ -196,8 +196,8 @@
 
 //Dimmer Lights
 	#define Dimmer_use 1
-	
-	#define Dimmable_Func 1
+	#define Dimmable_Func 1	
+	#define DimmerValue_Save 1
 
 	//dimmer define 	
 	#define DimmingDelayTime 3 //3

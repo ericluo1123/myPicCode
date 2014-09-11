@@ -61,15 +61,15 @@
 		if(RF->Enable)
 		{
 			#if	Switch_Class == 3 
-				RF->Key=((Key1 || Key2 || Key3) && RF->Learn == 0)?1:0;//有鍵按下
+				RF->Key=((Key1 || Key2 || Key3) && !RF->Learn)?1:0;//有鍵按下
 			#endif
 
 			#if	Switch_Class == 2
-				RF->Key=((Key1_1 ||  Key1_2 || Key2_1 || Key2_2 ) && RF->Learn == 0)?1:0;//有鍵按下
+				RF->Key=((Key1_1 ||  Key1_2 || Key2_1 || Key2_2 ) && !RF->Learn)?1:0;//有鍵按下
 			#endif
 
 			#if	Switch_Class == 1
-				RF->Key=((Key1_1 ||  Key1_2 || Key1_3 || Key1_4) && RF->Learn == 0)?1:0;//有鍵按下	
+				RF->Key=((Key1_1 ||  Key1_2 || Key1_3 || Key1_4) && !RF->Learn)?1:0;//有鍵按下	
 			#endif
 
 			if(RF->Key)
@@ -88,7 +88,7 @@
 						UART_SetData();
 					#else 
 						getRxData(1);
-						//ErrLED=~ErrLED;
+					//	ErrLED=~ErrLED;
 					#endif
 				}
 				else
@@ -114,13 +114,15 @@
 					}
 					else
 					{
-						if(!RF->RxStatus && Rx_Enable)//設置為接收模式
-						{
-							RF->RxStatus=1;
-							CC2500_WriteCommand(CC2500_SIDLE);// idle
-							CC2500_WriteCommand(CC2500_SRX);// set receive mode	
-							setINT_GO(1);
-						}
+						#if Rx_Enable == 1
+							if(!RF->RxStatus)//設置為接收模式
+							{
+								RF->RxStatus=1;
+								CC2500_WriteCommand(CC2500_SIDLE);// idle
+								CC2500_WriteCommand(CC2500_SRX);// set receive mode	
+								setINT_GO(1);
+							}
+						#endif
 					}
 				}
 			}
@@ -133,39 +135,42 @@
 		RfPointSelect(rf);
 		if(RF->Enable)
 		{
-			if(RF->TransceiveGO == 0 && Tx_Enable)
-			{
-				RF->TransceiveGO=1;
-			//	RF_Data[0]=0x63;		//Command
-			//	RF_Data[1]=0x02;		//Command
-				for(i=0 ;i< 21 ;i++)
+			#if Tx_Enable == 1
+				if(!RF->TransceiveGO)
 				{
-					RF_Data[i]=Product->Data[i];
+					RF->TransceiveGO=1;
+				/*	Product->Data[0]=0x63;		//Command
+					Product->Data[1]=0x02;		//Command
+					Product->Data[20]=KeyID;	//Key ID*/
+				/*	for(i=2 ;i< 20 ;i++)
+					{
+						RF_Data[i]=Product->Data[i];
+					}*/
+	
+					RF_Data[0]=0x63;//Product->Data[0];		//Command
+					RF_Data[1]=0x02;//Product->Data[1];		//Command
+					RF_Data[2]=Product->Data[2];		//Temperature
+					RF_Data[3]=Product->Data[3];		//Temperature
+					RF_Data[4]=Product->Data[4];		//Humidity
+					RF_Data[5]=Product->Data[5];		//Humidity 
+					RF_Data[6]=Product->Data[6];		//Barometric pressure
+					RF_Data[7]=Product->Data[7];		//Barometric pressure
+					RF_Data[8]=Product->Data[8];		//Electricity
+					RF_Data[9]=Product->Data[9];		//Dimmer
+					RF_Data[10]=Product->Data[10];		//Electric  current
+					RF_Data[11]=Product->Data[11];		//Year
+					RF_Data[12]=Product->Data[12];		//Week 
+					RF_Data[13]=Product->Data[13];		//Serial  Number
+					RF_Data[14]=Product->Data[14];		//Serial  Number
+					RF_Data[15]=Product->Data[15];		//Lights Status
+					RF_Data[16]=Product->Data[16];		//Timmer Command
+					RF_Data[17]=Product->Data[17];		//Timmer Time
+					RF_Data[18]=Product->Data[18];		//Reserved
+					RF_Data[19]=Product->Data[19];		//Reserved
+					RF_Data[20]=KeyID;//Product->Data[20];		//Key ID
+	
 				}
-/*
-				RF_Data[0]=Product->Data[0];		//Command
-				RF_Data[1]=Product->Data[1];		//Command
-				RF_Data[2]=Product->Data[24];		//Temperature
-				RF_Data[3]=Product->Data[25];		//Temperature
-				RF_Data[4]=Product->Data[4];		//Humidity
-				RF_Data[5]=Product->Data[5];		//Humidity 
-				RF_Data[6]=Product->Data[6];		//Barometric pressure
-				RF_Data[7]=Product->Data[7];		//Barometric pressure
-				RF_Data[8]=Product->Data[8];		//Electricity
-				RF_Data[9]=Product->Data[9];		//Dimmer
-				RF_Data[10]=Product->Data[10];		//Electric  current
-				RF_Data[11]=Product->Data[11];		//Year
-				RF_Data[12]=Product->Data[12];		//Week 
-				RF_Data[13]=Product->Data[13];		//Serial  Number
-				RF_Data[14]=Product->Data[14];		//Serial  Number
-				RF_Data[15]=Product->Data[15];		//Lights Status
-				RF_Data[16]=Product->Data[16];		//Timmer Command
-				RF_Data[17]=Product->Data[17];		//Timmer Time
-				RF_Data[18]=Product->Data[18];		//Reserved
-				RF_Data[19]=Product->Data[19];		//Reserved
-				RF_Data[20]=Product->Data[20];		//Key ID
-*/
-			}
+			#endif
 		}
 	}
 	//*********************************************************
@@ -184,7 +189,7 @@
 			RF->ReceiveGO=0;
 			RF->DebounceTime=0;
 			RF->Debounce=0;
-			CC2500_WriteCommand(CC2500_SIDLE);// idle
+		//	CC2500_WriteCommand(CC2500_SIDLE);// idle
 			CC2500_WriteCommand(CC2500_SFRX);// clear RXFIFO data
 			setINT_GO(0);
 		}
@@ -362,24 +367,25 @@
 	void setRFSW_Control(char sw)
 	{
 		RfSWPointSelect(sw);
-		if(RF_Data[16] == 0x80)
+		if(!RFSW->Status)
 		{
-			setDelayOff_GO(sw,1,RF_Data[17]);
-			setProductData(26+sw,RF_Data[17]);
-		}
-		if(RFSW->Status == 0)
-		{
+			if(RF_Data[16] == 0x80)
+			{
+				setDelayOff_GO(sw,1,RF_Data[17]);
+			}
 			RFSW->Status=1;
 			setSw_Status(sw,1);
 
 			setDimmerLights_Trigger(sw,1);
 			setDimmerLights_Switch(sw,1);
+
 			setRF_DimmerLights(sw,RFSW->Status);
 		}
 		else
 		{
 			if(RF_Data[16] == 0x80)
 			{
+				setDelayOff_GO(sw,1,RF_Data[17]);
 				setRF_DimmerLights(sw,1);
 			}
 			else
@@ -390,8 +396,8 @@
 				setDimmerLights_Trigger(sw,1);
 				setDimmerLights_Switch(sw,RFSW->Status);
 
-				setRF_DimmerLights(sw,0);
 				setDelayOff_GO(sw,0,0);
+				setRF_DimmerLights(sw,0);
 			}
 		}
 		setBuz(1,BuzzerOnOffTime);

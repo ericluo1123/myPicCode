@@ -50,10 +50,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setLED_Main `(v ~T0 @X0 0 ef1`uc ]
 "55
 [v _setLED `(v ~T0 @X0 0 ef2`uc`uc ]
-"4553 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
-[v _RC7 `Vb ~T0 @X0 0 e@119 ]
-"4513
+"4513 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _RA3 `Vb ~T0 @X0 0 e@99 ]
+"4553
+[v _RC7 `Vb ~T0 @X0 0 e@119 ]
 "4533
 [v _RB5 `Vb ~T0 @X0 0 e@109 ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
@@ -2992,9 +2992,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 81: {
 "81
 {
-[; ;LED_B1.c: 85: RC7=1;
+[; ;LED_B1.c: 85: RA3=1;
 "85
-[e = _RC7 -> -> 1 `i `b ]
+[e = _RA3 -> -> 1 `i `b ]
 "87
 }
 [; ;LED_B1.c: 87: }
@@ -3006,9 +3006,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 91: {
 "91
 {
-[; ;LED_B1.c: 95: RA3=1;
+[; ;LED_B1.c: 95: RC7=1;
 "95
-[e = _RA3 -> -> 1 `i `b ]
+[e = _RC7 -> -> 1 `i `b ]
 "97
 }
 [; ;LED_B1.c: 97: }
@@ -3046,9 +3046,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 124: {
 "124
 {
-[; ;LED_B1.c: 128: RC7=0;
+[; ;LED_B1.c: 128: RA3=0;
 "128
-[e = _RC7 -> -> 0 `i `b ]
+[e = _RA3 -> -> 0 `i `b ]
 "130
 }
 [; ;LED_B1.c: 130: }
@@ -3060,9 +3060,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 134: {
 "134
 {
-[; ;LED_B1.c: 138: RA3=0;
+[; ;LED_B1.c: 138: RC7=0;
 "138
-[e = _RA3 -> -> 0 `i `b ]
+[e = _RC7 -> -> 0 `i `b ]
 "140
 }
 [; ;LED_B1.c: 140: }
@@ -3106,9 +3106,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 169: {
 "169
 {
-[; ;LED_B1.c: 173: RC7=1;
+[; ;LED_B1.c: 173: RA3=1;
 "173
-[e = _RC7 -> -> 1 `i `b ]
+[e = _RA3 -> -> 1 `i `b ]
 "175
 }
 [; ;LED_B1.c: 175: }
@@ -3120,9 +3120,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 179: {
 "179
 {
-[; ;LED_B1.c: 183: RA3=1;
+[; ;LED_B1.c: 183: RC7=1;
 "183
-[e = _RA3 -> -> 1 `i `b ]
+[e = _RC7 -> -> 1 `i `b ]
 "185
 }
 [; ;LED_B1.c: 185: }
@@ -3206,9 +3206,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 225: {
 "225
 {
-[; ;LED_B1.c: 226: RC7=~RC7;
+[; ;LED_B1.c: 226: RA3=~RA3;
 "226
-[e = _RC7 -> ~ -> _RC7 `ui `b ]
+[e = _RA3 -> ~ -> _RA3 `ui `b ]
 "227
 }
 [; ;LED_B1.c: 227: }
@@ -3220,9 +3220,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LED_B1.c: 231: {
 "231
 {
-[; ;LED_B1.c: 232: RA3=~RA3;
+[; ;LED_B1.c: 232: RC7=~RC7;
 "232
-[e = _RA3 -> ~ -> _RA3 `ui `b ]
+[e = _RC7 -> ~ -> _RC7 `ui `b ]
 "233
 }
 [; ;LED_B1.c: 233: }

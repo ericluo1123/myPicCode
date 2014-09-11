@@ -3552,10 +3552,11 @@ DimmerLights->Signal=0;
 DimmerLights->AdjFlag=0;
 setLoad_StatusOff(0,1);
 DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
-setRF_DimmerLights(lights,1);
-setTxData(1);
+
 Memory->Modify=1;
 Product->Data[(20+lights)]=setPercentValue(DimmerLights->MaxmumValue);
+setRF_DimmerLights(lights,1);
+setTxData(1);
 }
 }
 }
@@ -3605,7 +3606,7 @@ DimmerLightsPointSelect(lights);
 DimmerLights->Clear=command;
 }
 
-# 500
+# 501
 char getPercentValue(char value)
 {
 
@@ -3613,7 +3614,7 @@ float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
 i/=100;
 return (char)(((100-value)*i)+((char)((100-60)*1.5)));
 
-# 513
+# 514
 }
 
 char setPercentValue(char value)
@@ -3623,7 +3624,7 @@ float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
 i/=100;
 return (100-(char)((value-((char)((100-60)*1.5)))/i));
 
-# 528
+# 529
 }
 
 void Dimmer_Initialization()

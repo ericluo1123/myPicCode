@@ -3245,7 +3245,7 @@ void Flash_Memory_Main();
 # 9 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 void TouchPower()
 {
-while(RC5 == 0)
+while(!RC5)
 RC5=1;
 }
 
@@ -3331,11 +3331,11 @@ SwPointSelect(sw);
 # 133
 if(sw == 1)
 {
-Sw->Touch=(RA0 || RB1)?1:0;
+Sw->Touch=(RA6 || RA4)?1:0;
 }
 else if(sw == 2)
 {
-Sw->Touch=(RA6 || RA4)?1:0;
+Sw->Touch=(RA0 || RB1)?1:0;
 }
 
 # 148
@@ -3382,9 +3382,15 @@ if(Sw->Hold2Time >= 150)
 Sw->Hold2Time=0;
 Sw->Hold2=1;
 
+
+
 setRF_Learn(1,1);
 
-# 199
+if(TMain->First)
+{
+setBuz(2,100);
+}
+
 }
 }
 else
@@ -3397,7 +3403,9 @@ if(Sw->Hold3Time >= 300)
 Sw->Hold3Time=0;
 Sw->Hold3=1;
 
+
 setRF_Learn(1,0);
+
 
 }
 }
@@ -3420,12 +3428,12 @@ Sw->Hold2Time=0;
 Sw->Hold2=0;
 Sw->Hold3Time=0;
 Sw->Hold3=0;
-setRF_Learn(1,0);
 
 
 Sw_DimmerOffFunc(sw);
 
 
+setRF_Learn(1,0);
 }
 }
 }
@@ -3477,8 +3485,8 @@ else
 setDimmerLights_Trigger(sw,1);
 setDimmerLights_Switch(sw,0);
 
-setRF_DimmerLights(sw,Sw->Status);
 setDelayOff_GO(sw,0,0);
+setRF_DimmerLights(sw,Sw->Status);
 setTxData(1);
 }
 }
@@ -3517,7 +3525,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 340
+# 343
 }
 }
 

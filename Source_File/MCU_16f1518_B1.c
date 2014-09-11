@@ -5,7 +5,7 @@
 
 //config
  __CONFIG(FOSC_INTOSC & WDTE_OFF & BOREN_OFF);// v8.84
- __CONFIG(VCAPEN_OFF &  WRT_BOOT);// WRT_OFF 
+ __CONFIG(VCAPEN_OFF &  WRT_HALF);// WRT_OFF WRT_BOOT WRT_HALF
 
 //*********************************************************
 void Mcu_Initialization()
@@ -444,10 +444,10 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				Product->Data[22]=i;
 				Product->Data[23]=i;	
 			#endif
-			if(Flash_Memory_Read(30) == 1)
+			if(Product->Data[12]==0xff && Product->Data[13]==0xff  && Product->Data[14]==0xff)
 			{
-				TMain->FirstOpen=0;
-				TMain->First=0;
+				TMain->FirstOpen=1;
+				TMain->First=1;
 			}
 		}
 		else
@@ -466,6 +466,8 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			GIE=0;
 			Flash_Memory_Write();
 			GIE=1;
+			TMain->FirstOpen=1;
+			TMain->First=1;
 		}
 	}
 	//*********************************************************
@@ -564,7 +566,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			Memory->LoopSave=0;
 			TMain->FirstOpen=0;	
 			TMain->First=0;
-			setMemoryData(30,1);	
+			//setMemoryData(30,1);	
 		}
 		GIE=0;
 		Flash_Memory_Erasing();

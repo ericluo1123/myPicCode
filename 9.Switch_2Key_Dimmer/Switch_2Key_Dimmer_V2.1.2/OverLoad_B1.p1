@@ -3132,9 +3132,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 88: {
 "88
 {
-[; ;OverLoad_B1.c: 89: Load->JudgeValue=0x2e;
+[; ;OverLoad_B1.c: 89: Load->JudgeValue=0x32;
 "89
-[e = . *U _Load 17 -> -> 46 `i `ui ]
+[e = . *U _Load 17 -> -> 50 `i `ui ]
 "90
 }
 [; ;OverLoad_B1.c: 90: }
@@ -3145,9 +3145,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 92: {
 "92
 {
-[; ;OverLoad_B1.c: 93: Load->JudgeValue=0x2e+Load->TotalLoad;
+[; ;OverLoad_B1.c: 93: Load->JudgeValue=(0x32+Load->TotalLoad)-0x08;
 "93
-[e = . *U _Load 17 + -> -> 46 `i `ui . *U _Load 9 ]
+[e = . *U _Load 17 - + -> -> 50 `i `ui . *U _Load 9 -> -> 8 `i `ui ]
 "94
 }
 [e :U 276 ]
@@ -3182,582 +3182,519 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 104: setLoad_Exceptions(1);
 "104
 [e ( _setLoad_Exceptions (1 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 106: Product->Data[4]=(Load->AD >> 8);
-"106
-[e = *U + &U . *U _Product 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 107: Product->Data[5]=Load->AD;
-"107
-[e = *U + &U . *U _Product 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 108: Product->Data[16]=(Load->JudgeValue >> 8);
-"108
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 109: Product->Data[17]=Load->JudgeValue;
-"109
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 110: Product->Data[8]=Load->LightsCount;
-"110
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 23 ]
-"112
-}
-[e :U 278 ]
 "113
 }
-[; ;OverLoad_B1.c: 112: }
-[; ;OverLoad_B1.c: 113: }
-[e $U 279  ]
+[e :U 278 ]
 "114
-[e :U 277 ]
-[; ;OverLoad_B1.c: 114: else
-[; ;OverLoad_B1.c: 115: {
+}
+[; ;OverLoad_B1.c: 113: }
+[; ;OverLoad_B1.c: 114: }
+[e $U 279  ]
 "115
-{
-[; ;OverLoad_B1.c: 116: Load->ErrorCount=0;
+[e :U 277 ]
+[; ;OverLoad_B1.c: 115: else
+[; ;OverLoad_B1.c: 116: {
 "116
-[e = . *U _Load 21 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 117: if(Load->SafeCount < 10)
-"117
-[e $ ! < -> . *U _Load 27 `i -> 10 `i 280  ]
-[; ;OverLoad_B1.c: 118: {
-"118
 {
-[; ;OverLoad_B1.c: 119: Load->SafeCount++;
+[; ;OverLoad_B1.c: 117: Load->ErrorCount=0;
+"117
+[e = . *U _Load 21 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 118: if(Load->SafeCount < 10)
+"118
+[e $ ! < -> . *U _Load 27 `i -> 10 `i 280  ]
+[; ;OverLoad_B1.c: 119: {
 "119
-[e ++ . *U _Load 27 -> -> 1 `i `uc ]
+{
+[; ;OverLoad_B1.c: 120: Load->SafeCount++;
 "120
+[e ++ . *U _Load 27 -> -> 1 `i `uc ]
+"121
 }
 [e :U 280 ]
-[; ;OverLoad_B1.c: 120: }
-[; ;OverLoad_B1.c: 121: if(Load->SafeCount >= 10)
-"121
-[e $ ! >= -> . *U _Load 27 `i -> 10 `i 281  ]
-[; ;OverLoad_B1.c: 122: {
+[; ;OverLoad_B1.c: 121: }
+[; ;OverLoad_B1.c: 122: if(Load->SafeCount >= 10)
 "122
-{
-[; ;OverLoad_B1.c: 123: Load->Safe=1;
+[e $ ! >= -> . *U _Load 27 `i -> 10 `i 281  ]
+[; ;OverLoad_B1.c: 123: {
 "123
-[e = . *U _Load 3 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 126: setDimmerLights_Clear(1,1);
-"126
-[e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 130: setDimmerLights_Clear(2,1);
-"130
-[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 137: if(Load->StatusOn)
-"137
-[e $ ! != -> . *U _Load 31 `i -> -> -> 0 `i `uc `i 282  ]
-[; ;OverLoad_B1.c: 138: {
-"138
 {
-[; ;OverLoad_B1.c: 139: Load->StatusOn=0;
+[; ;OverLoad_B1.c: 124: Load->Safe=1;
+"124
+[e = . *U _Load 3 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 127: setDimmerLights_Clear(1,1);
+"127
+[e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 131: setDimmerLights_Clear(2,1);
+"131
+[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 138: if(Load->StatusOn)
+"138
+[e $ ! != -> . *U _Load 31 `i -> -> -> 0 `i `uc `i 282  ]
+[; ;OverLoad_B1.c: 139: {
 "139
-[e = . *U _Load 31 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 140: Load->TotalLoad=Load->AD;
+{
+[; ;OverLoad_B1.c: 140: Load->StatusOn=0;
 "140
+[e = . *U _Load 31 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 141: Load->TotalLoad=Load->AD;
+"141
 [e = . *U _Load 9 . *U _Load 12 ]
-"142
+"143
 }
 [e :U 282 ]
-[; ;OverLoad_B1.c: 142: }
-[; ;OverLoad_B1.c: 144: if(Load->StatusOff)
-"144
-[e $ ! != -> . *U _Load 32 `i -> -> -> 0 `i `uc `i 283  ]
-[; ;OverLoad_B1.c: 145: {
+[; ;OverLoad_B1.c: 143: }
+[; ;OverLoad_B1.c: 145: if(Load->StatusOff)
 "145
-{
-[; ;OverLoad_B1.c: 146: Load->StatusOff=0;
+[e $ ! != -> . *U _Load 32 `i -> -> -> 0 `i `uc `i 283  ]
+[; ;OverLoad_B1.c: 146: {
 "146
-[e = . *U _Load 32 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 147: Load->TotalLoad=Load->AD;
+{
+[; ;OverLoad_B1.c: 147: Load->StatusOff=0;
 "147
-[e = . *U _Load 9 . *U _Load 12 ]
-[; ;OverLoad_B1.c: 148: Load->JudgeValue=0x2e*Load->LightsCount;
+[e = . *U _Load 32 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 148: Load->TotalLoad=Load->AD;
 "148
-[e = . *U _Load 17 -> * -> 46 `i -> . *U _Load 23 `i `ui ]
+[e = . *U _Load 9 . *U _Load 12 ]
+[; ;OverLoad_B1.c: 149: Load->JudgeValue=0x32*Load->LightsCount;
 "149
-}
-[e :U 283 ]
+[e = . *U _Load 17 -> * -> 50 `i -> . *U _Load 23 `i `ui ]
 "150
 }
-[e :U 281 ]
+[e :U 283 ]
 "151
 }
-[e :U 279 ]
+[e :U 281 ]
 "152
 }
+[e :U 279 ]
+"153
+}
 [e :U 270 ]
-[; ;OverLoad_B1.c: 149: }
 [; ;OverLoad_B1.c: 150: }
 [; ;OverLoad_B1.c: 151: }
 [; ;OverLoad_B1.c: 152: }
-[; ;OverLoad_B1.c: 153: setLoad_AH_AL_Restore();
-"153
+[; ;OverLoad_B1.c: 153: }
+[; ;OverLoad_B1.c: 154: setLoad_AH_AL_Restore();
+"154
 [e ( _setLoad_AH_AL_Restore ..  ]
-[; ;OverLoad_B1.c: 155: Product->Data[2]=(Load->AD >> 8);
-"155
-[e = *U + &U . *U _Product 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 156: Product->Data[3]=Load->AD;
-"156
-[e = *U + &U . *U _Product 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 157: Product->Data[8]=Load->LightsCount;
-"157
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 23 ]
-[; ;OverLoad_B1.c: 158: Product->Data[10]=Load->TotalLoad;
-"158
-[e = *U + &U . *U _Product 0 * -> -> -> 10 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 9 `uc ]
-[; ;OverLoad_B1.c: 159: Product->Data[16]=(Load->JudgeValue >> 8);
-"159
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 160: Product->Data[17]=Load->JudgeValue;
-"160
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 161: Product->Data[18]=Load->ErrorStatus;
-"161
-[e = *U + &U . *U _Product 0 * -> -> -> 18 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 8 ]
-[; ;OverLoad_B1.c: 162: Product->Data[19]=Load->Count;
-"162
-[e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
-"164
+"166
 }
 [e :U 266 ]
-"165
-}
-[; ;OverLoad_B1.c: 164: }
-[; ;OverLoad_B1.c: 165: }
-[e $U 284  ]
-"166
-[e :U 265 ]
-[; ;OverLoad_B1.c: 166: else
-[; ;OverLoad_B1.c: 167: {
 "167
-{
-[; ;OverLoad_B1.c: 168: if(Load->GO)
+}
+[; ;OverLoad_B1.c: 166: }
+[; ;OverLoad_B1.c: 167: }
+[e $U 284  ]
 "168
-[e $ ! != -> . *U _Load 1 `i -> -> -> 0 `i `uc `i 285  ]
+[e :U 265 ]
+[; ;OverLoad_B1.c: 168: else
 [; ;OverLoad_B1.c: 169: {
 "169
 {
-[; ;OverLoad_B1.c: 170: if(!Load->LightsON)
+[; ;OverLoad_B1.c: 170: if(Load->GO)
 "170
-[e $ ! ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 286  ]
+[e $ ! != -> . *U _Load 1 `i -> -> -> 0 `i `uc `i 285  ]
 [; ;OverLoad_B1.c: 171: {
 "171
 {
-[; ;OverLoad_B1.c: 172: Load->LightsON=1;
+[; ;OverLoad_B1.c: 172: if(!Load->LightsON)
 "172
-[e = . *U _Load 2 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 173: Load->Safe=0;
+[e $ ! ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 286  ]
+[; ;OverLoad_B1.c: 173: {
 "173
-[e = . *U _Load 3 -> -> 0 `i `uc ]
+{
+[; ;OverLoad_B1.c: 174: Load->LightsON=1;
 "174
+[e = . *U _Load 2 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 175: Load->Safe=0;
+"175
+[e = . *U _Load 3 -> -> 0 `i `uc ]
+"176
 }
 [e :U 286 ]
-[; ;OverLoad_B1.c: 174: }
-[; ;OverLoad_B1.c: 175: if(getTemp_Safe() && getPF_Safe())
-"175
-[e $ ! && != -> ( _getTemp_Safe ..  `i -> -> -> 0 `i `uc `i != -> ( _getPF_Safe ..  `i -> -> -> 0 `i `uc `i 287  ]
-[; ;OverLoad_B1.c: 176: {
-"176
-{
-[; ;OverLoad_B1.c: 177: Load->ADtoGO=1;
+[; ;OverLoad_B1.c: 176: }
+[; ;OverLoad_B1.c: 177: if(getTemp_Safe() && getPF_Safe())
 "177
-[e = . *U _Load 4 -> -> 1 `i `uc ]
+[e $ ! && != -> ( _getTemp_Safe ..  `i -> -> -> 0 `i `uc `i != -> ( _getPF_Safe ..  `i -> -> -> 0 `i `uc `i 287  ]
+[; ;OverLoad_B1.c: 178: {
 "178
+{
+[; ;OverLoad_B1.c: 179: Load->ADtoGO=1;
+"179
+[e = . *U _Load 4 -> -> 1 `i `uc ]
+"180
 }
 [e :U 287 ]
-"179
-}
-[; ;OverLoad_B1.c: 178: }
-[; ;OverLoad_B1.c: 179: }
-[e $U 288  ]
-"180
-[e :U 285 ]
-[; ;OverLoad_B1.c: 180: else
-[; ;OverLoad_B1.c: 181: {
 "181
-{
-[; ;OverLoad_B1.c: 182: if(Load->LightsON)
+}
+[; ;OverLoad_B1.c: 180: }
+[; ;OverLoad_B1.c: 181: }
+[e $U 288  ]
 "182
-[e $ ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 289  ]
+[e :U 285 ]
+[; ;OverLoad_B1.c: 182: else
 [; ;OverLoad_B1.c: 183: {
 "183
 {
-[; ;OverLoad_B1.c: 184: Load->LightsON=0;
+[; ;OverLoad_B1.c: 184: if(Load->LightsON)
 "184
-[e = . *U _Load 2 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 185: Load->Safe=1;
+[e $ ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 289  ]
+[; ;OverLoad_B1.c: 185: {
 "185
-[e = . *U _Load 3 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 186: Load->ErrorCount=0;
+{
+[; ;OverLoad_B1.c: 186: Load->LightsON=0;
 "186
-[e = . *U _Load 21 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 187: Load->Count=0;
+[e = . *U _Load 2 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 187: Load->Safe=1;
 "187
-[e = . *U _Load 19 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 188: Load->TotalLoad=0;
+[e = . *U _Load 3 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 188: Load->ErrorCount=0;
 "188
-[e = . *U _Load 9 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 189: Load->NumberCount=0;
+[e = . *U _Load 21 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 189: Load->Count=0;
 "189
-[e = . *U _Load 24 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 190: Load->StatusOn=0;
+[e = . *U _Load 19 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 190: Load->TotalLoad=0;
 "190
-[e = . *U _Load 31 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 191: Load->StatusOff=0;
+[e = . *U _Load 9 -> -> 0 `i `ui ]
+[; ;OverLoad_B1.c: 191: Load->NumberCount=0;
 "191
-[e = . *U _Load 32 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 192: Load->AD=0;
+[e = . *U _Load 24 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 192: Load->StatusOn=0;
 "192
-[e = . *U _Load 12 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 193: setLoad_AH_AL_Restore();
+[e = . *U _Load 31 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 193: Load->StatusOff=0;
 "193
+[e = . *U _Load 32 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 194: Load->AD=0;
+"194
+[e = . *U _Load 12 -> -> 0 `i `ui ]
+[; ;OverLoad_B1.c: 195: setLoad_AH_AL_Restore();
+"195
 [e ( _setLoad_AH_AL_Restore ..  ]
-[; ;OverLoad_B1.c: 196: setDimmerLights_Clear(1,1);
-"196
+[; ;OverLoad_B1.c: 198: setDimmerLights_Clear(1,1);
+"198
 [e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 200: setDimmerLights_Clear(2,1);
-"200
+[; ;OverLoad_B1.c: 202: setDimmerLights_Clear(2,1);
+"202
 [e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 207: Product->Data[2]=(Load->AD >> 8);
-"207
-[e = *U + &U . *U _Product 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 208: Product->Data[3]=Load->AD;
-"208
-[e = *U + &U . *U _Product 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 213: Product->Data[8]=Load->NumberCount;
-"213
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 24 ]
-[; ;OverLoad_B1.c: 214: Product->Data[10]=Load->TotalLoad;
-"214
-[e = *U + &U . *U _Product 0 * -> -> -> 10 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 9 `uc ]
-[; ;OverLoad_B1.c: 215: Product->Data[16]=(Load->JudgeValue >> 8);
-"215
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 216: Product->Data[17]=Load->JudgeValue;
-"216
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 217: Product->Data[18]=Load->ErrorStatus;
-"217
-[e = *U + &U . *U _Product 0 * -> -> -> 18 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 8 ]
-[; ;OverLoad_B1.c: 218: Product->Data[19]=Load->Count;
-"218
-[e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
-"220
-}
-[e :U 289 ]
-"221
-}
-[e :U 288 ]
-"222
-}
-[e :U 284 ]
 "223
 }
+[e :U 289 ]
+"224
+}
+[e :U 288 ]
+"225
+}
+[e :U 284 ]
+"226
+}
 [e :U 264 ]
-[; ;OverLoad_B1.c: 220: }
-[; ;OverLoad_B1.c: 221: }
-[; ;OverLoad_B1.c: 222: }
 [; ;OverLoad_B1.c: 223: }
 [; ;OverLoad_B1.c: 224: }
-"224
+[; ;OverLoad_B1.c: 225: }
+[; ;OverLoad_B1.c: 226: }
+[; ;OverLoad_B1.c: 227: }
+"227
 [e :UE 261 ]
 }
-"226
-[v _setLoad_Exceptions `(v ~T0 @X0 1 ef1`uc ]
-"227
-{
-[; ;OverLoad_B1.c: 226: void setLoad_Exceptions(char command)
-[; ;OverLoad_B1.c: 227: {
-[e :U _setLoad_Exceptions ]
-"226
-[v _command `uc ~T0 @X0 1 r1 ]
-"227
-[f ]
-[; ;OverLoad_B1.c: 229: Load->ERROR=command;
 "229
-[e = . *U _Load 5 _command ]
-[; ;OverLoad_B1.c: 230: Load->ErrorStatus=command;
+[v _setLoad_Exceptions `(v ~T0 @X0 1 ef1`uc ]
 "230
-[e = . *U _Load 8 _command ]
-[; ;OverLoad_B1.c: 232: setLED(99,command+10);
-"232
-[e ( _setLED (2 , -> -> 99 `i `uc -> + -> _command `i -> 10 `i `uc ]
-[; ;OverLoad_B1.c: 233: if(command)
-"233
-[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 291  ]
-[; ;OverLoad_B1.c: 234: {
-"234
 {
-[; ;OverLoad_B1.c: 235: DimmerLights_Exceptions(2);
+[; ;OverLoad_B1.c: 229: void setLoad_Exceptions(char command)
+[; ;OverLoad_B1.c: 230: {
+[e :U _setLoad_Exceptions ]
+"229
+[v _command `uc ~T0 @X0 1 r1 ]
+"230
+[f ]
+[; ;OverLoad_B1.c: 232: Load->ERROR=command;
+"232
+[e = . *U _Load 5 _command ]
+[; ;OverLoad_B1.c: 233: Load->ErrorStatus=command;
+"233
+[e = . *U _Load 8 _command ]
+[; ;OverLoad_B1.c: 235: setLED(99,command+10);
 "235
-[e ( _DimmerLights_Exceptions (1 -> -> 2 `i `uc ]
+[e ( _setLED (2 , -> -> 99 `i `uc -> + -> _command `i -> 10 `i `uc ]
+[; ;OverLoad_B1.c: 236: if(command)
 "236
+[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 291  ]
+[; ;OverLoad_B1.c: 237: {
+"237
+{
+[; ;OverLoad_B1.c: 238: DimmerLights_Exceptions(2);
+"238
+[e ( _DimmerLights_Exceptions (1 -> -> 2 `i `uc ]
+"239
 }
 [e :U 291 ]
-[; ;OverLoad_B1.c: 236: }
-[; ;OverLoad_B1.c: 237: Load->Safe=(~command) & 0x01;
-"237
+[; ;OverLoad_B1.c: 239: }
+[; ;OverLoad_B1.c: 240: Load->Safe=(~command) & 0x01;
+"240
 [e = . *U _Load 3 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 239: setSw_Enable((~command) & 0x01);
-"239
-[e ( _setSw_Enable (1 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 242: setRF_Enable(1,(~command) & 0x01);
+[; ;OverLoad_B1.c: 242: setSw_Enable((~command) & 0x01);
 "242
+[e ( _setSw_Enable (1 -> & ~ -> _command `i -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 245: setRF_Enable(1,(~command) & 0x01);
+"245
 [e ( _setRF_Enable (2 , -> -> 1 `i `uc -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 244: }
-"244
+[; ;OverLoad_B1.c: 247: }
+"247
 [e :UE 290 ]
 }
-"246
-[v _setLoad_Count `(v ~T0 @X0 1 ef1`uc ]
-"247
-{
-[; ;OverLoad_B1.c: 246: void setLoad_Count(char command)
-[; ;OverLoad_B1.c: 247: {
-[e :U _setLoad_Count ]
-"246
-[v _command `uc ~T0 @X0 1 r1 ]
-"247
-[f ]
-[; ;OverLoad_B1.c: 248: Load->Count=command;
-"248
-[e = . *U _Load 19 _command ]
-[; ;OverLoad_B1.c: 249: Load->SafeCount=command;
 "249
-[e = . *U _Load 27 _command ]
-[; ;OverLoad_B1.c: 250: }
+[v _setLoad_Count `(v ~T0 @X0 1 ef1`uc ]
 "250
+{
+[; ;OverLoad_B1.c: 249: void setLoad_Count(char command)
+[; ;OverLoad_B1.c: 250: {
+[e :U _setLoad_Count ]
+"249
+[v _command `uc ~T0 @X0 1 r1 ]
+"250
+[f ]
+[; ;OverLoad_B1.c: 251: Load->Count=command;
+"251
+[e = . *U _Load 19 _command ]
+[; ;OverLoad_B1.c: 252: Load->SafeCount=command;
+"252
+[e = . *U _Load 27 _command ]
+[; ;OverLoad_B1.c: 253: }
+"253
 [e :UE 292 ]
 }
-"252
-[v _setLoad_Enable `(v ~T0 @X0 1 ef1`uc ]
-"253
-{
-[; ;OverLoad_B1.c: 252: void setLoad_Enable(char command)
-[; ;OverLoad_B1.c: 253: {
-[e :U _setLoad_Enable ]
-"252
-[v _command `uc ~T0 @X0 1 r1 ]
-"253
-[f ]
-[; ;OverLoad_B1.c: 254: Load->Enable=command;
-"254
-[e = . *U _Load 0 _command ]
-[; ;OverLoad_B1.c: 255: Load->GO=0;
 "255
-[e = . *U _Load 1 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 256: }
+[v _setLoad_Enable `(v ~T0 @X0 1 ef1`uc ]
 "256
+{
+[; ;OverLoad_B1.c: 255: void setLoad_Enable(char command)
+[; ;OverLoad_B1.c: 256: {
+[e :U _setLoad_Enable ]
+"255
+[v _command `uc ~T0 @X0 1 r1 ]
+"256
+[f ]
+[; ;OverLoad_B1.c: 257: Load->Enable=command;
+"257
+[e = . *U _Load 0 _command ]
+[; ;OverLoad_B1.c: 258: Load->GO=0;
+"258
+[e = . *U _Load 1 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 259: }
+"259
 [e :UE 293 ]
 }
-"257
-[v _setLoad_GO `(v ~T0 @X0 1 ef1`uc ]
-"258
-{
-[; ;OverLoad_B1.c: 257: void setLoad_GO(char command)
-[; ;OverLoad_B1.c: 258: {
-[e :U _setLoad_GO ]
-"257
-[v _command `uc ~T0 @X0 1 r1 ]
-"258
-[f ]
-[; ;OverLoad_B1.c: 259: Load->GO=command;
-"259
-[e = . *U _Load 1 _command ]
-[; ;OverLoad_B1.c: 260: }
 "260
+[v _setLoad_GO `(v ~T0 @X0 1 ef1`uc ]
+"261
+{
+[; ;OverLoad_B1.c: 260: void setLoad_GO(char command)
+[; ;OverLoad_B1.c: 261: {
+[e :U _setLoad_GO ]
+"260
+[v _command `uc ~T0 @X0 1 r1 ]
+"261
+[f ]
+[; ;OverLoad_B1.c: 262: Load->GO=command;
+"262
+[e = . *U _Load 1 _command ]
+[; ;OverLoad_B1.c: 263: }
+"263
 [e :UE 294 ]
 }
-"261
+"264
 [v _setLoad_StatusOn `(v ~T0 @X0 1 ef2`uc`uc ]
-"262
+"265
 {
-[; ;OverLoad_B1.c: 261: void setLoad_StatusOn(char lights,char command)
-[; ;OverLoad_B1.c: 262: {
+[; ;OverLoad_B1.c: 264: void setLoad_StatusOn(char lights,char command)
+[; ;OverLoad_B1.c: 265: {
 [e :U _setLoad_StatusOn ]
-"261
+"264
 [v _lights `uc ~T0 @X0 1 r1 ]
 [v _command `uc ~T0 @X0 1 r2 ]
-"262
+"265
 [f ]
-[; ;OverLoad_B1.c: 263: Load->GO=1;
-"263
-[e = . *U _Load 1 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 264: Load->StatusOn=command;
-"264
-[e = . *U _Load 31 _command ]
-[; ;OverLoad_B1.c: 266: if(lights == 1)
+[; ;OverLoad_B1.c: 266: Load->GO=1;
 "266
-[e $ ! == -> _lights `i -> 1 `i 296  ]
-[; ;OverLoad_B1.c: 267: {
+[e = . *U _Load 1 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 267: Load->StatusOn=command;
 "267
-{
-[; ;OverLoad_B1.c: 268: Load->Lights1Status=1;
-"268
-[e = . *U _Load 28 -> -> 1 `i `uc ]
+[e = . *U _Load 31 _command ]
+[; ;OverLoad_B1.c: 269: if(lights == 1)
 "269
+[e $ ! == -> _lights `i -> 1 `i 296  ]
+[; ;OverLoad_B1.c: 270: {
+"270
+{
+[; ;OverLoad_B1.c: 271: Load->Lights1Status=1;
+"271
+[e = . *U _Load 28 -> -> 1 `i `uc ]
+"272
 }
 [e :U 296 ]
-[; ;OverLoad_B1.c: 269: }
-[; ;OverLoad_B1.c: 270: if(lights == 2)
-"270
-[e $ ! == -> _lights `i -> 2 `i 297  ]
-[; ;OverLoad_B1.c: 271: {
-"271
-{
-[; ;OverLoad_B1.c: 272: Load->Lights2Status=1;
-"272
-[e = . *U _Load 29 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 272: }
+[; ;OverLoad_B1.c: 273: if(lights == 2)
 "273
+[e $ ! == -> _lights `i -> 2 `i 297  ]
+[; ;OverLoad_B1.c: 274: {
+"274
+{
+[; ;OverLoad_B1.c: 275: Load->Lights2Status=1;
+"275
+[e = . *U _Load 29 -> -> 1 `i `uc ]
+"276
 }
 [e :U 297 ]
-[; ;OverLoad_B1.c: 273: }
-[; ;OverLoad_B1.c: 274: if(lights == 3)
-"274
-[e $ ! == -> _lights `i -> 3 `i 298  ]
-[; ;OverLoad_B1.c: 275: {
-"275
-{
-[; ;OverLoad_B1.c: 276: Load->Lights3Status=1;
-"276
-[e = . *U _Load 30 -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 276: }
+[; ;OverLoad_B1.c: 277: if(lights == 3)
 "277
+[e $ ! == -> _lights `i -> 3 `i 298  ]
+[; ;OverLoad_B1.c: 278: {
+"278
+{
+[; ;OverLoad_B1.c: 279: Load->Lights3Status=1;
+"279
+[e = . *U _Load 30 -> -> 1 `i `uc ]
+"280
 }
 [e :U 298 ]
-[; ;OverLoad_B1.c: 277: }
-[; ;OverLoad_B1.c: 278: }
-"278
+[; ;OverLoad_B1.c: 280: }
+[; ;OverLoad_B1.c: 281: }
+"281
 [e :UE 295 ]
 }
-"279
+"282
 [v _setLoad_StatusOff `(v ~T0 @X0 1 ef2`uc`uc ]
-"280
+"283
 {
-[; ;OverLoad_B1.c: 279: void setLoad_StatusOff(char lights,char command)
-[; ;OverLoad_B1.c: 280: {
+[; ;OverLoad_B1.c: 282: void setLoad_StatusOff(char lights,char command)
+[; ;OverLoad_B1.c: 283: {
 [e :U _setLoad_StatusOff ]
-"279
+"282
 [v _lights `uc ~T0 @X0 1 r1 ]
 [v _command `uc ~T0 @X0 1 r2 ]
-"280
-[f ]
-[; ;OverLoad_B1.c: 281: Load->StatusOff=command;
-"281
-[e = . *U _Load 32 _command ]
-[; ;OverLoad_B1.c: 282: Load->SafeCount-=2;
-"282
-[e =- . *U _Load 27 -> -> 2 `i `uc ]
-[; ;OverLoad_B1.c: 283: if(lights == 1)
 "283
-[e $ ! == -> _lights `i -> 1 `i 300  ]
-[; ;OverLoad_B1.c: 284: {
+[f ]
+[; ;OverLoad_B1.c: 284: Load->StatusOff=command;
 "284
-{
-[; ;OverLoad_B1.c: 285: Load->Lights1Status=0;
+[e = . *U _Load 32 _command ]
+[; ;OverLoad_B1.c: 285: Load->SafeCount-=2;
 "285
-[e = . *U _Load 28 -> -> 0 `i `uc ]
+[e =- . *U _Load 27 -> -> 2 `i `uc ]
+[; ;OverLoad_B1.c: 286: if(lights == 1)
 "286
+[e $ ! == -> _lights `i -> 1 `i 300  ]
+[; ;OverLoad_B1.c: 287: {
+"287
+{
+[; ;OverLoad_B1.c: 288: Load->Lights1Status=0;
+"288
+[e = . *U _Load 28 -> -> 0 `i `uc ]
+"289
 }
 [e :U 300 ]
-[; ;OverLoad_B1.c: 286: }
-[; ;OverLoad_B1.c: 287: if(lights == 2)
-"287
-[e $ ! == -> _lights `i -> 2 `i 301  ]
-[; ;OverLoad_B1.c: 288: {
-"288
-{
-[; ;OverLoad_B1.c: 289: Load->Lights2Status=0;
-"289
-[e = . *U _Load 29 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 289: }
+[; ;OverLoad_B1.c: 290: if(lights == 2)
 "290
+[e $ ! == -> _lights `i -> 2 `i 301  ]
+[; ;OverLoad_B1.c: 291: {
+"291
+{
+[; ;OverLoad_B1.c: 292: Load->Lights2Status=0;
+"292
+[e = . *U _Load 29 -> -> 0 `i `uc ]
+"293
 }
 [e :U 301 ]
-[; ;OverLoad_B1.c: 290: }
-[; ;OverLoad_B1.c: 291: if(lights == 3)
-"291
-[e $ ! == -> _lights `i -> 3 `i 302  ]
-[; ;OverLoad_B1.c: 292: {
-"292
-{
-[; ;OverLoad_B1.c: 293: Load->Lights3Status=0;
-"293
-[e = . *U _Load 30 -> -> 0 `i `uc ]
+[; ;OverLoad_B1.c: 293: }
+[; ;OverLoad_B1.c: 294: if(lights == 3)
 "294
+[e $ ! == -> _lights `i -> 3 `i 302  ]
+[; ;OverLoad_B1.c: 295: {
+"295
+{
+[; ;OverLoad_B1.c: 296: Load->Lights3Status=0;
+"296
+[e = . *U _Load 30 -> -> 0 `i `uc ]
+"297
 }
 [e :U 302 ]
-[; ;OverLoad_B1.c: 294: }
-[; ;OverLoad_B1.c: 295: }
-"295
+[; ;OverLoad_B1.c: 297: }
+[; ;OverLoad_B1.c: 298: }
+"298
 [e :UE 299 ]
 }
-"296
+"299
 [v _getLoad_Safe `(uc ~T0 @X0 1 ef ]
-"297
+"300
 {
-[; ;OverLoad_B1.c: 296: char getLoad_Safe()
-[; ;OverLoad_B1.c: 297: {
+[; ;OverLoad_B1.c: 299: char getLoad_Safe()
+[; ;OverLoad_B1.c: 300: {
 [e :U _getLoad_Safe ]
 [f ]
-[; ;OverLoad_B1.c: 298: return Load->Safe;
-"298
+[; ;OverLoad_B1.c: 301: return Load->Safe;
+"301
 [e ) . *U _Load 3 ]
 [e $UE 303  ]
-[; ;OverLoad_B1.c: 299: }
-"299
+[; ;OverLoad_B1.c: 302: }
+"302
 [e :UE 303 ]
 }
-"300
+"303
 [v _getLoad_ERROR `(uc ~T0 @X0 1 ef ]
-"301
+"304
 {
-[; ;OverLoad_B1.c: 300: char getLoad_ERROR()
-[; ;OverLoad_B1.c: 301: {
+[; ;OverLoad_B1.c: 303: char getLoad_ERROR()
+[; ;OverLoad_B1.c: 304: {
 [e :U _getLoad_ERROR ]
 [f ]
-[; ;OverLoad_B1.c: 302: return Load->ERROR;
-"302
+[; ;OverLoad_B1.c: 305: return Load->ERROR;
+"305
 [e ) . *U _Load 5 ]
 [e $UE 304  ]
-[; ;OverLoad_B1.c: 303: }
-"303
+[; ;OverLoad_B1.c: 306: }
+"306
 [e :UE 304 ]
 }
-"305
+"308
 [v _setLoad_AH_AL_Restore `(v ~T0 @X0 1 ef ]
-"306
+"309
 {
-[; ;OverLoad_B1.c: 305: void setLoad_AH_AL_Restore()
-[; ;OverLoad_B1.c: 306: {
+[; ;OverLoad_B1.c: 308: void setLoad_AH_AL_Restore()
+[; ;OverLoad_B1.c: 309: {
 [e :U _setLoad_AH_AL_Restore ]
 [f ]
-"307
+"310
 [v _i `uc ~T0 @X0 1 a ]
-[; ;OverLoad_B1.c: 307: char i;
-[; ;OverLoad_B1.c: 308: for(i=0 ; i<5 ;i++)
-"308
+[; ;OverLoad_B1.c: 310: char i;
+[; ;OverLoad_B1.c: 311: for(i=0 ; i<5 ;i++)
+"311
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 5 `i 306  ]
 [e $U 307  ]
-"309
-[e :U 306 ]
-[; ;OverLoad_B1.c: 309: {
-{
-[; ;OverLoad_B1.c: 310: Load->AH[i]=0;
-"310
-[e = *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 311: Load->AL[i]=0xffff;
-"311
-[e = *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux -> 65535 `ui ]
 "312
+[e :U 306 ]
+[; ;OverLoad_B1.c: 312: {
+{
+[; ;OverLoad_B1.c: 313: Load->AH[i]=0;
+"313
+[e = *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux -> -> 0 `i `ui ]
+[; ;OverLoad_B1.c: 314: Load->AL[i]=0xffff;
+"314
+[e = *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux -> 65535 `ui ]
+"315
 }
-"308
+"311
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 5 `i 306  ]
 [e :U 307 ]
-"312
+"315
 }
-[; ;OverLoad_B1.c: 312: }
-[; ;OverLoad_B1.c: 313: }
-"313
+[; ;OverLoad_B1.c: 315: }
+[; ;OverLoad_B1.c: 316: }
+"316
 [e :UE 305 ]
 }

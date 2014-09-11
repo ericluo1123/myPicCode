@@ -3324,11 +3324,11 @@ else if(Load->Count == 2)
 {
 if(Load->LightsCount == 1)
 {
-Load->JudgeValue=0x2e;
+Load->JudgeValue=0x32;
 }
 else
 {
-Load->JudgeValue=0x2e+Load->TotalLoad;
+Load->JudgeValue=(0x32+Load->TotalLoad)-0x08;
 }
 }
 }
@@ -3341,12 +3341,7 @@ if(Load->ErrorCount >2)
 Load->ErrorCount=0;
 setLoad_Exceptions(1);
 
-Product->Data[4]=(Load->AD >> 8);
-Product->Data[5]=Load->AD;
-Product->Data[16]=(Load->JudgeValue >> 8);
-Product->Data[17]=Load->JudgeValue;
-Product->Data[8]=Load->LightsCount;
-
+# 113
 }
 }
 else
@@ -3367,7 +3362,7 @@ setDimmerLights_Clear(1,1);
 
 setDimmerLights_Clear(2,1);
 
-# 137
+# 138
 if(Load->StatusOn)
 {
 Load->StatusOn=0;
@@ -3379,22 +3374,14 @@ if(Load->StatusOff)
 {
 Load->StatusOff=0;
 Load->TotalLoad=Load->AD;
-Load->JudgeValue=0x2e*Load->LightsCount;
+Load->JudgeValue=0x32*Load->LightsCount;
 }
 }
 }
 }
 setLoad_AH_AL_Restore();
 
-Product->Data[2]=(Load->AD >> 8);
-Product->Data[3]=Load->AD;
-Product->Data[8]=Load->LightsCount;
-Product->Data[10]=Load->TotalLoad;
-Product->Data[16]=(Load->JudgeValue >> 8);
-Product->Data[17]=Load->JudgeValue;
-Product->Data[18]=Load->ErrorStatus;
-Product->Data[19]=Load->Count;
-
+# 166
 }
 }
 else
@@ -3433,20 +3420,7 @@ setDimmerLights_Clear(1,1);
 
 setDimmerLights_Clear(2,1);
 
-# 207
-Product->Data[2]=(Load->AD >> 8);
-Product->Data[3]=Load->AD;
-
-
-
-
-Product->Data[8]=Load->NumberCount;
-Product->Data[10]=Load->TotalLoad;
-Product->Data[16]=(Load->JudgeValue >> 8);
-Product->Data[17]=Load->JudgeValue;
-Product->Data[18]=Load->ErrorStatus;
-Product->Data[19]=Load->Count;
-
+# 223
 }
 }
 }

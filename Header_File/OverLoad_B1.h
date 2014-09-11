@@ -5,15 +5,15 @@
 	#if OverLoad_use == 1
 		
 		#if Switch_Class == 3		
-			#define LoadLimitValue 0x2e
+			#define LoadLimitValue 0x32
 		#endif
 
 		#if Switch_Class == 2			
-			#define LoadLimitValue 0x2e//1a
+			#define LoadLimitValue 0x32//1a
 		#endif
 
 		#if Switch_Class == 1			
-			#define LoadLimitValue 0x2e
+			#define LoadLimitValue 0x32
 		#endif
 
 		//Global extern variable declaration

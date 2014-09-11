@@ -135,11 +135,11 @@ start
 ;	Voltage Regulator Capacitor Enable bit
 ;	VCAPEN = 0x1, unprogrammed default
 ;	Flash Memory Self-Write Protection
-;	WRT = BOOT, 000h to 1FFh write protected, 200h to 3FFFh may be modified by EECON control
+;	WRT = HALF, 000h to 1FFFh write protected, 2000h to 3FFFh may be modified by EECON control
 
 	psect	config
 		org 0x1
-		dw 0xFFFE
+		dw 0xFFFD
 
 
 psect common,class=COMMON,space=1

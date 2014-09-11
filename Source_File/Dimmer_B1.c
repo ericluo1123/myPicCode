@@ -416,10 +416,13 @@
 				DimmerLights->AdjFlag=0;
 				setLoad_StatusOff(0,1);
 				DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
+
+				#if DimmerValue_Save == 1
+					setMemory_Modify(1);
+					setProductData((20+lights),setPercentValue(DimmerLights->MaxmumValue));
+				#endif
 				setRF_DimmerLights(lights,1);
 				setTxData(1);
-				setMemory_Modify(1);
-				setProductData((20+lights),setPercentValue(DimmerLights->MaxmumValue));
 			}
 		}
 	}
