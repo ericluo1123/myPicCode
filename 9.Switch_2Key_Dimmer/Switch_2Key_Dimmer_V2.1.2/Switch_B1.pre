@@ -3442,7 +3442,23 @@ setRF_Learn(1,0);
 
 void Sw_DimmerOnFunc(char sw)
 {
+char Idle=1;
+
+# 268
+if(sw == 1)
+{
+Idle=(DimmerLights22->AdjGo)?0:1;
+}
+else if(sw == 2)
+{
+Idle=(DimmerLights11->AdjGo)?0:1;
+}
+
+
+if(Idle)
+{
 Sw->Flag=1;
+
 if(!Sw->Status)
 {
 Sw->Status=1;
@@ -3458,6 +3474,7 @@ else
 {
 Sw->Status=0;
 setRFSW_Status(sw,Sw->Status);
+}
 }
 }
 
@@ -3525,7 +3542,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 343
+# 374
 }
 }
 

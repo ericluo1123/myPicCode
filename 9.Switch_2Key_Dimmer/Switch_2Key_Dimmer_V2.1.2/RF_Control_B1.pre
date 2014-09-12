@@ -3303,25 +3303,21 @@ if(RF->Enable)
 # 68
 RF->Key=((RA6 || RA4 || RA0 || RB1 ) && !RF->Learn)?1:0;
 
-# 75
-if(RF->Key)
-{
-RF_RxDisable(1);
-}
-else
+# 76
+if(!RF->Key)
 {
 if(RF->ReceiveGO)
 {
 RF->ReceiveGO=0;
 CC2500_RxData();
 
-# 90
+# 87
 getRxData(1);
-
+RB5=~RB5;
 
 }
-else
-{
+}
+
 if(RF->TransceiveGO)
 {
 RF_RxDisable(1);
@@ -3355,8 +3351,6 @@ setINT_GO(1);
 }
 }
 }
-}
-}
 
 void setTxData(char rf)
 {
@@ -3369,7 +3363,7 @@ if(!RF->TransceiveGO)
 {
 RF->TransceiveGO=1;
 
-# 150
+# 145
 RF_Data[0]=0x63;
 RF_Data[1]=0x02;
 RF_Data[2]=Product->Data[2];
@@ -3421,7 +3415,7 @@ setINT_GO(0);
 void RF_RxDisable(char rf)
 {
 RfPointSelect(rf);
-if(RF->RxStatus || RF->ReceiveGO)
+if(RF->RxStatus)
 {
 RF->RxStatus=0;
 RF->ReceiveGO=0;
@@ -3469,7 +3463,7 @@ else if(RF_Data[0] == 0x0 && RF_Data[1] == 0x65)
 ;
 }
 
-# 252
+# 247
 }
 }
 
@@ -3503,7 +3497,7 @@ setDimmerLights(2,0);
 setRFSW_Status(2,0);
 setSw_Status(2,0);
 
-# 291
+# 286
 Product->Data[9]=0;
 Product->Data[11]=0;
 Product->Data[15]=0;
@@ -3542,7 +3536,7 @@ else if(RF_Data[15] == 0x21)
 setRFSW_AdjControl(2);
 }
 
-# 343
+# 338
 }
 
 void RfSWPointSelect(char sw)
@@ -3559,7 +3553,7 @@ if(sw == 2)
 RFSW=&RFSW2;
 }
 
-# 365
+# 360
 }
 
 void setRFSW_Control(char sw)

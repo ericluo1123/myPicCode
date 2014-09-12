@@ -72,11 +72,8 @@
 				RF->Key=((Key1_1 ||  Key1_2 || Key1_3 || Key1_4) && !RF->Learn)?1:0;//有鍵按下	
 			#endif
 
-			if(RF->Key)
-			{
-				RF_RxDisable(1);
-			}
-			else
+
+			if(!RF->Key)
 			{
 				if(RF->ReceiveGO)//有資料接收
 				{
@@ -88,43 +85,41 @@
 						UART_SetData();
 					#else 
 						getRxData(1);
-					//	ErrLED=~ErrLED;
+						ErrLED=~ErrLED;
 					#endif
+				}
+			}	
+
+			if(RF->TransceiveGO)//有資料要發射
+			{
+				RF_RxDisable(1);
+				if(RF->Debounce == 0)
+				{
+					RF->DebounceTime++;
+					if(RF->DebounceTime == 25)//*10ms
+					{
+						RF->DebounceTime=0;
+						RF->Debounce=1;
+					}
 				}
 				else
 				{
-					if(RF->TransceiveGO)//有資料要發射
-					{
-						RF_RxDisable(1);
-						if(RF->Debounce == 0)
-						{
-							RF->DebounceTime++;
-							if(RF->DebounceTime == 25)//*10ms
-							{
-								RF->DebounceTime=0;
-								RF->Debounce=1;
-							}
-						}
-						else
-						{
-							RF->Debounce=0;
-							RF->TransceiveGO=0;
-							CC2500_TxData();
-						}
-					}
-					else
-					{
-						#if Rx_Enable == 1
-							if(!RF->RxStatus)//設置為接收模式
-							{
-								RF->RxStatus=1;
-								CC2500_WriteCommand(CC2500_SIDLE);// idle
-								CC2500_WriteCommand(CC2500_SRX);// set receive mode	
-								setINT_GO(1);
-							}
-						#endif
-					}
+					RF->Debounce=0;
+					RF->TransceiveGO=0;
+					CC2500_TxData();
 				}
+			}
+			else
+			{
+				#if Rx_Enable == 1
+					if(!RF->RxStatus)//設置為接收模式
+					{
+						RF->RxStatus=1;
+						CC2500_WriteCommand(CC2500_SIDLE);// idle
+						CC2500_WriteCommand(CC2500_SRX);// set receive mode	
+						setINT_GO(1);
+					}
+				#endif
 			}
 		}
 	}
@@ -198,7 +193,7 @@
 	void RF_RxDisable(char rf)
 	{
 		RfPointSelect(rf);
-		if(RF->RxStatus || RF->ReceiveGO)
+		if(RF->RxStatus)
 		{
 			RF->RxStatus=0;
 			RF->ReceiveGO=0;

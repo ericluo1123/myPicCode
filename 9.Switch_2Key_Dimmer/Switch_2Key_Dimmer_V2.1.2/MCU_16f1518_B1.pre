@@ -3374,7 +3374,7 @@ DimmerLights22->GO=1;
 void INT_Set()
 {
 WPUB0=0;
-
+INTE=1;
 PEIE=1;
 GIE=1;
 }
@@ -3499,7 +3499,15 @@ TMain->First=1;
 
 void Flash_Memory_Main()
 {
+char Idle=1;
+
 if(Memory->GO)
+{
+
+Idle=(!getDimmerLights_StatusFlag())?1:0;
+
+
+if(Idle)
 {
 if(Memory->Modify)
 {
@@ -3510,12 +3518,17 @@ Memory->Time=0;
 Memory->Modify=0;
 Memory->GO=0;
 Flash_Memory_Modify();
-RB5=RB5;
+
 }
 }
 else
 {
 Memory->GO=0;
+}
+}
+else
+{
+Memory->Time=0;
 }
 }
 }
@@ -3583,7 +3596,7 @@ Memory->Data[0]=Product->Data[12];
 Memory->Data[1]=Product->Data[13];
 Memory->Data[2]=Product->Data[14];
 
-# 564
+# 577
 if(Memory->LoopSave)
 {
 Memory->LoopSave=0;

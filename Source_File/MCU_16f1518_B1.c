@@ -217,7 +217,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void INT_Set()
 	{
 		WPUB0=0;
-		//INTE=1;
+		INTE=1;
 		PEIE=1;
 		GIE=1;
 	}
@@ -473,23 +473,36 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	//*********************************************************
 	void Flash_Memory_Main()
 	{
+		char Idle=1;	
+
 		if(Memory->GO)
 		{
-			if(Memory->Modify)
+			#if Dimmer_use == 1
+				Idle=(!getDimmerLights_StatusFlag())?1:0;	
+			#endif
+
+			if(Idle)
 			{
-				Memory->Time++;
-				if(Memory->Time == 25)//*10ms
+				if(Memory->Modify)
 				{
-					Memory->Time=0;
-					Memory->Modify=0;
+					Memory->Time++;
+					if(Memory->Time == 25)//*10ms
+					{
+						Memory->Time=0;
+						Memory->Modify=0;
+						Memory->GO=0;
+						Flash_Memory_Modify();
+						//ErrLED=~ErrLED;
+					}
+				}
+				else
+				{
 					Memory->GO=0;
-					Flash_Memory_Modify();
-					ErrLED=ErrLED;
 				}
 			}
 			else
 			{
-				Memory->GO=0;
+				Memory->Time=0;
 			}
 		}
 	}

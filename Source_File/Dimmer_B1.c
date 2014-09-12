@@ -121,52 +121,36 @@
 	{
 		char clear=1;
 		DimmerLightsPointSelect(lights);
+
+		#if Switch_Class == 3
+			if(lights == 1)
+			{
+				clear=(!DimmerLights22->Clear || !DimmerLights33->Clear)?0:1;
+			}
+			else if(lights == 2)
+			{
+				clear=(!DimmerLights11->Clear || !DimmerLights33->Clear)?0:1;
+			}
+			else if(lights == 3)
+			{
+				clear=(!DimmerLights11->Clear || !DimmerLights22->Clear)?0:1;
+			}
+		#endif
+
+		#if Switch_Class == 2
+			if(lights == 1)
+			{
+				clear=(!DimmerLights22->Clear)?0:1;
+			}
+			else if(lights == 2)
+			{
+				clear=(!DimmerLights11->Clear)?0:1;
+			}
+		#endif
+
 		if(DimmerLights->Trigger)
 		{
-			#if Switch_Class == 3
-				if(lights == 1)
-				{
-					if(!DimmerLights22->Clear || !DimmerLights33->Clear)
-					{
-						clear=0;
-					}
-				}
-				else if(lights == 2)
-				{
-					if(!DimmerLights11->Clear || !DimmerLights33->Clear)
-					{
-						clear=0;
-					}
-				}
-				else if(lights == 3)
-				{
-					if(!DimmerLights11->Clear || !DimmerLights22->Clear)
-					{
-						clear=0;
-					}
-				}
-			#endif
-
-			#if Switch_Class == 2
-				if(lights == 1)
-				{
-					if(!DimmerLights22->Clear)
-					{
-						clear=0;
-					}
-				}
-				else if(lights == 2)
-				{
-					if(!DimmerLights11->Clear)
-					{
-						clear=0;
-					}
-				}
-			#endif
-		
-		
-
-			if(clear)
+			if(clear) 
 			{
 				if(DimmerLights->Switch)
 				{
@@ -192,7 +176,7 @@
 		{
 			if(DimmerLights->TriggerAdj)
 			{		
-				if(!getDimmerLights_Trigger())
+				if(clear)
 				{
 					DimmerLightsPointSelect(lights);
 					DimmerLights->TriggerAdj=0;
@@ -213,25 +197,17 @@
 	char getDimmerLights_StatusFlag()
 	{
 		char Status=0;
+
 		#if Switch_Class == 3
-			if(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag || DimmerLights33->StatusFlag)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag || DimmerLights33->StatusFlag)?1:0;
 		#endif
 
 		#if Switch_Class == 2
-			if(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)?1:0;
 		#endif
 
 		#if Switch_Class == 1
-			if(DimmerLights11->StatusFlag)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->StatusFlag)?1:0;
 		#endif
 
 		return Status;
@@ -240,26 +216,19 @@
 	char getDimmerLights_Trigger()
 	{
 		char Status=0;
+
 		#if Switch_Class == 3
-			if(DimmerLights11->Trigger || DimmerLights22->Trigger || DimmerLights33->Trigger)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->Trigger || DimmerLights22->Trigger || DimmerLights33->Trigger)?1:0;
 		#endif
 
 		#if Switch_Class == 2
-			if(DimmerLights11->Trigger || DimmerLights22->Trigger)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->Trigger || DimmerLights22->Trigger)?1:0;
 		#endif
 
 		#if Switch_Class == 1
-			if(DimmerLights11->Trigger)
-			{
-				Status=1;
-			}
+			Status=(DimmerLights11->Trigger)?1:0;
 		#endif
+
 		return Status;
 	}
 	//*********************************************************

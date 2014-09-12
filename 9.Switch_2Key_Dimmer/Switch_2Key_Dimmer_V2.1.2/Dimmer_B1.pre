@@ -3325,28 +3325,20 @@ void setDimmerLights_Main(char lights)
 {
 char clear=1;
 DimmerLightsPointSelect(lights);
-if(DimmerLights->Trigger)
-{
 
-# 151
+# 141
 if(lights == 1)
 {
-if(!DimmerLights22->Clear)
-{
-clear=0;
-}
+clear=(!DimmerLights22->Clear)?0:1;
 }
 else if(lights == 2)
 {
-if(!DimmerLights11->Clear)
+clear=(!DimmerLights11->Clear)?0:1;
+}
+
+
+if(DimmerLights->Trigger)
 {
-clear=0;
-}
-}
-
-
-
-
 if(clear)
 {
 if(DimmerLights->Switch)
@@ -3373,7 +3365,7 @@ else
 {
 if(DimmerLights->TriggerAdj)
 {
-if(!getDimmerLights_Trigger())
+if(clear)
 {
 DimmerLightsPointSelect(lights);
 DimmerLights->TriggerAdj=0;
@@ -3395,13 +3387,10 @@ char getDimmerLights_StatusFlag()
 {
 char Status=0;
 
-# 224
-if(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)
-{
-Status=1;
-}
+# 206
+Status=(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)?1:0;
 
-# 237
+# 213
 return Status;
 }
 
@@ -3409,13 +3398,10 @@ char getDimmerLights_Trigger()
 {
 char Status=0;
 
-# 251
-if(DimmerLights11->Trigger || DimmerLights22->Trigger)
-{
-Status=1;
-}
+# 225
+Status=(DimmerLights11->Trigger || DimmerLights22->Trigger)?1:0;
 
-# 263
+# 232
 return Status;
 }
 
@@ -3434,7 +3420,7 @@ setDimmerLights_ERROR(1);
 
 setDimmerLights_ERROR(2);
 
-# 284
+# 253
 }
 else if(status == 2)
 {
@@ -3449,7 +3435,7 @@ setDimmerLights_ERROR(1);
 
 setDimmerLights_ERROR(2);
 
-# 301
+# 270
 }
 
 
@@ -3458,7 +3444,7 @@ setDimmerLights_TriggerERROR(1,0);
 
 setDimmerLights_TriggerERROR(2,0);
 
-# 313
+# 282
 if(TMain->SelfTest == 0)
 {
 TMain->i=0;
@@ -3526,13 +3512,13 @@ DimmerLights->Status=0;
 
 DimmerLights->DimmingValue=DimmerLights->MinimumValue;
 
-# 385
+# 354
 DimmerLights->Signal=1;
 DimmerLights->AdjFlag=0;
 DimmerLights->AdjStatus=0;
 DimmerLights->DimmingTimeValue=3;
 
-# 400
+# 369
 }
 }
 
@@ -3553,8 +3539,10 @@ DimmerLights->AdjFlag=0;
 setLoad_StatusOff(0,1);
 DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
 
+
 Memory->Modify=1;
 Product->Data[(20+lights)]=setPercentValue(DimmerLights->MaxmumValue);
+
 setRF_DimmerLights(lights,1);
 setTxData(1);
 }
@@ -3606,7 +3594,7 @@ DimmerLightsPointSelect(lights);
 DimmerLights->Clear=command;
 }
 
-# 501
+# 472
 char getPercentValue(char value)
 {
 
@@ -3614,7 +3602,7 @@ float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
 i/=100;
 return (char)(((100-value)*i)+((char)((100-60)*1.5)));
 
-# 514
+# 485
 }
 
 char setPercentValue(char value)
@@ -3624,7 +3612,7 @@ float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
 i/=100;
 return (100-(char)((value-((char)((100-60)*1.5)))/i));
 
-# 529
+# 500
 }
 
 void Dimmer_Initialization()

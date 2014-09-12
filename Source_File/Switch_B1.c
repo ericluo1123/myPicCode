@@ -248,22 +248,53 @@
 	//*********************************************************	
 	void Sw_DimmerOnFunc(char sw)
 	{
-		Sw->Flag=1;
-		if(!Sw->Status)
-		{
-			Sw->Status=1;
-			setRFSW_Status(sw,1);
+		char Idle=1;
+			#if Switch_Class == 3
+			if(sw == 1)
+			{
+				Idle=(DimmerLights22->AdjGo || DimmerLights33->AdjGo)?0:1;
+			}
+			else if(sw == 2)
+			{
+				Idle=(DimmerLights11->AdjGo || DimmerLights33->AdjGo)?0:1;
+			}
+			else if(sw == 3)
+			{
+				Idle=(DimmerLights11->AdjGo || DimmerLights22->AdjGo)?0:1;
+			}
+		#endif
 
-			setDimmerLights_Trigger(sw,1);
-			setDimmerLights_Switch(sw,1);
+		#if Switch_Class == 2
+			if(sw == 1)
+			{
+				Idle=(DimmerLights22->AdjGo)?0:1;
+			}
+			else if(sw == 2)
+			{
+				Idle=(DimmerLights11->AdjGo)?0:1;
+			}
+		#endif
 
-			setRF_DimmerLights(sw,Sw->Status);
-			setTxData(1);
-		}
-		else
+		if(Idle)
 		{
-			Sw->Status=0;
-			setRFSW_Status(sw,Sw->Status);
+			Sw->Flag=1;
+		
+			if(!Sw->Status)
+			{
+				Sw->Status=1;
+				setRFSW_Status(sw,1);
+	
+				setDimmerLights_Trigger(sw,1);
+				setDimmerLights_Switch(sw,1);
+	
+				setRF_DimmerLights(sw,Sw->Status);
+				setTxData(1);
+			}
+			else
+			{
+				Sw->Status=0;
+				setRFSW_Status(sw,Sw->Status);
+			}
 		}
 	}
 	//*********************************************************
