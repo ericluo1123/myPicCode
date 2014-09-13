@@ -69,10 +69,10 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 109 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
+# 147 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
 typedef int ADtype;
 
-# 249
+# 295
 struct Product
 {
 unsigned char Data[32];
@@ -88,7 +88,7 @@ struct Product VarProduct=
 }
 };
 
-# 297
+# 343
 struct TMain
 {
 unsigned PowerON:1;
@@ -3233,7 +3233,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 453
+# 459
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3348,7 +3348,6 @@ if(Sw->DebounceTime >= 5)
 {
 Sw->DebounceTime=0;
 Sw->Debounce=1;
-setBuz(1,100);
 
 
 Sw_DimmerOnFunc(sw);
@@ -3433,7 +3432,10 @@ Sw->Hold3=0;
 Sw_DimmerOffFunc(sw);
 
 
+
+
 setRF_Learn(1,0);
+
 }
 }
 }
@@ -3444,7 +3446,7 @@ void Sw_DimmerOnFunc(char sw)
 {
 char Idle=1;
 
-# 268
+# 270
 if(sw == 1)
 {
 Idle=(DimmerLights22->AdjGo)?0:1;
@@ -3458,7 +3460,7 @@ Idle=(DimmerLights11->AdjGo)?0:1;
 if(Idle)
 {
 Sw->Flag=1;
-
+setBuz(1,100);
 if(!Sw->Status)
 {
 Sw->Status=1;
@@ -3542,7 +3544,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 374
+# 376
 }
 }
 

@@ -85,15 +85,33 @@
 						UART_SetData();
 					#else 
 						getRxData(1);
-						ErrLED=~ErrLED;
+					//	ErrLED=~ErrLED;
 					#endif
 				}
-			}	
-
+				else
+				{
+					if(!RF->TransceiveGO)
+					{
+						#if Rx_Enable == 1
+							if(!RF->RxStatus)//設置為接收模式
+							{
+								RF->RxStatus=1;
+								CC2500_WriteCommand(CC2500_SIDLE);// idle
+								CC2500_WriteCommand(CC2500_SRX);// set receive mode	
+								setINT_GO(1);
+							}
+						#endif	
+					}
+				}
+			}
+			else
+			{
+				RF_RxDisable(1);
+			}
 			if(RF->TransceiveGO)//有資料要發射
 			{
 				RF_RxDisable(1);
-				if(RF->Debounce == 0)
+				if(!RF->Debounce)
 				{
 					RF->DebounceTime++;
 					if(RF->DebounceTime == 25)//*10ms
@@ -108,18 +126,6 @@
 					RF->TransceiveGO=0;
 					CC2500_TxData();
 				}
-			}
-			else
-			{
-				#if Rx_Enable == 1
-					if(!RF->RxStatus)//設置為接收模式
-					{
-						RF->RxStatus=1;
-						CC2500_WriteCommand(CC2500_SIDLE);// idle
-						CC2500_WriteCommand(CC2500_SRX);// set receive mode	
-						setINT_GO(1);
-					}
-				#endif
 			}
 		}
 	}
@@ -173,26 +179,19 @@
 	{
 		RfPointSelect(rf);
 		RF->Enable=command;
-		if(!command)
-		{
-			RF->Learn=0;
-			Transceive_GO=0;
-			CC2500_WriteCommand(CC2500_SIDLE);// idle
-			CC2500_WriteCommand(CC2500_SFTX);// clear TXFIFO data
-	
-			RF->RxStatus=0;
-			RF->ReceiveGO=0;
-			RF->DebounceTime=0;
-			RF->Debounce=0;
-		//	CC2500_WriteCommand(CC2500_SIDLE);// idle
-			CC2500_WriteCommand(CC2500_SFRX);// clear RXFIFO data
-			setINT_GO(0);
-		}
+		RF->Learn=0;
+		RF->TransceiveGO=0;
+		RF->RxStatus=0;
+		RF->ReceiveGO=0;
+		RF->DebounceTime=0;
+		RF->Debounce=0;
+		setINT_GO(0);
 	}
 	//*********************************************************
 	void RF_RxDisable(char rf)
 	{
 		RfPointSelect(rf);
+	
 		if(RF->RxStatus)
 		{
 			RF->RxStatus=0;
@@ -202,7 +201,7 @@
 			CC2500_WriteCommand(CC2500_SIDLE);// idle
 			CC2500_WriteCommand(CC2500_SFRX);// clear RXFIFO data
 			setINT_GO(0);
-		}
+		}	
 	}
 	//*********************************************************	
 	void getRxData(char rf)

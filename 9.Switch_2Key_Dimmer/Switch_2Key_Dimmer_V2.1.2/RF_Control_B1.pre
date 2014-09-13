@@ -69,10 +69,10 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 109 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
+# 147 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
 typedef int ADtype;
 
-# 249
+# 295
 struct Product
 {
 unsigned char Data[32];
@@ -88,7 +88,7 @@ struct Product VarProduct=
 }
 };
 
-# 297
+# 343
 struct TMain
 {
 unsigned PowerON:1;
@@ -3233,7 +3233,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 453
+# 459
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3313,15 +3313,33 @@ CC2500_RxData();
 
 # 87
 getRxData(1);
-RB5=~RB5;
+
+
+}
+else
+{
+if(!RF->TransceiveGO)
+{
+
+if(!RF->RxStatus)
+{
+RF->RxStatus=1;
+CC2500_WriteCommand(0x36);
+CC2500_WriteCommand(0x34);
+setINT_GO(1);
+}
 
 }
 }
-
+}
+else
+{
+RF_RxDisable(1);
+}
 if(RF->TransceiveGO)
 {
 RF_RxDisable(1);
-if(RF->Debounce == 0)
+if(!RF->Debounce)
 {
 RF->DebounceTime++;
 if(RF->DebounceTime == 25)
@@ -3337,18 +3355,6 @@ RF->TransceiveGO=0;
 CC2500_TxData();
 }
 }
-else
-{
-
-if(!RF->RxStatus)
-{
-RF->RxStatus=1;
-CC2500_WriteCommand(0x36);
-CC2500_WriteCommand(0x34);
-setINT_GO(1);
-}
-
-}
 }
 }
 
@@ -3363,7 +3369,7 @@ if(!RF->TransceiveGO)
 {
 RF->TransceiveGO=1;
 
-# 145
+# 151
 RF_Data[0]=0x63;
 RF_Data[1]=0x02;
 RF_Data[2]=Product->Data[2];
@@ -3395,26 +3401,19 @@ void setRF_Enable(char rf,char command)
 {
 RfPointSelect(rf);
 RF->Enable=command;
-if(!command)
-{
 RF->Learn=0;
-Transceive_GO=0;
-CC2500_WriteCommand(0x36);
-CC2500_WriteCommand(0x3B);
-
+RF->TransceiveGO=0;
 RF->RxStatus=0;
 RF->ReceiveGO=0;
 RF->DebounceTime=0;
 RF->Debounce=0;
-
-CC2500_WriteCommand(0x3A);
 setINT_GO(0);
-}
 }
 
 void RF_RxDisable(char rf)
 {
 RfPointSelect(rf);
+
 if(RF->RxStatus)
 {
 RF->RxStatus=0;
@@ -3463,7 +3462,7 @@ else if(RF_Data[0] == 0x0 && RF_Data[1] == 0x65)
 ;
 }
 
-# 247
+# 246
 }
 }
 
@@ -3497,7 +3496,7 @@ setDimmerLights(2,0);
 setRFSW_Status(2,0);
 setSw_Status(2,0);
 
-# 286
+# 285
 Product->Data[9]=0;
 Product->Data[11]=0;
 Product->Data[15]=0;
@@ -3536,7 +3535,7 @@ else if(RF_Data[15] == 0x21)
 setRFSW_AdjControl(2);
 }
 
-# 338
+# 337
 }
 
 void RfSWPointSelect(char sw)
@@ -3553,7 +3552,7 @@ if(sw == 2)
 RFSW=&RFSW2;
 }
 
-# 360
+# 359
 }
 
 void setRFSW_Control(char sw)

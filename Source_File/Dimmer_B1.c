@@ -334,8 +334,9 @@
 			{
 				DimmerLights->StatusFlag=1;
 				setLoad_StatusOn(lights,1);
+				setMemory_GO(0);
 
-				#if Serial_Number == 2
+				#if Dimmer_Smooth == 0
 					DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
 				#endif
 			}		
@@ -343,7 +344,7 @@
 		else  
 		{
 			DimmerLights->Status=0;
-			#if Serial_Number == 2
+			#if Dimmer_Smooth == 0
 				DimmerLights->DimmingValue=DimmerLights->MinimumValue;
 			#endif
 

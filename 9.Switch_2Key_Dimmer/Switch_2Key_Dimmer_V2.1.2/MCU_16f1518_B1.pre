@@ -69,10 +69,10 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 109 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
+# 147 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
 typedef int ADtype;
 
-# 249
+# 295
 struct Product
 {
 unsigned char Data[32];
@@ -88,7 +88,7 @@ struct Product VarProduct=
 }
 };
 
-# 297
+# 343
 struct TMain
 {
 unsigned PowerON:1;
@@ -3233,7 +3233,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 453
+# 459
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3326,11 +3326,11 @@ TMR0=(256-90);
 TMR0IF=0;
 
 # 100
-if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } } else { if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue > ((char)((100-60)*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue < ((char)((100-20)*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } else if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { if(DimmerLights11->Status) { DimmerLights11->DimmingValue--; if(DimmerLights11->DimmingValue <= DimmerLights11->MaxmumValue) { DimmerLights11->Signal=0; } } else { DimmerLights11->DimmingValue++; if(DimmerLights11->DimmingValue >= DimmerLights11->MinimumValue) { DimmerLights11->Signal=0; DimmerLights11->StatusFlag=0; DimmerLights11->Clear=1; Dimmer->Detect=1; RA3=0; ;(1); setLoad_StatusOff(1,1); } } } } } } if(RA7) { DimmerLights11->TriacTime++; if(DimmerLights11->TriacTime >= (120-DimmerLights11->DimmingValue)) { DimmerLights11->TriacTime=0; RA7=0; ;; } } } ;;
+if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } } else { if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue > ((char)((100-90)*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue < ((char)((100-15)*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } else if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { if(DimmerLights11->Status) { DimmerLights11->DimmingValue--; if(DimmerLights11->DimmingValue <= DimmerLights11->MaxmumValue) { DimmerLights11->Signal=0; } } else { DimmerLights11->DimmingValue++; if(DimmerLights11->DimmingValue >= DimmerLights11->MinimumValue) { DimmerLights11->Signal=0; DimmerLights11->StatusFlag=0; DimmerLights11->Clear=1; Dimmer->Detect=1; RA3=0; ;(1); setLoad_StatusOff(1,1); } } } } } } if(RA7) { DimmerLights11->TriacTime++; if(DimmerLights11->TriacTime >= (120-DimmerLights11->DimmingValue)) { DimmerLights11->TriacTime=0; RA7=0; ;; } } } ;;
 
 
 
-if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } else { if(DimmerLights22->Flag) { DimmerLights22->Flag=0; if(DimmerLights22->Signal) { DimmerLights22->DimmingTime++; if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue) { DimmerLights22->DimmingTime=0; if(DimmerLights22->AdjFlag) { if(DimmerLights22->AdjStatus == 0) { if(DimmerLights22->DimmingValue > ((char)((100-60)*1.5))) { DimmerLights22->DimmingValue--; } else { DimmerLights22->AdjStatus=1; } } else { if(DimmerLights22->DimmingValue < ((char)((100-20)*1.5))) { DimmerLights22->DimmingValue++; } else { DimmerLights22->AdjStatus=0; } } } else if(DimmerLights22->AdjRF) { if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue--; } else if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue++; } if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue) { DimmerLights22->AdjRF=0; DimmerLights22->Signal=0; } } else { if(DimmerLights22->Status) { DimmerLights22->DimmingValue--; if(DimmerLights22->DimmingValue <= DimmerLights22->MaxmumValue) { DimmerLights22->Signal=0; } } else { DimmerLights22->DimmingValue++; if(DimmerLights22->DimmingValue >= DimmerLights22->MinimumValue) { DimmerLights22->Signal=0; DimmerLights22->StatusFlag=0; DimmerLights22->Clear=1; Dimmer->Detect=1; RC7=0; setLoad_StatusOff(2,1); } } } } } } if(RB4) { DimmerLights22->TriacTime++; if(DimmerLights22->TriacTime >= (120-DimmerLights22->DimmingValue)) { DimmerLights22->TriacTime=0; RB4=0; } } } ;;
+if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } else { if(DimmerLights22->Flag) { DimmerLights22->Flag=0; if(DimmerLights22->Signal) { DimmerLights22->DimmingTime++; if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue) { DimmerLights22->DimmingTime=0; if(DimmerLights22->AdjFlag) { if(DimmerLights22->AdjStatus == 0) { if(DimmerLights22->DimmingValue > ((char)((100-90)*1.5))) { DimmerLights22->DimmingValue--; } else { DimmerLights22->AdjStatus=1; } } else { if(DimmerLights22->DimmingValue < ((char)((100-15)*1.5))) { DimmerLights22->DimmingValue++; } else { DimmerLights22->AdjStatus=0; } } } else if(DimmerLights22->AdjRF) { if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue--; } else if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue++; } if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue) { DimmerLights22->AdjRF=0; DimmerLights22->Signal=0; } } else { if(DimmerLights22->Status) { DimmerLights22->DimmingValue--; if(DimmerLights22->DimmingValue <= DimmerLights22->MaxmumValue) { DimmerLights22->Signal=0; } } else { DimmerLights22->DimmingValue++; if(DimmerLights22->DimmingValue >= DimmerLights22->MinimumValue) { DimmerLights22->Signal=0; DimmerLights22->StatusFlag=0; DimmerLights22->Clear=1; Dimmer->Detect=1; RC7=0; setLoad_StatusOff(2,1); } } } } } } if(RB4) { DimmerLights22->TriacTime++; if(DimmerLights22->TriacTime >= (120-DimmerLights22->DimmingValue)) { DimmerLights22->TriacTime=0; RB4=0; } } } ;;
 
 # 113
 Timer0->Count++;
@@ -3464,12 +3464,11 @@ Product->Data[12]=Flash_Memory_Read(0);
 Product->Data[13]=Flash_Memory_Read(1);
 Product->Data[14]=Flash_Memory_Read(2);
 
-# 442
-i=setPercentValue(((char)((100-60)*1.5)));
-Product->Data[21]=i;
-Product->Data[22]=i;
-Product->Data[23]=i;
+Product->Data[21]=Flash_Memory_Read(3);
+Product->Data[22]=Flash_Memory_Read(4);
+Product->Data[23]=Flash_Memory_Read(5);
 
+# 447
 if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 {
 TMain->FirstOpen=1;
@@ -3478,7 +3477,7 @@ TMain->First=1;
 }
 else
 {
-i=setPercentValue(((char)((100-60)*1.5)));
+i=setPercentValue(((char)((100-90)*1.5)));
 Memory->Data[0]=0xff;
 Memory->Data[1]=0xff;
 Memory->Data[2]=0xff;
@@ -3499,15 +3498,7 @@ TMain->First=1;
 
 void Flash_Memory_Main()
 {
-char Idle=1;
-
 if(Memory->GO)
-{
-
-Idle=(!getDimmerLights_StatusFlag())?1:0;
-
-
-if(Idle)
 {
 if(Memory->Modify)
 {
@@ -3524,11 +3515,6 @@ Flash_Memory_Modify();
 else
 {
 Memory->GO=0;
-}
-}
-else
-{
-Memory->Time=0;
 }
 }
 }
@@ -3596,7 +3582,7 @@ Memory->Data[0]=Product->Data[12];
 Memory->Data[1]=Product->Data[13];
 Memory->Data[2]=Product->Data[14];
 
-# 577
+# 564
 if(Memory->LoopSave)
 {
 Memory->LoopSave=0;

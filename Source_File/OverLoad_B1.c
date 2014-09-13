@@ -228,19 +228,17 @@
 	//*********************************************************
 	void setLoad_Exceptions(char command)
 	{	
-
 		Load->ERROR=command;
+		Load->Safe=(~command) & 0x01;
 		Load->ErrorStatus=command;
 
-		setLED(99,command+10);
 		if(command)
 		{
 			DimmerLights_Exceptions(2);
 		}
-		Load->Safe=(~command) & 0x01;
+		setLED(99,command+10);
 
 		setSw_Enable((~command) & 0x01);
-		
 		#ifdef RadioFrequency1
 			setRF_Enable(1,(~command) & 0x01);
 		#endif

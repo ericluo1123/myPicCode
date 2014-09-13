@@ -69,10 +69,10 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 109 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
+# 147 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
 typedef int ADtype;
 
-# 249
+# 295
 struct Product
 {
 unsigned char Data[32];
@@ -88,7 +88,7 @@ struct Product VarProduct=
 }
 };
 
-# 297
+# 343
 struct TMain
 {
 unsigned PowerON:1;
@@ -3233,7 +3233,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 453
+# 459
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3282,8 +3282,8 @@ void setDimmerLights_Initialization(char lights)
 {
 DimmerLightsPointSelect(lights);
 
-DimmerLights->MaxmumValue=((char)((100-60)*1.5));
-DimmerLights->MinimumValue=((char)((100-20)*1.5));
+DimmerLights->MaxmumValue=((char)((100-90)*1.5));
+DimmerLights->MinimumValue=((char)((100-15)*1.5));
 DimmerLights->Clear=1;
 
 # 66
@@ -3303,7 +3303,7 @@ Dimmer->Detect=0;
 if(!getDimmerLights_StatusFlag())
 {
 setLoad_GO(0);
-Memory->GO=1;
+Memory->GO=1; if(!1) { Memory->Time=1; } ;;
 }
 }
 }
@@ -3500,6 +3500,7 @@ if(!DimmerLights->StatusFlag)
 {
 DimmerLights->StatusFlag=1;
 setLoad_StatusOn(lights,1);
+Memory->GO=0; if(!0) { Memory->Time=0; } ;;
 
 
 DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
@@ -3512,13 +3513,16 @@ DimmerLights->Status=0;
 
 DimmerLights->DimmingValue=DimmerLights->MinimumValue;
 
-# 354
+# 355
 DimmerLights->Signal=1;
 DimmerLights->AdjFlag=0;
 DimmerLights->AdjStatus=0;
 DimmerLights->DimmingTimeValue=3;
 
-# 369
+
+DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
+
+# 374
 }
 }
 
@@ -3539,10 +3543,7 @@ DimmerLights->AdjFlag=0;
 setLoad_StatusOff(0,1);
 DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
 
-
-Memory->Modify=1;
-Product->Data[(20+lights)]=setPercentValue(DimmerLights->MaxmumValue);
-
+# 398
 setRF_DimmerLights(lights,1);
 setTxData(1);
 }
@@ -3594,25 +3595,25 @@ DimmerLightsPointSelect(lights);
 DimmerLights->Clear=command;
 }
 
-# 472
+# 477
 char getPercentValue(char value)
 {
 
-float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
+float i=((char)((100-15)*1.5))-((char)((100-90)*1.5));
 i/=100;
-return (char)(((100-value)*i)+((char)((100-60)*1.5)));
+return (char)(((100-value)*i)+((char)((100-90)*1.5)));
 
-# 485
+# 490
 }
 
 char setPercentValue(char value)
 {
 
-float i=((char)((100-20)*1.5))-((char)((100-60)*1.5));
+float i=((char)((100-15)*1.5))-((char)((100-90)*1.5));
 i/=100;
-return (100-(char)((value-((char)((100-60)*1.5)))/i));
+return (100-(char)((value-((char)((100-90)*1.5)))/i));
 
-# 500
+# 505
 }
 
 void Dimmer_Initialization()

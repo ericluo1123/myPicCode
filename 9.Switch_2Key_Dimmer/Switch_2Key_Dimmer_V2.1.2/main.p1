@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"249 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+"295 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"297
+"343
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
@@ -45,11 +45,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 [p mainexit ]
-"332 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+"378 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [v _MainT_Initialization `(v ~T0 @X0 0 ef ]
 "11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
 [v _Mcu_Initialization `(v ~T0 @X0 0 ef ]
-"453
+"459
 [v _Flash_Memory_Initialization `(v ~T0 @X0 0 ef ]
 "50 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _LED_Initialization `(v ~T0 @X0 0 ef ]
@@ -79,9 +79,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _getPowerFault_AD `(v ~T0 @X0 0 ef1`uc ]
 "52 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
 [v _Buzzer_Main `(v ~T0 @X0 0 ef ]
-"333 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+"379 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [v _MainT `(v ~T0 @X0 0 ef ]
-"459 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
+"465 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
 [v _Flash_Memory_Main `(v ~T0 @X0 0 ef ]
 "51 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _LED_Main `(v ~T0 @X0 0 ef ]
@@ -142,21 +142,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Switch_2key_Dimmer_V2.1.2.h: 109: typedef int ADtype;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 249: struct Product
-[; ;Switch_2key_Dimmer_V2.1.2.h: 250: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 251: unsigned char Data[32];
-[; ;Switch_2key_Dimmer_V2.1.2.h: 252: };
-"253 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+[; ;Switch_2key_Dimmer_V2.1.2.h: 147: typedef int ADtype;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 295: struct Product
+[; ;Switch_2key_Dimmer_V2.1.2.h: 296: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 297: unsigned char Data[32];
+[; ;Switch_2key_Dimmer_V2.1.2.h: 298: };
+"299 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [v _Product `*S2 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 253: struct Product *Product;
-"254
+[; ;Switch_2key_Dimmer_V2.1.2.h: 299: struct Product *Product;
+"300
 [v _VarProduct `S2 ~T0 @X0 1 e ]
 [i _VarProduct
 :U ..
 :U ..
 :U ..
-"257
+"303
 -> -> 99 `i `uc
 -> -> 2 `i `uc
 -> -> 0 `i `uc
@@ -167,7 +167,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"258
+"304
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 255 `i `uc
@@ -178,7 +178,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"259
+"305
 -> -> 2 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -189,59 +189,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"260
+"306
 -> -> 0 `i `uc
-"261
+"307
 -> -> 0 `i `uc
 ..
 ..
 ..
 ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 254: struct Product VarProduct=
-[; ;Switch_2key_Dimmer_V2.1.2.h: 255: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 256: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 257: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 258: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 259: 2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 260: 0x00,0x00
-[; ;Switch_2key_Dimmer_V2.1.2.h: 261: }
-[; ;Switch_2key_Dimmer_V2.1.2.h: 262: };
-"327
+[; ;Switch_2key_Dimmer_V2.1.2.h: 300: struct Product VarProduct=
+[; ;Switch_2key_Dimmer_V2.1.2.h: 301: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 302: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 303: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 304: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 305: 2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 306: 0x00,0x00
+[; ;Switch_2key_Dimmer_V2.1.2.h: 307: }
+[; ;Switch_2key_Dimmer_V2.1.2.h: 308: };
+"373
 [v _VarTMain `S3 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 297: struct TMain
-[; ;Switch_2key_Dimmer_V2.1.2.h: 298: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 299: unsigned PowerON:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 300: unsigned T0_Timerout:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 301: unsigned T1_Timerout:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 302: unsigned Flag:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 303: unsigned GO:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 304: unsigned FirstOpen:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 305: unsigned int PowerCount;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 306: unsigned SelfTest:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 307: unsigned First:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 309: unsigned int Count;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 310: unsigned int Count1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 311: unsigned int Count2;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 312: unsigned int Count3;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 313: unsigned char IOC_Count;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 314: unsigned char Test;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 316: unsigned i:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 317: unsigned j:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 318: unsigned k:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 319: unsigned l:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 320: unsigned m:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 321: unsigned n:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 322: unsigned o:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 323: unsigned p:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 324: unsigned q:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 325: unsigned r:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 326: }
-[; ;Switch_2key_Dimmer_V2.1.2.h: 327: struct TMain VarTMain;
-"328
+[; ;Switch_2key_Dimmer_V2.1.2.h: 343: struct TMain
+[; ;Switch_2key_Dimmer_V2.1.2.h: 344: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 345: unsigned PowerON:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 346: unsigned T0_Timerout:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 347: unsigned T1_Timerout:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 348: unsigned Flag:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 349: unsigned GO:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 350: unsigned FirstOpen:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 351: unsigned int PowerCount;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 352: unsigned SelfTest:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 353: unsigned First:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 355: unsigned int Count;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 356: unsigned int Count1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 357: unsigned int Count2;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 358: unsigned int Count3;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 359: unsigned char IOC_Count;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 360: unsigned char Test;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 362: unsigned i:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 363: unsigned j:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 364: unsigned k:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 365: unsigned l:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 366: unsigned m:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 367: unsigned n:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 368: unsigned o:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 369: unsigned p:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 370: unsigned q:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 371: unsigned r:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 372: }
+[; ;Switch_2key_Dimmer_V2.1.2.h: 373: struct TMain VarTMain;
+"374
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 328: struct TMain *TMain;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 332: void MainT_Initialization();
-[; ;Switch_2key_Dimmer_V2.1.2.h: 333: void MainT();
+[; ;Switch_2key_Dimmer_V2.1.2.h: 374: struct TMain *TMain;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 378: void MainT_Initialization();
+[; ;Switch_2key_Dimmer_V2.1.2.h: 379: void MainT();
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
 [; ;Switch_B1.h: 15: unsigned Enable:1;
@@ -2887,13 +2887,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 440: 0,0,0,0,0,0,0,0,
 [; ;MCU_16F1518_B1.h: 441: }
 [; ;MCU_16F1518_B1.h: 442: };
-[; ;MCU_16F1518_B1.h: 453: void Flash_Memory_Initialization();
-[; ;MCU_16F1518_B1.h: 454: void Flash_Memory_Unlock();
-[; ;MCU_16F1518_B1.h: 455: char Flash_Memory_Read(char);
-[; ;MCU_16F1518_B1.h: 456: void Flash_Memory_Write();
-[; ;MCU_16F1518_B1.h: 457: void Flash_Memory_Erasing();
-[; ;MCU_16F1518_B1.h: 458: void Flash_Memory_Modify();
-[; ;MCU_16F1518_B1.h: 459: void Flash_Memory_Main();
+[; ;MCU_16F1518_B1.h: 459: void Flash_Memory_Initialization();
+[; ;MCU_16F1518_B1.h: 460: void Flash_Memory_Unlock();
+[; ;MCU_16F1518_B1.h: 461: char Flash_Memory_Read(char);
+[; ;MCU_16F1518_B1.h: 462: void Flash_Memory_Write();
+[; ;MCU_16F1518_B1.h: 463: void Flash_Memory_Erasing();
+[; ;MCU_16F1518_B1.h: 464: void Flash_Memory_Modify();
+[; ;MCU_16F1518_B1.h: 465: void Flash_Memory_Main();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
 [v _main `(v ~T0 @X0 1 ef ]
 "8
@@ -3121,48 +3121,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 138: {
 "138
 {
-[; ;main.c: 146: TMain->Count1++;
-"146
-[e ++ . *U _TMain 10 -> -> 1 `i `ui ]
-[; ;main.c: 147: if(TMain->Count1 == 100)
-"147
-[e $ ! == . *U _TMain 10 -> -> 100 `i `ui 261  ]
-[; ;main.c: 148: {
-"148
-{
-[; ;main.c: 149: TMain->Count1=0;
-"149
-[e = . *U _TMain 10 -> -> 0 `i `ui ]
-[; ;main.c: 160: if(TMain->Flag)
-"160
-[e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 262  ]
-[; ;main.c: 161: {
-"161
-{
-"169
-}
-[; ;main.c: 169: }
-[e $U 263  ]
-"170
-[e :U 262 ]
-[; ;main.c: 170: else
-[; ;main.c: 171: {
-"171
-{
-[; ;main.c: 172: TMain->Flag=1;
-"172
-[e = . *U _TMain 3 -> -> 1 `i `uc ]
-"180
-}
-[e :U 263 ]
-"181
-}
-[e :U 261 ]
 "183
 }
 [e :U 260 ]
-[; ;main.c: 180: }
-[; ;main.c: 181: }
 [; ;main.c: 183: }
 [; ;main.c: 184: }
 "184

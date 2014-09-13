@@ -434,7 +434,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			Product->Data[12]=Flash_Memory_Read(0);
 			Product->Data[13]=Flash_Memory_Read(1);
 			Product->Data[14]=Flash_Memory_Read(2);
-			#if Serial_Number == 1
+			#if DimmerValue_Save == 0
 				Product->Data[21]=Flash_Memory_Read(3);
 				Product->Data[22]=Flash_Memory_Read(4);
 				Product->Data[23]=Flash_Memory_Read(5);
@@ -472,37 +472,24 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	}
 	//*********************************************************
 	void Flash_Memory_Main()
-	{
-		char Idle=1;	
-
+	{	
 		if(Memory->GO)
 		{
-			#if Dimmer_use == 1
-				Idle=(!getDimmerLights_StatusFlag())?1:0;	
-			#endif
-
-			if(Idle)
+			if(Memory->Modify)
 			{
-				if(Memory->Modify)
+				Memory->Time++;
+				if(Memory->Time == 25)//*10ms
 				{
-					Memory->Time++;
-					if(Memory->Time == 25)//*10ms
-					{
-						Memory->Time=0;
-						Memory->Modify=0;
-						Memory->GO=0;
-						Flash_Memory_Modify();
-						//ErrLED=~ErrLED;
-					}
-				}
-				else
-				{
+					Memory->Time=0;
+					Memory->Modify=0;
 					Memory->GO=0;
+					Flash_Memory_Modify();
+					//ErrLED=~ErrLED;
 				}
 			}
 			else
 			{
-				Memory->Time=0;
+				Memory->GO=0;
 			}
 		}
 	}

@@ -132,17 +132,15 @@
 
 	void setPowerFault_Exceptions(char command)
 	{
+		PF->ERROR=command;
+		PF->Safe=(~command) & 0x01;
 		if(command == 1)
 		{
 			DimmerLights_Exceptions(3);
 		}
-		PF->ERROR=command;
-
 		setLED(99,command+10);
 
-		PF->Safe=(~command) & 0x01;
 		setSw_Enable((~command) & 0x01);
-
 		#ifdef RadioFrequency1
 			setRF_Enable(1,(~command) & 0x01);
 		#endif

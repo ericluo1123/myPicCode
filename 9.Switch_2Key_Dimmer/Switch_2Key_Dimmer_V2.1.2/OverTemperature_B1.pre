@@ -69,10 +69,10 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 109 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
+# 147 "C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h"
 typedef int ADtype;
 
-# 249
+# 295
 struct Product
 {
 unsigned char Data[32];
@@ -88,7 +88,7 @@ struct Product VarProduct=
 }
 };
 
-# 297
+# 343
 struct TMain
 {
 unsigned PowerON:1;
@@ -3233,7 +3233,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 453
+# 459
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3368,22 +3368,25 @@ Temp->ADH[1]=0;
 
 void setOverTemp_Exceptions(char command)
 {
+Temp->ERROR=command;
+Temp->Safe=(~command) & 0x01;
 if(command)
 {
 DimmerLights_Exceptions(1);
 }
-Temp->ERROR=command;
+else
+{
+setBuz(2,100);
+}
+
 
 setLED(99,command+10);
 
-Temp->Safe=(~command) & 0x01;
 setSw_Enable((~command) & 0x01);
-
 
 setRF_Enable(1,(~command) & 0x01);
 
 
-setBuz(2,100);
 
 }
 

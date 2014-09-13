@@ -154,7 +154,6 @@
 					{
 						Sw->DebounceTime=0;
 						Sw->Debounce=1;
-						setBuz(1,BuzzerOnOffTime);
 						#if Dimmer_use == 1
 
 							Sw_DimmerOnFunc(sw);//key on function
@@ -239,7 +238,10 @@
 							Sw_DimmerOffFunc(sw);//key on function
 
 						#endif
-						setRF_Learn(1,0);
+
+						#if CC2500_use == 1
+							setRF_Learn(1,0);
+						#endif
 					}
 				}
 			}
@@ -249,7 +251,7 @@
 	void Sw_DimmerOnFunc(char sw)
 	{
 		char Idle=1;
-			#if Switch_Class == 3
+		#if Switch_Class == 3
 			if(sw == 1)
 			{
 				Idle=(DimmerLights22->AdjGo || DimmerLights33->AdjGo)?0:1;
@@ -278,7 +280,7 @@
 		if(Idle)
 		{
 			Sw->Flag=1;
-		
+			setBuz(1,BuzzerOnOffTime);
 			if(!Sw->Status)
 			{
 				Sw->Status=1;

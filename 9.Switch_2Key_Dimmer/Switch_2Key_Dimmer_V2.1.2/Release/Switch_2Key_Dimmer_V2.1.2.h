@@ -1,44 +1,82 @@
 
 #ifndef _Switch_2Key_Dimmer_V2.1.2_H_	
 #define	_Switch_2Key_Dimmer_V2.1.2_H_		
-
+#define _Switch_2Key_Dimmer_V1.2.1.2.1_H_
 //Include
 	#include <stdio.h>
-	//end
 
-	//version
-	#define KeyID 			2
-	#define Series 			2
-	#define Version 		1
-	#define Serial_Number 	2
+	/**Version information
+		Name_Version 			:	1~255 
+
+		Name_SerialNumber		:	1~255
+ 
+		Properties_Product		:	1:Switch
+									2:PIR
+
+		Properties_Keys			:	1:1key
+									2:2key
+									3:3key
+
+		Properties_Country		:	1:USA
+									2:EP
+									3:TW
+									4:CHI
+	**/
+
+	#define	Name_Version 			1	//1
+	#define Name_SerialNumber		1	//2
+	#define Properties_Product		1	//3
+	#define Properties_Keys			2	//4
+	#define Properties_Country		1	//5
+
+
 	#define Create_Date		_20140821_
-
-	//Relase
-	#define Debug 1
-	#define _Release_0_
 	#define Release_Date	?
-	#define PCB_Name _TH-302PV11-1-Dim_20140722_	
-	//end		
+	#define PCB_Name _TH-302PV11-1-Dim_20140722_
 
-	#define Switch_Class				2
+	//option
 	#define Control_Method_Mosfet		0
 	#define Control_Method_Triac		1
 	#define Control_Method_Relay		0
 	#define Control_Method_TriacRelay	0
-	#define Neutral_Line				0
+	#define Properties_Neutral			1
+	#define Properties_Dimmer			0
+	
 
-						
-	//Key number
-	#if Switch_Class == 1
+	#if Properties_Keys == 1
+		#define Switch_Class 1
 		#define use_1KEY
-	#elif  Switch_Class == 2
+		#if Properties_Dimmer == 1
+			#define KeyID D1
+		#else
+			#define KeyID 1
+		#endif
+	#endif
+
+	#if Properties_Keys == 2
+		#define Switch_Class 2
 		#define use_1KEY
-		#define use_2KEY
-	#elif  Switch_Class == 3
+		#define use_2KEY	
+		#if Properties_Dimmer == 1
+			#define KeyID D2
+		#else
+			#define KeyID 2
+		#endif
+	#endif
+
+
+	#if Properties_Keys == 3
+		#define Switch_Class 3
 		#define use_1KEY
 		#define use_2KEY
 		#define use_3KEY
+		#if Properties_Dimmer == 1
+			#define KeyID D3
+		#else
+			#define KeyID 3
+		#endif
 	#endif
+			
 
 //MCU
 	#define	Key2_1				RA0		//pin2  1	
@@ -158,7 +196,11 @@
 
 //OverLoad
 	#define OverLoad_use 1
-	#define SafeCountValue 10
+	#if Properties_Dimmer == 1
+		#define SafeCountValue 10
+	#else
+		#define SafeCountValue 10
+	#endif
 
 //LED
 	#define LED_use 1
@@ -195,24 +237,28 @@
 	#define PowerFault_use 1
 
 //Dimmer Lights
-	#define Dimmer_use 1
-	#define Dimmable_Func 1	
-	#define DimmerValue_Save 1
+	#define Dimmer_use 				1
+	#define Dimmable_Func 			1	
+	#define Dimmer_Smooth			0
+	#define DimmerValue_Save 		0
 
 	//dimmer define 	
 	#define DimmingDelayTime 3 //3
 	
-	#if Neutral_Line == 0
-		#define Max_Percent 60	
-		#define Med_Percent 35
-		#define Mini_Percent 20
-	#endif
-
-	#if Neutral_Line == 1
+/*
+	#if Properties_Neutral == 1
 		#define Max_Percent 90	
 		#define Med_Percent 35
 		#define Mini_Percent 15 
-	#endif
+	#else
+		#define Max_Percent 60	
+		#define Med_Percent 35
+		#define Mini_Percent 20
+	#endif*/
+
+		#define Max_Percent 90	
+		#define Med_Percent 35
+		#define Mini_Percent 15 
 
 	#define Dimmable_Percent 100-Max_Percent
 

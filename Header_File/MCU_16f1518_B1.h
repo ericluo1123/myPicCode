@@ -447,9 +447,15 @@
 					
 		#define setMemoryData(address,data) Memory->Data[address]=data	
 		#define setMemory_Modify(command) Memory->Modify=command
-		#define setMemory_GO(command) Memory->GO=command
 		#define setMemory_LoopSave(command) Memory->LoopSave=command
-
+		#define setMemory_GO(command)\
+					Memory->GO=command;\
+					if(!command)\
+					{\
+						Memory->Time=command;\
+					}\
+					;
+					
 		void Flash_Memory_Initialization();
 		void Flash_Memory_Unlock();
 		char Flash_Memory_Read(char);

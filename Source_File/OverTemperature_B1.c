@@ -137,22 +137,25 @@
 	//*********************************************************
 	void setOverTemp_Exceptions(char command)
 	{
+		Temp->ERROR=command;
+		Temp->Safe=(~command) & 0x01;
 		if(command)
 		{
 			DimmerLights_Exceptions(1);
 		}
-		Temp->ERROR=command;
+		else
+		{
+			setBuz(2,BuzzerOnOffTime);
+		}
 		//Lights_ERROR();
+
 		setLED(99,command+10);
 
-		Temp->Safe=(~command) & 0x01;
 		setSw_Enable((~command) & 0x01);
-
 		#ifdef RadioFrequency1
 			setRF_Enable(1,(~command) & 0x01);
 		#endif
 
-		setBuz(2,BuzzerOnOffTime);
 		
 	}
 #endif

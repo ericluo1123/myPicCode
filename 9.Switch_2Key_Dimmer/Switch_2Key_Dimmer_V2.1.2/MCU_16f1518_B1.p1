@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"249 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+"295 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"297
+"343
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
@@ -144,15 +144,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADRESH `Vuc ~T0 @X0 0 e@156 ]
 "1624
 [v _ADRESL `Vuc ~T0 @X0 0 e@155 ]
-"455 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
+"461 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
 [v _Flash_Memory_Read `(uc ~T0 @X0 0 ef1`uc ]
 "119 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
 [v _setPercentValue `(uc ~T0 @X0 0 ef1`uc ]
-"456 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
+"462 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
 [v _Flash_Memory_Write `(v ~T0 @X0 0 ef ]
-"126 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _getDimmerLights_StatusFlag `(uc ~T0 @X0 0 ef ]
-"458 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
+"464
 [v _Flash_Memory_Modify `(v ~T0 @X0 0 ef ]
 "2417 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _PMCON2 `Vuc ~T0 @X0 0 e@406 ]
@@ -212,21 +210,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Switch_2key_Dimmer_V2.1.2.h: 109: typedef int ADtype;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 249: struct Product
-[; ;Switch_2key_Dimmer_V2.1.2.h: 250: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 251: unsigned char Data[32];
-[; ;Switch_2key_Dimmer_V2.1.2.h: 252: };
-"253 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
+[; ;Switch_2key_Dimmer_V2.1.2.h: 147: typedef int ADtype;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 295: struct Product
+[; ;Switch_2key_Dimmer_V2.1.2.h: 296: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 297: unsigned char Data[32];
+[; ;Switch_2key_Dimmer_V2.1.2.h: 298: };
+"299 C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Switch_2Key_Dimmer_V2.1.2\Release\Switch_2key_Dimmer_V2.1.2.h
 [v _Product `*S2 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 253: struct Product *Product;
-"254
+[; ;Switch_2key_Dimmer_V2.1.2.h: 299: struct Product *Product;
+"300
 [v _VarProduct `S2 ~T0 @X0 1 e ]
 [i _VarProduct
 :U ..
 :U ..
 :U ..
-"257
+"303
 -> -> 99 `i `uc
 -> -> 2 `i `uc
 -> -> 0 `i `uc
@@ -237,7 +235,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"258
+"304
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 255 `i `uc
@@ -248,7 +246,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"259
+"305
 -> -> 2 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -259,59 +257,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"260
+"306
 -> -> 0 `i `uc
-"261
+"307
 -> -> 0 `i `uc
 ..
 ..
 ..
 ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 254: struct Product VarProduct=
-[; ;Switch_2key_Dimmer_V2.1.2.h: 255: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 256: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 257: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 258: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 259: 2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_2key_Dimmer_V2.1.2.h: 260: 0x00,0x00
-[; ;Switch_2key_Dimmer_V2.1.2.h: 261: }
-[; ;Switch_2key_Dimmer_V2.1.2.h: 262: };
-"327
+[; ;Switch_2key_Dimmer_V2.1.2.h: 300: struct Product VarProduct=
+[; ;Switch_2key_Dimmer_V2.1.2.h: 301: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 302: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 303: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 304: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 305: 2,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_2key_Dimmer_V2.1.2.h: 306: 0x00,0x00
+[; ;Switch_2key_Dimmer_V2.1.2.h: 307: }
+[; ;Switch_2key_Dimmer_V2.1.2.h: 308: };
+"373
 [v _VarTMain `S3 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 297: struct TMain
-[; ;Switch_2key_Dimmer_V2.1.2.h: 298: {
-[; ;Switch_2key_Dimmer_V2.1.2.h: 299: unsigned PowerON:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 300: unsigned T0_Timerout:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 301: unsigned T1_Timerout:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 302: unsigned Flag:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 303: unsigned GO:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 304: unsigned FirstOpen:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 305: unsigned int PowerCount;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 306: unsigned SelfTest:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 307: unsigned First:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 309: unsigned int Count;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 310: unsigned int Count1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 311: unsigned int Count2;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 312: unsigned int Count3;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 313: unsigned char IOC_Count;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 314: unsigned char Test;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 316: unsigned i:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 317: unsigned j:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 318: unsigned k:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 319: unsigned l:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 320: unsigned m:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 321: unsigned n:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 322: unsigned o:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 323: unsigned p:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 324: unsigned q:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 325: unsigned r:1;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 326: }
-[; ;Switch_2key_Dimmer_V2.1.2.h: 327: struct TMain VarTMain;
-"328
+[; ;Switch_2key_Dimmer_V2.1.2.h: 343: struct TMain
+[; ;Switch_2key_Dimmer_V2.1.2.h: 344: {
+[; ;Switch_2key_Dimmer_V2.1.2.h: 345: unsigned PowerON:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 346: unsigned T0_Timerout:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 347: unsigned T1_Timerout:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 348: unsigned Flag:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 349: unsigned GO:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 350: unsigned FirstOpen:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 351: unsigned int PowerCount;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 352: unsigned SelfTest:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 353: unsigned First:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 355: unsigned int Count;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 356: unsigned int Count1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 357: unsigned int Count2;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 358: unsigned int Count3;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 359: unsigned char IOC_Count;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 360: unsigned char Test;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 362: unsigned i:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 363: unsigned j:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 364: unsigned k:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 365: unsigned l:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 366: unsigned m:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 367: unsigned n:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 368: unsigned o:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 369: unsigned p:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 370: unsigned q:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 371: unsigned r:1;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 372: }
+[; ;Switch_2key_Dimmer_V2.1.2.h: 373: struct TMain VarTMain;
+"374
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Switch_2key_Dimmer_V2.1.2.h: 328: struct TMain *TMain;
-[; ;Switch_2key_Dimmer_V2.1.2.h: 332: void MainT_Initialization();
-[; ;Switch_2key_Dimmer_V2.1.2.h: 333: void MainT();
+[; ;Switch_2key_Dimmer_V2.1.2.h: 374: struct TMain *TMain;
+[; ;Switch_2key_Dimmer_V2.1.2.h: 378: void MainT_Initialization();
+[; ;Switch_2key_Dimmer_V2.1.2.h: 379: void MainT();
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
 [; ;Switch_B1.h: 15: unsigned Enable:1;
@@ -2957,13 +2955,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 440: 0,0,0,0,0,0,0,0,
 [; ;MCU_16F1518_B1.h: 441: }
 [; ;MCU_16F1518_B1.h: 442: };
-[; ;MCU_16F1518_B1.h: 453: void Flash_Memory_Initialization();
-[; ;MCU_16F1518_B1.h: 454: void Flash_Memory_Unlock();
-[; ;MCU_16F1518_B1.h: 455: char Flash_Memory_Read(char);
-[; ;MCU_16F1518_B1.h: 456: void Flash_Memory_Write();
-[; ;MCU_16F1518_B1.h: 457: void Flash_Memory_Erasing();
-[; ;MCU_16F1518_B1.h: 458: void Flash_Memory_Modify();
-[; ;MCU_16F1518_B1.h: 459: void Flash_Memory_Main();
+[; ;MCU_16F1518_B1.h: 459: void Flash_Memory_Initialization();
+[; ;MCU_16F1518_B1.h: 460: void Flash_Memory_Unlock();
+[; ;MCU_16F1518_B1.h: 461: char Flash_Memory_Read(char);
+[; ;MCU_16F1518_B1.h: 462: void Flash_Memory_Write();
+[; ;MCU_16F1518_B1.h: 463: void Flash_Memory_Erasing();
+[; ;MCU_16F1518_B1.h: 464: void Flash_Memory_Modify();
+[; ;MCU_16F1518_B1.h: 465: void Flash_Memory_Main();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c
 [p x FOSC=INTOSC ]
 [p x WDTE=OFF ]
@@ -3161,7 +3159,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 263  ]
 {
-[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 60 `i `d .1.5 `uc `i 264  ]
+[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 90 `i `d .1.5 `uc `i 264  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
@@ -3175,7 +3173,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 266  ]
 [e :U 263 ]
 {
-[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 267  ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 15 `i `d .1.5 `uc `i 267  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
@@ -3296,7 +3294,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [e $ ! == -> . *U _DimmerLights22 4 `i -> 0 `i 290  ]
 {
-[e $ ! > -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 60 `i `d .1.5 `uc `i 291  ]
+[e $ ! > -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 90 `i `d .1.5 `uc `i 291  ]
 {
 [e -- . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
@@ -3310,7 +3308,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 293  ]
 [e :U 290 ]
 {
-[e $ ! < -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 294  ]
+[e $ ! < -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 15 `i `d .1.5 `uc `i 294  ]
 {
 [e ++ . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
@@ -3736,18 +3734,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16f1518_B1.c: 436: Product->Data[14]=Flash_Memory_Read(2);
 "436
 [e = *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 2 `i `uc ]
-[; ;MCU_16f1518_B1.c: 442: i=setPercentValue(((char)((100-60)*1.5)));
-"442
-[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 60 `i `d .1.5 `uc ]
-[; ;MCU_16f1518_B1.c: 443: Product->Data[21]=i;
-"443
-[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_16f1518_B1.c: 444: Product->Data[22]=i;
-"444
-[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_16f1518_B1.c: 445: Product->Data[23]=i;
-"445
-[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_16f1518_B1.c: 438: Product->Data[21]=Flash_Memory_Read(3);
+"438
+[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 3 `i `uc ]
+[; ;MCU_16f1518_B1.c: 439: Product->Data[22]=Flash_Memory_Read(4);
+"439
+[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 4 `i `uc ]
+[; ;MCU_16f1518_B1.c: 440: Product->Data[23]=Flash_Memory_Read(5);
+"440
+[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 5 `i `uc ]
 [; ;MCU_16f1518_B1.c: 447: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 "447
 [e $ ! && && == -> *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i 331  ]
@@ -3774,9 +3769,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16f1518_B1.c: 454: {
 "454
 {
-[; ;MCU_16f1518_B1.c: 455: i=setPercentValue(((char)((100-60)*1.5)));
+[; ;MCU_16f1518_B1.c: 455: i=setPercentValue(((char)((100-90)*1.5)));
 "455
-[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 60 `i `d .1.5 `uc ]
+[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 90 `i `d .1.5 `uc ]
 [; ;MCU_16f1518_B1.c: 456: Memory->Data[0]=0xff;
 "456
 [e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
@@ -3838,344 +3833,314 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16f1518_B1.c: 475: {
 [e :U _Flash_Memory_Main ]
 [f ]
+[; ;MCU_16f1518_B1.c: 476: if(Memory->GO)
 "476
-[v _Idle `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1518_B1.c: 476: char Idle=1;
-[e = _Idle -> -> 1 `i `uc ]
-[; ;MCU_16f1518_B1.c: 478: if(Memory->GO)
-"478
 [e $ ! != -> . *U _Memory 4 `i -> -> -> 0 `i `uc `i 334  ]
+[; ;MCU_16f1518_B1.c: 477: {
+"477
+{
+[; ;MCU_16f1518_B1.c: 478: if(Memory->Modify)
+"478
+[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 335  ]
 [; ;MCU_16f1518_B1.c: 479: {
 "479
 {
-[; ;MCU_16f1518_B1.c: 481: Idle=(!getDimmerLights_StatusFlag())?1:0;
-"481
-[e = _Idle -> ? ! != -> ( _getDimmerLights_StatusFlag ..  `i -> -> -> 0 `i `uc `i : -> 1 `i -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 484: if(Idle)
-"484
-[e $ ! != -> _Idle `i -> -> -> 0 `i `uc `i 335  ]
-[; ;MCU_16f1518_B1.c: 485: {
-"485
-{
-[; ;MCU_16f1518_B1.c: 486: if(Memory->Modify)
-"486
-[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 336  ]
-[; ;MCU_16f1518_B1.c: 487: {
-"487
-{
-[; ;MCU_16f1518_B1.c: 488: Memory->Time++;
-"488
+[; ;MCU_16f1518_B1.c: 480: Memory->Time++;
+"480
 [e ++ . *U _Memory 6 -> -> 1 `i `ui ]
-[; ;MCU_16f1518_B1.c: 489: if(Memory->Time == 25)
-"489
-[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 337  ]
-[; ;MCU_16f1518_B1.c: 490: {
-"490
+[; ;MCU_16f1518_B1.c: 481: if(Memory->Time == 25)
+"481
+[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 336  ]
+[; ;MCU_16f1518_B1.c: 482: {
+"482
 {
-[; ;MCU_16f1518_B1.c: 491: Memory->Time=0;
-"491
+[; ;MCU_16f1518_B1.c: 483: Memory->Time=0;
+"483
 [e = . *U _Memory 6 -> -> 0 `i `ui ]
-[; ;MCU_16f1518_B1.c: 492: Memory->Modify=0;
-"492
+[; ;MCU_16f1518_B1.c: 484: Memory->Modify=0;
+"484
 [e = . *U _Memory 3 -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 493: Memory->GO=0;
-"493
+[; ;MCU_16f1518_B1.c: 485: Memory->GO=0;
+"485
 [e = . *U _Memory 4 -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 494: Flash_Memory_Modify();
-"494
+[; ;MCU_16f1518_B1.c: 486: Flash_Memory_Modify();
+"486
 [e ( _Flash_Memory_Modify ..  ]
-"496
+"488
+}
+[e :U 336 ]
+"489
+}
+[; ;MCU_16f1518_B1.c: 488: }
+[; ;MCU_16f1518_B1.c: 489: }
+[e $U 337  ]
+"490
+[e :U 335 ]
+[; ;MCU_16f1518_B1.c: 490: else
+[; ;MCU_16f1518_B1.c: 491: {
+"491
+{
+[; ;MCU_16f1518_B1.c: 492: Memory->GO=0;
+"492
+[e = . *U _Memory 4 -> -> 0 `i `uc ]
+"493
 }
 [e :U 337 ]
-"497
-}
-[; ;MCU_16f1518_B1.c: 496: }
-[; ;MCU_16f1518_B1.c: 497: }
-[e $U 338  ]
-"498
-[e :U 336 ]
-[; ;MCU_16f1518_B1.c: 498: else
-[; ;MCU_16f1518_B1.c: 499: {
-"499
-{
-[; ;MCU_16f1518_B1.c: 500: Memory->GO=0;
-"500
-[e = . *U _Memory 4 -> -> 0 `i `uc ]
-"501
-}
-[e :U 338 ]
-"502
-}
-[; ;MCU_16f1518_B1.c: 501: }
-[; ;MCU_16f1518_B1.c: 502: }
-[e $U 339  ]
-"503
-[e :U 335 ]
-[; ;MCU_16f1518_B1.c: 503: else
-[; ;MCU_16f1518_B1.c: 504: {
-"504
-{
-[; ;MCU_16f1518_B1.c: 505: Memory->Time=0;
-"505
-[e = . *U _Memory 6 -> -> 0 `i `ui ]
-"506
-}
-[e :U 339 ]
-"507
+"494
 }
 [e :U 334 ]
-[; ;MCU_16f1518_B1.c: 506: }
-[; ;MCU_16f1518_B1.c: 507: }
-[; ;MCU_16f1518_B1.c: 508: }
-"508
+[; ;MCU_16f1518_B1.c: 493: }
+[; ;MCU_16f1518_B1.c: 494: }
+[; ;MCU_16f1518_B1.c: 495: }
+"495
 [e :UE 333 ]
 }
-"510
+"497
 [v _Flash_Memory_Unlock `(v ~T0 @X0 1 ef ]
-"511
+"498
 {
-[; ;MCU_16f1518_B1.c: 510: void Flash_Memory_Unlock()
-[; ;MCU_16f1518_B1.c: 511: {
+[; ;MCU_16f1518_B1.c: 497: void Flash_Memory_Unlock()
+[; ;MCU_16f1518_B1.c: 498: {
 [e :U _Flash_Memory_Unlock ]
 [f ]
-[; ;MCU_16f1518_B1.c: 512: PMCON2=0x55;
-"512
+[; ;MCU_16f1518_B1.c: 499: PMCON2=0x55;
+"499
 [e = _PMCON2 -> -> 85 `i `uc ]
-[; ;MCU_16f1518_B1.c: 513: PMCON2=0xaa;
-"513
+[; ;MCU_16f1518_B1.c: 500: PMCON2=0xaa;
+"500
 [e = _PMCON2 -> -> 170 `i `uc ]
-[; ;MCU_16f1518_B1.c: 514: WR=1;
-"514
+[; ;MCU_16f1518_B1.c: 501: WR=1;
+"501
 [e = _WR -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 515: __nop();
-"515
+[; ;MCU_16f1518_B1.c: 502: __nop();
+"502
 [e ( ___nop ..  ]
-[; ;MCU_16f1518_B1.c: 516: __nop();
-"516
+[; ;MCU_16f1518_B1.c: 503: __nop();
+"503
 [e ( ___nop ..  ]
-[; ;MCU_16f1518_B1.c: 517: }
-"517
-[e :UE 340 ]
+[; ;MCU_16f1518_B1.c: 504: }
+"504
+[e :UE 338 ]
 }
-"519
+"506
 [v _Flash_Memory_Read `(uc ~T0 @X0 1 ef1`uc ]
-"520
+"507
 {
-[; ;MCU_16f1518_B1.c: 519: char Flash_Memory_Read(char address)
-[; ;MCU_16f1518_B1.c: 520: {
+[; ;MCU_16f1518_B1.c: 506: char Flash_Memory_Read(char address)
+[; ;MCU_16f1518_B1.c: 507: {
 [e :U _Flash_Memory_Read ]
-"519
+"506
 [v _address `uc ~T0 @X0 1 r1 ]
-"520
+"507
 [f ]
-"521
+"508
 [v _i `uc ~T0 @X0 1 a ]
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1518_B1.c: 521: char i,ret=0;
+[; ;MCU_16f1518_B1.c: 508: char i,ret=0;
 [e = _ret -> -> 0 `i `uc ]
+[; ;MCU_16f1518_B1.c: 509: PMADRH=0x30;
+"509
+[e = _PMADRH -> -> 48 `i `uc ]
+[; ;MCU_16f1518_B1.c: 510: PMADRL=address;
+"510
+[e = _PMADRL _address ]
+[; ;MCU_16f1518_B1.c: 511: CFGS=0;
+"511
+[e = _CFGS -> -> 0 `i `b ]
+[; ;MCU_16f1518_B1.c: 512: RD=1;
+"512
+[e = _RD -> -> 1 `i `b ]
+[; ;MCU_16f1518_B1.c: 513: i=PMDATH;
+"513
+[e = _i _PMDATH ]
+[; ;MCU_16f1518_B1.c: 514: ret=PMDATL;
+"514
+[e = _ret _PMDATL ]
+[; ;MCU_16f1518_B1.c: 515: return ret;
+"515
+[e ) _ret ]
+[e $UE 339  ]
+[; ;MCU_16f1518_B1.c: 516: }
+"516
+[e :UE 339 ]
+}
+"518
+[v _Flash_Memory_Write `(v ~T0 @X0 1 ef ]
+"519
+{
+[; ;MCU_16f1518_B1.c: 518: void Flash_Memory_Write()
+[; ;MCU_16f1518_B1.c: 519: {
+[e :U _Flash_Memory_Write ]
+[f ]
+"520
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_16f1518_B1.c: 520: char i;
+[; ;MCU_16f1518_B1.c: 521: CFGS=0;
+"521
+[e = _CFGS -> -> 0 `i `b ]
 [; ;MCU_16f1518_B1.c: 522: PMADRH=0x30;
 "522
 [e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_16f1518_B1.c: 523: PMADRL=address;
+[; ;MCU_16f1518_B1.c: 523: PMDATH=0;
 "523
-[e = _PMADRL _address ]
-[; ;MCU_16f1518_B1.c: 524: CFGS=0;
-"524
-[e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 525: RD=1;
-"525
-[e = _RD -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 526: i=PMDATH;
-"526
-[e = _i _PMDATH ]
-[; ;MCU_16f1518_B1.c: 527: ret=PMDATL;
-"527
-[e = _ret _PMDATL ]
-[; ;MCU_16f1518_B1.c: 528: return ret;
-"528
-[e ) _ret ]
-[e $UE 341  ]
-[; ;MCU_16f1518_B1.c: 529: }
-"529
-[e :UE 341 ]
-}
-"531
-[v _Flash_Memory_Write `(v ~T0 @X0 1 ef ]
-"532
-{
-[; ;MCU_16f1518_B1.c: 531: void Flash_Memory_Write()
-[; ;MCU_16f1518_B1.c: 532: {
-[e :U _Flash_Memory_Write ]
-[f ]
-"533
-[v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1518_B1.c: 533: char i;
-[; ;MCU_16f1518_B1.c: 534: CFGS=0;
-"534
-[e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 535: PMADRH=0x30;
-"535
-[e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_16f1518_B1.c: 536: PMDATH=0;
-"536
 [e = _PMDATH -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 537: FREE=0;
-"537
+[; ;MCU_16f1518_B1.c: 524: FREE=0;
+"524
 [e = _FREE -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 538: LWLO=1;
-"538
+[; ;MCU_16f1518_B1.c: 525: LWLO=1;
+"525
 [e = _LWLO -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 539: WREN=1;
-"539
+[; ;MCU_16f1518_B1.c: 526: WREN=1;
+"526
 [e = _WREN -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 540: for(i=0 ; i<32 ; i++)
-"540
+[; ;MCU_16f1518_B1.c: 527: for(i=0 ; i<32 ; i++)
+"527
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 343  ]
-[e $U 344  ]
-"541
-[e :U 343 ]
-[; ;MCU_16f1518_B1.c: 541: {
+[e $ < -> _i `i -> 32 `i 341  ]
+[e $U 342  ]
+"528
+[e :U 341 ]
+[; ;MCU_16f1518_B1.c: 528: {
 {
-[; ;MCU_16f1518_B1.c: 542: PMADRL=i;
-"542
+[; ;MCU_16f1518_B1.c: 529: PMADRL=i;
+"529
 [e = _PMADRL _i ]
-[; ;MCU_16f1518_B1.c: 543: PMDATL=Memory->Data[i];
-"543
+[; ;MCU_16f1518_B1.c: 530: PMDATL=Memory->Data[i];
+"530
 [e = _PMDATL *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ]
-[; ;MCU_16f1518_B1.c: 544: Flash_Memory_Unlock();
-"544
+[; ;MCU_16f1518_B1.c: 531: Flash_Memory_Unlock();
+"531
 [e ( _Flash_Memory_Unlock ..  ]
-"545
+"532
 }
-"540
+"527
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 343  ]
-[e :U 344 ]
-"545
+[e $ < -> _i `i -> 32 `i 341  ]
+[e :U 342 ]
+"532
 }
-[; ;MCU_16f1518_B1.c: 545: }
-[; ;MCU_16f1518_B1.c: 546: LWLO=0;
-"546
+[; ;MCU_16f1518_B1.c: 532: }
+[; ;MCU_16f1518_B1.c: 533: LWLO=0;
+"533
 [e = _LWLO -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 547: Flash_Memory_Unlock();
-"547
+[; ;MCU_16f1518_B1.c: 534: Flash_Memory_Unlock();
+"534
 [e ( _Flash_Memory_Unlock ..  ]
-[; ;MCU_16f1518_B1.c: 548: WREN=0;
-"548
+[; ;MCU_16f1518_B1.c: 535: WREN=0;
+"535
 [e = _WREN -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 549: }
-"549
-[e :UE 342 ]
+[; ;MCU_16f1518_B1.c: 536: }
+"536
+[e :UE 340 ]
 }
-"551
+"538
 [v _Flash_Memory_Erasing `(v ~T0 @X0 1 ef ]
-"552
+"539
 {
-[; ;MCU_16f1518_B1.c: 551: void Flash_Memory_Erasing()
-[; ;MCU_16f1518_B1.c: 552: {
+[; ;MCU_16f1518_B1.c: 538: void Flash_Memory_Erasing()
+[; ;MCU_16f1518_B1.c: 539: {
 [e :U _Flash_Memory_Erasing ]
 [f ]
-[; ;MCU_16f1518_B1.c: 553: CFGS=0;
-"553
+[; ;MCU_16f1518_B1.c: 540: CFGS=0;
+"540
 [e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 554: PMADRH=0x30;
-"554
+[; ;MCU_16f1518_B1.c: 541: PMADRH=0x30;
+"541
 [e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_16f1518_B1.c: 555: PMADRL=0x00;
-"555
+[; ;MCU_16f1518_B1.c: 542: PMADRL=0x00;
+"542
 [e = _PMADRL -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 556: FREE=1;
-"556
+[; ;MCU_16f1518_B1.c: 543: FREE=1;
+"543
 [e = _FREE -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 557: WREN=1;
-"557
+[; ;MCU_16f1518_B1.c: 544: WREN=1;
+"544
 [e = _WREN -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 558: Flash_Memory_Unlock();
-"558
+[; ;MCU_16f1518_B1.c: 545: Flash_Memory_Unlock();
+"545
 [e ( _Flash_Memory_Unlock ..  ]
-[; ;MCU_16f1518_B1.c: 559: WREN=0;
-"559
+[; ;MCU_16f1518_B1.c: 546: WREN=0;
+"546
 [e = _WREN -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 560: }
-"560
-[e :UE 346 ]
+[; ;MCU_16f1518_B1.c: 547: }
+"547
+[e :UE 344 ]
 }
-"562
+"549
 [v _Flash_Memory_Modify `(v ~T0 @X0 1 ef ]
-"563
+"550
 {
-[; ;MCU_16f1518_B1.c: 562: void Flash_Memory_Modify()
-[; ;MCU_16f1518_B1.c: 563: {
+[; ;MCU_16f1518_B1.c: 549: void Flash_Memory_Modify()
+[; ;MCU_16f1518_B1.c: 550: {
 [e :U _Flash_Memory_Modify ]
 [f ]
-"564
+"551
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1518_B1.c: 564: char i;
-[; ;MCU_16f1518_B1.c: 565: for(i=0;i<32;i++)
-"565
+[; ;MCU_16f1518_B1.c: 551: char i;
+[; ;MCU_16f1518_B1.c: 552: for(i=0;i<32;i++)
+"552
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 348  ]
-[e $U 349  ]
-"566
-[e :U 348 ]
-[; ;MCU_16f1518_B1.c: 566: {
+[e $ < -> _i `i -> 32 `i 346  ]
+[e $U 347  ]
+"553
+[e :U 346 ]
+[; ;MCU_16f1518_B1.c: 553: {
 {
-[; ;MCU_16f1518_B1.c: 567: Memory->Data[i]=Flash_Memory_Read(i);
-"567
+[; ;MCU_16f1518_B1.c: 554: Memory->Data[i]=Flash_Memory_Read(i);
+"554
 [e = *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ( _Flash_Memory_Read (1 _i ]
-"568
+"555
 }
-"565
+"552
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 348  ]
-[e :U 349 ]
-"568
+[e $ < -> _i `i -> 32 `i 346  ]
+[e :U 347 ]
+"555
 }
-[; ;MCU_16f1518_B1.c: 568: }
-[; ;MCU_16f1518_B1.c: 569: Memory->Data[0]=Product->Data[12];
-"569
+[; ;MCU_16f1518_B1.c: 555: }
+[; ;MCU_16f1518_B1.c: 556: Memory->Data[0]=Product->Data[12];
+"556
 [e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_16f1518_B1.c: 570: Memory->Data[1]=Product->Data[13];
-"570
+[; ;MCU_16f1518_B1.c: 557: Memory->Data[1]=Product->Data[13];
+"557
 [e = *U + &U . *U _Memory 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_16f1518_B1.c: 571: Memory->Data[2]=Product->Data[14];
-"571
+[; ;MCU_16f1518_B1.c: 558: Memory->Data[2]=Product->Data[14];
+"558
 [e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_16f1518_B1.c: 577: if(Memory->LoopSave)
-"577
-[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 351  ]
-[; ;MCU_16f1518_B1.c: 578: {
-"578
+[; ;MCU_16f1518_B1.c: 564: if(Memory->LoopSave)
+"564
+[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 349  ]
+[; ;MCU_16f1518_B1.c: 565: {
+"565
 {
-[; ;MCU_16f1518_B1.c: 579: Memory->LoopSave=0;
-"579
+[; ;MCU_16f1518_B1.c: 566: Memory->LoopSave=0;
+"566
 [e = . *U _Memory 5 -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 580: TMain->FirstOpen=0;
-"580
+[; ;MCU_16f1518_B1.c: 567: TMain->FirstOpen=0;
+"567
 [e = . *U _TMain 5 -> -> 0 `i `uc ]
-[; ;MCU_16f1518_B1.c: 581: TMain->First=0;
-"581
+[; ;MCU_16f1518_B1.c: 568: TMain->First=0;
+"568
 [e = . *U _TMain 8 -> -> 0 `i `uc ]
-"583
+"570
 }
-[e :U 351 ]
-[; ;MCU_16f1518_B1.c: 583: }
-[; ;MCU_16f1518_B1.c: 584: GIE=0;
-"584
+[e :U 349 ]
+[; ;MCU_16f1518_B1.c: 570: }
+[; ;MCU_16f1518_B1.c: 571: GIE=0;
+"571
 [e = _GIE -> -> 0 `i `b ]
-[; ;MCU_16f1518_B1.c: 585: Flash_Memory_Erasing();
-"585
+[; ;MCU_16f1518_B1.c: 572: Flash_Memory_Erasing();
+"572
 [e ( _Flash_Memory_Erasing ..  ]
-[; ;MCU_16f1518_B1.c: 586: Flash_Memory_Write();
-"586
+[; ;MCU_16f1518_B1.c: 573: Flash_Memory_Write();
+"573
 [e ( _Flash_Memory_Write ..  ]
-[; ;MCU_16f1518_B1.c: 587: GIE=1;
-"587
+[; ;MCU_16f1518_B1.c: 574: GIE=1;
+"574
 [e = _GIE -> -> 1 `i `b ]
-[; ;MCU_16f1518_B1.c: 588: }
-"588
-[e :UE 347 ]
+[; ;MCU_16f1518_B1.c: 575: }
+"575
+[e :UE 345 ]
 }
