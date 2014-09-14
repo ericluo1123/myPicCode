@@ -1,6 +1,6 @@
 
-	; HI-TECH C Compiler for PIC10/12/16 MCUs V9.83
-	; Copyright (C) 1984-2011 HI-TECH Software
+	; Microchip MPLAB XC8 C Compiler V1.33
+	; Copyright (C) 1984-2014 HI-TECH Software
 
 	; Auto-generated runtime startup code for final link stage.
 
@@ -19,10 +19,10 @@
 
 	processor	16F1516
 
-	global	_main,start,_exit,reset_vec
+	global	_main,start,reset_vec
 	fnroot	_main
-	psect	config,class=CONFIG,delta=2
-	psect	idloc,class=IDLOC,delta=2
+	psect	config,class=CONFIG,delta=2,noexec
+	psect	idloc,class=IDLOC,delta=2,noexec
 	psect	code,class=CODE,delta=2
 	psect	powerup,class=CODE,delta=2
 	psect	reset_vec,class=CODE,delta=2
@@ -35,7 +35,7 @@
 	STATUS	equ	3
 	BSR	equ	8
 	PCLATH	equ	0Ah
-	psect	eeprom_data,class=EEDATA,delta=2,space=2
+	psect	eeprom_data,class=EEDATA,delta=2,space=3,noexec
 	psect	strings,class=CODE,delta=2,reloc=256
 	psect	intentry,class=CODE,delta=2
 	psect	functab,class=CODE,delta=2
@@ -75,12 +75,70 @@ reset_vec:
 
 	psect	init
 start
-_exit
+
+;Initialize the stack pointer (FSR1)
+;Stack space: 02133h-021EFh (189 bytes)
+
+	fsr1l	equ	6
+	fsr1h	equ	7
+	global stacklo, stackhi
+	stacklo	equ	02133h
+	stackhi	equ	021EFh
+
+
+	psect	stack,class=STACK,space=2,noexec
+	global ___sp,___int_sp
+	___sp:
+	___int_sp:
+
 	psect	end_init
-	clrf	BSR
 	global start_initialization
 	ljmp start_initialization	;jump to C runtime clear & initialization
 
+; Config register CONFIG1 @ 0x8007
+;	Clock Out Enable
+;	CLKOUTEN = 0x1, unprogrammed default
+;	Watchdog Timer Enable
+;	WDTE = OFF, WDT disabled
+;	Power-up Timer Enable
+;	PWRTE = 0x1, unprogrammed default
+;	Flash Program Memory Code Protection
+;	CP = 0x1, unprogrammed default
+;	Brown-out Reset Enable
+;	BOREN = 0x3, unprogrammed default
+;	Fail-Safe Clock Monitor Enable
+;	FCMEN = 0x1, unprogrammed default
+;	MCLR Pin Function Select
+;	MCLRE = 0x1, unprogrammed default
+;	Internal/External Switchover
+;	IESO = 0x1, unprogrammed default
+;	Oscillator Selection
+;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+
+	psect	config
+		org 0x0
+		dw 0xFFE4
+
+; Config register CONFIG2 @ 0x8008
+;	Stack Overflow/Underflow Reset Enable
+;	STVREN = 0x1, unprogrammed default
+;	Low-Power Brown Out Reset
+;	LPBOR = 0x1, unprogrammed default
+;	Brown-out Reset Voltage Selection
+;	BORV = 0x1, unprogrammed default
+;	Low-Voltage Programming Enable
+;	LVP = 0x1, unprogrammed default
+;	Voltage Regulator Capacitor Enable bit
+;	VCAPEN = 0x1, unprogrammed default
+;	Flash Memory Self-Write Protection
+;	WRT = BOOT, 000h to 1FFh write protected, 200h to 1FFFh may be modified by EECON control
+
+	psect	config
+		org 0x1
+		dw 0xFFFE
+
+
+psect common,class=COMMON,space=1
 psect bank0,class=BANK0,space=1
 psect bank1,class=BANK1,space=1
 psect bank2,class=BANK2,space=1
@@ -116,7 +174,6 @@ psect bank31,class=BANK31,space=1
 psect bigram,class=BIGRAM,space=1
 psect ram,class=RAM,space=1
 psect abs1,class=ABS1,space=1
-psect common,class=COMMON,space=1
 psect sfr0,class=SFR0,space=1
 psect sfr1,class=SFR1,space=1
 psect sfr2,class=SFR2,space=1
