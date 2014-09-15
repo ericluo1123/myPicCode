@@ -147,7 +147,7 @@ void MainT()
 			if(TMain->Count1 == 100)	//*10ms
 			{
 				TMain->Count1=0;
-			//	setTxData(1);
+				setTxData(1);
 			//	ErrLED=~ErrLED;
 			//	setProductData(2,Sw1->DebounceTime);
 			//	setProductData(3,Sw1->Hold3);

@@ -103,12 +103,12 @@
 								Load->ErrorCount=0;
 								setLoad_Exceptions(1);
 								
-							/*	setProductData(4,(Load->AD >> 8));
+								setProductData(4,(Load->AD >> 8));
 								setProductData(5,Load->AD);
 								setProductData(16,(Load->JudgeValue >> 8));
 								setProductData(17,Load->JudgeValue);
 								setProductData(8,Load->LightsCount);
-							*/
+							
 								
 							}
 						}
@@ -153,7 +153,7 @@
 					}	
 					setLoad_AH_AL_Restore();
 					
-				/*	setProductData(2,(Load->AD >> 8));
+					setProductData(2,(Load->AD >> 8));
 					setProductData(3,Load->AD);
 					setProductData(8,Load->LightsCount);
 					setProductData(10,Load->TotalLoad);
@@ -161,7 +161,7 @@
 					setProductData(17,Load->JudgeValue);
 					setProductData(18,Load->ErrorStatus);
 					setProductData(19,Load->Count);
-				*/
+				
 					
 				}
 			}		
@@ -206,7 +206,7 @@
 							setDimmerLights_Clear(3,1);
 						#endif	
 						
-					/*	setProductData(2,(Load->AD >> 8));
+						setProductData(2,(Load->AD >> 8));
 						setProductData(3,Load->AD);
 						//setProductData(4,(Load->ADH >> 8));
 						//setProductData(5,Load->ADH);
@@ -218,8 +218,7 @@
 						setProductData(17,Load->JudgeValue);
 						setProductData(18,Load->ErrorStatus);
 						setProductData(19,Load->Count);
-					*/
-						
+											
 					}	
 				}
 			}
@@ -235,6 +234,9 @@
 		if(command)
 		{
 			DimmerLights_Exceptions(2);
+			#if Switch_Class == 1 && Dimmer_use == 1
+				setLED(2,1);
+			#endif
 		}
 		setLED(99,command+10);
 
@@ -242,6 +244,8 @@
 		#ifdef RadioFrequency1
 			setRF_Enable(1,(~command) & 0x01);
 		#endif
+
+
 	}
 	//*********************************************************
 	void setLoad_Count(char command)
