@@ -1,5 +1,5 @@
 
-# 1 "I:\Program\PIC\Source_File\RF_Control_B1.c"
+# 1 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 
 # 8 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
 typedef int ptrdiff_t;
@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 84 "I:\Program\PIC\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
+# 84 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
 typedef int ADtype;
 
 # 225
@@ -127,7 +127,7 @@ struct TMain *TMain;
 void MainT_Initial();
 void MainT();
 
-# 161 "I:\Program\PIC\Header_File\CC2500_B1.h"
+# 161 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 const unsigned char CC2500_rfSettings[47] =
 {
 
@@ -280,7 +280,7 @@ void CC2500_TxData();
 void CC2500_RxData(void);
 void DelayTime_1us(int count);
 
-# 37 "I:\Program\PIC\Header_File\RF_Control_B1.h"
+# 37 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h"
 struct RF
 {
 unsigned Enable:1;
@@ -2811,7 +2811,7 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "I:\Program\PIC\Header_File\MCU_16F1516_B1.h"
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
 void Mcu_Initial();
 void IO_Set();
 
@@ -2857,7 +2857,7 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
-# 7 "I:\Program\PIC\Source_File\RF_Control_B1.c"
+# 7 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 void RfPointSelect(char rf)
 {
 
@@ -2915,12 +2915,8 @@ RfPointSelect(rf);
 if(RF->Enable)
 {
 
-# 75
-if(RF->Key)
-{
-RF_RxDisable(1);
-}
-else
+# 76
+if(!RF->Key)
 {
 if(RF->ReceiveGO)
 {
@@ -2929,14 +2925,32 @@ CC2500_RxData();
 
 I2C_SetData(1);
 
-# 93
+# 90
 }
 else
 {
+if(!RF->TransceiveGO)
+{
+
+if(!RF->RxStatus)
+{
+RF->RxStatus=1;
+CC2500_WriteCommand(0x36);
+CC2500_WriteCommand(0x34);
+setINT_GO(1);
+}
+
+}
+}
+}
+else
+{
+RF_RxDisable(1);
+}
 if(RF->TransceiveGO)
 {
 RF_RxDisable(1);
-if(RF->Debounce == 0)
+if(!RF->Debounce)
 {
 RF->DebounceTime++;
 if(RF->DebounceTime == 25)
@@ -2952,18 +2966,6 @@ RF->TransceiveGO=0;
 CC2500_TxData();
 }
 }
-else
-{
-if(RF->RxStatus == 0 && 1)
-{
-RF->RxStatus=1;
-CC2500_WriteCommand(0x36);
-CC2500_WriteCommand(0x34);
-setINT_GO(1);
-}
-}
-}
-}
 }
 }
 
@@ -2973,44 +2975,57 @@ char i;
 RfPointSelect(rf);
 if(RF->Enable)
 {
-if(RF->TransceiveGO == 0 && 1)
-{
 
+if(!RF->TransceiveGO)
+{
 RF->TransceiveGO=1;
+
+# 151
 RF_Data[0]=0x63;
 RF_Data[1]=0x02;
-for(i=2 ;i< 21 ;i++)
-{
-RF_Data[i]=Product->Data[i];
+RF_Data[2]=Product->Data[2];
+RF_Data[3]=Product->Data[3];
+RF_Data[4]=Product->Data[4];
+RF_Data[5]=Product->Data[5];
+RF_Data[6]=Product->Data[6];
+RF_Data[7]=Product->Data[7];
+RF_Data[8]=Product->Data[8];
+RF_Data[9]=Product->Data[9];
+RF_Data[10]=Product->Data[10];
+RF_Data[11]=Product->Data[11];
+RF_Data[12]=Product->Data[12];
+RF_Data[13]=Product->Data[13];
+RF_Data[14]=Product->Data[14];
+RF_Data[15]=Product->Data[15];
+RF_Data[16]=Product->Data[16];
+RF_Data[17]=Product->Data[17];
+RF_Data[18]=Product->Data[18];
+RF_Data[19]=Product->Data[19];
+RF_Data[20]=0;
+
 }
 
-# 169
-}
 }
 }
 
 void setRF_Enable(char rf,char command)
 {
 RfPointSelect(rf);
-if(command)
-{
-RF->Enable=1;
-}
-else
-{
-RF->Enable=0;
+RF->Enable=command;
 RF->Learn=0;
-Transceive_GO=0;
-CC2500_WriteCommand(0x36);
-CC2500_WriteCommand(0x3B);
-RF_RxDisable(1);
-}
+RF->TransceiveGO=0;
+RF->RxStatus=0;
+RF->ReceiveGO=0;
+RF->DebounceTime=0;
+RF->Debounce=0;
+setINT_GO(0);
 }
 
 void RF_RxDisable(char rf)
 {
 RfPointSelect(rf);
-if(RF->RxStatus || RF->ReceiveGO)
+
+if(RF->RxStatus)
 {
 RF->RxStatus=0;
 RF->ReceiveGO=0;
@@ -3058,7 +3073,7 @@ else if(RF_Data[0] == 0x0 && RF_Data[1] == 0x65)
 ;
 }
 
-# 245
+# 246
 }
 }
 
@@ -3083,7 +3098,7 @@ RfPointSelect(rf);
 if(RF_Data[15] == 0x00)
 {
 
-# 284
+# 285
 Product->Data[9]=0;
 Product->Data[11]=0;
 Product->Data[15]=0;
@@ -3099,36 +3114,37 @@ Product->Data[17]=0;
 setTxData(1);
 }
 
-# 336
+# 337
 }
 
 void RfSWPointSelect(char sw)
 {
 
-# 358
+# 359
 }
 
 void setRFSW_Control(char sw)
 {
 RfSWPointSelect(sw);
+if(!RFSW->Status)
+{
 if(RF_Data[16] == 0x80)
 {
 ;;
-Product->Data[26+sw]=RF_Data[17];
 }
-if(RFSW->Status == 0)
-{
 RFSW->Status=1;
 ;;
 
 ;;
 ;;
+
 ;;
 }
 else
 {
 if(RF_Data[16] == 0x80)
 {
+;;
 ;;
 }
 else

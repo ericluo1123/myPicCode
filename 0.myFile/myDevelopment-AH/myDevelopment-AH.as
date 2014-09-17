@@ -728,7 +728,6 @@ TOSH equ 0FEFh ;#
 	FNCALL	_UART_Main,_UART_Transmit
 	FNCALL	_UART_Transmit,_printf
 	FNCALL	_printf,___lwdiv
-	FNCALL	_printf,___lwmod
 	FNCALL	_printf,_putch
 	FNCALL	_Mcu_Initial,_I2C_Set
 	FNCALL	_Mcu_Initial,_IO_Set
@@ -751,7 +750,7 @@ TOSH equ 0FEFh ;#
 psect	idataBANK0,class=CODE,space=0,delta=2,noexec
 global __pidataBANK0
 __pidataBANK0:
-	file	"I:\Program\PIC\Header_File\SegmentDisplay_A2.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h"
 	line	69
 
 ;initializer for _VarSegment
@@ -784,7 +783,7 @@ __pidataBANK0:
 psect	idataBANK1,class=CODE,space=0,delta=2,noexec
 global __pidataBANK1
 __pidataBANK1:
-	file	"I:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
 	line	245
 
 ;initializer for _VarProduct
@@ -820,51 +819,48 @@ __pidataBANK1:
 	retlw	0
 	retlw	0
 	retlw	0
-	global	_dpowers
+	global	_hexpowers
 psect	stringtext,class=STRCODE,delta=2,reloc=256,noexec
 global __pstringtext
 __pstringtext:
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c"
-	line	354
-_dpowers:
+	line	362
+_hexpowers:
 	retlw	01h
 	retlw	0
 
-	retlw	0Ah
-	retlw	0
-
-	retlw	064h
-	retlw	0
-
-	retlw	0E8h
-	retlw	03h
-
 	retlw	010h
-	retlw	027h
+	retlw	0
 
-	global __end_of_dpowers
-__end_of_dpowers:
-	global	_dpowers
-	global	_Timer1
-	global	_I2C
+	retlw	0
+	retlw	01h
+
+	retlw	0
+	retlw	010h
+
+	global __end_of_hexpowers
+__end_of_hexpowers:
+	global	_hexpowers
 	global	_UART
+	global	_I2C
+	global	_Timer1
 	global	_VarTMain
 	global	_VarTimer1
 	global	_Segment
 	global	_VarUart
 	global	_VarI2C
-	global	_Product
+	global	_TMain
 psect	nvCOMMON,class=COMMON,space=1,noexec
 global __pnvCOMMON
 __pnvCOMMON:
-_Product:
+_TMain:
        ds      1
 
-	global	_TMain
+	global	_Product
 psect	nvBANK0,class=BANK0,space=1,noexec
 global __pnvBANK0
 __pnvBANK0:
-_TMain:
+_Product:
        ds      1
 
 	global	_PORTA
@@ -991,9 +987,29 @@ psect	stringtext
 	global __stringdata
 __stringdata:
 	
+STR_2:	
+	retlw	48	;'0'
+	retlw	49	;'1'
+	retlw	50	;'2'
+	retlw	51	;'3'
+	retlw	52	;'4'
+	retlw	53	;'5'
+	retlw	54	;'6'
+	retlw	55	;'7'
+	retlw	56	;'8'
+	retlw	57	;'9'
+	retlw	97	;'a'
+	retlw	98	;'b'
+	retlw	99	;'c'
+	retlw	100	;'d'
+	retlw	101	;'e'
+	retlw	102	;'f'
+	retlw	0
+psect	stringtext
+	
 STR_1:	
 	retlw	37	;'%'
-	retlw	100	;'d'
+	retlw	120	;'x'
 	retlw	0
 psect	stringtext
 	global __end_of__stringdata
@@ -1016,16 +1032,16 @@ __initialization:
 psect	bssCOMMON,class=COMMON,space=1,noexec
 global __pbssCOMMON
 __pbssCOMMON:
-_Timer1:
+_UART:
+       ds      1
+
+_I2C:
        ds      1
 
 psect	bssBANK0,class=BANK0,space=1,noexec
 global __pbssBANK0
 __pbssBANK0:
-_I2C:
-       ds      1
-
-_UART:
+_Timer1:
        ds      1
 
 _VarTMain:
@@ -1040,7 +1056,7 @@ _Segment:
 psect	dataBANK0,class=BANK0,space=1,noexec
 global __pdataBANK0
 __pdataBANK0:
-	file	"I:\Program\PIC\Header_File\SegmentDisplay_A2.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h"
 	line	69
 _VarSegment:
        ds      26
@@ -1048,7 +1064,7 @@ _VarSegment:
 psect	dataBANK1,class=BANK1,space=1,noexec
 global __pdataBANK1
 __pdataBANK1:
-	file	"I:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
 	line	245
 _VarProduct:
        ds      32
@@ -1083,6 +1099,7 @@ clrloop0:
 psect cinit,class=CODE,delta=2,merge=1
 	global __pbssCOMMON
 	clrf	((__pbssCOMMON)+0)&07Fh
+	clrf	((__pbssCOMMON)+1)&07Fh
 ; Clear objects allocated to BANK0
 psect cinit,class=CODE,delta=2,merge=1
 	global __pbssBANK0
@@ -1090,7 +1107,7 @@ psect cinit,class=CODE,delta=2,merge=1
 	movwf	fsr0l
 	movlw	high(__pbssBANK0)
 	movwf	fsr0h
-	movlw	015h
+	movlw	014h
 	fcall	clear_ram0
 ; Clear objects allocated to BANK2
 psect cinit,class=CODE,delta=2,merge=1
@@ -1159,13 +1176,6 @@ ljmp _main	;jump to C main() function
 psect	cstackCOMMON,class=COMMON,space=1,noexec
 global __pcstackCOMMON
 __pcstackCOMMON:
-?_MainT_Initial:	; 0 bytes @ 0x0
-?_Mcu_Initial:	; 0 bytes @ 0x0
-?_SegmentDisplay_Initial:	; 0 bytes @ 0x0
-?_MainT:	; 0 bytes @ 0x0
-?_I2C_Main:	; 0 bytes @ 0x0
-?_UART_Main:	; 0 bytes @ 0x0
-?_SegmentDisplay_Main:	; 0 bytes @ 0x0
 ?_IO_Set:	; 0 bytes @ 0x0
 ?_TMR1_Set:	; 0 bytes @ 0x0
 ?_I2C_Set:	; 0 bytes @ 0x0
@@ -1180,15 +1190,19 @@ __pcstackCOMMON:
 ?_I2C_Master_Transmission:	; 0 bytes @ 0x0
 ?_UART_Receive:	; 0 bytes @ 0x0
 ?_UART_Transmit:	; 0 bytes @ 0x0
-?_main:	; 0 bytes @ 0x0
+?_MainT_Initial:	; 0 bytes @ 0x0
+?_SegmentDisplay_Initial:	; 0 bytes @ 0x0
+?_MainT:	; 0 bytes @ 0x0
+?_SegmentDisplay_Main:	; 0 bytes @ 0x0
+?_Mcu_Initial:	; 0 bytes @ 0x0
 ?_ISR:	; 0 bytes @ 0x0
+?_I2C_Main:	; 0 bytes @ 0x0
+?_UART_Main:	; 0 bytes @ 0x0
 ?_putch:	; 0 bytes @ 0x0
+?_main:	; 0 bytes @ 0x0
 	ds	2
 ??_ISR:	; 0 bytes @ 0x2
 	ds	1
-??_MainT_Initial:	; 0 bytes @ 0x3
-??_SegmentDisplay_Initial:	; 0 bytes @ 0x3
-??_SegmentDisplay_Main:	; 0 bytes @ 0x3
 ??_IO_Set:	; 0 bytes @ 0x3
 ??_TMR1_Set:	; 0 bytes @ 0x3
 ??_I2C_Set:	; 0 bytes @ 0x3
@@ -1196,6 +1210,9 @@ __pcstackCOMMON:
 ??_I2C_Master_Reception:	; 0 bytes @ 0x3
 ??_I2C_Master_Transmission:	; 0 bytes @ 0x3
 ??_UART_Receive:	; 0 bytes @ 0x3
+??_MainT_Initial:	; 0 bytes @ 0x3
+??_SegmentDisplay_Initial:	; 0 bytes @ 0x3
+??_SegmentDisplay_Main:	; 0 bytes @ 0x3
 ??_putch:	; 0 bytes @ 0x3
 	global	?___awdiv
 ?___awdiv:	; 2 bytes @ 0x3
@@ -1225,7 +1242,8 @@ ___awmod@dividend:	; 2 bytes @ 0x5
 	global	___lwdiv@dividend
 ___lwdiv@dividend:	; 2 bytes @ 0x5
 	ds	1
-??_I2C_Main:	; 0 bytes @ 0x6
+	global	I2C_Main@i
+I2C_Main@i:	; 1 bytes @ 0x6
 	global	UART_Receive@i
 UART_Receive@i:	; 1 bytes @ 0x6
 	ds	1
@@ -1233,17 +1251,12 @@ UART_Receive@i:	; 1 bytes @ 0x6
 ??___awmod:	; 0 bytes @ 0x7
 ??___lwdiv:	; 0 bytes @ 0x7
 	ds	1
-??___lwmod:	; 0 bytes @ 0x8
-	global	setSegmentDisplayNumber@i
-setSegmentDisplayNumber@i:	; 1 bytes @ 0x8
-	ds	1
-??_UART_Main:	; 0 bytes @ 0x9
-??_main:	; 0 bytes @ 0x9
+??_UART_Main:	; 0 bytes @ 0x8
+??_main:	; 0 bytes @ 0x8
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-	global	I2C_Main@i
-I2C_Main@i:	; 1 bytes @ 0x0
+??_I2C_Main:	; 0 bytes @ 0x0
 	global	___awdiv@counter
 ___awdiv@counter:	; 1 bytes @ 0x0
 	global	___awmod@counter
@@ -1261,59 +1274,50 @@ ___lwdiv@quotient:	; 2 bytes @ 0x1
 	global	___awdiv@quotient
 ___awdiv@quotient:	; 2 bytes @ 0x2
 	ds	1
-	global	?___lwmod
-?___lwmod:	; 2 bytes @ 0x3
-	global	___lwmod@divisor
-___lwmod@divisor:	; 2 bytes @ 0x3
+	global	?_printf
+?_printf:	; 2 bytes @ 0x3
+	global	printf@f
+printf@f:	; 2 bytes @ 0x3
 	ds	1
 ?_setSegmentDisplayNumber:	; 0 bytes @ 0x4
 	global	setSegmentDisplayNumber@number
 setSegmentDisplayNumber@number:	; 2 bytes @ 0x4
-	ds	1
-	global	___lwmod@dividend
-___lwmod@dividend:	; 2 bytes @ 0x5
-	ds	1
+	ds	2
 ??_setSegmentDisplayNumber:	; 0 bytes @ 0x6
 	ds	1
-	global	___lwmod@counter
-___lwmod@counter:	; 1 bytes @ 0x7
-	ds	1
-	global	?_printf
-?_printf:	; 2 bytes @ 0x8
-	global	printf@f
-printf@f:	; 2 bytes @ 0x8
-	ds	2
-??_MainT:	; 0 bytes @ 0xA
-	ds	2
-??_printf:	; 0 bytes @ 0xC
-	ds	1
-	global	MainT@i
-MainT@i:	; 1 bytes @ 0xD
+??_printf:	; 0 bytes @ 0x7
 	ds	3
-	global	printf@ap
-printf@ap:	; 1 bytes @ 0x10
+	global	setSegmentDisplayNumber@i
+setSegmentDisplayNumber@i:	; 1 bytes @ 0xA
 	ds	1
+??_MainT:	; 0 bytes @ 0xB
 	global	printf@flag
-printf@flag:	; 1 bytes @ 0x11
+printf@flag:	; 1 bytes @ 0xB
 	ds	1
+	global	printf@idx
+printf@idx:	; 1 bytes @ 0xC
+	ds	1
+	global	printf@ap
+printf@ap:	; 1 bytes @ 0xD
+	ds	1
+	global	printf@_val
+printf@_val:	; 4 bytes @ 0xE
+	ds	4
 	global	printf@prec
 printf@prec:	; 1 bytes @ 0x12
 	ds	1
-	global	printf@_val
-printf@_val:	; 4 bytes @ 0x13
-	ds	4
 	global	printf@c
-printf@c:	; 1 bytes @ 0x17
+printf@c:	; 1 bytes @ 0x13
 	ds	1
-??_UART_Transmit:	; 0 bytes @ 0x18
+??_UART_Transmit:	; 0 bytes @ 0x14
 	ds	3
 	global	UART_Transmit@i
-UART_Transmit@i:	; 1 bytes @ 0x1B
+UART_Transmit@i:	; 1 bytes @ 0x17
 	ds	1
 ;!
 ;!Data Sizes:
-;!    Strings     3
-;!    Constant    10
+;!    Strings     20
+;!    Constant    8
 ;!    Data        58
 ;!    BSS         157
 ;!    Persistent  2
@@ -1321,8 +1325,8 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMMON           14      9      11
-;!    BANK0            80     28      76
+;!    COMMON           14      8      11
+;!    BANK0            80     24      71
 ;!    BANK1            80      0      32
 ;!    BANK2            80      0      68
 ;!    BANK3            80      0      67
@@ -1339,40 +1343,37 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!    printf@ap	PTR void [1] size(1) Largest target is 2
 ;!		 -> ?_printf(BANK0[2]), 
 ;!
-;!    S549$_cp	PTR const unsigned char  size(1) Largest target is 0
+;!    S543$_cp	PTR const unsigned char  size(1) Largest target is 0
 ;!
 ;!    _val._str._cp	PTR const unsigned char  size(1) Largest target is 0
-;!
-;!    Timer1	PTR struct Timer1 size(1) Largest target is 3
-;!		 -> NULL(NULL[0]), VarTimer1(BANK0[3]), 
 ;!
 ;!    Segment	PTR struct Segment size(1) Largest target is 26
 ;!		 -> NULL(NULL[0]), VarSegment(BANK0[26]), 
 ;!
-;!    I2C	PTR struct I2C size(1) Largest target is 67
-;!		 -> NULL(NULL[0]), VarI2C(BANK3[67]), 
+;!    Product	PTR struct Product size(1) Largest target is 32
+;!		 -> NULL(NULL[0]), VarProduct(BANK1[32]), 
 ;!
 ;!    UART	PTR struct UART size(1) Largest target is 68
 ;!		 -> NULL(NULL[0]), VarUart(BANK2[68]), 
 ;!
-;!    Product	PTR struct Product size(1) Largest target is 32
-;!		 -> NULL(NULL[0]), VarProduct(BANK1[32]), 
+;!    I2C	PTR struct I2C size(1) Largest target is 67
+;!		 -> NULL(NULL[0]), VarI2C(BANK3[67]), 
 ;!
 ;!    TMain	PTR struct TMain size(1) Largest target is 15
 ;!		 -> NULL(NULL[0]), VarTMain(BANK0[15]), 
+;!
+;!    Timer1	PTR struct Timer1 size(1) Largest target is 3
+;!		 -> NULL(NULL[0]), VarTimer1(BANK0[3]), 
 ;!
 
 
 ;!
 ;!Critical Paths under _main in COMMON
 ;!
-;!    _main->_I2C_Main
-;!    _printf->___lwmod
-;!    ___lwmod->___lwdiv
+;!    _printf->___lwdiv
 ;!    _Mcu_Initial->_I2C_Set
 ;!    _Mcu_Initial->_TMR1_Set
 ;!    _Mcu_Initial->_UART_Set
-;!    _MainT->_setSegmentDisplayNumber
 ;!    _setSegmentDisplayNumber->___awdiv
 ;!    _setSegmentDisplayNumber->___awmod
 ;!    _I2C_Main->_I2C_Master_Reception
@@ -1385,8 +1386,7 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!
 ;!    _UART_Main->_UART_Transmit
 ;!    _UART_Transmit->_printf
-;!    _printf->___lwmod
-;!    ___lwmod->___lwdiv
+;!    _printf->___lwdiv
 ;!    _MainT->_setSegmentDisplayNumber
 ;!    _setSegmentDisplayNumber->___awdiv
 ;!
@@ -1452,7 +1452,7 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 0     0      0    4016
+;! (0) _main                                                 0     0      0    3614
 ;!                           _I2C_Main
 ;!                              _MainT
 ;!                      _MainT_Initial
@@ -1461,27 +1461,21 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!                _SegmentDisplay_Main
 ;!                          _UART_Main
 ;! ---------------------------------------------------------------------------------
-;! (1) _UART_Main                                            0     0      0    1572
+;! (1) _UART_Main                                            0     0      0    1145
 ;!                       _UART_Receive
 ;!                      _UART_Transmit
 ;! ---------------------------------------------------------------------------------
-;! (2) _UART_Transmit                                        4     4      0    1482
-;!                                             24 BANK0      4     4      0
+;! (2) _UART_Transmit                                        4     4      0    1055
+;!                                             20 BANK0      4     4      0
 ;!                             _printf
 ;! ---------------------------------------------------------------------------------
-;! (3) _printf                                              16    12      4    1383
-;!                                              8 BANK0     16    12      4
+;! (3) _printf                                              17    13      4     956
+;!                                              3 BANK0     17    13      4
 ;!                            ___lwdiv
-;!                            ___lwmod
 ;!                              _putch
 ;! ---------------------------------------------------------------------------------
 ;! (4) _putch                                                1     1      0      22
 ;!                                              3 COMMON     1     1      0
-;! ---------------------------------------------------------------------------------
-;! (4) ___lwmod                                              6     2      4     362
-;!                                              8 COMMON     1     1      0
-;!                                              3 BANK0      5     1      4
-;!                            ___lwdiv (ARG)
 ;! ---------------------------------------------------------------------------------
 ;! (4) ___lwdiv                                              8     4      4     371
 ;!                                              3 COMMON     5     1      4
@@ -1516,13 +1510,12 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;! (1) _MainT_Initial                                        1     1      0       0
 ;!                                              3 COMMON     1     1      0
 ;! ---------------------------------------------------------------------------------
-;! (1) _MainT                                                4     4      0    2116
-;!                                             10 BANK0      4     4      0
+;! (1) _MainT                                                4     4      0    2203
+;!                                             11 BANK0      3     3      0
 ;!            _setSegmentDisplayNumber
 ;! ---------------------------------------------------------------------------------
-;! (2) _setSegmentDisplayNumber                              7     5      2    1986
-;!                                              8 COMMON     1     1      0
-;!                                              4 BANK0      6     4      2
+;! (2) _setSegmentDisplayNumber                              7     5      2    2203
+;!                                              4 BANK0      7     5      2
 ;!                            ___awdiv
 ;!                            ___awmod
 ;! ---------------------------------------------------------------------------------
@@ -1530,20 +1523,20 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!                                              3 COMMON     5     1      4
 ;!                                              0 BANK0      2     2      0
 ;! ---------------------------------------------------------------------------------
-;! (3) ___awdiv                                              9     5      4     618
+;! (3) ___awdiv                                              9     5      4     835
 ;!                                              3 COMMON     5     1      4
 ;!                                              0 BANK0      4     4      0
 ;! ---------------------------------------------------------------------------------
-;! (1) _I2C_Main                                             4     4      0     328
-;!                                              6 COMMON     3     3      0
-;!                                              0 BANK0      1     1      0
+;! (1) _I2C_Main                                             4     4      0     266
+;!                                              6 COMMON     1     1      0
+;!                                              0 BANK0      3     3      0
 ;!               _I2C_Master_Reception
 ;!            _I2C_Master_Transmission
 ;! ---------------------------------------------------------------------------------
-;! (2) _I2C_Master_Transmission                              2     2      0      99
+;! (2) _I2C_Master_Transmission                              2     2      0      68
 ;!                                              3 COMMON     2     2      0
 ;! ---------------------------------------------------------------------------------
-;! (2) _I2C_Master_Reception                                 3     3      0      99
+;! (2) _I2C_Master_Reception                                 3     3      0      68
 ;!                                              3 COMMON     3     3      0
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 4
@@ -1589,8 +1582,6 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!     _UART_Transmit
 ;!       _printf
 ;!         ___lwdiv
-;!         ___lwmod
-;!           ___lwdiv (ARG)
 ;!         _putch
 ;!
 ;! _ISR (ROOT)
@@ -1608,7 +1599,7 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!BITCOMMON            E      0       0       1        0.0%
 ;!BITSFR0              0      0       0       1        0.0%
 ;!SFR0                 0      0       0       1        0.0%
-;!COMMON               E      9       B       2       78.6%
+;!COMMON               E      8       B       2       78.6%
 ;!BITSFR1              0      0       0       2        0.0%
 ;!SFR1                 0      0       0       2        0.0%
 ;!BITSFR2              0      0       0       3        0.0%
@@ -1616,11 +1607,11 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!STACK                0      0       0       3        0.0%
 ;!BITSFR3              0      0       0       4        0.0%
 ;!SFR3                 0      0       0       4        0.0%
-;!ABS                  0      0      FE       4        0.0%
+;!ABS                  0      0      F9       4        0.0%
 ;!BITBANK0            50      0       0       5        0.0%
 ;!BITSFR4              0      0       0       5        0.0%
 ;!SFR4                 0      0       0       5        0.0%
-;!BANK0               50     1C      4C       6       95.0%
+;!BANK0               50     18      47       6       88.8%
 ;!BITSFR5              0      0       0       6        0.0%
 ;!SFR5                 0      0       0       6        0.0%
 ;!BITBANK1            50      0       0       7        0.0%
@@ -1661,7 +1652,7 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;!SFR17                0      0       0      18        0.0%
 ;!BITSFR18             0      0       0      19        0.0%
 ;!SFR18                0      0       0      19        0.0%
-;!DATA                 0      0      FE      19        0.0%
+;!DATA                 0      0      F9      19        0.0%
 ;!BITSFR19             0      0       0      20        0.0%
 ;!SFR19                0      0       0      20        0.0%
 ;!BITSFR20             0      0       0      21        0.0%
@@ -1693,7 +1684,7 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 6 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 6 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1726,12 +1717,12 @@ UART_Transmit@i:	; 1 bytes @ 0x1B
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext,global,class=CODE,delta=2,merge=1,split=1
-	file	"I:\Program\PIC\Source_File\myMain.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	6
 global __pmaintext
 __pmaintext:	;psect for function _main
 psect	maintext
-	file	"I:\Program\PIC\Source_File\myMain.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	6
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -1742,51 +1733,50 @@ _main:
 ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	8
 	
-l2464:	
+l2347:	
 ;myMain.c: 8: MainT_Initial();
 	fcall	_MainT_Initial
 	line	9
 	
-l2466:	
+l2349:	
 ;myMain.c: 9: Mcu_Initial();
 	fcall	_Mcu_Initial
 	line	10
 	
-l2468:	
+l2351:	
 ;myMain.c: 10: SegmentDisplay_Initial();
 	fcall	_SegmentDisplay_Initial
 	line	12
 	
-l2470:	
+l2353:	
 ;myMain.c: 11: ;;
 ;myMain.c: 12: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
-	goto	l2472
+	goto	l2355
 	line	13
 ;myMain.c: 13: while(1)
 	
-l47:	
+l406:	
 	line	17
 	
-l2472:	
+l2355:	
 ;myMain.c: 14: {
 ;myMain.c: 17: if(TMain->T1_Timerout)
-	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u3471
-	goto	u3470
-u3471:
-	goto	l2472
-u3470:
+	goto	u3071
+	goto	u3070
+u3071:
+	goto	l2355
+u3070:
 	line	19
 	
-l2474:	
+l2357:	
 ;myMain.c: 18: {
 ;myMain.c: 19: TMain->T1_Timerout = 0;
 	movf	(_TMain),w
@@ -1796,60 +1786,59 @@ l2474:
 	bcf	indf1,2
 	line	20
 	
-l2476:	
+l2359:	
 ;myMain.c: 20: MainT();
 	fcall	_MainT
 	line	21
 	
-l2478:	
+l2361:	
 ;myMain.c: 21: if(TMain->PowerON)
-	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u3481
-	goto	u3480
-u3481:
-	goto	l2472
-u3480:
+	goto	u3081
+	goto	u3080
+u3081:
+	goto	l2355
+u3080:
 	line	24
 	
-l2480:	
+l2363:	
 ;myMain.c: 22: {
 ;myMain.c: 23: ;;
 ;myMain.c: 24: I2C_Main();
 	fcall	_I2C_Main
 	line	25
 	
-l2482:	
+l2365:	
 ;myMain.c: 25: UART_Main();
 	fcall	_UART_Main
 	line	26
 	
-l2484:	
+l2367:	
 ;myMain.c: 26: SegmentDisplay_Main();
 	fcall	_SegmentDisplay_Main
-	goto	l2472
+	goto	l2355
 	line	27
 	
-l49:	
-	goto	l2472
+l408:	
+	goto	l2355
 	line	28
 	
-l48:	
-	goto	l2472
+l407:	
+	goto	l2355
 	line	29
 	
-l50:	
+l409:	
 	line	13
-	goto	l2472
+	goto	l2355
 	
-l51:	
+l410:	
 	line	30
 	
-l52:	
+l411:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -1860,7 +1849,7 @@ GLOBAL	__end_of_main
 
 ;; *************** function _UART_Main *****************
 ;; Defined at:
-;;		line 524 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 533 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1889,13 +1878,13 @@ GLOBAL	__end_of_main
 ;; This function uses a non-reentrant model
 ;;
 psect	text1,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	524
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	533
 global __ptext1
 __ptext1:	;psect for function _UART_Main
 psect	text1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	524
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	533
 	global	__size_of_UART_Main
 	__size_of_UART_Main	equ	__end_of_UART_Main-_UART_Main
 	
@@ -1903,11 +1892,10 @@ _UART_Main:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _UART_Main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-	line	526
+	line	535
 	
-l2450:	
-;MCU_16f1516_B1.c: 526: if(UART->RxGO)
-	movlb 0	; select bank0
+l2299:	
+;MCU_16f1516_B1.c: 535: if(UART->RxGO)
 	movf	(_UART),w
 	addlw	043h
 	movwf	fsr1l
@@ -1915,16 +1903,16 @@ l2450:
 	movwf fsr1h	
 	
 	btfss	indf1,1
-	goto	u3451
-	goto	u3450
-u3451:
-	goto	l2458
-u3450:
-	line	528
+	goto	u2991
+	goto	u2990
+u2991:
+	goto	l2307
+u2990:
+	line	537
 	
-l2452:	
-;MCU_16f1516_B1.c: 527: {
-;MCU_16f1516_B1.c: 528: UART->RxGO=0;
+l2301:	
+;MCU_16f1516_B1.c: 536: {
+;MCU_16f1516_B1.c: 537: UART->RxGO=0;
 	movf	(_UART),w
 	addlw	043h
 	movwf	fsr1l
@@ -1932,30 +1920,29 @@ l2452:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	line	529
+	line	538
 	
-l2454:	
-;MCU_16f1516_B1.c: 529: UART_Receive();
+l2303:	
+;MCU_16f1516_B1.c: 538: UART_Receive();
 	fcall	_UART_Receive
-	line	530
+	line	539
 	
-l2456:	
-;MCU_16f1516_B1.c: 530: RCIE=1;
+l2305:	
+;MCU_16f1516_B1.c: 539: RCIE=1;
 	movlb 1	; select bank1
 	bsf	(1165/8)^080h,(1165)&7	;volatile
-	line	531
-;MCU_16f1516_B1.c: 531: }
-	goto	l454
-	line	532
+	line	540
+;MCU_16f1516_B1.c: 540: }
+	goto	l328
+	line	541
 	
-l451:	
-	line	534
+l325:	
+	line	543
 	
-l2458:	
-;MCU_16f1516_B1.c: 532: else
-;MCU_16f1516_B1.c: 533: {
-;MCU_16f1516_B1.c: 534: if(UART->TxGO)
-	movlb 0	; select bank0
+l2307:	
+;MCU_16f1516_B1.c: 541: else
+;MCU_16f1516_B1.c: 542: {
+;MCU_16f1516_B1.c: 543: if(UART->TxGO)
 	movf	(_UART),w
 	addlw	043h
 	movwf	fsr1l
@@ -1963,16 +1950,16 @@ l2458:
 	movwf fsr1h	
 	
 	btfss	indf1,0
-	goto	u3461
-	goto	u3460
-u3461:
-	goto	l454
-u3460:
-	line	536
+	goto	u3001
+	goto	u3000
+u3001:
+	goto	l328
+u3000:
+	line	545
 	
-l2460:	
-;MCU_16f1516_B1.c: 535: {
-;MCU_16f1516_B1.c: 536: UART->TxGO=0;
+l2309:	
+;MCU_16f1516_B1.c: 544: {
+;MCU_16f1516_B1.c: 545: UART->TxGO=0;
 	movf	(_UART),w
 	addlw	043h
 	movwf	fsr1l
@@ -1980,22 +1967,22 @@ l2460:
 	movwf fsr1h	
 	
 	bcf	indf1,0
-	line	537
+	line	546
 	
-l2462:	
-;MCU_16f1516_B1.c: 537: UART_Transmit();
+l2311:	
+;MCU_16f1516_B1.c: 546: UART_Transmit();
 	fcall	_UART_Transmit
-	goto	l454
-	line	538
+	goto	l328
+	line	547
 	
-l453:	
-	goto	l454
-	line	539
+l327:	
+	goto	l328
+	line	548
 	
-l452:	
-	line	540
+l326:	
+	line	549
 	
-l454:	
+l328:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Main
@@ -2005,11 +1992,11 @@ GLOBAL	__end_of_UART_Main
 
 ;; *************** function _UART_Transmit *****************
 ;; Defined at:
-;;		line 541 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 550 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
-;;  i               1   27[BANK0 ] unsigned char 
+;;  i               1   23[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -2033,12 +2020,12 @@ GLOBAL	__end_of_UART_Main
 ;; This function uses a non-reentrant model
 ;;
 psect	text2,local,class=CODE,delta=2,merge=1
-	line	541
+	line	550
 global __ptext2
 __ptext2:	;psect for function _UART_Transmit
 psect	text2
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	541
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	550
 	global	__size_of_UART_Transmit
 	__size_of_UART_Transmit	equ	__end_of_UART_Transmit-_UART_Transmit
 	
@@ -2046,52 +2033,52 @@ _UART_Transmit:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _UART_Transmit: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-	line	544
+	line	553
 	
-l2356:	
-;MCU_16f1516_B1.c: 543: char i;
-;MCU_16f1516_B1.c: 544: for(i=0;i<32;i++)
+l2199:	
+;MCU_16f1516_B1.c: 552: char i;
+;MCU_16f1516_B1.c: 553: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(UART_Transmit@i)
 	
-l2358:	
+l2201:	
 	movlw	(020h)
 	subwf	(UART_Transmit@i),w
 	skipc
-	goto	u3271
-	goto	u3270
-u3271:
-	goto	l459
-u3270:
-	goto	l462
+	goto	u2781
+	goto	u2780
+u2781:
+	goto	l333
+u2780:
+	goto	l336
 	
-l2360:	
-	goto	l462
-	line	545
+l2203:	
+	goto	l336
+	line	554
 	
-l457:	
-	line	546
-;MCU_16f1516_B1.c: 545: {
-;MCU_16f1516_B1.c: 546: while(!TRMT);
-	goto	l459
+l331:	
+	line	555
+;MCU_16f1516_B1.c: 554: {
+;MCU_16f1516_B1.c: 555: while(!TRMT);
+	goto	l333
 	
-l460:	
+l334:	
 	
-l459:	
+l333:	
 	movlb 3	; select bank3
 	btfss	(3313/8)^0180h,(3313)&7	;volatile
-	goto	u3281
-	goto	u3280
-u3281:
-	goto	l459
-u3280:
-	goto	l2362
+	goto	u2791
+	goto	u2790
+u2791:
+	goto	l333
+u2790:
+	goto	l2205
 	
-l461:	
-	line	547
+l335:	
+	line	556
 	
-l2362:	
-;MCU_16f1516_B1.c: 547: printf("%d",UART->TxData[i]);
+l2205:	
+;MCU_16f1516_B1.c: 556: printf("%x",UART->TxData[i]);
 	movlw	low((STR_1)|8000h)
 	movlb 0	; select bank0
 	movwf	(printf@f)
@@ -2113,30 +2100,30 @@ l2362:
 	movf	1+(??_UART_Transmit+1)+0,w
 	movwf	1+(?_printf)+02h
 	fcall	_printf
-	line	544
+	line	553
 	
-l2364:	
+l2207:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_UART_Transmit+0)+0
 	movf	(??_UART_Transmit+0)+0,w
 	addwf	(UART_Transmit@i),f
 	
-l2366:	
+l2209:	
 	movlw	(020h)
 	subwf	(UART_Transmit@i),w
 	skipc
-	goto	u3291
-	goto	u3290
-u3291:
-	goto	l459
-u3290:
-	goto	l462
+	goto	u2801
+	goto	u2800
+u2801:
+	goto	l333
+u2800:
+	goto	l336
 	
-l458:	
-	line	551
+l332:	
+	line	560
 	
-l462:	
+l336:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Transmit
@@ -2148,17 +2135,18 @@ GLOBAL	__end_of_UART_Transmit
 ;; Defined at:
 ;;		line 464 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c"
 ;; Parameters:    Size  Location     Type
-;;  f               2    8[BANK0 ] PTR const unsigned char 
+;;  f               2    3[BANK0 ] PTR const unsigned char 
 ;;		 -> STR_1(3), 
 ;; Auto vars:     Size  Location     Type
-;;  _val            4   19[BANK0 ] struct .
-;;  c               1   23[BANK0 ] char 
+;;  idx             1   12[BANK0 ] unsigned char 
+;;  _val            4   14[BANK0 ] struct .
+;;  c               1   19[BANK0 ] char 
 ;;  prec            1   18[BANK0 ] char 
-;;  flag            1   17[BANK0 ] unsigned char 
-;;  ap              1   16[BANK0 ] PTR void [1]
+;;  ap              1   13[BANK0 ] PTR void [1]
 ;;		 -> ?_printf(2), 
+;;  flag            1   11[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
-;;                  2    8[BANK0 ] int 
+;;                  2    3[BANK0 ] int 
 ;; Registers used:
 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
 ;; Tracked objects:
@@ -2167,15 +2155,14 @@ GLOBAL	__end_of_UART_Transmit
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
 ;;      Params:         0       4       0       0       0       0       0       0
-;;      Locals:         0       8       0       0       0       0       0       0
+;;      Locals:         0       9       0       0       0       0       0       0
 ;;      Temps:          0       4       0       0       0       0       0       0
-;;      Totals:         0      16       0       0       0       0       0       0
-;;Total ram usage:       16 bytes
+;;      Totals:         0      17       0       0       0       0       0       0
+;;Total ram usage:       17 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    3
 ;; This function calls:
 ;;		___lwdiv
-;;		___lwmod
 ;;		_putch
 ;; This function is called by:
 ;;		_UART_Transmit
@@ -2198,7 +2185,7 @@ _printf:
 ; Regs used in _printf: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	542
 	
-l2186:	
+l2075:	
 ;doprnt.c: 466: va_list ap;
 ;doprnt.c: 499: signed char c;
 ;doprnt.c: 506: signed char prec;
@@ -2218,80 +2205,75 @@ l2186:
 	movwf	(printf@ap)
 	line	545
 ;doprnt.c: 545: while(c = *f++) {
-	goto	l2232
+	goto	l2115
 	
-l497:	
+l507:	
 	line	547
 	
-l2188:	
+l2077:	
 ;doprnt.c: 547: if(c != '%')
 	movf	(printf@c),w
 	xorlw	025h&0ffh
 	skipnz
-	goto	u2711
-	goto	u2710
-u2711:
-	goto	l2192
-u2710:
+	goto	u2531
+	goto	u2530
+u2531:
+	goto	l2081
+u2530:
 	line	550
 	
-l2190:	
+l2079:	
 ;doprnt.c: 549: {
 ;doprnt.c: 550: (putch(c) );
 	movf	(printf@c),w
 	fcall	_putch
 	line	551
 ;doprnt.c: 551: continue;
-	goto	l2232
+	goto	l2115
 	line	552
 	
-l498:	
+l508:	
 	line	557
 	
-l2192:	
+l2081:	
 ;doprnt.c: 552: }
 ;doprnt.c: 557: flag = 0;
 	movlb 0	; select bank0
 	clrf	(printf@flag)
 	line	644
 ;doprnt.c: 644: switch(c = *f++) {
-	goto	l2196
+	goto	l2085
 	line	646
 ;doprnt.c: 646: case 0:
 	
-l500:	
+l510:	
 	line	647
 ;doprnt.c: 647: goto alldone;
-	goto	l515
-	line	706
-;doprnt.c: 706: case 'd':
+	goto	l522
+	line	727
+;doprnt.c: 727: case 'x':
 	
-l502:	
-	goto	l2198
-	line	707
-	
-l503:	
-	line	708
-;doprnt.c: 707: case 'i':
-;doprnt.c: 708: break;
-	goto	l2198
+l512:	
+	line	732
+;doprnt.c: 732: break;
+	goto	l2087
 	line	811
 ;doprnt.c: 811: default:
 	
-l505:	
+l514:	
 	line	822
 ;doprnt.c: 822: continue;
-	goto	l2232
+	goto	l2115
 	line	831
 	
-l2194:	
+l2083:	
 ;doprnt.c: 831: }
-	goto	l2198
+	goto	l2087
 	line	644
 	
-l499:	
+l509:	
 	
-l2196:	
+l2085:	
 	movf	(printf@f+1),w
 	movwf	(??_printf+0)+0+1
 	movf	(printf@f),w
@@ -2306,35 +2288,32 @@ l2196:
 	movf	indf0,w ;code access
 	movwf	(printf@c)
 	; Switch size 1, requested type "space"
-; Number of cases is 3, Range of values is 0 to 105
+; Number of cases is 2, Range of values is 0 to 120
 ; switch strategies available:
 ; Name         Instructions Cycles
-; simple_byte           10     6 (average)
-; direct_byte          218     6 (fixed)
+; simple_byte            7     4 (average)
+; direct_byte          248     6 (fixed)
 ; jumptable            260     6 (fixed)
 ;	Chosen strategy is simple_byte
 
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l515
-	xorlw	100^0	; case 100
+	goto	l522
+	xorlw	120^0	; case 120
 	skipnz
-	goto	l2198
-	xorlw	105^100	; case 105
-	skipnz
-	goto	l2198
-	goto	l2232
+	goto	l2087
+	goto	l2115
 	opt asmopt_on
 
 	line	831
 	
-l504:	
-	line	1268
+l513:	
+	line	1295
 	
-l2198:	
-;doprnt.c: 1262: {
-;doprnt.c: 1268: _val._val = (int)(*(int *)__va_arg((*(int **)ap), (int)0));
+l2087:	
+;doprnt.c: 1282: {
+;doprnt.c: 1295: _val._val = (*(unsigned *)__va_arg((*(unsigned **)ap), (unsigned)0));
 	movf	(printf@ap),w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -2344,77 +2323,47 @@ l2198:
 	moviw	[1]fsr1
 	movwf	(printf@_val+1)
 	
-l2200:	
+l2089:	
 	movlw	(02h)
 	movwf	(??_printf+0)+0
 	movf	(??_printf+0)+0,w
 	addwf	(printf@ap),f
-	line	1270
+	line	1325
 	
-l2202:	
-;doprnt.c: 1270: if((int)_val._val < 0) {
-	btfss	(printf@_val+1),7
-	goto	u2721
-	goto	u2720
-u2721:
-	goto	l2208
-u2720:
-	line	1271
-	
-l2204:	
-;doprnt.c: 1271: flag |= 0x03;
-	movlw	(03h)
-	movwf	(??_printf+0)+0
-	movf	(??_printf+0)+0,w
-	iorwf	(printf@flag),f
-	line	1272
-	
-l2206:	
-;doprnt.c: 1272: _val._val = -_val._val;
-	comf	(printf@_val),f
-	comf	(printf@_val+1),f
-	incf	(printf@_val),f
-	skipnz
-	incf	(printf@_val+1),f
-	goto	l2208
-	line	1273
-	
-l506:	
-	line	1314
-	
-l2208:	
-;doprnt.c: 1273: }
-;doprnt.c: 1275: }
-;doprnt.c: 1314: for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
+l2091:	
+;doprnt.c: 1296: }
+;doprnt.c: 1325: for(c = 1 ; c != sizeof hexpowers/sizeof hexpowers[0] ; c++)
 	clrf	(printf@c)
 	incf	(printf@c),f
+	
+l2093:	
 	movf	(printf@c),w
-	xorlw	05h&0ffh
+	xorlw	04h&0ffh
 	skipz
-	goto	u2731
-	goto	u2730
-u2731:
-	goto	l2212
-u2730:
-	goto	l2220
+	goto	u2541
+	goto	u2540
+u2541:
+	goto	l2097
+u2540:
+	goto	l2105
 	
-l2210:	
-	goto	l2220
-	line	1315
+l2095:	
+	goto	l2105
+	line	1326
 	
-l507:	
+l515:	
 	
-l2212:	
-;doprnt.c: 1315: if(_val._val < dpowers[c])
+l2097:	
+;doprnt.c: 1326: if(_val._val < hexpowers[c])
 	movf	(printf@c),w
 	movwf	(??_printf+0)+0
 	clrf	(??_printf+0)+0+1
 	lslf	(??_printf+0)+0,f
 	rlf	(??_printf+0)+1,f
-	movlw	low((_dpowers)|8000h)
+	movlw	low((_hexpowers)|8000h)
 	addwf	0+(??_printf+0)+0,w
 	movwf	fsr0l
-	movlw	high((_dpowers)|8000h)
+	movlw	high((_hexpowers)|8000h)
 	addwfc	1+(??_printf+0)+0,w
 	movwf	fsr0h
 	moviw	[0]fsr0
@@ -2424,99 +2373,74 @@ l2212:
 	movf	1+(??_printf+2)+0,w
 	subwf	(printf@_val+1),w
 	skipz
-	goto	u2745
+	goto	u2555
 	movf	0+(??_printf+2)+0,w
 	subwf	(printf@_val),w
-u2745:
+u2555:
 	skipnc
-	goto	u2741
-	goto	u2740
-u2741:
-	goto	l2216
-u2740:
-	goto	l2220
-	line	1316
+	goto	u2551
+	goto	u2550
+u2551:
+	goto	l2101
+u2550:
+	goto	l2105
+	line	1327
 	
-l2214:	
-;doprnt.c: 1316: break;
-	goto	l2220
+l2099:	
+;doprnt.c: 1327: break;
+	goto	l2105
 	
-l509:	
-	line	1314
+l517:	
+	line	1325
 	
-l2216:	
+l2101:	
 	movlw	(01h)
 	movwf	(??_printf+0)+0
 	movf	(??_printf+0)+0,w
 	addwf	(printf@c),f
 	
-l2218:	
+l2103:	
 	movf	(printf@c),w
-	xorlw	05h&0ffh
+	xorlw	04h&0ffh
 	skipz
-	goto	u2751
-	goto	u2750
-u2751:
-	goto	l2212
-u2750:
-	goto	l2220
+	goto	u2561
+	goto	u2560
+u2561:
+	goto	l2097
+u2560:
+	goto	l2105
 	
-l508:	
-	line	1447
-	
-l2220:	
-;doprnt.c: 1431: {
-;doprnt.c: 1447: if(flag & 0x03)
-	movf	(printf@flag),w
-	andlw	03h
-	btfsc	status,2
-	goto	u2761
-	goto	u2760
-u2761:
-	goto	l2224
-u2760:
-	line	1448
-	
-l2222:	
-;doprnt.c: 1448: (putch('-') );
-	movlw	(02Dh)
-	fcall	_putch
-	goto	l2224
-	
-l510:	
+l516:	
 	line	1481
 	
-l2224:	
+l2105:	
+;doprnt.c: 1431: {
 ;doprnt.c: 1478: }
 ;doprnt.c: 1481: prec = c;
-	movlb 0	; select bank0
 	movf	(printf@c),w
 	movwf	(??_printf+0)+0
 	movf	(??_printf+0)+0,w
 	movwf	(printf@prec)
 	line	1483
 ;doprnt.c: 1483: while(prec--) {
-	goto	l2230
+	goto	l2113
 	
-l512:	
-	line	1498
+l519:	
+	line	1509
 	
-l2226:	
+l2107:	
 ;doprnt.c: 1487: {
-;doprnt.c: 1498: c = (_val._val / dpowers[prec]) % 10 + '0';
-	movlw	low(0Ah)
-	movwf	(___lwmod@divisor)
-	movlw	high(0Ah)
-	movwf	((___lwmod@divisor))+1
+;doprnt.c: 1508: {
+;doprnt.c: 1509: unsigned char idx = (_val._val / hexpowers[prec]) & 0xF;
 	movf	(printf@prec),w
 	movwf	(??_printf+0)+0
 	clrf	(??_printf+0)+0+1
 	lslf	(??_printf+0)+0,f
 	rlf	(??_printf+0)+1,f
-	movlw	low((_dpowers)|8000h)
+	movlw	low((_hexpowers)|8000h)
 	addwf	0+(??_printf+0)+0,w
 	movwf	fsr0l
-	movlw	high((_dpowers)|8000h)
+	movlw	high((_hexpowers)|8000h)
 	addwfc	1+(??_printf+0)+0,w
 	movwf	fsr0h
 	moviw	[0]fsr0
@@ -2531,35 +2455,42 @@ l2226:
 	addwf	(___lwdiv@dividend)
 
 	fcall	___lwdiv
-	movf	(1+(?___lwdiv)),w
-	movlb 0	; select bank0
-	clrf	(___lwmod@dividend+1)
-	addwf	(___lwmod@dividend+1)
 	movf	(0+(?___lwdiv)),w
-	clrf	(___lwmod@dividend)
-	addwf	(___lwmod@dividend)
-
-	fcall	___lwmod
+	andlw	0Fh
 	movlb 0	; select bank0
-	movf	(0+(?___lwmod)),w
-	addlw	030h
 	movwf	(??_printf+2)+0
 	movf	(??_printf+2)+0,w
+	movwf	(printf@idx)
+	line	1515
+	
+l2109:	
+;doprnt.c: 1515: c = "0123456789abcdef"[idx];
+	movf	(printf@idx),w
+	addlw	low((STR_2)|8000h)
+	movwf	fsr0l
+	movlw	high((STR_2)|8000h)
+	skipnc
+	addlw	1
+	movwf	fsr0h
+	movf	indf0,w ;code access
+	movwf	(??_printf+0)+0
+	movf	(??_printf+0)+0,w
 	movwf	(printf@c)
 	line	1533
 	
-l2228:	
+l2111:	
+;doprnt.c: 1517: }
 ;doprnt.c: 1532: }
 ;doprnt.c: 1533: (putch(c) );
 	movf	(printf@c),w
 	fcall	_putch
-	goto	l2230
+	goto	l2113
 	line	1534
 	
-l511:	
+l518:	
 	line	1483
 	
-l2230:	
+l2113:	
 	movlw	(-1)
 	movlb 0	; select bank0
 	movwf	(??_printf+0)+0
@@ -2568,21 +2499,21 @@ l2230:
 	movf	((printf@prec)),w
 	xorlw	-1&0ffh
 	skipz
-	goto	u2771
-	goto	u2770
-u2771:
-	goto	l2226
-u2770:
-	goto	l2232
+	goto	u2571
+	goto	u2570
+u2571:
+	goto	l2107
+u2570:
+	goto	l2115
 	
-l513:	
-	goto	l2232
+l520:	
+	goto	l2115
 	line	1542
 	
-l496:	
+l506:	
 	line	545
 	
-l2232:	
+l2115:	
 	movlb 0	; select bank0
 	movf	(printf@f+1),w
 	movwf	(??_printf+0)+0+1
@@ -2601,26 +2532,26 @@ l2232:
 	movwf	(printf@c)
 	movf	((printf@c)),f
 	skipz
-	goto	u2781
-	goto	u2780
-u2781:
-	goto	l2188
-u2780:
-	goto	l515
+	goto	u2581
+	goto	u2580
+u2581:
+	goto	l2077
+u2580:
+	goto	l522
 	
-l514:	
-	goto	l515
+l521:	
+	goto	l522
 	line	1544
 ;doprnt.c: 1534: }
 ;doprnt.c: 1542: }
 ;doprnt.c: 1544: alldone:
 	
-l501:	
+l511:	
 	line	1550
 ;doprnt.c: 1549: return 0;
 ;	Return value of _printf is never used
 	
-l515:	
+l522:	
 	return
 	opt stack 0
 GLOBAL	__end_of_printf
@@ -2630,7 +2561,7 @@ GLOBAL	__end_of_printf
 
 ;; *************** function _putch *****************
 ;; Defined at:
-;;		line 590 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 599 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  byte            1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -2659,13 +2590,13 @@ GLOBAL	__end_of_printf
 ;; This function uses a non-reentrant model
 ;;
 psect	text4,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	590
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	599
 global __ptext4
 __ptext4:	;psect for function _putch
 psect	text4
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	590
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	599
 	global	__size_of_putch
 	__size_of_putch	equ	__end_of_putch-_putch
 	
@@ -2675,223 +2606,43 @@ _putch:
 ; Regs used in _putch: [wreg]
 ;putch@byte stored from wreg
 	movwf	(putch@byte)
-	line	593
+	line	602
 	
-l1518:	
-;MCU_16f1516_B1.c: 593: while(!TXIF)
-	goto	l473
+l1485:	
+;MCU_16f1516_B1.c: 602: while(!TXIF)
+	goto	l347
 	
-l474:	
-	line	594
-;MCU_16f1516_B1.c: 594: continue;
+l348:	
+	line	603
+;MCU_16f1516_B1.c: 603: continue;
 	
-l473:	
-	line	593
+l347:	
+	line	602
 	movlb 0	; select bank0
 	btfss	(140/8),(140)&7	;volatile
-	goto	u1301
-	goto	u1300
-u1301:
-	goto	l473
-u1300:
-	goto	l1520
+	goto	u1241
+	goto	u1240
+u1241:
+	goto	l347
+u1240:
+	goto	l1487
 	
-l475:	
-	line	595
+l349:	
+	line	604
 	
-l1520:	
-;MCU_16f1516_B1.c: 595: TXREG = byte;
+l1487:	
+;MCU_16f1516_B1.c: 604: TXREG = byte;
 	movf	(putch@byte),w
 	movlb 3	; select bank3
 	movwf	(410)^0180h	;volatile
-	line	596
+	line	605
 	
-l476:	
+l350:	
 	return
 	opt stack 0
 GLOBAL	__end_of_putch
 	__end_of_putch:
 	signat	_putch,4216
-	global	___lwmod
-
-;; *************** function ___lwmod *****************
-;; Defined at:
-;;		line 6 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c"
-;; Parameters:    Size  Location     Type
-;;  divisor         2    3[BANK0 ] unsigned int 
-;;  dividend        2    5[BANK0 ] unsigned int 
-;; Auto vars:     Size  Location     Type
-;;  counter         1    7[BANK0 ] unsigned char 
-;; Return value:  Size  Location     Type
-;;                  2    3[BANK0 ] unsigned int 
-;; Registers used:
-;;		wreg, status,2, status,0
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
-;;      Params:         0       4       0       0       0       0       0       0
-;;      Locals:         0       1       0       0       0       0       0       0
-;;      Temps:          1       0       0       0       0       0       0       0
-;;      Totals:         1       5       0       0       0       0       0       0
-;;Total ram usage:        6 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    2
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_printf
-;; This function uses a non-reentrant model
-;;
-psect	text5,local,class=CODE,delta=2,merge=1
-	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c"
-	line	6
-global __ptext5
-__ptext5:	;psect for function ___lwmod
-psect	text5
-	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c"
-	line	6
-	global	__size_of___lwmod
-	__size_of___lwmod	equ	__end_of___lwmod-___lwmod
-	
-___lwmod:	
-;incstack = 0
-	opt	stack 10
-; Regs used in ___lwmod: [wreg+status,2+status,0]
-	line	13
-	
-l2164:	
-	movlb 0	; select bank0
-	movf	(___lwmod@divisor+1),w
-	iorwf	(___lwmod@divisor),w
-	skipnz
-	goto	u2651
-	goto	u2650
-u2651:
-	goto	l2182
-u2650:
-	line	14
-	
-l2166:	
-	clrf	(___lwmod@counter)
-	incf	(___lwmod@counter),f
-	line	15
-	goto	l2172
-	
-l860:	
-	line	16
-	
-l2168:	
-	movlw	01h
-	
-u2665:
-	lslf	(___lwmod@divisor),f
-	rlf	(___lwmod@divisor+1),f
-	decfsz	wreg,f
-	goto	u2665
-	line	17
-	
-l2170:	
-	movlw	(01h)
-	movwf	(??___lwmod+0)+0
-	movf	(??___lwmod+0)+0,w
-	addwf	(___lwmod@counter),f
-	goto	l2172
-	line	18
-	
-l859:	
-	line	15
-	
-l2172:	
-	btfss	(___lwmod@divisor+1),(15)&7
-	goto	u2671
-	goto	u2670
-u2671:
-	goto	l2168
-u2670:
-	goto	l2174
-	
-l861:	
-	goto	l2174
-	line	19
-	
-l862:	
-	line	20
-	
-l2174:	
-	movf	(___lwmod@divisor+1),w
-	subwf	(___lwmod@dividend+1),w
-	skipz
-	goto	u2685
-	movf	(___lwmod@divisor),w
-	subwf	(___lwmod@dividend),w
-u2685:
-	skipc
-	goto	u2681
-	goto	u2680
-u2681:
-	goto	l2178
-u2680:
-	line	21
-	
-l2176:	
-	movf	(___lwmod@divisor),w
-	subwf	(___lwmod@dividend),f
-	movf	(___lwmod@divisor+1),w
-	subwfb	(___lwmod@dividend+1),f
-	goto	l2178
-	
-l863:	
-	line	22
-	
-l2178:	
-	movlw	01h
-	
-u2695:
-	lsrf	(___lwmod@divisor+1),f
-	rrf	(___lwmod@divisor),f
-	decfsz	wreg,f
-	goto	u2695
-	line	23
-	
-l2180:	
-	movlw	low(01h)
-	subwf	(___lwmod@counter),f
-	btfss	status,2
-	goto	u2701
-	goto	u2700
-u2701:
-	goto	l2174
-u2700:
-	goto	l2182
-	
-l864:	
-	goto	l2182
-	line	24
-	
-l858:	
-	line	25
-	
-l2182:	
-	movf	(___lwmod@dividend+1),w
-	clrf	(?___lwmod+1)
-	addwf	(?___lwmod+1)
-	movf	(___lwmod@dividend),w
-	clrf	(?___lwmod)
-	addwf	(?___lwmod)
-
-	goto	l865
-	
-l2184:	
-	line	26
-	
-l865:	
-	return
-	opt stack 0
-GLOBAL	__end_of___lwmod
-	__end_of___lwmod:
-	signat	___lwmod,8314
 	global	___lwdiv
 
 ;; *************** function ___lwdiv *****************
@@ -2925,12 +2676,12 @@ GLOBAL	__end_of___lwmod
 ;;		_printf
 ;; This function uses a non-reentrant model
 ;;
-psect	text6,local,class=CODE,delta=2,merge=1
+psect	text5,local,class=CODE,delta=2,merge=1
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c"
 	line	6
-global __ptext6
-__ptext6:	;psect for function ___lwdiv
-psect	text6
+global __ptext5
+__ptext5:	;psect for function ___lwdiv
+psect	text5
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c"
 	line	6
 	global	__size_of___lwdiv
@@ -2942,137 +2693,137 @@ ___lwdiv:
 ; Regs used in ___lwdiv: [wreg+status,2+status,0]
 	line	14
 	
-l2138:	
+l2049:	
 	movlb 0	; select bank0
 	clrf	(___lwdiv@quotient)
 	clrf	(___lwdiv@quotient+1)
 	line	15
 	
-l2140:	
+l2051:	
 	movf	(___lwdiv@divisor+1),w
 	iorwf	(___lwdiv@divisor),w
 	skipnz
-	goto	u2581
-	goto	u2580
-u2581:
-	goto	l2160
-u2580:
+	goto	u2461
+	goto	u2460
+u2461:
+	goto	l2071
+u2460:
 	line	16
 	
-l2142:	
+l2053:	
 	clrf	(___lwdiv@counter)
 	incf	(___lwdiv@counter),f
 	line	17
-	goto	l2148
+	goto	l2059
 	
-l850:	
+l857:	
 	line	18
 	
-l2144:	
+l2055:	
 	movlw	01h
 	
-u2595:
+u2475:
 	lslf	(___lwdiv@divisor),f
 	rlf	(___lwdiv@divisor+1),f
 	decfsz	wreg,f
-	goto	u2595
+	goto	u2475
 	line	19
 	
-l2146:	
+l2057:	
 	movlw	(01h)
 	movwf	(??___lwdiv+0)+0
 	movf	(??___lwdiv+0)+0,w
 	addwf	(___lwdiv@counter),f
-	goto	l2148
+	goto	l2059
 	line	20
 	
-l849:	
+l856:	
 	line	17
 	
-l2148:	
+l2059:	
 	btfss	(___lwdiv@divisor+1),(15)&7
-	goto	u2601
-	goto	u2600
-u2601:
-	goto	l2144
-u2600:
-	goto	l2150
+	goto	u2481
+	goto	u2480
+u2481:
+	goto	l2055
+u2480:
+	goto	l2061
 	
-l851:	
-	goto	l2150
+l858:	
+	goto	l2061
 	line	21
 	
-l852:	
+l859:	
 	line	22
 	
-l2150:	
+l2061:	
 	movlw	01h
 	
-u2615:
+u2495:
 	lslf	(___lwdiv@quotient),f
 	rlf	(___lwdiv@quotient+1),f
 	decfsz	wreg,f
-	goto	u2615
+	goto	u2495
 	line	23
 	movf	(___lwdiv@divisor+1),w
 	subwf	(___lwdiv@dividend+1),w
 	skipz
-	goto	u2625
+	goto	u2505
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),w
-u2625:
+u2505:
 	skipc
-	goto	u2621
-	goto	u2620
-u2621:
-	goto	l2156
-u2620:
+	goto	u2501
+	goto	u2500
+u2501:
+	goto	l2067
+u2500:
 	line	24
 	
-l2152:	
+l2063:	
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),f
 	movf	(___lwdiv@divisor+1),w
 	subwfb	(___lwdiv@dividend+1),f
 	line	25
 	
-l2154:	
+l2065:	
 	bsf	(___lwdiv@quotient)+(0/8),(0)&7
-	goto	l2156
+	goto	l2067
 	line	26
 	
-l853:	
+l860:	
 	line	27
 	
-l2156:	
+l2067:	
 	movlw	01h
 	
-u2635:
+u2515:
 	lsrf	(___lwdiv@divisor+1),f
 	rrf	(___lwdiv@divisor),f
 	decfsz	wreg,f
-	goto	u2635
+	goto	u2515
 	line	28
 	
-l2158:	
+l2069:	
 	movlw	low(01h)
 	subwf	(___lwdiv@counter),f
 	btfss	status,2
-	goto	u2641
-	goto	u2640
-u2641:
-	goto	l2150
-u2640:
-	goto	l2160
+	goto	u2521
+	goto	u2520
+u2521:
+	goto	l2061
+u2520:
+	goto	l2071
 	
-l854:	
-	goto	l2160
+l861:	
+	goto	l2071
 	line	29
 	
-l848:	
+l855:	
 	line	30
 	
-l2160:	
+l2071:	
 	movf	(___lwdiv@quotient+1),w
 	clrf	(?___lwdiv+1)
 	addwf	(?___lwdiv+1)
@@ -3080,12 +2831,12 @@ l2160:
 	clrf	(?___lwdiv)
 	addwf	(?___lwdiv)
 
-	goto	l855
+	goto	l862
 	
-l2162:	
+l2073:	
 	line	31
 	
-l855:	
+l862:	
 	return
 	opt stack 0
 GLOBAL	__end_of___lwdiv
@@ -3095,7 +2846,7 @@ GLOBAL	__end_of___lwdiv
 
 ;; *************** function _UART_Receive *****************
 ;; Defined at:
-;;		line 552 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 561 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3122,14 +2873,14 @@ GLOBAL	__end_of___lwdiv
 ;;		_UART_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text7,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	552
-global __ptext7
-__ptext7:	;psect for function _UART_Receive
-psect	text7
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	552
+psect	text6,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	561
+global __ptext6
+__ptext6:	;psect for function _UART_Receive
+psect	text6
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	561
 	global	__size_of_UART_Receive
 	__size_of_UART_Receive	equ	__end_of_UART_Receive-_UART_Receive
 	
@@ -3137,12 +2888,11 @@ _UART_Receive:
 ;incstack = 0
 	opt	stack 12
 ; Regs used in _UART_Receive: [wreg+fsr1l+fsr1h+status,2+status,0]
-	line	556
+	line	565
 	
-l1840:	
-;MCU_16f1516_B1.c: 554: char i;
-;MCU_16f1516_B1.c: 556: TMain->Test=1;
-	movlb 0	; select bank0
+l1711:	
+;MCU_16f1516_B1.c: 563: char i;
+;MCU_16f1516_B1.c: 565: TMain->Test=1;
 	movf	(_TMain),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -3150,33 +2900,33 @@ l1840:
 	
 	clrf	indf1
 	incf	indf1,f
-	line	558
+	line	567
 	
-l1842:	
-;MCU_16f1516_B1.c: 558: for(i=0;i<32;i++)
+l1713:	
+;MCU_16f1516_B1.c: 567: for(i=0;i<32;i++)
 	clrf	(UART_Receive@i)
 	
-l1844:	
+l1715:	
 	movlw	(020h)
 	subwf	(UART_Receive@i),w
 	skipc
-	goto	u2101
-	goto	u2100
-u2101:
-	goto	l1848
-u2100:
-	goto	l1854
+	goto	u1891
+	goto	u1890
+u1891:
+	goto	l1719
+u1890:
+	goto	l1725
 	
-l1846:	
-	goto	l1854
-	line	559
+l1717:	
+	goto	l1725
+	line	568
 	
-l465:	
-	line	560
+l339:	
+	line	569
 	
-l1848:	
-;MCU_16f1516_B1.c: 559: {
-;MCU_16f1516_B1.c: 560: I2C->BufferWriter[i]=UART->RxData[i];
+l1719:	
+;MCU_16f1516_B1.c: 568: {
+;MCU_16f1516_B1.c: 569: I2C->BufferWriter[i]=UART->RxData[i];
 	movf	(UART_Receive@i),w
 	addlw	020h
 	addwf	(_UART),w
@@ -3199,31 +2949,31 @@ l1848:
 	
 	movf	(??_UART_Receive+1)+0,w
 	movwf	indf1
-	line	558
+	line	567
 	
-l1850:	
+l1721:	
 	movlw	(01h)
 	movwf	(??_UART_Receive+0)+0
 	movf	(??_UART_Receive+0)+0,w
 	addwf	(UART_Receive@i),f
 	
-l1852:	
+l1723:	
 	movlw	(020h)
 	subwf	(UART_Receive@i),w
 	skipc
-	goto	u2111
-	goto	u2110
-u2111:
-	goto	l1848
-u2110:
-	goto	l1854
+	goto	u1901
+	goto	u1900
+u1901:
+	goto	l1719
+u1900:
+	goto	l1725
 	
-l466:	
-	line	562
+l340:	
+	line	571
 	
-l1854:	
-;MCU_16f1516_B1.c: 561: }
-;MCU_16f1516_B1.c: 562: I2C->MasterTxGO=1;
+l1725:	
+;MCU_16f1516_B1.c: 570: }
+;MCU_16f1516_B1.c: 571: I2C->MasterTxGO=1;
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -3231,9 +2981,9 @@ l1854:
 	movwf fsr1h	
 	
 	bsf	indf1,3
-	line	576
+	line	585
 	
-l467:	
+l341:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Receive
@@ -3243,7 +2993,7 @@ GLOBAL	__end_of_UART_Receive
 
 ;; *************** function _SegmentDisplay_Main *****************
 ;; Defined at:
-;;		line 72 in file "I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+;;		line 72 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3270,13 +3020,13 @@ GLOBAL	__end_of_UART_Receive
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text8,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+psect	text7,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 	line	72
-global __ptext8
-__ptext8:	;psect for function _SegmentDisplay_Main
-psect	text8
-	file	"I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+global __ptext7
+__ptext7:	;psect for function _SegmentDisplay_Main
+psect	text7
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 	line	72
 	global	__size_of_SegmentDisplay_Main
 	__size_of_SegmentDisplay_Main	equ	__end_of_SegmentDisplay_Main-_SegmentDisplay_Main
@@ -3287,7 +3037,7 @@ _SegmentDisplay_Main:
 ; Regs used in _SegmentDisplay_Main: [wreg-fsr1h+status,2+status,0]
 	line	74
 	
-l1994:	
+l1943:	
 ;SegmentDisplay_A2.c: 74: if(Segment->GO)
 	movlb 0	; select bank0
 	movf	(_Segment),w
@@ -3296,14 +3046,14 @@ l1994:
 	clrf fsr1h	
 	
 	btfss	indf1,1
-	goto	u2321
-	goto	u2320
-u2321:
-	goto	l138
-u2320:
+	goto	u2291
+	goto	u2290
+u2291:
+	goto	l495
+u2290:
 	line	76
 	
-l1996:	
+l1945:	
 ;SegmentDisplay_A2.c: 75: {
 ;SegmentDisplay_A2.c: 76: Segment->Time++;
 	movlw	(01h)
@@ -3317,7 +3067,7 @@ l1996:
 	addwf	indf1,f
 	line	77
 	
-l1998:	
+l1947:	
 ;SegmentDisplay_A2.c: 77: if(Segment->Time == 5)
 	movf	(_Segment),w
 	addlw	019h
@@ -3327,14 +3077,14 @@ l1998:
 	movf	indf1,w
 	xorlw	05h&0ffh
 	skipz
-	goto	u2331
-	goto	u2330
-u2331:
-	goto	l138
-u2330:
+	goto	u2301
+	goto	u2300
+u2301:
+	goto	l495
+u2300:
 	line	79
 	
-l2000:	
+l1949:	
 ;SegmentDisplay_A2.c: 78: {
 ;SegmentDisplay_A2.c: 79: Segment->Time=0;
 	movf	(_Segment),w
@@ -3345,7 +3095,7 @@ l2000:
 	clrf	indf1
 	line	80
 	
-l2002:	
+l1951:	
 ;SegmentDisplay_A2.c: 80: PORTA&=0x0f;
 	movlw	(0Fh)
 	movwf	(??_SegmentDisplay_Main+0)+0
@@ -3353,7 +3103,7 @@ l2002:
 	andwf	(12),f	;volatile
 	line	81
 	
-l2004:	
+l1953:	
 ;SegmentDisplay_A2.c: 81: if(Segment->ComCount == 0)
 	movf	(_Segment),w
 	addlw	016h
@@ -3362,25 +3112,25 @@ l2004:
 	
 	movf	indf1,f
 	skipz
-	goto	u2341
-	goto	u2340
-u2341:
-	goto	l2008
-u2340:
+	goto	u2311
+	goto	u2310
+u2311:
+	goto	l1957
+u2310:
 	line	83
 	
-l2006:	
+l1955:	
 ;SegmentDisplay_A2.c: 82: {
 ;SegmentDisplay_A2.c: 83: RA4=1;
 	bsf	(100/8),(100)&7	;volatile
 	line	84
 ;SegmentDisplay_A2.c: 84: }
-	goto	l2020
+	goto	l1969
 	line	85
 	
-l129:	
+l486:	
 	
-l2008:	
+l1957:	
 ;SegmentDisplay_A2.c: 85: else if(Segment->ComCount == 1)
 	movf	(_Segment),w
 	addlw	016h
@@ -3390,25 +3140,25 @@ l2008:
 	movf	indf1,w
 	xorlw	01h&0ffh
 	skipz
-	goto	u2351
-	goto	u2350
-u2351:
-	goto	l2012
-u2350:
+	goto	u2321
+	goto	u2320
+u2321:
+	goto	l1961
+u2320:
 	line	87
 	
-l2010:	
+l1959:	
 ;SegmentDisplay_A2.c: 86: {
 ;SegmentDisplay_A2.c: 87: RA5=1;
 	bsf	(101/8),(101)&7	;volatile
 	line	88
 ;SegmentDisplay_A2.c: 88: }
-	goto	l2020
+	goto	l1969
 	line	89
 	
-l131:	
+l488:	
 	
-l2012:	
+l1961:	
 ;SegmentDisplay_A2.c: 89: else if(Segment->ComCount == 2)
 	movf	(_Segment),w
 	addlw	016h
@@ -3418,25 +3168,25 @@ l2012:
 	movf	indf1,w
 	xorlw	02h&0ffh
 	skipz
-	goto	u2361
-	goto	u2360
-u2361:
-	goto	l2016
-u2360:
+	goto	u2331
+	goto	u2330
+u2331:
+	goto	l1965
+u2330:
 	line	91
 	
-l2014:	
+l1963:	
 ;SegmentDisplay_A2.c: 90: {
 ;SegmentDisplay_A2.c: 91: RA6=1;
 	bsf	(102/8),(102)&7	;volatile
 	line	92
 ;SegmentDisplay_A2.c: 92: }
-	goto	l2020
+	goto	l1969
 	line	93
 	
-l133:	
+l490:	
 	
-l2016:	
+l1965:	
 ;SegmentDisplay_A2.c: 93: else if(Segment->ComCount == 3)
 	movf	(_Segment),w
 	addlw	016h
@@ -3446,33 +3196,33 @@ l2016:
 	movf	indf1,w
 	xorlw	03h&0ffh
 	skipz
-	goto	u2371
-	goto	u2370
-u2371:
-	goto	l2020
-u2370:
+	goto	u2341
+	goto	u2340
+u2341:
+	goto	l1969
+u2340:
 	line	95
 	
-l2018:	
+l1967:	
 ;SegmentDisplay_A2.c: 94: {
 ;SegmentDisplay_A2.c: 95: RA7=1;
 	bsf	(103/8),(103)&7	;volatile
-	goto	l2020
+	goto	l1969
 	line	96
 	
-l135:	
-	goto	l2020
+l492:	
+	goto	l1969
 	line	97
 	
-l134:	
-	goto	l2020
+l491:	
+	goto	l1969
 	
-l132:	
-	goto	l2020
+l489:	
+	goto	l1969
 	
-l130:	
+l487:	
 	
-l2020:	
+l1969:	
 ;SegmentDisplay_A2.c: 96: }
 ;SegmentDisplay_A2.c: 97: PORTB=Segment->Display[Segment->Num[Segment->ComCount]];
 	movf	(_Segment),w
@@ -3499,7 +3249,7 @@ l2020:
 	movwf	(13)	;volatile
 	line	98
 	
-l2022:	
+l1971:	
 ;SegmentDisplay_A2.c: 98: if(Segment->ComCount < Segment->DisplayCount)
 	movf	(_Segment),w
 	addlw	016h
@@ -3514,14 +3264,14 @@ l2022:
 	movf	indf0,w
 	subwf	indf1,w
 	skipnc
-	goto	u2381
-	goto	u2380
-u2381:
-	goto	l2026
-u2380:
+	goto	u2351
+	goto	u2350
+u2351:
+	goto	l1975
+u2350:
 	line	100
 	
-l2024:	
+l1973:	
 ;SegmentDisplay_A2.c: 99: {
 ;SegmentDisplay_A2.c: 100: Segment->ComCount++;
 	movlw	(01h)
@@ -3535,13 +3285,13 @@ l2024:
 	addwf	indf1,f
 	line	101
 ;SegmentDisplay_A2.c: 101: }
-	goto	l138
+	goto	l495
 	line	102
 	
-l136:	
+l493:	
 	line	104
 	
-l2026:	
+l1975:	
 ;SegmentDisplay_A2.c: 102: else
 ;SegmentDisplay_A2.c: 103: {
 ;SegmentDisplay_A2.c: 104: Segment->ComCount=0;
@@ -3551,21 +3301,21 @@ l2026:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	l138
+	goto	l495
 	line	105
 	
-l137:	
-	goto	l138
+l494:	
+	goto	l495
 	line	106
 	
-l128:	
-	goto	l138
+l485:	
+	goto	l495
 	line	107
 	
-l127:	
+l484:	
 	line	108
 	
-l138:	
+l495:	
 	return
 	opt stack 0
 GLOBAL	__end_of_SegmentDisplay_Main
@@ -3575,7 +3325,7 @@ GLOBAL	__end_of_SegmentDisplay_Main
 
 ;; *************** function _SegmentDisplay_Initial *****************
 ;; Defined at:
-;;		line 8 in file "I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+;;		line 8 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3602,12 +3352,12 @@ GLOBAL	__end_of_SegmentDisplay_Main
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text9,local,class=CODE,delta=2,merge=1
+psect	text8,local,class=CODE,delta=2,merge=1
 	line	8
-global __ptext9
-__ptext9:	;psect for function _SegmentDisplay_Initial
-psect	text9
-	file	"I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+global __ptext8
+__ptext8:	;psect for function _SegmentDisplay_Initial
+psect	text8
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 	line	8
 	global	__size_of_SegmentDisplay_Initial
 	__size_of_SegmentDisplay_Initial	equ	__end_of_SegmentDisplay_Initial-_SegmentDisplay_Initial
@@ -3618,7 +3368,7 @@ _SegmentDisplay_Initial:
 ; Regs used in _SegmentDisplay_Initial: [wregfsr1]
 	line	10
 	
-l1892:	
+l1903:	
 ;SegmentDisplay_A2.c: 10: Segment=&VarSegment;
 	movlw	(_VarSegment)&0ffh
 	movwf	(??_SegmentDisplay_Initial+0)+0
@@ -3627,7 +3377,7 @@ l1892:
 	movwf	(_Segment)
 	line	11
 	
-l1894:	
+l1905:	
 ;SegmentDisplay_A2.c: 11: Segment->Enable=1;
 	movf	(_Segment),w
 	addlw	015h
@@ -3637,7 +3387,7 @@ l1894:
 	bsf	indf1,0
 	line	13
 	
-l1896:	
+l1907:	
 ;SegmentDisplay_A2.c: 13: Segment->Dec=1;
 	movf	(_Segment),w
 	addlw	015h
@@ -3647,7 +3397,7 @@ l1896:
 	bsf	indf1,3
 	line	18
 	
-l107:	
+l464:	
 	return
 	opt stack 0
 GLOBAL	__end_of_SegmentDisplay_Initial
@@ -3657,7 +3407,7 @@ GLOBAL	__end_of_SegmentDisplay_Initial
 
 ;; *************** function _Mcu_Initial *****************
 ;; Defined at:
-;;		line 11 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 11 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3687,13 +3437,13 @@ GLOBAL	__end_of_SegmentDisplay_Initial
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text10,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+psect	text9,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	11
-global __ptext10
-__ptext10:	;psect for function _Mcu_Initial
-psect	text10
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext9
+__ptext9:	;psect for function _Mcu_Initial
+psect	text9
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	11
 	global	__size_of_Mcu_Initial
 	__size_of_Mcu_Initial	equ	__end_of_Mcu_Initial-_Mcu_Initial
@@ -3704,62 +3454,62 @@ _Mcu_Initial:
 ; Regs used in _Mcu_Initial: [wreg+status,2+status,0+pclath+cstack]
 	line	14
 	
-l1874:	
+l1791:	
 ;MCU_16f1516_B1.c: 14: OSCCON=0x78; ;;
 	movlw	(078h)
 	movlb 1	; select bank1
 	movwf	(153)^080h	;volatile
 	line	16
 	
-l1876:	
+l1793:	
 ;MCU_16f1516_B1.c: 16: IO_Set();
 	fcall	_IO_Set
 	line	18
 	
-l1878:	
+l1795:	
 ;MCU_16f1516_B1.c: 18: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	20
 	
-l1880:	
+l1797:	
 ;MCU_16f1516_B1.c: 20: TMR1_Set();
 	fcall	_TMR1_Set
 	line	22
 	
-l1882:	
+l1799:	
 ;MCU_16f1516_B1.c: 22: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	26
 	
-l1884:	
+l1801:	
 ;MCU_16f1516_B1.c: 26: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	28
 	
-l1886:	
+l1803:	
 ;MCU_16f1516_B1.c: 28: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	30
 	
-l1888:	
+l1805:	
 ;MCU_16f1516_B1.c: 30: I2C_Set();
 	fcall	_I2C_Set
 	line	32
 	
-l1890:	
+l1807:	
 ;MCU_16f1516_B1.c: 32: UART_Set();
 	fcall	_UART_Set
 	line	35
 	
-l301:	
+l163:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Mcu_Initial
@@ -3769,7 +3519,7 @@ GLOBAL	__end_of_Mcu_Initial
 
 ;; *************** function _UART_Set *****************
 ;; Defined at:
-;;		line 489 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 498 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3796,13 +3546,13 @@ GLOBAL	__end_of_Mcu_Initial
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text11,local,class=CODE,delta=2,merge=1
-	line	489
-global __ptext11
-__ptext11:	;psect for function _UART_Set
-psect	text11
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	489
+psect	text10,local,class=CODE,delta=2,merge=1
+	line	498
+global __ptext10
+__ptext10:	;psect for function _UART_Set
+psect	text10
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	498
 	global	__size_of_UART_Set
 	__size_of_UART_Set	equ	__end_of_UART_Set-_UART_Set
 	
@@ -3810,87 +3560,86 @@ _UART_Set:
 ;incstack = 0
 	opt	stack 12
 ; Regs used in _UART_Set: [wreg+status,2]
-	line	491
+	line	500
 	
-l1782:	
-;MCU_16f1516_B1.c: 491: UART=&VarUart;
+l1653:	
+;MCU_16f1516_B1.c: 500: UART=&VarUart;
 	movlw	(_VarUart)&0ffh
 	movwf	(??_UART_Set+0)+0
 	movf	(??_UART_Set+0)+0,w
-	movlb 0	; select bank0
 	movwf	(_UART)
-	line	492
+	line	501
 	
-l1784:	
-;MCU_16f1516_B1.c: 492: TRISC7 = 1;
+l1655:	
+;MCU_16f1516_B1.c: 501: TRISC7 = 1;
 	movlb 1	; select bank1
 	bsf	(1143/8)^080h,(1143)&7	;volatile
-	line	493
+	line	502
 	
-l1786:	
-;MCU_16f1516_B1.c: 493: TRISC6 = 1;
+l1657:	
+;MCU_16f1516_B1.c: 502: TRISC6 = 1;
 	bsf	(1142/8)^080h,(1142)&7	;volatile
-	line	494
-;MCU_16f1516_B1.c: 494: SPBRG = ((int)(16000000L/(16UL * 19200) -1));
+	line	503
+;MCU_16f1516_B1.c: 503: SPBRG = ((int)(16000000L/(16UL * 19200) -1));
 	movlw	(033h)
 	movlb 3	; select bank3
 	movwf	(411)^0180h	;volatile
-	line	495
-	
-l1788:	
-;MCU_16f1516_B1.c: 495: SPBRGH = 0;
-	clrf	(412)^0180h	;volatile
-	line	496
-	
-l1790:	
-;MCU_16f1516_B1.c: 496: BRG16 = 0;
-	bcf	(3323/8)^0180h,(3323)&7	;volatile
-	line	497
-	
-l1792:	
-;MCU_16f1516_B1.c: 497: RCSTA = (0|0x90);
-	movlw	(090h)
-	movwf	(413)^0180h	;volatile
-	line	498
-	
-l1794:	
-;MCU_16f1516_B1.c: 498: TXSTA = (0x4|0|0x20);
-	movlw	(024h)
-	movwf	(414)^0180h	;volatile
-	line	499
-	
-l1796:	
-;MCU_16f1516_B1.c: 499: TX9=0;
-	bcf	(3318/8)^0180h,(3318)&7	;volatile
-	line	500
-	
-l1798:	
-;MCU_16f1516_B1.c: 500: RX9=0;
-	bcf	(3310/8)^0180h,(3310)&7	;volatile
-	line	501
-	
-l1800:	
-;MCU_16f1516_B1.c: 501: TXIE=0;
-	movlb 1	; select bank1
-	bcf	(1164/8)^080h,(1164)&7	;volatile
-	line	502
-	
-l1802:	
-;MCU_16f1516_B1.c: 502: RCIE=1;
-	bsf	(1165/8)^080h,(1165)&7	;volatile
-	line	503
-	
-l1804:	
-;MCU_16f1516_B1.c: 503: PEIE=1;
-	bsf	(94/8),(94)&7	;volatile
 	line	504
 	
-l1806:	
-;MCU_16f1516_B1.c: 504: GIE=1;
-	bsf	(95/8),(95)&7	;volatile
+l1659:	
+;MCU_16f1516_B1.c: 504: SPBRGH = 0;
+	clrf	(412)^0180h	;volatile
 	line	505
 	
-l440:	
+l1661:	
+;MCU_16f1516_B1.c: 505: BRG16 = 0;
+	bcf	(3323/8)^0180h,(3323)&7	;volatile
+	line	506
+	
+l1663:	
+;MCU_16f1516_B1.c: 506: RCSTA = (0|0x90);
+	movlw	(090h)
+	movwf	(413)^0180h	;volatile
+	line	507
+	
+l1665:	
+;MCU_16f1516_B1.c: 507: TXSTA = (0x4|0|0x20);
+	movlw	(024h)
+	movwf	(414)^0180h	;volatile
+	line	508
+	
+l1667:	
+;MCU_16f1516_B1.c: 508: TX9=0;
+	bcf	(3318/8)^0180h,(3318)&7	;volatile
+	line	509
+	
+l1669:	
+;MCU_16f1516_B1.c: 509: RX9=0;
+	bcf	(3310/8)^0180h,(3310)&7	;volatile
+	line	510
+	
+l1671:	
+;MCU_16f1516_B1.c: 510: TXIE=0;
+	movlb 1	; select bank1
+	bcf	(1164/8)^080h,(1164)&7	;volatile
+	line	511
+	
+l1673:	
+;MCU_16f1516_B1.c: 511: RCIE=1;
+	bsf	(1165/8)^080h,(1165)&7	;volatile
+	line	512
+	
+l1675:	
+;MCU_16f1516_B1.c: 512: PEIE=1;
+	bsf	(94/8),(94)&7	;volatile
+	line	513
+	
+l1677:	
+;MCU_16f1516_B1.c: 513: GIE=1;
+	bsf	(95/8),(95)&7	;volatile
+	line	514
+	
+l314:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Set
@@ -3900,7 +3649,7 @@ GLOBAL	__end_of_UART_Set
 
 ;; *************** function _TMR1_Set *****************
 ;; Defined at:
-;;		line 114 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 114 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3927,12 +3676,12 @@ GLOBAL	__end_of_UART_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text12,local,class=CODE,delta=2,merge=1
+psect	text11,local,class=CODE,delta=2,merge=1
 	line	114
-global __ptext12
-__ptext12:	;psect for function _TMR1_Set
-psect	text12
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext11
+__ptext11:	;psect for function _TMR1_Set
+psect	text11
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	114
 	global	__size_of_TMR1_Set
 	__size_of_TMR1_Set	equ	__end_of_TMR1_Set-_TMR1_Set
@@ -3943,16 +3692,16 @@ _TMR1_Set:
 ; Regs used in _TMR1_Set: [wreg]
 	line	116
 	
-l1768:	
+l1639:	
 ;MCU_16f1516_B1.c: 116: Timer1=&VarTimer1;
 	movlw	(_VarTimer1)&0ffh
 	movwf	(??_TMR1_Set+0)+0
 	movf	(??_TMR1_Set+0)+0,w
+	movlb 0	; select bank0
 	movwf	(_Timer1)
 	line	117
 ;MCU_16f1516_B1.c: 117: T1CON=(0x40 | 0x00 | 0x01);
 	movlw	(041h)
-	movlb 0	; select bank0
 	movwf	(24)	;volatile
 	line	118
 ;MCU_16f1516_B1.c: 118: TMR1H=((65536-700)/256);
@@ -3964,23 +3713,23 @@ l1768:
 	movwf	(22)	;volatile
 	line	120
 	
-l1770:	
+l1641:	
 ;MCU_16f1516_B1.c: 120: TMR1IE=1;
 	movlb 1	; select bank1
 	bsf	(1160/8)^080h,(1160)&7	;volatile
 	line	121
 	
-l1772:	
+l1643:	
 ;MCU_16f1516_B1.c: 121: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	122
 	
-l1774:	
+l1645:	
 ;MCU_16f1516_B1.c: 122: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	123
 	
-l310:	
+l172:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_Set
@@ -3990,7 +3739,7 @@ GLOBAL	__end_of_TMR1_Set
 
 ;; *************** function _IO_Set *****************
 ;; Defined at:
-;;		line 37 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 37 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4017,12 +3766,12 @@ GLOBAL	__end_of_TMR1_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text13,local,class=CODE,delta=2,merge=1
+psect	text12,local,class=CODE,delta=2,merge=1
 	line	37
-global __ptext13
-__ptext13:	;psect for function _IO_Set
-psect	text13
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext12
+__ptext12:	;psect for function _IO_Set
+psect	text12
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	37
 	global	__size_of_IO_Set
 	__size_of_IO_Set	equ	__end_of_IO_Set-_IO_Set
@@ -4033,19 +3782,19 @@ _IO_Set:
 ; Regs used in _IO_Set: [wreg+status,2]
 	line	39
 	
-l1752:	
+l1053:	
 ;MCU_16f1516_B1.c: 39: TRISA=0b00001001;;
 	movlw	(09h)
 	movlb 1	; select bank1
 	movwf	(140)^080h	;volatile
 	line	40
 	
-l1754:	
+l1055:	
 ;MCU_16f1516_B1.c: 40: TRISB=0b00000000;;
 	clrf	(141)^080h	;volatile
 	line	41
 	
-l1756:	
+l1057:	
 ;MCU_16f1516_B1.c: 41: TRISC=0b00011001;;
 	movlw	(019h)
 	movwf	(142)^080h	;volatile
@@ -4061,24 +3810,24 @@ l1756:
 	clrf	(270)^0100h	;volatile
 	line	45
 	
-l1758:	
+l1059:	
 ;MCU_16f1516_B1.c: 45: ANSELA=0b00000001;;
 	movlw	(01h)
 	movlb 3	; select bank3
 	movwf	(396)^0180h	;volatile
 	line	46
 	
-l1760:	
+l1061:	
 ;MCU_16f1516_B1.c: 46: ANSELB=0b00000000;;
 	clrf	(397)^0180h	;volatile
 	line	47
 	
-l1762:	
+l1063:	
 ;MCU_16f1516_B1.c: 47: ANSELC=0b00000000;;
 	clrf	(398)^0180h	;volatile
 	line	48
 	
-l1764:	
+l1065:	
 ;MCU_16f1516_B1.c: 48: PORTA=0b00001001;;
 	movlw	(09h)
 	movlb 0	; select bank0
@@ -4088,13 +3837,13 @@ l1764:
 	clrf	(13)	;volatile
 	line	50
 	
-l1766:	
+l1067:	
 ;MCU_16f1516_B1.c: 50: PORTC=0b00011001;;
 	movlw	(019h)
 	movwf	(14)	;volatile
 	line	51
 	
-l304:	
+l166:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IO_Set
@@ -4104,7 +3853,7 @@ GLOBAL	__end_of_IO_Set
 
 ;; *************** function _I2C_Set *****************
 ;; Defined at:
-;;		line 233 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 233 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4131,12 +3880,12 @@ GLOBAL	__end_of_IO_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text14,local,class=CODE,delta=2,merge=1
+psect	text13,local,class=CODE,delta=2,merge=1
 	line	233
-global __ptext14
-__ptext14:	;psect for function _I2C_Set
-psect	text14
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext13
+__ptext13:	;psect for function _I2C_Set
+psect	text13
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	233
 	global	__size_of_I2C_Set
 	__size_of_I2C_Set	equ	__end_of_I2C_Set-_I2C_Set
@@ -4147,12 +3896,11 @@ _I2C_Set:
 ; Regs used in _I2C_Set: [wreg+status,2]
 	line	235
 	
-l1776:	
+l1647:	
 ;MCU_16f1516_B1.c: 235: I2C=&VarI2C;
 	movlw	(_VarI2C)&0ffh
 	movwf	(??_I2C_Set+0)+0
 	movf	(??_I2C_Set+0)+0,w
-	movlb 0	; select bank0
 	movwf	(_I2C)
 	line	237
 ;MCU_16f1516_B1.c: 237: SSPADD = 0x09;
@@ -4165,18 +3913,18 @@ l1776:
 	movwf	(532)^0200h	;volatile
 	line	239
 	
-l1778:	
+l1649:	
 ;MCU_16f1516_B1.c: 239: SSPCON2 = 0;
 	clrf	(534)^0200h	;volatile
 	line	241
 	
-l1780:	
+l1651:	
 ;MCU_16f1516_B1.c: 241: SSPCON1=0b101000;
 	movlw	(028h)
 	movwf	(533)^0200h	;volatile
 	line	258
 	
-l318:	
+l180:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Set
@@ -4186,7 +3934,7 @@ GLOBAL	__end_of_I2C_Set
 
 ;; *************** function _MainT_Initial *****************
 ;; Defined at:
-;;		line 33 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 33 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4213,13 +3961,13 @@ GLOBAL	__end_of_I2C_Set
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text15,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\myMain.c"
+psect	text14,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	33
-global __ptext15
-__ptext15:	;psect for function _MainT_Initial
-psect	text15
-	file	"I:\Program\PIC\Source_File\myMain.c"
+global __ptext14
+__ptext14:	;psect for function _MainT_Initial
+psect	text14
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	33
 	global	__size_of_MainT_Initial
 	__size_of_MainT_Initial	equ	__end_of_MainT_Initial-_MainT_Initial
@@ -4230,16 +3978,15 @@ _MainT_Initial:
 ; Regs used in _MainT_Initial: [wregfsr1]
 	line	35
 	
-l1868:	
+l1897:	
 ;myMain.c: 35: TMain=&VarTMain;
 	movlw	(_VarTMain)&0ffh
 	movwf	(??_MainT_Initial+0)+0
 	movf	(??_MainT_Initial+0)+0,w
-	movlb 0	; select bank0
 	movwf	(_TMain)
 	line	36
 	
-l1870:	
+l1899:	
 ;myMain.c: 36: TMain->FirstOpen=1;
 	movf	(_TMain),w
 	addlw	0Dh
@@ -4249,15 +3996,16 @@ l1870:
 	bsf	indf1,0
 	line	37
 	
-l1872:	
+l1901:	
 ;myMain.c: 37: Product=&VarProduct;
 	movlw	(_VarProduct)&0ffh
 	movwf	(??_MainT_Initial+0)+0
 	movf	(??_MainT_Initial+0)+0,w
+	movlb 0	; select bank0
 	movwf	(_Product)
 	line	38
 	
-l55:	
+l414:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT_Initial
@@ -4267,11 +4015,11 @@ GLOBAL	__end_of_MainT_Initial
 
 ;; *************** function _MainT *****************
 ;; Defined at:
-;;		line 41 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 41 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
-;;  i               1   13[BANK0 ] unsigned char 
+;;  i               1    0        unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -4282,10 +4030,10 @@ GLOBAL	__end_of_MainT_Initial
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
 ;;      Params:         0       0       0       0       0       0       0       0
-;;      Locals:         0       1       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       0       0       0       0
 ;;      Temps:          0       3       0       0       0       0       0       0
-;;      Totals:         0       4       0       0       0       0       0       0
-;;Total ram usage:        4 bytes
+;;      Totals:         0       3       0       0       0       0       0       0
+;;Total ram usage:        3 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    4
 ;; This function calls:
@@ -4294,12 +4042,12 @@ GLOBAL	__end_of_MainT_Initial
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text16,local,class=CODE,delta=2,merge=1
+psect	text15,local,class=CODE,delta=2,merge=1
 	line	41
-global __ptext16
-__ptext16:	;psect for function _MainT
-psect	text16
-	file	"I:\Program\PIC\Source_File\myMain.c"
+global __ptext15
+__ptext15:	;psect for function _MainT
+psect	text15
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	41
 	global	__size_of_MainT
 	__size_of_MainT	equ	__end_of_MainT-_MainT
@@ -4310,23 +4058,22 @@ _MainT:
 ; Regs used in _MainT: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	45
 	
-l2368:	
+l2313:	
 ;myMain.c: 43: char i;
 ;myMain.c: 45: if(!TMain->PowerON)
-	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	btfsc	indf1,0
-	goto	u3301
-	goto	u3300
-u3301:
-	goto	l2376
-u3300:
+	goto	u3011
+	goto	u3010
+u3011:
+	goto	l2321
+u3010:
 	line	47
 	
-l2370:	
+l2315:	
 ;myMain.c: 46: {
 ;myMain.c: 47: TMain->PowerCount++;
 	incf	(_TMain),w
@@ -4340,7 +4087,7 @@ l2370:
 	incf	indf1,f
 	line	48
 	
-l2372:	
+l2317:	
 ;myMain.c: 48: if(TMain->PowerCount == 1500)
 	incf	(_TMain),w
 	movwf	fsr1l
@@ -4349,19 +4096,19 @@ l2372:
 	moviw	[0]fsr1
 	xorlw	low(05DCh)
 	skipz
-	goto	u3315
+	goto	u3025
 	moviw	[1]fsr1
 	xorlw	high(05DCh)
-u3315:
+u3025:
 	skipz
-	goto	u3311
-	goto	u3310
-u3311:
-	goto	l68
-u3310:
+	goto	u3021
+	goto	u3020
+u3021:
+	goto	l425
+u3020:
 	line	50
 	
-l2374:	
+l2319:	
 ;myMain.c: 49: {
 ;myMain.c: 50: TMain->PowerCount=0;
 	incf	(_TMain),w
@@ -4378,20 +4125,20 @@ l2374:
 	clrf fsr1h	
 	
 	bsf	indf1,0
-	goto	l68
+	goto	l425
 	line	56
 	
-l59:	
+l418:	
 	line	57
 ;myMain.c: 56: }
 ;myMain.c: 57: }
-	goto	l68
+	goto	l425
 	line	58
 	
-l58:	
+l417:	
 	line	60
 	
-l2376:	
+l2321:	
 ;myMain.c: 58: else
 ;myMain.c: 59: {
 ;myMain.c: 60: TMain->Count1++;
@@ -4407,29 +4154,29 @@ l2376:
 	incf	indf1,f
 	line	61
 	
-l2378:	
-;myMain.c: 61: if(TMain->Count1 == 2000)
+l2323:	
+;myMain.c: 61: if(TMain->Count1 == 1000)
 	movf	(_TMain),w
 	addlw	05h
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	moviw	[0]fsr1
-	xorlw	low(07D0h)
+	xorlw	low(03E8h)
 	skipz
-	goto	u3325
+	goto	u3035
 	moviw	[1]fsr1
-	xorlw	high(07D0h)
-u3325:
+	xorlw	high(03E8h)
+u3035:
 	skipz
-	goto	u3321
-	goto	u3320
-u3321:
-	goto	l2408
-u3320:
+	goto	u3031
+	goto	u3030
+u3031:
+	goto	l2341
+u3030:
 	line	63
 	
-l2380:	
+l2325:	
 ;myMain.c: 62: {
 ;myMain.c: 63: TMain->Count1=0;
 	movf	(_TMain),w
@@ -4442,91 +4189,25 @@ l2380:
 	movwi	[1]fsr1
 	line	64
 	
-l2382:	
+l2327:	
 ;myMain.c: 64: RA2=~RA2;
 	movlw	1<<((98)&7)
+	movlb 0	; select bank0
 	xorwf	((98)/8),f
-	line	67
-	
-l2384:	
-;myMain.c: 67: for(i=0;i<32;i++){
-	clrf	(MainT@i)
-	
-l2386:	
-	movlw	(020h)
-	subwf	(MainT@i),w
-	skipc
-	goto	u3331
-	goto	u3330
-u3331:
-	goto	l2390
-u3330:
-	goto	l2396
-	
-l2388:	
-	goto	l2396
-	
-l62:	
-	line	68
-	
-l2390:	
-;myMain.c: 68: UART->TxData[i]=64-i;
-	decf	(MainT@i),w
-	xorlw	0ffh
-	addlw	040h
-	movwf	(??_MainT+0)+0
-	movf	(MainT@i),w
-	addwf	(_UART),w
-	movwf	(??_MainT+1)+0
-	movf	0+(??_MainT+1)+0,w
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	movf	(??_MainT+0)+0,w
-	movwf	indf1
-	line	67
-	
-l2392:	
-	movlw	(01h)
-	movwf	(??_MainT+0)+0
-	movf	(??_MainT+0)+0,w
-	addwf	(MainT@i),f
-	
-l2394:	
-	movlw	(020h)
-	subwf	(MainT@i),w
-	skipc
-	goto	u3341
-	goto	u3340
-u3341:
-	goto	l2390
-u3340:
-	goto	l2396
-	
-l63:	
-	line	70
-	
-l2396:	
-;myMain.c: 74: if(TMain->Flag == 0)
-	movf	(_UART),w
-	addlw	043h
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	bsf	indf1,0
-	line	74
-	goto	l2398
+	goto	l2331
 	line	78
-;myMain.c: 75: {
 	
-l64:	
-	line	80
+l2329:	
+	goto	l2331
+	line	82
+;myMain.c: 79: {
 	
-l2398:	
-;myMain.c: 78: }
-;myMain.c: 80: if(TMain->Test)
+l421:	
+	line	84
+	
+l2331:	
+;myMain.c: 82: }
+;myMain.c: 84: if(TMain->Test)
 	movf	(_TMain),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -4535,16 +4216,16 @@ l2398:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u3351
-	goto	u3350
-u3351:
-	goto	l2408
-u3350:
-	line	82
+	goto	u3041
+	goto	u3040
+u3041:
+	goto	l2341
+u3040:
+	line	86
 	
-l2400:	
-;myMain.c: 81: {
-;myMain.c: 82: setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
+l2333:	
+;myMain.c: 85: {
+;myMain.c: 86: setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
 	movf	(_I2C),w
 	addlw	040h
 	movwf	fsr1l
@@ -4567,10 +4248,10 @@ l2400:
 	movf	1+(??_MainT+1)+0,w
 	movwf	(setSegmentDisplayNumber@number+1)
 	fcall	_setSegmentDisplayNumber
-	line	83
+	line	87
 	
-l2402:	
-;myMain.c: 83: I2C->Count++;
+l2335:	
+;myMain.c: 87: I2C->Count++;
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_MainT+0)+0
@@ -4582,10 +4263,10 @@ l2402:
 	
 	movf	(??_MainT+0)+0,w
 	addwf	indf1,f
-	line	84
+	line	88
 	
-l2404:	
-;myMain.c: 84: if(I2C->Count==32)
+l2337:	
+;myMain.c: 88: if(I2C->Count==32)
 	movf	(_I2C),w
 	addlw	040h
 	movwf	fsr1l
@@ -4595,16 +4276,16 @@ l2404:
 	movf	indf1,w
 	xorlw	020h&0ffh
 	skipz
-	goto	u3361
-	goto	u3360
-u3361:
-	goto	l2408
-u3360:
-	line	86
+	goto	u3051
+	goto	u3050
+u3051:
+	goto	l2341
+u3050:
+	line	90
 	
-l2406:	
-;myMain.c: 85: {
-;myMain.c: 86: I2C->Count=0;
+l2339:	
+;myMain.c: 89: {
+;myMain.c: 90: I2C->Count=0;
 	movf	(_I2C),w
 	addlw	040h
 	movwf	fsr1l
@@ -4612,25 +4293,25 @@ l2406:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l2408
-	line	87
+	goto	l2341
+	line	91
 	
-l66:	
-	goto	l2408
-	line	88
+l423:	
+	goto	l2341
+	line	92
 	
-l65:	
-	goto	l2408
-	line	101
+l422:	
+	goto	l2341
+	line	105
 	
-l61:	
-	line	104
+l420:	
+	line	108
 	
-l2408:	
-;myMain.c: 87: }
-;myMain.c: 88: }
-;myMain.c: 101: }
-;myMain.c: 104: TMain->Count2++;
+l2341:	
+;myMain.c: 91: }
+;myMain.c: 92: }
+;myMain.c: 105: }
+;myMain.c: 108: TMain->Count2++;
 	movf	(_TMain),w
 	addlw	07h
 	movwf	fsr1l
@@ -4641,10 +4322,10 @@ l2408:
 	addfsr	fsr1,1
 	skipnc
 	incf	indf1,f
-	line	105
+	line	109
 	
-l2410:	
-;myMain.c: 105: if(TMain->Count2 == 2000)
+l2343:	
+;myMain.c: 109: if(TMain->Count2 == 2000)
 	movf	(_TMain),w
 	addlw	07h
 	movwf	fsr1l
@@ -4653,21 +4334,21 @@ l2410:
 	moviw	[0]fsr1
 	xorlw	low(07D0h)
 	skipz
-	goto	u3375
+	goto	u3065
 	moviw	[1]fsr1
 	xorlw	high(07D0h)
-u3375:
+u3065:
 	skipz
-	goto	u3371
-	goto	u3370
-u3371:
-	goto	l68
-u3370:
-	line	107
+	goto	u3061
+	goto	u3060
+u3061:
+	goto	l425
+u3060:
+	line	111
 	
-l2412:	
-;myMain.c: 106: {
-;myMain.c: 107: TMain->Count2=0;
+l2345:	
+;myMain.c: 110: {
+;myMain.c: 111: TMain->Count2=0;
 	movf	(_TMain),w
 	addlw	07h
 	movwf	fsr1l
@@ -4676,17 +4357,17 @@ l2412:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	goto	l68
-	line	120
-	
-l67:	
-	goto	l68
-	line	123
-	
-l60:	
+	goto	l425
 	line	124
 	
-l68:	
+l424:	
+	goto	l425
+	line	127
+	
+l419:	
+	line	128
+	
+l425:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT
@@ -4696,11 +4377,11 @@ GLOBAL	__end_of_MainT
 
 ;; *************** function _setSegmentDisplayNumber *****************
 ;; Defined at:
-;;		line 20 in file "I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+;;		line 20 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 ;; Parameters:    Size  Location     Type
 ;;  number          2    4[BANK0 ] int 
 ;; Auto vars:     Size  Location     Type
-;;  i               1    8[COMMON] unsigned char 
+;;  i               1   10[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -4711,9 +4392,9 @@ GLOBAL	__end_of_MainT
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
 ;;      Params:         0       2       0       0       0       0       0       0
-;;      Locals:         1       0       0       0       0       0       0       0
+;;      Locals:         0       1       0       0       0       0       0       0
 ;;      Temps:          0       4       0       0       0       0       0       0
-;;      Totals:         1       6       0       0       0       0       0       0
+;;      Totals:         0       7       0       0       0       0       0       0
 ;;Total ram usage:        7 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    3
@@ -4724,13 +4405,13 @@ GLOBAL	__end_of_MainT
 ;;		_MainT
 ;; This function uses a non-reentrant model
 ;;
-psect	text17,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+psect	text16,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 	line	20
-global __ptext17
-__ptext17:	;psect for function _setSegmentDisplayNumber
-psect	text17
-	file	"I:\Program\PIC\Source_File\SegmentDisplay_A2.c"
+global __ptext16
+__ptext16:	;psect for function _setSegmentDisplayNumber
+psect	text16
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
 	line	20
 	global	__size_of_setSegmentDisplayNumber
 	__size_of_setSegmentDisplayNumber	equ	__end_of_setSegmentDisplayNumber-_setSegmentDisplayNumber
@@ -4741,7 +4422,7 @@ _setSegmentDisplayNumber:
 ; Regs used in _setSegmentDisplayNumber: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	23
 	
-l2272:	
+l2211:	
 ;SegmentDisplay_A2.c: 22: char i;
 ;SegmentDisplay_A2.c: 23: if(Segment->Enable)
 	movlb 0	; select bank0
@@ -4751,14 +4432,14 @@ l2272:
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u2881
-	goto	u2880
-u2881:
-	goto	l124
-u2880:
+	goto	u2811
+	goto	u2810
+u2811:
+	goto	l481
+u2810:
 	line	25
 	
-l2274:	
+l2213:	
 ;SegmentDisplay_A2.c: 24: {
 ;SegmentDisplay_A2.c: 25: Segment->GO=1;
 	movf	(_Segment),w
@@ -4775,14 +4456,14 @@ l2274:
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u2891
-	goto	u2890
-u2891:
-	goto	l2282
-u2890:
+	goto	u2821
+	goto	u2820
+u2821:
+	goto	l2221
+u2820:
 	line	28
 	
-l2276:	
+l2215:	
 ;SegmentDisplay_A2.c: 27: {
 ;SegmentDisplay_A2.c: 28: Segment->Num[0]=(number & 0x000f);
 	movf	(setSegmentDisplayNumber@number),w
@@ -4797,7 +4478,7 @@ l2276:
 	movwf	indf1
 	line	29
 	
-l2278:	
+l2217:	
 ;SegmentDisplay_A2.c: 29: Segment->Num[1]=((number>>4)&0x000f);
 	movf	(setSegmentDisplayNumber@number+1),w
 	movwf	(??_setSegmentDisplayNumber+0)+0+1
@@ -4805,12 +4486,12 @@ l2278:
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movlw	04h
 	movwf	(??_setSegmentDisplayNumber+2)+0
-u2905:
+u2835:
 	rlf	(??_setSegmentDisplayNumber+0)+1,w
 	rrf	(??_setSegmentDisplayNumber+0)+1,f
 	rrf	(??_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??_setSegmentDisplayNumber+2)+0,f
-	goto	u2905
+	goto	u2835
 	movf	0+(??_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??_setSegmentDisplayNumber+3)+0
@@ -4823,7 +4504,7 @@ u2905:
 	movwf	indf1
 	line	30
 	
-l2280:	
+l2219:	
 ;SegmentDisplay_A2.c: 30: Segment->Num[2]=((number>>8)&0x000f);
 	movf	(setSegmentDisplayNumber@number+1),w
 	andlw	0Fh
@@ -4843,12 +4524,12 @@ l2280:
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movlw	0Ch
 	movwf	(??_setSegmentDisplayNumber+2)+0
-u2915:
+u2845:
 	rlf	(??_setSegmentDisplayNumber+0)+1,w
 	rrf	(??_setSegmentDisplayNumber+0)+1,f
 	rrf	(??_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??_setSegmentDisplayNumber+2)+0,f
-	goto	u2915
+	goto	u2845
 	movf	0+(??_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??_setSegmentDisplayNumber+3)+0
@@ -4861,12 +4542,12 @@ u2915:
 	movwf	indf1
 	line	32
 ;SegmentDisplay_A2.c: 32: }
-	goto	l2310
+	goto	l2249
 	line	33
 	
-l111:	
+l468:	
 	
-l2282:	
+l2221:	
 ;SegmentDisplay_A2.c: 33: else if(Segment->Dec)
 	movf	(_Segment),w
 	addlw	015h
@@ -4874,14 +4555,14 @@ l2282:
 	clrf fsr1h	
 	
 	btfss	indf1,3
-	goto	u2921
-	goto	u2920
-u2921:
-	goto	l2310
-u2920:
+	goto	u2851
+	goto	u2850
+u2851:
+	goto	l2249
+u2850:
 	line	35
 	
-l2284:	
+l2223:	
 ;SegmentDisplay_A2.c: 34: {
 ;SegmentDisplay_A2.c: 35: if(number > 0x270f)
 	movf	(setSegmentDisplayNumber@number+1),w
@@ -4890,47 +4571,47 @@ l2284:
 	movlw	(high(02710h))^80h
 	subwf	(??_setSegmentDisplayNumber+0)+0,w
 	skipz
-	goto	u2935
+	goto	u2865
 	movlw	low(02710h)
 	subwf	(setSegmentDisplayNumber@number),w
-u2935:
+u2865:
 
 	skipc
-	goto	u2931
-	goto	u2930
-u2931:
-	goto	l2298
-u2930:
+	goto	u2861
+	goto	u2860
+u2861:
+	goto	l2237
+u2860:
 	line	37
 	
-l2286:	
+l2225:	
 ;SegmentDisplay_A2.c: 36: {
 ;SegmentDisplay_A2.c: 37: for(i=0 ; i<4; i++)
+	movlb 0	; select bank0
 	clrf	(setSegmentDisplayNumber@i)
 	
-l2288:	
+l2227:	
 	movlw	(04h)
 	subwf	(setSegmentDisplayNumber@i),w
 	skipc
-	goto	u2941
-	goto	u2940
-u2941:
-	goto	l2292
-u2940:
-	goto	l2310
+	goto	u2871
+	goto	u2870
+u2871:
+	goto	l2231
+u2870:
+	goto	l2249
 	
-l2290:	
-	goto	l2310
+l2229:	
+	goto	l2249
 	line	38
 	
-l115:	
+l472:	
 	line	39
 	
-l2292:	
+l2231:	
 ;SegmentDisplay_A2.c: 38: {
 ;SegmentDisplay_A2.c: 39: Segment->Num[i]=16;
 	movlw	(010h)
-	movlb 0	; select bank0
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movf	(setSegmentDisplayNumber@i),w
 	addlw	011h
@@ -4944,34 +4625,34 @@ l2292:
 	movwf	indf1
 	line	37
 	
-l2294:	
+l2233:	
 	movlw	(01h)
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movf	(??_setSegmentDisplayNumber+0)+0,w
 	addwf	(setSegmentDisplayNumber@i),f
 	
-l2296:	
+l2235:	
 	movlw	(04h)
 	subwf	(setSegmentDisplayNumber@i),w
 	skipc
-	goto	u2951
-	goto	u2950
-u2951:
-	goto	l2292
-u2950:
-	goto	l2310
+	goto	u2881
+	goto	u2880
+u2881:
+	goto	l2231
+u2880:
+	goto	l2249
 	
-l116:	
+l473:	
 	line	41
 ;SegmentDisplay_A2.c: 40: }
 ;SegmentDisplay_A2.c: 41: }
-	goto	l2310
+	goto	l2249
 	line	42
 	
-l114:	
+l471:	
 	line	44
 	
-l2298:	
+l2237:	
 ;SegmentDisplay_A2.c: 42: else
 ;SegmentDisplay_A2.c: 43: {
 ;SegmentDisplay_A2.c: 44: Segment->Num[3]=(number/1000);
@@ -5000,7 +4681,7 @@ l2298:
 	movwf	indf1
 	line	45
 	
-l2300:	
+l2239:	
 ;SegmentDisplay_A2.c: 45: number%=1000;
 	movlw	low(03E8h)
 	movwf	(___awmod@divisor)
@@ -5024,7 +4705,7 @@ l2300:
 
 	line	46
 	
-l2302:	
+l2241:	
 ;SegmentDisplay_A2.c: 46: Segment->Num[2]=(number/100);
 	movlw	low(064h)
 	movwf	(___awdiv@divisor)
@@ -5072,7 +4753,7 @@ l2302:
 
 	line	48
 	
-l2304:	
+l2243:	
 ;SegmentDisplay_A2.c: 48: Segment->Num[1]=(number/10);
 	movlw	low(0Ah)
 	movwf	(___awdiv@divisor)
@@ -5098,7 +4779,7 @@ l2304:
 	movwf	indf1
 	line	49
 	
-l2306:	
+l2245:	
 ;SegmentDisplay_A2.c: 49: number%=10;
 	movlw	low(0Ah)
 	movwf	(___awmod@divisor)
@@ -5122,7 +4803,7 @@ l2306:
 
 	line	50
 	
-l2308:	
+l2247:	
 ;SegmentDisplay_A2.c: 50: Segment->Num[0]=number;
 	movf	(setSegmentDisplayNumber@number),w
 	movwf	(??_setSegmentDisplayNumber+0)+0
@@ -5133,24 +4814,23 @@ l2308:
 	
 	movf	(??_setSegmentDisplayNumber+0)+0,w
 	movwf	indf1
-	goto	l2310
+	goto	l2249
 	line	51
 	
-l117:	
-	goto	l2310
+l474:	
+	goto	l2249
 	line	52
 	
-l113:	
-	goto	l2310
+l470:	
+	goto	l2249
 	line	53
 	
-l112:	
+l469:	
 	
-l2310:	
+l2249:	
 ;SegmentDisplay_A2.c: 51: }
 ;SegmentDisplay_A2.c: 52: }
 ;SegmentDisplay_A2.c: 53: if(Segment->Num[3] > 0)
-	movlb 0	; select bank0
 	movf	(_Segment),w
 	addlw	014h
 	movwf	fsr1l
@@ -5159,14 +4839,14 @@ l2310:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2961
-	goto	u2960
-u2961:
-	goto	l2314
-u2960:
+	goto	u2891
+	goto	u2890
+u2891:
+	goto	l2253
+u2890:
 	line	55
 	
-l2312:	
+l2251:	
 ;SegmentDisplay_A2.c: 54: {
 ;SegmentDisplay_A2.c: 55: Segment->DisplayCount=3;
 	movlw	(03h)
@@ -5180,12 +4860,12 @@ l2312:
 	movwf	indf1
 	line	56
 ;SegmentDisplay_A2.c: 56: }
-	goto	l124
+	goto	l481
 	line	57
 	
-l118:	
+l475:	
 	
-l2314:	
+l2253:	
 ;SegmentDisplay_A2.c: 57: else if(Segment->Num[2] > 0)
 	movf	(_Segment),w
 	addlw	013h
@@ -5195,14 +4875,14 @@ l2314:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2971
-	goto	u2970
-u2971:
-	goto	l2318
-u2970:
+	goto	u2901
+	goto	u2900
+u2901:
+	goto	l2257
+u2900:
 	line	59
 	
-l2316:	
+l2255:	
 ;SegmentDisplay_A2.c: 58: {
 ;SegmentDisplay_A2.c: 59: Segment->DisplayCount=2;
 	movlw	(02h)
@@ -5216,12 +4896,12 @@ l2316:
 	movwf	indf1
 	line	60
 ;SegmentDisplay_A2.c: 60: }
-	goto	l124
+	goto	l481
 	line	61
 	
-l120:	
+l477:	
 	
-l2318:	
+l2257:	
 ;SegmentDisplay_A2.c: 61: else if(Segment->Num[1] > 0)
 	movf	(_Segment),w
 	addlw	012h
@@ -5231,14 +4911,14 @@ l2318:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2981
-	goto	u2980
-u2981:
-	goto	l2322
-u2980:
+	goto	u2911
+	goto	u2910
+u2911:
+	goto	l2261
+u2910:
 	line	63
 	
-l2320:	
+l2259:	
 ;SegmentDisplay_A2.c: 62: {
 ;SegmentDisplay_A2.c: 63: Segment->DisplayCount=1;
 	movf	(_Segment),w
@@ -5250,13 +4930,13 @@ l2320:
 	incf	indf1,f
 	line	64
 ;SegmentDisplay_A2.c: 64: }
-	goto	l124
+	goto	l481
 	line	65
 	
-l122:	
+l479:	
 	line	67
 	
-l2322:	
+l2261:	
 ;SegmentDisplay_A2.c: 65: else
 ;SegmentDisplay_A2.c: 66: {
 ;SegmentDisplay_A2.c: 67: Segment->DisplayCount=0;
@@ -5266,23 +4946,23 @@ l2322:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	l124
+	goto	l481
 	line	68
 	
-l123:	
-	goto	l124
+l480:	
+	goto	l481
 	
-l121:	
-	goto	l124
+l478:	
+	goto	l481
 	
-l119:	
-	goto	l124
+l476:	
+	goto	l481
 	line	69
 	
-l110:	
+l467:	
 	line	70
 	
-l124:	
+l481:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSegmentDisplayNumber
@@ -5321,12 +5001,12 @@ GLOBAL	__end_of_setSegmentDisplayNumber
 ;;		_setSegmentDisplayNumber
 ;; This function uses a non-reentrant model
 ;;
-psect	text18,local,class=CODE,delta=2,merge=1
+psect	text17,local,class=CODE,delta=2,merge=1
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c"
 	line	6
-global __ptext18
-__ptext18:	;psect for function ___awmod
-psect	text18
+global __ptext17
+__ptext17:	;psect for function ___awmod
+psect	text17
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c"
 	line	6
 	global	__size_of___awmod
@@ -5338,21 +5018,21 @@ ___awmod:
 ; Regs used in ___awmod: [wreg+status,2+status,0]
 	line	13
 	
-l2234:	
+l2161:	
 	movlb 0	; select bank0
 	clrf	(___awmod@sign)
 	line	14
 	
-l2236:	
+l2163:	
 	btfss	(___awmod@dividend+1),7
-	goto	u2791
-	goto	u2790
-u2791:
-	goto	l2242
-u2790:
+	goto	u2691
+	goto	u2690
+u2691:
+	goto	l2169
+u2690:
 	line	15
 	
-l2238:	
+l2165:	
 	comf	(___awmod@dividend),f
 	comf	(___awmod@dividend+1),f
 	incf	(___awmod@dividend),f
@@ -5360,166 +5040,166 @@ l2238:
 	incf	(___awmod@dividend+1),f
 	line	16
 	
-l2240:	
+l2167:	
 	clrf	(___awmod@sign)
 	incf	(___awmod@sign),f
-	goto	l2242
+	goto	l2169
 	line	17
 	
-l654:	
+l661:	
 	line	18
 	
-l2242:	
+l2169:	
 	btfss	(___awmod@divisor+1),7
-	goto	u2801
-	goto	u2800
-u2801:
-	goto	l2246
-u2800:
+	goto	u2701
+	goto	u2700
+u2701:
+	goto	l2173
+u2700:
 	line	19
 	
-l2244:	
+l2171:	
 	comf	(___awmod@divisor),f
 	comf	(___awmod@divisor+1),f
 	incf	(___awmod@divisor),f
 	skipnz
 	incf	(___awmod@divisor+1),f
-	goto	l2246
+	goto	l2173
 	
-l655:	
+l662:	
 	line	20
 	
-l2246:	
+l2173:	
 	movf	(___awmod@divisor+1),w
 	iorwf	(___awmod@divisor),w
 	skipnz
-	goto	u2811
-	goto	u2810
-u2811:
-	goto	l2264
-u2810:
+	goto	u2711
+	goto	u2710
+u2711:
+	goto	l2191
+u2710:
 	line	21
 	
-l2248:	
+l2175:	
 	clrf	(___awmod@counter)
 	incf	(___awmod@counter),f
 	line	22
-	goto	l2254
+	goto	l2181
 	
-l658:	
+l665:	
 	line	23
 	
-l2250:	
+l2177:	
 	movlw	01h
 	
-u2825:
+u2725:
 	lslf	(___awmod@divisor),f
 	rlf	(___awmod@divisor+1),f
 	decfsz	wreg,f
-	goto	u2825
+	goto	u2725
 	line	24
 	
-l2252:	
+l2179:	
 	movlw	(01h)
 	movwf	(??___awmod+0)+0
 	movf	(??___awmod+0)+0,w
 	addwf	(___awmod@counter),f
-	goto	l2254
+	goto	l2181
 	line	25
 	
-l657:	
+l664:	
 	line	22
 	
-l2254:	
+l2181:	
 	btfss	(___awmod@divisor+1),(15)&7
-	goto	u2831
-	goto	u2830
-u2831:
-	goto	l2250
-u2830:
-	goto	l2256
+	goto	u2731
+	goto	u2730
+u2731:
+	goto	l2177
+u2730:
+	goto	l2183
 	
-l659:	
-	goto	l2256
+l666:	
+	goto	l2183
 	line	26
 	
-l660:	
+l667:	
 	line	27
 	
-l2256:	
+l2183:	
 	movf	(___awmod@divisor+1),w
 	subwf	(___awmod@dividend+1),w
 	skipz
-	goto	u2845
+	goto	u2745
 	movf	(___awmod@divisor),w
 	subwf	(___awmod@dividend),w
-u2845:
+u2745:
 	skipc
-	goto	u2841
-	goto	u2840
-u2841:
-	goto	l2260
-u2840:
+	goto	u2741
+	goto	u2740
+u2741:
+	goto	l2187
+u2740:
 	line	28
 	
-l2258:	
+l2185:	
 	movf	(___awmod@divisor),w
 	subwf	(___awmod@dividend),f
 	movf	(___awmod@divisor+1),w
 	subwfb	(___awmod@dividend+1),f
-	goto	l2260
+	goto	l2187
 	
-l661:	
+l668:	
 	line	29
 	
-l2260:	
+l2187:	
 	movlw	01h
 	
-u2855:
+u2755:
 	lsrf	(___awmod@divisor+1),f
 	rrf	(___awmod@divisor),f
 	decfsz	wreg,f
-	goto	u2855
+	goto	u2755
 	line	30
 	
-l2262:	
+l2189:	
 	movlw	low(01h)
 	subwf	(___awmod@counter),f
 	btfss	status,2
-	goto	u2861
-	goto	u2860
-u2861:
-	goto	l2256
-u2860:
-	goto	l2264
+	goto	u2761
+	goto	u2760
+u2761:
+	goto	l2183
+u2760:
+	goto	l2191
 	
-l662:	
-	goto	l2264
+l669:	
+	goto	l2191
 	line	31
 	
-l656:	
+l663:	
 	line	32
 	
-l2264:	
+l2191:	
 	movf	(___awmod@sign),w
 	skipz
-	goto	u2870
-	goto	l2268
-u2870:
+	goto	u2770
+	goto	l2195
+u2770:
 	line	33
 	
-l2266:	
+l2193:	
 	comf	(___awmod@dividend),f
 	comf	(___awmod@dividend+1),f
 	incf	(___awmod@dividend),f
 	skipnz
 	incf	(___awmod@dividend+1),f
-	goto	l2268
+	goto	l2195
 	
-l663:	
+l670:	
 	line	34
 	
-l2268:	
+l2195:	
 	movf	(___awmod@dividend+1),w
 	clrf	(?___awmod+1)
 	addwf	(?___awmod+1)
@@ -5527,12 +5207,12 @@ l2268:
 	clrf	(?___awmod)
 	addwf	(?___awmod)
 
-	goto	l664
+	goto	l671
 	
-l2270:	
+l2197:	
 	line	35
 	
-l664:	
+l671:	
 	return
 	opt stack 0
 GLOBAL	__end_of___awmod
@@ -5572,12 +5252,12 @@ GLOBAL	__end_of___awmod
 ;;		_setSegmentDisplayNumber
 ;; This function uses a non-reentrant model
 ;;
-psect	text19,local,class=CODE,delta=2,merge=1
+psect	text18,local,class=CODE,delta=2,merge=1
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c"
 	line	6
-global __ptext19
-__ptext19:	;psect for function ___awdiv
-psect	text19
+global __ptext18
+__ptext18:	;psect for function ___awdiv
+psect	text18
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c"
 	line	6
 	global	__size_of___awdiv
@@ -5589,21 +5269,21 @@ ___awdiv:
 ; Regs used in ___awdiv: [wreg+status,2+status,0]
 	line	14
 	
-l1618:	
+l2117:	
 	movlb 0	; select bank0
 	clrf	(___awdiv@sign)
 	line	15
 	
-l1620:	
+l2119:	
 	btfss	(___awdiv@divisor+1),7
-	goto	u1521
-	goto	u1520
-u1521:
-	goto	l1626
-u1520:
+	goto	u2591
+	goto	u2590
+u2591:
+	goto	l2125
+u2590:
 	line	16
 	
-l1622:	
+l2121:	
 	comf	(___awdiv@divisor),f
 	comf	(___awdiv@divisor+1),f
 	incf	(___awdiv@divisor),f
@@ -5611,25 +5291,25 @@ l1622:
 	incf	(___awdiv@divisor+1),f
 	line	17
 	
-l1624:	
+l2123:	
 	clrf	(___awdiv@sign)
 	incf	(___awdiv@sign),f
-	goto	l1626
+	goto	l2125
 	line	18
 	
-l641:	
+l648:	
 	line	19
 	
-l1626:	
+l2125:	
 	btfss	(___awdiv@dividend+1),7
-	goto	u1531
-	goto	u1530
-u1531:
-	goto	l1632
-u1530:
+	goto	u2601
+	goto	u2600
+u2601:
+	goto	l2131
+u2600:
 	line	20
 	
-l1628:	
+l2127:	
 	comf	(___awdiv@dividend),f
 	comf	(___awdiv@dividend+1),f
 	incf	(___awdiv@dividend),f
@@ -5637,166 +5317,166 @@ l1628:
 	incf	(___awdiv@dividend+1),f
 	line	21
 	
-l1630:	
+l2129:	
 	movlw	(01h)
 	movwf	(??___awdiv+0)+0
 	movf	(??___awdiv+0)+0,w
 	xorwf	(___awdiv@sign),f
-	goto	l1632
+	goto	l2131
 	line	22
 	
-l642:	
+l649:	
 	line	23
 	
-l1632:	
+l2131:	
 	clrf	(___awdiv@quotient)
 	clrf	(___awdiv@quotient+1)
 	line	24
 	
-l1634:	
+l2133:	
 	movf	(___awdiv@divisor+1),w
 	iorwf	(___awdiv@divisor),w
 	skipnz
-	goto	u1541
-	goto	u1540
-u1541:
-	goto	l1654
-u1540:
+	goto	u2611
+	goto	u2610
+u2611:
+	goto	l2153
+u2610:
 	line	25
 	
-l1636:	
+l2135:	
 	clrf	(___awdiv@counter)
 	incf	(___awdiv@counter),f
 	line	26
-	goto	l1642
+	goto	l2141
 	
-l645:	
+l652:	
 	line	27
 	
-l1638:	
+l2137:	
 	movlw	01h
 	
-u1555:
+u2625:
 	lslf	(___awdiv@divisor),f
 	rlf	(___awdiv@divisor+1),f
 	decfsz	wreg,f
-	goto	u1555
+	goto	u2625
 	line	28
 	
-l1640:	
+l2139:	
 	movlw	(01h)
 	movwf	(??___awdiv+0)+0
 	movf	(??___awdiv+0)+0,w
 	addwf	(___awdiv@counter),f
-	goto	l1642
+	goto	l2141
 	line	29
 	
-l644:	
+l651:	
 	line	26
 	
-l1642:	
+l2141:	
 	btfss	(___awdiv@divisor+1),(15)&7
-	goto	u1561
-	goto	u1560
-u1561:
-	goto	l1638
-u1560:
-	goto	l1644
+	goto	u2631
+	goto	u2630
+u2631:
+	goto	l2137
+u2630:
+	goto	l2143
 	
-l646:	
-	goto	l1644
+l653:	
+	goto	l2143
 	line	30
 	
-l647:	
+l654:	
 	line	31
 	
-l1644:	
+l2143:	
 	movlw	01h
 	
-u1575:
+u2645:
 	lslf	(___awdiv@quotient),f
 	rlf	(___awdiv@quotient+1),f
 	decfsz	wreg,f
-	goto	u1575
+	goto	u2645
 	line	32
 	movf	(___awdiv@divisor+1),w
 	subwf	(___awdiv@dividend+1),w
 	skipz
-	goto	u1585
+	goto	u2655
 	movf	(___awdiv@divisor),w
 	subwf	(___awdiv@dividend),w
-u1585:
+u2655:
 	skipc
-	goto	u1581
-	goto	u1580
-u1581:
-	goto	l1650
-u1580:
+	goto	u2651
+	goto	u2650
+u2651:
+	goto	l2149
+u2650:
 	line	33
 	
-l1646:	
+l2145:	
 	movf	(___awdiv@divisor),w
 	subwf	(___awdiv@dividend),f
 	movf	(___awdiv@divisor+1),w
 	subwfb	(___awdiv@dividend+1),f
 	line	34
 	
-l1648:	
+l2147:	
 	bsf	(___awdiv@quotient)+(0/8),(0)&7
-	goto	l1650
+	goto	l2149
 	line	35
 	
-l648:	
+l655:	
 	line	36
 	
-l1650:	
+l2149:	
 	movlw	01h
 	
-u1595:
+u2665:
 	lsrf	(___awdiv@divisor+1),f
 	rrf	(___awdiv@divisor),f
 	decfsz	wreg,f
-	goto	u1595
+	goto	u2665
 	line	37
 	
-l1652:	
+l2151:	
 	movlw	low(01h)
 	subwf	(___awdiv@counter),f
 	btfss	status,2
-	goto	u1601
-	goto	u1600
-u1601:
-	goto	l1644
-u1600:
-	goto	l1654
+	goto	u2671
+	goto	u2670
+u2671:
+	goto	l2143
+u2670:
+	goto	l2153
 	
-l649:	
-	goto	l1654
+l656:	
+	goto	l2153
 	line	38
 	
-l643:	
+l650:	
 	line	39
 	
-l1654:	
+l2153:	
 	movf	(___awdiv@sign),w
 	skipz
-	goto	u1610
-	goto	l1658
-u1610:
+	goto	u2680
+	goto	l2157
+u2680:
 	line	40
 	
-l1656:	
+l2155:	
 	comf	(___awdiv@quotient),f
 	comf	(___awdiv@quotient+1),f
 	incf	(___awdiv@quotient),f
 	skipnz
 	incf	(___awdiv@quotient+1),f
-	goto	l1658
+	goto	l2157
 	
-l650:	
+l657:	
 	line	41
 	
-l1658:	
+l2157:	
 	movf	(___awdiv@quotient+1),w
 	clrf	(?___awdiv+1)
 	addwf	(?___awdiv+1)
@@ -5804,12 +5484,12 @@ l1658:
 	clrf	(?___awdiv)
 	addwf	(?___awdiv)
 
-	goto	l651
+	goto	l658
 	
-l1660:	
+l2159:	
 	line	42
 	
-l651:	
+l658:	
 	return
 	opt stack 0
 GLOBAL	__end_of___awdiv
@@ -5819,11 +5499,11 @@ GLOBAL	__end_of___awdiv
 
 ;; *************** function _I2C_Main *****************
 ;; Defined at:
-;;		line 275 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 275 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
-;;  i               1    0[BANK0 ] unsigned char 
+;;  i               1    6[COMMON] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -5834,9 +5514,9 @@ GLOBAL	__end_of___awdiv
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
 ;;      Params:         0       0       0       0       0       0       0       0
-;;      Locals:         0       1       0       0       0       0       0       0
-;;      Temps:          3       0       0       0       0       0       0       0
-;;      Totals:         3       1       0       0       0       0       0       0
+;;      Locals:         1       0       0       0       0       0       0       0
+;;      Temps:          0       3       0       0       0       0       0       0
+;;      Totals:         1       3       0       0       0       0       0       0
 ;;Total ram usage:        4 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    3
@@ -5847,13 +5527,13 @@ GLOBAL	__end_of___awdiv
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text20,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+psect	text19,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	275
-global __ptext20
-__ptext20:	;psect for function _I2C_Main
-psect	text20
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext19
+__ptext19:	;psect for function _I2C_Main
+psect	text19
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	275
 	global	__size_of_I2C_Main
 	__size_of_I2C_Main	equ	__end_of_I2C_Main-_I2C_Main
@@ -5864,10 +5544,9 @@ _I2C_Main:
 ; Regs used in _I2C_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	302
 	
-l2414:	
+l2263:	
 ;MCU_16f1516_B1.c: 277: char i;
 ;MCU_16f1516_B1.c: 302: if(I2C->MasterRxGO)
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -5875,14 +5554,14 @@ l2414:
 	movwf fsr1h	
 	
 	btfss	indf1,4
-	goto	u3381
-	goto	u3380
-u3381:
-	goto	l325
-u3380:
+	goto	u2921
+	goto	u2920
+u2921:
+	goto	l187
+u2920:
 	line	304
 	
-l2416:	
+l2265:	
 ;MCU_16f1516_B1.c: 303: {
 ;MCU_16f1516_B1.c: 304: I2C->MasterRxGO=0;
 	movf	(_I2C),w
@@ -5894,14 +5573,13 @@ l2416:
 	bcf	indf1,4
 	line	305
 	
-l2418:	
+l2267:	
 ;MCU_16f1516_B1.c: 305: I2C_Master_Reception();
 	fcall	_I2C_Master_Reception
 	line	306
 	
-l2420:	
+l2269:	
 ;MCU_16f1516_B1.c: 306: TMain->Test=1;
-	movlb 0	; select bank0
 	movf	(_TMain),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -5911,35 +5589,36 @@ l2420:
 	incf	indf1,f
 	line	307
 	
-l2422:	
+l2271:	
 ;MCU_16f1516_B1.c: 307: RA1=~RA1;
 	movlw	1<<((97)&7)
+	movlb 0	; select bank0
 	xorwf	((97)/8),f
 	line	309
 	
-l2424:	
+l2273:	
 ;MCU_16f1516_B1.c: 309: for(i=0;i<32;i++)
 	clrf	(I2C_Main@i)
 	
-l2426:	
+l2275:	
 	movlw	(020h)
 	subwf	(I2C_Main@i),w
 	skipc
-	goto	u3391
-	goto	u3390
-u3391:
-	goto	l2430
-u3390:
-	goto	l2436
+	goto	u2931
+	goto	u2930
+u2931:
+	goto	l2279
+u2930:
+	goto	l2285
 	
-l2428:	
-	goto	l2436
+l2277:	
+	goto	l2285
 	line	310
 	
-l326:	
+l188:	
 	line	311
 	
-l2430:	
+l2279:	
 ;MCU_16f1516_B1.c: 310: {
 ;MCU_16f1516_B1.c: 311: UART->TxData[i]=I2C->BufferReader[i];
 	movf	(I2C_Main@i),w
@@ -5964,27 +5643,27 @@ l2430:
 	movwf	indf1
 	line	309
 	
-l2432:	
+l2281:	
 	movlw	(01h)
 	movwf	(??_I2C_Main+0)+0
 	movf	(??_I2C_Main+0)+0,w
 	addwf	(I2C_Main@i),f
 	
-l2434:	
+l2283:	
 	movlw	(020h)
 	subwf	(I2C_Main@i),w
 	skipc
-	goto	u3401
-	goto	u3400
-u3401:
-	goto	l2430
-u3400:
-	goto	l2436
+	goto	u2941
+	goto	u2940
+u2941:
+	goto	l2279
+u2940:
+	goto	l2285
 	
-l327:	
+l189:	
 	line	313
 	
-l2436:	
+l2285:	
 ;MCU_16f1516_B1.c: 312: }
 ;MCU_16f1516_B1.c: 313: UART->TxGO=1;
 	movf	(_UART),w
@@ -5996,23 +5675,24 @@ l2436:
 	bsf	indf1,0
 	line	315
 ;MCU_16f1516_B1.c: 315: }
-	goto	l334
+	goto	l196
 	line	316
 	
-l325:	
+l187:	
 	line	318
 ;MCU_16f1516_B1.c: 316: else
 ;MCU_16f1516_B1.c: 317: {
 ;MCU_16f1516_B1.c: 318: if(RC0)
+	movlb 0	; select bank0
 	btfss	(112/8),(112)&7	;volatile
-	goto	u3411
-	goto	u3410
-u3411:
-	goto	l2442
-u3410:
+	goto	u2951
+	goto	u2950
+u2951:
+	goto	l2291
+u2950:
 	line	320
 	
-l2438:	
+l2287:	
 ;MCU_16f1516_B1.c: 319: {
 ;MCU_16f1516_B1.c: 320: if(!I2C->SS)
 	movf	(_I2C),w
@@ -6022,14 +5702,14 @@ l2438:
 	movwf fsr1h	
 	
 	btfsc	indf1,5
-	goto	u3421
-	goto	u3420
-u3421:
-	goto	l334
-u3420:
+	goto	u2961
+	goto	u2960
+u2961:
+	goto	l196
+u2960:
 	line	322
 	
-l2440:	
+l2289:	
 ;MCU_16f1516_B1.c: 321: {
 ;MCU_16f1516_B1.c: 322: I2C->SS=1;
 	movf	(_I2C),w
@@ -6048,20 +5728,20 @@ l2440:
 	movwf fsr1h	
 	
 	bsf	indf1,4
-	goto	l334
+	goto	l196
 	line	324
 	
-l330:	
+l192:	
 	line	325
 ;MCU_16f1516_B1.c: 324: }
 ;MCU_16f1516_B1.c: 325: }
-	goto	l334
+	goto	l196
 	line	326
 	
-l329:	
+l191:	
 	line	328
 	
-l2442:	
+l2291:	
 ;MCU_16f1516_B1.c: 326: else
 ;MCU_16f1516_B1.c: 327: {
 ;MCU_16f1516_B1.c: 328: if(I2C->SS)
@@ -6072,14 +5752,14 @@ l2442:
 	movwf fsr1h	
 	
 	btfss	indf1,5
-	goto	u3431
-	goto	u3430
-u3431:
-	goto	l332
-u3430:
+	goto	u2971
+	goto	u2970
+u2971:
+	goto	l194
+u2970:
 	line	330
 	
-l2444:	
+l2293:	
 ;MCU_16f1516_B1.c: 329: {
 ;MCU_16f1516_B1.c: 330: I2C->SS=0;
 	movf	(_I2C),w
@@ -6091,7 +5771,7 @@ l2444:
 	bcf	indf1,5
 	line	331
 	
-l332:	
+l194:	
 	line	332
 ;MCU_16f1516_B1.c: 331: }
 ;MCU_16f1516_B1.c: 332: if(I2C->MasterTxGO)
@@ -6102,14 +5782,14 @@ l332:
 	movwf fsr1h	
 	
 	btfss	indf1,3
-	goto	u3441
-	goto	u3440
-u3441:
-	goto	l334
-u3440:
+	goto	u2981
+	goto	u2980
+u2981:
+	goto	l196
+u2980:
 	line	334
 	
-l2446:	
+l2295:	
 ;MCU_16f1516_B1.c: 333: {
 ;MCU_16f1516_B1.c: 334: I2C->MasterTxGO=0;
 	movf	(_I2C),w
@@ -6121,24 +5801,24 @@ l2446:
 	bcf	indf1,3
 	line	335
 	
-l2448:	
+l2297:	
 ;MCU_16f1516_B1.c: 335: I2C_Master_Transmission();
 	fcall	_I2C_Master_Transmission
-	goto	l334
+	goto	l196
 	line	336
 	
-l333:	
-	goto	l334
+l195:	
+	goto	l196
 	line	337
 	
-l331:	
-	goto	l334
+l193:	
+	goto	l196
 	line	338
 	
-l328:	
+l190:	
 	line	341
 	
-l334:	
+l196:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Main
@@ -6148,7 +5828,7 @@ GLOBAL	__end_of_I2C_Main
 
 ;; *************** function _I2C_Master_Transmission *****************
 ;; Defined at:
-;;		line 375 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 375 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6175,12 +5855,12 @@ GLOBAL	__end_of_I2C_Main
 ;;		_I2C_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text21,local,class=CODE,delta=2,merge=1
+psect	text20,local,class=CODE,delta=2,merge=1
 	line	375
-global __ptext21
-__ptext21:	;psect for function _I2C_Master_Transmission
-psect	text21
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext20
+__ptext20:	;psect for function _I2C_Master_Transmission
+psect	text20
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	375
 	global	__size_of_I2C_Master_Transmission
 	__size_of_I2C_Master_Transmission	equ	__end_of_I2C_Master_Transmission-_I2C_Master_Transmission
@@ -6191,126 +5871,125 @@ _I2C_Master_Transmission:
 ; Regs used in _I2C_Master_Transmission: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	378
 	
-l2340:	
+l1695:	
 ;MCU_16f1516_B1.c: 377: char i;
 ;MCU_16f1516_B1.c: 378: while(SEN);
-	goto	l340
+	goto	l202
 	
-l341:	
+l203:	
 	
-l340:	
+l202:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3151
-	goto	u3150
-u3151:
-	goto	l340
-u3150:
+	goto	u1771
+	goto	u1770
+u1771:
+	goto	l202
+u1770:
 	
-l342:	
+l204:	
 	line	379
 ;MCU_16f1516_B1.c: 379: SEN=1;
 	bsf	(4272/8)^0200h,(4272)&7	;volatile
 	line	381
 ;MCU_16f1516_B1.c: 381: while(SEN);
-	goto	l343
+	goto	l205
 	
-l344:	
+l206:	
 	
-l343:	
+l205:	
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3161
-	goto	u3160
-u3161:
-	goto	l343
-u3160:
-	goto	l2342
+	goto	u1781
+	goto	u1780
+u1781:
+	goto	l205
+u1780:
+	goto	l1697
 	
-l345:	
+l207:	
 	line	384
 	
-l2342:	
+l1697:	
 ;MCU_16f1516_B1.c: 384: SSPBUF=0x10;
 	movlw	(010h)
 	movwf	(529)^0200h	;volatile
 	line	385
 ;MCU_16f1516_B1.c: 385: while(BF);
-	goto	l346
+	goto	l208
 	
-l347:	
+l209:	
 	
-l346:	
+l208:	
 	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u3171
-	goto	u3170
-u3171:
-	goto	l346
-u3170:
-	goto	l349
+	goto	u1791
+	goto	u1790
+u1791:
+	goto	l208
+u1790:
+	goto	l211
 	
-l348:	
+l210:	
 	line	388
 ;MCU_16f1516_B1.c: 388: while(ACKSTAT);
-	goto	l349
+	goto	l211
 	
-l350:	
+l212:	
 	
-l349:	
+l211:	
 	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u3181
-	goto	u3180
-u3181:
-	goto	l349
-u3180:
-	goto	l2344
+	goto	u1801
+	goto	u1800
+u1801:
+	goto	l211
+u1800:
+	goto	l1699
 	
-l351:	
+l213:	
 	line	390
 	
-l2344:	
+l1699:	
 ;MCU_16f1516_B1.c: 390: for(i=0;i<32;i++)
 	clrf	(I2C_Master_Transmission@i)
 	
-l2346:	
+l1701:	
 	movlw	(020h)
 	subwf	(I2C_Master_Transmission@i),w
 	skipc
-	goto	u3191
-	goto	u3190
-u3191:
-	goto	l354
-u3190:
-	goto	l363
+	goto	u1811
+	goto	u1810
+u1811:
+	goto	l216
+u1810:
+	goto	l225
 	
-l2348:	
-	goto	l363
+l1703:	
+	goto	l225
 	line	391
 	
-l352:	
+l214:	
 	line	392
 ;MCU_16f1516_B1.c: 391: {
 ;MCU_16f1516_B1.c: 392: while(SEN);
-	goto	l354
+	goto	l216
 	
-l355:	
+l217:	
 	
-l354:	
+l216:	
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3201
-	goto	u3200
-u3201:
-	goto	l354
-u3200:
-	goto	l2350
+	goto	u1821
+	goto	u1820
+u1821:
+	goto	l216
+u1820:
+	goto	l1705
 	
-l356:	
+l218:	
 	line	393
 	
-l2350:	
+l1705:	
 ;MCU_16f1516_B1.c: 393: SSPBUF=I2C->BufferWriter[i];
 	movf	(I2C_Master_Transmission@i),w
 	addlw	020h
-	movlb 0	; select bank0
 	addwf	(_I2C),w
 	movwf	(??_I2C_Master_Transmission+0)+0
 	movf	0+(??_I2C_Master_Transmission+0)+0,w
@@ -6319,116 +5998,115 @@ l2350:
 	movwf fsr1h	
 	
 	movf	indf1,w
-	movlb 4	; select bank4
 	movwf	(529)^0200h	;volatile
 	line	394
 ;MCU_16f1516_B1.c: 394: while(BF);
-	goto	l357
+	goto	l219
 	
-l358:	
+l220:	
 	
-l357:	
+l219:	
 	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u3211
-	goto	u3210
-u3211:
-	goto	l357
-u3210:
-	goto	l360
+	goto	u1831
+	goto	u1830
+u1831:
+	goto	l219
+u1830:
+	goto	l222
 	
-l359:	
+l221:	
 	line	397
 ;MCU_16f1516_B1.c: 397: while(ACKSTAT);
-	goto	l360
+	goto	l222
 	
-l361:	
+l223:	
 	
-l360:	
+l222:	
 	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u3221
-	goto	u3220
-u3221:
-	goto	l360
-u3220:
-	goto	l2352
+	goto	u1841
+	goto	u1840
+u1841:
+	goto	l222
+u1840:
+	goto	l1707
 	
-l362:	
+l224:	
 	line	390
 	
-l2352:	
+l1707:	
 	movlw	(01h)
 	movwf	(??_I2C_Master_Transmission+0)+0
 	movf	(??_I2C_Master_Transmission+0)+0,w
 	addwf	(I2C_Master_Transmission@i),f
 	
-l2354:	
+l1709:	
 	movlw	(020h)
 	subwf	(I2C_Master_Transmission@i),w
 	skipc
-	goto	u3231
-	goto	u3230
-u3231:
-	goto	l354
-u3230:
-	goto	l363
+	goto	u1851
+	goto	u1850
+u1851:
+	goto	l216
+u1850:
+	goto	l225
 	
-l353:	
+l215:	
 	line	400
 ;MCU_16f1516_B1.c: 398: }
 ;MCU_16f1516_B1.c: 400: while(SEN);
-	goto	l363
+	goto	l225
 	
-l364:	
+l226:	
 	
-l363:	
+l225:	
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3241
-	goto	u3240
-u3241:
-	goto	l363
-u3240:
-	goto	l366
+	goto	u1861
+	goto	u1860
+u1861:
+	goto	l225
+u1860:
+	goto	l228
 	
-l365:	
+l227:	
 	line	401
 ;MCU_16f1516_B1.c: 401: while(!PEN)
-	goto	l366
+	goto	l228
 	
-l367:	
+l229:	
 	line	402
 ;MCU_16f1516_B1.c: 402: PEN=1;
 	bsf	(4274/8)^0200h,(4274)&7	;volatile
 	
-l366:	
+l228:	
 	line	401
 	btfss	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u3251
-	goto	u3250
-u3251:
-	goto	l367
-u3250:
-	goto	l369
+	goto	u1871
+	goto	u1870
+u1871:
+	goto	l229
+u1870:
+	goto	l231
 	
-l368:	
+l230:	
 	line	403
 ;MCU_16f1516_B1.c: 403: while(PEN);
-	goto	l369
+	goto	l231
 	
-l370:	
+l232:	
 	
-l369:	
+l231:	
 	btfsc	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u3261
-	goto	u3260
-u3261:
-	goto	l369
-u3260:
-	goto	l372
+	goto	u1881
+	goto	u1880
+u1881:
+	goto	l231
+u1880:
+	goto	l234
 	
-l371:	
+l233:	
 	line	406
 	
-l372:	
+l234:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Master_Transmission
@@ -6438,7 +6116,7 @@ GLOBAL	__end_of_I2C_Master_Transmission
 
 ;; *************** function _I2C_Master_Reception *****************
 ;; Defined at:
-;;		line 408 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 408 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6465,12 +6143,12 @@ GLOBAL	__end_of_I2C_Master_Transmission
 ;;		_I2C_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text22,local,class=CODE,delta=2,merge=1
+psect	text21,local,class=CODE,delta=2,merge=1
 	line	408
-global __ptext22
-__ptext22:	;psect for function _I2C_Master_Reception
-psect	text22
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext21
+__ptext21:	;psect for function _I2C_Master_Reception
+psect	text21
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	408
 	global	__size_of_I2C_Master_Reception
 	__size_of_I2C_Master_Reception	equ	__end_of_I2C_Master_Reception-_I2C_Master_Reception
@@ -6481,161 +6159,160 @@ _I2C_Master_Reception:
 ; Regs used in _I2C_Master_Reception: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	411
 	
-l2324:	
+l1679:	
 ;MCU_16f1516_B1.c: 410: char i;
 ;MCU_16f1516_B1.c: 411: while(SEN);
-	goto	l375
+	goto	l237
 	
-l376:	
+l238:	
 	
-l375:	
+l237:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2991
-	goto	u2990
-u2991:
-	goto	l375
-u2990:
+	goto	u1571
+	goto	u1570
+u1571:
+	goto	l237
+u1570:
 	
-l377:	
+l239:	
 	line	412
 ;MCU_16f1516_B1.c: 412: SEN=1;
 	bsf	(4272/8)^0200h,(4272)&7	;volatile
 	line	413
 ;MCU_16f1516_B1.c: 413: while(SEN);
-	goto	l378
+	goto	l240
 	
-l379:	
+l241:	
 	
-l378:	
+l240:	
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3001
-	goto	u3000
-u3001:
-	goto	l378
-u3000:
-	goto	l2326
+	goto	u1581
+	goto	u1580
+u1581:
+	goto	l240
+u1580:
+	goto	l1681
 	
-l380:	
+l242:	
 	line	416
 	
-l2326:	
+l1681:	
 ;MCU_16f1516_B1.c: 416: SSPBUF=0x11;
 	movlw	(011h)
 	movwf	(529)^0200h	;volatile
 	line	419
 ;MCU_16f1516_B1.c: 419: while(BF);
-	goto	l381
+	goto	l243
 	
-l382:	
+l244:	
 	
-l381:	
+l243:	
 	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u3011
-	goto	u3010
-u3011:
-	goto	l381
-u3010:
-	goto	l384
+	goto	u1591
+	goto	u1590
+u1591:
+	goto	l243
+u1590:
+	goto	l246
 	
-l383:	
+l245:	
 	line	420
 ;MCU_16f1516_B1.c: 420: while(ACKSTAT);
-	goto	l384
+	goto	l246
 	
-l385:	
+l247:	
 	
-l384:	
+l246:	
 	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u3021
-	goto	u3020
-u3021:
-	goto	l384
-u3020:
-	goto	l2328
+	goto	u1601
+	goto	u1600
+u1601:
+	goto	l246
+u1600:
+	goto	l1683
 	
-l386:	
+l248:	
 	line	423
 	
-l2328:	
+l1683:	
 ;MCU_16f1516_B1.c: 423: for(i=0;i<32;i++)
 	clrf	(I2C_Master_Reception@i)
 	
-l2330:	
+l1685:	
 	movlw	(020h)
 	subwf	(I2C_Master_Reception@i),w
 	skipc
-	goto	u3031
-	goto	u3030
-u3031:
-	goto	l389
-u3030:
-	goto	l404
+	goto	u1611
+	goto	u1610
+u1611:
+	goto	l251
+u1610:
+	goto	l266
 	
-l2332:	
-	goto	l404
+l1687:	
+	goto	l266
 	line	424
 	
-l387:	
+l249:	
 	line	425
 ;MCU_16f1516_B1.c: 424: {
 ;MCU_16f1516_B1.c: 425: while(SEN);
-	goto	l389
+	goto	l251
 	
-l390:	
+l252:	
 	
-l389:	
+l251:	
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3041
-	goto	u3040
-u3041:
-	goto	l389
-u3040:
-	goto	l392
+	goto	u1621
+	goto	u1620
+u1621:
+	goto	l251
+u1620:
+	goto	l254
 	
-l391:	
+l253:	
 	line	426
 ;MCU_16f1516_B1.c: 426: while(RCEN);
-	goto	l392
+	goto	l254
 	
-l393:	
+l255:	
 	
-l392:	
+l254:	
 	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u3051
-	goto	u3050
-u3051:
-	goto	l392
-u3050:
+	goto	u1631
+	goto	u1630
+u1631:
+	goto	l254
+u1630:
 	
-l394:	
+l256:	
 	line	427
 ;MCU_16f1516_B1.c: 427: RCEN=1;
 	bsf	(4275/8)^0200h,(4275)&7	;volatile
 	line	428
 ;MCU_16f1516_B1.c: 428: while(RCEN);
-	goto	l395
+	goto	l257
 	
-l396:	
+l258:	
 	
-l395:	
+l257:	
 	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u3061
-	goto	u3060
-u3061:
-	goto	l395
-u3060:
-	goto	l2334
+	goto	u1641
+	goto	u1640
+u1641:
+	goto	l257
+u1640:
+	goto	l1689
 	
-l397:	
+l259:	
 	line	429
 	
-l2334:	
+l1689:	
 ;MCU_16f1516_B1.c: 429: I2C->BufferReader[i]=SSPBUF;
 	movf	(529)^0200h,w	;volatile
 	movwf	(??_I2C_Master_Reception+0)+0
 	movf	(I2C_Master_Reception@i),w
-	movlb 0	; select bank0
 	addwf	(_I2C),w
 	movwf	(??_I2C_Master_Reception+1)+0
 	movf	0+(??_I2C_Master_Reception+1)+0,w
@@ -6647,151 +6324,220 @@ l2334:
 	movwf	indf1
 	line	430
 ;MCU_16f1516_B1.c: 430: while(!ACKEN)
-	goto	l398
+	goto	l260
 	
-l399:	
+l261:	
 	line	431
 ;MCU_16f1516_B1.c: 431: ACKEN=1;
 	bsf	(4276/8)^0200h,(4276)&7	;volatile
 	
-l398:	
+l260:	
 	line	430
-	movlb 4	; select bank4
 	btfss	(4276/8)^0200h,(4276)&7	;volatile
-	goto	u3071
-	goto	u3070
-u3071:
-	goto	l399
-u3070:
-	goto	l401
+	goto	u1651
+	goto	u1650
+u1651:
+	goto	l261
+u1650:
+	goto	l263
 	
-l400:	
+l262:	
 	line	432
 ;MCU_16f1516_B1.c: 432: while(ACKEN);
-	goto	l401
+	goto	l263
 	
-l402:	
+l264:	
 	
-l401:	
+l263:	
 	btfsc	(4276/8)^0200h,(4276)&7	;volatile
-	goto	u3081
-	goto	u3080
-u3081:
-	goto	l401
-u3080:
-	goto	l2336
+	goto	u1661
+	goto	u1660
+u1661:
+	goto	l263
+u1660:
+	goto	l1691
 	
-l403:	
+l265:	
 	line	423
 	
-l2336:	
+l1691:	
 	movlw	(01h)
 	movwf	(??_I2C_Master_Reception+0)+0
 	movf	(??_I2C_Master_Reception+0)+0,w
 	addwf	(I2C_Master_Reception@i),f
 	
-l2338:	
+l1693:	
 	movlw	(020h)
 	subwf	(I2C_Master_Reception@i),w
 	skipc
-	goto	u3091
-	goto	u3090
-u3091:
-	goto	l389
-u3090:
-	goto	l404
+	goto	u1671
+	goto	u1670
+u1671:
+	goto	l251
+u1670:
+	goto	l266
 	
-l388:	
+l250:	
 	line	434
 ;MCU_16f1516_B1.c: 433: }
 ;MCU_16f1516_B1.c: 434: while(RCEN);
-	goto	l404
+	goto	l266
 	
-l405:	
+l267:	
 	
-l404:	
+l266:	
 	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u3101
-	goto	u3100
-u3101:
-	goto	l404
-u3100:
+	goto	u1681
+	goto	u1680
+u1681:
+	goto	l266
+u1680:
 	
-l406:	
+l268:	
 	line	435
 ;MCU_16f1516_B1.c: 435: RCEN=1;
 	bsf	(4275/8)^0200h,(4275)&7	;volatile
 	line	436
 ;MCU_16f1516_B1.c: 436: while(RCEN);
-	goto	l407
+	goto	l269
 	
-l408:	
+l270:	
 	
-l407:	
+l269:	
 	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u3111
-	goto	u3110
-u3111:
-	goto	l407
-u3110:
-	goto	l410
+	goto	u1691
+	goto	u1690
+u1691:
+	goto	l269
+u1690:
+	goto	l272
 	
-l409:	
+l271:	
+	line	437
+;MCU_16f1516_B1.c: 437: while(!ACKEN)
+	goto	l272
+	
+l273:	
 	line	438
-;MCU_16f1516_B1.c: 438: while(SEN);
-	goto	l410
+;MCU_16f1516_B1.c: 438: ACKEN=1;
+	bsf	(4276/8)^0200h,(4276)&7	;volatile
 	
-l411:	
+l272:	
+	line	437
+	btfss	(4276/8)^0200h,(4276)&7	;volatile
+	goto	u1701
+	goto	u1700
+u1701:
+	goto	l273
+u1700:
+	goto	l275
 	
-l410:	
-	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u3121
-	goto	u3120
-u3121:
-	goto	l410
-u3120:
-	goto	l413
-	
-l412:	
+l274:	
 	line	439
-;MCU_16f1516_B1.c: 439: while(!PEN)
-	goto	l413
+;MCU_16f1516_B1.c: 439: while(ACKEN);
+	goto	l275
 	
-l414:	
+l276:	
+	
+l275:	
+	btfsc	(4276/8)^0200h,(4276)&7	;volatile
+	goto	u1711
+	goto	u1710
+u1711:
+	goto	l275
+u1710:
+	goto	l278
+	
+l277:	
 	line	440
-;MCU_16f1516_B1.c: 440: PEN=1;
+;MCU_16f1516_B1.c: 440: while(RCEN);
+	goto	l278
+	
+l279:	
+	
+l278:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u1721
+	goto	u1720
+u1721:
+	goto	l278
+u1720:
+	
+l280:	
+	line	441
+;MCU_16f1516_B1.c: 441: RCEN=1;
+	bsf	(4275/8)^0200h,(4275)&7	;volatile
+	line	442
+;MCU_16f1516_B1.c: 442: while(RCEN);
+	goto	l281
+	
+l282:	
+	
+l281:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u1731
+	goto	u1730
+u1731:
+	goto	l281
+u1730:
+	goto	l284
+	
+l283:	
+	line	444
+;MCU_16f1516_B1.c: 444: while(SEN);
+	goto	l284
+	
+l285:	
+	
+l284:	
+	btfsc	(4272/8)^0200h,(4272)&7	;volatile
+	goto	u1741
+	goto	u1740
+u1741:
+	goto	l284
+u1740:
+	goto	l287
+	
+l286:	
+	line	445
+;MCU_16f1516_B1.c: 445: while(!PEN)
+	goto	l287
+	
+l288:	
+	line	446
+;MCU_16f1516_B1.c: 446: PEN=1;
 	bsf	(4274/8)^0200h,(4274)&7	;volatile
 	
-l413:	
-	line	439
+l287:	
+	line	445
 	btfss	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u3131
-	goto	u3130
-u3131:
-	goto	l414
-u3130:
-	goto	l416
+	goto	u1751
+	goto	u1750
+u1751:
+	goto	l288
+u1750:
+	goto	l290
 	
-l415:	
-	line	441
-;MCU_16f1516_B1.c: 441: while(PEN);
-	goto	l416
+l289:	
+	line	447
+;MCU_16f1516_B1.c: 447: while(PEN);
+	goto	l290
 	
-l417:	
+l291:	
 	
-l416:	
+l290:	
 	btfsc	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u3141
-	goto	u3140
-u3141:
-	goto	l416
-u3140:
-	goto	l419
+	goto	u1761
+	goto	u1760
+u1761:
+	goto	l290
+u1760:
+	goto	l293
 	
-l418:	
-	line	444
+l292:	
+	line	450
 	
-l419:	
+l293:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Master_Reception
@@ -6801,7 +6547,7 @@ GLOBAL	__end_of_I2C_Master_Reception
 
 ;; *************** function _ISR *****************
 ;; Defined at:
-;;		line 56 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 56 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6834,7 +6580,7 @@ psect	intentry,class=CODE,delta=2
 global __pintentry
 __pintentry:
 psect	intentry
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	56
 	global	__size_of_ISR
 	__size_of_ISR	equ	__end_of_ISR-_ISR
@@ -6851,7 +6597,7 @@ psect	intentry
 	movwf	(??_ISR+0)
 	line	58
 	
-i1l2088:	
+i1l1977:	
 ;MCU_16f1516_B1.c: 58: __nop();
 	opt	asmopt_off
 	nop
@@ -6863,12 +6609,12 @@ i1l2088:
 	opt	asmopt_on
 	line	62
 	
-i1l2090:	
+i1l1979:	
 ;MCU_16f1516_B1.c: 62: TMR1_ISR();
 	fcall	_TMR1_ISR
 	line	66
 	
-i1l2092:	
+i1l1981:	
 ;MCU_16f1516_B1.c: 66: __nop();
 	opt	asmopt_off
 	nop
@@ -6881,7 +6627,7 @@ i1l2092:
 	fcall	_I2C_ISR
 	line	71
 	
-i1l307:	
+i1l169:	
 	movf	(??_ISR+0),w
 	movlb 0	; select bank0
 	movwf	btemp+1
@@ -6895,7 +6641,7 @@ GLOBAL	__end_of_ISR
 
 ;; *************** function _UART_ISR *****************
 ;; Defined at:
-;;		line 507 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 516 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6921,13 +6667,13 @@ GLOBAL	__end_of_ISR
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text24,local,class=CODE,delta=2,merge=1
-	line	507
-global __ptext24
-__ptext24:	;psect for function _UART_ISR
-psect	text24
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
-	line	507
+psect	text23,local,class=CODE,delta=2,merge=1
+	line	516
+global __ptext23
+__ptext23:	;psect for function _UART_ISR
+psect	text23
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+	line	516
 	global	__size_of_UART_ISR
 	__size_of_UART_ISR	equ	__end_of_UART_ISR-_UART_ISR
 	
@@ -6935,55 +6681,54 @@ _UART_ISR:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _UART_ISR: [wreg+fsr1l+fsr1h+status,2+status,0]
-	line	510
+	line	519
 	
-i1l2042:	
-;MCU_16f1516_B1.c: 509: char i;
-;MCU_16f1516_B1.c: 510: if(RCIE && RCIF)
+i1l1823:	
+;MCU_16f1516_B1.c: 518: char i;
+;MCU_16f1516_B1.c: 519: if(RCIE && RCIF)
 	movlb 1	; select bank1
 	btfss	(1165/8)^080h,(1165)&7	;volatile
-	goto	u242_21
-	goto	u242_20
-u242_21:
-	goto	i1l448
-u242_20:
+	goto	u208_21
+	goto	u208_20
+u208_21:
+	goto	i1l322
+u208_20:
 	
-i1l2044:	
+i1l1825:	
 	movlb 0	; select bank0
 	btfss	(141/8),(141)&7	;volatile
-	goto	u243_21
-	goto	u243_20
-u243_21:
-	goto	i1l448
-u243_20:
-	goto	i1l444
-	line	512
+	goto	u209_21
+	goto	u209_20
+u209_21:
+	goto	i1l322
+u209_20:
+	goto	i1l318
+	line	521
 	
-i1l2046:	
-;MCU_16f1516_B1.c: 511: {
-;MCU_16f1516_B1.c: 512: while(!RCIDL);
-	goto	i1l444
+i1l1827:	
+;MCU_16f1516_B1.c: 520: {
+;MCU_16f1516_B1.c: 521: while(!RCIDL);
+	goto	i1l318
 	
-i1l445:	
+i1l319:	
 	
-i1l444:	
+i1l318:	
 	movlb 3	; select bank3
 	btfss	(3326/8)^0180h,(3326)&7	;volatile
-	goto	u244_21
-	goto	u244_20
-u244_21:
-	goto	i1l444
-u244_20:
-	goto	i1l2048
+	goto	u210_21
+	goto	u210_20
+u210_21:
+	goto	i1l318
+u210_20:
+	goto	i1l1829
 	
-i1l446:	
-	line	513
+i1l320:	
+	line	522
 	
-i1l2048:	
-;MCU_16f1516_B1.c: 513: UART->RxData[UART->RxLength]=RCREG;
+i1l1829:	
+;MCU_16f1516_B1.c: 522: UART->RxData[UART->RxLength]=RCREG;
 	movf	(409)^0180h,w	;volatile
 	movwf	(??_UART_ISR+0)+0
-	movlb 0	; select bank0
 	movf	(_UART),w
 	addlw	042h
 	movwf	fsr1l
@@ -7001,8 +6746,8 @@ i1l2048:
 	
 	movf	(??_UART_ISR+0)+0,w
 	movwf	indf1
-	line	515
-;MCU_16f1516_B1.c: 515: UART->RxLength++;
+	line	524
+;MCU_16f1516_B1.c: 524: UART->RxLength++;
 	movlw	(01h)
 	movwf	(??_UART_ISR+0)+0
 	movf	(_UART),w
@@ -7013,10 +6758,10 @@ i1l2048:
 	
 	movf	(??_UART_ISR+0)+0,w
 	addwf	indf1,f
-	line	516
+	line	525
 	
-i1l2050:	
-;MCU_16f1516_B1.c: 516: if(UART->RxLength == 32)
+i1l1831:	
+;MCU_16f1516_B1.c: 525: if(UART->RxLength == 32)
 	movf	(_UART),w
 	addlw	042h
 	movwf	fsr1l
@@ -7026,16 +6771,16 @@ i1l2050:
 	movf	indf1,w
 	xorlw	020h&0ffh
 	skipz
-	goto	u245_21
-	goto	u245_20
-u245_21:
-	goto	i1l448
-u245_20:
-	line	518
+	goto	u211_21
+	goto	u211_20
+u211_21:
+	goto	i1l322
+u211_20:
+	line	527
 	
-i1l2052:	
-;MCU_16f1516_B1.c: 517: {
-;MCU_16f1516_B1.c: 518: UART->RxLength=0;
+i1l1833:	
+;MCU_16f1516_B1.c: 526: {
+;MCU_16f1516_B1.c: 527: UART->RxLength=0;
 	movf	(_UART),w
 	addlw	042h
 	movwf	fsr1l
@@ -7043,10 +6788,10 @@ i1l2052:
 	movwf fsr1h	
 	
 	clrf	indf1
-	line	519
+	line	528
 	
-i1l2054:	
-;MCU_16f1516_B1.c: 519: UART->RxGO=1;
+i1l1835:	
+;MCU_16f1516_B1.c: 528: UART->RxGO=1;
 	movf	(_UART),w
 	addlw	043h
 	movwf	fsr1l
@@ -7054,23 +6799,23 @@ i1l2054:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	line	520
+	line	529
 	
-i1l2056:	
-;MCU_16f1516_B1.c: 520: RCIE=0;
+i1l1837:	
+;MCU_16f1516_B1.c: 529: RCIE=0;
 	movlb 1	; select bank1
 	bcf	(1165/8)^080h,(1165)&7	;volatile
-	goto	i1l448
-	line	521
+	goto	i1l322
+	line	530
 	
-i1l447:	
-	goto	i1l448
-	line	522
+i1l321:	
+	goto	i1l322
+	line	531
 	
-i1l443:	
-	line	523
+i1l317:	
+	line	532
 	
-i1l448:	
+i1l322:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_ISR
@@ -7080,7 +6825,7 @@ GLOBAL	__end_of_UART_ISR
 
 ;; *************** function _TMR1_ISR *****************
 ;; Defined at:
-;;		line 125 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 125 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7106,12 +6851,12 @@ GLOBAL	__end_of_UART_ISR
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text25,local,class=CODE,delta=2,merge=1
+psect	text24,local,class=CODE,delta=2,merge=1
 	line	125
-global __ptext25
-__ptext25:	;psect for function _TMR1_ISR
-psect	text25
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext24
+__ptext24:	;psect for function _TMR1_ISR
+psect	text24
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	125
 	global	__size_of_TMR1_ISR
 	__size_of_TMR1_ISR	equ	__end_of_TMR1_ISR-_TMR1_ISR
@@ -7122,27 +6867,27 @@ _TMR1_ISR:
 ; Regs used in _TMR1_ISR: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	127
 	
-i1l2028:	
+i1l1809:	
 ;MCU_16f1516_B1.c: 127: if(TMR1IE && TMR1IF)
 	movlb 1	; select bank1
 	btfss	(1160/8)^080h,(1160)&7	;volatile
-	goto	u239_21
-	goto	u239_20
-u239_21:
-	goto	i1l315
-u239_20:
+	goto	u205_21
+	goto	u205_20
+u205_21:
+	goto	i1l177
+u205_20:
 	
-i1l2030:	
+i1l1811:	
 	movlb 0	; select bank0
 	btfss	(136/8),(136)&7	;volatile
-	goto	u240_21
-	goto	u240_20
-u240_21:
-	goto	i1l315
-u240_20:
+	goto	u206_21
+	goto	u206_20
+u206_21:
+	goto	i1l177
+u206_20:
 	line	129
 	
-i1l2032:	
+i1l1813:	
 ;MCU_16f1516_B1.c: 128: {
 ;MCU_16f1516_B1.c: 129: TMR1H=((65536-700)/256);
 	movlw	(0FDh)
@@ -7153,12 +6898,12 @@ i1l2032:
 	movwf	(22)	;volatile
 	line	131
 	
-i1l2034:	
+i1l1815:	
 ;MCU_16f1516_B1.c: 131: TMR1IF=0;
 	bcf	(136/8),(136)&7	;volatile
 	line	132
 	
-i1l2036:	
+i1l1817:	
 ;MCU_16f1516_B1.c: 132: Timer1->Count++;
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -7171,7 +6916,7 @@ i1l2036:
 	incf	indf1,f
 	line	133
 	
-i1l2038:	
+i1l1819:	
 ;MCU_16f1516_B1.c: 133: if(Timer1->Count == 20)
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -7180,19 +6925,19 @@ i1l2038:
 	moviw	[0]fsr1
 	xorlw	low(014h)
 	skipz
-	goto	u241_25
+	goto	u207_25
 	moviw	[1]fsr1
 	xorlw	high(014h)
-u241_25:
+u207_25:
 	skipz
-	goto	u241_21
-	goto	u241_20
-u241_21:
-	goto	i1l315
-u241_20:
+	goto	u207_21
+	goto	u207_20
+u207_21:
+	goto	i1l177
+u207_20:
 	line	135
 	
-i1l2040:	
+i1l1821:	
 ;MCU_16f1516_B1.c: 134: {
 ;MCU_16f1516_B1.c: 135: Timer1->Count=0;
 	incf	(_Timer1),w
@@ -7209,17 +6954,17 @@ i1l2040:
 	clrf fsr1h	
 	
 	bsf	indf1,2
-	goto	i1l315
+	goto	i1l177
 	line	137
 	
-i1l314:	
-	goto	i1l315
+i1l176:	
+	goto	i1l177
 	line	138
 	
-i1l313:	
+i1l175:	
 	line	139
 	
-i1l315:	
+i1l177:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_ISR
@@ -7229,7 +6974,7 @@ GLOBAL	__end_of_TMR1_ISR
 
 ;; *************** function _I2C_ISR *****************
 ;; Defined at:
-;;		line 260 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 260 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7255,12 +7000,12 @@ GLOBAL	__end_of_TMR1_ISR
 ;;		_ISR
 ;; This function uses a non-reentrant model
 ;;
-psect	text26,local,class=CODE,delta=2,merge=1
+psect	text25,local,class=CODE,delta=2,merge=1
 	line	260
-global __ptext26
-__ptext26:	;psect for function _I2C_ISR
-psect	text26
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext25
+__ptext25:	;psect for function _I2C_ISR
+psect	text25
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	260
 	global	__size_of_I2C_ISR
 	__size_of_I2C_ISR	equ	__end_of_I2C_ISR-_I2C_ISR
@@ -7271,36 +7016,35 @@ _I2C_ISR:
 ; Regs used in _I2C_ISR: [wregfsr1]
 	line	262
 	
-i1l2058:	
+i1l1839:	
 ;MCU_16f1516_B1.c: 262: if(SSPIE && SSPIF)
 	movlb 1	; select bank1
 	btfss	(1163/8)^080h,(1163)&7	;volatile
-	goto	u246_21
-	goto	u246_20
-u246_21:
-	goto	i1l322
-u246_20:
+	goto	u212_21
+	goto	u212_20
+u212_21:
+	goto	i1l184
+u212_20:
 	
-i1l2060:	
+i1l1841:	
 	movlb 0	; select bank0
 	btfss	(139/8),(139)&7	;volatile
-	goto	u247_21
-	goto	u247_20
-u247_21:
-	goto	i1l322
-u247_20:
+	goto	u213_21
+	goto	u213_20
+u213_21:
+	goto	i1l184
+u213_20:
 	line	264
 	
-i1l2062:	
+i1l1843:	
 ;MCU_16f1516_B1.c: 263: {
 ;MCU_16f1516_B1.c: 264: SSPIE=0;
 	movlb 1	; select bank1
 	bcf	(1163/8)^080h,(1163)&7	;volatile
 	line	265
 	
-i1l2064:	
+i1l1845:	
 ;MCU_16f1516_B1.c: 265: I2C->SlaveGO=1;
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -7308,13 +7052,13 @@ i1l2064:
 	movwf fsr1h	
 	
 	bsf	indf1,0
-	goto	i1l322
+	goto	i1l184
 	line	272
 	
-i1l321:	
+i1l183:	
 	line	273
 	
-i1l322:	
+i1l184:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_ISR

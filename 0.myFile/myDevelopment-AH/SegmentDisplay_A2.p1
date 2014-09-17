@@ -1,14 +1,14 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"240 I:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"240 C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "257
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO PowerCount Count Count1 Count2 Count3 IOC_Count Test FirstOpen i j k l m n o p q r ]
-"55 I:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"55 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [s S4 `uc -> 17 `i `uc -> 4 `i :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S4 Segment Display Num Enable GO Hex Dec ComCount DisplayCount Count Time ]
-"242 I:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"242 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
 [s S237 :1 `uc 1 `ui 1 ]
 [n S237 Timer1 Timeout Count ]
 "338
@@ -67,7 +67,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myDevelopment-A.h: 241: {
 [; ;myDevelopment-A.h: 242: unsigned char Data[32];
 [; ;myDevelopment-A.h: 243: };
-"244 I:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"244 C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
 [v _Product `*S2 ~T0 @X0 1 e ]
 [; ;myDevelopment-A.h: 244: struct Product *Product;
 "245
@@ -173,7 +173,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SegmentDisplay_A2.h: 65: unsigned char Count;
 [; ;SegmentDisplay_A2.h: 66: unsigned char Time;
 [; ;SegmentDisplay_A2.h: 67: };
-"68 I:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"68 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [v _Segment `*S4 ~T0 @X0 1 e ]
 [; ;SegmentDisplay_A2.h: 68: struct Segment *Segment;
 "69
@@ -2034,7 +2034,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1516_B1.h: 244: unsigned Timeout:1;
 [; ;MCU_16F1516_B1.h: 245: unsigned int Count;
 [; ;MCU_16F1516_B1.h: 246: };
-"247 I:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"247 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
 [v _VarTimer1 `S237 ~T0 @X0 1 e ]
 [; ;MCU_16F1516_B1.h: 247: struct Timer1 VarTimer1;
 "248
@@ -2093,7 +2093,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1516_B1.h: 400: void I2C_Slave_Mode();
 [; ;MCU_16F1516_B1.h: 401: void I2C_Main();
 [; ;MCU_16F1516_B1.h: 402: void I2C_SetData(char);
-"8 I:\Program\PIC\Source_File\SegmentDisplay_A2.c
+"8 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
 [v _SegmentDisplay_Initial `(v ~T0 @X0 1 ef ]
 "9
 {

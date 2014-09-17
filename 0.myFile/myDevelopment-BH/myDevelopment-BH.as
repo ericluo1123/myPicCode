@@ -939,228 +939,6 @@ STKPTR equ 0FEDh ;#
 TOSL equ 0FEEh ;# 
 # 4154 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
 TOSH equ 0FEFh ;# 
-# 49 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-INDF0 equ 00h ;# 
-# 68 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-INDF1 equ 01h ;# 
-# 87 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PCL equ 02h ;# 
-# 106 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-STATUS equ 03h ;# 
-# 169 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR0L equ 04h ;# 
-# 188 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR0H equ 05h ;# 
-# 210 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR1L equ 06h ;# 
-# 229 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR1H equ 07h ;# 
-# 248 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-BSR equ 08h ;# 
-# 299 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-WREG equ 09h ;# 
-# 318 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PCLATH equ 0Ah ;# 
-# 337 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-INTCON equ 0Bh ;# 
-# 414 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PORTA equ 0Ch ;# 
-# 475 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PORTB equ 0Dh ;# 
-# 536 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PORTC equ 0Eh ;# 
-# 597 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PORTE equ 010h ;# 
-# 617 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PIR1 equ 011h ;# 
-# 678 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PIR2 equ 012h ;# 
-# 711 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TMR0 equ 015h ;# 
-# 730 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TMR1 equ 016h ;# 
-# 736 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TMR1L equ 016h ;# 
-# 755 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TMR1H equ 017h ;# 
-# 774 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-T1CON equ 018h ;# 
-# 845 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-T1GCON equ 019h ;# 
-# 914 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TMR2 equ 01Ah ;# 
-# 933 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PR2 equ 01Bh ;# 
-# 952 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-T2CON equ 01Ch ;# 
-# 1022 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TRISA equ 08Ch ;# 
-# 1083 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TRISB equ 08Dh ;# 
-# 1144 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TRISC equ 08Eh ;# 
-# 1205 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TRISE equ 090h ;# 
-# 1211 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PIE1 equ 091h ;# 
-# 1272 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PIE2 equ 092h ;# 
-# 1305 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-OPTION_REG equ 095h ;# 
-# 1387 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PCON equ 096h ;# 
-# 1443 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-WDTCON equ 097h ;# 
-# 1501 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-OSCCON equ 099h ;# 
-# 1566 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-OSCSTAT equ 09Ah ;# 
-# 1620 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ADRES equ 09Bh ;# 
-# 1626 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ADRESL equ 09Bh ;# 
-# 1645 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ADRESH equ 09Ch ;# 
-# 1664 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ADCON0 equ 09Dh ;# 
-# 1743 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ADCON1 equ 09Eh ;# 
-# 1808 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-LATA equ 010Ch ;# 
-# 1869 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-LATB equ 010Dh ;# 
-# 1930 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-LATC equ 010Eh ;# 
-# 1991 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-BORCON equ 0116h ;# 
-# 2023 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FVRCON equ 0117h ;# 
-# 2081 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-APFCON equ 011Dh ;# 
-# 2106 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ANSELA equ 018Ch ;# 
-# 2158 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ANSELB equ 018Dh ;# 
-# 2215 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-ANSELC equ 018Eh ;# 
-# 2276 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMADR equ 0191h ;# 
-# 2282 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMADRL equ 0191h ;# 
-# 2301 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMADRH equ 0192h ;# 
-# 2320 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMDAT equ 0193h ;# 
-# 2326 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMDATL equ 0193h ;# 
-# 2345 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMDATH equ 0194h ;# 
-# 2364 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMCON1 equ 0195h ;# 
-# 2419 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PMCON2 equ 0196h ;# 
-# 2438 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-VREGCON equ 0197h ;# 
-# 2458 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-RCREG equ 0199h ;# 
-# 2477 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TXREG equ 019Ah ;# 
-# 2496 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SP1BRG equ 019Bh ;# 
-# 2502 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SP1BRGL equ 019Bh ;# 
-# 2507 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SPBRG equ 019Bh ;# 
-# 2511 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SPBRGL equ 019Bh ;# 
-# 2555 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SP1BRGH equ 019Ch ;# 
-# 2560 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SPBRGH equ 019Ch ;# 
-# 2592 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-RCSTA equ 019Dh ;# 
-# 2653 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TXSTA equ 019Eh ;# 
-# 2714 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-BAUDCON equ 019Fh ;# 
-# 2765 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-WPUB equ 020Dh ;# 
-# 2834 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-WPUE equ 0210h ;# 
-# 2854 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPBUF equ 0211h ;# 
-# 2859 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1BUF equ 0211h ;# 
-# 2891 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPADD equ 0212h ;# 
-# 2896 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1ADD equ 0212h ;# 
-# 2928 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPMSK equ 0213h ;# 
-# 2933 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1MSK equ 0213h ;# 
-# 2965 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPSTAT equ 0214h ;# 
-# 2970 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1STAT equ 0214h ;# 
-# 3086 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPCON1 equ 0215h ;# 
-# 3091 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPCON equ 0215h ;# 
-# 3095 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1CON1 equ 0215h ;# 
-# 3289 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPCON2 equ 0216h ;# 
-# 3294 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1CON2 equ 0216h ;# 
-# 3410 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSPCON3 equ 0217h ;# 
-# 3415 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-SSP1CON3 equ 0217h ;# 
-# 3531 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR1 equ 0291h ;# 
-# 3537 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR1L equ 0291h ;# 
-# 3556 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR1H equ 0292h ;# 
-# 3575 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCP1CON equ 0293h ;# 
-# 3638 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR2 equ 0298h ;# 
-# 3644 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR2L equ 0298h ;# 
-# 3663 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCPR2H equ 0299h ;# 
-# 3682 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-CCP2CON equ 029Ah ;# 
-# 3745 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-IOCBP equ 0394h ;# 
-# 3814 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-IOCBN equ 0395h ;# 
-# 3883 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-IOCBF equ 0396h ;# 
-# 3952 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-STATUS_SHAD equ 0FE4h ;# 
-# 3983 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-WREG_SHAD equ 0FE5h ;# 
-# 4002 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-BSR_SHAD equ 0FE6h ;# 
-# 4021 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-PCLATH_SHAD equ 0FE7h ;# 
-# 4040 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR0L_SHAD equ 0FE8h ;# 
-# 4059 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR0H_SHAD equ 0FE9h ;# 
-# 4078 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR1L_SHAD equ 0FEAh ;# 
-# 4097 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-FSR1H_SHAD equ 0FEBh ;# 
-# 4116 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-STKPTR equ 0FEDh ;# 
-# 4135 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TOSL equ 0FEEh ;# 
-# 4154 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h"
-TOSH equ 0FEFh ;# 
 	FNCALL	_main,_CC2500_PowerOnInitial
 	FNCALL	_main,_I2C_Main
 	FNCALL	_main,_MainT
@@ -1176,6 +954,9 @@ TOSH equ 0FEFh ;#
 	FNCALL	_setRF_Main,_RF_RxDisable
 	FNCALL	_setRF_Main,_RfPointSelect
 	FNCALL	_setRF_Main,_setINT_GO
+	FNCALL	_RF_RxDisable,_CC2500_WriteCommand
+	FNCALL	_RF_RxDisable,_RfPointSelect
+	FNCALL	_RF_RxDisable,_setINT_GO
 	FNCALL	_CC2500_TxData,_CC2500_WriteByte
 	FNCALL	_CC2500_TxData,_CC2500_WriteCommand
 	FNCALL	_CC2500_RxData,_CC2500_ReadByte
@@ -1192,12 +973,8 @@ TOSH equ 0FEFh ;#
 	FNCALL	_Mcu_Initial,_IO_Set
 	FNCALL	_Mcu_Initial,_TMR1_Set
 	FNCALL	_MainT,_setRF_Enable
-	FNCALL	_setRF_Enable,_CC2500_WriteCommand
-	FNCALL	_setRF_Enable,_RF_RxDisable
 	FNCALL	_setRF_Enable,_RfPointSelect
-	FNCALL	_RF_RxDisable,_CC2500_WriteCommand
-	FNCALL	_RF_RxDisable,_RfPointSelect
-	FNCALL	_RF_RxDisable,_setINT_GO
+	FNCALL	_setRF_Enable,_setINT_GO
 	FNCALL	_I2C_Main,_I2C_SetData
 	FNCALL	_I2C_Main,_I2C_Slave_Mode
 	FNCALL	_CC2500_PowerOnInitial,_CC2500_ClearRXFIFO
@@ -1231,7 +1008,7 @@ TOSH equ 0FEFh ;#
 psect	idataBANK1,class=CODE,space=0,delta=2,noexec
 global __pidataBANK1
 __pidataBANK1:
-	file	"I:\Program\PIC\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
 	line	230
 
 ;initializer for _VarProduct
@@ -1271,7 +1048,7 @@ __pidataBANK1:
 psect	stringtext,class=STRCODE,delta=2,reloc=256,noexec
 global __pstringtext
 __pstringtext:
-	file	"I:\Program\PIC\Header_File\CC2500_B1.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 	line	218
 _CC2500_registers_address:
 	retlw	03h
@@ -1325,7 +1102,7 @@ _CC2500_registers_address:
 __end_of_CC2500_registers_address:
 	global	_CC2500_rfSettings
 psect	stringtext
-	file	"I:\Program\PIC\Header_File\CC2500_B1.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 	line	161
 _CC2500_rfSettings:
 	retlw	07h
@@ -1379,7 +1156,7 @@ _CC2500_rfSettings:
 __end_of_CC2500_rfSettings:
 	global	_CC2500_patable_vaule
 psect	stringtext
-	file	"I:\Program\PIC\Header_File\CC2500_B1.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 	line	292
 _CC2500_patable_vaule:
 	retlw	0FEh
@@ -1397,7 +1174,7 @@ __end_of_CC2500_patable_vaule:
 	global	_CC2500_patable_vaule
 	global	_RF
 	global	_RFSW
-	global	_Timer1
+	global	_I2C
 	global	_CC2500_Enable
 	global	_Receive_GO
 	global	_Receive_OK
@@ -1408,10 +1185,10 @@ __end_of_CC2500_patable_vaule:
 	global	_RF_Data
 	global	_RF_Count
 	global	_CRC
-	global	_I2C
 	global	_RSSI
 	global	_Rx_Length
 	global	_SPI0Buffer
+	global	_Timer1
 	global	_Tx_Length
 	global	_r_address
 	global	_r_data
@@ -1580,7 +1357,7 @@ _RF:
 _RFSW:
        ds      1
 
-_Timer1:
+_I2C:
        ds      1
 
 psect	bssBANK0,class=BANK0,space=1,noexec
@@ -1595,9 +1372,6 @@ _RF_Count:
 _CRC:
        ds      1
 
-_I2C:
-       ds      1
-
 _RSSI:
        ds      1
 
@@ -1605,6 +1379,9 @@ _Rx_Length:
        ds      1
 
 _SPI0Buffer:
+       ds      1
+
+_Timer1:
        ds      1
 
 _Tx_Length:
@@ -1631,7 +1408,7 @@ _RF1:
 psect	dataBANK1,class=BANK1,space=1,noexec
 global __pdataBANK1
 __pdataBANK1:
-	file	"I:\Program\PIC\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
 	line	230
 _VarProduct:
        ds      32
@@ -1720,13 +1497,6 @@ ljmp _main	;jump to C main() function
 psect	cstackCOMMON,class=COMMON,space=1,noexec
 global __pcstackCOMMON
 __pcstackCOMMON:
-?_MainT_Initial:	; 0 bytes @ 0x0
-?_Mcu_Initial:	; 0 bytes @ 0x0
-?_RF_Initialization:	; 0 bytes @ 0x0
-?_CC2500_PowerOnInitial:	; 0 bytes @ 0x0
-?_MainT:	; 0 bytes @ 0x0
-?_RF_Main:	; 0 bytes @ 0x0
-?_I2C_Main:	; 0 bytes @ 0x0
 ?_CC2500_WriteByte:	; 0 bytes @ 0x0
 ?_CC2500_WriteCommand:	; 0 bytes @ 0x0
 ?_CC2500_ReadStatus:	; 0 bytes @ 0x0
@@ -1738,11 +1508,6 @@ __pcstackCOMMON:
 ?_CC2500_ClearRXFIFO:	; 0 bytes @ 0x0
 ?_CC2500_FrequencyCabr:	; 0 bytes @ 0x0
 ?_CC2500_SIDLEMode:	; 0 bytes @ 0x0
-?_setRF_Initialization:	; 0 bytes @ 0x0
-?_setRF_Main:	; 0 bytes @ 0x0
-?_RF_RxDisable:	; 0 bytes @ 0x0
-?_I2C_SetData:	; 0 bytes @ 0x0
-?_setINT_GO:	; 0 bytes @ 0x0
 ?_IO_Set:	; 0 bytes @ 0x0
 ?_TMR1_Set:	; 0 bytes @ 0x0
 ?_INT_Set:	; 0 bytes @ 0x0
@@ -1753,11 +1518,23 @@ __pcstackCOMMON:
 ?_I2C_ISR:	; 0 bytes @ 0x0
 ??_I2C_ISR:	; 0 bytes @ 0x0
 ?_I2C_Slave_Mode:	; 0 bytes @ 0x0
-?_main:	; 0 bytes @ 0x0
+?_I2C_SetData:	; 0 bytes @ 0x0
+?_setRF_Initialization:	; 0 bytes @ 0x0
+?_setRF_Main:	; 0 bytes @ 0x0
+?_RF_RxDisable:	; 0 bytes @ 0x0
+?_MainT_Initial:	; 0 bytes @ 0x0
+?_MainT:	; 0 bytes @ 0x0
 ?_CC2500_TxData:	; 0 bytes @ 0x0
 ?_CC2500_RxData:	; 0 bytes @ 0x0
-?_RfPointSelect:	; 0 bytes @ 0x0
+?_CC2500_PowerOnInitial:	; 0 bytes @ 0x0
+?_Mcu_Initial:	; 0 bytes @ 0x0
 ?_ISR:	; 0 bytes @ 0x0
+?_setINT_GO:	; 0 bytes @ 0x0
+?_I2C_Main:	; 0 bytes @ 0x0
+?_RfPointSelect:	; 0 bytes @ 0x0
+?_RF_Initialization:	; 0 bytes @ 0x0
+?_RF_Main:	; 0 bytes @ 0x0
+?_main:	; 0 bytes @ 0x0
 ?i1_RfPointSelect:	; 0 bytes @ 0x0
 ??i1_RfPointSelect:	; 0 bytes @ 0x0
 setRF_Initialization@rf:	; 1 bytes @ 0x0
@@ -1779,18 +1556,18 @@ setRF_ReceiveGO@rf:	; 1 bytes @ 0x3
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-??_MainT_Initial:	; 0 bytes @ 0x0
 ??_CC2500_WriteByte:	; 0 bytes @ 0x0
 ??_CC2500_ReadByte:	; 0 bytes @ 0x0
 ?_DelayTime_1us:	; 0 bytes @ 0x0
-??_setRF_Initialization:	; 0 bytes @ 0x0
-??_I2C_SetData:	; 0 bytes @ 0x0
-??_setINT_GO:	; 0 bytes @ 0x0
 ??_IO_Set:	; 0 bytes @ 0x0
 ??_TMR1_Set:	; 0 bytes @ 0x0
 ??_INT_Set:	; 0 bytes @ 0x0
 ??_I2C_Set:	; 0 bytes @ 0x0
 ??_I2C_Slave_Mode:	; 0 bytes @ 0x0
+??_I2C_SetData:	; 0 bytes @ 0x0
+??_setRF_Initialization:	; 0 bytes @ 0x0
+??_MainT_Initial:	; 0 bytes @ 0x0
+??_setINT_GO:	; 0 bytes @ 0x0
 ??_RfPointSelect:	; 0 bytes @ 0x0
 	global	setINT_GO@command
 setINT_GO@command:	; 1 bytes @ 0x0
@@ -1811,35 +1588,42 @@ RfPointSelect@rf:	; 1 bytes @ 0x1
 ?_setRF_RxStatus:	; 0 bytes @ 0x2
 ??_DelayTime_1us:	; 0 bytes @ 0x2
 ?_CC2500_WriteREG:	; 0 bytes @ 0x2
+?_setRF_Enable:	; 0 bytes @ 0x2
 	global	CC2500_WriteREG@value
 CC2500_WriteREG@value:	; 1 bytes @ 0x2
-	global	setRF_RxStatus@command
-setRF_RxStatus@command:	; 1 bytes @ 0x2
 	global	I2C_SetData@command
 I2C_SetData@command:	; 1 bytes @ 0x2
 	global	I2C_Slave_Mode@i
 I2C_Slave_Mode@i:	; 1 bytes @ 0x2
+	global	setRF_RxStatus@command
+setRF_RxStatus@command:	; 1 bytes @ 0x2
+	global	setRF_Enable@command
+setRF_Enable@command:	; 1 bytes @ 0x2
 	global	DelayTime_1us@i
 DelayTime_1us@i:	; 2 bytes @ 0x2
 	ds	1
 ??_setRF_RxStatus:	; 0 bytes @ 0x3
 ??_CC2500_WriteREG:	; 0 bytes @ 0x3
+??_setRF_Enable:	; 0 bytes @ 0x3
 	global	CC2500_WriteCommand@command
 CC2500_WriteCommand@command:	; 1 bytes @ 0x3
 	global	CC2500_ReadStatus@status_addr
 CC2500_ReadStatus@status_addr:	; 1 bytes @ 0x3
-	global	setRF_RxStatus@rf
-setRF_RxStatus@rf:	; 1 bytes @ 0x3
 	global	I2C_SetData@i
 I2C_SetData@i:	; 1 bytes @ 0x3
+	global	setRF_RxStatus@rf
+setRF_RxStatus@rf:	; 1 bytes @ 0x3
+	global	setRF_Enable@rf
+setRF_Enable@rf:	; 1 bytes @ 0x3
 	ds	1
-??_I2C_Main:	; 0 bytes @ 0x4
 ??_CC2500_ClearTXFIFO:	; 0 bytes @ 0x4
 ??_CC2500_ClearRXFIFO:	; 0 bytes @ 0x4
 ??_CC2500_SIDLEMode:	; 0 bytes @ 0x4
 ??_RF_RxDisable:	; 0 bytes @ 0x4
+??_MainT:	; 0 bytes @ 0x4
 ??_CC2500_TxData:	; 0 bytes @ 0x4
 ??_CC2500_RxData:	; 0 bytes @ 0x4
+??_I2C_Main:	; 0 bytes @ 0x4
 	global	CC2500_WriteREG@w_addr
 CC2500_WriteREG@w_addr:	; 1 bytes @ 0x4
 	global	RF_RxDisable@rf
@@ -1847,17 +1631,13 @@ RF_RxDisable@rf:	; 1 bytes @ 0x4
 	global	DelayTime_1us@j
 DelayTime_1us@j:	; 2 bytes @ 0x4
 	ds	1
-?_setRF_Enable:	; 0 bytes @ 0x5
 ??_CC2500_InitSetREG:	; 0 bytes @ 0x5
 ??_CC2500_InitPATable:	; 0 bytes @ 0x5
 	global	CC2500_TxData@loop_e
 CC2500_TxData@loop_e:	; 1 bytes @ 0x5
 	global	CC2500_RxData@loop_f
 CC2500_RxData@loop_f:	; 1 bytes @ 0x5
-	global	setRF_Enable@command
-setRF_Enable@command:	; 1 bytes @ 0x5
 	ds	1
-??_setRF_Enable:	; 0 bytes @ 0x6
 ??_CC2500_PowerRST:	; 0 bytes @ 0x6
 ??_CC2500_FrequencyCabr:	; 0 bytes @ 0x6
 ??_setRF_Main:	; 0 bytes @ 0x6
@@ -1865,10 +1645,7 @@ setRF_Enable@command:	; 1 bytes @ 0x5
 CC2500_InitSetREG@temp1:	; 1 bytes @ 0x6
 	global	CC2500_InitPATable@temp
 CC2500_InitPATable@temp:	; 1 bytes @ 0x6
-	global	setRF_Enable@rf
-setRF_Enable@rf:	; 1 bytes @ 0x6
 	ds	1
-??_MainT:	; 0 bytes @ 0x7
 	global	CC2500_InitSetREG@temp2
 CC2500_InitSetREG@temp2:	; 1 bytes @ 0x7
 	global	CC2500_InitPATable@loop_d
@@ -1905,11 +1682,11 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!
 ;!Pointer List with Targets:
 ;!
-;!    Timer1	PTR struct Timer1 size(1) Largest target is 3
-;!		 -> NULL(NULL[0]), VarTimer1(BANK0[3]), 
-;!
 ;!    RFSW	PTR struct RFSW size(1) Largest target is 0
 ;!		 -> NULL(NULL[0]), 
+;!
+;!    Product	PTR struct Product size(1) Largest target is 32
+;!		 -> NULL(NULL[0]), VarProduct(BANK1[32]), 
 ;!
 ;!    RF	PTR struct RF size(1) Largest target is 2
 ;!		 -> NULL(NULL[0]), RF1(BANK0[2]), 
@@ -1917,11 +1694,11 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!    I2C	PTR struct I2C size(1) Largest target is 67
 ;!		 -> NULL(NULL[0]), VarI2C(BANK2[67]), 
 ;!
-;!    Product	PTR struct Product size(1) Largest target is 32
-;!		 -> NULL(NULL[0]), VarProduct(BANK1[32]), 
-;!
 ;!    TMain	PTR struct TMain size(1) Largest target is 15
 ;!		 -> NULL(NULL[0]), VarTMain(BANK0[15]), 
+;!
+;!    Timer1	PTR struct Timer1 size(1) Largest target is 3
+;!		 -> NULL(NULL[0]), VarTimer1(BANK0[3]), 
 ;!
 
 
@@ -1940,6 +1717,7 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!    _RF_Main->_setRF_Main
 ;!    _setRF_Main->_CC2500_RxData
 ;!    _setRF_Main->_CC2500_TxData
+;!    _RF_RxDisable->_CC2500_WriteCommand
 ;!    _CC2500_TxData->_CC2500_WriteCommand
 ;!    _CC2500_RxData->_CC2500_ReadStatus
 ;!    _CC2500_RxData->_CC2500_WriteCommand
@@ -1951,8 +1729,7 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!    _Mcu_Initial->_I2C_Set
 ;!    _Mcu_Initial->_TMR1_Set
 ;!    _MainT->_setRF_Enable
-;!    _setRF_Enable->_RF_RxDisable
-;!    _RF_RxDisable->_CC2500_WriteCommand
+;!    _setRF_Enable->_RfPointSelect
 ;!    _I2C_Main->_I2C_SetData
 ;!    _CC2500_PowerOnInitial->_CC2500_InitSetREG
 ;!    _CC2500_SIDLEMode->_CC2500_WriteCommand
@@ -2027,7 +1804,7 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 0     0      0    4583
+;! (0) _main                                                 0     0      0    4323
 ;!              _CC2500_PowerOnInitial
 ;!                           _I2C_Main
 ;!                              _MainT
@@ -2046,6 +1823,12 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!                _CC2500_WriteCommand
 ;!                        _I2C_SetData
 ;!                       _RF_RxDisable
+;!                      _RfPointSelect
+;!                          _setINT_GO
+;! ---------------------------------------------------------------------------------
+;! (3) _RF_RxDisable                                         1     1      0     192
+;!                                              4 BANK0      1     1      0
+;!                _CC2500_WriteCommand
 ;!                      _RfPointSelect
 ;!                          _setINT_GO
 ;! ---------------------------------------------------------------------------------
@@ -2099,19 +1882,12 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;! (1) _MainT_Initial                                        1     1      0       0
 ;!                                              0 BANK0      1     1      0
 ;! ---------------------------------------------------------------------------------
-;! (1) _MainT                                                2     2      0     449
-;!                                              7 BANK0      1     1      0
+;! (1) _MainT                                                2     2      0     189
+;!                                              4 BANK0      1     1      0
 ;!                       _setRF_Enable
 ;! ---------------------------------------------------------------------------------
-;! (2) _setRF_Enable                                         2     1      1     449
-;!                                              5 BANK0      2     1      1
-;!                _CC2500_WriteCommand
-;!                       _RF_RxDisable
-;!                      _RfPointSelect
-;! ---------------------------------------------------------------------------------
-;! (3) _RF_RxDisable                                         1     1      0     192
-;!                                              4 BANK0      1     1      0
-;!                _CC2500_WriteCommand
+;! (2) _setRF_Enable                                         2     1      1     189
+;!                                              2 BANK0      2     1      1
 ;!                      _RfPointSelect
 ;!                          _setINT_GO
 ;! ---------------------------------------------------------------------------------
@@ -2238,14 +2014,8 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;!     _I2C_Slave_Mode
 ;!   _MainT
 ;!     _setRF_Enable
-;!       _CC2500_WriteCommand
-;!         _CC2500_WriteByte
-;!       _RF_RxDisable
-;!         _CC2500_WriteCommand
-;!           _CC2500_WriteByte
-;!         _RfPointSelect
-;!         _setINT_GO
 ;!       _RfPointSelect
+;!       _setINT_GO
 ;!   _MainT_Initial
 ;!   _Mcu_Initial
 ;!     _I2C_Set
@@ -2383,7 +2153,7 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 6 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 6 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2416,12 +2186,12 @@ CC2500_InitSetREG@loop_c:	; 1 bytes @ 0x8
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext,global,class=CODE,delta=2,merge=1,split=1
-	file	"I:\Program\PIC\Source_File\myMain.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	6
 global __pmaintext
 __pmaintext:	;psect for function _main
 psect	maintext
-	file	"I:\Program\PIC\Source_File\myMain.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	6
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -2432,33 +2202,33 @@ _main:
 ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	8
 	
-l3153:	
+l3169:	
 ;myMain.c: 8: MainT_Initial();
 	fcall	_MainT_Initial
 	line	9
 	
-l3155:	
+l3171:	
 ;myMain.c: 9: Mcu_Initial();
 	fcall	_Mcu_Initial
 	line	11
 	
-l3157:	
+l3173:	
 ;myMain.c: 10: ;;
 ;myMain.c: 11: RF_Initialization();
 	fcall	_RF_Initialization
 	line	12
 	
-l3159:	
+l3175:	
 ;myMain.c: 12: CC2500_PowerOnInitial();
 	fcall	_CC2500_PowerOnInitial
-	goto	l3161
+	goto	l3177
 	line	13
 ;myMain.c: 13: while(1)
 	
-l83:	
+l788:	
 	line	17
 	
-l3161:	
+l3177:	
 ;myMain.c: 14: {
 ;myMain.c: 17: if(TMain->T1_Timerout)
 	movlb 0	; select bank0
@@ -2467,14 +2237,14 @@ l3161:
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u3141
-	goto	u3140
-u3141:
-	goto	l3161
-u3140:
+	goto	u3201
+	goto	u3200
+u3201:
+	goto	l3177
+u3200:
 	line	19
 	
-l3163:	
+l3179:	
 ;myMain.c: 18: {
 ;myMain.c: 19: TMain->T1_Timerout = 0;
 	movf	(_TMain),w
@@ -2484,12 +2254,12 @@ l3163:
 	bcf	indf1,2
 	line	20
 	
-l3165:	
+l3181:	
 ;myMain.c: 20: MainT();
 	fcall	_MainT
 	line	21
 	
-l3167:	
+l3183:	
 ;myMain.c: 21: if(TMain->PowerON)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -2497,41 +2267,41 @@ l3167:
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u3151
-	goto	u3150
-u3151:
-	goto	l3161
-u3150:
+	goto	u3211
+	goto	u3210
+u3211:
+	goto	l3177
+u3210:
 	line	23
 	
-l3169:	
+l3185:	
 ;myMain.c: 22: {
 ;myMain.c: 23: RF_Main();
 	fcall	_RF_Main
 	line	24
 ;myMain.c: 24: I2C_Main();
 	fcall	_I2C_Main
-	goto	l3161
+	goto	l3177
 	line	27
 ;myMain.c: 25: ;;
 ;myMain.c: 26: ;;
 	
-l85:	
-	goto	l3161
+l790:	
+	goto	l3177
 	line	28
 	
-l84:	
-	goto	l3161
+l789:	
+	goto	l3177
 	line	29
 	
-l86:	
+l791:	
 	line	13
-	goto	l3161
+	goto	l3177
 	
-l87:	
+l792:	
 	line	30
 	
-l88:	
+l793:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -2542,7 +2312,7 @@ GLOBAL	__end_of_main
 
 ;; *************** function _RF_Main *****************
 ;; Defined at:
-;;		line 24 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 24 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2570,12 +2340,12 @@ GLOBAL	__end_of_main
 ;; This function uses a non-reentrant model
 ;;
 psect	text1,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	24
 global __ptext1
 __ptext1:	;psect for function _RF_Main
 psect	text1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	24
 	global	__size_of_RF_Main
 	__size_of_RF_Main	equ	__end_of_RF_Main-_RF_Main
@@ -2586,13 +2356,13 @@ _RF_Main:
 ; Regs used in _RF_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	27
 	
-l3107:	
+l3013:	
 ;RF_Control_B1.c: 27: setRF_Main(1);
 	movlw	(01h)
 	fcall	_setRF_Main
 	line	29
 	
-l467:	
+l624:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RF_Main
@@ -2602,7 +2372,7 @@ GLOBAL	__end_of_RF_Main
 
 ;; *************** function _setRF_Main *****************
 ;; Defined at:
-;;		line 58 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 58 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -2640,7 +2410,7 @@ psect	text2,local,class=CODE,delta=2,merge=1
 global __ptext2
 __ptext2:	;psect for function _setRF_Main
 psect	text2
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	58
 	global	__size_of_setRF_Main
 	__size_of_setRF_Main	equ	__end_of_setRF_Main-_setRF_Main
@@ -2654,101 +2424,178 @@ _setRF_Main:
 	movwf	(setRF_Main@rf)
 	line	60
 	
-l2933:	
+l2907:	
 ;RF_Control_B1.c: 60: RfPointSelect(rf);
 	movf	(setRF_Main@rf),w
 	fcall	_RfPointSelect
 	line	61
 	
-l2935:	
+l2909:	
 ;RF_Control_B1.c: 61: if(RF->Enable)
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u2871
-	goto	u2870
-u2871:
-	goto	l493
-u2870:
-	line	75
+	goto	u2851
+	goto	u2850
+u2851:
+	goto	l650
+u2850:
+	line	76
 	
-l2937:	
+l2911:	
 ;RF_Control_B1.c: 62: {
-;RF_Control_B1.c: 75: if(RF->Key)
+;RF_Control_B1.c: 76: if(!RF->Key)
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
-	btfss	indf1,7
-	goto	u2881
-	goto	u2880
-u2881:
-	goto	l2941
-u2880:
-	line	77
-	
-l2939:	
-;RF_Control_B1.c: 76: {
-;RF_Control_B1.c: 77: RF_RxDisable(1);
-	movlw	(01h)
-	fcall	_RF_RxDisable
+	btfsc	indf1,7
+	goto	u2861
+	goto	u2860
+u2861:
+	goto	l2933
+u2860:
 	line	78
-;RF_Control_B1.c: 78: }
-	goto	l493
-	line	79
 	
-l483:	
-	line	81
-	
-l2941:	
-;RF_Control_B1.c: 79: else
-;RF_Control_B1.c: 80: {
-;RF_Control_B1.c: 81: if(RF->ReceiveGO)
+l2913:	
+;RF_Control_B1.c: 77: {
+;RF_Control_B1.c: 78: if(RF->ReceiveGO)
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	btfss	indf1,1
-	goto	u2891
-	goto	u2890
-u2891:
-	goto	l2949
-u2890:
-	line	83
+	goto	u2871
+	goto	u2870
+u2871:
+	goto	l2921
+u2870:
+	line	80
 	
-l2943:	
-;RF_Control_B1.c: 82: {
-;RF_Control_B1.c: 83: RF->ReceiveGO=0;
+l2915:	
+;RF_Control_B1.c: 79: {
+;RF_Control_B1.c: 80: RF->ReceiveGO=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,1
-	line	84
+	line	81
 	
-l2945:	
-;RF_Control_B1.c: 84: CC2500_RxData();
+l2917:	
+;RF_Control_B1.c: 81: CC2500_RxData();
 	fcall	_CC2500_RxData
-	line	86
+	line	83
 	
-l2947:	
-;RF_Control_B1.c: 86: I2C_SetData(1);
+l2919:	
+;RF_Control_B1.c: 83: I2C_SetData(1);
 	movlw	(01h)
 	fcall	_I2C_SetData
-	line	93
-;RF_Control_B1.c: 93: }
-	goto	l493
-	line	94
+	line	90
+;RF_Control_B1.c: 90: }
+	goto	l2935
+	line	91
 	
-l485:	
+l641:	
+	line	93
+	
+l2921:	
+;RF_Control_B1.c: 91: else
+;RF_Control_B1.c: 92: {
+;RF_Control_B1.c: 93: if(!RF->TransceiveGO)
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	btfsc	indf1,2
+	goto	u2881
+	goto	u2880
+u2881:
+	goto	l2935
+u2880:
 	line	96
 	
-l2949:	
-;RF_Control_B1.c: 94: else
-;RF_Control_B1.c: 95: {
-;RF_Control_B1.c: 96: if(RF->TransceiveGO)
+l2923:	
+;RF_Control_B1.c: 94: {
+;RF_Control_B1.c: 96: if(!RF->RxStatus)
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	btfsc	indf1,3
+	goto	u2891
+	goto	u2890
+u2891:
+	goto	l2935
+u2890:
+	line	98
+	
+l2925:	
+;RF_Control_B1.c: 97: {
+;RF_Control_B1.c: 98: RF->RxStatus=1;
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bsf	indf1,3
+	line	99
+	
+l2927:	
+;RF_Control_B1.c: 99: CC2500_WriteCommand(0x36);
+	movlw	(036h)
+	fcall	_CC2500_WriteCommand
+	line	100
+	
+l2929:	
+;RF_Control_B1.c: 100: CC2500_WriteCommand(0x34);
+	movlw	(034h)
+	fcall	_CC2500_WriteCommand
+	line	101
+	
+l2931:	
+;RF_Control_B1.c: 101: setINT_GO(1);
+	movlw	(01h)
+	fcall	_setINT_GO
+	goto	l2935
+	line	102
+	
+l644:	
+	goto	l2935
+	line	104
+	
+l643:	
+	goto	l2935
+	line	105
+	
+l642:	
+	line	106
+;RF_Control_B1.c: 102: }
+;RF_Control_B1.c: 104: }
+;RF_Control_B1.c: 105: }
+;RF_Control_B1.c: 106: }
+	goto	l2935
+	line	107
+	
+l640:	
+	line	109
+	
+l2933:	
+;RF_Control_B1.c: 107: else
+;RF_Control_B1.c: 108: {
+;RF_Control_B1.c: 109: RF_RxDisable(1);
+	movlw	(01h)
+	fcall	_RF_RxDisable
+	goto	l2935
+	line	110
+	
+l645:	
+	line	111
+	
+l2935:	
+;RF_Control_B1.c: 110: }
+;RF_Control_B1.c: 111: if(RF->TransceiveGO)
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -2757,19 +2604,19 @@ l2949:
 	goto	u2901
 	goto	u2900
 u2901:
-	goto	l2967
+	goto	l650
 u2900:
-	line	98
+	line	113
 	
-l2951:	
-;RF_Control_B1.c: 97: {
-;RF_Control_B1.c: 98: RF_RxDisable(1);
+l2937:	
+;RF_Control_B1.c: 112: {
+;RF_Control_B1.c: 113: RF_RxDisable(1);
 	movlw	(01h)
 	fcall	_RF_RxDisable
-	line	99
+	line	114
 	
-l2953:	
-;RF_Control_B1.c: 99: if(RF->Debounce == 0)
+l2939:	
+;RF_Control_B1.c: 114: if(!RF->Debounce)
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -2778,13 +2625,13 @@ l2953:
 	goto	u2911
 	goto	u2910
 u2911:
-	goto	l2963
+	goto	l2949
 u2910:
-	line	101
+	line	116
 	
-l2955:	
-;RF_Control_B1.c: 100: {
-;RF_Control_B1.c: 101: RF->DebounceTime++;
+l2941:	
+;RF_Control_B1.c: 115: {
+;RF_Control_B1.c: 116: RF->DebounceTime++;
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_setRF_Main+0)+0
@@ -2794,10 +2641,10 @@ l2955:
 	
 	movf	(??_setRF_Main+0)+0,w
 	addwf	indf1,f
-	line	102
+	line	117
 	
-l2957:	
-;RF_Control_B1.c: 102: if(RF->DebounceTime == 25)
+l2943:	
+;RF_Control_B1.c: 117: if(RF->DebounceTime == 25)
 	incf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -2808,149 +2655,221 @@ l2957:
 	goto	u2921
 	goto	u2920
 u2921:
-	goto	l493
+	goto	l650
 u2920:
-	line	104
+	line	119
 	
-l2959:	
-;RF_Control_B1.c: 103: {
-;RF_Control_B1.c: 104: RF->DebounceTime=0;
+l2945:	
+;RF_Control_B1.c: 118: {
+;RF_Control_B1.c: 119: RF->DebounceTime=0;
 	incf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	clrf	indf1
-	line	105
+	line	120
 	
-l2961:	
-;RF_Control_B1.c: 105: RF->Debounce=1;
+l2947:	
+;RF_Control_B1.c: 120: RF->Debounce=1;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bsf	indf1,5
-	goto	l493
-	line	106
+	goto	l650
+	line	121
 	
-l489:	
-	line	107
-;RF_Control_B1.c: 106: }
-;RF_Control_B1.c: 107: }
-	goto	l493
-	line	108
+l648:	
+	line	122
+;RF_Control_B1.c: 121: }
+;RF_Control_B1.c: 122: }
+	goto	l650
+	line	123
 	
-l488:	
-	line	110
+l647:	
+	line	125
 	
-l2963:	
-;RF_Control_B1.c: 108: else
-;RF_Control_B1.c: 109: {
-;RF_Control_B1.c: 110: RF->Debounce=0;
+l2949:	
+;RF_Control_B1.c: 123: else
+;RF_Control_B1.c: 124: {
+;RF_Control_B1.c: 125: RF->Debounce=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,5
-	line	111
-;RF_Control_B1.c: 111: RF->TransceiveGO=0;
+	line	126
+;RF_Control_B1.c: 126: RF->TransceiveGO=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,2
-	line	112
-	
-l2965:	
-;RF_Control_B1.c: 112: CC2500_TxData();
-	fcall	_CC2500_TxData
-	goto	l493
-	line	113
-	
-l490:	
-	line	114
-;RF_Control_B1.c: 113: }
-;RF_Control_B1.c: 114: }
-	goto	l493
-	line	115
-	
-l487:	
-	line	117
-	
-l2967:	
-;RF_Control_B1.c: 115: else
-;RF_Control_B1.c: 116: {
-;RF_Control_B1.c: 117: if(RF->RxStatus == 0 && 1)
-	movf	(_RF),w
-	movwf	fsr1l
-	clrf fsr1h	
-	
-	btfsc	indf1,3
-	goto	u2931
-	goto	u2930
-u2931:
-	goto	l493
-u2930:
-	line	119
-	
-l2969:	
-;RF_Control_B1.c: 118: {
-;RF_Control_B1.c: 119: RF->RxStatus=1;
-	movf	(_RF),w
-	movwf	fsr1l
-	clrf fsr1h	
-	
-	bsf	indf1,3
-	line	120
-	
-l2971:	
-;RF_Control_B1.c: 120: CC2500_WriteCommand(0x36);
-	movlw	(036h)
-	fcall	_CC2500_WriteCommand
-	line	121
-	
-l2973:	
-;RF_Control_B1.c: 121: CC2500_WriteCommand(0x34);
-	movlw	(034h)
-	fcall	_CC2500_WriteCommand
-	line	122
-	
-l2975:	
-;RF_Control_B1.c: 122: setINT_GO(1);
-	movlw	(01h)
-	fcall	_setINT_GO
-	goto	l493
-	line	123
-	
-l492:	
-	goto	l493
-	line	124
-	
-l491:	
-	goto	l493
-	line	125
-	
-l486:	
-	goto	l493
-	line	126
-	
-l484:	
-	goto	l493
 	line	127
 	
-l482:	
+l2951:	
+;RF_Control_B1.c: 127: CC2500_TxData();
+	fcall	_CC2500_TxData
+	goto	l650
 	line	128
 	
-l493:	
+l649:	
+	goto	l650
+	line	129
+	
+l646:	
+	goto	l650
+	line	130
+	
+l639:	
+	line	131
+	
+l650:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Main
 	__end_of_setRF_Main:
 	signat	_setRF_Main,4216
+	global	_RF_RxDisable
+
+;; *************** function _RF_RxDisable *****************
+;; Defined at:
+;;		line 191 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
+;; Parameters:    Size  Location     Type
+;;  rf              1    wreg     unsigned char 
+;; Auto vars:     Size  Location     Type
+;;  rf              1    4[BANK0 ] unsigned char 
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+;;      Params:         0       0       0       0       0       0       0       0
+;;      Locals:         0       1       0       0       0       0       0       0
+;;      Temps:          0       0       0       0       0       0       0       0
+;;      Totals:         0       1       0       0       0       0       0       0
+;;Total ram usage:        1 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    6
+;; This function calls:
+;;		_CC2500_WriteCommand
+;;		_RfPointSelect
+;;		_setINT_GO
+;; This function is called by:
+;;		_setRF_Main
+;; This function uses a non-reentrant model
+;;
+psect	text3,local,class=CODE,delta=2,merge=1
+	line	191
+global __ptext3
+__ptext3:	;psect for function _RF_RxDisable
+psect	text3
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
+	line	191
+	global	__size_of_RF_RxDisable
+	__size_of_RF_RxDisable	equ	__end_of_RF_RxDisable-_RF_RxDisable
+	
+_RF_RxDisable:	
+;incstack = 0
+	opt	stack 7
+; Regs used in _RF_RxDisable: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
+;RF_RxDisable@rf stored from wreg
+	movlb 0	; select bank0
+	movwf	(RF_RxDisable@rf)
+	line	193
+	
+l2763:	
+;RF_Control_B1.c: 193: RfPointSelect(rf);
+	movf	(RF_RxDisable@rf),w
+	fcall	_RfPointSelect
+	line	195
+	
+l2765:	
+;RF_Control_B1.c: 195: if(RF->RxStatus)
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	btfss	indf1,3
+	goto	u2701
+	goto	u2700
+u2701:
+	goto	l662
+u2700:
+	line	197
+	
+l2767:	
+;RF_Control_B1.c: 196: {
+;RF_Control_B1.c: 197: RF->RxStatus=0;
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bcf	indf1,3
+	line	198
+;RF_Control_B1.c: 198: RF->ReceiveGO=0;
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bcf	indf1,1
+	line	199
+	
+l2769:	
+;RF_Control_B1.c: 199: RF->DebounceTime=0;
+	incf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	clrf	indf1
+	line	200
+	
+l2771:	
+;RF_Control_B1.c: 200: RF->Debounce=0;
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bcf	indf1,5
+	line	201
+	
+l2773:	
+;RF_Control_B1.c: 201: CC2500_WriteCommand(0x36);
+	movlw	(036h)
+	fcall	_CC2500_WriteCommand
+	line	202
+	
+l2775:	
+;RF_Control_B1.c: 202: CC2500_WriteCommand(0x3A);
+	movlw	(03Ah)
+	fcall	_CC2500_WriteCommand
+	line	203
+	
+l2777:	
+;RF_Control_B1.c: 203: setINT_GO(0);
+	movlw	(0)
+	fcall	_setINT_GO
+	goto	l662
+	line	204
+	
+l661:	
+	line	205
+	
+l662:	
+	return
+	opt stack 0
+GLOBAL	__end_of_RF_RxDisable
+	__end_of_RF_RxDisable:
+	signat	_RF_RxDisable,4216
 	global	_CC2500_TxData
 
 ;; *************** function _CC2500_TxData *****************
 ;; Defined at:
-;;		line 30 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 30 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2978,13 +2897,13 @@ GLOBAL	__end_of_setRF_Main
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text3,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+psect	text4,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	30
-global __ptext3
-__ptext3:	;psect for function _CC2500_TxData
-psect	text3
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+global __ptext4
+__ptext4:	;psect for function _CC2500_TxData
+psect	text4
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	30
 	global	__size_of_CC2500_TxData
 	__size_of_CC2500_TxData	equ	__end_of_CC2500_TxData-_CC2500_TxData
@@ -2995,14 +2914,14 @@ _CC2500_TxData:
 ; Regs used in _CC2500_TxData: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	34
 	
-l2719:	
+l2635:	
 ;CC2500_B1.c: 32: unsigned char loop_e;
 ;CC2500_B1.c: 34: RB5=0;
 	movlb 0	; select bank0
 	bcf	(109/8),(109)&7	;volatile
 	line	35
 	
-l2721:	
+l2637:	
 ;CC2500_B1.c: 35: SPI0Buffer=0x3F+0x40;
 	movlw	(07Fh)
 	movwf	(??_CC2500_TxData+0)+0
@@ -3010,28 +2929,28 @@ l2721:
 	movwf	(_SPI0Buffer)
 	line	36
 ;CC2500_B1.c: 36: while(RB3==1);
-	goto	l266
+	goto	l103
 	
-l267:	
+l104:	
 	
-l266:	
+l103:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2581
-	goto	u2580
-u2581:
-	goto	l266
-u2580:
-	goto	l2723
+	goto	u2501
+	goto	u2500
+u2501:
+	goto	l103
+u2500:
+	goto	l2639
 	
-l268:	
+l105:	
 	line	37
 	
-l2723:	
+l2639:	
 ;CC2500_B1.c: 37: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	38
 	
-l2725:	
+l2641:	
 ;CC2500_B1.c: 38: SPI0Buffer=Tx_Length;
 	movlb 0	; select bank0
 	movf	(_Tx_Length),w
@@ -3040,22 +2959,22 @@ l2725:
 	movwf	(_SPI0Buffer)
 	line	39
 	
-l2727:	
+l2643:	
 ;CC2500_B1.c: 39: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	40
 	
-l2729:	
+l2645:	
 ;CC2500_B1.c: 40: for(loop_e=0;loop_e<Tx_Length;loop_e++)
 	movlb 0	; select bank0
 	clrf	(CC2500_TxData@loop_e)
-	goto	l2737
+	goto	l2653
 	line	41
 	
-l270:	
+l107:	
 	line	42
 	
-l2731:	
+l2647:	
 ;CC2500_B1.c: 41: {
 ;CC2500_B1.c: 42: SPI0Buffer=RF_Data[loop_e];
 	movf	(CC2500_TxData@loop_e),w
@@ -3069,78 +2988,78 @@ l2731:
 	movwf	(_SPI0Buffer)
 	line	43
 	
-l2733:	
+l2649:	
 ;CC2500_B1.c: 43: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	40
 	
-l2735:	
+l2651:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_TxData+0)+0
 	movf	(??_CC2500_TxData+0)+0,w
 	addwf	(CC2500_TxData@loop_e),f
-	goto	l2737
+	goto	l2653
 	
-l269:	
+l106:	
 	
-l2737:	
+l2653:	
 	movf	(_Tx_Length),w
 	subwf	(CC2500_TxData@loop_e),w
 	skipc
-	goto	u2591
-	goto	u2590
-u2591:
-	goto	l2731
-u2590:
+	goto	u2511
+	goto	u2510
+u2511:
+	goto	l2647
+u2510:
 	
-l271:	
+l108:	
 	line	45
 ;CC2500_B1.c: 44: }
 ;CC2500_B1.c: 45: RB5=1;
 	bsf	(109/8),(109)&7	;volatile
 	line	46
 	
-l2739:	
+l2655:	
 ;CC2500_B1.c: 46: CC2500_WriteCommand(0x35);
 	movlw	(035h)
 	fcall	_CC2500_WriteCommand
 	line	47
 ;CC2500_B1.c: 47: while(RB0==0);
-	goto	l272
+	goto	l109
 	
-l273:	
+l110:	
 	
-l272:	
+l109:	
 	movlb 0	; select bank0
 	btfss	(104/8),(104)&7	;volatile
-	goto	u2601
-	goto	u2600
-u2601:
-	goto	l272
-u2600:
-	goto	l275
+	goto	u2521
+	goto	u2520
+u2521:
+	goto	l109
+u2520:
+	goto	l112
 	
-l274:	
+l111:	
 	line	48
 ;CC2500_B1.c: 48: while(RB0==1);
-	goto	l275
+	goto	l112
 	
-l276:	
+l113:	
 	
-l275:	
+l112:	
 	btfsc	(104/8),(104)&7	;volatile
-	goto	u2611
-	goto	u2610
-u2611:
-	goto	l275
-u2610:
-	goto	l2741
+	goto	u2531
+	goto	u2530
+u2531:
+	goto	l112
+u2530:
+	goto	l2657
 	
-l277:	
+l114:	
 	line	49
 	
-l2741:	
+l2657:	
 ;CC2500_B1.c: 49: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
@@ -3150,12 +3069,12 @@ l2741:
 	fcall	_CC2500_WriteCommand
 	line	51
 	
-l2743:	
+l2659:	
 ;CC2500_B1.c: 51: Transceive_OK=1;
 	bsf	(_Transceive_OK/8),(_Transceive_OK)&7
 	line	52
 	
-l278:	
+l115:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_TxData
@@ -3165,7 +3084,7 @@ GLOBAL	__end_of_CC2500_TxData
 
 ;; *************** function _CC2500_RxData *****************
 ;; Defined at:
-;;		line 56 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 56 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3196,12 +3115,12 @@ GLOBAL	__end_of_CC2500_TxData
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text4,local,class=CODE,delta=2,merge=1
+psect	text5,local,class=CODE,delta=2,merge=1
 	line	56
-global __ptext4
-__ptext4:	;psect for function _CC2500_RxData
-psect	text4
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+global __ptext5
+__ptext5:	;psect for function _CC2500_RxData
+psect	text5
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	56
 	global	__size_of_CC2500_RxData
 	__size_of_CC2500_RxData	equ	__end_of_CC2500_RxData-_CC2500_RxData
@@ -3212,66 +3131,66 @@ _CC2500_RxData:
 ; Regs used in _CC2500_RxData: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	62
 	
-l2745:	
+l2661:	
 ;CC2500_B1.c: 58: unsigned char loop_f;
 ;CC2500_B1.c: 62: if(RB0 == 1)
 	movlb 0	; select bank0
 	btfss	(104/8),(104)&7	;volatile
-	goto	u2621
-	goto	u2620
-u2621:
-	goto	l2749
-u2620:
-	goto	l282
+	goto	u2541
+	goto	u2540
+u2541:
+	goto	l2665
+u2540:
+	goto	l119
 	line	64
 	
-l2747:	
+l2663:	
 ;CC2500_B1.c: 63: {
 ;CC2500_B1.c: 64: while(RB0 == 1);
-	goto	l282
+	goto	l119
 	
-l283:	
+l120:	
 	
-l282:	
+l119:	
 	btfsc	(104/8),(104)&7	;volatile
-	goto	u2631
-	goto	u2630
-u2631:
-	goto	l282
-u2630:
-	goto	l2749
+	goto	u2551
+	goto	u2550
+u2551:
+	goto	l119
+u2550:
+	goto	l2665
 	
-l284:	
-	goto	l2749
+l121:	
+	goto	l2665
 	line	65
 	
-l281:	
+l118:	
 	line	66
 	
-l2749:	
+l2665:	
 ;CC2500_B1.c: 65: }
 ;CC2500_B1.c: 66: CC2500_ReadStatus(0x3B);
 	movlw	(03Bh)
 	fcall	_CC2500_ReadStatus
 	line	67
 	
-l2751:	
+l2667:	
 ;CC2500_B1.c: 67: if(s_data != 0)
 	movlb 0	; select bank0
 	movf	(_s_data),w
 	skipz
-	goto	u2640
-	goto	l2783
-u2640:
+	goto	u2560
+	goto	l2699
+u2560:
 	line	70
 	
-l2753:	
+l2669:	
 ;CC2500_B1.c: 69: {
 ;CC2500_B1.c: 70: RB5=0;
 	bcf	(109/8),(109)&7	;volatile
 	line	71
 	
-l2755:	
+l2671:	
 ;CC2500_B1.c: 71: SPI0Buffer=0x3F+0xC0;
 	movlw	(0FFh)
 	movwf	(??_CC2500_RxData+0)+0
@@ -3279,23 +3198,23 @@ l2755:
 	movwf	(_SPI0Buffer)
 	line	72
 ;CC2500_B1.c: 72: while(RB3==1);
-	goto	l286
+	goto	l123
 	
-l287:	
+l124:	
 	
-l286:	
+l123:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2651
-	goto	u2650
-u2651:
-	goto	l286
-u2650:
-	goto	l2757
+	goto	u2571
+	goto	u2570
+u2571:
+	goto	l123
+u2570:
+	goto	l2673
 	
-l288:	
+l125:	
 	line	73
 	
-l2757:	
+l2673:	
 ;CC2500_B1.c: 73: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	75
@@ -3303,7 +3222,7 @@ l2757:
 	fcall	_CC2500_ReadByte
 	line	76
 	
-l2759:	
+l2675:	
 ;CC2500_B1.c: 76: Rx_Length=SPI0Buffer;
 	movlb 0	; select bank0
 	movf	(_SPI0Buffer),w
@@ -3312,22 +3231,22 @@ l2759:
 	movwf	(_Rx_Length)
 	line	77
 	
-l2761:	
+l2677:	
 ;CC2500_B1.c: 77: for(loop_f=0;loop_f<Rx_Length;loop_f++)
 	clrf	(CC2500_RxData@loop_f)
-	goto	l2769
+	goto	l2685
 	line	78
 	
-l290:	
+l127:	
 	line	79
 	
-l2763:	
+l2679:	
 ;CC2500_B1.c: 78: {
 ;CC2500_B1.c: 79: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	80
 	
-l2765:	
+l2681:	
 ;CC2500_B1.c: 80: RF_Data[loop_f]=SPI0Buffer;
 	movlb 0	; select bank0
 	movf	(_SPI0Buffer),w
@@ -3341,36 +3260,36 @@ l2765:
 	movwf	indf1
 	line	77
 	
-l2767:	
+l2683:	
 	movlw	(01h)
 	movwf	(??_CC2500_RxData+0)+0
 	movf	(??_CC2500_RxData+0)+0,w
 	addwf	(CC2500_RxData@loop_f),f
-	goto	l2769
+	goto	l2685
 	
-l289:	
+l126:	
 	
-l2769:	
+l2685:	
 	movf	(_Rx_Length),w
 	subwf	(CC2500_RxData@loop_f),w
 	skipc
-	goto	u2661
-	goto	u2660
-u2661:
-	goto	l2763
-u2660:
-	goto	l2771
+	goto	u2581
+	goto	u2580
+u2581:
+	goto	l2679
+u2580:
+	goto	l2687
 	
-l291:	
+l128:	
 	line	82
 	
-l2771:	
+l2687:	
 ;CC2500_B1.c: 81: }
 ;CC2500_B1.c: 82: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	83
 	
-l2773:	
+l2689:	
 ;CC2500_B1.c: 83: RSSI=SPI0Buffer;
 	movlb 0	; select bank0
 	movf	(_SPI0Buffer),w
@@ -3379,7 +3298,7 @@ l2773:
 	movwf	(_RSSI)
 	line	84
 	
-l2775:	
+l2691:	
 ;CC2500_B1.c: 84: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	85
@@ -3391,34 +3310,34 @@ l2775:
 	movwf	(_CRC)
 	line	86
 	
-l2777:	
+l2693:	
 ;CC2500_B1.c: 86: RB5=1;
 	bsf	(109/8),(109)&7	;volatile
 	line	87
 	
-l2779:	
+l2695:	
 ;CC2500_B1.c: 87: if(CRC & 0x80)
 	btfss	(_CRC),(7)&7
-	goto	u2671
-	goto	u2670
-u2671:
-	goto	l2783
-u2670:
+	goto	u2591
+	goto	u2590
+u2591:
+	goto	l2699
+u2590:
 	line	88
 	
-l2781:	
+l2697:	
 ;CC2500_B1.c: 88: Receive_OK=1;
 	bsf	(_Receive_OK/8),(_Receive_OK)&7
-	goto	l2783
+	goto	l2699
 	
-l292:	
-	goto	l2783
+l129:	
+	goto	l2699
 	line	89
 	
-l285:	
+l122:	
 	line	90
 	
-l2783:	
+l2699:	
 ;CC2500_B1.c: 89: }
 ;CC2500_B1.c: 90: CC2500_WriteCommand(0x36);
 	movlw	(036h)
@@ -3429,7 +3348,7 @@ l2783:
 	fcall	_CC2500_WriteCommand
 	line	92
 	
-l2785:	
+l2701:	
 ;CC2500_B1.c: 92: setRF_RxStatus(1,0);
 	movlb 0	; select bank0
 	clrf	(setRF_RxStatus@command)
@@ -3437,7 +3356,7 @@ l2785:
 	fcall	_setRF_RxStatus
 	line	93
 	
-l293:	
+l130:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_RxData
@@ -3447,7 +3366,7 @@ GLOBAL	__end_of_CC2500_RxData
 
 ;; *************** function _setRF_RxStatus *****************
 ;; Defined at:
-;;		line 43 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 43 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;;  command         1    2[BANK0 ] unsigned char 
@@ -3475,13 +3394,13 @@ GLOBAL	__end_of_CC2500_RxData
 ;;		_CC2500_RxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text5,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+psect	text6,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	43
-global __ptext5
-__ptext5:	;psect for function _setRF_RxStatus
-psect	text5
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+global __ptext6
+__ptext6:	;psect for function _setRF_RxStatus
+psect	text6
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	43
 	global	__size_of_setRF_RxStatus
 	__size_of_setRF_RxStatus	equ	__end_of_setRF_RxStatus-_setRF_RxStatus
@@ -3495,13 +3414,13 @@ _setRF_RxStatus:
 	movwf	(setRF_RxStatus@rf)
 	line	45
 	
-l2711:	
+l2627:	
 ;RF_Control_B1.c: 45: RfPointSelect(rf);
 	movf	(setRF_RxStatus@rf),w
 	fcall	_RfPointSelect
 	line	46
 	
-l2713:	
+l2629:	
 ;RF_Control_B1.c: 46: RF->RxStatus=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -3514,7 +3433,7 @@ l2713:
 	bsf	indf1,3
 	line	47
 	
-l476:	
+l633:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_RxStatus
@@ -3524,7 +3443,7 @@ GLOBAL	__end_of_setRF_RxStatus
 
 ;; *************** function _CC2500_ReadStatus *****************
 ;; Defined at:
-;;		line 267 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 267 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  status_addr     1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -3552,13 +3471,13 @@ GLOBAL	__end_of_setRF_RxStatus
 ;;		_CC2500_RxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text6,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+psect	text7,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	267
-global __ptext6
-__ptext6:	;psect for function _CC2500_ReadStatus
-psect	text6
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+global __ptext7
+__ptext7:	;psect for function _CC2500_ReadStatus
+psect	text7
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	267
 	global	__size_of_CC2500_ReadStatus
 	__size_of_CC2500_ReadStatus	equ	__end_of_CC2500_ReadStatus-_CC2500_ReadStatus
@@ -3572,12 +3491,12 @@ _CC2500_ReadStatus:
 	movwf	(CC2500_ReadStatus@status_addr)
 	line	269
 	
-l2701:	
+l2617:	
 ;CC2500_B1.c: 269: RB5=0;
 	bcf	(109/8),(109)&7	;volatile
 	line	270
 	
-l2703:	
+l2619:	
 ;CC2500_B1.c: 270: SPI0Buffer=status_addr+0xC0;
 	movf	(CC2500_ReadStatus@status_addr),w
 	addlw	0C0h
@@ -3586,23 +3505,23 @@ l2703:
 	movwf	(_SPI0Buffer)
 	line	272
 ;CC2500_B1.c: 272: while(RB3==1);
-	goto	l362
+	goto	l199
 	
-l363:	
+l200:	
 	
-l362:	
+l199:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2551
-	goto	u2550
-u2551:
-	goto	l362
-u2550:
-	goto	l2705
+	goto	u2471
+	goto	u2470
+u2471:
+	goto	l199
+u2470:
+	goto	l2621
 	
-l364:	
+l201:	
 	line	274
 	
-l2705:	
+l2621:	
 ;CC2500_B1.c: 274: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	275
@@ -3610,13 +3529,13 @@ l2705:
 	fcall	_CC2500_ReadByte
 	line	276
 	
-l2707:	
+l2623:	
 ;CC2500_B1.c: 276: RB5=1;
 	movlb 0	; select bank0
 	bsf	(109/8),(109)&7	;volatile
 	line	278
 	
-l2709:	
+l2625:	
 ;CC2500_B1.c: 278: s_data=SPI0Buffer;
 	movf	(_SPI0Buffer),w
 	movwf	(??_CC2500_ReadStatus+0)+0
@@ -3624,7 +3543,7 @@ l2709:
 	movwf	(_s_data)
 	line	279
 	
-l365:	
+l202:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ReadStatus
@@ -3634,7 +3553,7 @@ GLOBAL	__end_of_CC2500_ReadStatus
 
 ;; *************** function _CC2500_ReadByte *****************
 ;; Defined at:
-;;		line 210 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 210 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3663,12 +3582,12 @@ GLOBAL	__end_of_CC2500_ReadStatus
 ;;		_CC2500_ReadREG
 ;; This function uses a non-reentrant model
 ;;
-psect	text7,local,class=CODE,delta=2,merge=1
+psect	text8,local,class=CODE,delta=2,merge=1
 	line	210
-global __ptext7
-__ptext7:	;psect for function _CC2500_ReadByte
-psect	text7
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+global __ptext8
+__ptext8:	;psect for function _CC2500_ReadByte
+psect	text8
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	210
 	global	__size_of_CC2500_ReadByte
 	__size_of_CC2500_ReadByte	equ	__end_of_CC2500_ReadByte-_CC2500_ReadByte
@@ -3679,73 +3598,73 @@ _CC2500_ReadByte:
 ; Regs used in _CC2500_ReadByte: [wreg+status,2+status,0]
 	line	213
 	
-l2671:	
+l2587:	
 ;CC2500_B1.c: 212: unsigned char loop_b;
 ;CC2500_B1.c: 213: for(loop_b=0;loop_b<8;loop_b++)
 	movlb 0	; select bank0
 	clrf	(CC2500_ReadByte@loop_b)
 	
-l2673:	
+l2589:	
 	movlw	(08h)
 	subwf	(CC2500_ReadByte@loop_b),w
 	skipc
-	goto	u2501
-	goto	u2500
-u2501:
-	goto	l337
-u2500:
-	goto	l341
+	goto	u2421
+	goto	u2420
+u2421:
+	goto	l174
+u2420:
+	goto	l178
 	
-l2675:	
-	goto	l341
+l2591:	
+	goto	l178
 	line	214
 	
-l337:	
+l174:	
 	line	215
 ;CC2500_B1.c: 214: {
 ;CC2500_B1.c: 215: RB2=1;
 	bsf	(106/8),(106)&7	;volatile
 	line	216
 	
-l2677:	
+l2593:	
 ;CC2500_B1.c: 216: SPI0Buffer<<=1;
 	clrc
 	rlf	(_SPI0Buffer),f
 
 	line	217
 	
-l2679:	
+l2595:	
 ;CC2500_B1.c: 217: if(RB3 == 1)
 	btfss	(107/8),(107)&7	;volatile
-	goto	u2511
-	goto	u2510
-u2511:
-	goto	l2683
-u2510:
+	goto	u2431
+	goto	u2430
+u2431:
+	goto	l2599
+u2430:
 	line	218
 	
-l2681:	
+l2597:	
 ;CC2500_B1.c: 218: SPI0Buffer |= 0x01;
 	bsf	(_SPI0Buffer)+(0/8),(0)&7
-	goto	l2685
+	goto	l2601
 	line	219
 	
-l339:	
+l176:	
 	line	220
 	
-l2683:	
+l2599:	
 ;CC2500_B1.c: 219: else
 ;CC2500_B1.c: 220: SPI0Buffer &= 0xFE;
 	movlw	(0FEh)
 	movwf	(??_CC2500_ReadByte+0)+0
 	movf	(??_CC2500_ReadByte+0)+0,w
 	andwf	(_SPI0Buffer),f
-	goto	l2685
+	goto	l2601
 	
-l340:	
+l177:	
 	line	221
 	
-l2685:	
+l2601:	
 ;CC2500_B1.c: 221: RB2=0;
 	bcf	(106/8),(106)&7	;volatile
 	line	213
@@ -3754,21 +3673,21 @@ l2685:
 	movf	(??_CC2500_ReadByte+0)+0,w
 	addwf	(CC2500_ReadByte@loop_b),f
 	
-l2687:	
+l2603:	
 	movlw	(08h)
 	subwf	(CC2500_ReadByte@loop_b),w
 	skipc
-	goto	u2521
-	goto	u2520
-u2521:
-	goto	l337
-u2520:
-	goto	l341
+	goto	u2441
+	goto	u2440
+u2441:
+	goto	l174
+u2440:
+	goto	l178
 	
-l338:	
+l175:	
 	line	223
 	
-l341:	
+l178:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ReadByte
@@ -3778,7 +3697,7 @@ GLOBAL	__end_of_CC2500_ReadByte
 
 ;; *************** function _RF_Initialization *****************
 ;; Defined at:
-;;		line 17 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 17 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3805,13 +3724,13 @@ GLOBAL	__end_of_CC2500_ReadByte
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text8,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+psect	text9,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	17
-global __ptext8
-__ptext8:	;psect for function _RF_Initialization
-psect	text8
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+global __ptext9
+__ptext9:	;psect for function _RF_Initialization
+psect	text9
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	17
 	global	__size_of_RF_Initialization
 	__size_of_RF_Initialization	equ	__end_of_RF_Initialization-_RF_Initialization
@@ -3822,13 +3741,13 @@ _RF_Initialization:
 ; Regs used in _RF_Initialization: [wreg+status,2+status,0+pclath+cstack]
 	line	20
 	
-l3071:	
+l3011:	
 ;RF_Control_B1.c: 20: setRF_Initialization(1);
 	movlw	(01h)
 	fcall	_setRF_Initialization
 	line	22
 	
-l464:	
+l621:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RF_Initialization
@@ -3838,7 +3757,7 @@ GLOBAL	__end_of_RF_Initialization
 
 ;; *************** function _setRF_Initialization *****************
 ;; Defined at:
-;;		line 50 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 50 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -3865,12 +3784,12 @@ GLOBAL	__end_of_RF_Initialization
 ;;		_RF_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text9,local,class=CODE,delta=2,merge=1
+psect	text10,local,class=CODE,delta=2,merge=1
 	line	50
-global __ptext9
-__ptext9:	;psect for function _setRF_Initialization
-psect	text9
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+global __ptext10
+__ptext10:	;psect for function _setRF_Initialization
+psect	text10
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	50
 	global	__size_of_setRF_Initialization
 	__size_of_setRF_Initialization	equ	__end_of_setRF_Initialization-_setRF_Initialization
@@ -3881,7 +3800,7 @@ _setRF_Initialization:
 ; Regs used in _setRF_Initialization: [wreg]
 	line	54
 	
-l2931:	
+l2905:	
 ;RF_Control_B1.c: 54: Tx_Length=21;
 	movlw	(015h)
 	movlb 0	; select bank0
@@ -3890,7 +3809,7 @@ l2931:
 	movwf	(_Tx_Length)
 	line	56
 	
-l479:	
+l636:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Initialization
@@ -3900,7 +3819,7 @@ GLOBAL	__end_of_setRF_Initialization
 
 ;; *************** function _Mcu_Initial *****************
 ;; Defined at:
-;;		line 11 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 11 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3930,13 +3849,13 @@ GLOBAL	__end_of_setRF_Initialization
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text10,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+psect	text11,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	11
-global __ptext10
-__ptext10:	;psect for function _Mcu_Initial
-psect	text10
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext11
+__ptext11:	;psect for function _Mcu_Initial
+psect	text11
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	11
 	global	__size_of_Mcu_Initial
 	__size_of_Mcu_Initial	equ	__end_of_Mcu_Initial-_Mcu_Initial
@@ -3947,43 +3866,43 @@ _Mcu_Initial:
 ; Regs used in _Mcu_Initial: [wreg+status,2+status,0+pclath+cstack]
 	line	14
 	
-l3057:	
+l2977:	
 ;MCU_16f1516_B1.c: 14: OSCCON=0x78; ;;
 	movlw	(078h)
 	movlb 1	; select bank1
 	movwf	(153)^080h	;volatile
 	line	16
 	
-l3059:	
+l2979:	
 ;MCU_16f1516_B1.c: 16: IO_Set();
 	fcall	_IO_Set
 	line	18
 	
-l3061:	
+l2981:	
 ;MCU_16f1516_B1.c: 18: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	20
 	
-l3063:	
+l2983:	
 ;MCU_16f1516_B1.c: 20: TMR1_Set();
 	fcall	_TMR1_Set
 	line	22
 	
-l3065:	
+l2985:	
 ;MCU_16f1516_B1.c: 22: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	26
 	
-l3067:	
+l2987:	
 ;MCU_16f1516_B1.c: 26: INT_Set();
 	fcall	_INT_Set
 	line	28
 	
-l3069:	
+l2989:	
 ;MCU_16f1516_B1.c: 28: __nop();
 	opt	asmopt_off
 	nop
@@ -3993,7 +3912,7 @@ l3069:
 	fcall	_I2C_Set
 	line	35
 	
-l727:	
+l383:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Mcu_Initial
@@ -4003,7 +3922,7 @@ GLOBAL	__end_of_Mcu_Initial
 
 ;; *************** function _TMR1_Set *****************
 ;; Defined at:
-;;		line 114 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 114 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4030,12 +3949,12 @@ GLOBAL	__end_of_Mcu_Initial
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text11,local,class=CODE,delta=2,merge=1
+psect	text12,local,class=CODE,delta=2,merge=1
 	line	114
-global __ptext11
-__ptext11:	;psect for function _TMR1_Set
-psect	text11
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext12
+__ptext12:	;psect for function _TMR1_Set
+psect	text12
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	114
 	global	__size_of_TMR1_Set
 	__size_of_TMR1_Set	equ	__end_of_TMR1_Set-_TMR1_Set
@@ -4046,7 +3965,7 @@ _TMR1_Set:
 ; Regs used in _TMR1_Set: [wreg]
 	line	116
 	
-l2987:	
+l2839:	
 ;MCU_16f1516_B1.c: 116: Timer1=&VarTimer1;
 	movlw	(_VarTimer1)&0ffh
 	movlb 0	; select bank0
@@ -4067,23 +3986,23 @@ l2987:
 	movwf	(22)	;volatile
 	line	120
 	
-l2989:	
+l2841:	
 ;MCU_16f1516_B1.c: 120: TMR1IE=1;
 	movlb 1	; select bank1
 	bsf	(1160/8)^080h,(1160)&7	;volatile
 	line	121
 	
-l2991:	
+l2843:	
 ;MCU_16f1516_B1.c: 121: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	122
 	
-l2993:	
+l2845:	
 ;MCU_16f1516_B1.c: 122: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	123
 	
-l736:	
+l392:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_Set
@@ -4093,7 +4012,7 @@ GLOBAL	__end_of_TMR1_Set
 
 ;; *************** function _IO_Set *****************
 ;; Defined at:
-;;		line 37 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 37 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4120,12 +4039,12 @@ GLOBAL	__end_of_TMR1_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text12,local,class=CODE,delta=2,merge=1
+psect	text13,local,class=CODE,delta=2,merge=1
 	line	37
-global __ptext12
-__ptext12:	;psect for function _IO_Set
-psect	text12
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext13
+__ptext13:	;psect for function _IO_Set
+psect	text13
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	37
 	global	__size_of_IO_Set
 	__size_of_IO_Set	equ	__end_of_IO_Set-_IO_Set
@@ -4136,19 +4055,19 @@ _IO_Set:
 ; Regs used in _IO_Set: [wreg+status,2]
 	line	39
 	
-l2977:	
+l2829:	
 ;MCU_16f1516_B1.c: 39: TRISA=0b00000000;;
 	movlb 1	; select bank1
 	clrf	(140)^080h	;volatile
 	line	40
 	
-l2979:	
+l2831:	
 ;MCU_16f1516_B1.c: 40: TRISB=0b00011001;;
 	movlw	(019h)
 	movwf	(141)^080h	;volatile
 	line	41
 	
-l2981:	
+l2833:	
 ;MCU_16f1516_B1.c: 41: TRISC=0b00011000;;
 	movlw	(018h)
 	movwf	(142)^080h	;volatile
@@ -4178,19 +4097,19 @@ l2981:
 	clrf	(12)	;volatile
 	line	49
 	
-l2983:	
+l2835:	
 ;MCU_16f1516_B1.c: 49: PORTB=0b00011001;;
 	movlw	(019h)
 	movwf	(13)	;volatile
 	line	50
 	
-l2985:	
+l2837:	
 ;MCU_16f1516_B1.c: 50: PORTC=0b00011000;;
 	movlw	(018h)
 	movwf	(14)	;volatile
 	line	51
 	
-l730:	
+l386:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IO_Set
@@ -4200,7 +4119,7 @@ GLOBAL	__end_of_IO_Set
 
 ;; *************** function _INT_Set *****************
 ;; Defined at:
-;;		line 148 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 148 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4227,12 +4146,12 @@ GLOBAL	__end_of_IO_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text13,local,class=CODE,delta=2,merge=1
+psect	text14,local,class=CODE,delta=2,merge=1
 	line	148
-global __ptext13
-__ptext13:	;psect for function _INT_Set
-psect	text13
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext14
+__ptext14:	;psect for function _INT_Set
+psect	text14
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	148
 	global	__size_of_INT_Set
 	__size_of_INT_Set	equ	__end_of_INT_Set-_INT_Set
@@ -4243,7 +4162,7 @@ _INT_Set:
 ; Regs used in _INT_Set: []
 	line	150
 	
-l2995:	
+l2847:	
 ;MCU_16f1516_B1.c: 150: WPUB0=0;
 	movlb 4	; select bank4
 	bcf	(4200/8)^0200h,(4200)&7	;volatile
@@ -4255,7 +4174,7 @@ l2995:
 	bsf	(95/8),(95)&7	;volatile
 	line	154
 	
-l744:	
+l400:	
 	return
 	opt stack 0
 GLOBAL	__end_of_INT_Set
@@ -4265,7 +4184,7 @@ GLOBAL	__end_of_INT_Set
 
 ;; *************** function _I2C_Set *****************
 ;; Defined at:
-;;		line 233 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 233 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4292,12 +4211,12 @@ GLOBAL	__end_of_INT_Set
 ;;		_Mcu_Initial
 ;; This function uses a non-reentrant model
 ;;
-psect	text14,local,class=CODE,delta=2,merge=1
+psect	text15,local,class=CODE,delta=2,merge=1
 	line	233
-global __ptext14
-__ptext14:	;psect for function _I2C_Set
-psect	text14
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+global __ptext15
+__ptext15:	;psect for function _I2C_Set
+psect	text15
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	233
 	global	__size_of_I2C_Set
 	__size_of_I2C_Set	equ	__end_of_I2C_Set-_I2C_Set
@@ -4308,7 +4227,7 @@ _I2C_Set:
 ; Regs used in _I2C_Set: [wreg]
 	line	235
 	
-l2997:	
+l2849:	
 ;MCU_16f1516_B1.c: 235: I2C=&VarI2C;
 	movlw	(_VarI2C)&0ffh
 	movlb 0	; select bank0
@@ -4334,38 +4253,38 @@ l2997:
 	movwf	(533)^0200h	;volatile
 	line	251
 	
-l2999:	
+l2851:	
 ;MCU_16f1516_B1.c: 251: SEN=1;
 	bsf	(4272/8)^0200h,(4272)&7	;volatile
 	line	252
 	
-l3001:	
+l2853:	
 ;MCU_16f1516_B1.c: 252: AHEN=0;
 	bcf	(4281/8)^0200h,(4281)&7	;volatile
 	line	253
 	
-l3003:	
+l2855:	
 ;MCU_16f1516_B1.c: 253: DHEN=0;
 	bcf	(4280/8)^0200h,(4280)&7	;volatile
 	line	254
 	
-l3005:	
+l2857:	
 ;MCU_16f1516_B1.c: 254: SSPIE=1;
 	movlb 1	; select bank1
 	bsf	(1163/8)^080h,(1163)&7	;volatile
 	line	255
 	
-l3007:	
+l2859:	
 ;MCU_16f1516_B1.c: 255: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	256
 	
-l3009:	
+l2861:	
 ;MCU_16f1516_B1.c: 256: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	258
 	
-l754:	
+l410:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Set
@@ -4375,7 +4294,7 @@ GLOBAL	__end_of_I2C_Set
 
 ;; *************** function _MainT_Initial *****************
 ;; Defined at:
-;;		line 33 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 33 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4402,13 +4321,13 @@ GLOBAL	__end_of_I2C_Set
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text15,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\myMain.c"
+psect	text16,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	33
-global __ptext15
-__ptext15:	;psect for function _MainT_Initial
-psect	text15
-	file	"I:\Program\PIC\Source_File\myMain.c"
+global __ptext16
+__ptext16:	;psect for function _MainT_Initial
+psect	text16
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	33
 	global	__size_of_MainT_Initial
 	__size_of_MainT_Initial	equ	__end_of_MainT_Initial-_MainT_Initial
@@ -4419,7 +4338,7 @@ _MainT_Initial:
 ; Regs used in _MainT_Initial: [wregfsr1]
 	line	35
 	
-l3051:	
+l3029:	
 ;myMain.c: 35: TMain=&VarTMain;
 	movlw	(_VarTMain)&0ffh
 	movlb 0	; select bank0
@@ -4428,7 +4347,7 @@ l3051:
 	movwf	(_TMain)
 	line	36
 	
-l3053:	
+l3031:	
 ;myMain.c: 36: TMain->FirstOpen=1;
 	movf	(_TMain),w
 	addlw	0Dh
@@ -4438,7 +4357,7 @@ l3053:
 	bsf	indf1,0
 	line	37
 	
-l3055:	
+l3033:	
 ;myMain.c: 37: Product=&VarProduct;
 	movlw	(_VarProduct)&0ffh
 	movwf	(??_MainT_Initial+0)+0
@@ -4446,7 +4365,7 @@ l3055:
 	movwf	(_Product)
 	line	38
 	
-l91:	
+l796:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT_Initial
@@ -4456,7 +4375,7 @@ GLOBAL	__end_of_MainT_Initial
 
 ;; *************** function _MainT *****************
 ;; Defined at:
-;;		line 41 in file "I:\Program\PIC\Source_File\myMain.c"
+;;		line 41 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4476,30 +4395,30 @@ GLOBAL	__end_of_MainT_Initial
 ;;      Totals:         0       1       0       0       0       0       0       0
 ;;Total ram usage:        1 bytes
 ;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    8
+;; Hardware stack levels required when called:    6
 ;; This function calls:
 ;;		_setRF_Enable
 ;; This function is called by:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text16,local,class=CODE,delta=2,merge=1
+psect	text17,local,class=CODE,delta=2,merge=1
 	line	41
-global __ptext16
-__ptext16:	;psect for function _MainT
-psect	text16
-	file	"I:\Program\PIC\Source_File\myMain.c"
+global __ptext17
+__ptext17:	;psect for function _MainT
+psect	text17
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 	line	41
 	global	__size_of_MainT
 	__size_of_MainT	equ	__end_of_MainT-_MainT
 	
 _MainT:	
 ;incstack = 0
-	opt	stack 7
+	opt	stack 9
 ; Regs used in _MainT: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	45
 	
-l3079:	
+l3035:	
 ;myMain.c: 43: char i;
 ;myMain.c: 45: if(!TMain->PowerON)
 	movlb 0	; select bank0
@@ -4508,14 +4427,14 @@ l3079:
 	clrf fsr1h	
 	
 	btfsc	indf1,0
-	goto	u3021
-	goto	u3020
-u3021:
-	goto	l3089
-u3020:
+	goto	u2981
+	goto	u2980
+u2981:
+	goto	l3045
+u2980:
 	line	47
 	
-l3081:	
+l3037:	
 ;myMain.c: 46: {
 ;myMain.c: 47: TMain->PowerCount++;
 	incf	(_TMain),w
@@ -4529,7 +4448,7 @@ l3081:
 	incf	indf1,f
 	line	48
 	
-l3083:	
+l3039:	
 ;myMain.c: 48: if(TMain->PowerCount == 1500)
 	incf	(_TMain),w
 	movwf	fsr1l
@@ -4538,19 +4457,19 @@ l3083:
 	moviw	[0]fsr1
 	xorlw	low(05DCh)
 	skipz
-	goto	u3035
+	goto	u2995
 	moviw	[1]fsr1
 	xorlw	high(05DCh)
-u3035:
+u2995:
 	skipz
-	goto	u3031
-	goto	u3030
-u3031:
-	goto	l101
-u3030:
+	goto	u2991
+	goto	u2990
+u2991:
+	goto	l806
+u2990:
 	line	50
 	
-l3085:	
+l3041:	
 ;myMain.c: 49: {
 ;myMain.c: 50: TMain->PowerCount=0;
 	incf	(_TMain),w
@@ -4569,26 +4488,26 @@ l3085:
 	bsf	indf1,0
 	line	54
 	
-l3087:	
+l3043:	
 ;myMain.c: 54: setRF_Enable(1,1);
 	clrf	(setRF_Enable@command)
 	incf	(setRF_Enable@command),f
 	movlw	(01h)
 	fcall	_setRF_Enable
-	goto	l101
+	goto	l806
 	line	56
 	
-l95:	
+l800:	
 	line	57
 ;myMain.c: 56: }
 ;myMain.c: 57: }
-	goto	l101
+	goto	l806
 	line	58
 	
-l94:	
+l799:	
 	line	60
 	
-l3089:	
+l3045:	
 ;myMain.c: 58: else
 ;myMain.c: 59: {
 ;myMain.c: 60: TMain->Count1++;
@@ -4605,7 +4524,7 @@ l3089:
 	incf	indf1,f
 	line	61
 	
-l3091:	
+l3047:	
 ;myMain.c: 61: if(TMain->Count1 == 1000)
 	movf	(_TMain),w
 	addlw	05h
@@ -4615,19 +4534,19 @@ l3091:
 	moviw	[0]fsr1
 	xorlw	low(03E8h)
 	skipz
-	goto	u3045
+	goto	u3005
 	moviw	[1]fsr1
 	xorlw	high(03E8h)
-u3045:
+u3005:
 	skipz
-	goto	u3041
-	goto	u3040
-u3041:
-	goto	l101
-u3040:
+	goto	u3001
+	goto	u3000
+u3001:
+	goto	l806
+u3000:
 	line	63
 	
-l3093:	
+l3049:	
 ;myMain.c: 62: {
 ;myMain.c: 63: TMain->Count1=0;
 	movf	(_TMain),w
@@ -4640,22 +4559,22 @@ l3093:
 	movwi	[1]fsr1
 	line	64
 	
-l3095:	
+l3051:	
 ;myMain.c: 64: RA0=~RA0;
 	movlw	1<<((96)&7)
 	xorwf	((96)/8),f
-	goto	l3099
+	goto	l3055
 	line	78
 	
-l3097:	
-	goto	l3099
+l3053:	
+	goto	l3055
 	line	82
 ;myMain.c: 79: {
 	
-l98:	
+l803:	
 	line	84
 	
-l3099:	
+l3055:	
 ;myMain.c: 82: }
 ;myMain.c: 84: if(TMain->Test)
 	movf	(_TMain),w
@@ -4666,14 +4585,14 @@ l3099:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u3051
-	goto	u3050
-u3051:
-	goto	l101
-u3050:
+	goto	u3011
+	goto	u3010
+u3011:
+	goto	l806
+u3010:
 	line	87
 	
-l3101:	
+l3057:	
 ;myMain.c: 85: {
 ;myMain.c: 86: ;;
 ;myMain.c: 87: I2C->Count++;
@@ -4689,7 +4608,7 @@ l3101:
 	addwf	indf1,f
 	line	88
 	
-l3103:	
+l3059:	
 ;myMain.c: 88: if(I2C->Count==32)
 	movf	(_I2C),w
 	addlw	040h
@@ -4700,14 +4619,14 @@ l3103:
 	movf	indf1,w
 	xorlw	020h&0ffh
 	skipz
-	goto	u3061
-	goto	u3060
-u3061:
-	goto	l101
-u3060:
+	goto	u3021
+	goto	u3020
+u3021:
+	goto	l806
+u3020:
 	line	90
 	
-l3105:	
+l3061:	
 ;myMain.c: 89: {
 ;myMain.c: 90: I2C->Count=0;
 	movf	(_I2C),w
@@ -4717,25 +4636,25 @@ l3105:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l101
+	goto	l806
 	line	91
 	
-l100:	
-	goto	l101
+l805:	
+	goto	l806
 	line	92
 	
-l99:	
-	goto	l101
+l804:	
+	goto	l806
 	line	105
 	
-l97:	
-	goto	l101
+l802:	
+	goto	l806
 	line	127
 	
-l96:	
+l801:	
 	line	128
 	
-l101:	
+l806:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT
@@ -4745,12 +4664,12 @@ GLOBAL	__end_of_MainT
 
 ;; *************** function _setRF_Enable *****************
 ;; Defined at:
-;;		line 173 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 178 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
-;;  command         1    5[BANK0 ] unsigned char 
+;;  command         1    2[BANK0 ] unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  rf              1    6[BANK0 ] unsigned char 
+;;  rf              1    3[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -4766,274 +4685,124 @@ GLOBAL	__end_of_MainT
 ;;      Totals:         0       2       0       0       0       0       0       0
 ;;Total ram usage:        2 bytes
 ;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    7
+;; Hardware stack levels required when called:    5
 ;; This function calls:
-;;		_CC2500_WriteCommand
-;;		_RF_RxDisable
 ;;		_RfPointSelect
+;;		_setINT_GO
 ;; This function is called by:
 ;;		_MainT
 ;; This function uses a non-reentrant model
 ;;
-psect	text17,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
-	line	173
-global __ptext17
-__ptext17:	;psect for function _setRF_Enable
-psect	text17
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
-	line	173
+psect	text18,local,class=CODE,delta=2,merge=1
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
+	line	178
+global __ptext18
+__ptext18:	;psect for function _setRF_Enable
+psect	text18
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
+	line	178
 	global	__size_of_setRF_Enable
 	__size_of_setRF_Enable	equ	__end_of_setRF_Enable-_setRF_Enable
 	
 _setRF_Enable:	
 ;incstack = 0
-	opt	stack 7
+	opt	stack 9
 ; Regs used in _setRF_Enable: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 ;setRF_Enable@rf stored from wreg
 	movlb 0	; select bank0
 	movwf	(setRF_Enable@rf)
-	line	175
-	
-l2865:	
-;RF_Control_B1.c: 175: RfPointSelect(rf);
-	movf	(setRF_Enable@rf),w
-	fcall	_RfPointSelect
-	line	176
-	
-l2867:	
-;RF_Control_B1.c: 176: if(command)
-	movlb 0	; select bank0
-	movf	(setRF_Enable@command),w
-	skipz
-	goto	u2800
-	goto	l2871
-u2800:
-	line	178
-	
-l2869:	
-;RF_Control_B1.c: 177: {
-;RF_Control_B1.c: 178: RF->Enable=1;
-	movf	(_RF),w
-	movwf	fsr1l
-	clrf fsr1h	
-	
-	bsf	indf1,0
-	line	179
-;RF_Control_B1.c: 179: }
-	goto	l505
 	line	180
 	
-l503:	
-	line	182
+l2953:	
+;RF_Control_B1.c: 180: RfPointSelect(rf);
+	movf	(setRF_Enable@rf),w
+	fcall	_RfPointSelect
+	line	181
 	
-l2871:	
-;RF_Control_B1.c: 180: else
-;RF_Control_B1.c: 181: {
-;RF_Control_B1.c: 182: RF->Enable=0;
+l2955:	
+;RF_Control_B1.c: 181: RF->Enable=command;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
+	movlb 0	; select bank0
+	movf	(setRF_Enable@command),w
 	bcf	indf1,0
-	line	183
-;RF_Control_B1.c: 183: RF->Learn=0;
+	skipz
+	bsf	indf1,0
+	line	182
+	
+l2957:	
+;RF_Control_B1.c: 182: RF->Learn=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,6
+	line	183
+	
+l2959:	
+;RF_Control_B1.c: 183: RF->TransceiveGO=0;
+	movf	(_RF),w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bcf	indf1,2
 	line	184
 	
-l2873:	
-;RF_Control_B1.c: 184: Transceive_GO=0;
-	bcf	(_Transceive_GO/8),(_Transceive_GO)&7
-	line	185
-	
-l2875:	
-;RF_Control_B1.c: 185: CC2500_WriteCommand(0x36);
-	movlw	(036h)
-	fcall	_CC2500_WriteCommand
-	line	186
-	
-l2877:	
-;RF_Control_B1.c: 186: CC2500_WriteCommand(0x3B);
-	movlw	(03Bh)
-	fcall	_CC2500_WriteCommand
-	line	187
-	
-l2879:	
-;RF_Control_B1.c: 187: RF_RxDisable(1);
-	movlw	(01h)
-	fcall	_RF_RxDisable
-	goto	l505
-	line	188
-	
-l504:	
-	line	189
-	
-l505:	
-	return
-	opt stack 0
-GLOBAL	__end_of_setRF_Enable
-	__end_of_setRF_Enable:
-	signat	_setRF_Enable,8312
-	global	_RF_RxDisable
-
-;; *************** function _RF_RxDisable *****************
-;; Defined at:
-;;		line 191 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
-;; Parameters:    Size  Location     Type
-;;  rf              1    wreg     unsigned char 
-;; Auto vars:     Size  Location     Type
-;;  rf              1    4[BANK0 ] unsigned char 
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
-;;      Params:         0       0       0       0       0       0       0       0
-;;      Locals:         0       1       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0
-;;      Totals:         0       1       0       0       0       0       0       0
-;;Total ram usage:        1 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    6
-;; This function calls:
-;;		_CC2500_WriteCommand
-;;		_RfPointSelect
-;;		_setINT_GO
-;; This function is called by:
-;;		_setRF_Main
-;;		_setRF_Enable
-;; This function uses a non-reentrant model
-;;
-psect	text18,local,class=CODE,delta=2,merge=1
-	line	191
-global __ptext18
-__ptext18:	;psect for function _RF_RxDisable
-psect	text18
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
-	line	191
-	global	__size_of_RF_RxDisable
-	__size_of_RF_RxDisable	equ	__end_of_RF_RxDisable-_RF_RxDisable
-	
-_RF_RxDisable:	
-;incstack = 0
-	opt	stack 7
-; Regs used in _RF_RxDisable: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-;RF_RxDisable@rf stored from wreg
-	movlb 0	; select bank0
-	movwf	(RF_RxDisable@rf)
-	line	193
-	
-l2811:	
-;RF_Control_B1.c: 193: RfPointSelect(rf);
-	movf	(RF_RxDisable@rf),w
-	fcall	_RfPointSelect
-	line	194
-	
-l2813:	
-;RF_Control_B1.c: 194: if(RF->RxStatus || RF->ReceiveGO)
-	movf	(_RF),w
-	movwf	fsr1l
-	clrf fsr1h	
-	
-	btfsc	indf1,3
-	goto	u2721
-	goto	u2720
-u2721:
-	goto	l2817
-u2720:
-	
-l2815:	
-	movf	(_RF),w
-	movwf	fsr1l
-	clrf fsr1h	
-	
-	btfss	indf1,1
-	goto	u2731
-	goto	u2730
-u2731:
-	goto	l511
-u2730:
-	goto	l2817
-	
-l510:	
-	line	196
-	
-l2817:	
-;RF_Control_B1.c: 195: {
-;RF_Control_B1.c: 196: RF->RxStatus=0;
+l2961:	
+;RF_Control_B1.c: 184: RF->RxStatus=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,3
-	line	197
-;RF_Control_B1.c: 197: RF->ReceiveGO=0;
+	line	185
+	
+l2963:	
+;RF_Control_B1.c: 185: RF->ReceiveGO=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,1
-	line	198
+	line	186
 	
-l2819:	
-;RF_Control_B1.c: 198: RF->DebounceTime=0;
+l2965:	
+;RF_Control_B1.c: 186: RF->DebounceTime=0;
 	incf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	clrf	indf1
-	line	199
+	line	187
 	
-l2821:	
-;RF_Control_B1.c: 199: RF->Debounce=0;
+l2967:	
+;RF_Control_B1.c: 187: RF->Debounce=0;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bcf	indf1,5
-	line	200
+	line	188
 	
-l2823:	
-;RF_Control_B1.c: 200: CC2500_WriteCommand(0x36);
-	movlw	(036h)
-	fcall	_CC2500_WriteCommand
-	line	201
-	
-l2825:	
-;RF_Control_B1.c: 201: CC2500_WriteCommand(0x3A);
-	movlw	(03Ah)
-	fcall	_CC2500_WriteCommand
-	line	202
-	
-l2827:	
-;RF_Control_B1.c: 202: setINT_GO(0);
+l2969:	
+;RF_Control_B1.c: 188: setINT_GO(0);
 	movlw	(0)
 	fcall	_setINT_GO
-	goto	l511
-	line	203
+	line	189
 	
-l508:	
-	line	204
-	
-l511:	
+l658:	
 	return
 	opt stack 0
-GLOBAL	__end_of_RF_RxDisable
-	__end_of_RF_RxDisable:
-	signat	_RF_RxDisable,4216
+GLOBAL	__end_of_setRF_Enable
+	__end_of_setRF_Enable:
+	signat	_setRF_Enable,8312
 	global	_setINT_GO
 
 ;; *************** function _setINT_GO *****************
 ;; Defined at:
-;;		line 166 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 166 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  command         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -5058,16 +4827,17 @@ GLOBAL	__end_of_RF_RxDisable
 ;;		Nothing
 ;; This function is called by:
 ;;		_setRF_Main
+;;		_setRF_Enable
 ;;		_RF_RxDisable
 ;; This function uses a non-reentrant model
 ;;
 psect	text19,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	166
 global __ptext19
 __ptext19:	;psect for function _setINT_GO
 psect	text19
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	166
 	global	__size_of_setINT_GO
 	__size_of_setINT_GO	equ	__end_of_setINT_GO-_setINT_GO
@@ -5081,26 +4851,26 @@ _setINT_GO:
 	movwf	(setINT_GO@command)
 	line	168
 	
-l2715:	
+l2631:	
 ;MCU_16f1516_B1.c: 168: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
 	line	169
 	
-l2717:	
+l2633:	
 ;MCU_16f1516_B1.c: 169: INTE=command;
 	btfsc	(setINT_GO@command),0
-	goto	u2561
-	goto	u2560
+	goto	u2481
+	goto	u2480
 	
-u2561:
+u2481:
 	bsf	(92/8),(92)&7	;volatile
-	goto	u2574
-u2560:
+	goto	u2494
+u2480:
 	bcf	(92/8),(92)&7	;volatile
-u2574:
+u2494:
 	line	170
 	
-l751:	
+l407:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setINT_GO
@@ -5110,7 +4880,7 @@ GLOBAL	__end_of_setINT_GO
 
 ;; *************** function _RfPointSelect *****************
 ;; Defined at:
-;;		line 7 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 7 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -5146,12 +4916,12 @@ GLOBAL	__end_of_setINT_GO
 ;; This function uses a non-reentrant model
 ;;
 psect	text20,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	7
 global __ptext20
 __ptext20:	;psect for function _RfPointSelect
 psect	text20
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	7
 	global	__size_of_RfPointSelect
 	__size_of_RfPointSelect	equ	__end_of_RfPointSelect-_RfPointSelect
@@ -5165,32 +4935,32 @@ _RfPointSelect:
 	movwf	(RfPointSelect@rf)
 	line	10
 	
-l2689:	
+l2605:	
 ;RF_Control_B1.c: 10: if(rf == 1)
 	movf	(RfPointSelect@rf),w
 	xorlw	01h&0ffh
 	skipz
-	goto	u2531
-	goto	u2530
-u2531:
-	goto	l461
-u2530:
+	goto	u2451
+	goto	u2450
+u2451:
+	goto	l618
+u2450:
 	line	12
 	
-l2691:	
+l2607:	
 ;RF_Control_B1.c: 11: {
 ;RF_Control_B1.c: 12: RF=&RF1;
 	movlw	(_RF1)&0ffh
 	movwf	(??_RfPointSelect+0)+0
 	movf	(??_RfPointSelect+0)+0,w
 	movwf	(_RF)
-	goto	l461
+	goto	l618
 	line	13
 	
-l460:	
+l617:	
 	line	15
 	
-l461:	
+l618:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RfPointSelect
@@ -5200,7 +4970,7 @@ GLOBAL	__end_of_RfPointSelect
 
 ;; *************** function _I2C_Main *****************
 ;; Defined at:
-;;		line 275 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 275 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -5229,12 +4999,12 @@ GLOBAL	__end_of_RfPointSelect
 ;; This function uses a non-reentrant model
 ;;
 psect	text21,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	275
 global __ptext21
 __ptext21:	;psect for function _I2C_Main
 psect	text21
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	275
 	global	__size_of_I2C_Main
 	__size_of_I2C_Main	equ	__end_of_I2C_Main-_I2C_Main
@@ -5245,10 +5015,9 @@ _I2C_Main:
 ; Regs used in _I2C_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	279
 	
-l3109:	
+l2991:	
 ;MCU_16f1516_B1.c: 277: char i;
 ;MCU_16f1516_B1.c: 279: if(I2C->SlaveGO)
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -5256,14 +5025,14 @@ l3109:
 	movwf fsr1h	
 	
 	btfss	indf1,0
-	goto	u3071
-	goto	u3070
-u3071:
-	goto	l764
-u3070:
+	goto	u2931
+	goto	u2930
+u2931:
+	goto	l420
+u2930:
 	line	281
 	
-l3111:	
+l2993:	
 ;MCU_16f1516_B1.c: 280: {
 ;MCU_16f1516_B1.c: 281: I2C->SlaveGO=0;
 	movf	(_I2C),w
@@ -5275,20 +5044,19 @@ l3111:
 	bcf	indf1,0
 	line	282
 	
-l3113:	
+l2995:	
 ;MCU_16f1516_B1.c: 282: I2C_Slave_Mode();
 	fcall	_I2C_Slave_Mode
 	line	283
 	
-l3115:	
+l2997:	
 ;MCU_16f1516_B1.c: 283: SSPIE=1;
 	movlb 1	; select bank1
 	bsf	(1163/8)^080h,(1163)&7	;volatile
 	line	285
 	
-l3117:	
+l2999:	
 ;MCU_16f1516_B1.c: 285: if(I2C->SlaveTxGO)
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -5296,14 +5064,14 @@ l3117:
 	movwf fsr1h	
 	
 	btfss	indf1,2
-	goto	u3081
-	goto	u3080
-u3081:
-	goto	l762
-u3080:
+	goto	u2941
+	goto	u2940
+u2941:
+	goto	l418
+u2940:
 	line	287
 	
-l3119:	
+l3001:	
 ;MCU_16f1516_B1.c: 286: {
 ;MCU_16f1516_B1.c: 287: I2C->SlaveTxGO=0;
 	movf	(_I2C),w
@@ -5315,8 +5083,9 @@ l3119:
 	bcf	indf1,2
 	line	288
 	
-l3121:	
+l3003:	
 ;MCU_16f1516_B1.c: 288: RC0=0;
+	movlb 0	; select bank0
 	bcf	(112/8),(112)&7	;volatile
 	line	289
 ;MCU_16f1516_B1.c: 289: I2C->SS=0;
@@ -5329,7 +5098,7 @@ l3121:
 	bcf	indf1,5
 	line	290
 	
-l762:	
+l418:	
 	line	291
 ;MCU_16f1516_B1.c: 290: }
 ;MCU_16f1516_B1.c: 291: if(I2C->SlaveRxGO)
@@ -5340,14 +5109,14 @@ l762:
 	movwf fsr1h	
 	
 	btfss	indf1,1
-	goto	u3091
-	goto	u3090
-u3091:
-	goto	l3127
-u3090:
+	goto	u2951
+	goto	u2950
+u2951:
+	goto	l3009
+u2950:
 	line	293
 	
-l3123:	
+l3005:	
 ;MCU_16f1516_B1.c: 292: {
 ;MCU_16f1516_B1.c: 293: I2C->SlaveRxGO=0;
 	movf	(_I2C),w
@@ -5359,29 +5128,29 @@ l3123:
 	bcf	indf1,1
 	line	294
 	
-l3125:	
+l3007:	
 ;MCU_16f1516_B1.c: 294: I2C_SetData(0);
 	movlw	(0)
 	fcall	_I2C_SetData
-	goto	l3127
+	goto	l3009
 	line	295
 	
-l763:	
+l419:	
 	line	296
 	
-l3127:	
+l3009:	
 ;MCU_16f1516_B1.c: 295: }
 ;MCU_16f1516_B1.c: 296: RA1=~RA1;
 	movlw	1<<((97)&7)
 	movlb 0	; select bank0
 	xorwf	((97)/8),f
-	goto	l764
+	goto	l420
 	line	297
 	
-l761:	
+l417:	
 	line	341
 	
-l764:	
+l420:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Main
@@ -5391,7 +5160,7 @@ GLOBAL	__end_of_I2C_Main
 
 ;; *************** function _I2C_Slave_Mode *****************
 ;; Defined at:
-;;		line 446 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 446 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -5423,7 +5192,7 @@ psect	text22,local,class=CODE,delta=2,merge=1
 global __ptext22
 __ptext22:	;psect for function _I2C_Slave_Mode
 psect	text22
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	446
 	global	__size_of_I2C_Slave_Mode
 	__size_of_I2C_Slave_Mode	equ	__end_of_I2C_Slave_Mode-_I2C_Slave_Mode
@@ -5434,14 +5203,14 @@ _I2C_Slave_Mode:
 ; Regs used in _I2C_Slave_Mode: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	449
 	
-l3011:	
+l2863:	
 ;MCU_16f1516_B1.c: 448: char i;
 ;MCU_16f1516_B1.c: 449: SSPIF=0;
 	movlb 0	; select bank0
 	bcf	(139/8),(139)&7	;volatile
 	line	450
 	
-l3013:	
+l2865:	
 ;MCU_16f1516_B1.c: 450: I2C->Address=SSPBUF;
 	movlb 4	; select bank4
 	movf	(529)^0200h,w	;volatile
@@ -5457,47 +5226,47 @@ l3013:
 	movwf	indf1
 	line	452
 	
-l3015:	
+l2867:	
 ;MCU_16f1516_B1.c: 452: if(R_nW)
 	movlb 4	; select bank4
 	btfss	(4258/8)^0200h,(4258)&7	;volatile
-	goto	u2941
-	goto	u2940
-u2941:
-	goto	l859
-u2940:
+	goto	u2771
+	goto	u2770
+u2771:
+	goto	l515
+u2770:
 	line	454
 	
-l3017:	
+l2869:	
 ;MCU_16f1516_B1.c: 453: {
 ;MCU_16f1516_B1.c: 454: SSPOV=0;
 	bcf	(4270/8)^0200h,(4270)&7	;volatile
 	line	455
 	
-l3019:	
+l2871:	
 ;MCU_16f1516_B1.c: 455: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(I2C_Slave_Mode@i)
 	
-l3021:	
+l2873:	
 	movlw	(020h)
 	subwf	(I2C_Slave_Mode@i),w
 	skipc
-	goto	u2951
-	goto	u2950
-u2951:
-	goto	l3025
-u2950:
-	goto	l861
+	goto	u2781
+	goto	u2780
+u2781:
+	goto	l2877
+u2780:
+	goto	l517
 	
-l3023:	
-	goto	l861
+l2875:	
+	goto	l517
 	line	456
 	
-l860:	
+l516:	
 	line	457
 	
-l3025:	
+l2877:	
 ;MCU_16f1516_B1.c: 456: {
 ;MCU_16f1516_B1.c: 457: SSPBUF=I2C->BufferWriter[i];
 	movf	(I2C_Slave_Mode@i),w
@@ -5514,65 +5283,65 @@ l3025:
 	movwf	(529)^0200h	;volatile
 	line	459
 	
-l3027:	
+l2879:	
 ;MCU_16f1516_B1.c: 459: CKP=1;
 	bsf	(4268/8)^0200h,(4268)&7	;volatile
 	line	460
 ;MCU_16f1516_B1.c: 460: while(!SSPIF);
-	goto	l862
+	goto	l518
 	
-l863:	
+l519:	
 	
-l862:	
+l518:	
 	movlb 0	; select bank0
 	btfss	(139/8),(139)&7	;volatile
-	goto	u2961
-	goto	u2960
-u2961:
-	goto	l862
-u2960:
+	goto	u2791
+	goto	u2790
+u2791:
+	goto	l518
+u2790:
 	
-l864:	
+l520:	
 	line	461
 ;MCU_16f1516_B1.c: 461: SSPIF=0;
 	bcf	(139/8),(139)&7	;volatile
 	line	462
 ;MCU_16f1516_B1.c: 462: while(ACKSTAT);
-	goto	l865
+	goto	l521
 	
-l866:	
+l522:	
 	
-l865:	
+l521:	
 	movlb 4	; select bank4
 	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u2971
-	goto	u2970
-u2971:
-	goto	l865
-u2970:
-	goto	l3029
+	goto	u2801
+	goto	u2800
+u2801:
+	goto	l521
+u2800:
+	goto	l2881
 	
-l867:	
+l523:	
 	line	455
 	
-l3029:	
+l2881:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_I2C_Slave_Mode+0)+0
 	movf	(??_I2C_Slave_Mode+0)+0,w
 	addwf	(I2C_Slave_Mode@i),f
 	
-l3031:	
+l2883:	
 	movlw	(020h)
 	subwf	(I2C_Slave_Mode@i),w
 	skipc
-	goto	u2981
-	goto	u2980
-u2981:
-	goto	l3025
-u2980:
+	goto	u2811
+	goto	u2810
+u2811:
+	goto	l2877
+u2810:
 	
-l861:	
+l517:	
 	line	464
 ;MCU_16f1516_B1.c: 463: }
 ;MCU_16f1516_B1.c: 464: CKP=1;
@@ -5580,9 +5349,8 @@ l861:
 	bsf	(4268/8)^0200h,(4268)&7	;volatile
 	line	466
 	
-l3033:	
+l2885:	
 ;MCU_16f1516_B1.c: 466: I2C->SlaveTxGO=1;
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -5591,62 +5359,68 @@ l3033:
 	
 	bsf	indf1,2
 	line	467
-;MCU_16f1516_B1.c: 467: }
-	goto	l874
+	
+l2887:	
+;MCU_16f1516_B1.c: 467: RA1=1;
+	movlb 0	; select bank0
+	bsf	(97/8),(97)&7	;volatile
 	line	468
+;MCU_16f1516_B1.c: 468: }
+	goto	l530
+	line	469
 	
-l859:	
-	line	470
-;MCU_16f1516_B1.c: 468: else
-;MCU_16f1516_B1.c: 469: {
-;MCU_16f1516_B1.c: 470: CKP=1;
+l515:	
+	line	472
+;MCU_16f1516_B1.c: 469: else
+;MCU_16f1516_B1.c: 470: {
+;MCU_16f1516_B1.c: 472: CKP=1;
 	bsf	(4268/8)^0200h,(4268)&7	;volatile
-	line	471
+	line	473
 	
-l3035:	
-;MCU_16f1516_B1.c: 471: for(i=0;i<32;i++)
+l2889:	
+;MCU_16f1516_B1.c: 473: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(I2C_Slave_Mode@i)
 	
-l3037:	
+l2891:	
 	movlw	(020h)
 	subwf	(I2C_Slave_Mode@i),w
 	skipc
-	goto	u2991
-	goto	u2990
-u2991:
-	goto	l871
-u2990:
-	goto	l3049
+	goto	u2821
+	goto	u2820
+u2821:
+	goto	l527
+u2820:
+	goto	l2903
 	
-l3039:	
-	goto	l3049
-	line	472
-	
-l869:	
-	line	473
-;MCU_16f1516_B1.c: 472: {
-;MCU_16f1516_B1.c: 473: while(!SSPIF);
-	goto	l871
-	
-l872:	
-	
-l871:	
-	btfss	(139/8),(139)&7	;volatile
-	goto	u3001
-	goto	u3000
-u3001:
-	goto	l871
-u3000:
-	
-l873:	
+l2893:	
+	goto	l2903
 	line	474
-;MCU_16f1516_B1.c: 474: SSPIF=0;
-	bcf	(139/8),(139)&7	;volatile
-	line	475
 	
-l3041:	
-;MCU_16f1516_B1.c: 475: I2C->BufferReader[i]=SSPBUF;
+l525:	
+	line	475
+;MCU_16f1516_B1.c: 474: {
+;MCU_16f1516_B1.c: 475: while(!SSPIF);
+	goto	l527
+	
+l528:	
+	
+l527:	
+	btfss	(139/8),(139)&7	;volatile
+	goto	u2831
+	goto	u2830
+u2831:
+	goto	l527
+u2830:
+	
+l529:	
+	line	476
+;MCU_16f1516_B1.c: 476: SSPIF=0;
+	bcf	(139/8),(139)&7	;volatile
+	line	477
+	
+l2895:	
+;MCU_16f1516_B1.c: 477: I2C->BufferReader[i]=SSPBUF;
 	movlb 4	; select bank4
 	movf	(529)^0200h,w	;volatile
 	movlb 0	; select bank0
@@ -5661,38 +5435,38 @@ l3041:
 	
 	movf	(??_I2C_Slave_Mode+0)+0,w
 	movwf	indf1
-	line	477
+	line	479
 	
-l3043:	
-;MCU_16f1516_B1.c: 477: CKP=1;
+l2897:	
+;MCU_16f1516_B1.c: 479: CKP=1;
 	movlb 4	; select bank4
 	bsf	(4268/8)^0200h,(4268)&7	;volatile
-	line	471
+	line	473
 	
-l3045:	
+l2899:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_I2C_Slave_Mode+0)+0
 	movf	(??_I2C_Slave_Mode+0)+0,w
 	addwf	(I2C_Slave_Mode@i),f
 	
-l3047:	
+l2901:	
 	movlw	(020h)
 	subwf	(I2C_Slave_Mode@i),w
 	skipc
-	goto	u3011
-	goto	u3010
-u3011:
-	goto	l871
-u3010:
-	goto	l3049
+	goto	u2841
+	goto	u2840
+u2841:
+	goto	l527
+u2840:
+	goto	l2903
 	
-l870:	
-	line	480
+l526:	
+	line	483
 	
-l3049:	
-;MCU_16f1516_B1.c: 478: }
-;MCU_16f1516_B1.c: 480: I2C->SlaveRxGO=1;
+l2903:	
+;MCU_16f1516_B1.c: 480: }
+;MCU_16f1516_B1.c: 483: I2C->SlaveRxGO=1;
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -5700,13 +5474,13 @@ l3049:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	goto	l874
-	line	481
+	goto	l530
+	line	484
 	
-l868:	
-	line	483
+l524:	
+	line	487
 	
-l874:	
+l530:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Slave_Mode
@@ -5716,7 +5490,7 @@ GLOBAL	__end_of_I2C_Slave_Mode
 
 ;; *************** function _I2C_SetData *****************
 ;; Defined at:
-;;		line 342 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 342 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  command         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -5741,8 +5515,8 @@ GLOBAL	__end_of_I2C_Slave_Mode
 ;; This function calls:
 ;;		Nothing
 ;; This function is called by:
-;;		_setRF_Main
 ;;		_I2C_Main
+;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
 psect	text23,local,class=CODE,delta=2,merge=1
@@ -5750,7 +5524,7 @@ psect	text23,local,class=CODE,delta=2,merge=1
 global __ptext23
 __ptext23:	;psect for function _I2C_SetData
 psect	text23
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	342
 	global	__size_of_I2C_SetData
 	__size_of_I2C_SetData	equ	__end_of_I2C_SetData-_I2C_SetData
@@ -5764,17 +5538,17 @@ _I2C_SetData:
 	movwf	(I2C_SetData@command)
 	line	346
 	
-l2829:	
+l2727:	
 ;MCU_16f1516_B1.c: 345: char i;
 ;MCU_16f1516_B1.c: 346: if(command)
 	movf	(I2C_SetData@command),w
 	skipz
-	goto	u2740
-	goto	l2851
-u2740:
+	goto	u2640
+	goto	l2749
+u2640:
 	line	348
 	
-l2831:	
+l2729:	
 ;MCU_16f1516_B1.c: 347: {
 ;MCU_16f1516_B1.c: 348: if(!I2C->SS)
 	movf	(_I2C),w
@@ -5784,14 +5558,14 @@ l2831:
 	movwf fsr1h	
 	
 	btfsc	indf1,5
-	goto	u2751
-	goto	u2750
-u2751:
-	goto	l774
-u2750:
+	goto	u2651
+	goto	u2650
+u2651:
+	goto	l430
+u2650:
 	line	350
 	
-l2833:	
+l2731:	
 ;MCU_16f1516_B1.c: 349: {
 ;MCU_16f1516_B1.c: 350: I2C->SS=1;
 	movf	(_I2C),w
@@ -5803,29 +5577,29 @@ l2833:
 	bsf	indf1,5
 	line	351
 	
-l2835:	
+l2733:	
 ;MCU_16f1516_B1.c: 351: for(i=0 ;i< 21 ;i++)
 	clrf	(I2C_SetData@i)
 	
-l2837:	
+l2735:	
 	movlw	(015h)
 	subwf	(I2C_SetData@i),w
 	skipc
-	goto	u2761
-	goto	u2760
-u2761:
-	goto	l2841
-u2760:
-	goto	l2847
+	goto	u2661
+	goto	u2660
+u2661:
+	goto	l2739
+u2660:
+	goto	l2745
 	
-l2839:	
-	goto	l2847
+l2737:	
+	goto	l2745
 	line	352
 	
-l769:	
+l425:	
 	line	353
 	
-l2841:	
+l2739:	
 ;MCU_16f1516_B1.c: 352: {
 ;MCU_16f1516_B1.c: 353: I2C->BufferWriter[i]=RF_Data[i];
 	movf	(I2C_SetData@i),w
@@ -5848,27 +5622,27 @@ l2841:
 	movwf	indf1
 	line	351
 	
-l2843:	
+l2741:	
 	movlw	(01h)
 	movwf	(??_I2C_SetData+0)+0
 	movf	(??_I2C_SetData+0)+0,w
 	addwf	(I2C_SetData@i),f
 	
-l2845:	
+l2743:	
 	movlw	(015h)
 	subwf	(I2C_SetData@i),w
 	skipc
-	goto	u2771
-	goto	u2770
-u2771:
-	goto	l2841
-u2770:
-	goto	l2847
+	goto	u2671
+	goto	u2670
+u2671:
+	goto	l2739
+u2670:
+	goto	l2745
 	
-l770:	
+l426:	
 	line	355
 	
-l2847:	
+l2745:	
 ;MCU_16f1516_B1.c: 354: }
 ;MCU_16f1516_B1.c: 355: I2C->BufferWriter[21]=Tx_Length;
 	movf	(_Tx_Length),w
@@ -5907,47 +5681,47 @@ l2847:
 	movwf	indf1
 	line	358
 	
-l2849:	
+l2747:	
 ;MCU_16f1516_B1.c: 358: RC0=1;
 	bsf	(112/8),(112)&7	;volatile
-	goto	l774
+	goto	l430
 	line	359
 	
-l768:	
+l424:	
 	line	360
 ;MCU_16f1516_B1.c: 359: }
 ;MCU_16f1516_B1.c: 360: }
-	goto	l774
+	goto	l430
 	line	361
 	
-l767:	
+l423:	
 	line	363
 	
-l2851:	
+l2749:	
 ;MCU_16f1516_B1.c: 361: else
 ;MCU_16f1516_B1.c: 362: {
 ;MCU_16f1516_B1.c: 363: for(i=0;i<21;i++)
 	clrf	(I2C_SetData@i)
 	
-l2853:	
+l2751:	
 	movlw	(015h)
 	subwf	(I2C_SetData@i),w
 	skipc
-	goto	u2781
-	goto	u2780
-u2781:
-	goto	l2857
-u2780:
-	goto	l2863
+	goto	u2681
+	goto	u2680
+u2681:
+	goto	l2755
+u2680:
+	goto	l2761
 	
-l2855:	
-	goto	l2863
+l2753:	
+	goto	l2761
 	line	364
 	
-l772:	
+l428:	
 	line	365
 	
-l2857:	
+l2755:	
 ;MCU_16f1516_B1.c: 364: {
 ;MCU_16f1516_B1.c: 365: RF_Data[i]=I2C->BufferReader[i];
 	movf	(I2C_SetData@i),w
@@ -5969,27 +5743,27 @@ l2857:
 	movwf	indf1
 	line	363
 	
-l2859:	
+l2757:	
 	movlw	(01h)
 	movwf	(??_I2C_SetData+0)+0
 	movf	(??_I2C_SetData+0)+0,w
 	addwf	(I2C_SetData@i),f
 	
-l2861:	
+l2759:	
 	movlw	(015h)
 	subwf	(I2C_SetData@i),w
 	skipc
-	goto	u2791
-	goto	u2790
-u2791:
-	goto	l2857
-u2790:
-	goto	l2863
+	goto	u2691
+	goto	u2690
+u2691:
+	goto	l2755
+u2690:
+	goto	l2761
 	
-l773:	
+l429:	
 	line	368
 	
-l2863:	
+l2761:	
 ;MCU_16f1516_B1.c: 366: }
 ;MCU_16f1516_B1.c: 368: RF->TransceiveGO=1;
 	movf	(_RF),w
@@ -5997,13 +5771,13 @@ l2863:
 	clrf fsr1h	
 	
 	bsf	indf1,2
-	goto	l774
+	goto	l430
 	line	370
 	
-l771:	
+l427:	
 	line	373
 	
-l774:	
+l430:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_SetData
@@ -6013,7 +5787,7 @@ GLOBAL	__end_of_I2C_SetData
 
 ;; *************** function _CC2500_PowerOnInitial *****************
 ;; Defined at:
-;;		line 97 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 97 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6047,12 +5821,12 @@ GLOBAL	__end_of_I2C_SetData
 ;; This function uses a non-reentrant model
 ;;
 psect	text24,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	97
 global __ptext24
 __ptext24:	;psect for function _CC2500_PowerOnInitial
 psect	text24
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	97
 	global	__size_of_CC2500_PowerOnInitial
 	__size_of_CC2500_PowerOnInitial	equ	__end_of_CC2500_PowerOnInitial-_CC2500_PowerOnInitial
@@ -6063,17 +5837,17 @@ _CC2500_PowerOnInitial:
 ; Regs used in _CC2500_PowerOnInitial: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	99
 	
-l3073:	
+l2971:	
 ;CC2500_B1.c: 99: CC2500_PowerRST();
 	fcall	_CC2500_PowerRST
 	line	100
 	
-l3075:	
+l2973:	
 ;CC2500_B1.c: 100: CC2500_InitSetREG();
 	fcall	_CC2500_InitSetREG
 	line	101
 	
-l3077:	
+l2975:	
 ;CC2500_B1.c: 101: CC2500_InitPATable();
 	fcall	_CC2500_InitPATable
 	line	102
@@ -6090,7 +5864,7 @@ l3077:
 	fcall	_CC2500_SIDLEMode
 	line	106
 	
-l296:	
+l133:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_PowerOnInitial
@@ -6100,7 +5874,7 @@ GLOBAL	__end_of_CC2500_PowerOnInitial
 
 ;; *************** function _CC2500_SIDLEMode *****************
 ;; Defined at:
-;;		line 183 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 183 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6132,7 +5906,7 @@ psect	text25,local,class=CODE,delta=2,merge=1
 global __ptext25
 __ptext25:	;psect for function _CC2500_SIDLEMode
 psect	text25
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	183
 	global	__size_of_CC2500_SIDLEMode
 	__size_of_CC2500_SIDLEMode	equ	__end_of_CC2500_SIDLEMode-_CC2500_SIDLEMode
@@ -6143,13 +5917,13 @@ _CC2500_SIDLEMode:
 ; Regs used in _CC2500_SIDLEMode: [wreg+status,2+status,0+pclath+cstack]
 	line	185
 	
-l2929:	
+l2827:	
 ;CC2500_B1.c: 185: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
 	line	186
 	
-l327:	
+l164:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_SIDLEMode
@@ -6159,7 +5933,7 @@ GLOBAL	__end_of_CC2500_SIDLEMode
 
 ;; *************** function _CC2500_PowerRST *****************
 ;; Defined at:
-;;		line 110 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 110 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6192,7 +5966,7 @@ psect	text26,local,class=CODE,delta=2,merge=1
 global __ptext26
 __ptext26:	;psect for function _CC2500_PowerRST
 psect	text26
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	110
 	global	__size_of_CC2500_PowerRST
 	__size_of_CC2500_PowerRST	equ	__end_of_CC2500_PowerRST-_CC2500_PowerRST
@@ -6203,7 +5977,7 @@ _CC2500_PowerRST:
 ; Regs used in _CC2500_PowerRST: [wreg+status,2+status,0+pclath+cstack]
 	line	112
 	
-l2881:	
+l2779:	
 ;CC2500_B1.c: 112: RB2=0;
 	movlb 0	; select bank0
 	bcf	(106/8),(106)&7	;volatile
@@ -6215,7 +5989,7 @@ l2881:
 	bsf	(109/8),(109)&7	;volatile
 	line	115
 	
-l2883:	
+l2781:	
 ;CC2500_B1.c: 115: DelayTime_1us(10);
 	movlw	low(0Ah)
 	movwf	(DelayTime_1us@count)
@@ -6224,7 +5998,7 @@ l2883:
 	fcall	_DelayTime_1us
 	line	116
 	
-l2885:	
+l2783:	
 ;CC2500_B1.c: 116: RB5=0;
 	movlb 0	; select bank0
 	bcf	(109/8),(109)&7	;volatile
@@ -6237,7 +6011,7 @@ l2885:
 	fcall	_DelayTime_1us
 	line	118
 	
-l2887:	
+l2785:	
 ;CC2500_B1.c: 118: RB5=1;
 	movlb 0	; select bank0
 	bsf	(109/8),(109)&7	;volatile
@@ -6250,13 +6024,13 @@ l2887:
 	fcall	_DelayTime_1us
 	line	120
 	
-l2889:	
+l2787:	
 ;CC2500_B1.c: 120: RB5=0;
 	movlb 0	; select bank0
 	bcf	(109/8),(109)&7	;volatile
 	line	121
 	
-l2891:	
+l2789:	
 ;CC2500_B1.c: 121: SPI0Buffer=0x30;
 	movlw	(030h)
 	movwf	(??_CC2500_PowerRST+0)+0
@@ -6264,41 +6038,41 @@ l2891:
 	movwf	(_SPI0Buffer)
 	line	122
 ;CC2500_B1.c: 122: while(RB3==1);
-	goto	l299
+	goto	l136
 	
-l300:	
+l137:	
 	
-l299:	
+l136:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2811
-	goto	u2810
-u2811:
-	goto	l299
-u2810:
-	goto	l2893
+	goto	u2711
+	goto	u2710
+u2711:
+	goto	l136
+u2710:
+	goto	l2791
 	
-l301:	
+l138:	
 	line	123
 	
-l2893:	
+l2791:	
 ;CC2500_B1.c: 123: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	124
 ;CC2500_B1.c: 124: while(RB3==1);
-	goto	l302
+	goto	l139
 	
-l303:	
+l140:	
 	
-l302:	
+l139:	
 	movlb 0	; select bank0
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2821
-	goto	u2820
-u2821:
-	goto	l302
-u2820:
+	goto	u2721
+	goto	u2720
+u2721:
+	goto	l139
+u2720:
 	
-l304:	
+l141:	
 	line	125
 ;CC2500_B1.c: 125: RB1=0;
 	bcf	(105/8),(105)&7	;volatile
@@ -6307,7 +6081,7 @@ l304:
 	bsf	(109/8),(109)&7	;volatile
 	line	127
 	
-l305:	
+l142:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_PowerRST
@@ -6317,7 +6091,7 @@ GLOBAL	__end_of_CC2500_PowerRST
 
 ;; *************** function _CC2500_InitSetREG *****************
 ;; Defined at:
-;;		line 131 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 131 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6351,7 +6125,7 @@ psect	text27,local,class=CODE,delta=2,merge=1
 global __ptext27
 __ptext27:	;psect for function _CC2500_InitSetREG
 psect	text27
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	131
 	global	__size_of_CC2500_InitSetREG
 	__size_of_CC2500_InitSetREG	equ	__end_of_CC2500_InitSetREG-_CC2500_InitSetREG
@@ -6362,32 +6136,32 @@ _CC2500_InitSetREG:
 ; Regs used in _CC2500_InitSetREG: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	136
 	
-l2895:	
+l2793:	
 ;CC2500_B1.c: 133: unsigned char loop_c;
 ;CC2500_B1.c: 134: unsigned char temp1,temp2;
 ;CC2500_B1.c: 136: for(loop_c=0;loop_c<47;loop_c++)
 	movlb 0	; select bank0
 	clrf	(CC2500_InitSetREG@loop_c)
 	
-l2897:	
+l2795:	
 	movlw	(02Fh)
 	subwf	(CC2500_InitSetREG@loop_c),w
 	skipc
-	goto	u2831
-	goto	u2830
-u2831:
-	goto	l2901
-u2830:
-	goto	l310
+	goto	u2731
+	goto	u2730
+u2731:
+	goto	l2799
+u2730:
+	goto	l147
 	
-l2899:	
-	goto	l310
+l2797:	
+	goto	l147
 	line	137
 	
-l308:	
+l145:	
 	line	138
 	
-l2901:	
+l2799:	
 ;CC2500_B1.c: 137: {
 ;CC2500_B1.c: 138: temp1 = CC2500_registers_address[loop_c];
 	movf	(CC2500_InitSetREG@loop_c),w
@@ -6416,7 +6190,7 @@ l2901:
 	movwf	(CC2500_InitSetREG@temp2)
 	line	141
 	
-l2903:	
+l2801:	
 ;CC2500_B1.c: 141: CC2500_WriteREG(temp1,temp2);
 	movf	(CC2500_InitSetREG@temp2),w
 	movwf	(??_CC2500_InitSetREG+0)+0
@@ -6426,28 +6200,28 @@ l2903:
 	fcall	_CC2500_WriteREG
 	line	136
 	
-l2905:	
+l2803:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_InitSetREG+0)+0
 	movf	(??_CC2500_InitSetREG+0)+0,w
 	addwf	(CC2500_InitSetREG@loop_c),f
 	
-l2907:	
+l2805:	
 	movlw	(02Fh)
 	subwf	(CC2500_InitSetREG@loop_c),w
 	skipc
-	goto	u2841
-	goto	u2840
-u2841:
-	goto	l2901
-u2840:
-	goto	l310
+	goto	u2741
+	goto	u2740
+u2741:
+	goto	l2799
+u2740:
+	goto	l147
 	
-l309:	
+l146:	
 	line	143
 	
-l310:	
+l147:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_InitSetREG
@@ -6457,7 +6231,7 @@ GLOBAL	__end_of_CC2500_InitSetREG
 
 ;; *************** function _CC2500_InitPATable *****************
 ;; Defined at:
-;;		line 147 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 147 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6490,7 +6264,7 @@ psect	text28,local,class=CODE,delta=2,merge=1
 global __ptext28
 __ptext28:	;psect for function _CC2500_InitPATable
 psect	text28
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	147
 	global	__size_of_CC2500_InitPATable
 	__size_of_CC2500_InitPATable	equ	__end_of_CC2500_InitPATable-_CC2500_InitPATable
@@ -6501,32 +6275,32 @@ _CC2500_InitPATable:
 ; Regs used in _CC2500_InitPATable: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	152
 	
-l2909:	
+l2807:	
 ;CC2500_B1.c: 149: unsigned char loop_d;
 ;CC2500_B1.c: 150: unsigned char temp;
 ;CC2500_B1.c: 152: for(loop_d=0;loop_d<8;loop_d++)
 	movlb 0	; select bank0
 	clrf	(CC2500_InitPATable@loop_d)
 	
-l2911:	
+l2809:	
 	movlw	(08h)
 	subwf	(CC2500_InitPATable@loop_d),w
 	skipc
-	goto	u2851
-	goto	u2850
-u2851:
-	goto	l2915
-u2850:
-	goto	l315
+	goto	u2751
+	goto	u2750
+u2751:
+	goto	l2813
+u2750:
+	goto	l152
 	
-l2913:	
-	goto	l315
+l2811:	
+	goto	l152
 	line	153
 	
-l313:	
+l150:	
 	line	154
 	
-l2915:	
+l2813:	
 ;CC2500_B1.c: 153: {
 ;CC2500_B1.c: 154: temp=CC2500_patable_vaule[loop_d];
 	movf	(CC2500_InitPATable@loop_d),w
@@ -6542,7 +6316,7 @@ l2915:
 	movwf	(CC2500_InitPATable@temp)
 	line	155
 	
-l2917:	
+l2815:	
 ;CC2500_B1.c: 155: CC2500_WriteREG(0x3E,temp);
 	movf	(CC2500_InitPATable@temp),w
 	movwf	(??_CC2500_InitPATable+0)+0
@@ -6552,28 +6326,28 @@ l2917:
 	fcall	_CC2500_WriteREG
 	line	152
 	
-l2919:	
+l2817:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_InitPATable+0)+0
 	movf	(??_CC2500_InitPATable+0)+0,w
 	addwf	(CC2500_InitPATable@loop_d),f
 	
-l2921:	
+l2819:	
 	movlw	(08h)
 	subwf	(CC2500_InitPATable@loop_d),w
 	skipc
-	goto	u2861
-	goto	u2860
-u2861:
-	goto	l2915
-u2860:
-	goto	l315
+	goto	u2761
+	goto	u2760
+u2761:
+	goto	l2813
+u2760:
+	goto	l152
 	
-l314:	
+l151:	
 	line	157
 	
-l315:	
+l152:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_InitPATable
@@ -6583,7 +6357,7 @@ GLOBAL	__end_of_CC2500_InitPATable
 
 ;; *************** function _CC2500_WriteREG *****************
 ;; Defined at:
-;;		line 227 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 227 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  w_addr          1    wreg     unsigned char 
 ;;  value           1    2[BANK0 ] unsigned char 
@@ -6617,7 +6391,7 @@ psect	text29,local,class=CODE,delta=2,merge=1
 global __ptext29
 __ptext29:	;psect for function _CC2500_WriteREG
 psect	text29
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	227
 	global	__size_of_CC2500_WriteREG
 	__size_of_CC2500_WriteREG	equ	__end_of_CC2500_WriteREG-_CC2500_WriteREG
@@ -6631,12 +6405,12 @@ _CC2500_WriteREG:
 	movwf	(CC2500_WriteREG@w_addr)
 	line	229
 	
-l2799:	
+l2715:	
 ;CC2500_B1.c: 229: RB5=0;
 	bcf	(109/8),(109)&7	;volatile
 	line	230
 	
-l2801:	
+l2717:	
 ;CC2500_B1.c: 230: SPI0Buffer=w_addr;
 	movf	(CC2500_WriteREG@w_addr),w
 	movwf	(??_CC2500_WriteREG+0)+0
@@ -6644,28 +6418,28 @@ l2801:
 	movwf	(_SPI0Buffer)
 	line	231
 ;CC2500_B1.c: 231: while(RB3==1);
-	goto	l344
+	goto	l181
 	
-l345:	
+l182:	
 	
-l344:	
+l181:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2711
-	goto	u2710
-u2711:
-	goto	l344
-u2710:
-	goto	l2803
+	goto	u2631
+	goto	u2630
+u2631:
+	goto	l181
+u2630:
+	goto	l2719
 	
-l346:	
+l183:	
 	line	232
 	
-l2803:	
+l2719:	
 ;CC2500_B1.c: 232: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	233
 	
-l2805:	
+l2721:	
 ;CC2500_B1.c: 233: SPI0Buffer=value;
 	movlb 0	; select bank0
 	movf	(CC2500_WriteREG@value),w
@@ -6674,18 +6448,18 @@ l2805:
 	movwf	(_SPI0Buffer)
 	line	234
 	
-l2807:	
+l2723:	
 ;CC2500_B1.c: 234: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	235
 	
-l2809:	
+l2725:	
 ;CC2500_B1.c: 235: RB5=1;
 	movlb 0	; select bank0
 	bsf	(109/8),(109)&7	;volatile
 	line	236
 	
-l347:	
+l184:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteREG
@@ -6695,7 +6469,7 @@ GLOBAL	__end_of_CC2500_WriteREG
 
 ;; *************** function _CC2500_FrequencyCabr *****************
 ;; Defined at:
-;;		line 175 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 175 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6728,7 +6502,7 @@ psect	text30,local,class=CODE,delta=2,merge=1
 global __ptext30
 __ptext30:	;psect for function _CC2500_FrequencyCabr
 psect	text30
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	175
 	global	__size_of_CC2500_FrequencyCabr
 	__size_of_CC2500_FrequencyCabr	equ	__end_of_CC2500_FrequencyCabr-_CC2500_FrequencyCabr
@@ -6739,7 +6513,7 @@ _CC2500_FrequencyCabr:
 ; Regs used in _CC2500_FrequencyCabr: [wreg+status,2+status,0+pclath+cstack]
 	line	177
 	
-l2927:	
+l2825:	
 ;CC2500_B1.c: 177: CC2500_WriteCommand(0x33);
 	movlw	(033h)
 	fcall	_CC2500_WriteCommand
@@ -6753,7 +6527,7 @@ l2927:
 	fcall	_DelayTime_1us
 	line	179
 	
-l324:	
+l161:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_FrequencyCabr
@@ -6763,7 +6537,7 @@ GLOBAL	__end_of_CC2500_FrequencyCabr
 
 ;; *************** function _DelayTime_1us *****************
 ;; Defined at:
-;;		line 283 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 283 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  count           2    0[BANK0 ] int 
 ;; Auto vars:     Size  Location     Type
@@ -6797,7 +6571,7 @@ psect	text31,local,class=CODE,delta=2,merge=1
 global __ptext31
 __ptext31:	;psect for function _DelayTime_1us
 psect	text31
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	283
 	global	__size_of_DelayTime_1us
 	__size_of_DelayTime_1us	equ	__end_of_DelayTime_1us-_DelayTime_1us
@@ -6808,7 +6582,7 @@ _DelayTime_1us:
 ; Regs used in _DelayTime_1us: [wreg+status,2]
 	line	286
 	
-l2787:	
+l2703:	
 ;CC2500_B1.c: 285: unsigned int i,j;
 ;CC2500_B1.c: 286: for(i=1;i<count;i++)
 	movlw	low(01h)
@@ -6816,36 +6590,36 @@ l2787:
 	movwf	(DelayTime_1us@i)
 	movlw	high(01h)
 	movwf	((DelayTime_1us@i))+1
-	goto	l368
+	goto	l205
 	line	287
 	
-l369:	
+l206:	
 	
-l2789:	
+l2705:	
 ;CC2500_B1.c: 287: for(j=0;j<=1;j++);
 	clrf	(DelayTime_1us@j)
 	clrf	(DelayTime_1us@j+1)
 	
-l2791:	
+l2707:	
 	movlw	high(02h)
 	subwf	(DelayTime_1us@j+1),w
 	movlw	low(02h)
 	skipnz
 	subwf	(DelayTime_1us@j),w
 	skipc
-	goto	u2681
-	goto	u2680
-u2681:
-	goto	l2795
-u2680:
-	goto	l2797
+	goto	u2601
+	goto	u2600
+u2601:
+	goto	l2711
+u2600:
+	goto	l2713
 	
-l2793:	
-	goto	l2797
+l2709:	
+	goto	l2713
 	
-l370:	
+l207:	
 	
-l2795:	
+l2711:	
 	movlw	low(01h)
 	addwf	(DelayTime_1us@j),f
 	movlw	high(01h)
@@ -6856,42 +6630,42 @@ l2795:
 	skipnz
 	subwf	(DelayTime_1us@j),w
 	skipc
-	goto	u2691
-	goto	u2690
-u2691:
-	goto	l2795
-u2690:
-	goto	l2797
+	goto	u2611
+	goto	u2610
+u2611:
+	goto	l2711
+u2610:
+	goto	l2713
 	
-l371:	
+l208:	
 	line	286
 	
-l2797:	
+l2713:	
 	movlw	low(01h)
 	addwf	(DelayTime_1us@i),f
 	movlw	high(01h)
 	addwfc	(DelayTime_1us@i+1),f
 	
-l368:	
+l205:	
 	movf	(DelayTime_1us@count+1),w
 	subwf	(DelayTime_1us@i+1),w
 	skipz
-	goto	u2705
+	goto	u2625
 	movf	(DelayTime_1us@count),w
 	subwf	(DelayTime_1us@i),w
-u2705:
+u2625:
 	skipc
-	goto	u2701
-	goto	u2700
-u2701:
-	goto	l2789
-u2700:
-	goto	l373
+	goto	u2621
+	goto	u2620
+u2621:
+	goto	l2705
+u2620:
+	goto	l210
 	
-l372:	
+l209:	
 	line	288
 	
-l373:	
+l210:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayTime_1us
@@ -6901,7 +6675,7 @@ GLOBAL	__end_of_DelayTime_1us
 
 ;; *************** function _CC2500_ClearTXFIFO *****************
 ;; Defined at:
-;;		line 161 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 161 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6933,7 +6707,7 @@ psect	text32,local,class=CODE,delta=2,merge=1
 global __ptext32
 __ptext32:	;psect for function _CC2500_ClearTXFIFO
 psect	text32
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	161
 	global	__size_of_CC2500_ClearTXFIFO
 	__size_of_CC2500_ClearTXFIFO	equ	__end_of_CC2500_ClearTXFIFO-_CC2500_ClearTXFIFO
@@ -6944,13 +6718,13 @@ _CC2500_ClearTXFIFO:
 ; Regs used in _CC2500_ClearTXFIFO: [wreg+status,2+status,0+pclath+cstack]
 	line	163
 	
-l2923:	
+l2821:	
 ;CC2500_B1.c: 163: CC2500_WriteCommand(0x3B);
 	movlw	(03Bh)
 	fcall	_CC2500_WriteCommand
 	line	164
 	
-l318:	
+l155:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ClearTXFIFO
@@ -6960,7 +6734,7 @@ GLOBAL	__end_of_CC2500_ClearTXFIFO
 
 ;; *************** function _CC2500_ClearRXFIFO *****************
 ;; Defined at:
-;;		line 168 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 168 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -6992,7 +6766,7 @@ psect	text33,local,class=CODE,delta=2,merge=1
 global __ptext33
 __ptext33:	;psect for function _CC2500_ClearRXFIFO
 psect	text33
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	168
 	global	__size_of_CC2500_ClearRXFIFO
 	__size_of_CC2500_ClearRXFIFO	equ	__end_of_CC2500_ClearRXFIFO-_CC2500_ClearRXFIFO
@@ -7003,13 +6777,13 @@ _CC2500_ClearRXFIFO:
 ; Regs used in _CC2500_ClearRXFIFO: [wreg+status,2+status,0+pclath+cstack]
 	line	170
 	
-l2925:	
+l2823:	
 ;CC2500_B1.c: 170: CC2500_WriteCommand(0x3A);
 	movlw	(03Ah)
 	fcall	_CC2500_WriteCommand
 	line	171
 	
-l321:	
+l158:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ClearRXFIFO
@@ -7019,7 +6793,7 @@ GLOBAL	__end_of_CC2500_ClearRXFIFO
 
 ;; *************** function _CC2500_WriteCommand *****************
 ;; Defined at:
-;;		line 253 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 253 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  command         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -7050,7 +6824,6 @@ GLOBAL	__end_of_CC2500_ClearRXFIFO
 ;;		_CC2500_FrequencyCabr
 ;;		_CC2500_SIDLEMode
 ;;		_setRF_Main
-;;		_setRF_Enable
 ;;		_RF_RxDisable
 ;; This function uses a non-reentrant model
 ;;
@@ -7059,7 +6832,7 @@ psect	text34,local,class=CODE,delta=2,merge=1
 global __ptext34
 __ptext34:	;psect for function _CC2500_WriteCommand
 psect	text34
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	253
 	global	__size_of_CC2500_WriteCommand
 	__size_of_CC2500_WriteCommand	equ	__end_of_CC2500_WriteCommand-_CC2500_WriteCommand
@@ -7073,12 +6846,12 @@ _CC2500_WriteCommand:
 	movwf	(CC2500_WriteCommand@command)
 	line	255
 	
-l2693:	
+l2609:	
 ;CC2500_B1.c: 255: RB5=0;
 	bcf	(109/8),(109)&7	;volatile
 	line	256
 	
-l2695:	
+l2611:	
 ;CC2500_B1.c: 256: SPI0Buffer=command;
 	movf	(CC2500_WriteCommand@command),w
 	movwf	(??_CC2500_WriteCommand+0)+0
@@ -7086,34 +6859,34 @@ l2695:
 	movwf	(_SPI0Buffer)
 	line	258
 ;CC2500_B1.c: 258: while(RB3==1);
-	goto	l356
+	goto	l193
 	
-l357:	
+l194:	
 	
-l356:	
+l193:	
 	btfsc	(107/8),(107)&7	;volatile
-	goto	u2541
-	goto	u2540
-u2541:
-	goto	l356
-u2540:
-	goto	l2697
+	goto	u2461
+	goto	u2460
+u2461:
+	goto	l193
+u2460:
+	goto	l2613
 	
-l358:	
+l195:	
 	line	260
 	
-l2697:	
+l2613:	
 ;CC2500_B1.c: 260: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	261
 	
-l2699:	
+l2615:	
 ;CC2500_B1.c: 261: RB5=1;
 	movlb 0	; select bank0
 	bsf	(109/8),(109)&7	;volatile
 	line	263
 	
-l359:	
+l196:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteCommand
@@ -7123,7 +6896,7 @@ GLOBAL	__end_of_CC2500_WriteCommand
 
 ;; *************** function _CC2500_WriteByte *****************
 ;; Defined at:
-;;		line 193 in file "I:\Program\PIC\Source_File\CC2500_B1.c"
+;;		line 193 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7161,7 +6934,7 @@ psect	text35,local,class=CODE,delta=2,merge=1
 global __ptext35
 __ptext35:	;psect for function _CC2500_WriteByte
 psect	text35
-	file	"I:\Program\PIC\Source_File\CC2500_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	193
 	global	__size_of_CC2500_WriteByte
 	__size_of_CC2500_WriteByte	equ	__end_of_CC2500_WriteByte-_CC2500_WriteByte
@@ -7172,90 +6945,90 @@ _CC2500_WriteByte:
 ; Regs used in _CC2500_WriteByte: [wreg+status,2+status,0]
 	line	196
 	
-l2655:	
+l2571:	
 ;CC2500_B1.c: 195: unsigned char loop_a;
 ;CC2500_B1.c: 196: for(loop_a=0;loop_a<8;loop_a++)
 	movlb 0	; select bank0
 	clrf	(CC2500_WriteByte@loop_a)
 	
-l2657:	
+l2573:	
 	movlw	(08h)
 	subwf	(CC2500_WriteByte@loop_a),w
 	skipc
-	goto	u2471
-	goto	u2470
-u2471:
-	goto	l330
-u2470:
-	goto	l334
+	goto	u2391
+	goto	u2390
+u2391:
+	goto	l167
+u2390:
+	goto	l171
 	
-l2659:	
-	goto	l334
+l2575:	
+	goto	l171
 	line	197
 	
-l330:	
+l167:	
 	line	198
 ;CC2500_B1.c: 197: {
 ;CC2500_B1.c: 198: if(SPI0Buffer&0x80)
 	btfss	(_SPI0Buffer),(7)&7
-	goto	u2481
-	goto	u2480
-u2481:
-	goto	l332
-u2480:
+	goto	u2401
+	goto	u2400
+u2401:
+	goto	l169
+u2400:
 	line	199
 	
-l2661:	
+l2577:	
 ;CC2500_B1.c: 199: RB1=1;
 	bsf	(105/8),(105)&7	;volatile
-	goto	l333
+	goto	l170
 	line	200
 	
-l332:	
+l169:	
 	line	201
 ;CC2500_B1.c: 200: else
 ;CC2500_B1.c: 201: RB1=0;
 	bcf	(105/8),(105)&7	;volatile
 	
-l333:	
+l170:	
 	line	202
 ;CC2500_B1.c: 202: RB2=1;
 	bsf	(106/8),(106)&7	;volatile
 	line	203
 	
-l2663:	
+l2579:	
 ;CC2500_B1.c: 203: SPI0Buffer<<=1;
 	clrc
 	rlf	(_SPI0Buffer),f
 
 	line	204
 	
-l2665:	
+l2581:	
 ;CC2500_B1.c: 204: RB2=0;
 	bcf	(106/8),(106)&7	;volatile
 	line	196
 	
-l2667:	
+l2583:	
 	movlw	(01h)
 	movwf	(??_CC2500_WriteByte+0)+0
 	movf	(??_CC2500_WriteByte+0)+0,w
 	addwf	(CC2500_WriteByte@loop_a),f
 	
-l2669:	
+l2585:	
 	movlw	(08h)
 	subwf	(CC2500_WriteByte@loop_a),w
 	skipc
-	goto	u2491
-	goto	u2490
-u2491:
-	goto	l330
-u2490:
-	goto	l334
+	goto	u2411
+	goto	u2410
+u2411:
+	goto	l167
+u2410:
+	goto	l171
 	
-l331:	
+l168:	
 	line	206
 	
-l334:	
+l171:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteByte
@@ -7265,7 +7038,7 @@ GLOBAL	__end_of_CC2500_WriteByte
 
 ;; *************** function _ISR *****************
 ;; Defined at:
-;;		line 56 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 56 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7298,7 +7071,7 @@ psect	intentry,class=CODE,delta=2
 global __pintentry
 __pintentry:
 psect	intentry
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	56
 	global	__size_of_ISR
 	__size_of_ISR	equ	__end_of_ISR-_ISR
@@ -7315,7 +7088,7 @@ psect	intentry
 	movwf	(??_ISR+0)
 	line	58
 	
-i1l2619:	
+i1l2417:	
 ;MCU_16f1516_B1.c: 58: __nop();
 	opt	asmopt_off
 	nop
@@ -7327,7 +7100,7 @@ i1l2619:
 	opt	asmopt_on
 	line	62
 	
-i1l2621:	
+i1l2419:	
 ;MCU_16f1516_B1.c: 62: TMR1_ISR();
 	fcall	_TMR1_ISR
 	line	66
@@ -7339,7 +7112,7 @@ i1l2621:
 	fcall	_I2C_ISR
 	line	71
 	
-i1l733:	
+i1l389:	
 	movf	(??_ISR+0),w
 	movlb 0	; select bank0
 	movwf	btemp+1
@@ -7353,7 +7126,7 @@ GLOBAL	__end_of_ISR
 
 ;; *************** function _TMR1_ISR *****************
 ;; Defined at:
-;;		line 125 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 125 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7384,7 +7157,7 @@ psect	text37,local,class=CODE,delta=2,merge=1
 global __ptext37
 __ptext37:	;psect for function _TMR1_ISR
 psect	text37
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	125
 	global	__size_of_TMR1_ISR
 	__size_of_TMR1_ISR	equ	__end_of_TMR1_ISR-_TMR1_ISR
@@ -7395,27 +7168,27 @@ _TMR1_ISR:
 ; Regs used in _TMR1_ISR: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	127
 	
-i1l2459:	
+i1l2305:	
 ;MCU_16f1516_B1.c: 127: if(TMR1IE && TMR1IF)
 	movlb 1	; select bank1
 	btfss	(1160/8)^080h,(1160)&7	;volatile
-	goto	u192_21
-	goto	u192_20
-u192_21:
-	goto	i1l741
-u192_20:
+	goto	u175_21
+	goto	u175_20
+u175_21:
+	goto	i1l397
+u175_20:
 	
-i1l2461:	
+i1l2307:	
 	movlb 0	; select bank0
 	btfss	(136/8),(136)&7	;volatile
-	goto	u193_21
-	goto	u193_20
-u193_21:
-	goto	i1l741
-u193_20:
+	goto	u176_21
+	goto	u176_20
+u176_21:
+	goto	i1l397
+u176_20:
 	line	129
 	
-i1l2463:	
+i1l2309:	
 ;MCU_16f1516_B1.c: 128: {
 ;MCU_16f1516_B1.c: 129: TMR1H=((65536-700)/256);
 	movlw	(0FDh)
@@ -7426,12 +7199,12 @@ i1l2463:
 	movwf	(22)	;volatile
 	line	131
 	
-i1l2465:	
+i1l2311:	
 ;MCU_16f1516_B1.c: 131: TMR1IF=0;
 	bcf	(136/8),(136)&7	;volatile
 	line	132
 	
-i1l2467:	
+i1l2313:	
 ;MCU_16f1516_B1.c: 132: Timer1->Count++;
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -7444,7 +7217,7 @@ i1l2467:
 	incf	indf1,f
 	line	133
 	
-i1l2469:	
+i1l2315:	
 ;MCU_16f1516_B1.c: 133: if(Timer1->Count == 20)
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -7453,19 +7226,19 @@ i1l2469:
 	moviw	[0]fsr1
 	xorlw	low(014h)
 	skipz
-	goto	u194_25
+	goto	u177_25
 	moviw	[1]fsr1
 	xorlw	high(014h)
-u194_25:
+u177_25:
 	skipz
-	goto	u194_21
-	goto	u194_20
-u194_21:
-	goto	i1l741
-u194_20:
+	goto	u177_21
+	goto	u177_20
+u177_21:
+	goto	i1l397
+u177_20:
 	line	135
 	
-i1l2471:	
+i1l2317:	
 ;MCU_16f1516_B1.c: 134: {
 ;MCU_16f1516_B1.c: 135: Timer1->Count=0;
 	incf	(_Timer1),w
@@ -7482,17 +7255,17 @@ i1l2471:
 	clrf fsr1h	
 	
 	bsf	indf1,2
-	goto	i1l741
+	goto	i1l397
 	line	137
 	
-i1l740:	
-	goto	i1l741
+i1l396:	
+	goto	i1l397
 	line	138
 	
-i1l739:	
+i1l395:	
 	line	139
 	
-i1l741:	
+i1l397:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_ISR
@@ -7502,7 +7275,7 @@ GLOBAL	__end_of_TMR1_ISR
 
 ;; *************** function _INT_ISR *****************
 ;; Defined at:
-;;		line 156 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 156 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7534,7 +7307,7 @@ psect	text38,local,class=CODE,delta=2,merge=1
 global __ptext38
 __ptext38:	;psect for function _INT_ISR
 psect	text38
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	156
 	global	__size_of_INT_ISR
 	__size_of_INT_ISR	equ	__end_of_INT_ISR-_INT_ISR
@@ -7545,25 +7318,25 @@ _INT_ISR:
 ; Regs used in _INT_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	158
 	
-i1l2473:	
+i1l2319:	
 ;MCU_16f1516_B1.c: 158: if(INTE && INTF)
 	btfss	(92/8),(92)&7	;volatile
-	goto	u195_21
-	goto	u195_20
-u195_21:
-	goto	i1l748
-u195_20:
+	goto	u178_21
+	goto	u178_20
+u178_21:
+	goto	i1l404
+u178_20:
 	
-i1l2475:	
+i1l2321:	
 	btfss	(89/8),(89)&7	;volatile
-	goto	u196_21
-	goto	u196_20
-u196_21:
-	goto	i1l748
-u196_20:
+	goto	u179_21
+	goto	u179_20
+u179_21:
+	goto	i1l404
+u179_20:
 	line	160
 	
-i1l2477:	
+i1l2323:	
 ;MCU_16f1516_B1.c: 159: {
 ;MCU_16f1516_B1.c: 160: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
@@ -7572,19 +7345,19 @@ i1l2477:
 	bcf	(92/8),(92)&7	;volatile
 	line	162
 	
-i1l2479:	
+i1l2325:	
 ;MCU_16f1516_B1.c: 162: setRF_ReceiveGO(1,1);
 	clrf	(setRF_ReceiveGO@command)
 	incf	(setRF_ReceiveGO@command),f
 	movlw	(01h)
 	fcall	_setRF_ReceiveGO
-	goto	i1l748
+	goto	i1l404
 	line	163
 	
-i1l747:	
+i1l403:	
 	line	164
 	
-i1l748:	
+i1l404:	
 	return
 	opt stack 0
 GLOBAL	__end_of_INT_ISR
@@ -7594,7 +7367,7 @@ GLOBAL	__end_of_INT_ISR
 
 ;; *************** function _setRF_ReceiveGO *****************
 ;; Defined at:
-;;		line 37 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 37 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;;  command         1    2[COMMON] unsigned char 
@@ -7623,12 +7396,12 @@ GLOBAL	__end_of_INT_ISR
 ;; This function uses a non-reentrant model
 ;;
 psect	text39,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	37
 global __ptext39
 __ptext39:	;psect for function _setRF_ReceiveGO
 psect	text39
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	37
 	global	__size_of_setRF_ReceiveGO
 	__size_of_setRF_ReceiveGO	equ	__end_of_setRF_ReceiveGO-_setRF_ReceiveGO
@@ -7641,13 +7414,13 @@ _setRF_ReceiveGO:
 	movwf	(setRF_ReceiveGO@rf)
 	line	39
 	
-i1l2279:	
+i1l2173:	
 ;RF_Control_B1.c: 39: RfPointSelect(rf);
 	movf	(setRF_ReceiveGO@rf),w
 	fcall	i1_RfPointSelect
 	line	40
 	
-i1l2281:	
+i1l2175:	
 ;RF_Control_B1.c: 40: RF->ReceiveGO=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -7659,7 +7432,7 @@ i1l2281:
 	bsf	indf1,1
 	line	41
 	
-i1l473:	
+i1l630:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_ReceiveGO
@@ -7669,7 +7442,7 @@ GLOBAL	__end_of_setRF_ReceiveGO
 
 ;; *************** function i1_RfPointSelect *****************
 ;; Defined at:
-;;		line 7 in file "I:\Program\PIC\Source_File\RF_Control_B1.c"
+;;		line 7 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -7700,7 +7473,7 @@ psect	text40,local,class=CODE,delta=2,merge=1
 global __ptext40
 __ptext40:	;psect for function i1_RfPointSelect
 psect	text40
-	file	"I:\Program\PIC\Source_File\RF_Control_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	7
 	global	__size_ofi1_RfPointSelect
 	__size_ofi1_RfPointSelect	equ	__end_ofi1_RfPointSelect-i1_RfPointSelect
@@ -7713,32 +7486,32 @@ i1_RfPointSelect:
 	movwf	(i1RfPointSelect@rf)
 	line	10
 	
-i1l2163:	
+i1l2085:	
 ;RF_Control_B1.c: 10: if(rf == 1)
 	movf	(i1RfPointSelect@rf),w
 	xorlw	01h&0ffh
 	skipz
-	goto	u157_21
-	goto	u157_20
-u157_21:
-	goto	i1l461
-u157_20:
+	goto	u152_21
+	goto	u152_20
+u152_21:
+	goto	i1l618
+u152_20:
 	line	12
 	
-i1l2165:	
+i1l2087:	
 ;RF_Control_B1.c: 11: {
 ;RF_Control_B1.c: 12: RF=&RF1;
 	movlw	(_RF1)&0ffh
 	movwf	(??i1_RfPointSelect+0)+0
 	movf	(??i1_RfPointSelect+0)+0,w
 	movwf	(_RF)
-	goto	i1l461
+	goto	i1l618
 	line	13
 	
-i1l460:	
+i1l617:	
 	line	15
 	
-i1l461:	
+i1l618:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1_RfPointSelect
@@ -7748,7 +7521,7 @@ GLOBAL	__end_ofi1_RfPointSelect
 
 ;; *************** function _I2C_ISR *****************
 ;; Defined at:
-;;		line 260 in file "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+;;		line 260 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7775,12 +7548,12 @@ GLOBAL	__end_ofi1_RfPointSelect
 ;; This function uses a non-reentrant model
 ;;
 psect	text41,local,class=CODE,delta=2,merge=1
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	260
 global __ptext41
 __ptext41:	;psect for function _I2C_ISR
 psect	text41
-	file	"I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 	line	260
 	global	__size_of_I2C_ISR
 	__size_of_I2C_ISR	equ	__end_of_I2C_ISR-_I2C_ISR
@@ -7791,36 +7564,35 @@ _I2C_ISR:
 ; Regs used in _I2C_ISR: [wregfsr1]
 	line	262
 	
-i1l2481:	
+i1l2327:	
 ;MCU_16f1516_B1.c: 262: if(SSPIE && SSPIF)
 	movlb 1	; select bank1
 	btfss	(1163/8)^080h,(1163)&7	;volatile
-	goto	u197_21
-	goto	u197_20
-u197_21:
-	goto	i1l758
-u197_20:
+	goto	u180_21
+	goto	u180_20
+u180_21:
+	goto	i1l414
+u180_20:
 	
-i1l2483:	
+i1l2329:	
 	movlb 0	; select bank0
 	btfss	(139/8),(139)&7	;volatile
-	goto	u198_21
-	goto	u198_20
-u198_21:
-	goto	i1l758
-u198_20:
+	goto	u181_21
+	goto	u181_20
+u181_21:
+	goto	i1l414
+u181_20:
 	line	264
 	
-i1l2485:	
+i1l2331:	
 ;MCU_16f1516_B1.c: 263: {
 ;MCU_16f1516_B1.c: 264: SSPIE=0;
 	movlb 1	; select bank1
 	bcf	(1163/8)^080h,(1163)&7	;volatile
 	line	265
 	
-i1l2487:	
+i1l2333:	
 ;MCU_16f1516_B1.c: 265: I2C->SlaveGO=1;
-	movlb 0	; select bank0
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -7828,13 +7600,13 @@ i1l2487:
 	movwf fsr1h	
 	
 	bsf	indf1,0
-	goto	i1l758
+	goto	i1l414
 	line	272
 	
-i1l757:	
+i1l413:	
 	line	273
 	
-i1l758:	
+i1l414:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_ISR

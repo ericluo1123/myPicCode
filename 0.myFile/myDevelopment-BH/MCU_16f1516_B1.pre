@@ -1,5 +1,5 @@
 
-# 1 "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+# 1 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 
 # 8 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
 typedef int ptrdiff_t;
@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 84 "I:\Program\PIC\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
+# 84 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h"
 typedef int ADtype;
 
 # 225
@@ -127,7 +127,7 @@ struct TMain *TMain;
 void MainT_Initial();
 void MainT();
 
-# 161 "I:\Program\PIC\Header_File\CC2500_B1.h"
+# 161 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h"
 const unsigned char CC2500_rfSettings[47] =
 {
 
@@ -280,7 +280,7 @@ void CC2500_TxData();
 void CC2500_RxData(void);
 void DelayTime_1us(int count);
 
-# 37 "I:\Program\PIC\Header_File\RF_Control_B1.h"
+# 37 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h"
 struct RF
 {
 unsigned Enable:1;
@@ -2811,7 +2811,7 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "I:\Program\PIC\Header_File\MCU_16F1516_B1.h"
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
 void Mcu_Initial();
 void IO_Set();
 
@@ -2857,7 +2857,7 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
-# 7 "I:\Program\PIC\Source_File\MCU_16f1516_B1.c"
+# 7 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 __config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF");
 __config("__CONFIG", "pic", "VCAPEN_OFF & WRT_BOOT");
 
@@ -3160,9 +3160,11 @@ while(ACKSTAT);
 CKP=1;
 
 I2C->SlaveTxGO=1;
+RA1=1;
 }
 else
 {
+
 CKP=1;
 for(i=0;i<32;i++)
 {
@@ -3173,8 +3175,10 @@ I2C->BufferReader[i]=SSPBUF;
 CKP=1;
 }
 
+
 I2C->SlaveRxGO=1;
 }
+
 
 }
 

@@ -434,6 +434,12 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		while(RCEN);
 		RCEN=1;
 		while(RCEN);
+		while(!ACKEN)
+			ACKEN=1;
+		while(ACKEN);
+		while(RCEN);
+		RCEN=1;
+		while(RCEN);
 
 		while(SEN);	
 		while(!PEN)
@@ -448,8 +454,8 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		char i;
 		SSPIF=0;
 		I2C->Address=SSPBUF;
-
-		if(R_nW)//¼g
+		
+		if(R_nW)//¼g to master
 		{
 			SSPOV=0;
 			for(i=0;i<32;i++)
@@ -462,11 +468,12 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				while(ACKSTAT);
 			}
 			CKP=1;
-		//	SSPOV=0;
+			//SSPOV=0;
 			I2C->SlaveTxGO=1;
 		}
-		else//Åª
+		else//Åª from master
 		{
+			
 			CKP=1;
 			for(i=0;i<32;i++)
 			{
@@ -476,9 +483,11 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				//SSPOV=0;
 				CKP=1;
 			}
-		//	SSPOV=0;
+			//SSPOV=0;
+			CKP=1;
 			I2C->SlaveRxGO=1;
 		}
+		
 	//SPIE=1;
 	}
 #endif
@@ -541,16 +550,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void UART_Transmit()
 	{
 		char i;
-		printf("\rthis number\n");
-		printf("\r");
 		for(i=0;i<32;i++)
 		{	
 			while(!TRMT);	
-			printf("0x%x\t",UART->TxData[i]);	
+			printf("%x",UART->TxData[i]);	
 			//while(!TRMT);
 			//TXREG=UART->TxData[i];
 		}
-		printf("\n\n");
 	}
 	void UART_Receive()
 	{

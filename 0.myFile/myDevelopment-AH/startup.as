@@ -8,9 +8,10 @@
 	; Compiler options:
 	;
 	; -omyDevelopment-AH.cof -mmyDevelopment-AH.map --summary=default \
-	; --output=default myMain.p1 SegmentDisplay_A2.p1 MCU_16f1516_B1.p1 \
-	; --chip=16F1516 -II:\Program\PIC\Header_File \
-	; -II:\Program\PIC\0.myFile\myDevelopment-AH\Release -P \
+	; --output=default MCU_16f1516_B1.p1 myMain.p1 SegmentDisplay_A2.p1 \
+	; --chip=16F1516 \
+	; -IC:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release \
+	; -IC:\Users\Eric\Documents\GitHub\myPicCode\Header_File -P \
 	; --runtime=default --opt=default -D__DEBUG=1 -g --asmlist \
 	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
 	; --warnformat=Warning [%n] %f; %l.%c %s

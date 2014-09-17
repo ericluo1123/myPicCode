@@ -8,12 +8,13 @@
 	; Compiler options:
 	;
 	; -omyDevelopment-BH.cof -mmyDevelopment-BH.map --summary=default \
-	; --output=default myMain.p1 SegmentDisplay_A2.p1 CC2500_B1.p1 \
-	; RF_Control_B1.p1 MCU_16f1516_B1.p1 --chip=16F1516 \
-	; -II:\Program\PIC\0.myFile\myDevelopment-BH\Release \
-	; -II:\Program\PIC\Header_File -P --runtime=default --opt=default \
-	; -D__DEBUG=1 -g --asmlist --errformat=Error   [%n] %f; %l.%c %s \
-	; --msgformat=Advisory[%n] %s --warnformat=Warning [%n] %f; %l.%c %s
+	; --output=default CC2500_B1.p1 MCU_16f1516_B1.p1 RF_Control_B1.p1 \
+	; myMain.p1 --chip=16F1516 \
+	; -IC:\Users\Eric\Documents\GitHub\myPicCode\Header_File \
+	; -IC:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release \
+	; -P --runtime=default --opt=default -D__DEBUG=1 -g --asmlist \
+	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
+	; --warnformat=Warning [%n] %f; %l.%c %s
 	;
 
 

@@ -1,5 +1,5 @@
 
-# 1 "I:\Program\PIC\Source_File\myMain.c"
+# 1 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 
 # 8 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
 typedef int ptrdiff_t;
@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 83 "I:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
+# 83 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
 typedef int ADtype;
 
 # 240
@@ -126,7 +126,7 @@ struct TMain *TMain;
 void MainT_Initial();
 void MainT();
 
-# 55 "I:\Program\PIC\Header_File\SegmentDisplay_A2.h"
+# 55 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h"
 struct Segment
 {
 unsigned char Display[17];
@@ -2633,7 +2633,7 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "I:\Program\PIC\Header_File\MCU_16F1516_B1.h"
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
 void Mcu_Initial();
 void IO_Set();
 
@@ -2701,7 +2701,7 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
-# 6 "I:\Program\PIC\Source_File\myMain.c"
+# 6 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 void main()
 {
 MainT_Initial();
@@ -2755,19 +2755,12 @@ TMain->PowerON=1;
 else
 {
 TMain->Count1++;
-if(TMain->Count1 == 2000)
+if(TMain->Count1 == 1000)
 {
 TMain->Count1=0;
 RA2=~RA2;
 
-
-for(i=0;i<32;i++){
-UART->TxData[i]=64-i;
-}
-UART->TxGO=1;
-
-
-
+# 78
 if(TMain->Flag == 0)
 {
 
@@ -2784,7 +2777,7 @@ I2C->Count=0;
 }
 }
 
-# 101
+# 105
 }
 
 
@@ -2793,7 +2786,7 @@ if(TMain->Count2 == 2000)
 {
 TMain->Count2=0;
 
-# 120
+# 124
 }
 
 
