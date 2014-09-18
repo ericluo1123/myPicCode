@@ -33,6 +33,35 @@
 				#endif
 			#endif
 
+			#if Max_Percent == 65
+				#if Switch_Class == 3		
+					#define LoadLimitValue 0x22
+				#endif
+		
+				#if Switch_Class == 2			
+					#define LoadLimitValue 0x32//1a
+				#endif
+		
+				#if Switch_Class == 1			
+					#define LoadLimitValue 0x42
+				#endif
+			#endif
+
+
+			#if Max_Percent == 75
+				#if Switch_Class == 3		
+					#define LoadLimitValue 0x22
+				#endif
+		
+				#if Switch_Class == 2			
+					#define LoadLimitValue 0x32//1a
+				#endif
+		
+				#if Switch_Class == 1			
+					#define LoadLimitValue 0x42
+				#endif
+			#endif
+
 			#if Max_Percent == 90
 				#if Switch_Class == 3		
 					#define LoadLimitValue 0x22

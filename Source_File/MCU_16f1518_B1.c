@@ -252,8 +252,15 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		#endif
 
 		#if Control_Method_Mosfet == 1
-			IOCBP=0b00000000;	//Positive
-			IOCBN=0b00000100;	//Negative
+			#if Dimmer_Half_Wave == 1
+				IOCBP=0b00000100;
+				IOCBN=0b00000100;
+			#endif
+
+			#if Dimmer_Full_Wave == 1
+				IOCBP=0b00000000;	//Positive
+				IOCBN=0b00000100;	//Negative
+			#endif
 		#endif
 
 		IOCBF=0b00000000;
@@ -484,7 +491,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 					Memory->Modify=0;
 					Memory->GO=0;
 					Flash_Memory_Modify();
-					//ErrLED=~ErrLED;
+				//	ErrLED=~ErrLED;
 				}
 			}
 			else

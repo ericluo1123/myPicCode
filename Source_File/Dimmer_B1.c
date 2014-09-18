@@ -382,7 +382,7 @@
 		if(status)
 		{
 			DimmerLights->AdjFlag=1;
-			DimmerLights->Signal=1;	
+			DimmerLights->Signal=1;		
 		}
 		else
 		{

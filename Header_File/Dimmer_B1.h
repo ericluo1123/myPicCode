@@ -497,105 +497,207 @@
 		#endif
 		//*********************************************************
 		#ifdef Mosfet1
-			#define setDimmerLights11_Control(lights)\
-				if(DimmerLights11->GO)\//reclock
-				{\
-					DimmerLights11->Count++;\
-					if(DimmerLights11->Count >= DimmerLights11->DimmingValue)\
+			#if Dimmer_Full_Wave == 1
+				#define setDimmerLights11_Control(lights)\
+					if(DimmerLights11->GO)\//reclock
 					{\
-						DimmerLights11->Count=0;\
-						DimmerLights11->GO=0;\
-						DimmerLights11->Flag=1;\
-						if(DimmerLights11->StatusFlag)\
+						DimmerLights11->Count++;\
+						if(DimmerLights11->Count >= DimmerLights11->DimmingValue)\
 						{\
-							Mosfet1=0;\
-							if(DimmerLights11->MosfetClose)\
+							DimmerLights11->Count=0;\
+							DimmerLights11->GO=0;\
+							DimmerLights11->Flag=1;\
+							if(DimmerLights11->StatusFlag)\
 							{\
-								DimmerLights11->MosfetClose=0;\
-								DimmerLights11->StatusFlag=0;\
-								while(LED1)\
-									LED1=0;\
-								while(LED2)\
-									setLED2(1);\
-								ID_1KEY_0;\
-								DimmerLights->Close=1;\
-								Dimmer->Detect=1;\
-								setLoad_StatusOff(1,lights,1);\
+								Mosfet1=0;\
+								if(DimmerLights11->MosfetClose)\
+								{\
+									DimmerLights11->MosfetClose=0;\
+									DimmerLights11->StatusFlag=0;\
+									while(LED1)\
+										LED1=0;\
+									while(LED2)\
+										setLED2(1);\
+									ID_1KEY_0;\
+									DimmerLights->Close=1;\
+									Dimmer->Detect=1;\
+									setLoad_StatusOff(1,lights,1);\
+								}\
 							}\
 						}\
 					}\
-				}\
-				else\
-				{\
-					if(DimmerLights11->MosfetOpen)\
+					else\
 					{\
-						DimmerLights11->Count++;\
-						if(DimmerLights11->Count >= 40)\
+						if(DimmerLights11->MosfetOpen)\
 						{\
-							DimmerLights11->Count=0;\
-							DimmerLights11->MosfetOpen=0;\
-						}\
-					}\
-					if(DimmerLights11->Flag)\
-					{\
-						DimmerLights11->Flag=0;\
-						if(DimmerLights11->Signal)\
-						{\
-							DimmerLights11->DimmingTime++;\
-							if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue)\
+							DimmerLights11->Count++;\
+							if(DimmerLights11->Count >= 40)\
 							{\
-								DimmerLights11->DimmingTime=0;\
-								if(DimmerLights11->AdjFlag)\
+								DimmerLights11->Count=0;\
+								DimmerLights11->MosfetOpen=0;\
+							}\
+						}\
+						if(DimmerLights11->Flag)\
+						{\
+							DimmerLights11->Flag=0;\
+							if(DimmerLights11->Signal)\
+							{\
+								DimmerLights11->DimmingTime++;\
+								if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue)\
 								{\
-									if(!DimmerLights11->AdjStatus)\
+									DimmerLights11->DimmingTime=0;\
+									if(DimmerLights11->AdjFlag)\
 									{\
-										if(DimmerLights11->DimmingValue < Dimmer_Maxum)\
+										if(!DimmerLights11->AdjStatus)\
 										{\
-											DimmerLights11->DimmingValue++;\
+											if(DimmerLights11->DimmingValue < Dimmer_Maxum)\
+											{\
+												DimmerLights11->DimmingValue++;\
+											}\
+											else\
+											{\
+												DimmerLights11->AdjStatus=1;\
+											}\
 										}\
 										else\
 										{\
-											DimmerLights11->AdjStatus=1;\
+											if(DimmerLights11->DimmingValue > Dimmer_Minimum)\
+											{\
+												DimmerLights11->DimmingValue--;\
+											}\
+											else\
+											{\
+												DimmerLights11->AdjStatus=0;\
+											}\
+										}\
+									}\
+									else if(DimmerLights11->AdjRF)\
+									{\
+										if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->DimmingValue++;\
+										}\
+										else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->DimmingValue--;\
+										}\
+										if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->AdjRF=0;\
+											DimmerLights11->Signal=0;\
 										}\
 									}\
 									else\
 									{\
-										if(DimmerLights11->DimmingValue > Dimmer_Minimum)\
-										{\
-											DimmerLights11->DimmingValue--;\
-										}\
-										else\
-										{\
-											DimmerLights11->AdjStatus=0;\
-										}\
-									}\
-								}\
-								else if(DimmerLights11->AdjRF)\
-								{\
-									if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue)\
-									{\
-										DimmerLights11->DimmingValue++;\
-									}\
-									else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue)\
-									{\
-										DimmerLights11->DimmingValue--;\
-									}\
-									if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue)\
-									{\
-										DimmerLights11->AdjRF=0;\
 										DimmerLights11->Signal=0;\
 									}\
-								}\
-								else\
-								{\
-									DimmerLights11->Signal=0;\
 								}\
 							}\
 						}\
 					}\
-				}\
-				;
+					;
+			#endif
+		
+			#if Dimmer_Half_Wave == 1
+				#define setDimmerLights11_Control(lights)\
+					if(DimmerLights11->GO)\//reclock
+					{\
+						DimmerLights11->Count++;\
+						if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction))\
+						{\
+							DimmerLights11->Count=0;\
+							DimmerLights11->GO=0;\
+							DimmerLights11->Flag=1;\
+							if(DimmerLights11->StatusFlag)\
+							{\
+								Mosfet1=0;\
+								ID_1KEY_0;\
+								if(DimmerLights11->MosfetClose)\
+								{\
+									DimmerLights11->MosfetClose=0;\
+									DimmerLights11->StatusFlag=0;\
+									LED1=0;\
+									setLED2(1);\
+									Dimmer->Detect=1;\
+									DimmerLights11->Clear=1;\
+									setLoad_StatusOff(lights,1);\
+								}\
+							}\
+						}\
+					}\
+					else\
+					{\
+						if(DimmerLights11->MosfetOpen)\
+						{\
+							DimmerLights11->Count++;\
+							if(DimmerLights11->Count >= 40)\
+							{\
+								DimmerLights11->Count=0;\
+								DimmerLights11->MosfetOpen=0;\
+							}\
+						}\
+						if(DimmerLights11->Flag)\
+						{\
+							DimmerLights11->Flag=0;\
+							if(DimmerLights11->Signal)\
+							{\
+								DimmerLights11->DimmingTime++;\
+								if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue)\
+								{\
+									DimmerLights11->DimmingTime=0;\
+									if(DimmerLights11->AdjFlag)\
+									{\
+										if(DimmerLights11->AdjStatus == 0)\
+										{\
+											if(DimmerLights11->DimmingValue < Dimmer_Maxum)\
+											{\
+												DimmerLights11->DimmingValue++;\
+											}\
+											else\
+											{\
+												DimmerLights11->AdjStatus=1;\
+											}\
+										}\
+										else\
+										{\
+											if(DimmerLights11->DimmingValue > Dimmer_Minimum)\
+											{\
+												DimmerLights11->DimmingValue--;\
+											}\
+											else\
+											{\
+												DimmerLights11->AdjStatus=0;\
+											}\
+										}\
+									}\
+									else if(DimmerLights11->AdjRF)\
+									{\
+										if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->DimmingValue++;\
+										}\
+										else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->DimmingValue--;\
+										}\
+										if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue)\
+										{\
+											DimmerLights11->AdjRF=0;\
+											DimmerLights11->Signal=0;\
+										}\
+									}\
+									else\
+									{\
+										DimmerLights11->Signal=0;\
+									}\
+								}\
+							}\
+						}\
+					}\
+					;
+			#endif
 		#endif
+
 
 	#else
 		#define DimmerLightsOpenShow() ;
