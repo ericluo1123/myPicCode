@@ -294,7 +294,8 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 					#endif
 
 					#if Control_Method_Mosfet == 1
-						setDimmerReClock();		
+						Dimmer->Correction=0;
+						setDimmerReClock();	
 					#endif
 				#endif
 			}

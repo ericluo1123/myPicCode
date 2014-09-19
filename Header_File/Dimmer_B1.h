@@ -531,7 +531,7 @@
 						if(DimmerLights11->MosfetOpen)\
 						{\
 							DimmerLights11->Count++;\
-							if(DimmerLights11->Count >= 40)\
+							if(DimmerLights11->Count >= MosfetOpenToCloseValue)\
 							{\
 								DimmerLights11->Count=0;\
 								DimmerLights11->MosfetOpen=0;\
@@ -630,7 +630,7 @@
 						if(DimmerLights11->MosfetOpen)\
 						{\
 							DimmerLights11->Count++;\
-							if(DimmerLights11->Count >= 40)\
+							if(DimmerLights11->Count >= MosfetOpenToCloseValue)\
 							{\
 								DimmerLights11->Count=0;\
 								DimmerLights11->MosfetOpen=0;\
