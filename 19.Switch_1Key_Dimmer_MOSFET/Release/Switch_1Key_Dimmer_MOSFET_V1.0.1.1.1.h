@@ -247,7 +247,7 @@
 	#define Dimmer_Half_Wave				1 
 	#define Dimmer_Full_Wave				0
 	#define TriacTimeValue					1
-
+	#define MosfetOpenToCloseValue			20
 	//dimmer define 	
 	#define DimmingDelayTime 3 //3
 
@@ -259,7 +259,7 @@
 	#else
 		#if Control_Method_Mosfet == 1
 			#if Switch_Class == 1
-				#define Max_Percent 65	
+				#define Max_Percent 55	
 			#endif
 			#if Switch_Class == 2
 				#define Max_Percent 65	

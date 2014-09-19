@@ -440,7 +440,7 @@ struct RFSW RFSW1;
 void setRF_DimmerValue(char);
 void setRF_DimmerLights(char,char);
 
-# 82 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h"
+# 138 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h"
 struct OverLoad
 {
 unsigned Enable:1;
@@ -3566,7 +3566,7 @@ status<<=(lights-1);
 Product->Data[11]=lights;
 
 
-Product->Data[(20+lights)]=setPercentValue(((char)(65*1.5)));
+Product->Data[(20+lights)]=setPercentValue(((char)(55*1.5)));
 
 
 Product->Data[9]=Product->Data[20+lights];

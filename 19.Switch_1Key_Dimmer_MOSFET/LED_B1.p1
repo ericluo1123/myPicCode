@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "76
 [s S8 :1 `uc 1 ]
 [n S8 RFSW Status ]
-"82 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
+"138 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
 [s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `ui -> 9 `i `ui -> 9 `i `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S9 OverLoad Enable GO LightsON Safe ADtoGO ERROR Time ErrorTime ErrorStatus TotalLoad AH AL AD ADH ADL ADRES LightsJudgeValue JudgeValue Judge Count OffCount ErrorCount UpdateCount LightsCount NumberCount CloseCount ADCount SafeCount Lights1Status Lights2Status Lights3Status StatusOn StatusOff ]
 "32 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
@@ -698,60 +698,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RF_Control_B1.h: 90: struct RFSW RFSW1;
 [; ;RF_Control_B1.h: 103: void setRF_DimmerValue(char);
 [; ;RF_Control_B1.h: 104: void setRF_DimmerLights(char,char);
-[; ;OverLoad_B1.h: 82: struct OverLoad
-[; ;OverLoad_B1.h: 83: {
-[; ;OverLoad_B1.h: 84: unsigned Enable:1;
-[; ;OverLoad_B1.h: 85: unsigned GO:1;
-[; ;OverLoad_B1.h: 86: unsigned LightsON:1;
-[; ;OverLoad_B1.h: 87: unsigned Safe:1;
-[; ;OverLoad_B1.h: 88: unsigned ADtoGO:1;
-[; ;OverLoad_B1.h: 89: unsigned ERROR:1;
-[; ;OverLoad_B1.h: 90: unsigned int Time;
-[; ;OverLoad_B1.h: 91: unsigned int ErrorTime;
-[; ;OverLoad_B1.h: 92: unsigned char ErrorStatus;
-[; ;OverLoad_B1.h: 94: unsigned ADtype TotalLoad;
-[; ;OverLoad_B1.h: 95: unsigned ADtype AH[9];
-[; ;OverLoad_B1.h: 96: unsigned ADtype AL[9];
-[; ;OverLoad_B1.h: 97: unsigned ADtype AD;
-[; ;OverLoad_B1.h: 98: unsigned ADtype ADH;
-[; ;OverLoad_B1.h: 99: unsigned ADtype ADL;
-[; ;OverLoad_B1.h: 100: unsigned ADtype ADRES;
-[; ;OverLoad_B1.h: 102: unsigned int LightsJudgeValue;
-[; ;OverLoad_B1.h: 103: unsigned int JudgeValue;
-[; ;OverLoad_B1.h: 104: unsigned int Judge;
-[; ;OverLoad_B1.h: 106: unsigned char Count;
-[; ;OverLoad_B1.h: 107: unsigned char OffCount;
-[; ;OverLoad_B1.h: 108: unsigned char ErrorCount;
-[; ;OverLoad_B1.h: 109: unsigned char UpdateCount;
-[; ;OverLoad_B1.h: 110: unsigned char LightsCount;
-[; ;OverLoad_B1.h: 111: unsigned char NumberCount;
-[; ;OverLoad_B1.h: 112: unsigned char CloseCount;
-[; ;OverLoad_B1.h: 113: unsigned char ADCount;
-[; ;OverLoad_B1.h: 114: unsigned char SafeCount;
-[; ;OverLoad_B1.h: 116: unsigned char Lights1Status;
-[; ;OverLoad_B1.h: 117: unsigned char Lights2Status;
-[; ;OverLoad_B1.h: 118: unsigned char Lights3Status;
-[; ;OverLoad_B1.h: 119: unsigned StatusOn:1;
-[; ;OverLoad_B1.h: 120: unsigned StatusOff:1;
-[; ;OverLoad_B1.h: 121: };
-"123 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
+[; ;OverLoad_B1.h: 138: struct OverLoad
+[; ;OverLoad_B1.h: 139: {
+[; ;OverLoad_B1.h: 140: unsigned Enable:1;
+[; ;OverLoad_B1.h: 141: unsigned GO:1;
+[; ;OverLoad_B1.h: 142: unsigned LightsON:1;
+[; ;OverLoad_B1.h: 143: unsigned Safe:1;
+[; ;OverLoad_B1.h: 144: unsigned ADtoGO:1;
+[; ;OverLoad_B1.h: 145: unsigned ERROR:1;
+[; ;OverLoad_B1.h: 146: unsigned int Time;
+[; ;OverLoad_B1.h: 147: unsigned int ErrorTime;
+[; ;OverLoad_B1.h: 148: unsigned char ErrorStatus;
+[; ;OverLoad_B1.h: 150: unsigned ADtype TotalLoad;
+[; ;OverLoad_B1.h: 151: unsigned ADtype AH[9];
+[; ;OverLoad_B1.h: 152: unsigned ADtype AL[9];
+[; ;OverLoad_B1.h: 153: unsigned ADtype AD;
+[; ;OverLoad_B1.h: 154: unsigned ADtype ADH;
+[; ;OverLoad_B1.h: 155: unsigned ADtype ADL;
+[; ;OverLoad_B1.h: 156: unsigned ADtype ADRES;
+[; ;OverLoad_B1.h: 158: unsigned int LightsJudgeValue;
+[; ;OverLoad_B1.h: 159: unsigned int JudgeValue;
+[; ;OverLoad_B1.h: 160: unsigned int Judge;
+[; ;OverLoad_B1.h: 162: unsigned char Count;
+[; ;OverLoad_B1.h: 163: unsigned char OffCount;
+[; ;OverLoad_B1.h: 164: unsigned char ErrorCount;
+[; ;OverLoad_B1.h: 165: unsigned char UpdateCount;
+[; ;OverLoad_B1.h: 166: unsigned char LightsCount;
+[; ;OverLoad_B1.h: 167: unsigned char NumberCount;
+[; ;OverLoad_B1.h: 168: unsigned char CloseCount;
+[; ;OverLoad_B1.h: 169: unsigned char ADCount;
+[; ;OverLoad_B1.h: 170: unsigned char SafeCount;
+[; ;OverLoad_B1.h: 172: unsigned char Lights1Status;
+[; ;OverLoad_B1.h: 173: unsigned char Lights2Status;
+[; ;OverLoad_B1.h: 174: unsigned char Lights3Status;
+[; ;OverLoad_B1.h: 175: unsigned StatusOn:1;
+[; ;OverLoad_B1.h: 176: unsigned StatusOff:1;
+[; ;OverLoad_B1.h: 177: };
+"179 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
 [v _Load `*S9 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 123: struct OverLoad *Load;
-"126
+[; ;OverLoad_B1.h: 179: struct OverLoad *Load;
+"182
 [v _Load1 `S9 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 126: struct OverLoad Load1;
-[; ;OverLoad_B1.h: 131: void Load_Initialization();
-[; ;OverLoad_B1.h: 132: void Load_Main();
-[; ;OverLoad_B1.h: 133: void getLoad_AD(char);
-[; ;OverLoad_B1.h: 134: void setLoad_Exceptions(char);
-[; ;OverLoad_B1.h: 135: void setLoad_Enable(char);
-[; ;OverLoad_B1.h: 136: void setLoad_AH_AL_Restore();
-[; ;OverLoad_B1.h: 138: void setLoad_Count(char);
-[; ;OverLoad_B1.h: 139: void setLoad_GO(char);
-[; ;OverLoad_B1.h: 140: void setLoad_StatusOn(char,char);
-[; ;OverLoad_B1.h: 141: void setLoad_StatusOff(char,char);
-[; ;OverLoad_B1.h: 142: char getLoad_Safe();
-[; ;OverLoad_B1.h: 143: char getLoad_ERROR();
+[; ;OverLoad_B1.h: 182: struct OverLoad Load1;
+[; ;OverLoad_B1.h: 187: void Load_Initialization();
+[; ;OverLoad_B1.h: 188: void Load_Main();
+[; ;OverLoad_B1.h: 189: void getLoad_AD(char);
+[; ;OverLoad_B1.h: 190: void setLoad_Exceptions(char);
+[; ;OverLoad_B1.h: 191: void setLoad_Enable(char);
+[; ;OverLoad_B1.h: 192: void setLoad_AH_AL_Restore();
+[; ;OverLoad_B1.h: 194: void setLoad_Count(char);
+[; ;OverLoad_B1.h: 195: void setLoad_GO(char);
+[; ;OverLoad_B1.h: 196: void setLoad_StatusOn(char,char);
+[; ;OverLoad_B1.h: 197: void setLoad_StatusOff(char,char);
+[; ;OverLoad_B1.h: 198: char getLoad_Safe();
+[; ;OverLoad_B1.h: 199: char getLoad_ERROR();
 [; ;Dimmer_B1.h: 32: struct DimmerLights
 [; ;Dimmer_B1.h: 33: {
 [; ;Dimmer_B1.h: 34: unsigned GO:1;
