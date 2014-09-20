@@ -3222,7 +3222,7 @@ DimmerLightsPointSelect(lights);
 DimmerLights->Clear=1;
 
 # 63
-DimmerLights->MaxmumValue=((char)(55*1.5));
+DimmerLights->MaxmumValue=((char)(70*1.5));
 DimmerLights->MinimumValue=((char)(20*1.5));
 
 # 78
@@ -3420,7 +3420,7 @@ DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
 
 
 
-DimmerLights->DimmingValue=((char)(55*1.5));
+DimmerLights->DimmingValue=((char)(70*1.5));
 
 }
 }
@@ -3518,9 +3518,9 @@ char getPercentValue(char value)
 {
 
 # 490
-float i=((char)(55*1.5))-((char)(20*1.5));
+float i=((char)(70*1.5))-((char)(20*1.5));
 i/=100;
-return (char)(((100-value)*i)+((char)(55*1.5)));
+return (char)(((100-value)*i)+((char)(70*1.5)));
 
 }
 
@@ -3528,9 +3528,9 @@ char setPercentValue(char value)
 {
 
 # 505
-float i=((char)(55*1.5))-((char)(20*1.5));
+float i=((char)(70*1.5))-((char)(20*1.5));
 i/=100;
-return (100-(char)((value-((char)(55*1.5)))/i));
+return (100-(char)((value-((char)(70*1.5)))/i));
 
 }
 

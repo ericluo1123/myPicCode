@@ -3276,7 +3276,7 @@ TMR0=(256-90);
 TMR0IF=0;
 
 # 100
-if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=0; RB4=0; if(DimmerLights11->MosfetClose) { DimmerLights11->MosfetClose=0; DimmerLights11->StatusFlag=0; RA3=0; RC7=!1; Dimmer->Detect=1; DimmerLights11->Clear=1; setLoad_StatusOff(1,1); } } } } else { if(DimmerLights11->MosfetOpen) { DimmerLights11->Count++; if(DimmerLights11->Count >= 20) { DimmerLights11->Count=0; DimmerLights11->MosfetOpen=0; } } if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue < ((char)(55*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue > ((char)(20*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { DimmerLights11->Signal=0; } } } } } ;;
+if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=0; RB4=0; if(DimmerLights11->MosfetClose) { DimmerLights11->MosfetClose=0; DimmerLights11->StatusFlag=0; RA3=0; RC7=!1; Dimmer->Detect=1; DimmerLights11->Clear=1; setLoad_StatusOff(1,1); } } } } else { if(DimmerLights11->MosfetOpen) { DimmerLights11->Count++; if(DimmerLights11->Count >= 20) { DimmerLights11->Count=0; DimmerLights11->MosfetOpen=0; } } if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue < ((char)(70*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue > ((char)(20*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { DimmerLights11->Signal=0; } } } } } ;;
 
 # 113
 Timer0->Count++;
@@ -3402,7 +3402,7 @@ Product->Data[13]=Flash_Memory_Read(1);
 Product->Data[14]=Flash_Memory_Read(2);
 
 # 450
-i=setPercentValue(((char)(55*1.5)));
+i=setPercentValue(((char)(70*1.5)));
 Product->Data[21]=i;
 Product->Data[22]=i;
 Product->Data[23]=i;
@@ -3415,7 +3415,7 @@ TMain->First=1;
 }
 else
 {
-i=setPercentValue(((char)(55*1.5)));
+i=setPercentValue(((char)(70*1.5)));
 Memory->Data[0]=0xff;
 Memory->Data[1]=0xff;
 Memory->Data[2]=0xff;

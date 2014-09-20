@@ -3922,9 +3922,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RF_Control_B1.c: 442: Product->Data[11]=lights;
 "442
 [e = *U + &U . *U _Product 0 * -> -> -> 11 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _lights ]
-[; ;RF_Control_B1.c: 445: Product->Data[(20+lights)]=setPercentValue(((char)(55*1.5)));
+[; ;RF_Control_B1.c: 445: Product->Data[(20+lights)]=setPercentValue(((char)(70*1.5)));
 "445
-[e = *U + &U . *U _Product 0 * -> -> + -> 20 `i -> _lights `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _setPercentValue (1 -> * -> -> 55 `i `d .1.5 `uc ]
+[e = *U + &U . *U _Product 0 * -> -> + -> 20 `i -> _lights `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _setPercentValue (1 -> * -> -> 70 `i `d .1.5 `uc ]
 [; ;RF_Control_B1.c: 448: Product->Data[9]=Product->Data[20+lights];
 "448
 [e = *U + &U . *U _Product 0 * -> -> -> 9 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux *U + &U . *U _Product 0 * -> -> + -> 20 `i -> _lights `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]

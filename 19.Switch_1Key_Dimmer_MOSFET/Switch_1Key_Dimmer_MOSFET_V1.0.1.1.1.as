@@ -11973,10 +11973,10 @@ _getPercentValue:
 	line	490
 	
 l5781:	
-;Dimmer_B1.c: 490: float i=((char)(55*1.5))-((char)(20*1.5));
+;Dimmer_B1.c: 490: float i=((char)(70*1.5))-((char)(20*1.5));
 	movlw	0x0
 	movwf	(getPercentValue@i)
-	movlw	0x50
+	movlw	0x96
 	movwf	(getPercentValue@i+1)
 	movlw	0x42
 	movwf	(getPercentValue@i+2)
@@ -12007,7 +12007,7 @@ l5783:
 	line	492
 	
 l5785:	
-;Dimmer_B1.c: 492: return (char)(((100-value)*i)+((char)(55*1.5)));
+;Dimmer_B1.c: 492: return (char)(((100-value)*i)+((char)(70*1.5)));
 	movf	(getPercentValue@value),w
 	movwf	(??_getPercentValue+0)+0
 	clrf	(??_getPercentValue+0)+0+1
@@ -12046,7 +12046,7 @@ l5785:
 	movwf	(___ftadd@f2+2)
 	movlw	0x0
 	movwf	(___ftadd@f1)
-	movlw	0xa4
+	movlw	0xd2
 	movwf	(___ftadd@f1+1)
 	movlw	0x42
 	movwf	(___ftadd@f1+2)
@@ -20429,8 +20429,8 @@ l8817:
 	line	450
 	
 l8819:	
-;MCU_16f1518_B1.c: 450: i=setPercentValue(((char)(55*1.5)));
-	movlw	(052h)
+;MCU_16f1518_B1.c: 450: i=setPercentValue(((char)(70*1.5)));
+	movlw	(069h)
 	fcall	_setPercentValue
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -20564,8 +20564,8 @@ l1562:
 l8835:	
 ;MCU_16f1518_B1.c: 461: else
 ;MCU_16f1518_B1.c: 462: {
-;MCU_16f1518_B1.c: 463: i=setPercentValue(((char)(55*1.5)));
-	movlw	(052h)
+;MCU_16f1518_B1.c: 463: i=setPercentValue(((char)(70*1.5)));
+	movlw	(069h)
 	fcall	_setPercentValue
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -22085,8 +22085,8 @@ l7969:
 	line	346
 	
 l7971:	
-;Dimmer_B1.c: 346: DimmerLights->DimmingValue=((char)(55*1.5));
-	movlw	(052h)
+;Dimmer_B1.c: 346: DimmerLights->DimmingValue=((char)(70*1.5));
+	movlw	(069h)
 	movwf	(??_setDimmerLights+0)+0
 	movf	(_DimmerLights),w
 	addlw	04h
@@ -23424,8 +23424,8 @@ l6717:
 	line	63
 	
 l6719:	
-;Dimmer_B1.c: 63: DimmerLights->MaxmumValue=((char)(55*1.5));
-	movlw	(052h)
+;Dimmer_B1.c: 63: DimmerLights->MaxmumValue=((char)(70*1.5));
+	movlw	(069h)
 	movwf	(??_setDimmerLights_Initialization+0)+0
 	movf	(_DimmerLights),w
 	addlw	05h
@@ -24575,8 +24575,8 @@ l7837:
 	line	445
 	
 l7839:	
-;RF_Control_B1.c: 445: Product->Data[(20+lights)]=setPercentValue(((char)(55*1.5)));
-	movlw	(052h)
+;RF_Control_B1.c: 445: Product->Data[(20+lights)]=setPercentValue(((char)(70*1.5)));
+	movlw	(069h)
 	fcall	_setPercentValue
 	movlb 0	; select bank0
 	movwf	(??_setRF_DimmerLights+0)+0
@@ -24765,10 +24765,10 @@ _setPercentValue:
 	line	505
 	
 l7787:	
-;Dimmer_B1.c: 505: float i=((char)(55*1.5))-((char)(20*1.5));
+;Dimmer_B1.c: 505: float i=((char)(70*1.5))-((char)(20*1.5));
 	movlw	0x0
 	movwf	(setPercentValue@i)
-	movlw	0x50
+	movlw	0x96
 	movwf	(setPercentValue@i+1)
 	movlw	0x42
 	movwf	(setPercentValue@i+2)
@@ -24799,13 +24799,13 @@ l7789:
 	line	507
 	
 l7791:	
-;Dimmer_B1.c: 507: return (100-(char)((value-((char)(55*1.5)))/i));
+;Dimmer_B1.c: 507: return (100-(char)((value-((char)(70*1.5)))/i));
 	movf	(setPercentValue@value),w
-	addlw	low(-82)
+	addlw	low(-105)
 	movwf	(___awtoft@c)
-	movlw	high(-82)
+	movlw	high(-105)
 	skipnc
-	movlw	(high(-82)+1)&0ffh
+	movlw	(high(-105)+1)&0ffh
 	movwf	((___awtoft@c))+1
 	fcall	___awtoft
 	movlb 0	; select bank0
@@ -29196,7 +29196,7 @@ i1l7641:
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
-	movlw	(052h)
+	movlw	(069h)
 	subwf	indf1,w
 	skipnc
 	goto	u685_21

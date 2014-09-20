@@ -61,6 +61,10 @@
 			unsigned char DetectCount;
 
 			unsigned Clear:1;
+
+			unsigned char MosfetHiCount;
+			unsigned char MosfetLowCount;
+			
 		};
 		struct DimmerLights *DimmerLights;
 		struct DimmerLights *DimmerLightsIntr;

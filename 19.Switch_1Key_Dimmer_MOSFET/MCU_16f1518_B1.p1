@@ -3132,7 +3132,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 265  ]
 {
-[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> -> 55 `i `d .1.5 `uc `i 266  ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> -> 70 `i `d .1.5 `uc `i 266  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
@@ -3520,9 +3520,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16f1518_B1.c: 444: Product->Data[14]=Flash_Memory_Read(2);
 "444
 [e = *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 2 `i `uc ]
-[; ;MCU_16f1518_B1.c: 450: i=setPercentValue(((char)(55*1.5)));
+[; ;MCU_16f1518_B1.c: 450: i=setPercentValue(((char)(70*1.5)));
 "450
-[e = _i ( _setPercentValue (1 -> * -> -> 55 `i `d .1.5 `uc ]
+[e = _i ( _setPercentValue (1 -> * -> -> 70 `i `d .1.5 `uc ]
 [; ;MCU_16f1518_B1.c: 451: Product->Data[21]=i;
 "451
 [e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
@@ -3558,9 +3558,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16f1518_B1.c: 462: {
 "462
 {
-[; ;MCU_16f1518_B1.c: 463: i=setPercentValue(((char)(55*1.5)));
+[; ;MCU_16f1518_B1.c: 463: i=setPercentValue(((char)(70*1.5)));
 "463
-[e = _i ( _setPercentValue (1 -> * -> -> 55 `i `d .1.5 `uc ]
+[e = _i ( _setPercentValue (1 -> * -> -> 70 `i `d .1.5 `uc ]
 [; ;MCU_16f1518_B1.c: 464: Memory->Data[0]=0xff;
 "464
 [e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]

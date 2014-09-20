@@ -259,7 +259,7 @@
 	#else
 		#if Control_Method_Mosfet == 1
 			#if Switch_Class == 1
-				#define Max_Percent 55	
+				#define Max_Percent 70
 			#endif
 			#if Switch_Class == 2
 				#define Max_Percent 65	

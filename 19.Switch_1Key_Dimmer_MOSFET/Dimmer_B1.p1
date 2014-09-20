@@ -2887,9 +2887,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.c: 57: DimmerLights->Clear=1;
 "57
 [e = . *U _DimmerLights 26 -> -> 1 `i `uc ]
-[; ;Dimmer_B1.c: 63: DimmerLights->MaxmumValue=((char)(55*1.5));
+[; ;Dimmer_B1.c: 63: DimmerLights->MaxmumValue=((char)(70*1.5));
 "63
-[e = . *U _DimmerLights 12 -> * -> -> 55 `i `d .1.5 `uc ]
+[e = . *U _DimmerLights 12 -> * -> -> 70 `i `d .1.5 `uc ]
 [; ;Dimmer_B1.c: 64: DimmerLights->MinimumValue=((char)(20*1.5));
 "64
 [e = . *U _DimmerLights 13 -> * -> -> 20 `i `d .1.5 `uc ]
@@ -3411,9 +3411,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.c: 342: DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
 "342
 [e = . *U _DimmerLights 11 . *U _DimmerLights 12 ]
-[; ;Dimmer_B1.c: 346: DimmerLights->DimmingValue=((char)(55*1.5));
+[; ;Dimmer_B1.c: 346: DimmerLights->DimmingValue=((char)(70*1.5));
 "346
-[e = . *U _DimmerLights 11 -> * -> -> 55 `i `d .1.5 `uc ]
+[e = . *U _DimmerLights 11 -> * -> -> 70 `i `d .1.5 `uc ]
 "348
 }
 [e :U 282 ]
@@ -3724,14 +3724,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "490
 [v _i `f ~T0 @X0 1 a ]
-[; ;Dimmer_B1.c: 490: float i=((char)(55*1.5))-((char)(20*1.5));
-[e = _i -> - -> -> * -> -> 55 `i `d .1.5 `uc `i -> -> * -> -> 20 `i `d .1.5 `uc `i `f ]
+[; ;Dimmer_B1.c: 490: float i=((char)(70*1.5))-((char)(20*1.5));
+[e = _i -> - -> -> * -> -> 70 `i `d .1.5 `uc `i -> -> * -> -> 20 `i `d .1.5 `uc `i `f ]
 [; ;Dimmer_B1.c: 491: i/=100;
 "491
 [e =/ _i -> -> 100 `uc `f ]
-[; ;Dimmer_B1.c: 492: return (char)(((100-value)*i)+((char)(55*1.5)));
+[; ;Dimmer_B1.c: 492: return (char)(((100-value)*i)+((char)(70*1.5)));
 "492
-[e ) -> + * -> - -> 100 `i -> _value `i `f _i -> -> * -> -> 55 `i `d .1.5 `uc `f `uc ]
+[e ) -> + * -> - -> 100 `i -> _value `i `f _i -> -> * -> -> 70 `i `d .1.5 `uc `f `uc ]
 [e $UE 297  ]
 [; ;Dimmer_B1.c: 494: }
 "494
@@ -3750,14 +3750,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "505
 [v _i `f ~T0 @X0 1 a ]
-[; ;Dimmer_B1.c: 505: float i=((char)(55*1.5))-((char)(20*1.5));
-[e = _i -> - -> -> * -> -> 55 `i `d .1.5 `uc `i -> -> * -> -> 20 `i `d .1.5 `uc `i `f ]
+[; ;Dimmer_B1.c: 505: float i=((char)(70*1.5))-((char)(20*1.5));
+[e = _i -> - -> -> * -> -> 70 `i `d .1.5 `uc `i -> -> * -> -> 20 `i `d .1.5 `uc `i `f ]
 [; ;Dimmer_B1.c: 506: i/=100;
 "506
 [e =/ _i -> -> 100 `uc `f ]
-[; ;Dimmer_B1.c: 507: return (100-(char)((value-((char)(55*1.5)))/i));
+[; ;Dimmer_B1.c: 507: return (100-(char)((value-((char)(70*1.5)))/i));
 "507
-[e ) -> - -> 100 `i -> -> / -> - -> _value `i -> -> * -> -> 55 `i `d .1.5 `uc `i `f _i `uc `i `uc ]
+[e ) -> - -> 100 `i -> -> / -> - -> _value `i -> -> * -> -> 70 `i `d .1.5 `uc `i `f _i `uc `i `uc ]
 [e $UE 298  ]
 [; ;Dimmer_B1.c: 509: }
 "509

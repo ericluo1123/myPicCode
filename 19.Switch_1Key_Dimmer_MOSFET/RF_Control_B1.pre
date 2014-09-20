@@ -3566,7 +3566,7 @@ status<<=(lights-1);
 Product->Data[11]=lights;
 
 
-Product->Data[(20+lights)]=setPercentValue(((char)(55*1.5)));
+Product->Data[(20+lights)]=setPercentValue(((char)(70*1.5)));
 
 
 Product->Data[9]=Product->Data[20+lights];
