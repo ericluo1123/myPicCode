@@ -142,6 +142,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RCIDL `Vb ~T0 @X0 0 e@3326 ]
 "2456
 [v _RCREG `Vuc ~T0 @X0 0 e@409 ]
+"74 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
+[v _setSegmentDisplayNumber `(v ~T0 @X0 0 ef1`i ]
 "361 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
 [v _UART_Receive `(v ~T0 @X0 0 ef ]
 "360
@@ -3155,274 +3157,274 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 375 ]
 [e $ ! _RCIDL 376  ]
 [e :U 377 ]
-[; ;MCU_16f1516_B1.c: 522: UART->RxData[UART->RxLength]=RCREG;
-"522
-[e = *U + &U . *U _UART 1 * -> . *U _UART 4 `ux -> -> # *U &U . *U _UART 1 `ui `ux _RCREG ]
-[; ;MCU_16f1516_B1.c: 524: UART->RxLength++;
-"524
-[e ++ . *U _UART 4 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 525: if(UART->RxLength == 32)
-"525
-[e $ ! == -> . *U _UART 4 `i -> 32 `i 378  ]
-[; ;MCU_16f1516_B1.c: 526: {
-"526
-{
-[; ;MCU_16f1516_B1.c: 527: UART->RxLength=0;
-"527
-[e = . *U _UART 4 -> -> 0 `i `uc ]
-[; ;MCU_16f1516_B1.c: 528: UART->RxGO=1;
-"528
-[e = . *U _UART 6 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 529: RCIE=0;
-"529
-[e = _RCIE -> -> 0 `i `b ]
-"530
-}
-[e :U 378 ]
-"531
+[; ;MCU_16f1516_B1.c: 523: UART->RxData[0]=RCREG;
+"523
+[e = *U + &U . *U _UART 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _UART 1 `ui `ux _RCREG ]
+[; ;MCU_16f1516_B1.c: 532: RA1=~RA1;
+"532
+[e = _RA1 -> ~ -> _RA1 `ui `b ]
+[; ;MCU_16f1516_B1.c: 533: setSegmentDisplayNumber(UART->RxData[0]);
+"533
+[e ( _setSegmentDisplayNumber (1 -> *U + &U . *U _UART 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _UART 1 `ui `ux `i ]
+"534
 }
 [e :U 374 ]
-[; ;MCU_16f1516_B1.c: 530: }
-[; ;MCU_16f1516_B1.c: 531: }
-[; ;MCU_16f1516_B1.c: 532: }
-"532
+[; ;MCU_16f1516_B1.c: 534: }
+[; ;MCU_16f1516_B1.c: 535: }
+"535
 [e :UE 373 ]
 }
-"533
+"536
 [v _UART_Main `(v ~T0 @X0 1 ef ]
-"534
+"537
 {
-[; ;MCU_16f1516_B1.c: 533: void UART_Main()
-[; ;MCU_16f1516_B1.c: 534: {
+[; ;MCU_16f1516_B1.c: 536: void UART_Main()
+[; ;MCU_16f1516_B1.c: 537: {
 [e :U _UART_Main ]
 [f ]
-[; ;MCU_16f1516_B1.c: 535: if(UART->RxGO)
-"535
-[e $ ! != -> . *U _UART 6 `i -> -> -> 0 `i `uc `i 380  ]
-[; ;MCU_16f1516_B1.c: 536: {
-"536
-{
-[; ;MCU_16f1516_B1.c: 537: UART->RxGO=0;
-"537
-[e = . *U _UART 6 -> -> 0 `i `uc ]
-[; ;MCU_16f1516_B1.c: 538: UART_Receive();
+[; ;MCU_16f1516_B1.c: 538: if(UART->RxGO)
 "538
-[e ( _UART_Receive ..  ]
-[; ;MCU_16f1516_B1.c: 539: RCIE=1;
+[e $ ! != -> . *U _UART 6 `i -> -> -> 0 `i `uc `i 379  ]
+[; ;MCU_16f1516_B1.c: 539: {
 "539
-[e = _RCIE -> -> 1 `i `b ]
+{
+[; ;MCU_16f1516_B1.c: 540: UART->RxGO=0;
 "540
-}
-[; ;MCU_16f1516_B1.c: 540: }
-[e $U 381  ]
+[e = . *U _UART 6 -> -> 0 `i `uc ]
+[; ;MCU_16f1516_B1.c: 541: UART_Receive();
 "541
-[e :U 380 ]
-[; ;MCU_16f1516_B1.c: 541: else
-[; ;MCU_16f1516_B1.c: 542: {
+[e ( _UART_Receive ..  ]
+[; ;MCU_16f1516_B1.c: 542: RCIE=1;
 "542
-{
-[; ;MCU_16f1516_B1.c: 543: if(UART->TxGO)
+[e = _RCIE -> -> 1 `i `b ]
+[; ;MCU_16f1516_B1.c: 543: setSegmentDisplayNumber(UART->RxData[0]);
 "543
-[e $ ! != -> . *U _UART 5 `i -> -> -> 0 `i `uc `i 382  ]
-[; ;MCU_16f1516_B1.c: 544: {
+[e ( _setSegmentDisplayNumber (1 -> *U + &U . *U _UART 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _UART 1 `ui `ux `i ]
 "544
-{
-[; ;MCU_16f1516_B1.c: 545: UART->TxGO=0;
-"545
-[e = . *U _UART 5 -> -> 0 `i `uc ]
-[; ;MCU_16f1516_B1.c: 546: UART_Transmit();
-"546
-[e ( _UART_Transmit ..  ]
-"547
 }
-[e :U 382 ]
+[; ;MCU_16f1516_B1.c: 544: }
+[e $U 380  ]
+"545
+[e :U 379 ]
+[; ;MCU_16f1516_B1.c: 545: else
+[; ;MCU_16f1516_B1.c: 546: {
+"546
+{
+[; ;MCU_16f1516_B1.c: 547: if(UART->TxGO)
+"547
+[e $ ! != -> . *U _UART 5 `i -> -> -> 0 `i `uc `i 381  ]
+[; ;MCU_16f1516_B1.c: 548: {
 "548
+{
+[; ;MCU_16f1516_B1.c: 549: UART->TxGO=0;
+"549
+[e = . *U _UART 5 -> -> 0 `i `uc ]
+[; ;MCU_16f1516_B1.c: 550: UART_Transmit();
+"550
+[e ( _UART_Transmit ..  ]
+"551
 }
 [e :U 381 ]
-[; ;MCU_16f1516_B1.c: 547: }
-[; ;MCU_16f1516_B1.c: 548: }
-[; ;MCU_16f1516_B1.c: 549: }
-"549
-[e :UE 379 ]
+"552
 }
-"550
+[e :U 380 ]
+[; ;MCU_16f1516_B1.c: 551: }
+[; ;MCU_16f1516_B1.c: 552: }
+[; ;MCU_16f1516_B1.c: 553: }
+"553
+[e :UE 378 ]
+}
+"554
 [v _UART_Transmit `(v ~T0 @X0 1 ef ]
-"551
+"555
 {
-[; ;MCU_16f1516_B1.c: 550: void UART_Transmit()
-[; ;MCU_16f1516_B1.c: 551: {
+[; ;MCU_16f1516_B1.c: 554: void UART_Transmit()
+[; ;MCU_16f1516_B1.c: 555: {
 [e :U _UART_Transmit ]
 [f ]
-"552
+"556
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 552: char i;
-[; ;MCU_16f1516_B1.c: 553: for(i=0;i<32;i++)
-"553
+[; ;MCU_16f1516_B1.c: 556: char i;
+[; ;MCU_16f1516_B1.c: 557: for(i=0;i<32;i++)
+"557
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 384  ]
-[e $U 385  ]
-"554
-[e :U 384 ]
-[; ;MCU_16f1516_B1.c: 554: {
+[e $ < -> _i `i -> 32 `i 383  ]
+[e $U 384  ]
+"558
+[e :U 383 ]
+[; ;MCU_16f1516_B1.c: 558: {
 {
-[; ;MCU_16f1516_B1.c: 555: while(!TRMT);
-"555
-[e $U 387  ]
-[e :U 388 ]
+[; ;MCU_16f1516_B1.c: 559: while(!TRMT);
+"559
+[e $U 386  ]
 [e :U 387 ]
-[e $ ! _TRMT 388  ]
-[e :U 389 ]
-[; ;MCU_16f1516_B1.c: 556: printf("%x",UART->TxData[i]);
-"556
-[e ( _printf , (. :s 1C -> *U + &U . *U _UART 0 * -> _i `ux -> -> # *U &U . *U _UART 0 `ui `ux `i ]
-"559
-}
-"553
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 384  ]
-[e :U 385 ]
-"559
-}
-[; ;MCU_16f1516_B1.c: 559: }
-[; ;MCU_16f1516_B1.c: 560: }
-"560
-[e :UE 383 ]
-}
+[e :U 386 ]
+[e $ ! _TRMT 387  ]
+[e :U 388 ]
+[; ;MCU_16f1516_B1.c: 561: printf("%d",i);
 "561
-[v _UART_Receive `(v ~T0 @X0 1 ef ]
+[e ( _printf , (. :s 1C -> _i `i ]
+[; ;MCU_16f1516_B1.c: 562: while(!TRMT);
 "562
+[e $U 389  ]
+[e :U 390 ]
+[e :U 389 ]
+[e $ ! _TRMT 390  ]
+[e :U 391 ]
+[; ;MCU_16f1516_B1.c: 563: printf(",");
+"563
+[e ( _printf :s 2C ]
+"566
+}
+"557
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 383  ]
+[e :U 384 ]
+"566
+}
+[; ;MCU_16f1516_B1.c: 566: }
+[; ;MCU_16f1516_B1.c: 568: }
+"568
+[e :UE 382 ]
+}
+"569
+[v _UART_Receive `(v ~T0 @X0 1 ef ]
+"570
 {
-[; ;MCU_16f1516_B1.c: 561: void UART_Receive()
-[; ;MCU_16f1516_B1.c: 562: {
+[; ;MCU_16f1516_B1.c: 569: void UART_Receive()
+[; ;MCU_16f1516_B1.c: 570: {
 [e :U _UART_Receive ]
 [f ]
-"563
+"571
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 563: char i;
-[; ;MCU_16f1516_B1.c: 565: TMain->Test=1;
-"565
+[; ;MCU_16f1516_B1.c: 571: char i;
+[; ;MCU_16f1516_B1.c: 572: RA1=~RA1;
+"572
+[e = _RA1 -> ~ -> _RA1 `ui `b ]
+[; ;MCU_16f1516_B1.c: 574: TMain->Test=1;
+"574
 [e = . *U _TMain 11 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 567: for(i=0;i<32;i++)
-"567
+[; ;MCU_16f1516_B1.c: 576: for(i=0;i<32;i++)
+"576
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 391  ]
-[e $U 392  ]
-"568
-[e :U 391 ]
-[; ;MCU_16f1516_B1.c: 568: {
+[e $ < -> _i `i -> 32 `i 393  ]
+[e $U 394  ]
+"577
+[e :U 393 ]
+[; ;MCU_16f1516_B1.c: 577: {
 {
-[; ;MCU_16f1516_B1.c: 569: I2C->BufferWriter[i]=UART->RxData[i];
-"569
+[; ;MCU_16f1516_B1.c: 578: I2C->BufferWriter[i]=UART->RxData[i];
+"578
 [e = *U + &U . *U _I2C 1 * -> _i `ux -> -> # *U &U . *U _I2C 1 `ui `ux *U + &U . *U _UART 1 * -> _i `ux -> -> # *U &U . *U _UART 1 `ui `ux ]
-"570
+"579
 }
-"567
+"576
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 391  ]
-[e :U 392 ]
-"570
+[e $ < -> _i `i -> 32 `i 393  ]
+[e :U 394 ]
+"579
 }
-[; ;MCU_16f1516_B1.c: 570: }
-[; ;MCU_16f1516_B1.c: 571: I2C->MasterTxGO=1;
-"571
+[; ;MCU_16f1516_B1.c: 579: }
+[; ;MCU_16f1516_B1.c: 580: I2C->MasterTxGO=1;
+"580
 [e = . *U _I2C 7 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 585: }
-"585
-[e :UE 390 ]
+[; ;MCU_16f1516_B1.c: 594: }
+"594
+[e :UE 392 ]
 }
-"586
+"595
 [v _UART_SetData `(v ~T0 @X0 1 ef ]
-"587
+"596
 {
-[; ;MCU_16f1516_B1.c: 586: void UART_SetData()
-[; ;MCU_16f1516_B1.c: 587: {
+[; ;MCU_16f1516_B1.c: 595: void UART_SetData()
+[; ;MCU_16f1516_B1.c: 596: {
 [e :U _UART_SetData ]
 [f ]
-"588
-[v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 588: char i;
-[; ;MCU_16f1516_B1.c: 597: }
 "597
-[e :UE 394 ]
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_16f1516_B1.c: 597: char i;
+[; ;MCU_16f1516_B1.c: 606: }
+"606
+[e :UE 396 ]
 }
-"599
+"608
 [v _putch `(v ~T0 @X0 1 ef1`uc ]
-"600
+"609
 {
-[; ;MCU_16f1516_B1.c: 599: void putch(unsigned char byte)
-[; ;MCU_16f1516_B1.c: 600: {
+[; ;MCU_16f1516_B1.c: 608: void putch(unsigned char byte)
+[; ;MCU_16f1516_B1.c: 609: {
 [e :U _putch ]
-"599
+"608
 [v _byte `uc ~T0 @X0 1 r1 ]
-"600
+"609
 [f ]
-[; ;MCU_16f1516_B1.c: 602: while(!TXIF)
-"602
-[e $U 396  ]
-[e :U 397 ]
-[; ;MCU_16f1516_B1.c: 603: continue;
-"603
-[e $U 396  ]
-[e :U 396 ]
-"602
-[e $ ! _TXIF 397  ]
+[; ;MCU_16f1516_B1.c: 611: while(!TXIF)
+"611
+[e $U 398  ]
+[e :U 399 ]
+[; ;MCU_16f1516_B1.c: 612: continue;
+"612
+[e $U 398  ]
 [e :U 398 ]
-[; ;MCU_16f1516_B1.c: 604: TXREG = byte;
-"604
+"611
+[e $ ! _TXIF 399  ]
+[e :U 400 ]
+[; ;MCU_16f1516_B1.c: 613: TXREG = byte;
+"613
 [e = _TXREG _byte ]
-[; ;MCU_16f1516_B1.c: 605: }
-"605
-[e :UE 395 ]
+[; ;MCU_16f1516_B1.c: 614: }
+"614
+[e :UE 397 ]
 }
-"607
+"616
 [v _getch `(uc ~T0 @X0 1 ef ]
 {
-[; ;MCU_16f1516_B1.c: 607: unsigned char getch() {
+[; ;MCU_16f1516_B1.c: 616: unsigned char getch() {
 [e :U _getch ]
 [f ]
-[; ;MCU_16f1516_B1.c: 609: while(!RCIF)
-"609
-[e $U 400  ]
-[e :U 401 ]
-[; ;MCU_16f1516_B1.c: 610: continue;
-"610
-[e $U 400  ]
-[e :U 400 ]
-"609
-[e $ ! _RCIF 401  ]
+[; ;MCU_16f1516_B1.c: 618: while(!RCIF)
+"618
+[e $U 402  ]
+[e :U 403 ]
+[; ;MCU_16f1516_B1.c: 619: continue;
+"619
+[e $U 402  ]
 [e :U 402 ]
-[; ;MCU_16f1516_B1.c: 611: return RCREG;
-"611
+"618
+[e $ ! _RCIF 403  ]
+[e :U 404 ]
+[; ;MCU_16f1516_B1.c: 620: return RCREG;
+"620
 [e ) _RCREG ]
-[e $UE 399  ]
-[; ;MCU_16f1516_B1.c: 612: }
-"612
-[e :UE 399 ]
+[e $UE 401  ]
+[; ;MCU_16f1516_B1.c: 621: }
+"621
+[e :UE 401 ]
 }
-"614
+"623
 [v _getche `(uc ~T0 @X0 1 ef ]
-"615
+"624
 {
-[; ;MCU_16f1516_B1.c: 614: unsigned char getche(void)
-[; ;MCU_16f1516_B1.c: 615: {
+[; ;MCU_16f1516_B1.c: 623: unsigned char getche(void)
+[; ;MCU_16f1516_B1.c: 624: {
 [e :U _getche ]
 [f ]
-"616
+"625
 [v _c `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 616: unsigned char c;
-[; ;MCU_16f1516_B1.c: 617: putch(c = getch());
-"617
+[; ;MCU_16f1516_B1.c: 625: unsigned char c;
+[; ;MCU_16f1516_B1.c: 626: putch(c = getch());
+"626
 [e ( _putch (1 = _c ( _getch ..  ]
-[; ;MCU_16f1516_B1.c: 618: return c;
-"618
+[; ;MCU_16f1516_B1.c: 627: return c;
+"627
 [e ) _c ]
-[e $UE 403  ]
-[; ;MCU_16f1516_B1.c: 619: }
-"619
-[e :UE 403 ]
+[e $UE 405  ]
+[; ;MCU_16f1516_B1.c: 628: }
+"628
+[e :UE 405 ]
 }
-[p f _printf 12582912 ]
-[a 1C 37 120 0 ]
-
+[p f _printf 8388736 ]
+[a 1C 37 100 0 ]
+[a 2C 44 0 ]

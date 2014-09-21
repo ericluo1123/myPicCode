@@ -81,7 +81,7 @@ void MainT()
 		
 			}
 			#if I2C_use == 1
-				if(TMain->Test)
+			/*	if(TMain->Test)
 				{
 					setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
 					I2C->Count++;
@@ -89,7 +89,7 @@ void MainT()
 					{
 						I2C->Count=0;
 					}
-				}
+				}*/
 			#endif
 			#if UART_use == 1
 			/*	if(TMain->Test)

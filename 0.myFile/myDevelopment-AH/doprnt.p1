@@ -197,18 +197,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 28: extern double round(double);
 "13 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
 [p n 350 ]
-"362
-[v _hexpowers `Cui ~T0 @X0 -> 0 `x s ]
-[i _hexpowers
+"354
+[v _dpowers `Cui ~T0 @X0 -> 0 `x s ]
+[i _dpowers
 :U ..
 -> -> 1 `i `ui
--> -> 16 `i `ui
--> -> 256 `i `ui
--> -> 4096 `i `ui
+-> -> 10 `i `ui
+-> -> 100 `i `ui
+-> -> 1000 `i `ui
+-> -> 10000 `i `ui
 ..
 ]
-[; ;doprnt.c: 362: const static unsigned int hexpowers[] = {1, 0x10, 0x100, 0x1000,
-[; ;doprnt.c: 366: };
+[; ;doprnt.c: 354: const static unsigned int dpowers[] = {1, 10, 100, 1000, 10000,
+[; ;doprnt.c: 359: };
 "464
 [v _printf `(i ~T0 @X0 1 ev`*Cuc ]
 "465
@@ -285,15 +286,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;doprnt.c: 647: goto alldone;
 "647
 [e $U 16  ]
-[; ;doprnt.c: 727: case 'x':
-"727
+[; ;doprnt.c: 706: case 'd':
+"706
 [e :U 17 ]
-[; ;doprnt.c: 732: break;
-"732
+"707
+[e :U 18 ]
+[; ;doprnt.c: 707: case 'i':
+[; ;doprnt.c: 708: break;
+"708
 [e $U 13  ]
 [; ;doprnt.c: 811: default:
 "811
-[e :U 18 ]
+[e :U 19 ]
 [; ;doprnt.c: 822: continue;
 "822
 [e $U 9  ]
@@ -304,41 +308,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 "644
 [e :U 14 ]
 [e [\ = _c -> *U ++ _f * -> -> 1 `i `x -> -> # *U _f `i `x `c , $ -> -> 0 `i `c 15
- , $ -> -> 120 `ui `c 17
- 18 ]
+ , $ -> -> 100 `ui `c 17
+ , $ -> -> 105 `ui `c 18
+ 19 ]
 "831
 [e :U 13 ]
-[; ;doprnt.c: 1282: {
-"1282
+[; ;doprnt.c: 1262: {
+"1262
 {
-[; ;doprnt.c: 1295: _val._val = (*(unsigned *)__va_arg((*(unsigned **)ap), (unsigned)0));
-"1295
-[e = . __val 0 *U -> ( ___va_arg , (. -> *U -> &U _ap `**ui `*v -> -> 0 `i `ui `*ui ]
-"1296
+[; ;doprnt.c: 1268: _val._val = (int)(*(int *)__va_arg((*(int **)ap), (int)0));
+"1268
+[e = . __val 0 -> *U -> ( ___va_arg , (. -> *U -> &U _ap `**i `*v -> 0 `i `*i `ui ]
+[; ;doprnt.c: 1270: if((int)_val._val < 0) {
+"1270
+[e $ ! < -> . __val 0 `i -> 0 `i 20  ]
+{
+[; ;doprnt.c: 1271: flag |= 0x03;
+"1271
+[e =| _flag -> -> 3 `i `uc ]
+[; ;doprnt.c: 1272: _val._val = -_val._val;
+"1272
+[e = . __val 0 -U . __val 0 ]
+"1273
 }
-[; ;doprnt.c: 1296: }
-[; ;doprnt.c: 1325: for(c = 1 ; c != sizeof hexpowers/sizeof hexpowers[0] ; c++)
-"1325
+[e :U 20 ]
+"1275
+}
+[; ;doprnt.c: 1273: }
+[; ;doprnt.c: 1275: }
+[; ;doprnt.c: 1314: for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
+"1314
 {
 [e = _c -> -> 1 `i `c ]
-[e $ != -> -> _c `i `ui / -> # _hexpowers `ui -> # *U + &U _hexpowers * -> -> -> 0 `i `ui `ux -> -> # *U &U _hexpowers `ui `ux `ui 19  ]
-[e $U 20  ]
-"1326
-[e :U 19 ]
-[; ;doprnt.c: 1326: if(_val._val < hexpowers[c])
-[e $ ! < . __val 0 *U + &U _hexpowers * -> -> _c `uc `ux -> -> # *U &U _hexpowers `ui `ux 22  ]
-[; ;doprnt.c: 1327: break;
-"1327
-[e $U 20  ]
-[e :U 22 ]
-"1325
+[e $ != -> -> _c `i `ui / -> # _dpowers `ui -> # *U + &U _dpowers * -> -> -> 0 `i `ui `ux -> -> # *U &U _dpowers `ui `ux `ui 21  ]
+[e $U 22  ]
+"1315
+[e :U 21 ]
+[; ;doprnt.c: 1315: if(_val._val < dpowers[c])
+[e $ ! < . __val 0 *U + &U _dpowers * -> -> _c `uc `ux -> -> # *U &U _dpowers `ui `ux 24  ]
+[; ;doprnt.c: 1316: break;
+"1316
+[e $U 22  ]
+[e :U 24 ]
+"1314
 [e ++ _c -> -> 1 `i `c ]
-[e $ != -> -> _c `i `ui / -> # _hexpowers `ui -> # *U + &U _hexpowers * -> -> -> 0 `i `ui `ux -> -> # *U &U _hexpowers `ui `ux `ui 19  ]
-[e :U 20 ]
+[e $ != -> -> _c `i `ui / -> # _dpowers `ui -> # *U + &U _dpowers * -> -> -> 0 `i `ui `ux -> -> # *U &U _dpowers `ui `ux `ui 21  ]
+[e :U 22 ]
 "1431
 }
 [; ;doprnt.c: 1431: {
 {
+[; ;doprnt.c: 1447: if(flag & 0x03)
+"1447
+[e $ ! != & -> _flag `i -> 3 `i -> 0 `i 25  ]
+[; ;doprnt.c: 1448: (putch('-') );
+"1448
+[e ( _putch (1 -> -> 45 `ui `uc ]
+[e :U 25 ]
 "1478
 }
 [; ;doprnt.c: 1478: }
@@ -347,37 +373,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _prec _c ]
 [; ;doprnt.c: 1483: while(prec--) {
 "1483
-[e $U 23  ]
-[e :U 24 ]
+[e $U 26  ]
+[e :U 27 ]
 {
 [; ;doprnt.c: 1487: {
 "1487
 {
-[; ;doprnt.c: 1508: {
-"1508
-{
-"1509
-[v _idx `uc ~T0 @X0 1 a ]
-[; ;doprnt.c: 1509: unsigned char idx = (_val._val / hexpowers[prec]) & 0xF;
-[e = _idx -> & / . __val 0 *U + &U _hexpowers * -> -> _prec `uc `ux -> -> # *U &U _hexpowers `ui `ux -> -> 15 `i `ui `uc ]
-[; ;doprnt.c: 1515: c = "0123456789abcdef"[idx];
-"1515
-[e = _c -> *U + :s 1C * -> _idx `ux -> -> # *U :s 1C `ui `ux `c ]
-"1517
-}
+[; ;doprnt.c: 1498: c = (_val._val / dpowers[prec]) % 10 + '0';
+"1498
+[e = _c -> + % / . __val 0 *U + &U _dpowers * -> -> _prec `uc `ux -> -> # *U &U _dpowers `ui `ux -> -> 10 `i `ui -> 48 `ui `c ]
 "1532
 }
-[; ;doprnt.c: 1517: }
 [; ;doprnt.c: 1532: }
 [; ;doprnt.c: 1533: (putch(c) );
 "1533
 [e ( _putch (1 -> _c `uc ]
 "1534
 }
-[e :U 23 ]
+[e :U 26 ]
 "1483
-[e $ != -> -- _prec -> -> 1 `i `c `i -> -> -> 0 `i `c `i 24  ]
-[e :U 25 ]
+[e $ != -> -- _prec -> -> 1 `i `c `i -> -> -> 0 `i `c `i 27  ]
+[e :U 28 ]
 "1542
 }
 [e :U 9 ]
@@ -397,5 +413,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 "1550
 [e :UE 8 ]
 }
-[a 1C 48 49 50 51 52 53 54 55 56 57 97 98 99 100 101 102 0 ]
-

@@ -519,15 +519,18 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		if(RCIE && RCIF)
 		{
 			while(!RCIDL);
-			UART->RxData[UART->RxLength]=RCREG;
-	
+		//	UART->RxData[UART->RxLength]=RCREG;
+			UART->RxData[0]=RCREG;
+	/*
 			UART->RxLength++;
 			if(UART->RxLength == 32)
 			{
 				UART->RxLength=0;
 				UART->RxGO=1;
 				RCIE=0;	
-			}	
+			}	*/
+			LED2=~LED2;
+			setSegmentDisplayNumber(UART->RxData[0]);
 		}
 	}
 	void UART_Main()
@@ -537,6 +540,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			UART->RxGO=0;
 			UART_Receive();
 			RCIE=1;	
+			setSegmentDisplayNumber(UART->RxData[0]);
 		}
 		else
 		{
@@ -553,14 +557,19 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		for(i=0;i<32;i++)
 		{	
 			while(!TRMT);	
-			printf("%x",UART->TxData[i]);	
+			//printf("%x",UART->TxData[i]);	
+			printf("%d",i);	
+			while(!TRMT);
+			printf(",");
 			//while(!TRMT);
 			//TXREG=UART->TxData[i];
 		}
+		//printf("\n");
 	}
 	void UART_Receive()
 	{
 		char i;
+		LED2=~LED2;
 		#if UART_Master == 1
 			TMain->Test=1;
 			#if I2C_use == 1

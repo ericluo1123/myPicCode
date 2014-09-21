@@ -3016,15 +3016,12 @@ char i;
 if(RCIE && RCIF)
 {
 while(!RCIDL);
-UART->RxData[UART->RxLength]=RCREG;
 
-UART->RxLength++;
-if(UART->RxLength == 32)
-{
-UART->RxLength=0;
-UART->RxGO=1;
-RCIE=0;
-}
+UART->RxData[0]=RCREG;
+
+# 532
+RA1=~RA1;
+setSegmentDisplayNumber(UART->RxData[0]);
 }
 }
 void UART_Main()
@@ -3034,6 +3031,7 @@ if(UART->RxGO)
 UART->RxGO=0;
 UART_Receive();
 RCIE=1;
+setSegmentDisplayNumber(UART->RxData[0]);
 }
 else
 {
@@ -3050,14 +3048,19 @@ char i;
 for(i=0;i<32;i++)
 {
 while(!TRMT);
-printf("%x",UART->TxData[i]);
+
+printf("%d",i);
+while(!TRMT);
+printf(",");
 
 
 }
+
 }
 void UART_Receive()
 {
 char i;
+RA1=~RA1;
 
 TMain->Test=1;
 
@@ -3067,13 +3070,13 @@ I2C->BufferWriter[i]=UART->RxData[i];
 }
 I2C->MasterTxGO=1;
 
-# 585
+# 594
 }
 void UART_SetData()
 {
 char i;
 
-# 597
+# 606
 }
 
 void putch(unsigned char byte)

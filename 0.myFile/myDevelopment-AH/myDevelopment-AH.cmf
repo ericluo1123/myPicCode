@@ -16,56 +16,56 @@ end_init CODE 0 19 19 2 2
 reset_vec CODE 0 0 0 2 2
 config CONFIG 0 8007 8007 2 2
 $myDevelopment-AH.obj
-cinit CODE 0 1B 1B 35 2
+cinit CODE 0 1B 1B 27 2
 intentry CODE 0 4 4 15 2
-text25 CODE 0 7A6 7A6 F 2
-text24 CODE 0 558 558 29 2
-text23 CODE 0 486 486 3B 2
-text21 CODE 0 3F4 3F4 4A 2
-text20 CODE 0 4F8 4F8 32 2
-text19 CODE 0 32D 32D 73 2
-text18 CODE 0 3A0 3A0 54 2
-text17 CODE 0 43E 43E 48 2
-text16 CODE 0 50 50 131 2
-text15 CODE 0 224 224 96 2
-text14 CODE 0 797 797 F 2
-text13 CODE 0 7B5 7B5 D 2
-text12 CODE 0 74E 74E 16 2
-text11 CODE 0 787 787 10 2
-text10 CODE 0 736 736 18 2
-text9 CODE 0 764 764 13 2
-text8 CODE 0 777 777 10 2
-text7 CODE 0 2BA 2BA 73 2
-text6 CODE 0 52A 52A 2E 2
-text5 CODE 0 4C1 4C1 37 2
-text4 CODE 0 7C2 7C2 8 2
-text3 CODE 0 181 181 A3 2
-text2 CODE 0 5A6 5A6 25 2
-text1 CODE 0 5CB 5CB 22 2
-maintext CODE 0 581 581 25 2
-cstackBANK0 BANK0 1 3A 3A 18 1
-cstackCOMMON COMMON 1 70 70 8 1
-inittext CODE 0 7D0 7D0 6 2
-clrtext CODE 0 7CA 7CA 6 2
+text29 CODE 0 F83 F83 10 2
+text28 CODE 0 790 790 29 2
+text27 CODE 0 4F8 4F8 53 2
+text26 CODE 0 5E3 5E3 47 2
+text25 CODE 0 173 173 12F 2
+text24 CODE 0 FDC FDC 24 2
+text22 CODE 0 54B 54B 50 2
+text21 CODE 0 664 664 38 2
+text20 CODE 0 3D2 3D2 73 2
+text19 CODE 0 445 445 5F 2
+text18 CODE 0 F74 F74 F 2
+text17 CODE 0 F66 F66 E 2
+text16 CODE 0 FC6 FC6 16 2
+text15 CODE 0 F93 F93 10 2
+text14 CODE 0 7E0 7E0 19 2
+text13 CODE 0 FB3 FB3 13 2
+text12 CODE 0 FA3 FA3 10 2
+text11 CODE 0 35F 35F 73 2
+text10 CODE 0 707 707 31 2
+text9 CODE 0 69C 69C 37 2
+text8 CODE 0 738 738 2F 2
+text7 CODE 0 F5E F5E 8 2
+text6 CODE 0 2A2 2A2 BD 2
+text5 CODE 0 767 767 29 2
+text4 CODE 0 4A4 4A4 54 2
+text3 CODE 0 59B 59B 48 2
+text2 CODE 0 42 42 131 2
+text1 CODE 0 6D3 6D3 34 2
+maintext CODE 0 7B9 7B9 27 2
+cstackBANK0 BANK0 1 20 20 28 1
+cstackCOMMON COMMON 1 70 70 E 1
+inittext CODE 0 F58 F58 6 2
+clrtext CODE 0 7F9 7F9 6 2
 bssBANK3 BANK3 1 1A0 1A0 43 1
 bssBANK2 BANK2 1 120 120 44 1
-dataBANK1 BANK1 1 A0 A0 20 1
-dataBANK0 BANK0 1 20 20 1A 1
-bssBANK0 BANK0 1 52 52 14 1
-bssCOMMON COMMON 1 78 78 2 1
-nvBANK0 BANK0 1 66 66 1 1
-nvCOMMON COMMON 1 7A 7A 1 1
-stringtext STRCODE 0 700 700 1C 2
-idataBANK1 CODE 0 5ED 5ED 20 2
-idataBANK0 CODE 0 71C 71C 1A 2
+dataBANK1 BANK1 1 A0 A0 3A 1
+bssBANK0 BANK0 1 48 48 16 1
+nvBANK0 BANK0 1 5E 5E 2 1
+stringtext STRCODE 0 1000 1000 F 2
+idataBANK1 CODE 0 62A 62A 3A 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-BANK0 00067-0006F 1
-BANK1 000C0-000EF 1
+BANK0 00060-0006F 1
+BANK1 000DA-000EF 1
 BANK2 00164-0016F 1
 BANK3 001E3-001EF 1
 BANK4 00220-0026F 1
@@ -73,18 +73,17 @@ BANK5 002A0-002EF 1
 BANK6 00320-0032F 1
 BIGRAM 02000-021EF 1
 CODE 00002-00003 2
-CODE 0060D-006FF 2
-CODE 007D6-01FFF 2
-COMMON 0007B-0007D 1
+CODE 007FF-00F57 2
+CODE 0100F-01FFF 2
 CONST 00002-00003 2
-CONST 0060D-006FF 2
-CONST 007D6-01FFF 2
+CONST 007FF-00F57 2
+CONST 0100F-01FFF 2
 ENTRY 00002-00003 2
-ENTRY 0060D-006FF 2
-ENTRY 007D6-01FFF 2
+ENTRY 007FF-00F57 2
+ENTRY 0100F-01FFF 2
 IDLOC 08000-08003 2
-RAM 00067-0006F 1
-RAM 000C0-000EF 1
+RAM 00060-0006F 1
+RAM 000DA-000EF 1
 RAM 00164-0016F 1
 RAM 001E3-001EF 1
 RAM 00220-0026F 1
@@ -124,11 +123,11 @@ SFR8 00400-0046F 1
 SFR9 00480-004EF 1
 STACK 02133-021EF 1
 STRCODE 00002-00003 2
-STRCODE 0060D-006FF 2
-STRCODE 007D6-01FFF 2
+STRCODE 007FF-00F57 2
+STRCODE 0100F-01FFF 2
 STRING 00002-00003 2
-STRING 0060D-006FF 2
-STRING 007D6-01FFF 2
+STRING 007FF-00F57 2
+STRING 0100F-01FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -152,431 +151,505 @@ $myDevelopment-AH.obj
 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":68 F intentry CODE
 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":70 12 intentry CODE
 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":71 14 intentry CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1028 1B cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1031 1B cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1101 1B cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1102 1C cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1106 1D cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1107 1E cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1108 1F cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1109 20 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1110 21 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1111 22 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1115 25 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1116 26 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1117 27 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1118 28 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1119 29 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1120 2A cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1124 2D cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1125 2E cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1126 2F cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1127 30 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1128 31 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1129 32 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1144 35 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1145 36 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1146 37 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1147 38 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1148 39 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1149 3A cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1150 3B cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1151 3C cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1152 3D cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1153 3E cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1157 41 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1158 42 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1159 43 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1160 44 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1161 45 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1162 46 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1163 47 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1164 48 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1165 49 cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1166 4A cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1172 4C cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1173 4C cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1174 4D cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1175 4E cinit CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":20 50 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":23 50 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":25 57 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":26 5C text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":28 62 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":29 6B text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":30 7F text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":31 88 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":33 9C text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":35 A2 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 AD text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":39 B3 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 BE text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":44 C3 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":45 DA text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":46 EE text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":47 104 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":48 118 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":49 12E text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":50 142 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":53 14A text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":55 152 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":56 15A text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":57 15B text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":59 163 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":60 16B text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":61 16C text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":63 174 text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":64 17A text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":67 17B text16 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":68 180 text16 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":464 181 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":542 181 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":545 186 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":547 199 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":550 19D text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":551 1A1 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":557 1A2 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":644 1A4 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1295 1B8 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1325 1C3 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1326 1C9 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1325 1E0 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1481 1E8 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1483 1EC text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1509 1F5 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1515 213 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1533 21E text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1483 222 text3 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1550 223 text3 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":41 224 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":45 224 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":47 229 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":48 231 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":50 23C text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":51 242 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":57 246 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":60 247 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":61 250 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":63 25C text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":64 263 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":84 266 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":86 26E text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":87 284 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":88 28E text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":90 297 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":108 29D text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":109 2A6 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":111 2B2 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":124 2B9 text15 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":72 2BA text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":74 2BA text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":76 2C1 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":77 2C9 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":79 2D1 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":80 2D6 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":81 2DA text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":83 2E1 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":84 2E2 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":85 2E3 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":87 2EB text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":88 2EC text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":89 2ED text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":91 2F5 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":92 2F6 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":93 2F7 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":95 2FE text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":97 2FF text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":98 312 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":100 31E text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":101 326 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":104 327 text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":106 32C text7 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":275 32D text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":302 32D text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":304 334 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":305 33A text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":306 33D text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":307 343 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":309 346 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":311 34B text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":309 35D text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":313 365 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":315 36B text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":316 36C text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":318 36C text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":320 36F text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":322 376 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":323 37C text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":325 382 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":328 383 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":330 38A text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":331 390 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":332 390 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":334 397 text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":335 39D text19 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":337 39F text19 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":6 3A0 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":14 3A0 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":15 3A2 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":16 3A4 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":17 3A9 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":19 3AB text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":20 3AD text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":21 3B2 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":23 3B6 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":24 3B8 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":25 3BC text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 3BE text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":27 3C0 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":28 3C5 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 3C9 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":31 3CA text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":32 3CF text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":33 3D7 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":34 3DB text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":36 3DC text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":37 3E1 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":39 3E5 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":40 3E8 text18 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":41 3ED text18 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":408 3F4 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":411 3F4 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":412 3F7 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":413 3F8 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":416 3FA text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":419 3FC text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":420 3FE text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":423 400 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":425 405 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":426 407 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":427 409 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":428 40A text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":429 40C text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":430 417 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":431 417 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":431 419 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":430 41A text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":432 41B text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":423 41D text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":434 425 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":435 427 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":436 428 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":437 42B text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":438 42B text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":437 42C text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":439 42E text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":440 430 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":441 432 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":442 433 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":444 435 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":445 438 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":446 438 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":445 439 text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":447 43B text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":450 43C text21 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":447 43D text21 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":6 43E text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":13 43E text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":14 440 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":15 442 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":16 447 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":18 449 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":19 44B text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":20 450 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":21 454 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 456 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":23 458 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":24 45D text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 461 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":27 462 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":28 46A text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":29 46E text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":30 473 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":32 477 text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":33 47A text17 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":34 47F text17 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":516 486 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":519 486 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":521 48C text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":522 48F text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":524 4A0 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":525 4A9 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":527 4B2 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":528 4B8 text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":529 4BE text23 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":530 4C0 text23 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":6 4C1 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":14 4C1 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":15 4C4 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":16 4C8 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":17 4CA text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":18 4CC text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":19 4D1 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":17 4D5 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":22 4D6 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":23 4DB text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":24 4E3 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":25 4E7 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":27 4E8 text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":28 4ED text5 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":30 4F1 text5 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":375 4F8 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":378 4F8 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":379 4FB text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":381 4FC text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":384 4FE text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":385 500 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":388 502 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":390 504 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":392 509 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":393 50B text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":394 515 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":397 517 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":390 519 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":400 521 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":401 524 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":402 524 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":401 525 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":403 527 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":406 528 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":403 529 text20 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":561 52A text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":565 52A text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":567 530 text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":569 535 text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":567 549 text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":571 551 text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":585 557 text6 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":125 558 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":127 558 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":129 55E text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":130 560 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":131 562 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":132 563 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":133 56B text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":135 576 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":136 57C text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":137 580 text24 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":6 581 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":8 581 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":9 584 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":10 587 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":12 58A maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":17 58B maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":19 590 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":20 594 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":21 597 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":24 59C maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":25 59F maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":26 5A2 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":13 5A5 maintext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":550 5A6 text2 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":553 5A6 text2 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":555 5AC text2 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":556 5AF text2 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":553 5C5 text2 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":533 5CB text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":535 5CB text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":537 5D2 text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":538 5D8 text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":539 5DA text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":540 5DC text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":543 5DD text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":545 5E4 text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":546 5EA text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":547 5EC text1 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":498 736 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":500 736 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":501 73A text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":502 73C text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":503 73D text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":504 740 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":505 741 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":506 742 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":507 744 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":508 746 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":509 747 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":510 748 text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":511 74A text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":512 74B text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":513 74C text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":514 74D text10 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":37 74E text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":39 74E text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":40 751 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":41 752 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":42 754 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":43 756 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":44 757 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":45 758 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":46 75B text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":47 75C text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":48 75D text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":49 760 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":50 761 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":51 763 text12 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":11 764 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":14 764 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":16 767 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":18 76A text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":20 76B text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":22 76E text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":26 76F text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":28 770 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":30 771 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":32 774 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":35 776 text9 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":8 777 text8 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":10 777 text8 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":11 77C text8 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":13 781 text8 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":18 786 text8 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":114 787 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":116 787 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":117 78C text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":118 78E text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":119 790 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":120 792 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":121 794 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":122 795 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":123 796 text11 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":33 797 text14 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":35 797 text14 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":36 79B text14 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":37 7A0 text14 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":38 7A5 text14 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":260 7A6 text25 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":262 7A6 text25 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":264 7AC text25 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":265 7AE text25 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":233 7B5 text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":235 7B5 text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":237 7B9 text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":238 7BC text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":239 7BE text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":241 7BF text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":258 7C1 text13 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":599 7C2 text4 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":602 7C3 text4 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":603 7C3 text4 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":604 7C6 text4 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":605 7C9 text4 CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1090 7CA clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1091 7CA clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1092 7CB clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1093 7CB clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1094 7CC clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1095 7CD clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1096 7CE clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1097 7CF clrtext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1133 7D0 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1134 7D0 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1135 7D1 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1136 7D1 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1137 7D2 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1138 7D3 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1139 7D4 inittext CODE
-"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1140 7D5 inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1014 1B cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1017 1B cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1082 1B cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1083 1C cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1084 1D cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1085 1E cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1086 1F cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1087 20 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1091 23 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1092 24 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1093 25 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1094 26 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1095 27 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1096 28 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1100 2B cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1101 2C cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1102 2D cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1103 2E cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1104 2F cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1105 30 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1120 33 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1121 34 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1122 35 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1123 36 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1124 37 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1125 38 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1126 39 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1127 3A cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1128 3B cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1129 3C cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1135 3E cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1136 3E cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1137 3F cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1138 40 cinit CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":20 42 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":23 42 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":25 49 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":26 4E text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":28 54 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":29 5D text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":30 71 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":31 7A text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":33 8E text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":35 94 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 9F text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":39 A5 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 B0 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":44 B5 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":45 CC text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":46 E0 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":47 F6 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":48 10A text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":49 120 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":50 134 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":53 13C text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":55 144 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":56 14C text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":57 14D text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":59 155 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":60 15D text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":61 15E text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":63 166 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":64 16C text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":67 16D text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":68 172 text2 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":20 173 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":23 173 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":25 17A text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":26 17F text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":28 185 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":29 18E text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":30 1A2 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":31 1AB text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":33 1BF text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":35 1C5 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 1D0 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":39 1D5 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":37 1E1 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":44 1E6 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":45 1FC text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":46 20F text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":47 225 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":48 238 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":49 24E text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":50 261 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":53 26A text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":55 273 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":56 27B text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":57 27C text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":59 284 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":60 28C text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":61 28D text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":63 295 text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":64 29B text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":67 29C text25 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":68 2A1 text25 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":464 2A2 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":542 2A2 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":545 2A7 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":547 2BA text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":550 2BE text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":551 2C2 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":557 2C3 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":644 2C5 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1268 2DC text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1270 2E7 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1271 2E9 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1272 2ED text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1314 2F2 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1315 2F8 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1314 30F text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1447 317 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1448 31B text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1481 31F text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1483 324 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1498 32D text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1533 359 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1483 35D text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c":1550 35E text6 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":72 35F text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":74 35F text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":76 366 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":77 36E text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":79 376 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":80 37B text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":81 37F text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":83 386 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":84 387 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":85 388 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":87 390 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":88 391 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":89 392 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":91 39A text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":92 39B text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":93 39C text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":95 3A3 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":97 3A4 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":98 3B7 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":100 3C3 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":101 3CB text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":104 3CC text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":106 3D1 text11 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":275 3D2 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":302 3D2 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":304 3DA text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":305 3E0 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":306 3E3 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":307 3EA text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":309 3EC text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":311 3F1 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":309 403 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":313 40B text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":315 411 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":316 412 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":318 412 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":320 414 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":322 41B text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":323 421 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":325 427 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":328 428 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":330 42F text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":331 435 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":332 435 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":334 43C text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":335 442 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":337 444 text20 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":41 445 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":45 445 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":47 44B text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":48 453 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":50 45E text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":51 464 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":57 468 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":60 469 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":61 472 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":63 47E text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":64 485 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":108 487 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":109 490 text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":111 49C text19 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":124 4A3 text19 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":6 4A4 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":14 4A4 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":15 4A6 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":16 4A8 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":17 4AD text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":19 4AF text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":20 4B1 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":21 4B6 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":23 4BA text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":24 4BC text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":25 4C0 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 4C2 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":27 4C4 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":28 4C9 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 4CD text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":31 4CE text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":32 4D3 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":33 4DB text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":34 4DF text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":36 4E0 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":37 4E5 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":39 4E9 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":40 4EC text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":41 4F1 text4 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":6 4F8 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":14 4F8 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":15 4F9 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":16 4FB text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":17 500 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":19 502 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":20 504 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":21 509 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":23 50D text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":24 50F text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":25 513 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 515 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":27 517 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":28 51C text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":26 520 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":31 521 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":32 526 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":33 52E text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":34 532 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":36 533 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":37 538 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":39 53C text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":40 53F text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c":41 544 text27 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":408 54B text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":411 54B text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":412 54E text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":413 54F text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":416 551 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":419 553 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":420 555 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":423 557 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":425 55D text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":426 560 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":427 562 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":428 563 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":429 565 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":430 571 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":431 571 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":431 574 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":430 575 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":432 576 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":423 578 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":434 581 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":435 584 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":436 585 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":437 588 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":438 588 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":437 589 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":439 58B text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":440 58D text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":441 58F text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":442 590 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":444 592 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":445 595 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":446 595 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":445 596 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":447 598 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":450 599 text22 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":447 59A text22 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":6 59B text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":13 59B text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":14 59D text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":15 59F text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":16 5A4 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":18 5A6 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":19 5A8 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":20 5AD text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":21 5B1 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 5B3 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":23 5B5 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":24 5BA text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 5BE text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":27 5BF text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":28 5C7 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":29 5CB text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":30 5D0 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":32 5D4 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":33 5D7 text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":34 5DC text3 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":6 5E3 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":13 5E3 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":14 5E4 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":15 5E6 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":16 5EB text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":18 5ED text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":19 5EF text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":20 5F4 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":21 5F8 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 5FA text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":23 5FC text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":24 601 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 605 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":27 606 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":28 60E text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":29 612 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":30 617 text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":32 61B text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":33 61E text26 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":34 623 text26 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":375 664 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":378 664 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":379 667 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":381 668 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":384 66A text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":385 66C text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":388 66E text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":390 670 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":392 676 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":393 679 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":394 685 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":397 687 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":390 689 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":400 692 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":401 696 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":402 696 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":401 697 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":403 699 text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":406 69A text21 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":403 69B text21 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":6 69C text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":14 69C text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":15 69F text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":16 6A3 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":17 6A5 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":18 6A7 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":19 6AC text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":17 6B0 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":22 6B1 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":23 6B6 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":24 6BE text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":25 6C2 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":27 6C3 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":28 6C8 text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c":30 6CC text9 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":536 6D3 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":538 6D3 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":540 6DB text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":541 6E1 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":542 6E4 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":543 6E6 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":544 6F5 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":547 6F6 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":549 6FE text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":550 704 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":551 706 text1 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":569 707 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":572 707 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":574 70A text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":576 710 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":578 715 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":576 729 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":580 731 text10 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":594 737 text10 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":6 738 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":13 738 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":14 73D text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 73F text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":16 741 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":17 746 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 74A text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":20 74B text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":21 753 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":22 757 text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":23 75C text8 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":25 760 text8 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":554 767 text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":557 767 text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":559 76D text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":561 770 text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":562 77F text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":563 782 text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":557 78A text5 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":125 790 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":127 790 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":129 796 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":130 798 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":131 79A text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":132 79B text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":133 7A3 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":135 7AE text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":136 7B4 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":137 7B8 text28 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":6 7B9 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":8 7B9 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":9 7BC maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":10 7BF maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":12 7C2 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":17 7C3 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":19 7C9 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":20 7CD maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":21 7D0 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":24 7D6 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":25 7D9 maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":26 7DC maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":13 7DF maintext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":498 7E0 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":500 7E0 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":501 7E5 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":502 7E7 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":503 7E8 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":504 7EB text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":505 7EC text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":506 7ED text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":507 7EF text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":508 7F1 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":509 7F2 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":510 7F3 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":511 7F5 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":512 7F6 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":513 7F7 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":514 7F8 text14 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1071 7F9 clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1072 7F9 clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1073 7FA clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1074 7FA clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1075 7FB clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1076 7FC clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1077 7FD clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1078 7FE clrtext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1109 F58 inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1110 F58 inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1111 F59 inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1112 F59 inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1113 F5A inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1114 F5B inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1115 F5C inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\myDevelopment-AH.as":1116 F5D inittext CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":608 F5E text7 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":611 F60 text7 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":612 F60 text7 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":613 F62 text7 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":614 F65 text7 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":233 F66 text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":235 F66 text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":237 F6B text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":238 F6E text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":239 F70 text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":241 F71 text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":258 F73 text17 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":33 F74 text18 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":35 F74 text18 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":36 F79 text18 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":37 F7E text18 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c":38 F82 text18 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":260 F83 text29 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":262 F83 text29 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":264 F89 text29 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":265 F8B text29 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":114 F93 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":116 F93 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":117 F98 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":118 F9A text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":119 F9C text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":120 F9E text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":121 FA0 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":122 FA1 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":123 FA2 text15 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":8 FA3 text12 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":10 FA3 text12 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":11 FA8 text12 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":13 FAD text12 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c":18 FB2 text12 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":11 FB3 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":14 FB3 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":16 FB6 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":18 FB9 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":20 FBA text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":22 FBD text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":26 FBE text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":28 FBF text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":30 FC0 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":32 FC3 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":35 FC5 text13 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":37 FC6 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":39 FC6 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":40 FC9 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":41 FCA text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":42 FCC text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":43 FCE text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":44 FCF text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":45 FD0 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":46 FD3 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":47 FD4 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":48 FD5 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":49 FD8 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":50 FD9 text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":51 FDB text16 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":516 FDC text24 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":519 FDC text24 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":521 FE2 text24 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":523 FE5 text24 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":532 FEF text24 CODE
+"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c":533 FF1 text24 CODE
 $startup.obj
 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\startup.as":44 0 functab CODE
 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\startup.as":45 0 functab CODE
@@ -600,9 +673,9 @@ $startup.obj
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-___lwdiv@dividend 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-___awdiv@counter 3A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-___lwdiv@counter 3A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwdiv@dividend 27 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___awdiv@counter 2A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwdiv@counter 2C 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 _BF 10A0 0 ABS 0 - myDevelopment-AH.obj
 _RA1 61 0 ABS 0 - myDevelopment-AH.obj
 _RC0 70 0 ABS 0 - myDevelopment-AH.obj
@@ -611,7 +684,7 @@ _RA4 64 0 ABS 0 - myDevelopment-AH.obj
 _RA5 65 0 ABS 0 - myDevelopment-AH.obj
 _RA6 66 0 ABS 0 - myDevelopment-AH.obj
 _RA7 67 0 ABS 0 - myDevelopment-AH.obj
-_I2C 79 0 COMMON 1 bssCOMMON myDevelopment-AH.obj
+_I2C 5C 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
 __S0 8009 0 ABS 0 - -
 __S1 1E3 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
@@ -621,15 +694,15 @@ _GIE 5F 0 ABS 0 - myDevelopment-AH.obj
 _PEN 10B2 0 ABS 0 - myDevelopment-AH.obj
 _SEN 10B0 0 ABS 0 - myDevelopment-AH.obj
 _CKP 10AC 0 ABS 0 - myDevelopment-AH.obj
-I2C_Main@i 76 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-_Mcu_Initial EC8 0 CODE 0 text9 myDevelopment-AH.obj
+I2C_Main@i 2B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+_Mcu_Initial 1F66 0 CODE 0 text13 myDevelopment-AH.obj
 _ISR 8 0 CODE 0 intentry myDevelopment-AH.obj
 __Hintentry 32 0 CODE 0 intentry -
 __Lintentry 8 0 CODE 0 intentry -
 __size_of_UART_Transmit 0 0 ABS 0 - myDevelopment-AH.obj
 __pintentry 8 0 CODE 0 intentry myDevelopment-AH.obj
-__end_of___awdiv 7E8 0 CODE 0 text18 myDevelopment-AH.obj
-__end_of_IO_Set EC8 0 CODE 0 text12 myDevelopment-AH.obj
+__end_of___awdiv 9F0 0 CODE 0 text4 myDevelopment-AH.obj
+__end_of_IO_Set 1FB8 0 CODE 0 text16 myDevelopment-AH.obj
 _RCIE 48D 0 ABS 0 - myDevelopment-AH.obj
 _LATA 10C 0 ABS 0 - myDevelopment-AH.obj
 _PEIE 5E 0 ABS 0 - myDevelopment-AH.obj
@@ -640,11 +713,11 @@ _TXIE 48C 0 ABS 0 - myDevelopment-AH.obj
 __size_of_UART_Set 0 0 ABS 0 - myDevelopment-AH.obj
 _TXIF 8C 0 ABS 0 - myDevelopment-AH.obj
 _RCEN 10B3 0 ABS 0 - myDevelopment-AH.obj
-_UART 78 0 COMMON 1 bssCOMMON myDevelopment-AH.obj
+_UART 49 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
 _TRMT CF1 0 ABS 0 - myDevelopment-AH.obj
 _R_nW 10A2 0 ABS 0 - myDevelopment-AH.obj
-_main B02 0 CODE 0 maintext myDevelopment-AH.obj
-__end_of_I2C_Master_Transmission A54 0 CODE 0 text20 myDevelopment-AH.obj
+_main F72 0 CODE 0 maintext myDevelopment-AH.obj
+__end_of_I2C_Master_Transmission D38 0 CODE 0 text21 myDevelopment-AH.obj
 ___sp 0 0 STACK 2 stack startup.obj
 btemp 7E 0 ABS 0 - myDevelopment-AH.obj
 ltemp 7E 0 ABS 0 - myDevelopment-AH.obj
@@ -653,9 +726,9 @@ wtemp 7E 0 ABS 0 - myDevelopment-AH.obj
 start 32 0 CODE 0 init startup.obj
 _BRG16 CFB 0 ABS 0 - myDevelopment-AH.obj
 _TMR1H 17 0 ABS 0 - myDevelopment-AH.obj
-printf@ap 47 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+printf@ap 3B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 _TMR1L 16 0 ABS 0 - myDevelopment-AH.obj
-_MainT_Initial F2E 0 CODE 0 text14 myDevelopment-AH.obj
+_MainT_Initial 1EE8 0 CODE 0 text18 myDevelopment-AH.obj
 _RCREG 199 0 ABS 0 - myDevelopment-AH.obj
 _TRISA 8C 0 ABS 0 - myDevelopment-AH.obj
 _SSPIE 48B 0 ABS 0 - myDevelopment-AH.obj
@@ -689,58 +762,65 @@ wtemp3 84 0 ABS 0 - myDevelopment-AH.obj
 ttemp4 7F 0 ABS 0 - myDevelopment-AH.obj
 wtemp4 86 0 ABS 0 - myDevelopment-AH.obj
 wtemp5 88 0 ABS 0 - myDevelopment-AH.obj
-_I2C_Main 65A 0 CODE 0 text19 myDevelopment-AH.obj
+_I2C_Main 7A4 0 CODE 0 text20 myDevelopment-AH.obj
 wtemp6 7F 0 ABS 0 - myDevelopment-AH.obj
 _SSPOV 10AE 0 ABS 0 - myDevelopment-AH.obj
-_TMR1_Set F0E 0 CODE 0 text11 myDevelopment-AH.obj
+_TMR1_Set 1F26 0 CODE 0 text15 myDevelopment-AH.obj
 __Hconfig 10012 0 CONFIG 0 config -
 __Lconfig 1000E 0 CONFIG 0 config -
-_VarTMain 53 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
-_UART_Set E6C 0 CODE 0 text10 myDevelopment-AH.obj
-?___awmod 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-_MainT 448 0 CODE 0 text15 myDevelopment-AH.obj
+_VarTMain 4A 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
+_UART_Set FC0 0 CODE 0 text14 myDevelopment-AH.obj
+?___awmod 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+_MainT 88A 0 CODE 0 text19 myDevelopment-AH.obj
+?___lwmod 2D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __Hbigram 0 0 ABS 0 bigram -
 __Lbigram 0 0 ABS 0 bigram -
-_UART_Receive A54 0 CODE 0 text6 myDevelopment-AH.obj
+_UART_Receive E0E 0 CODE 0 text10 myDevelopment-AH.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_TMain 7A 0 COMMON 1 nvCOMMON myDevelopment-AH.obj
-_putch F84 0 CODE 0 text4 myDevelopment-AH.obj
-__end_of__stringdata E38 0 STRCODE 0 stringtext myDevelopment-AH.obj
+_TMain 5F 0 BANK0 1 nvBANK0 myDevelopment-AH.obj
+_putch 1EBC 0 CODE 0 text7 myDevelopment-AH.obj
+__end_of__stringdata 201E 0 STRCODE 0 stringtext myDevelopment-AH.obj
+__size_ofi1___awmod 0 0 ABS 0 - myDevelopment-AH.obj
+__size_ofi1___awdiv 0 0 ABS 0 - myDevelopment-AH.obj
+i1___awmod@sign 76 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __end_of_ISR 32 0 CODE 0 intentry myDevelopment-AH.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Lfunctab 0 0 CODE 0 functab -
 __size_of_UART_ISR 0 0 ABS 0 - myDevelopment-AH.obj
 _TRISC6 476 0 ABS 0 - myDevelopment-AH.obj
 _TRISC7 477 0 ABS 0 - myDevelopment-AH.obj
-__end_of_putch F94 0 CODE 0 text4 myDevelopment-AH.obj
+__end_of_putch 1ECC 0 CODE 0 text7 myDevelopment-AH.obj
 __size_of_I2C_ISR 0 0 ABS 0 - myDevelopment-AH.obj
 __Hcommon 0 0 ABS 0 common -
 __Lcommon 0 0 ABS 0 common -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 _VarI2C 1A0 0 BANK3 1 bssBANK3 myDevelopment-AH.obj
+i1___awmod@dividend 72 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 _TMR1IE 488 0 ABS 0 - myDevelopment-AH.obj
 _SSPADD 212 0 ABS 0 - myDevelopment-AH.obj
 ___int_sp 0 0 STACK 2 stack startup.obj
 _TMR1IF 88 0 ABS 0 - myDevelopment-AH.obj
-__end_of_SegmentDisplay_Initial F0E 0 CODE 0 text8 myDevelopment-AH.obj
+__end_of_SegmentDisplay_Initial 1F66 0 CODE 0 text12 myDevelopment-AH.obj
+i1setSegmentDisplayNumber@i 7B 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 _ANSELA 18C 0 ABS 0 - myDevelopment-AH.obj
 __size_of_I2C_Main 0 0 ABS 0 - myDevelopment-AH.obj
 _ANSELB 18D 0 ABS 0 - myDevelopment-AH.obj
 _ANSELC 18E 0 ABS 0 - myDevelopment-AH.obj
-?___awdiv 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+?___awdiv 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 _SPBRGH 19C 0 ABS 0 - myDevelopment-AH.obj
-?___lwdiv 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+?___lwdiv 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 _SSPBUF 211 0 ABS 0 - myDevelopment-AH.obj
 _OSCCON 99 0 ABS 0 - myDevelopment-AH.obj
+i1___awmod@counter 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Labs1 0 0 ABS 0 abs1 -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Lsfr1 0 0 ABS 0 sfr1 -
-_Timer1 52 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
+_Timer1 48 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
 __Hsfr2 0 0 ABS 0 sfr2 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Hsfr3 0 0 ABS 0 sfr3 -
@@ -758,51 +838,52 @@ __Hsfr8 0 0 ABS 0 sfr8 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Hsfr9 0 0 ABS 0 sfr9 -
 __Lsfr9 0 0 ABS 0 sfr9 -
-__end_of_UART_Receive AB0 0 CODE 0 text6 myDevelopment-AH.obj
-_UART_Main B96 0 CODE 0 text1 myDevelopment-AH.obj
-_I2C_Master_Transmission 9F0 0 CODE 0 text20 myDevelopment-AH.obj
-__end_of___awmod 90C 0 CODE 0 text17 myDevelopment-AH.obj
+__end_of_UART_Receive E70 0 CODE 0 text10 myDevelopment-AH.obj
+_UART_Main DA6 0 CODE 0 text1 myDevelopment-AH.obj
+i1___awmod BC6 0 CODE 0 text26 myDevelopment-AH.obj
+_I2C_Master_Transmission CC8 0 CODE 0 text21 myDevelopment-AH.obj
+__end_of_dpowers 2014 0 STRCODE 0 stringtext myDevelopment-AH.obj
+__end_of___awmod BC6 0 CODE 0 text3 myDevelopment-AH.obj
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
-putch@byte 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+putch@byte 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 stackhi 21EF 0 ABS 0 - startup.obj
-_IO_Set E9C 0 CODE 0 text12 myDevelopment-AH.obj
+_IO_Set 1F8C 0 CODE 0 text16 myDevelopment-AH.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-_printf 302 0 CODE 0 text3 myDevelopment-AH.obj
-__pcstackBANK0 3A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-___awmod@sign 3B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+_printf 544 0 CODE 0 text6 myDevelopment-AH.obj
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___awmod@sign 2B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __size_of_SegmentDisplay_Main 0 0 ABS 0 - myDevelopment-AH.obj
 stacklo 2133 0 ABS 0 - startup.obj
+i1___awdiv@sign 76 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __Hinit 32 0 CODE 0 init -
 __Linit 32 0 CODE 0 init -
-__end_of_main B4C 0 CODE 0 maintext myDevelopment-AH.obj
+__end_of_main FC0 0 CODE 0 maintext myDevelopment-AH.obj
 __Htext 0 0 ABS 0 text -
 __Ltext 0 0 ABS 0 text -
 __size_of_Mcu_Initial 0 0 ABS 0 - myDevelopment-AH.obj
-__HdataBANK0 0 0 ABS 0 dataBANK0 -
-__LdataBANK0 0 0 ABS 0 dataBANK0 -
-__pdataBANK0 20 0 BANK0 1 dataBANK0 myDevelopment-AH.obj
-UART_Transmit@i 51 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-end_of_initialization 98 0 CODE 0 cinit myDevelopment-AH.obj
-___awdiv@sign 3B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+UART_Transmit@i 45 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+end_of_initialization 7C 0 CODE 0 cinit myDevelopment-AH.obj
+i1___awdiv@dividend 72 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+___awdiv@sign 2B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __size_of_ISR 0 0 ABS 0 - myDevelopment-AH.obj
 __HnvBANK0 0 0 ABS 0 nvBANK0 -
 __LnvBANK0 0 0 ABS 0 nvBANK0 -
-__pnvBANK0 66 0 BANK0 1 nvBANK0 myDevelopment-AH.obj
+__pnvBANK0 5E 0 BANK0 1 nvBANK0 myDevelopment-AH.obj
 __Hsfr10 0 0 ABS 0 sfr10 -
 __Lsfr10 0 0 ABS 0 sfr10 -
-printf@idx 46 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 _SSPCON1 215 0 ABS 0 - myDevelopment-AH.obj
 __Hsfr20 0 0 ABS 0 sfr20 -
 __Lsfr20 0 0 ABS 0 sfr20 -
-printf@flag 45 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+printf@flag 3C 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __Hsfr30 0 0 ABS 0 sfr30 -
 __Hsfr11 0 0 ABS 0 sfr11 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr11 0 0 ABS 0 sfr11 -
 _SSPCON2 216 0 ABS 0 - myDevelopment-AH.obj
 __Hsfr21 0 0 ABS 0 sfr21 -
+i1___awdiv@counter 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __Lsfr21 0 0 ABS 0 sfr21 -
 __Hsfr31 0 0 ABS 0 sfr31 -
 __Hsfr12 0 0 ABS 0 sfr12 -
@@ -830,7 +911,7 @@ __Hsfr26 0 0 ABS 0 sfr26 -
 __LdataBANK1 0 0 ABS 0 dataBANK1 -
 __Lsfr26 0 0 ABS 0 sfr26 -
 __size_of_putch 0 0 ABS 0 - myDevelopment-AH.obj
-printf@prec 4C 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+printf@prec 3D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __Hsfr17 0 0 ABS 0 sfr17 -
 __Lsfr17 0 0 ABS 0 sfr17 -
 __Hsfr27 0 0 ABS 0 sfr27 -
@@ -844,14 +925,14 @@ __Hsfr19 0 0 ABS 0 sfr19 -
 __Lsfr19 0 0 ABS 0 sfr19 -
 __Hsfr29 0 0 ABS 0 sfr29 -
 __Lsfr29 0 0 ABS 0 sfr29 -
-_SegmentDisplay_Main 574 0 CODE 0 text7 myDevelopment-AH.obj
-__HnvCOMMON 0 0 ABS 0 nvCOMMON -
-__LnvCOMMON 0 0 ABS 0 nvCOMMON -
-__pnvCOMMON 7A 0 COMMON 1 nvCOMMON myDevelopment-AH.obj
+_SegmentDisplay_Main 6BE 0 CODE 0 text11 myDevelopment-AH.obj
+__end_ofi1___awdiv A96 0 CODE 0 text27 myDevelopment-AH.obj
 __Hstrings 0 0 ABS 0 strings -
 __Lstrings 0 0 ABS 0 strings -
-_UART_Transmit B4C 0 CODE 0 text2 myDevelopment-AH.obj
-__end_of_MainT 574 0 CODE 0 text15 myDevelopment-AH.obj
+i1_setSegmentDisplayNumber 2E6 0 CODE 0 text25 myDevelopment-AH.obj
+_UART_Transmit ECE 0 CODE 0 text5 myDevelopment-AH.obj
+i1___awdiv 9F0 0 CODE 0 text27 myDevelopment-AH.obj
+__end_of_MainT 948 0 CODE 0 text19 myDevelopment-AH.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Lbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -873,78 +954,80 @@ __Hbank6 0 0 ABS 0 bank6 -
 __Lbank6 0 0 ABS 0 bank6 -
 __Hbank7 0 0 BANK7 1 bank7 -
 __Lbank7 0 0 BANK7 1 bank7 -
-_hexpowers E00 0 STRCODE 0 stringtext myDevelopment-AH.obj
 __Hbank8 0 0 BANK8 1 bank8 -
 __Lbank8 0 0 BANK8 1 bank8 -
-setSegmentDisplayNumber@i 44 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+setSegmentDisplayNumber@i 34 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __Hbank9 0 0 BANK9 1 bank9 -
 __Lbank9 0 0 BANK9 1 bank9 -
-_I2C_ISR F4C 0 CODE 0 text25 myDevelopment-AH.obj
-__ptext1 B96 0 CODE 0 text1 myDevelopment-AH.obj
-__ptext2 B4C 0 CODE 0 text2 myDevelopment-AH.obj
-__end_of_MainT_Initial F4C 0 CODE 0 text14 myDevelopment-AH.obj
-__ptext3 302 0 CODE 0 text3 myDevelopment-AH.obj
-__ptext4 F84 0 CODE 0 text4 myDevelopment-AH.obj
+_I2C_ISR 1F06 0 CODE 0 text29 myDevelopment-AH.obj
+__ptext1 DA6 0 CODE 0 text1 myDevelopment-AH.obj
+__ptext2 84 0 CODE 0 text2 myDevelopment-AH.obj
+__end_of_MainT_Initial 1F06 0 CODE 0 text18 myDevelopment-AH.obj
+__ptext3 B36 0 CODE 0 text3 myDevelopment-AH.obj
+__ptext4 948 0 CODE 0 text4 myDevelopment-AH.obj
 __size_of_MainT_Initial 0 0 ABS 0 - myDevelopment-AH.obj
-__ptext5 982 0 CODE 0 text5 myDevelopment-AH.obj
-__ptext6 A54 0 CODE 0 text6 myDevelopment-AH.obj
-__ptext7 574 0 CODE 0 text7 myDevelopment-AH.obj
-__ptext8 EEE 0 CODE 0 text8 myDevelopment-AH.obj
-__ptext9 EC8 0 CODE 0 text9 myDevelopment-AH.obj
+__ptext5 ECE 0 CODE 0 text5 myDevelopment-AH.obj
+__ptext6 544 0 CODE 0 text6 myDevelopment-AH.obj
+__ptext7 1EBC 0 CODE 0 text7 myDevelopment-AH.obj
+__ptext8 E70 0 CODE 0 text8 myDevelopment-AH.obj
+__ptext9 D38 0 CODE 0 text9 myDevelopment-AH.obj
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lclrtext 0 0 ABS 0 clrtext -
 __size_of_printf 0 0 ABS 0 - myDevelopment-AH.obj
-I2C_Master_Transmission@i 74 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-printf@_val 48 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+I2C_Master_Transmission@i 26 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+printf@_val 3E 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __size_of_UART_Receive 0 0 ABS 0 - myDevelopment-AH.obj
-printf@c 4D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-__end_of__initialization 98 0 CODE 0 cinit myDevelopment-AH.obj
-__end_of_I2C_ISR F6A 0 CODE 0 text25 myDevelopment-AH.obj
-printf@f 3D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-__end_of_UART_Set E9C 0 CODE 0 text10 myDevelopment-AH.obj
-__end_of___lwdiv 9F0 0 CODE 0 text5 myDevelopment-AH.obj
+printf@c 42 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_of__initialization 7C 0 CODE 0 cinit myDevelopment-AH.obj
+i1___awmod@divisor 70 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+__end_of_I2C_ISR 1F26 0 CODE 0 text29 myDevelopment-AH.obj
+?i1___awmod 70 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+printf@f 33 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_of_UART_Set FF2 0 CODE 0 text14 myDevelopment-AH.obj
+__end_of___lwdiv DA6 0 CODE 0 text9 myDevelopment-AH.obj
 __size_of_TMR1_Set 0 0 ABS 0 - myDevelopment-AH.obj
 __Hidloc 0 0 IDLOC 0 idloc -
 __Lidloc 0 0 IDLOC 0 idloc -
-_I2C_Set F6A 0 CODE 0 text13 myDevelopment-AH.obj
+_I2C_Set 1ECC 0 CODE 0 text17 myDevelopment-AH.obj
 __Hstack 0 0 STACK 2 stack -
 __Lstack 0 0 STACK 2 stack -
-I2C_Master_Reception@i 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+I2C_Master_Reception@i 27 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_ofi1___awmod C54 0 CODE 0 text26 myDevelopment-AH.obj
 __size_of_I2C_Master_Transmission 0 0 ABS 0 - myDevelopment-AH.obj
-___awmod 87C 0 CODE 0 text17 myDevelopment-AH.obj
-setSegmentDisplayNumber@number 3E 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__size_ofi1_setSegmentDisplayNumber 0 0 ABS 0 - myDevelopment-AH.obj
+___awmod B36 0 CODE 0 text3 myDevelopment-AH.obj
+___lwmod E70 0 CODE 0 text8 myDevelopment-AH.obj
+setSegmentDisplayNumber@number 2E 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __Hspace_0 8009 0 ABS 0 - -
 __Lspace_0 0 0 ABS 0 - -
-init_ram FA0 0 CODE 0 inittext myDevelopment-AH.obj
-?_printf 3D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-__end_of_I2C_Master_Reception 87C 0 CODE 0 text21 myDevelopment-AH.obj
+init_ram 1EB0 0 CODE 0 inittext myDevelopment-AH.obj
+?_printf 33 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_of_I2C_Master_Reception B36 0 CODE 0 text22 myDevelopment-AH.obj
 __Hspace_1 1E3 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
-_Product 66 0 BANK0 1 nvBANK0 myDevelopment-AH.obj
-__Hcinit A0 0 CODE 0 cinit -
+_Product 5E 0 BANK0 1 nvBANK0 myDevelopment-AH.obj
+__Hcinit 84 0 CODE 0 cinit -
 __Lcinit 36 0 CODE 0 cinit -
 _VarUart 120 0 BANK2 1 bssBANK2 myDevelopment-AH.obj
-_Segment 65 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
-___awdiv 740 0 CODE 0 text18 myDevelopment-AH.obj
+_Segment 5D 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
+___awdiv 948 0 CODE 0 text4 myDevelopment-AH.obj
 __Hspace_3 0 0 ABS 0 - -
-___lwdiv 982 0 CODE 0 text5 myDevelopment-AH.obj
+___lwdiv D38 0 CODE 0 text9 myDevelopment-AH.obj
 __Lspace_3 0 0 ABS 0 - -
 __size_of_main 0 0 ABS 0 - myDevelopment-AH.obj
-_SegmentDisplay_Initial EEE 0 CODE 0 text8 myDevelopment-AH.obj
-__HidataBANK0 0 0 ABS 0 idataBANK0 -
-__LidataBANK0 0 0 ABS 0 idataBANK0 -
-UART_Receive@i 76 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-__pidataBANK0 E38 0 CODE 0 idataBANK0 myDevelopment-AH.obj
+_dpowers 2000 0 STRCODE 0 stringtext myDevelopment-AH.obj
+_SegmentDisplay_Initial 1F46 0 CODE 0 text12 myDevelopment-AH.obj
+UART_Receive@i 28 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+i1___awdiv@divisor 70 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __size_of_TMR1_ISR 0 0 ABS 0 - myDevelopment-AH.obj
-clear_ram0 F94 0 CODE 0 clrtext myDevelopment-AH.obj
+clear_ram0 FF2 0 CODE 0 clrtext myDevelopment-AH.obj
 __size_of___lwdiv 0 0 ABS 0 - myDevelopment-AH.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
-__end_of_hexpowers E10 0 STRCODE 0 stringtext myDevelopment-AH.obj
 __Hbank10 0 0 BANK10 1 bank10 -
-__pbssBANK0 52 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
+__pbssBANK0 48 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
 __Lbank10 0 0 BANK10 1 bank10 -
 __Hbank20 0 0 BANK20 1 bank20 -
 __Lbank20 0 0 BANK20 1 bank20 -
@@ -958,87 +1041,93 @@ __Hbank31 0 0 BANK31 1 bank31 -
 __Hbank12 0 0 BANK12 1 bank12 -
 __Lbank31 0 0 BANK31 1 bank31 -
 __Lbank12 0 0 BANK12 1 bank12 -
-__end_of_UART_ISR 982 0 CODE 0 text23 myDevelopment-AH.obj
+__end_of_UART_ISR 2000 0 CODE 0 text24 myDevelopment-AH.obj
 __Hbank22 0 0 BANK22 1 bank22 -
 __Lbank22 0 0 BANK22 1 bank22 -
+__end_ofi1_setSegmentDisplayNumber 544 0 CODE 0 text25 myDevelopment-AH.obj
 __Hbank13 0 0 BANK13 1 bank13 -
 __Lbank13 0 0 BANK13 1 bank13 -
 __Hbank23 0 0 BANK23 1 bank23 -
 __Lbank23 0 0 BANK23 1 bank23 -
-_VarTimer1 62 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
+_VarTimer1 59 0 BANK0 1 bssBANK0 myDevelopment-AH.obj
 __Hbank14 0 0 BANK14 1 bank14 -
 __Lbank14 0 0 BANK14 1 bank14 -
 __Hstringtext 0 0 ABS 0 stringtext -
 __Lstringtext 0 0 ABS 0 stringtext -
 __Hbank24 0 0 BANK24 1 bank24 -
 __Lbank24 0 0 BANK24 1 bank24 -
-__end_of_UART_Main BDA 0 CODE 0 text1 myDevelopment-AH.obj
-__pstringtext E00 0 STRCODE 0 stringtext myDevelopment-AH.obj
-__ptext10 E6C 0 CODE 0 text10 myDevelopment-AH.obj
+__end_of_UART_Main E0E 0 CODE 0 text1 myDevelopment-AH.obj
+__pstringtext 2000 0 STRCODE 0 stringtext myDevelopment-AH.obj
+__ptext10 E0E 0 CODE 0 text10 myDevelopment-AH.obj
 __Hbank15 0 0 BANK15 1 bank15 -
 __Lbank15 0 0 BANK15 1 bank15 -
-__ptext20 9F0 0 CODE 0 text20 myDevelopment-AH.obj
+__ptext20 7A4 0 CODE 0 text20 myDevelopment-AH.obj
 __Hbank25 0 0 BANK25 1 bank25 -
 __Lbank25 0 0 BANK25 1 bank25 -
-__ptext11 F0E 0 CODE 0 text11 myDevelopment-AH.obj
+__ptext11 6BE 0 CODE 0 text11 myDevelopment-AH.obj
 __Hbank16 0 0 BANK16 1 bank16 -
 __Lbank16 0 0 BANK16 1 bank16 -
-__ptext21 7E8 0 CODE 0 text21 myDevelopment-AH.obj
+__ptext21 CC8 0 CODE 0 text21 myDevelopment-AH.obj
 __Hbank26 0 0 BANK26 1 bank26 -
 __Lbank26 0 0 BANK26 1 bank26 -
-__ptext12 E9C 0 CODE 0 text12 myDevelopment-AH.obj
+__ptext12 1F46 0 CODE 0 text12 myDevelopment-AH.obj
 __Hbank17 0 0 BANK17 1 bank17 -
 __Lbank17 0 0 BANK17 1 bank17 -
 __HbssBANK2 0 0 ABS 0 bssBANK2 -
+__ptext22 A96 0 CODE 0 text22 myDevelopment-AH.obj
 __LbssBANK2 0 0 ABS 0 bssBANK2 -
 __Hbank27 0 0 BANK27 1 bank27 -
 __Lbank27 0 0 BANK27 1 bank27 -
-__ptext13 F6A 0 CODE 0 text13 myDevelopment-AH.obj
+__ptext13 1F66 0 CODE 0 text13 myDevelopment-AH.obj
 __Hbank18 0 0 BANK18 1 bank18 -
 __pbssBANK2 120 0 BANK2 1 bssBANK2 myDevelopment-AH.obj
 __Lbank18 0 0 BANK18 1 bank18 -
-__ptext23 90C 0 CODE 0 text23 myDevelopment-AH.obj
 __Hbank28 0 0 BANK28 1 bank28 -
 __HidataBANK1 0 0 ABS 0 idataBANK1 -
 __size_of___awdiv 0 0 ABS 0 - myDevelopment-AH.obj
 __Lbank28 0 0 BANK28 1 bank28 -
 __LidataBANK1 0 0 ABS 0 idataBANK1 -
-__ptext14 F2E 0 CODE 0 text14 myDevelopment-AH.obj
+__ptext14 FC0 0 CODE 0 text14 myDevelopment-AH.obj
 __Hbank19 0 0 BANK19 1 bank19 -
 __Lbank19 0 0 BANK19 1 bank19 -
-__pidataBANK1 BDA 0 CODE 0 idataBANK1 myDevelopment-AH.obj
-__ptext24 AB0 0 CODE 0 text24 myDevelopment-AH.obj
+__pidataBANK1 C54 0 CODE 0 idataBANK1 myDevelopment-AH.obj
+__ptext24 1FB8 0 CODE 0 text24 myDevelopment-AH.obj
 __Hbank29 0 0 BANK29 1 bank29 -
 __Lbank29 0 0 BANK29 1 bank29 -
-__ptext15 448 0 CODE 0 text15 myDevelopment-AH.obj
-__ptext25 F4C 0 CODE 0 text25 myDevelopment-AH.obj
-__ptext16 A0 0 CODE 0 text16 myDevelopment-AH.obj
+__ptext15 1F26 0 CODE 0 text15 myDevelopment-AH.obj
+__ptext25 2E6 0 CODE 0 text25 myDevelopment-AH.obj
+__ptext16 1F8C 0 CODE 0 text16 myDevelopment-AH.obj
+i1setSegmentDisplayNumber@number 79 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __HbssBANK3 0 0 ABS 0 bssBANK3 -
+__ptext26 BC6 0 CODE 0 text26 myDevelopment-AH.obj
 __LbssBANK3 0 0 ABS 0 bssBANK3 -
-__end_of_printf 448 0 CODE 0 text3 myDevelopment-AH.obj
-__ptext17 87C 0 CODE 0 text17 myDevelopment-AH.obj
+__end_of_printf 6BE 0 CODE 0 text6 myDevelopment-AH.obj
+__ptext17 1ECC 0 CODE 0 text17 myDevelopment-AH.obj
 __pbssBANK3 1A0 0 BANK3 1 bssBANK3 myDevelopment-AH.obj
-___awmod@divisor 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-__ptext18 740 0 CODE 0 text18 myDevelopment-AH.obj
-__HbssCOMMON 0 0 ABS 0 bssCOMMON -
-__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+___awmod@divisor 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_of___lwmod ECE 0 CODE 0 text8 myDevelopment-AH.obj
+__ptext27 9F0 0 CODE 0 text27 myDevelopment-AH.obj
+___lwmod@divisor 2D 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__ptext18 1EE8 0 CODE 0 text18 myDevelopment-AH.obj
+__ptext28 F20 0 CODE 0 text28 myDevelopment-AH.obj
 _VarProduct A0 0 BANK1 1 dataBANK1 myDevelopment-AH.obj
-__end_of_TMR1_Set F2E 0 CODE 0 text11 myDevelopment-AH.obj
-__ptext19 65A 0 CODE 0 text19 myDevelopment-AH.obj
-__pbssCOMMON 78 0 COMMON 1 bssCOMMON myDevelopment-AH.obj
+__end_of_TMR1_Set 1F46 0 CODE 0 text15 myDevelopment-AH.obj
+__ptext19 88A 0 CODE 0 text19 myDevelopment-AH.obj
+__ptext29 1F06 0 CODE 0 text29 myDevelopment-AH.obj
 __Hend_init 36 0 CODE 0 end_init -
 __Lend_init 32 0 CODE 0 end_init -
-___awdiv@divisor 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-___lwdiv@divisor 73 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+___awdiv@divisor 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwdiv@divisor 25 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __size_of_SegmentDisplay_Initial 0 0 ABS 0 - myDevelopment-AH.obj
-_VarSegment 20 0 BANK0 1 dataBANK0 myDevelopment-AH.obj
+?i1___awdiv 70 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+_VarSegment C0 0 BANK1 1 dataBANK1 myDevelopment-AH.obj
 __Hreset_vec 4 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-__end_of_I2C_Set F84 0 CODE 0 text13 myDevelopment-AH.obj
+__end_of_I2C_Set 1EE8 0 CODE 0 text17 myDevelopment-AH.obj
 __size_of_MainT 0 0 ABS 0 - myDevelopment-AH.obj
-__stringdata E10 0 STRCODE 0 stringtext myDevelopment-AH.obj
-_I2C_Master_Reception 7E8 0 CODE 0 text21 myDevelopment-AH.obj
-__end_of_I2C_Main 740 0 CODE 0 text19 myDevelopment-AH.obj
+__stringdata 2014 0 STRCODE 0 stringtext myDevelopment-AH.obj
+_I2C_Master_Reception A96 0 CODE 0 text22 myDevelopment-AH.obj
+__end_of_I2C_Main 88A 0 CODE 0 text20 myDevelopment-AH.obj
 intlevel0 0 0 CODE 0 functab startup.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - myDevelopment-AH.obj
 intlevel1 0 0 CODE 0 functab startup.obj
@@ -1046,35 +1135,39 @@ intlevel2 0 0 CODE 0 functab startup.obj
 intlevel3 0 0 CODE 0 functab startup.obj
 intlevel4 0 0 CODE 0 functab startup.obj
 intlevel5 0 0 CODE 0 functab startup.obj
-_TMR1_ISR AB0 0 CODE 0 text24 myDevelopment-AH.obj
-_UART_ISR 90C 0 CODE 0 text23 myDevelopment-AH.obj
+_TMR1_ISR F20 0 CODE 0 text28 myDevelopment-AH.obj
+_UART_ISR 1FB8 0 CODE 0 text24 myDevelopment-AH.obj
+__size_of___lwmod 0 0 ABS 0 - myDevelopment-AH.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__end_of_Mcu_Initial EEE 0 CODE 0 text9 myDevelopment-AH.obj
+__end_of_Mcu_Initial 1F8C 0 CODE 0 text13 myDevelopment-AH.obj
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 start_initialization 36 0 CODE 0 cinit myDevelopment-AH.obj
-___awdiv@quotient 3C 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-___lwdiv@quotient 3B 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
-__end_of_setSegmentDisplayNumber 302 0 CODE 0 text16 myDevelopment-AH.obj
-__end_of_TMR1_ISR B02 0 CODE 0 text24 myDevelopment-AH.obj
+___awdiv@quotient 2C 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwdiv@quotient 2A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+__end_of_setSegmentDisplayNumber 2E6 0 CODE 0 text2 myDevelopment-AH.obj
+__end_of_TMR1_ISR F72 0 CODE 0 text28 myDevelopment-AH.obj
 __Hmaintext 0 0 ABS 0 maintext -
 __Lmaintext 0 0 ABS 0 maintext -
-_setSegmentDisplayNumber A0 0 CODE 0 text16 myDevelopment-AH.obj
-__pmaintext B02 0 CODE 0 maintext myDevelopment-AH.obj
+_setSegmentDisplayNumber 84 0 CODE 0 text2 myDevelopment-AH.obj
+__pmaintext F72 0 CODE 0 maintext myDevelopment-AH.obj
 __size_of_I2C_Master_Reception 0 0 ABS 0 - myDevelopment-AH.obj
 __size_of_UART_Main 0 0 ABS 0 - myDevelopment-AH.obj
 __Hinittext 0 0 ABS 0 inittext -
 __CFG_FOSC$INTOSC 0 0 ABS 0 - myDevelopment-AH.obj
 __Linittext 0 0 ABS 0 inittext -
+i1___awdiv@quotient 77 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 __size_of___awmod 0 0 ABS 0 - myDevelopment-AH.obj
-__end_of_UART_Transmit B96 0 CODE 0 text2 myDevelopment-AH.obj
-__end_of_SegmentDisplay_Main 65A 0 CODE 0 text7 myDevelopment-AH.obj
+__end_of_UART_Transmit F20 0 CODE 0 text5 myDevelopment-AH.obj
+__end_of_SegmentDisplay_Main 7A4 0 CODE 0 text11 myDevelopment-AH.obj
 __initialization 36 0 CODE 0 cinit myDevelopment-AH.obj
-___awmod@dividend 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
-___awmod@counter 3A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___awmod@dividend 27 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwmod@dividend 2F 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___awmod@counter 2A 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
+___lwmod@counter 32 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 __size_of_setSegmentDisplayNumber 0 0 ABS 0 - myDevelopment-AH.obj
 __size_of_I2C_Set 0 0 ABS 0 - myDevelopment-AH.obj
-___awdiv@dividend 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
+___awdiv@dividend 27 0 BANK0 1 cstackBANK0 myDevelopment-AH.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -1101,12 +1194,21 @@ ___awdiv@dividend 75 0 COMMON 1 cstackCOMMON myDevelopment-AH.obj
 # All other numeric quantities are in decimal.
 %SEGMENTS
 reset_vec 0 0 0 2 2
-intentry 0 4 8 609 2
+intentry 0 4 8 7FB 2
 config 0 8007 1000E 2 2
-cstackCOMMON 1 70 70 B 1
+cstackCOMMON 1 70 70 E 1
 bssBANK2 1 120 120 44 1
 bssBANK3 1 1A0 1A0 43 1
-dataBANK1 1 A0 A0 20 1
-dataBANK0 1 20 20 47 1
-stringtext 0 700 E00 1C 2
-idataBANK0 0 71C E38 BA 2
+dataBANK1 1 A0 A0 3A 1
+cstackBANK0 1 20 20 40 1
+text24 0 FDC 1FB8 24 2
+text16 0 FC6 1F8C 16 2
+text13 0 FB3 1F66 13 2
+text12 0 FA3 1F46 10 2
+text15 0 F93 1F26 10 2
+text29 0 F83 1F06 10 2
+stringtext 0 1000 2000 F 2
+text18 0 F74 1EE8 F 2
+text17 0 F66 1ECC E 2
+text7 0 F5E 1EBC 8 2
+inittext 0 F58 1EB0 6 2

@@ -2767,16 +2767,6 @@ if(TMain->Flag == 0)
 
 }
 
-if(TMain->Test)
-{
-setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
-I2C->Count++;
-if(I2C->Count==32)
-{
-I2C->Count=0;
-}
-}
-
 # 105
 }
 

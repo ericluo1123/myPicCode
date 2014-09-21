@@ -11,7 +11,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File001]
@@ -24,7 +24,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File002]
@@ -37,7 +37,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File003]
@@ -50,7 +50,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File004]
@@ -63,7 +63,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File005]
@@ -76,7 +76,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File006]
@@ -89,7 +89,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File007]
@@ -102,7 +102,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File008]
@@ -115,7 +115,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File009]
@@ -128,7 +128,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File010]
@@ -141,7 +141,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File011]
@@ -154,7 +154,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File012]
@@ -167,7 +167,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File013]
@@ -180,7 +180,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File014]
@@ -193,7 +193,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File015]
@@ -206,6 +206,6 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release;C:\Users\Eric\Documents\GitHub\myPicCode\Header_File||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
