@@ -605,6 +605,7 @@
 			#endif
 		
 			#if Dimmer_Half_Wave == 1
+
 				#define setDimmerLights11_Control(lights)\
 					if(DimmerLights11->GO)\//reclock
 					{\
@@ -702,6 +703,8 @@
 					}\
 					;
 			#endif
+
+
 		#endif
 
 

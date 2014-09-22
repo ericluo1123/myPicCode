@@ -145,8 +145,9 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 						DimmerLights11->GO=1;
 						if(DimmerLights11->StatusFlag)
 						{
-						//	Mosfet1=1;
-						//	ID_1KEY_1;
+							Mosfet1=1;
+							ID_1KEY_1;
+/*
 							Dimmer->Correction=0;
 							DimmerLights11->MosfetOpen=1;	
 							if(DimmerReference1)
@@ -157,6 +158,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 							{
 								DimmerLights->MosfetLow=1;	
 							}
+*/
 						}
 					}
 				#endif

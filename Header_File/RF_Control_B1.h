@@ -45,6 +45,7 @@
 			unsigned Learn:1;
 			unsigned Key:1;
 			unsigned char DebounceTime;
+			unsigned Sleep:1;
 		};
 		struct RF *RF;
 
