@@ -62,6 +62,8 @@
 
 			unsigned Clear:1;
 
+			unsigned MosfetHi:1;
+			unsigned MosfetLow:1;
 			unsigned char MosfetHiCount;
 			unsigned char MosfetLowCount;
 			
