@@ -148,8 +148,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _UART_Receive `(v ~T0 @X0 0 ef ]
 "360
 [v _UART_Transmit `(v ~T0 @X0 0 ef ]
-"4747 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
-[v _TRMT `Vb ~T0 @X0 0 e@3313 ]
 "206 C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "4761 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
@@ -3245,186 +3243,169 @@ Version 3.2 HI-TECH Software Intermediate Code
 "556
 [v _i `uc ~T0 @X0 1 a ]
 [; ;MCU_16f1516_B1.c: 556: char i;
-[; ;MCU_16f1516_B1.c: 557: for(i=0;i<32;i++)
-"557
+[; ;MCU_16f1516_B1.c: 559: for(i=0;i<32;i++)
+"559
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 32 `i 383  ]
 [e $U 384  ]
-"558
+"560
 [e :U 383 ]
-[; ;MCU_16f1516_B1.c: 558: {
+[; ;MCU_16f1516_B1.c: 560: {
 {
-[; ;MCU_16f1516_B1.c: 559: while(!TRMT);
-"559
-[e $U 386  ]
-[e :U 387 ]
-[e :U 386 ]
-[e $ ! _TRMT 387  ]
-[e :U 388 ]
-[; ;MCU_16f1516_B1.c: 561: printf("%d",i);
-"561
-[e ( _printf , (. :s 1C -> _i `i ]
-[; ;MCU_16f1516_B1.c: 562: while(!TRMT);
-"562
-[e $U 389  ]
-[e :U 390 ]
-[e :U 389 ]
-[e $ ! _TRMT 390  ]
-[e :U 391 ]
-[; ;MCU_16f1516_B1.c: 563: printf(",");
-"563
-[e ( _printf :s 2C ]
+[; ;MCU_16f1516_B1.c: 566: printf("%d,",i);
 "566
+[e ( _printf , (. :s 1C -> _i `i ]
+"570
 }
-"557
+"559
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 32 `i 383  ]
 [e :U 384 ]
-"566
+"570
 }
-[; ;MCU_16f1516_B1.c: 566: }
-[; ;MCU_16f1516_B1.c: 568: }
-"568
+[; ;MCU_16f1516_B1.c: 570: }
+[; ;MCU_16f1516_B1.c: 572: }
+"572
 [e :UE 382 ]
 }
-"569
+"573
 [v _UART_Receive `(v ~T0 @X0 1 ef ]
-"570
+"574
 {
-[; ;MCU_16f1516_B1.c: 569: void UART_Receive()
-[; ;MCU_16f1516_B1.c: 570: {
+[; ;MCU_16f1516_B1.c: 573: void UART_Receive()
+[; ;MCU_16f1516_B1.c: 574: {
 [e :U _UART_Receive ]
 [f ]
-"571
+"575
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 571: char i;
-[; ;MCU_16f1516_B1.c: 572: RA1=~RA1;
-"572
-[e = _RA1 -> ~ -> _RA1 `ui `b ]
-[; ;MCU_16f1516_B1.c: 574: TMain->Test=1;
-"574
-[e = . *U _TMain 11 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 576: for(i=0;i<32;i++)
+[; ;MCU_16f1516_B1.c: 575: char i;
+[; ;MCU_16f1516_B1.c: 576: RA1=~RA1;
 "576
+[e = _RA1 -> ~ -> _RA1 `ui `b ]
+[; ;MCU_16f1516_B1.c: 578: TMain->Test=1;
+"578
+[e = . *U _TMain 11 -> -> 1 `i `uc ]
+[; ;MCU_16f1516_B1.c: 580: for(i=0;i<32;i++)
+"580
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 393  ]
-[e $U 394  ]
-"577
-[e :U 393 ]
-[; ;MCU_16f1516_B1.c: 577: {
+[e $ < -> _i `i -> 32 `i 387  ]
+[e $U 388  ]
+"581
+[e :U 387 ]
+[; ;MCU_16f1516_B1.c: 581: {
 {
-[; ;MCU_16f1516_B1.c: 578: I2C->BufferWriter[i]=UART->RxData[i];
-"578
+[; ;MCU_16f1516_B1.c: 582: I2C->BufferWriter[i]=UART->RxData[i];
+"582
 [e = *U + &U . *U _I2C 1 * -> _i `ux -> -> # *U &U . *U _I2C 1 `ui `ux *U + &U . *U _UART 1 * -> _i `ux -> -> # *U &U . *U _UART 1 `ui `ux ]
-"579
+"583
 }
-"576
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 393  ]
-[e :U 394 ]
-"579
-}
-[; ;MCU_16f1516_B1.c: 579: }
-[; ;MCU_16f1516_B1.c: 580: I2C->MasterTxGO=1;
 "580
-[e = . *U _I2C 7 -> -> 1 `i `uc ]
-[; ;MCU_16f1516_B1.c: 594: }
-"594
-[e :UE 392 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 387  ]
+[e :U 388 ]
+"583
 }
-"595
+[; ;MCU_16f1516_B1.c: 583: }
+[; ;MCU_16f1516_B1.c: 584: I2C->MasterTxGO=1;
+"584
+[e = . *U _I2C 7 -> -> 1 `i `uc ]
+[; ;MCU_16f1516_B1.c: 598: }
+"598
+[e :UE 386 ]
+}
+"599
 [v _UART_SetData `(v ~T0 @X0 1 ef ]
-"596
+"600
 {
-[; ;MCU_16f1516_B1.c: 595: void UART_SetData()
-[; ;MCU_16f1516_B1.c: 596: {
+[; ;MCU_16f1516_B1.c: 599: void UART_SetData()
+[; ;MCU_16f1516_B1.c: 600: {
 [e :U _UART_SetData ]
 [f ]
-"597
+"601
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 597: char i;
-[; ;MCU_16f1516_B1.c: 606: }
-"606
-[e :UE 396 ]
+[; ;MCU_16f1516_B1.c: 601: char i;
+[; ;MCU_16f1516_B1.c: 610: }
+"610
+[e :UE 390 ]
 }
-"608
-[v _putch `(v ~T0 @X0 1 ef1`uc ]
-"609
-{
-[; ;MCU_16f1516_B1.c: 608: void putch(unsigned char byte)
-[; ;MCU_16f1516_B1.c: 609: {
-[e :U _putch ]
-"608
-[v _byte `uc ~T0 @X0 1 r1 ]
-"609
-[f ]
-[; ;MCU_16f1516_B1.c: 611: while(!TXIF)
-"611
-[e $U 398  ]
-[e :U 399 ]
-[; ;MCU_16f1516_B1.c: 612: continue;
 "612
-[e $U 398  ]
-[e :U 398 ]
-"611
-[e $ ! _TXIF 399  ]
-[e :U 400 ]
-[; ;MCU_16f1516_B1.c: 613: TXREG = byte;
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
 "613
-[e = _TXREG _byte ]
-[; ;MCU_16f1516_B1.c: 614: }
-"614
-[e :UE 397 ]
-}
+{
+[; ;MCU_16f1516_B1.c: 612: void putch(unsigned char byte)
+[; ;MCU_16f1516_B1.c: 613: {
+[e :U _putch ]
+"612
+[v _byte `uc ~T0 @X0 1 r1 ]
+"613
+[f ]
+[; ;MCU_16f1516_B1.c: 615: while(!TXIF)
+"615
+[e $U 392  ]
+[e :U 393 ]
+[; ;MCU_16f1516_B1.c: 616: continue;
 "616
+[e $U 392  ]
+[e :U 392 ]
+"615
+[e $ ! _TXIF 393  ]
+[e :U 394 ]
+[; ;MCU_16f1516_B1.c: 617: TXREG = byte;
+"617
+[e = _TXREG _byte ]
+[; ;MCU_16f1516_B1.c: 618: }
+"618
+[e :UE 391 ]
+}
+"620
 [v _getch `(uc ~T0 @X0 1 ef ]
 {
-[; ;MCU_16f1516_B1.c: 616: unsigned char getch() {
+[; ;MCU_16f1516_B1.c: 620: unsigned char getch() {
 [e :U _getch ]
 [f ]
-[; ;MCU_16f1516_B1.c: 618: while(!RCIF)
-"618
-[e $U 402  ]
-[e :U 403 ]
-[; ;MCU_16f1516_B1.c: 619: continue;
-"619
-[e $U 402  ]
-[e :U 402 ]
-"618
-[e $ ! _RCIF 403  ]
-[e :U 404 ]
-[; ;MCU_16f1516_B1.c: 620: return RCREG;
-"620
-[e ) _RCREG ]
-[e $UE 401  ]
-[; ;MCU_16f1516_B1.c: 621: }
-"621
-[e :UE 401 ]
-}
+[; ;MCU_16f1516_B1.c: 622: while(!RCIF)
+"622
+[e $U 396  ]
+[e :U 397 ]
+[; ;MCU_16f1516_B1.c: 623: continue;
 "623
-[v _getche `(uc ~T0 @X0 1 ef ]
+[e $U 396  ]
+[e :U 396 ]
+"622
+[e $ ! _RCIF 397  ]
+[e :U 398 ]
+[; ;MCU_16f1516_B1.c: 624: return RCREG;
 "624
+[e ) _RCREG ]
+[e $UE 395  ]
+[; ;MCU_16f1516_B1.c: 625: }
+"625
+[e :UE 395 ]
+}
+"627
+[v _getche `(uc ~T0 @X0 1 ef ]
+"628
 {
-[; ;MCU_16f1516_B1.c: 623: unsigned char getche(void)
-[; ;MCU_16f1516_B1.c: 624: {
+[; ;MCU_16f1516_B1.c: 627: unsigned char getche(void)
+[; ;MCU_16f1516_B1.c: 628: {
 [e :U _getche ]
 [f ]
-"625
+"629
 [v _c `uc ~T0 @X0 1 a ]
-[; ;MCU_16f1516_B1.c: 625: unsigned char c;
-[; ;MCU_16f1516_B1.c: 626: putch(c = getch());
-"626
+[; ;MCU_16f1516_B1.c: 629: unsigned char c;
+[; ;MCU_16f1516_B1.c: 630: putch(c = getch());
+"630
 [e ( _putch (1 = _c ( _getch ..  ]
-[; ;MCU_16f1516_B1.c: 627: return c;
-"627
+[; ;MCU_16f1516_B1.c: 631: return c;
+"631
 [e ) _c ]
-[e $UE 405  ]
-[; ;MCU_16f1516_B1.c: 628: }
-"628
-[e :UE 405 ]
+[e $UE 399  ]
+[; ;MCU_16f1516_B1.c: 632: }
+"632
+[e :UE 399 ]
 }
 [p f _printf 8388736 ]
-[a 1C 37 100 0 ]
-[a 2C 44 0 ]
+[a 1C 37 100 44 0 ]
+

@@ -31,6 +31,11 @@ file_003=.
 file_004=.
 file_005=.
 file_006=.
+file_007=.
+file_008=.
+file_009=.
+file_010=.
+file_011=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
@@ -39,6 +44,11 @@ file_003=no
 file_004=no
 file_005=no
 file_006=no
+file_007=no
+file_008=no
+file_009=no
+file_010=no
+file_011=no
 [OTHER_FILES]
 file_000=no
 file_001=no
@@ -47,6 +57,11 @@ file_003=no
 file_004=no
 file_005=no
 file_006=no
+file_007=yes
+file_008=yes
+file_009=yes
+file_010=yes
+file_011=yes
 [FILE_INFO]
 file_000=C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c
 file_001=C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c
@@ -55,17 +70,20 @@ file_003=Release\myDevelopment-A.h
 file_004=Release\Select_File.h
 file_005=C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16f1516_B1.h
 file_006=C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
+file_007=C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h
+file_008=C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\i2c.h
+file_009=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\samples\usart\main.c
+file_010=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\samples\usart\usart.c
+file_011=C:\Program Files (x86)\HI-TECH Software\PICC\9.83\samples\usart\usart.h
 [SUITE_INFO]
 suite_guid={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 suite_state=
 [TOOL_SETTINGS]
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}=C9=6,5,4
+TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}_alt=yes
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}000=
-TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}000_alt=yes
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}001=
-TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}001_alt=yes
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}002=
-TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}002_alt=yes
 [ACTIVE_FILE_SETTINGS]
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}000_active=yes
 TS{3FF1D5F2-E530-4850-9F70-F61D55BD1AC9}001_active=yes

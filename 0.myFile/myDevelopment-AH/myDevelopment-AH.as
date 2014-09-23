@@ -952,8 +952,6 @@ _BRG16	set	0xCFB
 _RCIDL	set	0xCFE
 	global	_RX9
 _RX9	set	0xCEE
-	global	_TRMT
-_TRMT	set	0xCF1
 	global	_TX9
 _TX9	set	0xCF6
 	global	_SSPADD
@@ -991,10 +989,6 @@ __stringdata:
 STR_1:	
 	retlw	37	;'%'
 	retlw	100	;'d'
-	retlw	0
-psect	stringtext
-	
-STR_2:	
 	retlw	44	;','
 	retlw	0
 psect	stringtext
@@ -1329,7 +1323,7 @@ UART_Transmit@i:	; 1 bytes @ 0x25
 ??_main:	; 0 bytes @ 0x28
 ;!
 ;!Data Sizes:
-;!    Strings     5
+;!    Strings     4
 ;!    Constant    10
 ;!    Data        58
 ;!    BSS         157
@@ -1350,13 +1344,13 @@ UART_Transmit@i:	; 1 bytes @ 0x25
 ;!
 ;!Pointer List with Targets:
 ;!
-;!    printf@f	PTR const unsigned char  size(2) Largest target is 3
-;!		 -> STR_2(CODE[2]), STR_1(CODE[3]), 
+;!    printf@f	PTR const unsigned char  size(2) Largest target is 4
+;!		 -> STR_1(CODE[4]), 
 ;!
 ;!    printf@ap	PTR void [1] size(1) Largest target is 2
 ;!		 -> ?_printf(BANK0[2]), 
 ;!
-;!    S544$_cp	PTR const unsigned char  size(1) Largest target is 0
+;!    S542$_cp	PTR const unsigned char  size(1) Largest target is 0
 ;!
 ;!    _val._str._cp	PTR const unsigned char  size(1) Largest target is 0
 ;!
@@ -1466,7 +1460,7 @@ UART_Transmit@i:	; 1 bytes @ 0x25
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 0     0      0    3078
+;! (0) _main                                                 0     0      0    3025
 ;!                           _I2C_Main
 ;!                              _MainT
 ;!                      _MainT_Initial
@@ -1475,7 +1469,7 @@ UART_Transmit@i:	; 1 bytes @ 0x25
 ;!                _SegmentDisplay_Main
 ;!                          _UART_Main
 ;! ---------------------------------------------------------------------------------
-;! (1) _UART_Main                                            2     2      0    2852
+;! (1) _UART_Main                                            2     2      0    2799
 ;!                                             38 BANK0      2     2      0
 ;!                       _UART_Receive
 ;!                      _UART_Transmit
@@ -1492,11 +1486,11 @@ UART_Transmit@i:	; 1 bytes @ 0x25
 ;! (3) ___awdiv                                              9     5      4     618
 ;!                                              5 BANK0      9     5      4
 ;! ---------------------------------------------------------------------------------
-;! (2) _UART_Transmit                                        3     3      0    1115
+;! (2) _UART_Transmit                                        3     3      0    1062
 ;!                                             35 BANK0      3     3      0
 ;!                             _printf
 ;! ---------------------------------------------------------------------------------
-;! (3) _printf                                              16    12      4    1047
+;! (3) _printf                                              16    12      4     994
 ;!                                             19 BANK0     16    12      4
 ;!                            ___lwdiv
 ;!                            ___lwmod
@@ -1766,35 +1760,35 @@ _main:
 ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	8
 	
-l2354:	
+l2342:	
 ;myMain.c: 8: MainT_Initial();
 	fcall	_MainT_Initial
 	line	9
 	
-l2356:	
+l2344:	
 ;myMain.c: 9: Mcu_Initial();
 	fcall	_Mcu_Initial
 	line	10
 	
-l2358:	
+l2346:	
 ;myMain.c: 10: SegmentDisplay_Initial();
 	fcall	_SegmentDisplay_Initial
 	line	12
 	
-l2360:	
+l2348:	
 ;myMain.c: 11: ;;
 ;myMain.c: 12: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
-	goto	l2362
+	goto	l2350
 	line	13
 ;myMain.c: 13: while(1)
 	
-l408:	
+l400:	
 	line	17
 	
-l2362:	
+l2350:	
 ;myMain.c: 14: {
 ;myMain.c: 17: if(TMain->T1_Timerout)
 	movlb 0	; select bank0
@@ -1803,14 +1797,14 @@ l2362:
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u3161
-	goto	u3160
-u3161:
-	goto	l2362
-u3160:
+	goto	u3121
+	goto	u3120
+u3121:
+	goto	l2350
+u3120:
 	line	19
 	
-l2364:	
+l2352:	
 ;myMain.c: 18: {
 ;myMain.c: 19: TMain->T1_Timerout = 0;
 	movf	(_TMain),w
@@ -1820,12 +1814,12 @@ l2364:
 	bcf	indf1,2
 	line	20
 	
-l2366:	
+l2354:	
 ;myMain.c: 20: MainT();
 	fcall	_MainT
 	line	21
 	
-l2368:	
+l2356:	
 ;myMain.c: 21: if(TMain->PowerON)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -1833,47 +1827,47 @@ l2368:
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u3171
-	goto	u3170
-u3171:
-	goto	l2362
-u3170:
+	goto	u3131
+	goto	u3130
+u3131:
+	goto	l2350
+u3130:
 	line	24
 	
-l2370:	
+l2358:	
 ;myMain.c: 22: {
 ;myMain.c: 23: ;;
 ;myMain.c: 24: I2C_Main();
 	fcall	_I2C_Main
 	line	25
 	
-l2372:	
+l2360:	
 ;myMain.c: 25: UART_Main();
 	fcall	_UART_Main
 	line	26
 	
-l2374:	
+l2362:	
 ;myMain.c: 26: SegmentDisplay_Main();
 	fcall	_SegmentDisplay_Main
-	goto	l2362
+	goto	l2350
 	line	27
 	
-l410:	
-	goto	l2362
+l402:	
+	goto	l2350
 	line	28
 	
-l409:	
-	goto	l2362
+l401:	
+	goto	l2350
 	line	29
 	
-l411:	
+l403:	
 	line	13
-	goto	l2362
+	goto	l2350
 	
-l412:	
+l404:	
 	line	30
 	
-l413:	
+l405:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -1930,7 +1924,7 @@ _UART_Main:
 ; Regs used in _UART_Main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	538
 	
-l2218:	
+l2206:	
 ;MCU_16f1516_B1.c: 538: if(UART->RxGO)
 	movlb 0	; select bank0
 	movf	(_UART),w
@@ -1940,14 +1934,14 @@ l2218:
 	movwf fsr1h	
 	
 	btfss	indf1,1
-	goto	u2951
-	goto	u2950
-u2951:
-	goto	l2228
-u2950:
+	goto	u2911
+	goto	u2910
+u2911:
+	goto	l2216
+u2910:
 	line	540
 	
-l2220:	
+l2208:	
 ;MCU_16f1516_B1.c: 539: {
 ;MCU_16f1516_B1.c: 540: UART->RxGO=0;
 	movf	(_UART),w
@@ -1959,18 +1953,18 @@ l2220:
 	bcf	indf1,1
 	line	541
 	
-l2222:	
+l2210:	
 ;MCU_16f1516_B1.c: 541: UART_Receive();
 	fcall	_UART_Receive
 	line	542
 	
-l2224:	
+l2212:	
 ;MCU_16f1516_B1.c: 542: RCIE=1;
 	movlb 1	; select bank1
 	bsf	(1165/8)^080h,(1165)&7	;volatile
 	line	543
 	
-l2226:	
+l2214:	
 ;MCU_16f1516_B1.c: 543: setSegmentDisplayNumber(UART->RxData[0]);
 	movlb 0	; select bank0
 	movf	(_UART),w
@@ -1989,13 +1983,13 @@ l2226:
 	fcall	_setSegmentDisplayNumber
 	line	544
 ;MCU_16f1516_B1.c: 544: }
-	goto	l329
+	goto	l327
 	line	545
 	
-l326:	
+l324:	
 	line	547
 	
-l2228:	
+l2216:	
 ;MCU_16f1516_B1.c: 545: else
 ;MCU_16f1516_B1.c: 546: {
 ;MCU_16f1516_B1.c: 547: if(UART->TxGO)
@@ -2007,14 +2001,14 @@ l2228:
 	movwf fsr1h	
 	
 	btfss	indf1,0
-	goto	u2961
-	goto	u2960
-u2961:
-	goto	l329
-u2960:
+	goto	u2921
+	goto	u2920
+u2921:
+	goto	l327
+u2920:
 	line	549
 	
-l2230:	
+l2218:	
 ;MCU_16f1516_B1.c: 548: {
 ;MCU_16f1516_B1.c: 549: UART->TxGO=0;
 	movf	(_UART),w
@@ -2026,20 +2020,20 @@ l2230:
 	bcf	indf1,0
 	line	550
 	
-l2232:	
+l2220:	
 ;MCU_16f1516_B1.c: 550: UART_Transmit();
 	fcall	_UART_Transmit
-	goto	l329
+	goto	l327
 	line	551
 	
-l328:	
-	goto	l329
+l326:	
+	goto	l327
 	line	552
 	
-l327:	
+l325:	
 	line	553
 	
-l329:	
+l327:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Main
@@ -2094,7 +2088,7 @@ _setSegmentDisplayNumber:
 ; Regs used in _setSegmentDisplayNumber: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	23
 	
-l1994:	
+l1984:	
 ;SegmentDisplay_A2.c: 22: char i;
 ;SegmentDisplay_A2.c: 23: if(Segment->Enable)
 	movlb 0	; select bank0
@@ -2104,14 +2098,14 @@ l1994:
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u2521
-	goto	u2520
-u2521:
-	goto	l481
-u2520:
+	goto	u2501
+	goto	u2500
+u2501:
+	goto	l473
+u2500:
 	line	25
 	
-l1996:	
+l1986:	
 ;SegmentDisplay_A2.c: 24: {
 ;SegmentDisplay_A2.c: 25: Segment->GO=1;
 	movf	(_Segment),w
@@ -2128,14 +2122,14 @@ l1996:
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u2531
-	goto	u2530
-u2531:
-	goto	l2004
-u2530:
+	goto	u2511
+	goto	u2510
+u2511:
+	goto	l1994
+u2510:
 	line	28
 	
-l1998:	
+l1988:	
 ;SegmentDisplay_A2.c: 27: {
 ;SegmentDisplay_A2.c: 28: Segment->Num[0]=(number & 0x000f);
 	movf	(setSegmentDisplayNumber@number),w
@@ -2150,7 +2144,7 @@ l1998:
 	movwf	indf1
 	line	29
 	
-l2000:	
+l1990:	
 ;SegmentDisplay_A2.c: 29: Segment->Num[1]=((number>>4)&0x000f);
 	movf	(setSegmentDisplayNumber@number+1),w
 	movwf	(??_setSegmentDisplayNumber+0)+0+1
@@ -2158,12 +2152,12 @@ l2000:
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movlw	04h
 	movwf	(??_setSegmentDisplayNumber+2)+0
-u2545:
+u2525:
 	rlf	(??_setSegmentDisplayNumber+0)+1,w
 	rrf	(??_setSegmentDisplayNumber+0)+1,f
 	rrf	(??_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??_setSegmentDisplayNumber+2)+0,f
-	goto	u2545
+	goto	u2525
 	movf	0+(??_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??_setSegmentDisplayNumber+3)+0
@@ -2176,7 +2170,7 @@ u2545:
 	movwf	indf1
 	line	30
 	
-l2002:	
+l1992:	
 ;SegmentDisplay_A2.c: 30: Segment->Num[2]=((number>>8)&0x000f);
 	movf	(setSegmentDisplayNumber@number+1),w
 	andlw	0Fh
@@ -2196,12 +2190,12 @@ l2002:
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movlw	0Ch
 	movwf	(??_setSegmentDisplayNumber+2)+0
-u2555:
+u2535:
 	rlf	(??_setSegmentDisplayNumber+0)+1,w
 	rrf	(??_setSegmentDisplayNumber+0)+1,f
 	rrf	(??_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??_setSegmentDisplayNumber+2)+0,f
-	goto	u2555
+	goto	u2535
 	movf	0+(??_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??_setSegmentDisplayNumber+3)+0
@@ -2214,12 +2208,12 @@ u2555:
 	movwf	indf1
 	line	32
 ;SegmentDisplay_A2.c: 32: }
-	goto	l2032
+	goto	l2022
 	line	33
 	
-l468:	
+l460:	
 	
-l2004:	
+l1994:	
 ;SegmentDisplay_A2.c: 33: else if(Segment->Dec)
 	movf	(_Segment),w
 	addlw	015h
@@ -2227,14 +2221,14 @@ l2004:
 	clrf fsr1h	
 	
 	btfss	indf1,3
-	goto	u2561
-	goto	u2560
-u2561:
-	goto	l2032
-u2560:
+	goto	u2541
+	goto	u2540
+u2541:
+	goto	l2022
+u2540:
 	line	35
 	
-l2006:	
+l1996:	
 ;SegmentDisplay_A2.c: 34: {
 ;SegmentDisplay_A2.c: 35: if(number > 0x270f)
 	movf	(setSegmentDisplayNumber@number+1),w
@@ -2243,44 +2237,44 @@ l2006:
 	movlw	(high(02710h))^80h
 	subwf	(??_setSegmentDisplayNumber+0)+0,w
 	skipz
-	goto	u2575
+	goto	u2555
 	movlw	low(02710h)
 	subwf	(setSegmentDisplayNumber@number),w
-u2575:
+u2555:
 
 	skipc
-	goto	u2571
-	goto	u2570
-u2571:
-	goto	l2020
-u2570:
+	goto	u2551
+	goto	u2550
+u2551:
+	goto	l2010
+u2550:
 	line	37
 	
-l2008:	
+l1998:	
 ;SegmentDisplay_A2.c: 36: {
 ;SegmentDisplay_A2.c: 37: for(i=0 ; i<4; i++)
 	movlb 0	; select bank0
 	clrf	(setSegmentDisplayNumber@i)
 	
-l2010:	
+l2000:	
 	movlw	(04h)
 	subwf	(setSegmentDisplayNumber@i),w
 	skipc
-	goto	u2581
-	goto	u2580
-u2581:
-	goto	l2014
-u2580:
-	goto	l2032
+	goto	u2561
+	goto	u2560
+u2561:
+	goto	l2004
+u2560:
+	goto	l2022
 	
-l2012:	
-	goto	l2032
+l2002:	
+	goto	l2022
 	line	38
 	
-l472:	
+l464:	
 	line	39
 	
-l2014:	
+l2004:	
 ;SegmentDisplay_A2.c: 38: {
 ;SegmentDisplay_A2.c: 39: Segment->Num[i]=16;
 	movlw	(010h)
@@ -2297,34 +2291,34 @@ l2014:
 	movwf	indf1
 	line	37
 	
-l2016:	
+l2006:	
 	movlw	(01h)
 	movwf	(??_setSegmentDisplayNumber+0)+0
 	movf	(??_setSegmentDisplayNumber+0)+0,w
 	addwf	(setSegmentDisplayNumber@i),f
 	
-l2018:	
+l2008:	
 	movlw	(04h)
 	subwf	(setSegmentDisplayNumber@i),w
 	skipc
-	goto	u2591
-	goto	u2590
-u2591:
-	goto	l2014
-u2590:
-	goto	l2032
+	goto	u2571
+	goto	u2570
+u2571:
+	goto	l2004
+u2570:
+	goto	l2022
 	
-l473:	
+l465:	
 	line	41
 ;SegmentDisplay_A2.c: 40: }
 ;SegmentDisplay_A2.c: 41: }
-	goto	l2032
+	goto	l2022
 	line	42
 	
-l471:	
+l463:	
 	line	44
 	
-l2020:	
+l2010:	
 ;SegmentDisplay_A2.c: 42: else
 ;SegmentDisplay_A2.c: 43: {
 ;SegmentDisplay_A2.c: 44: Segment->Num[3]=(number/1000);
@@ -2353,7 +2347,7 @@ l2020:
 	movwf	indf1
 	line	45
 	
-l2022:	
+l2012:	
 ;SegmentDisplay_A2.c: 45: number%=1000;
 	movlw	low(03E8h)
 	movwf	(___awmod@divisor)
@@ -2377,7 +2371,7 @@ l2022:
 
 	line	46
 	
-l2024:	
+l2014:	
 ;SegmentDisplay_A2.c: 46: Segment->Num[2]=(number/100);
 	movlw	low(064h)
 	movwf	(___awdiv@divisor)
@@ -2425,7 +2419,7 @@ l2024:
 
 	line	48
 	
-l2026:	
+l2016:	
 ;SegmentDisplay_A2.c: 48: Segment->Num[1]=(number/10);
 	movlw	low(0Ah)
 	movwf	(___awdiv@divisor)
@@ -2451,7 +2445,7 @@ l2026:
 	movwf	indf1
 	line	49
 	
-l2028:	
+l2018:	
 ;SegmentDisplay_A2.c: 49: number%=10;
 	movlw	low(0Ah)
 	movwf	(___awmod@divisor)
@@ -2475,7 +2469,7 @@ l2028:
 
 	line	50
 	
-l2030:	
+l2020:	
 ;SegmentDisplay_A2.c: 50: Segment->Num[0]=number;
 	movf	(setSegmentDisplayNumber@number),w
 	movwf	(??_setSegmentDisplayNumber+0)+0
@@ -2486,20 +2480,20 @@ l2030:
 	
 	movf	(??_setSegmentDisplayNumber+0)+0,w
 	movwf	indf1
-	goto	l2032
+	goto	l2022
 	line	51
 	
-l474:	
-	goto	l2032
+l466:	
+	goto	l2022
 	line	52
 	
-l470:	
-	goto	l2032
+l462:	
+	goto	l2022
 	line	53
 	
-l469:	
+l461:	
 	
-l2032:	
+l2022:	
 ;SegmentDisplay_A2.c: 51: }
 ;SegmentDisplay_A2.c: 52: }
 ;SegmentDisplay_A2.c: 53: if(Segment->Num[3] > 0)
@@ -2511,14 +2505,14 @@ l2032:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2601
-	goto	u2600
-u2601:
-	goto	l2036
-u2600:
+	goto	u2581
+	goto	u2580
+u2581:
+	goto	l2026
+u2580:
 	line	55
 	
-l2034:	
+l2024:	
 ;SegmentDisplay_A2.c: 54: {
 ;SegmentDisplay_A2.c: 55: Segment->DisplayCount=3;
 	movlw	(03h)
@@ -2532,12 +2526,12 @@ l2034:
 	movwf	indf1
 	line	56
 ;SegmentDisplay_A2.c: 56: }
-	goto	l481
+	goto	l473
 	line	57
 	
-l475:	
+l467:	
 	
-l2036:	
+l2026:	
 ;SegmentDisplay_A2.c: 57: else if(Segment->Num[2] > 0)
 	movf	(_Segment),w
 	addlw	013h
@@ -2547,14 +2541,14 @@ l2036:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2611
-	goto	u2610
-u2611:
-	goto	l2040
-u2610:
+	goto	u2591
+	goto	u2590
+u2591:
+	goto	l2030
+u2590:
 	line	59
 	
-l2038:	
+l2028:	
 ;SegmentDisplay_A2.c: 58: {
 ;SegmentDisplay_A2.c: 59: Segment->DisplayCount=2;
 	movlw	(02h)
@@ -2568,12 +2562,12 @@ l2038:
 	movwf	indf1
 	line	60
 ;SegmentDisplay_A2.c: 60: }
-	goto	l481
+	goto	l473
 	line	61
 	
-l477:	
+l469:	
 	
-l2040:	
+l2030:	
 ;SegmentDisplay_A2.c: 61: else if(Segment->Num[1] > 0)
 	movf	(_Segment),w
 	addlw	012h
@@ -2583,14 +2577,14 @@ l2040:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u2621
-	goto	u2620
-u2621:
-	goto	l2044
-u2620:
+	goto	u2601
+	goto	u2600
+u2601:
+	goto	l2034
+u2600:
 	line	63
 	
-l2042:	
+l2032:	
 ;SegmentDisplay_A2.c: 62: {
 ;SegmentDisplay_A2.c: 63: Segment->DisplayCount=1;
 	movf	(_Segment),w
@@ -2602,13 +2596,13 @@ l2042:
 	incf	indf1,f
 	line	64
 ;SegmentDisplay_A2.c: 64: }
-	goto	l481
+	goto	l473
 	line	65
 	
-l479:	
+l471:	
 	line	67
 	
-l2044:	
+l2034:	
 ;SegmentDisplay_A2.c: 65: else
 ;SegmentDisplay_A2.c: 66: {
 ;SegmentDisplay_A2.c: 67: Segment->DisplayCount=0;
@@ -2618,23 +2612,23 @@ l2044:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	l481
+	goto	l473
 	line	68
 	
-l480:	
-	goto	l481
+l472:	
+	goto	l473
 	
-l478:	
-	goto	l481
+l470:	
+	goto	l473
 	
-l476:	
-	goto	l481
+l468:	
+	goto	l473
 	line	69
 	
-l467:	
+l459:	
 	line	70
 	
-l481:	
+l473:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSegmentDisplayNumber
@@ -2690,21 +2684,21 @@ ___awmod:
 ; Regs used in ___awmod: [wreg+status,2+status,0]
 	line	13
 	
-l1786:	
+l1776:	
 	movlb 0	; select bank0
 	clrf	(___awmod@sign)
 	line	14
 	
-l1788:	
+l1778:	
 	btfss	(___awmod@dividend+1),7
-	goto	u1921
-	goto	u1920
-u1921:
-	goto	l1794
-u1920:
+	goto	u1901
+	goto	u1900
+u1901:
+	goto	l1784
+u1900:
 	line	15
 	
-l1790:	
+l1780:	
 	comf	(___awmod@dividend),f
 	comf	(___awmod@dividend+1),f
 	incf	(___awmod@dividend),f
@@ -2712,166 +2706,166 @@ l1790:
 	incf	(___awmod@dividend+1),f
 	line	16
 	
-l1792:	
+l1782:	
 	clrf	(___awmod@sign)
 	incf	(___awmod@sign),f
-	goto	l1794
+	goto	l1784
 	line	17
 	
-l664:	
+l656:	
 	line	18
 	
-l1794:	
+l1784:	
 	btfss	(___awmod@divisor+1),7
-	goto	u1931
-	goto	u1930
-u1931:
-	goto	l1798
-u1930:
+	goto	u1911
+	goto	u1910
+u1911:
+	goto	l1788
+u1910:
 	line	19
 	
-l1796:	
+l1786:	
 	comf	(___awmod@divisor),f
 	comf	(___awmod@divisor+1),f
 	incf	(___awmod@divisor),f
 	skipnz
 	incf	(___awmod@divisor+1),f
-	goto	l1798
+	goto	l1788
 	
-l665:	
+l657:	
 	line	20
 	
-l1798:	
+l1788:	
 	movf	(___awmod@divisor+1),w
 	iorwf	(___awmod@divisor),w
 	skipnz
-	goto	u1941
-	goto	u1940
-u1941:
-	goto	l1816
-u1940:
+	goto	u1921
+	goto	u1920
+u1921:
+	goto	l1806
+u1920:
 	line	21
 	
-l1800:	
+l1790:	
 	clrf	(___awmod@counter)
 	incf	(___awmod@counter),f
 	line	22
-	goto	l1806
+	goto	l1796
 	
-l668:	
+l660:	
 	line	23
 	
-l1802:	
+l1792:	
 	movlw	01h
 	
-u1955:
+u1935:
 	lslf	(___awmod@divisor),f
 	rlf	(___awmod@divisor+1),f
 	decfsz	wreg,f
-	goto	u1955
+	goto	u1935
 	line	24
 	
-l1804:	
+l1794:	
 	movlw	(01h)
 	movwf	(??___awmod+0)+0
 	movf	(??___awmod+0)+0,w
 	addwf	(___awmod@counter),f
-	goto	l1806
+	goto	l1796
 	line	25
 	
-l667:	
+l659:	
 	line	22
 	
-l1806:	
+l1796:	
 	btfss	(___awmod@divisor+1),(15)&7
-	goto	u1961
-	goto	u1960
-u1961:
-	goto	l1802
-u1960:
-	goto	l1808
+	goto	u1941
+	goto	u1940
+u1941:
+	goto	l1792
+u1940:
+	goto	l1798
 	
-l669:	
-	goto	l1808
+l661:	
+	goto	l1798
 	line	26
 	
-l670:	
+l662:	
 	line	27
 	
-l1808:	
+l1798:	
 	movf	(___awmod@divisor+1),w
 	subwf	(___awmod@dividend+1),w
 	skipz
-	goto	u1975
+	goto	u1955
 	movf	(___awmod@divisor),w
 	subwf	(___awmod@dividend),w
-u1975:
+u1955:
 	skipc
-	goto	u1971
-	goto	u1970
-u1971:
-	goto	l1812
-u1970:
+	goto	u1951
+	goto	u1950
+u1951:
+	goto	l1802
+u1950:
 	line	28
 	
-l1810:	
+l1800:	
 	movf	(___awmod@divisor),w
 	subwf	(___awmod@dividend),f
 	movf	(___awmod@divisor+1),w
 	subwfb	(___awmod@dividend+1),f
-	goto	l1812
+	goto	l1802
 	
-l671:	
+l663:	
 	line	29
 	
-l1812:	
+l1802:	
 	movlw	01h
 	
-u1985:
+u1965:
 	lsrf	(___awmod@divisor+1),f
 	rrf	(___awmod@divisor),f
 	decfsz	wreg,f
-	goto	u1985
+	goto	u1965
 	line	30
 	
-l1814:	
+l1804:	
 	movlw	low(01h)
 	subwf	(___awmod@counter),f
 	btfss	status,2
-	goto	u1991
-	goto	u1990
-u1991:
-	goto	l1808
-u1990:
-	goto	l1816
+	goto	u1971
+	goto	u1970
+u1971:
+	goto	l1798
+u1970:
+	goto	l1806
 	
-l672:	
-	goto	l1816
+l664:	
+	goto	l1806
 	line	31
 	
-l666:	
+l658:	
 	line	32
 	
-l1816:	
+l1806:	
 	movf	(___awmod@sign),w
 	skipz
-	goto	u2000
-	goto	l1820
-u2000:
+	goto	u1980
+	goto	l1810
+u1980:
 	line	33
 	
-l1818:	
+l1808:	
 	comf	(___awmod@dividend),f
 	comf	(___awmod@dividend+1),f
 	incf	(___awmod@dividend),f
 	skipnz
 	incf	(___awmod@dividend+1),f
-	goto	l1820
+	goto	l1810
 	
-l673:	
+l665:	
 	line	34
 	
-l1820:	
+l1810:	
 	movf	(___awmod@dividend+1),w
 	clrf	(?___awmod+1)
 	addwf	(?___awmod+1)
@@ -2879,12 +2873,12 @@ l1820:
 	clrf	(?___awmod)
 	addwf	(?___awmod)
 
-	goto	l674
+	goto	l666
 	
-l1822:	
+l1812:	
 	line	35
 	
-l674:	
+l666:	
 	return
 	opt stack 0
 GLOBAL	__end_of___awmod
@@ -2941,21 +2935,21 @@ ___awdiv:
 ; Regs used in ___awdiv: [wreg+status,2+status,0]
 	line	14
 	
-l1742:	
+l1732:	
 	movlb 0	; select bank0
 	clrf	(___awdiv@sign)
 	line	15
 	
-l1744:	
+l1734:	
 	btfss	(___awdiv@divisor+1),7
-	goto	u1821
-	goto	u1820
-u1821:
-	goto	l1750
-u1820:
+	goto	u1801
+	goto	u1800
+u1801:
+	goto	l1740
+u1800:
 	line	16
 	
-l1746:	
+l1736:	
 	comf	(___awdiv@divisor),f
 	comf	(___awdiv@divisor+1),f
 	incf	(___awdiv@divisor),f
@@ -2963,25 +2957,25 @@ l1746:
 	incf	(___awdiv@divisor+1),f
 	line	17
 	
-l1748:	
+l1738:	
 	clrf	(___awdiv@sign)
 	incf	(___awdiv@sign),f
-	goto	l1750
+	goto	l1740
 	line	18
 	
-l651:	
+l643:	
 	line	19
 	
-l1750:	
+l1740:	
 	btfss	(___awdiv@dividend+1),7
-	goto	u1831
-	goto	u1830
-u1831:
-	goto	l1756
-u1830:
+	goto	u1811
+	goto	u1810
+u1811:
+	goto	l1746
+u1810:
 	line	20
 	
-l1752:	
+l1742:	
 	comf	(___awdiv@dividend),f
 	comf	(___awdiv@dividend+1),f
 	incf	(___awdiv@dividend),f
@@ -2989,166 +2983,166 @@ l1752:
 	incf	(___awdiv@dividend+1),f
 	line	21
 	
-l1754:	
+l1744:	
 	movlw	(01h)
 	movwf	(??___awdiv+0)+0
 	movf	(??___awdiv+0)+0,w
 	xorwf	(___awdiv@sign),f
-	goto	l1756
+	goto	l1746
 	line	22
 	
-l652:	
+l644:	
 	line	23
 	
-l1756:	
+l1746:	
 	clrf	(___awdiv@quotient)
 	clrf	(___awdiv@quotient+1)
 	line	24
 	
-l1758:	
+l1748:	
 	movf	(___awdiv@divisor+1),w
 	iorwf	(___awdiv@divisor),w
 	skipnz
-	goto	u1841
-	goto	u1840
-u1841:
-	goto	l1778
-u1840:
+	goto	u1821
+	goto	u1820
+u1821:
+	goto	l1768
+u1820:
 	line	25
 	
-l1760:	
+l1750:	
 	clrf	(___awdiv@counter)
 	incf	(___awdiv@counter),f
 	line	26
-	goto	l1766
+	goto	l1756
 	
-l655:	
+l647:	
 	line	27
 	
-l1762:	
+l1752:	
 	movlw	01h
 	
-u1855:
+u1835:
 	lslf	(___awdiv@divisor),f
 	rlf	(___awdiv@divisor+1),f
 	decfsz	wreg,f
-	goto	u1855
+	goto	u1835
 	line	28
 	
-l1764:	
+l1754:	
 	movlw	(01h)
 	movwf	(??___awdiv+0)+0
 	movf	(??___awdiv+0)+0,w
 	addwf	(___awdiv@counter),f
-	goto	l1766
+	goto	l1756
 	line	29
 	
-l654:	
+l646:	
 	line	26
 	
-l1766:	
+l1756:	
 	btfss	(___awdiv@divisor+1),(15)&7
-	goto	u1861
-	goto	u1860
-u1861:
-	goto	l1762
-u1860:
-	goto	l1768
+	goto	u1841
+	goto	u1840
+u1841:
+	goto	l1752
+u1840:
+	goto	l1758
 	
-l656:	
-	goto	l1768
+l648:	
+	goto	l1758
 	line	30
 	
-l657:	
+l649:	
 	line	31
 	
-l1768:	
+l1758:	
 	movlw	01h
 	
-u1875:
+u1855:
 	lslf	(___awdiv@quotient),f
 	rlf	(___awdiv@quotient+1),f
 	decfsz	wreg,f
-	goto	u1875
+	goto	u1855
 	line	32
 	movf	(___awdiv@divisor+1),w
 	subwf	(___awdiv@dividend+1),w
 	skipz
-	goto	u1885
+	goto	u1865
 	movf	(___awdiv@divisor),w
 	subwf	(___awdiv@dividend),w
-u1885:
+u1865:
 	skipc
-	goto	u1881
-	goto	u1880
-u1881:
-	goto	l1774
-u1880:
+	goto	u1861
+	goto	u1860
+u1861:
+	goto	l1764
+u1860:
 	line	33
 	
-l1770:	
+l1760:	
 	movf	(___awdiv@divisor),w
 	subwf	(___awdiv@dividend),f
 	movf	(___awdiv@divisor+1),w
 	subwfb	(___awdiv@dividend+1),f
 	line	34
 	
-l1772:	
+l1762:	
 	bsf	(___awdiv@quotient)+(0/8),(0)&7
-	goto	l1774
+	goto	l1764
 	line	35
 	
-l658:	
+l650:	
 	line	36
 	
-l1774:	
+l1764:	
 	movlw	01h
 	
-u1895:
+u1875:
 	lsrf	(___awdiv@divisor+1),f
 	rrf	(___awdiv@divisor),f
 	decfsz	wreg,f
-	goto	u1895
+	goto	u1875
 	line	37
 	
-l1776:	
+l1766:	
 	movlw	low(01h)
 	subwf	(___awdiv@counter),f
 	btfss	status,2
-	goto	u1901
-	goto	u1900
-u1901:
+	goto	u1881
+	goto	u1880
+u1881:
+	goto	l1758
+u1880:
 	goto	l1768
-u1900:
-	goto	l1778
 	
-l659:	
-	goto	l1778
+l651:	
+	goto	l1768
 	line	38
 	
-l653:	
+l645:	
 	line	39
 	
-l1778:	
+l1768:	
 	movf	(___awdiv@sign),w
 	skipz
-	goto	u1910
-	goto	l1782
-u1910:
+	goto	u1890
+	goto	l1772
+u1890:
 	line	40
 	
-l1780:	
+l1770:	
 	comf	(___awdiv@quotient),f
 	comf	(___awdiv@quotient+1),f
 	incf	(___awdiv@quotient),f
 	skipnz
 	incf	(___awdiv@quotient+1),f
-	goto	l1782
+	goto	l1772
 	
-l660:	
+l652:	
 	line	41
 	
-l1782:	
+l1772:	
 	movf	(___awdiv@quotient+1),w
 	clrf	(?___awdiv+1)
 	addwf	(?___awdiv+1)
@@ -3156,12 +3150,12 @@ l1782:
 	clrf	(?___awdiv)
 	addwf	(?___awdiv)
 
-	goto	l661
+	goto	l653
 	
-l1784:	
+l1774:	
 	line	42
 	
-l661:	
+l653:	
 	return
 	opt stack 0
 GLOBAL	__end_of___awdiv
@@ -3213,54 +3207,36 @@ _UART_Transmit:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _UART_Transmit: [wreg-fsr1h+status,2+status,0+pclath+cstack]
-	line	557
+	line	559
 	
-l2064:	
+l2054:	
 ;MCU_16f1516_B1.c: 556: char i;
-;MCU_16f1516_B1.c: 557: for(i=0;i<32;i++)
+;MCU_16f1516_B1.c: 559: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(UART_Transmit@i)
 	
-l2066:	
+l2056:	
 	movlw	(020h)
 	subwf	(UART_Transmit@i),w
 	skipc
-	goto	u2651
-	goto	u2650
-u2651:
-	goto	l334
-u2650:
-	goto	l340
+	goto	u2631
+	goto	u2630
+u2631:
+	goto	l2060
+u2630:
+	goto	l332
 	
-l2068:	
-	goto	l340
-	line	558
+l2058:	
+	goto	l332
+	line	560
 	
-l332:	
-	line	559
-;MCU_16f1516_B1.c: 558: {
-;MCU_16f1516_B1.c: 559: while(!TRMT);
-	goto	l334
+l330:	
+	line	566
 	
-l335:	
-	
-l334:	
-	movlb 3	; select bank3
-	btfss	(3313/8)^0180h,(3313)&7	;volatile
-	goto	u2661
-	goto	u2660
-u2661:
-	goto	l334
-u2660:
-	goto	l2070
-	
-l336:	
-	line	561
-	
-l2070:	
-;MCU_16f1516_B1.c: 561: printf("%d",i);
+l2060:	
+;MCU_16f1516_B1.c: 560: {
+;MCU_16f1516_B1.c: 566: printf("%d,",i);
 	movlw	low((STR_1)|8000h)
-	movlb 0	; select bank0
 	movwf	(printf@f)
 	movlw	high((STR_1)|8000h)
 	movwf	((printf@f))+1
@@ -3272,57 +3248,30 @@ l2070:
 	movf	1+(??_UART_Transmit+0)+0,w
 	movwf	1+(?_printf)+02h
 	fcall	_printf
-	line	562
-;MCU_16f1516_B1.c: 562: while(!TRMT);
-	goto	l337
+	line	559
 	
-l338:	
-	
-l337:	
-	movlb 3	; select bank3
-	btfss	(3313/8)^0180h,(3313)&7	;volatile
-	goto	u2671
-	goto	u2670
-u2671:
-	goto	l337
-u2670:
-	goto	l2072
-	
-l339:	
-	line	563
-	
-l2072:	
-;MCU_16f1516_B1.c: 563: printf(",");
-	movlw	low((STR_2)|8000h)
-	movlb 0	; select bank0
-	movwf	(printf@f)
-	movlw	high((STR_2)|8000h)
-	movwf	((printf@f))+1
-	fcall	_printf
-	line	557
-	
-l2074:	
+l2062:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_UART_Transmit+0)+0
 	movf	(??_UART_Transmit+0)+0,w
 	addwf	(UART_Transmit@i),f
 	
-l2076:	
+l2064:	
 	movlw	(020h)
 	subwf	(UART_Transmit@i),w
 	skipc
-	goto	u2681
-	goto	u2680
-u2681:
-	goto	l334
-u2680:
-	goto	l340
+	goto	u2641
+	goto	u2640
+u2641:
+	goto	l2060
+u2640:
+	goto	l332
 	
-l333:	
-	line	568
+l331:	
+	line	572
 	
-l340:	
+l332:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Transmit
@@ -3335,7 +3284,7 @@ GLOBAL	__end_of_UART_Transmit
 ;;		line 464 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c"
 ;; Parameters:    Size  Location     Type
 ;;  f               2   19[BANK0 ] PTR const unsigned char 
-;;		 -> STR_2(2), STR_1(3), 
+;;		 -> STR_1(4), 
 ;; Auto vars:     Size  Location     Type
 ;;  _val            4   30[BANK0 ] struct .
 ;;  c               1   34[BANK0 ] char 
@@ -3384,7 +3333,7 @@ _printf:
 ; Regs used in _printf: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	542
 	
-l1694:	
+l1684:	
 ;doprnt.c: 466: va_list ap;
 ;doprnt.c: 499: signed char c;
 ;doprnt.c: 506: signed char prec;
@@ -3404,80 +3353,80 @@ l1694:
 	movwf	(printf@ap)
 	line	545
 ;doprnt.c: 545: while(c = *f++) {
-	goto	l1740
+	goto	l1730
 	
-l507:	
+l499:	
 	line	547
 	
-l1696:	
+l1686:	
 ;doprnt.c: 547: if(c != '%')
 	movf	(printf@c),w
 	xorlw	025h&0ffh
 	skipnz
-	goto	u1741
-	goto	u1740
-u1741:
-	goto	l1700
-u1740:
+	goto	u1721
+	goto	u1720
+u1721:
+	goto	l1690
+u1720:
 	line	550
 	
-l1698:	
+l1688:	
 ;doprnt.c: 549: {
 ;doprnt.c: 550: (putch(c) );
 	movf	(printf@c),w
 	fcall	_putch
 	line	551
 ;doprnt.c: 551: continue;
-	goto	l1740
+	goto	l1730
 	line	552
 	
-l508:	
+l500:	
 	line	557
 	
-l1700:	
+l1690:	
 ;doprnt.c: 552: }
 ;doprnt.c: 557: flag = 0;
 	movlb 0	; select bank0
 	clrf	(printf@flag)
 	line	644
 ;doprnt.c: 644: switch(c = *f++) {
-	goto	l1704
+	goto	l1694
 	line	646
 ;doprnt.c: 646: case 0:
 	
-l510:	
+l502:	
 	line	647
 ;doprnt.c: 647: goto alldone;
-	goto	l525
+	goto	l517
 	line	706
 ;doprnt.c: 706: case 'd':
 	
-l512:	
-	goto	l1706
+l504:	
+	goto	l1696
 	line	707
 	
-l513:	
+l505:	
 	line	708
 ;doprnt.c: 707: case 'i':
 ;doprnt.c: 708: break;
-	goto	l1706
+	goto	l1696
 	line	811
 ;doprnt.c: 811: default:
 	
-l515:	
+l507:	
 	line	822
 ;doprnt.c: 822: continue;
-	goto	l1740
+	goto	l1730
 	line	831
 	
-l1702:	
+l1692:	
 ;doprnt.c: 831: }
-	goto	l1706
+	goto	l1696
 	line	644
 	
-l509:	
+l501:	
 	
-l1704:	
+l1694:	
 	movf	(printf@f+1),w
 	movwf	(??_printf+0)+0+1
 	movf	(printf@f),w
@@ -3503,22 +3452,22 @@ l1704:
 	opt asmopt_off
 	xorlw	0^0	; case 0
 	skipnz
-	goto	l525
+	goto	l517
 	xorlw	100^0	; case 100
 	skipnz
-	goto	l1706
+	goto	l1696
 	xorlw	105^100	; case 105
 	skipnz
-	goto	l1706
-	goto	l1740
+	goto	l1696
+	goto	l1730
 	opt asmopt_on
 
 	line	831
 	
-l514:	
+l506:	
 	line	1268
 	
-l1706:	
+l1696:	
 ;doprnt.c: 1262: {
 ;doprnt.c: 1268: _val._val = (int)(*(int *)__va_arg((*(int **)ap), (int)0));
 	movf	(printf@ap),w
@@ -3530,24 +3479,24 @@ l1706:
 	moviw	[1]fsr1
 	movwf	(printf@_val+1)
 	
-l1708:	
+l1698:	
 	movlw	(02h)
 	movwf	(??_printf+0)+0
 	movf	(??_printf+0)+0,w
 	addwf	(printf@ap),f
 	line	1270
 	
-l1710:	
+l1700:	
 ;doprnt.c: 1270: if((int)_val._val < 0) {
 	btfss	(printf@_val+1),7
-	goto	u1751
-	goto	u1750
-u1751:
-	goto	l1716
-u1750:
+	goto	u1731
+	goto	u1730
+u1731:
+	goto	l1706
+u1730:
 	line	1271
 	
-l1712:	
+l1702:	
 ;doprnt.c: 1271: flag |= 0x03;
 	movlw	(03h)
 	movwf	(??_printf+0)+0
@@ -3555,20 +3504,20 @@ l1712:
 	iorwf	(printf@flag),f
 	line	1272
 	
-l1714:	
+l1704:	
 ;doprnt.c: 1272: _val._val = -_val._val;
 	comf	(printf@_val),f
 	comf	(printf@_val+1),f
 	incf	(printf@_val),f
 	skipnz
 	incf	(printf@_val+1),f
-	goto	l1716
+	goto	l1706
 	line	1273
 	
-l516:	
+l508:	
 	line	1314
 	
-l1716:	
+l1706:	
 ;doprnt.c: 1273: }
 ;doprnt.c: 1275: }
 ;doprnt.c: 1314: for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
@@ -3577,20 +3526,20 @@ l1716:
 	movf	(printf@c),w
 	xorlw	05h&0ffh
 	skipz
-	goto	u1761
-	goto	u1760
-u1761:
-	goto	l1720
-u1760:
-	goto	l1728
+	goto	u1741
+	goto	u1740
+u1741:
+	goto	l1710
+u1740:
+	goto	l1718
 	
-l1718:	
-	goto	l1728
+l1708:	
+	goto	l1718
 	line	1315
 	
-l517:	
+l509:	
 	
-l1720:	
+l1710:	
 ;doprnt.c: 1315: if(_val._val < dpowers[c])
 	movf	(printf@c),w
 	movwf	(??_printf+0)+0
@@ -3610,69 +3559,69 @@ l1720:
 	movf	1+(??_printf+2)+0,w
 	subwf	(printf@_val+1),w
 	skipz
-	goto	u1775
+	goto	u1755
 	movf	0+(??_printf+2)+0,w
 	subwf	(printf@_val),w
-u1775:
+u1755:
 	skipnc
-	goto	u1771
-	goto	u1770
-u1771:
-	goto	l1724
-u1770:
-	goto	l1728
+	goto	u1751
+	goto	u1750
+u1751:
+	goto	l1714
+u1750:
+	goto	l1718
 	line	1316
 	
-l1722:	
+l1712:	
 ;doprnt.c: 1316: break;
-	goto	l1728
+	goto	l1718
 	
-l519:	
+l511:	
 	line	1314
 	
-l1724:	
+l1714:	
 	movlw	(01h)
 	movwf	(??_printf+0)+0
 	movf	(??_printf+0)+0,w
 	addwf	(printf@c),f
 	
-l1726:	
+l1716:	
 	movf	(printf@c),w
 	xorlw	05h&0ffh
 	skipz
-	goto	u1781
-	goto	u1780
-u1781:
-	goto	l1720
-u1780:
-	goto	l1728
+	goto	u1761
+	goto	u1760
+u1761:
+	goto	l1710
+u1760:
+	goto	l1718
 	
-l518:	
+l510:	
 	line	1447
 	
-l1728:	
+l1718:	
 ;doprnt.c: 1431: {
 ;doprnt.c: 1447: if(flag & 0x03)
 	movf	(printf@flag),w
 	andlw	03h
 	btfsc	status,2
-	goto	u1791
-	goto	u1790
-u1791:
-	goto	l1732
-u1790:
+	goto	u1771
+	goto	u1770
+u1771:
+	goto	l1722
+u1770:
 	line	1448
 	
-l1730:	
+l1720:	
 ;doprnt.c: 1448: (putch('-') );
 	movlw	(02Dh)
 	fcall	_putch
-	goto	l1732
+	goto	l1722
 	
-l520:	
+l512:	
 	line	1481
 	
-l1732:	
+l1722:	
 ;doprnt.c: 1478: }
 ;doprnt.c: 1481: prec = c;
 	movlb 0	; select bank0
@@ -3682,12 +3631,12 @@ l1732:
 	movwf	(printf@prec)
 	line	1483
 ;doprnt.c: 1483: while(prec--) {
-	goto	l1738
+	goto	l1728
 	
-l522:	
+l514:	
 	line	1498
 	
-l1734:	
+l1724:	
 ;doprnt.c: 1487: {
 ;doprnt.c: 1498: c = (_val._val / dpowers[prec]) % 10 + '0';
 	movlw	low(0Ah)
@@ -3734,18 +3683,18 @@ l1734:
 	movwf	(printf@c)
 	line	1533
 	
-l1736:	
+l1726:	
 ;doprnt.c: 1532: }
 ;doprnt.c: 1533: (putch(c) );
 	movf	(printf@c),w
 	fcall	_putch
-	goto	l1738
+	goto	l1728
 	line	1534
 	
-l521:	
+l513:	
 	line	1483
 	
-l1738:	
+l1728:	
 	movlw	(-1)
 	movlb 0	; select bank0
 	movwf	(??_printf+0)+0
@@ -3754,21 +3703,21 @@ l1738:
 	movf	((printf@prec)),w
 	xorlw	-1&0ffh
 	skipz
-	goto	u1801
-	goto	u1800
-u1801:
-	goto	l1734
-u1800:
-	goto	l1740
+	goto	u1781
+	goto	u1780
+u1781:
+	goto	l1724
+u1780:
+	goto	l1730
 	
-l523:	
-	goto	l1740
+l515:	
+	goto	l1730
 	line	1542
 	
-l506:	
+l498:	
 	line	545
 	
-l1740:	
+l1730:	
 	movlb 0	; select bank0
 	movf	(printf@f+1),w
 	movwf	(??_printf+0)+0+1
@@ -3787,26 +3736,26 @@ l1740:
 	movwf	(printf@c)
 	movf	((printf@c)),f
 	skipz
-	goto	u1811
-	goto	u1810
-u1811:
-	goto	l1696
-u1810:
-	goto	l525
+	goto	u1791
+	goto	u1790
+u1791:
+	goto	l1686
+u1790:
+	goto	l517
 	
-l524:	
-	goto	l525
+l516:	
+	goto	l517
 	line	1544
 ;doprnt.c: 1534: }
 ;doprnt.c: 1542: }
 ;doprnt.c: 1544: alldone:
 	
-l511:	
+l503:	
 	line	1550
 ;doprnt.c: 1549: return 0;
 ;	Return value of _printf is never used
 	
-l525:	
+l517:	
 	return
 	opt stack 0
 GLOBAL	__end_of_printf
@@ -3816,7 +3765,7 @@ GLOBAL	__end_of_printf
 
 ;; *************** function _putch *****************
 ;; Defined at:
-;;		line 608 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+;;		line 612 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  byte            1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -3846,12 +3795,12 @@ GLOBAL	__end_of_printf
 ;;
 psect	text7,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
-	line	608
+	line	612
 global __ptext7
 __ptext7:	;psect for function _putch
 psect	text7
 	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
-	line	608
+	line	612
 	global	__size_of_putch
 	__size_of_putch	equ	__end_of_putch-_putch
 	
@@ -3862,37 +3811,37 @@ _putch:
 ;putch@byte stored from wreg
 	movlb 0	; select bank0
 	movwf	(putch@byte)
-	line	611
+	line	615
 	
-l1642:	
-;MCU_16f1516_B1.c: 611: while(!TXIF)
-	goto	l351
+l1632:	
+;MCU_16f1516_B1.c: 615: while(!TXIF)
+	goto	l343
 	
-l352:	
-	line	612
-;MCU_16f1516_B1.c: 612: continue;
+l344:	
+	line	616
+;MCU_16f1516_B1.c: 616: continue;
 	
-l351:	
-	line	611
+l343:	
+	line	615
 	btfss	(140/8),(140)&7	;volatile
-	goto	u1601
-	goto	u1600
-u1601:
-	goto	l351
-u1600:
-	goto	l1644
+	goto	u1581
+	goto	u1580
+u1581:
+	goto	l343
+u1580:
+	goto	l1634
 	
-l353:	
-	line	613
+l345:	
+	line	617
 	
-l1644:	
-;MCU_16f1516_B1.c: 613: TXREG = byte;
+l1634:	
+;MCU_16f1516_B1.c: 617: TXREG = byte;
 	movf	(putch@byte),w
 	movlb 3	; select bank3
 	movwf	(410)^0180h	;volatile
-	line	614
+	line	618
 	
-l354:	
+l346:	
 	return
 	opt stack 0
 GLOBAL	__end_of_putch
@@ -3947,119 +3896,119 @@ ___lwmod:
 ; Regs used in ___lwmod: [wreg+status,2+status,0]
 	line	13
 	
-l1672:	
+l1662:	
 	movlb 0	; select bank0
 	movf	(___lwmod@divisor+1),w
 	iorwf	(___lwmod@divisor),w
 	skipnz
-	goto	u1681
-	goto	u1680
-u1681:
-	goto	l1690
-u1680:
+	goto	u1661
+	goto	u1660
+u1661:
+	goto	l1680
+u1660:
 	line	14
 	
-l1674:	
+l1664:	
 	clrf	(___lwmod@counter)
 	incf	(___lwmod@counter),f
 	line	15
-	goto	l1680
+	goto	l1670
 	
-l870:	
+l862:	
 	line	16
 	
-l1676:	
+l1666:	
 	movlw	01h
 	
-u1695:
+u1675:
 	lslf	(___lwmod@divisor),f
 	rlf	(___lwmod@divisor+1),f
 	decfsz	wreg,f
-	goto	u1695
+	goto	u1675
 	line	17
 	
-l1678:	
+l1668:	
 	movlw	(01h)
 	movwf	(??___lwmod+0)+0
 	movf	(??___lwmod+0)+0,w
 	addwf	(___lwmod@counter),f
-	goto	l1680
+	goto	l1670
 	line	18
 	
-l869:	
+l861:	
 	line	15
 	
-l1680:	
+l1670:	
 	btfss	(___lwmod@divisor+1),(15)&7
-	goto	u1701
-	goto	u1700
-u1701:
-	goto	l1676
-u1700:
-	goto	l1682
+	goto	u1681
+	goto	u1680
+u1681:
+	goto	l1666
+u1680:
+	goto	l1672
 	
-l871:	
-	goto	l1682
+l863:	
+	goto	l1672
 	line	19
 	
-l872:	
+l864:	
 	line	20
 	
-l1682:	
+l1672:	
 	movf	(___lwmod@divisor+1),w
 	subwf	(___lwmod@dividend+1),w
 	skipz
-	goto	u1715
+	goto	u1695
 	movf	(___lwmod@divisor),w
 	subwf	(___lwmod@dividend),w
-u1715:
+u1695:
 	skipc
-	goto	u1711
-	goto	u1710
-u1711:
-	goto	l1686
-u1710:
+	goto	u1691
+	goto	u1690
+u1691:
+	goto	l1676
+u1690:
 	line	21
 	
-l1684:	
+l1674:	
 	movf	(___lwmod@divisor),w
 	subwf	(___lwmod@dividend),f
 	movf	(___lwmod@divisor+1),w
 	subwfb	(___lwmod@dividend+1),f
-	goto	l1686
+	goto	l1676
 	
-l873:	
+l865:	
 	line	22
 	
-l1686:	
+l1676:	
 	movlw	01h
 	
-u1725:
+u1705:
 	lsrf	(___lwmod@divisor+1),f
 	rrf	(___lwmod@divisor),f
 	decfsz	wreg,f
-	goto	u1725
+	goto	u1705
 	line	23
 	
-l1688:	
+l1678:	
 	movlw	low(01h)
 	subwf	(___lwmod@counter),f
 	btfss	status,2
-	goto	u1731
-	goto	u1730
-u1731:
-	goto	l1682
-u1730:
-	goto	l1690
+	goto	u1711
+	goto	u1710
+u1711:
+	goto	l1672
+u1710:
+	goto	l1680
 	
-l874:	
-	goto	l1690
+l866:	
+	goto	l1680
 	line	24
 	
-l868:	
+l860:	
 	line	25
 	
-l1690:	
+l1680:	
 	movf	(___lwmod@dividend+1),w
 	clrf	(?___lwmod+1)
 	addwf	(?___lwmod+1)
@@ -4067,12 +4016,12 @@ l1690:
 	clrf	(?___lwmod)
 	addwf	(?___lwmod)
 
-	goto	l875
+	goto	l867
 	
-l1692:	
+l1682:	
 	line	26
 	
-l875:	
+l867:	
 	return
 	opt stack 0
 GLOBAL	__end_of___lwmod
@@ -4128,137 +4077,137 @@ ___lwdiv:
 ; Regs used in ___lwdiv: [wreg+status,2+status,0]
 	line	14
 	
-l1646:	
+l1636:	
 	movlb 0	; select bank0
 	clrf	(___lwdiv@quotient)
 	clrf	(___lwdiv@quotient+1)
 	line	15
 	
-l1648:	
+l1638:	
 	movf	(___lwdiv@divisor+1),w
 	iorwf	(___lwdiv@divisor),w
 	skipnz
-	goto	u1611
-	goto	u1610
-u1611:
-	goto	l1668
-u1610:
+	goto	u1591
+	goto	u1590
+u1591:
+	goto	l1658
+u1590:
 	line	16
 	
-l1650:	
+l1640:	
 	clrf	(___lwdiv@counter)
 	incf	(___lwdiv@counter),f
 	line	17
-	goto	l1656
+	goto	l1646
 	
-l860:	
+l852:	
 	line	18
 	
-l1652:	
+l1642:	
 	movlw	01h
 	
-u1625:
+u1605:
 	lslf	(___lwdiv@divisor),f
 	rlf	(___lwdiv@divisor+1),f
 	decfsz	wreg,f
-	goto	u1625
+	goto	u1605
 	line	19
 	
-l1654:	
+l1644:	
 	movlw	(01h)
 	movwf	(??___lwdiv+0)+0
 	movf	(??___lwdiv+0)+0,w
 	addwf	(___lwdiv@counter),f
-	goto	l1656
+	goto	l1646
 	line	20
 	
-l859:	
+l851:	
 	line	17
 	
-l1656:	
+l1646:	
 	btfss	(___lwdiv@divisor+1),(15)&7
-	goto	u1631
-	goto	u1630
-u1631:
-	goto	l1652
-u1630:
-	goto	l1658
+	goto	u1611
+	goto	u1610
+u1611:
+	goto	l1642
+u1610:
+	goto	l1648
 	
-l861:	
-	goto	l1658
+l853:	
+	goto	l1648
 	line	21
 	
-l862:	
+l854:	
 	line	22
 	
-l1658:	
+l1648:	
 	movlw	01h
 	
-u1645:
+u1625:
 	lslf	(___lwdiv@quotient),f
 	rlf	(___lwdiv@quotient+1),f
 	decfsz	wreg,f
-	goto	u1645
+	goto	u1625
 	line	23
 	movf	(___lwdiv@divisor+1),w
 	subwf	(___lwdiv@dividend+1),w
 	skipz
-	goto	u1655
+	goto	u1635
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),w
-u1655:
+u1635:
 	skipc
-	goto	u1651
-	goto	u1650
-u1651:
-	goto	l1664
-u1650:
+	goto	u1631
+	goto	u1630
+u1631:
+	goto	l1654
+u1630:
 	line	24
 	
-l1660:	
+l1650:	
 	movf	(___lwdiv@divisor),w
 	subwf	(___lwdiv@dividend),f
 	movf	(___lwdiv@divisor+1),w
 	subwfb	(___lwdiv@dividend+1),f
 	line	25
 	
-l1662:	
+l1652:	
 	bsf	(___lwdiv@quotient)+(0/8),(0)&7
-	goto	l1664
+	goto	l1654
 	line	26
 	
-l863:	
+l855:	
 	line	27
 	
-l1664:	
+l1654:	
 	movlw	01h
 	
-u1665:
+u1645:
 	lsrf	(___lwdiv@divisor+1),f
 	rrf	(___lwdiv@divisor),f
 	decfsz	wreg,f
-	goto	u1665
+	goto	u1645
 	line	28
 	
-l1666:	
+l1656:	
 	movlw	low(01h)
 	subwf	(___lwdiv@counter),f
 	btfss	status,2
-	goto	u1671
-	goto	u1670
-u1671:
+	goto	u1651
+	goto	u1650
+u1651:
+	goto	l1648
+u1650:
 	goto	l1658
-u1670:
-	goto	l1668
 	
-l864:	
-	goto	l1668
+l856:	
+	goto	l1658
 	line	29
 	
-l858:	
+l850:	
 	line	30
 	
-l1668:	
+l1658:	
 	movf	(___lwdiv@quotient+1),w
 	clrf	(?___lwdiv+1)
 	addwf	(?___lwdiv+1)
@@ -4266,12 +4215,12 @@ l1668:
 	clrf	(?___lwdiv)
 	addwf	(?___lwdiv)
 
-	goto	l865
+	goto	l857
 	
-l1670:	
+l1660:	
 	line	31
 	
-l865:	
+l857:	
 	return
 	opt stack 0
 GLOBAL	__end_of___lwdiv
@@ -4281,7 +4230,7 @@ GLOBAL	__end_of___lwdiv
 
 ;; *************** function _UART_Receive *****************
 ;; Defined at:
-;;		line 569 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
+;;		line 573 in file "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -4310,12 +4259,12 @@ GLOBAL	__end_of___lwdiv
 ;;
 psect	text10,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
-	line	569
+	line	573
 global __ptext10
 __ptext10:	;psect for function _UART_Receive
 psect	text10
 	file	"C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
-	line	569
+	line	573
 	global	__size_of_UART_Receive
 	__size_of_UART_Receive	equ	__end_of_UART_Receive-_UART_Receive
 	
@@ -4323,18 +4272,18 @@ _UART_Receive:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _UART_Receive: [wreg+fsr1l+fsr1h+status,2+status,0]
-	line	572
+	line	576
 	
-l2046:	
-;MCU_16f1516_B1.c: 571: char i;
-;MCU_16f1516_B1.c: 572: RA1=~RA1;
+l2036:	
+;MCU_16f1516_B1.c: 575: char i;
+;MCU_16f1516_B1.c: 576: RA1=~RA1;
 	movlw	1<<((97)&7)
 	movlb 0	; select bank0
 	xorwf	((97)/8),f
-	line	574
+	line	578
 	
-l2048:	
-;MCU_16f1516_B1.c: 574: TMain->Test=1;
+l2038:	
+;MCU_16f1516_B1.c: 578: TMain->Test=1;
 	movf	(_TMain),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -4342,33 +4291,33 @@ l2048:
 	
 	clrf	indf1
 	incf	indf1,f
-	line	576
+	line	580
 	
-l2050:	
-;MCU_16f1516_B1.c: 576: for(i=0;i<32;i++)
+l2040:	
+;MCU_16f1516_B1.c: 580: for(i=0;i<32;i++)
 	clrf	(UART_Receive@i)
 	
-l2052:	
+l2042:	
 	movlw	(020h)
 	subwf	(UART_Receive@i),w
 	skipc
-	goto	u2631
-	goto	u2630
-u2631:
-	goto	l2056
-u2630:
-	goto	l2062
+	goto	u2611
+	goto	u2610
+u2611:
+	goto	l2046
+u2610:
+	goto	l2052
 	
-l2054:	
-	goto	l2062
-	line	577
+l2044:	
+	goto	l2052
+	line	581
 	
-l343:	
-	line	578
+l335:	
+	line	582
 	
-l2056:	
-;MCU_16f1516_B1.c: 577: {
-;MCU_16f1516_B1.c: 578: I2C->BufferWriter[i]=UART->RxData[i];
+l2046:	
+;MCU_16f1516_B1.c: 581: {
+;MCU_16f1516_B1.c: 582: I2C->BufferWriter[i]=UART->RxData[i];
 	movf	(UART_Receive@i),w
 	addlw	020h
 	addwf	(_UART),w
@@ -4391,31 +4340,31 @@ l2056:
 	
 	movf	(??_UART_Receive+1)+0,w
 	movwf	indf1
-	line	576
+	line	580
 	
-l2058:	
+l2048:	
 	movlw	(01h)
 	movwf	(??_UART_Receive+0)+0
 	movf	(??_UART_Receive+0)+0,w
 	addwf	(UART_Receive@i),f
 	
-l2060:	
+l2050:	
 	movlw	(020h)
 	subwf	(UART_Receive@i),w
 	skipc
-	goto	u2641
-	goto	u2640
-u2641:
-	goto	l2056
-u2640:
-	goto	l2062
+	goto	u2621
+	goto	u2620
+u2621:
+	goto	l2046
+u2620:
+	goto	l2052
 	
-l344:	
-	line	580
+l336:	
+	line	584
 	
-l2062:	
-;MCU_16f1516_B1.c: 579: }
-;MCU_16f1516_B1.c: 580: I2C->MasterTxGO=1;
+l2052:	
+;MCU_16f1516_B1.c: 583: }
+;MCU_16f1516_B1.c: 584: I2C->MasterTxGO=1;
 	movf	(_I2C),w
 	addlw	042h
 	movwf	fsr1l
@@ -4423,9 +4372,9 @@ l2062:
 	movwf fsr1h	
 	
 	bsf	indf1,3
-	line	594
+	line	598
 	
-l345:	
+l337:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Receive
@@ -4479,7 +4428,7 @@ _SegmentDisplay_Main:
 ; Regs used in _SegmentDisplay_Main: [wreg-fsr1h+status,2+status,0]
 	line	74
 	
-l2270:	
+l2258:	
 ;SegmentDisplay_A2.c: 74: if(Segment->GO)
 	movlb 0	; select bank0
 	movf	(_Segment),w
@@ -4488,14 +4437,14 @@ l2270:
 	clrf fsr1h	
 	
 	btfss	indf1,1
-	goto	u3011
-	goto	u3010
-u3011:
-	goto	l495
-u3010:
+	goto	u2971
+	goto	u2970
+u2971:
+	goto	l487
+u2970:
 	line	76
 	
-l2272:	
+l2260:	
 ;SegmentDisplay_A2.c: 75: {
 ;SegmentDisplay_A2.c: 76: Segment->Time++;
 	movlw	(01h)
@@ -4509,7 +4458,7 @@ l2272:
 	addwf	indf1,f
 	line	77
 	
-l2274:	
+l2262:	
 ;SegmentDisplay_A2.c: 77: if(Segment->Time == 5)
 	movf	(_Segment),w
 	addlw	019h
@@ -4519,14 +4468,14 @@ l2274:
 	movf	indf1,w
 	xorlw	05h&0ffh
 	skipz
-	goto	u3021
-	goto	u3020
-u3021:
-	goto	l495
-u3020:
+	goto	u2981
+	goto	u2980
+u2981:
+	goto	l487
+u2980:
 	line	79
 	
-l2276:	
+l2264:	
 ;SegmentDisplay_A2.c: 78: {
 ;SegmentDisplay_A2.c: 79: Segment->Time=0;
 	movf	(_Segment),w
@@ -4537,7 +4486,7 @@ l2276:
 	clrf	indf1
 	line	80
 	
-l2278:	
+l2266:	
 ;SegmentDisplay_A2.c: 80: PORTA&=0x0f;
 	movlw	(0Fh)
 	movwf	(??_SegmentDisplay_Main+0)+0
@@ -4545,7 +4494,7 @@ l2278:
 	andwf	(12),f	;volatile
 	line	81
 	
-l2280:	
+l2268:	
 ;SegmentDisplay_A2.c: 81: if(Segment->ComCount == 0)
 	movf	(_Segment),w
 	addlw	016h
@@ -4554,25 +4503,25 @@ l2280:
 	
 	movf	indf1,f
 	skipz
-	goto	u3031
-	goto	u3030
-u3031:
-	goto	l2284
-u3030:
+	goto	u2991
+	goto	u2990
+u2991:
+	goto	l2272
+u2990:
 	line	83
 	
-l2282:	
+l2270:	
 ;SegmentDisplay_A2.c: 82: {
 ;SegmentDisplay_A2.c: 83: RA4=1;
 	bsf	(100/8),(100)&7	;volatile
 	line	84
 ;SegmentDisplay_A2.c: 84: }
-	goto	l2296
+	goto	l2284
 	line	85
 	
-l486:	
+l478:	
 	
-l2284:	
+l2272:	
 ;SegmentDisplay_A2.c: 85: else if(Segment->ComCount == 1)
 	movf	(_Segment),w
 	addlw	016h
@@ -4582,25 +4531,25 @@ l2284:
 	movf	indf1,w
 	xorlw	01h&0ffh
 	skipz
-	goto	u3041
-	goto	u3040
-u3041:
-	goto	l2288
-u3040:
+	goto	u3001
+	goto	u3000
+u3001:
+	goto	l2276
+u3000:
 	line	87
 	
-l2286:	
+l2274:	
 ;SegmentDisplay_A2.c: 86: {
 ;SegmentDisplay_A2.c: 87: RA5=1;
 	bsf	(101/8),(101)&7	;volatile
 	line	88
 ;SegmentDisplay_A2.c: 88: }
-	goto	l2296
+	goto	l2284
 	line	89
 	
-l488:	
+l480:	
 	
-l2288:	
+l2276:	
 ;SegmentDisplay_A2.c: 89: else if(Segment->ComCount == 2)
 	movf	(_Segment),w
 	addlw	016h
@@ -4610,25 +4559,25 @@ l2288:
 	movf	indf1,w
 	xorlw	02h&0ffh
 	skipz
-	goto	u3051
-	goto	u3050
-u3051:
-	goto	l2292
-u3050:
+	goto	u3011
+	goto	u3010
+u3011:
+	goto	l2280
+u3010:
 	line	91
 	
-l2290:	
+l2278:	
 ;SegmentDisplay_A2.c: 90: {
 ;SegmentDisplay_A2.c: 91: RA6=1;
 	bsf	(102/8),(102)&7	;volatile
 	line	92
 ;SegmentDisplay_A2.c: 92: }
-	goto	l2296
+	goto	l2284
 	line	93
 	
-l490:	
+l482:	
 	
-l2292:	
+l2280:	
 ;SegmentDisplay_A2.c: 93: else if(Segment->ComCount == 3)
 	movf	(_Segment),w
 	addlw	016h
@@ -4638,33 +4587,33 @@ l2292:
 	movf	indf1,w
 	xorlw	03h&0ffh
 	skipz
-	goto	u3061
-	goto	u3060
-u3061:
-	goto	l2296
-u3060:
+	goto	u3021
+	goto	u3020
+u3021:
+	goto	l2284
+u3020:
 	line	95
 	
-l2294:	
+l2282:	
 ;SegmentDisplay_A2.c: 94: {
 ;SegmentDisplay_A2.c: 95: RA7=1;
 	bsf	(103/8),(103)&7	;volatile
-	goto	l2296
+	goto	l2284
 	line	96
 	
-l492:	
-	goto	l2296
+l484:	
+	goto	l2284
 	line	97
 	
-l491:	
-	goto	l2296
+l483:	
+	goto	l2284
 	
-l489:	
-	goto	l2296
+l481:	
+	goto	l2284
 	
-l487:	
+l479:	
 	
-l2296:	
+l2284:	
 ;SegmentDisplay_A2.c: 96: }
 ;SegmentDisplay_A2.c: 97: PORTB=Segment->Display[Segment->Num[Segment->ComCount]];
 	movf	(_Segment),w
@@ -4691,7 +4640,7 @@ l2296:
 	movwf	(13)	;volatile
 	line	98
 	
-l2298:	
+l2286:	
 ;SegmentDisplay_A2.c: 98: if(Segment->ComCount < Segment->DisplayCount)
 	movf	(_Segment),w
 	addlw	016h
@@ -4706,14 +4655,14 @@ l2298:
 	movf	indf0,w
 	subwf	indf1,w
 	skipnc
-	goto	u3071
-	goto	u3070
-u3071:
-	goto	l2302
-u3070:
+	goto	u3031
+	goto	u3030
+u3031:
+	goto	l2290
+u3030:
 	line	100
 	
-l2300:	
+l2288:	
 ;SegmentDisplay_A2.c: 99: {
 ;SegmentDisplay_A2.c: 100: Segment->ComCount++;
 	movlw	(01h)
@@ -4727,13 +4676,13 @@ l2300:
 	addwf	indf1,f
 	line	101
 ;SegmentDisplay_A2.c: 101: }
-	goto	l495
+	goto	l487
 	line	102
 	
-l493:	
+l485:	
 	line	104
 	
-l2302:	
+l2290:	
 ;SegmentDisplay_A2.c: 102: else
 ;SegmentDisplay_A2.c: 103: {
 ;SegmentDisplay_A2.c: 104: Segment->ComCount=0;
@@ -4743,21 +4692,21 @@ l2302:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	l495
+	goto	l487
 	line	105
 	
-l494:	
-	goto	l495
+l486:	
+	goto	l487
 	line	106
 	
-l485:	
-	goto	l495
+l477:	
+	goto	l487
 	line	107
 	
-l484:	
+l476:	
 	line	108
 	
-l495:	
+l487:	
 	return
 	opt stack 0
 GLOBAL	__end_of_SegmentDisplay_Main
@@ -4810,7 +4759,7 @@ _SegmentDisplay_Initial:
 ; Regs used in _SegmentDisplay_Initial: [wregfsr1]
 	line	10
 	
-l2240:	
+l2228:	
 ;SegmentDisplay_A2.c: 10: Segment=&VarSegment;
 	movlw	(_VarSegment)&0ffh
 	movlb 0	; select bank0
@@ -4819,7 +4768,7 @@ l2240:
 	movwf	(_Segment)
 	line	11
 	
-l2242:	
+l2230:	
 ;SegmentDisplay_A2.c: 11: Segment->Enable=1;
 	movf	(_Segment),w
 	addlw	015h
@@ -4829,7 +4778,7 @@ l2242:
 	bsf	indf1,0
 	line	13
 	
-l2244:	
+l2232:	
 ;SegmentDisplay_A2.c: 13: Segment->Dec=1;
 	movf	(_Segment),w
 	addlw	015h
@@ -4839,7 +4788,7 @@ l2244:
 	bsf	indf1,3
 	line	18
 	
-l464:	
+l456:	
 	return
 	opt stack 0
 GLOBAL	__end_of_SegmentDisplay_Initial
@@ -4896,62 +4845,62 @@ _Mcu_Initial:
 ; Regs used in _Mcu_Initial: [wreg+status,2+status,0+pclath+cstack]
 	line	14
 	
-l2130:	
+l2118:	
 ;MCU_16f1516_B1.c: 14: OSCCON=0x78; ;;
 	movlw	(078h)
 	movlb 1	; select bank1
 	movwf	(153)^080h	;volatile
 	line	16
 	
-l2132:	
+l2120:	
 ;MCU_16f1516_B1.c: 16: IO_Set();
 	fcall	_IO_Set
 	line	18
 	
-l2134:	
+l2122:	
 ;MCU_16f1516_B1.c: 18: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	20
 	
-l2136:	
+l2124:	
 ;MCU_16f1516_B1.c: 20: TMR1_Set();
 	fcall	_TMR1_Set
 	line	22
 	
-l2138:	
+l2126:	
 ;MCU_16f1516_B1.c: 22: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	26
 	
-l2140:	
+l2128:	
 ;MCU_16f1516_B1.c: 26: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	28
 	
-l2142:	
+l2130:	
 ;MCU_16f1516_B1.c: 28: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	30
 	
-l2144:	
+l2132:	
 ;MCU_16f1516_B1.c: 30: I2C_Set();
 	fcall	_I2C_Set
 	line	32
 	
-l2146:	
+l2134:	
 ;MCU_16f1516_B1.c: 32: UART_Set();
 	fcall	_UART_Set
 	line	35
 	
-l165:	
+l163:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Mcu_Initial
@@ -5004,7 +4953,7 @@ _UART_Set:
 ; Regs used in _UART_Set: [wreg+status,2]
 	line	500
 	
-l1936:	
+l1926:	
 ;MCU_16f1516_B1.c: 500: UART=&VarUart;
 	movlw	(_VarUart)&0ffh
 	movlb 0	; select bank0
@@ -5013,13 +4962,13 @@ l1936:
 	movwf	(_UART)
 	line	501
 	
-l1938:	
+l1928:	
 ;MCU_16f1516_B1.c: 501: TRISC7 = 1;
 	movlb 1	; select bank1
 	bsf	(1143/8)^080h,(1143)&7	;volatile
 	line	502
 	
-l1940:	
+l1930:	
 ;MCU_16f1516_B1.c: 502: TRISC6 = 1;
 	bsf	(1142/8)^080h,(1142)&7	;volatile
 	line	503
@@ -5029,60 +4978,60 @@ l1940:
 	movwf	(411)^0180h	;volatile
 	line	504
 	
-l1942:	
+l1932:	
 ;MCU_16f1516_B1.c: 504: SPBRGH = 0;
 	clrf	(412)^0180h	;volatile
 	line	505
 	
-l1944:	
+l1934:	
 ;MCU_16f1516_B1.c: 505: BRG16 = 0;
 	bcf	(3323/8)^0180h,(3323)&7	;volatile
 	line	506
 	
-l1946:	
+l1936:	
 ;MCU_16f1516_B1.c: 506: RCSTA = (0|0x90);
 	movlw	(090h)
 	movwf	(413)^0180h	;volatile
 	line	507
 	
-l1948:	
+l1938:	
 ;MCU_16f1516_B1.c: 507: TXSTA = (0x4|0|0x20);
 	movlw	(024h)
 	movwf	(414)^0180h	;volatile
 	line	508
 	
-l1950:	
+l1940:	
 ;MCU_16f1516_B1.c: 508: TX9=0;
 	bcf	(3318/8)^0180h,(3318)&7	;volatile
 	line	509
 	
-l1952:	
+l1942:	
 ;MCU_16f1516_B1.c: 509: RX9=0;
 	bcf	(3310/8)^0180h,(3310)&7	;volatile
 	line	510
 	
-l1954:	
+l1944:	
 ;MCU_16f1516_B1.c: 510: TXIE=0;
 	movlb 1	; select bank1
 	bcf	(1164/8)^080h,(1164)&7	;volatile
 	line	511
 	
-l1956:	
+l1946:	
 ;MCU_16f1516_B1.c: 511: RCIE=1;
 	bsf	(1165/8)^080h,(1165)&7	;volatile
 	line	512
 	
-l1958:	
+l1948:	
 ;MCU_16f1516_B1.c: 512: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	513
 	
-l1960:	
+l1950:	
 ;MCU_16f1516_B1.c: 513: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	514
 	
-l316:	
+l314:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_Set
@@ -5135,7 +5084,7 @@ _TMR1_Set:
 ; Regs used in _TMR1_Set: [wreg]
 	line	116
 	
-l1922:	
+l1912:	
 ;MCU_16f1516_B1.c: 116: Timer1=&VarTimer1;
 	movlw	(_VarTimer1)&0ffh
 	movlb 0	; select bank0
@@ -5156,23 +5105,23 @@ l1922:
 	movwf	(22)	;volatile
 	line	120
 	
-l1924:	
+l1914:	
 ;MCU_16f1516_B1.c: 120: TMR1IE=1;
 	movlb 1	; select bank1
 	bsf	(1160/8)^080h,(1160)&7	;volatile
 	line	121
 	
-l1926:	
+l1916:	
 ;MCU_16f1516_B1.c: 121: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	122
 	
-l1928:	
+l1918:	
 ;MCU_16f1516_B1.c: 122: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	123
 	
-l174:	
+l172:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_Set
@@ -5225,19 +5174,19 @@ _IO_Set:
 ; Regs used in _IO_Set: [wreg+status,2]
 	line	39
 	
-l1906:	
+l1896:	
 ;MCU_16f1516_B1.c: 39: TRISA=0b00001001;;
 	movlw	(09h)
 	movlb 1	; select bank1
 	movwf	(140)^080h	;volatile
 	line	40
 	
-l1908:	
+l1898:	
 ;MCU_16f1516_B1.c: 40: TRISB=0b00000000;;
 	clrf	(141)^080h	;volatile
 	line	41
 	
-l1910:	
+l1900:	
 ;MCU_16f1516_B1.c: 41: TRISC=0b00011001;;
 	movlw	(019h)
 	movwf	(142)^080h	;volatile
@@ -5253,24 +5202,24 @@ l1910:
 	clrf	(270)^0100h	;volatile
 	line	45
 	
-l1912:	
+l1902:	
 ;MCU_16f1516_B1.c: 45: ANSELA=0b00000001;;
 	movlw	(01h)
 	movlb 3	; select bank3
 	movwf	(396)^0180h	;volatile
 	line	46
 	
-l1914:	
+l1904:	
 ;MCU_16f1516_B1.c: 46: ANSELB=0b00000000;;
 	clrf	(397)^0180h	;volatile
 	line	47
 	
-l1916:	
+l1906:	
 ;MCU_16f1516_B1.c: 47: ANSELC=0b00000000;;
 	clrf	(398)^0180h	;volatile
 	line	48
 	
-l1918:	
+l1908:	
 ;MCU_16f1516_B1.c: 48: PORTA=0b00001001;;
 	movlw	(09h)
 	movlb 0	; select bank0
@@ -5280,13 +5229,13 @@ l1918:
 	clrf	(13)	;volatile
 	line	50
 	
-l1920:	
+l1910:	
 ;MCU_16f1516_B1.c: 50: PORTC=0b00011001;;
 	movlw	(019h)
 	movwf	(14)	;volatile
 	line	51
 	
-l168:	
+l166:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IO_Set
@@ -5339,7 +5288,7 @@ _I2C_Set:
 ; Regs used in _I2C_Set: [wreg+status,2]
 	line	235
 	
-l1930:	
+l1920:	
 ;MCU_16f1516_B1.c: 235: I2C=&VarI2C;
 	movlw	(_VarI2C)&0ffh
 	movlb 0	; select bank0
@@ -5357,18 +5306,18 @@ l1930:
 	movwf	(532)^0200h	;volatile
 	line	239
 	
-l1932:	
+l1922:	
 ;MCU_16f1516_B1.c: 239: SSPCON2 = 0;
 	clrf	(534)^0200h	;volatile
 	line	241
 	
-l1934:	
+l1924:	
 ;MCU_16f1516_B1.c: 241: SSPCON1=0b101000;
 	movlw	(028h)
 	movwf	(533)^0200h	;volatile
 	line	258
 	
-l182:	
+l180:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Set
@@ -5422,7 +5371,7 @@ _MainT_Initial:
 ; Regs used in _MainT_Initial: [wregfsr1]
 	line	35
 	
-l2234:	
+l2222:	
 ;myMain.c: 35: TMain=&VarTMain;
 	movlw	(_VarTMain)&0ffh
 	movlb 0	; select bank0
@@ -5431,7 +5380,7 @@ l2234:
 	movwf	(_TMain)
 	line	36
 	
-l2236:	
+l2224:	
 ;myMain.c: 36: TMain->FirstOpen=1;
 	movf	(_TMain),w
 	addlw	0Dh
@@ -5441,7 +5390,7 @@ l2236:
 	bsf	indf1,0
 	line	37
 	
-l2238:	
+l2226:	
 ;myMain.c: 37: Product=&VarProduct;
 	movlw	(_VarProduct)&0ffh
 	movwf	(??_MainT_Initial+0)+0
@@ -5449,7 +5398,7 @@ l2238:
 	movwf	(_Product)
 	line	38
 	
-l416:	
+l408:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT_Initial
@@ -5502,7 +5451,7 @@ _MainT:
 ; Regs used in _MainT: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	45
 	
-l2246:	
+l2234:	
 ;myMain.c: 43: char i;
 ;myMain.c: 45: if(!TMain->PowerON)
 	movlb 0	; select bank0
@@ -5511,14 +5460,14 @@ l2246:
 	clrf fsr1h	
 	
 	btfsc	indf1,0
-	goto	u2971
-	goto	u2970
-u2971:
-	goto	l2254
-u2970:
+	goto	u2931
+	goto	u2930
+u2931:
+	goto	l2242
+u2930:
 	line	47
 	
-l2248:	
+l2236:	
 ;myMain.c: 46: {
 ;myMain.c: 47: TMain->PowerCount++;
 	incf	(_TMain),w
@@ -5532,7 +5481,7 @@ l2248:
 	incf	indf1,f
 	line	48
 	
-l2250:	
+l2238:	
 ;myMain.c: 48: if(TMain->PowerCount == 1500)
 	incf	(_TMain),w
 	movwf	fsr1l
@@ -5541,19 +5490,19 @@ l2250:
 	moviw	[0]fsr1
 	xorlw	low(05DCh)
 	skipz
-	goto	u2985
+	goto	u2945
 	moviw	[1]fsr1
 	xorlw	high(05DCh)
-u2985:
+u2945:
 	skipz
-	goto	u2981
-	goto	u2980
-u2981:
-	goto	l425
-u2980:
+	goto	u2941
+	goto	u2940
+u2941:
+	goto	l417
+u2940:
 	line	50
 	
-l2252:	
+l2240:	
 ;myMain.c: 49: {
 ;myMain.c: 50: TMain->PowerCount=0;
 	incf	(_TMain),w
@@ -5570,20 +5519,20 @@ l2252:
 	clrf fsr1h	
 	
 	bsf	indf1,0
-	goto	l425
+	goto	l417
 	line	56
 	
-l420:	
+l412:	
 	line	57
 ;myMain.c: 56: }
 ;myMain.c: 57: }
-	goto	l425
+	goto	l417
 	line	58
 	
-l419:	
+l411:	
 	line	60
 	
-l2254:	
+l2242:	
 ;myMain.c: 58: else
 ;myMain.c: 59: {
 ;myMain.c: 60: TMain->Count1++;
@@ -5599,7 +5548,7 @@ l2254:
 	incf	indf1,f
 	line	61
 	
-l2256:	
+l2244:	
 ;myMain.c: 61: if(TMain->Count1 == 1000)
 	movf	(_TMain),w
 	addlw	05h
@@ -5609,19 +5558,19 @@ l2256:
 	moviw	[0]fsr1
 	xorlw	low(03E8h)
 	skipz
-	goto	u2995
+	goto	u2955
 	moviw	[1]fsr1
 	xorlw	high(03E8h)
-u2995:
+u2955:
 	skipz
-	goto	u2991
-	goto	u2990
-u2991:
-	goto	l2264
-u2990:
+	goto	u2951
+	goto	u2950
+u2951:
+	goto	l2252
+u2950:
 	line	63
 	
-l2258:	
+l2246:	
 ;myMain.c: 62: {
 ;myMain.c: 63: TMain->Count1=0;
 	movf	(_TMain),w
@@ -5634,26 +5583,26 @@ l2258:
 	movwi	[1]fsr1
 	line	64
 	
-l2260:	
+l2248:	
 ;myMain.c: 64: RA2=~RA2;
 	movlw	1<<((98)&7)
 	xorwf	((98)/8),f
-	goto	l2264
+	goto	l2252
 	line	78
 	
-l2262:	
-	goto	l2264
+l2250:	
+	goto	l2252
 	line	82
 ;myMain.c: 79: {
 	
-l423:	
-	goto	l2264
+l415:	
+	goto	l2252
 	line	105
 	
-l422:	
+l414:	
 	line	108
 	
-l2264:	
+l2252:	
 ;myMain.c: 82: }
 ;myMain.c: 105: }
 ;myMain.c: 108: TMain->Count2++;
@@ -5669,7 +5618,7 @@ l2264:
 	incf	indf1,f
 	line	109
 	
-l2266:	
+l2254:	
 ;myMain.c: 109: if(TMain->Count2 == 2000)
 	movf	(_TMain),w
 	addlw	07h
@@ -5679,19 +5628,19 @@ l2266:
 	moviw	[0]fsr1
 	xorlw	low(07D0h)
 	skipz
-	goto	u3005
+	goto	u2965
 	moviw	[1]fsr1
 	xorlw	high(07D0h)
-u3005:
+u2965:
 	skipz
-	goto	u3001
-	goto	u3000
-u3001:
-	goto	l425
-u3000:
+	goto	u2961
+	goto	u2960
+u2961:
+	goto	l417
+u2960:
 	line	111
 	
-l2268:	
+l2256:	
 ;myMain.c: 110: {
 ;myMain.c: 111: TMain->Count2=0;
 	movf	(_TMain),w
@@ -5702,17 +5651,17 @@ l2268:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	goto	l425
+	goto	l417
 	line	124
 	
-l424:	
-	goto	l425
+l416:	
+	goto	l417
 	line	127
 	
-l421:	
+l413:	
 	line	128
 	
-l425:	
+l417:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT
@@ -5767,7 +5716,7 @@ _I2C_Main:
 ; Regs used in _I2C_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	302
 	
-l2182:	
+l2170:	
 ;MCU_16f1516_B1.c: 277: char i;
 ;MCU_16f1516_B1.c: 302: if(I2C->MasterRxGO)
 	movlb 0	; select bank0
@@ -5778,14 +5727,14 @@ l2182:
 	movwf fsr1h	
 	
 	btfss	indf1,4
-	goto	u2881
-	goto	u2880
-u2881:
-	goto	l189
-u2880:
+	goto	u2841
+	goto	u2840
+u2841:
+	goto	l187
+u2840:
 	line	304
 	
-l2184:	
+l2172:	
 ;MCU_16f1516_B1.c: 303: {
 ;MCU_16f1516_B1.c: 304: I2C->MasterRxGO=0;
 	movf	(_I2C),w
@@ -5797,12 +5746,12 @@ l2184:
 	bcf	indf1,4
 	line	305
 	
-l2186:	
+l2174:	
 ;MCU_16f1516_B1.c: 305: I2C_Master_Reception();
 	fcall	_I2C_Master_Reception
 	line	306
 	
-l2188:	
+l2176:	
 ;MCU_16f1516_B1.c: 306: TMain->Test=1;
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -5814,35 +5763,35 @@ l2188:
 	incf	indf1,f
 	line	307
 	
-l2190:	
+l2178:	
 ;MCU_16f1516_B1.c: 307: RA1=~RA1;
 	movlw	1<<((97)&7)
 	xorwf	((97)/8),f
 	line	309
 	
-l2192:	
+l2180:	
 ;MCU_16f1516_B1.c: 309: for(i=0;i<32;i++)
 	clrf	(I2C_Main@i)
 	
-l2194:	
+l2182:	
 	movlw	(020h)
 	subwf	(I2C_Main@i),w
 	skipc
-	goto	u2891
-	goto	u2890
-u2891:
-	goto	l2198
-u2890:
-	goto	l2204
+	goto	u2851
+	goto	u2850
+u2851:
+	goto	l2186
+u2850:
+	goto	l2192
 	
-l2196:	
-	goto	l2204
+l2184:	
+	goto	l2192
 	line	310
 	
-l190:	
+l188:	
 	line	311
 	
-l2198:	
+l2186:	
 ;MCU_16f1516_B1.c: 310: {
 ;MCU_16f1516_B1.c: 311: UART->TxData[i]=I2C->BufferReader[i];
 	movf	(I2C_Main@i),w
@@ -5867,27 +5816,27 @@ l2198:
 	movwf	indf1
 	line	309
 	
-l2200:	
+l2188:	
 	movlw	(01h)
 	movwf	(??_I2C_Main+0)+0
 	movf	(??_I2C_Main+0)+0,w
 	addwf	(I2C_Main@i),f
 	
-l2202:	
+l2190:	
 	movlw	(020h)
 	subwf	(I2C_Main@i),w
 	skipc
-	goto	u2901
-	goto	u2900
-u2901:
-	goto	l2198
-u2900:
-	goto	l2204
+	goto	u2861
+	goto	u2860
+u2861:
+	goto	l2186
+u2860:
+	goto	l2192
 	
-l191:	
+l189:	
 	line	313
 	
-l2204:	
+l2192:	
 ;MCU_16f1516_B1.c: 312: }
 ;MCU_16f1516_B1.c: 313: UART->TxGO=1;
 	movf	(_UART),w
@@ -5899,23 +5848,23 @@ l2204:
 	bsf	indf1,0
 	line	315
 ;MCU_16f1516_B1.c: 315: }
-	goto	l198
+	goto	l196
 	line	316
 	
-l189:	
+l187:	
 	line	318
 ;MCU_16f1516_B1.c: 316: else
 ;MCU_16f1516_B1.c: 317: {
 ;MCU_16f1516_B1.c: 318: if(RC0)
 	btfss	(112/8),(112)&7	;volatile
-	goto	u2911
-	goto	u2910
-u2911:
-	goto	l2210
-u2910:
+	goto	u2871
+	goto	u2870
+u2871:
+	goto	l2198
+u2870:
 	line	320
 	
-l2206:	
+l2194:	
 ;MCU_16f1516_B1.c: 319: {
 ;MCU_16f1516_B1.c: 320: if(!I2C->SS)
 	movf	(_I2C),w
@@ -5925,14 +5874,14 @@ l2206:
 	movwf fsr1h	
 	
 	btfsc	indf1,5
-	goto	u2921
-	goto	u2920
-u2921:
-	goto	l198
-u2920:
+	goto	u2881
+	goto	u2880
+u2881:
+	goto	l196
+u2880:
 	line	322
 	
-l2208:	
+l2196:	
 ;MCU_16f1516_B1.c: 321: {
 ;MCU_16f1516_B1.c: 322: I2C->SS=1;
 	movf	(_I2C),w
@@ -5951,20 +5900,20 @@ l2208:
 	movwf fsr1h	
 	
 	bsf	indf1,4
-	goto	l198
+	goto	l196
 	line	324
 	
-l194:	
+l192:	
 	line	325
 ;MCU_16f1516_B1.c: 324: }
 ;MCU_16f1516_B1.c: 325: }
-	goto	l198
+	goto	l196
 	line	326
 	
-l193:	
+l191:	
 	line	328
 	
-l2210:	
+l2198:	
 ;MCU_16f1516_B1.c: 326: else
 ;MCU_16f1516_B1.c: 327: {
 ;MCU_16f1516_B1.c: 328: if(I2C->SS)
@@ -5975,14 +5924,14 @@ l2210:
 	movwf fsr1h	
 	
 	btfss	indf1,5
-	goto	u2931
-	goto	u2930
-u2931:
-	goto	l196
-u2930:
+	goto	u2891
+	goto	u2890
+u2891:
+	goto	l194
+u2890:
 	line	330
 	
-l2212:	
+l2200:	
 ;MCU_16f1516_B1.c: 329: {
 ;MCU_16f1516_B1.c: 330: I2C->SS=0;
 	movf	(_I2C),w
@@ -5994,7 +5943,7 @@ l2212:
 	bcf	indf1,5
 	line	331
 	
-l196:	
+l194:	
 	line	332
 ;MCU_16f1516_B1.c: 331: }
 ;MCU_16f1516_B1.c: 332: if(I2C->MasterTxGO)
@@ -6005,14 +5954,14 @@ l196:
 	movwf fsr1h	
 	
 	btfss	indf1,3
-	goto	u2941
-	goto	u2940
-u2941:
-	goto	l198
-u2940:
+	goto	u2901
+	goto	u2900
+u2901:
+	goto	l196
+u2900:
 	line	334
 	
-l2214:	
+l2202:	
 ;MCU_16f1516_B1.c: 333: {
 ;MCU_16f1516_B1.c: 334: I2C->MasterTxGO=0;
 	movf	(_I2C),w
@@ -6024,24 +5973,24 @@ l2214:
 	bcf	indf1,3
 	line	335
 	
-l2216:	
+l2204:	
 ;MCU_16f1516_B1.c: 335: I2C_Master_Transmission();
 	fcall	_I2C_Master_Transmission
-	goto	l198
+	goto	l196
 	line	336
 	
-l197:	
-	goto	l198
+l195:	
+	goto	l196
 	line	337
 	
-l195:	
-	goto	l198
+l193:	
+	goto	l196
 	line	338
 	
-l192:	
+l190:	
 	line	341
 	
-l198:	
+l196:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Main
@@ -6094,124 +6043,124 @@ _I2C_Master_Transmission:
 ; Regs used in _I2C_Master_Transmission: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	378
 	
-l1978:	
+l1968:	
 ;MCU_16f1516_B1.c: 377: char i;
 ;MCU_16f1516_B1.c: 378: while(SEN);
-	goto	l204
+	goto	l202
 	
-l205:	
+l203:	
 	
-l204:	
+l202:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2401
-	goto	u2400
-u2401:
-	goto	l204
-u2400:
+	goto	u2381
+	goto	u2380
+u2381:
+	goto	l202
+u2380:
 	
-l206:	
+l204:	
 	line	379
 ;MCU_16f1516_B1.c: 379: SEN=1;
 	bsf	(4272/8)^0200h,(4272)&7	;volatile
 	line	381
 ;MCU_16f1516_B1.c: 381: while(SEN);
-	goto	l207
+	goto	l205
 	
-l208:	
+l206:	
+	
+l205:	
+	btfsc	(4272/8)^0200h,(4272)&7	;volatile
+	goto	u2391
+	goto	u2390
+u2391:
+	goto	l205
+u2390:
+	goto	l1970
 	
 l207:	
-	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2411
-	goto	u2410
-u2411:
-	goto	l207
-u2410:
-	goto	l1980
-	
-l209:	
 	line	384
 	
-l1980:	
+l1970:	
 ;MCU_16f1516_B1.c: 384: SSPBUF=0x10;
 	movlw	(010h)
 	movwf	(529)^0200h	;volatile
 	line	385
 ;MCU_16f1516_B1.c: 385: while(BF);
-	goto	l210
+	goto	l208
 	
-l211:	
+l209:	
+	
+l208:	
+	btfsc	(4256/8)^0200h,(4256)&7	;volatile
+	goto	u2401
+	goto	u2400
+u2401:
+	goto	l208
+u2400:
+	goto	l211
 	
 l210:	
-	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u2421
-	goto	u2420
-u2421:
-	goto	l210
-u2420:
-	goto	l213
-	
-l212:	
 	line	388
 ;MCU_16f1516_B1.c: 388: while(ACKSTAT);
-	goto	l213
+	goto	l211
 	
-l214:	
+l212:	
+	
+l211:	
+	btfsc	(4278/8)^0200h,(4278)&7	;volatile
+	goto	u2411
+	goto	u2410
+u2411:
+	goto	l211
+u2410:
+	goto	l1972
 	
 l213:	
-	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u2431
-	goto	u2430
-u2431:
-	goto	l213
-u2430:
-	goto	l1982
-	
-l215:	
 	line	390
 	
-l1982:	
+l1972:	
 ;MCU_16f1516_B1.c: 390: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(I2C_Master_Transmission@i)
 	
-l1984:	
+l1974:	
 	movlw	(020h)
 	subwf	(I2C_Master_Transmission@i),w
 	skipc
-	goto	u2441
-	goto	u2440
-u2441:
-	goto	l218
-u2440:
-	goto	l227
+	goto	u2421
+	goto	u2420
+u2421:
+	goto	l216
+u2420:
+	goto	l225
 	
-l1986:	
-	goto	l227
+l1976:	
+	goto	l225
 	line	391
 	
-l216:	
+l214:	
 	line	392
 ;MCU_16f1516_B1.c: 391: {
 ;MCU_16f1516_B1.c: 392: while(SEN);
-	goto	l218
+	goto	l216
 	
-l219:	
+l217:	
 	
-l218:	
+l216:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2451
-	goto	u2450
-u2451:
-	goto	l218
-u2450:
-	goto	l1988
+	goto	u2431
+	goto	u2430
+u2431:
+	goto	l216
+u2430:
+	goto	l1978
 	
-l220:	
+l218:	
 	line	393
 	
-l1988:	
+l1978:	
 ;MCU_16f1516_B1.c: 393: SSPBUF=I2C->BufferWriter[i];
 	movlb 0	; select bank0
 	movf	(I2C_Master_Transmission@i),w
@@ -6228,114 +6177,114 @@ l1988:
 	movwf	(529)^0200h	;volatile
 	line	394
 ;MCU_16f1516_B1.c: 394: while(BF);
-	goto	l221
+	goto	l219
 	
-l222:	
+l220:	
+	
+l219:	
+	btfsc	(4256/8)^0200h,(4256)&7	;volatile
+	goto	u2441
+	goto	u2440
+u2441:
+	goto	l219
+u2440:
+	goto	l222
 	
 l221:	
-	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u2461
-	goto	u2460
-u2461:
-	goto	l221
-u2460:
-	goto	l224
-	
-l223:	
 	line	397
 ;MCU_16f1516_B1.c: 397: while(ACKSTAT);
-	goto	l224
+	goto	l222
 	
-l225:	
+l223:	
+	
+l222:	
+	btfsc	(4278/8)^0200h,(4278)&7	;volatile
+	goto	u2451
+	goto	u2450
+u2451:
+	goto	l222
+u2450:
+	goto	l1980
 	
 l224:	
-	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u2471
-	goto	u2470
-u2471:
-	goto	l224
-u2470:
-	goto	l1990
-	
-l226:	
 	line	390
 	
-l1990:	
+l1980:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_I2C_Master_Transmission+0)+0
 	movf	(??_I2C_Master_Transmission+0)+0,w
 	addwf	(I2C_Master_Transmission@i),f
 	
-l1992:	
+l1982:	
 	movlw	(020h)
 	subwf	(I2C_Master_Transmission@i),w
 	skipc
-	goto	u2481
-	goto	u2480
-u2481:
-	goto	l218
-u2480:
-	goto	l227
+	goto	u2461
+	goto	u2460
+u2461:
+	goto	l216
+u2460:
+	goto	l225
 	
-l217:	
+l215:	
 	line	400
 ;MCU_16f1516_B1.c: 398: }
 ;MCU_16f1516_B1.c: 400: while(SEN);
-	goto	l227
+	goto	l225
 	
-l228:	
+l226:	
 	
-l227:	
+l225:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2491
-	goto	u2490
-u2491:
-	goto	l227
-u2490:
-	goto	l230
+	goto	u2471
+	goto	u2470
+u2471:
+	goto	l225
+u2470:
+	goto	l228
 	
-l229:	
+l227:	
 	line	401
 ;MCU_16f1516_B1.c: 401: while(!PEN)
-	goto	l230
+	goto	l228
 	
-l231:	
+l229:	
 	line	402
 ;MCU_16f1516_B1.c: 402: PEN=1;
 	bsf	(4274/8)^0200h,(4274)&7	;volatile
 	
-l230:	
+l228:	
 	line	401
 	btfss	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u2501
-	goto	u2500
-u2501:
+	goto	u2481
+	goto	u2480
+u2481:
+	goto	l229
+u2480:
 	goto	l231
-u2500:
-	goto	l233
 	
-l232:	
+l230:	
 	line	403
 ;MCU_16f1516_B1.c: 403: while(PEN);
-	goto	l233
+	goto	l231
 	
-l234:	
+l232:	
+	
+l231:	
+	btfsc	(4274/8)^0200h,(4274)&7	;volatile
+	goto	u2491
+	goto	u2490
+u2491:
+	goto	l231
+u2490:
+	goto	l234
 	
 l233:	
-	btfsc	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u2511
-	goto	u2510
-u2511:
-	goto	l233
-u2510:
-	goto	l236
-	
-l235:	
 	line	406
 	
-l236:	
+l234:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Master_Transmission
@@ -6388,158 +6337,158 @@ _I2C_Master_Reception:
 ; Regs used in _I2C_Master_Reception: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	411
 	
-l1962:	
+l1952:	
 ;MCU_16f1516_B1.c: 410: char i;
 ;MCU_16f1516_B1.c: 411: while(SEN);
-	goto	l239
+	goto	l237
 	
-l240:	
+l238:	
 	
-l239:	
+l237:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2201
-	goto	u2200
-u2201:
-	goto	l239
-u2200:
+	goto	u2181
+	goto	u2180
+u2181:
+	goto	l237
+u2180:
 	
-l241:	
+l239:	
 	line	412
 ;MCU_16f1516_B1.c: 412: SEN=1;
 	bsf	(4272/8)^0200h,(4272)&7	;volatile
 	line	413
 ;MCU_16f1516_B1.c: 413: while(SEN);
-	goto	l242
+	goto	l240
 	
-l243:	
+l241:	
+	
+l240:	
+	btfsc	(4272/8)^0200h,(4272)&7	;volatile
+	goto	u2191
+	goto	u2190
+u2191:
+	goto	l240
+u2190:
+	goto	l1954
 	
 l242:	
-	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2211
-	goto	u2210
-u2211:
-	goto	l242
-u2210:
-	goto	l1964
-	
-l244:	
 	line	416
 	
-l1964:	
+l1954:	
 ;MCU_16f1516_B1.c: 416: SSPBUF=0x11;
 	movlw	(011h)
 	movwf	(529)^0200h	;volatile
 	line	419
 ;MCU_16f1516_B1.c: 419: while(BF);
-	goto	l245
+	goto	l243
 	
-l246:	
+l244:	
+	
+l243:	
+	btfsc	(4256/8)^0200h,(4256)&7	;volatile
+	goto	u2201
+	goto	u2200
+u2201:
+	goto	l243
+u2200:
+	goto	l246
 	
 l245:	
-	btfsc	(4256/8)^0200h,(4256)&7	;volatile
-	goto	u2221
-	goto	u2220
-u2221:
-	goto	l245
-u2220:
-	goto	l248
-	
-l247:	
 	line	420
 ;MCU_16f1516_B1.c: 420: while(ACKSTAT);
-	goto	l248
+	goto	l246
 	
-l249:	
+l247:	
+	
+l246:	
+	btfsc	(4278/8)^0200h,(4278)&7	;volatile
+	goto	u2211
+	goto	u2210
+u2211:
+	goto	l246
+u2210:
+	goto	l1956
 	
 l248:	
-	btfsc	(4278/8)^0200h,(4278)&7	;volatile
-	goto	u2231
-	goto	u2230
-u2231:
-	goto	l248
-u2230:
-	goto	l1966
-	
-l250:	
 	line	423
 	
-l1966:	
+l1956:	
 ;MCU_16f1516_B1.c: 423: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(I2C_Master_Reception@i)
 	
-l1968:	
+l1958:	
 	movlw	(020h)
 	subwf	(I2C_Master_Reception@i),w
 	skipc
-	goto	u2241
-	goto	u2240
-u2241:
-	goto	l253
-u2240:
-	goto	l268
+	goto	u2221
+	goto	u2220
+u2221:
+	goto	l251
+u2220:
+	goto	l266
 	
-l1970:	
-	goto	l268
+l1960:	
+	goto	l266
 	line	424
 	
-l251:	
+l249:	
 	line	425
 ;MCU_16f1516_B1.c: 424: {
 ;MCU_16f1516_B1.c: 425: while(SEN);
-	goto	l253
+	goto	l251
 	
-l254:	
+l252:	
 	
-l253:	
+l251:	
 	movlb 4	; select bank4
 	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2251
-	goto	u2250
-u2251:
-	goto	l253
-u2250:
-	goto	l256
+	goto	u2231
+	goto	u2230
+u2231:
+	goto	l251
+u2230:
+	goto	l254
 	
-l255:	
+l253:	
 	line	426
 ;MCU_16f1516_B1.c: 426: while(RCEN);
-	goto	l256
+	goto	l254
 	
-l257:	
+l255:	
+	
+l254:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u2241
+	goto	u2240
+u2241:
+	goto	l254
+u2240:
 	
 l256:	
-	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2261
-	goto	u2260
-u2261:
-	goto	l256
-u2260:
-	
-l258:	
 	line	427
 ;MCU_16f1516_B1.c: 427: RCEN=1;
 	bsf	(4275/8)^0200h,(4275)&7	;volatile
 	line	428
 ;MCU_16f1516_B1.c: 428: while(RCEN);
-	goto	l259
+	goto	l257
 	
-l260:	
+l258:	
+	
+l257:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u2251
+	goto	u2250
+u2251:
+	goto	l257
+u2250:
+	goto	l1962
 	
 l259:	
-	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2271
-	goto	u2270
-u2271:
-	goto	l259
-u2270:
-	goto	l1972
-	
-l261:	
 	line	429
 	
-l1972:	
+l1962:	
 ;MCU_16f1516_B1.c: 429: I2C->BufferReader[i]=SSPBUF;
 	movf	(529)^0200h,w	;volatile
 	movlb 0	; select bank0
@@ -6556,223 +6505,223 @@ l1972:
 	movwf	indf1
 	line	430
 ;MCU_16f1516_B1.c: 430: while(!ACKEN)
-	goto	l262
+	goto	l260
 	
-l263:	
+l261:	
 	line	431
 ;MCU_16f1516_B1.c: 431: ACKEN=1;
 	bsf	(4276/8)^0200h,(4276)&7	;volatile
 	
-l262:	
+l260:	
 	line	430
 	movlb 4	; select bank4
 	btfss	(4276/8)^0200h,(4276)&7	;volatile
-	goto	u2281
-	goto	u2280
-u2281:
+	goto	u2261
+	goto	u2260
+u2261:
+	goto	l261
+u2260:
 	goto	l263
-u2280:
-	goto	l265
 	
-l264:	
+l262:	
 	line	432
 ;MCU_16f1516_B1.c: 432: while(ACKEN);
-	goto	l265
+	goto	l263
 	
-l266:	
+l264:	
+	
+l263:	
+	btfsc	(4276/8)^0200h,(4276)&7	;volatile
+	goto	u2271
+	goto	u2270
+u2271:
+	goto	l263
+u2270:
+	goto	l1964
 	
 l265:	
-	btfsc	(4276/8)^0200h,(4276)&7	;volatile
-	goto	u2291
-	goto	u2290
-u2291:
-	goto	l265
-u2290:
-	goto	l1974
-	
-l267:	
 	line	423
 	
-l1974:	
+l1964:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_I2C_Master_Reception+0)+0
 	movf	(??_I2C_Master_Reception+0)+0,w
 	addwf	(I2C_Master_Reception@i),f
 	
-l1976:	
+l1966:	
 	movlw	(020h)
 	subwf	(I2C_Master_Reception@i),w
 	skipc
-	goto	u2301
-	goto	u2300
-u2301:
-	goto	l253
-u2300:
-	goto	l268
+	goto	u2281
+	goto	u2280
+u2281:
+	goto	l251
+u2280:
+	goto	l266
 	
-l252:	
+l250:	
 	line	434
 ;MCU_16f1516_B1.c: 433: }
 ;MCU_16f1516_B1.c: 434: while(RCEN);
-	goto	l268
+	goto	l266
 	
-l269:	
+l267:	
 	
-l268:	
+l266:	
 	movlb 4	; select bank4
 	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2311
-	goto	u2310
-u2311:
-	goto	l268
-u2310:
+	goto	u2291
+	goto	u2290
+u2291:
+	goto	l266
+u2290:
 	
-l270:	
+l268:	
 	line	435
 ;MCU_16f1516_B1.c: 435: RCEN=1;
 	bsf	(4275/8)^0200h,(4275)&7	;volatile
 	line	436
 ;MCU_16f1516_B1.c: 436: while(RCEN);
-	goto	l271
+	goto	l269
 	
-l272:	
+l270:	
+	
+l269:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u2301
+	goto	u2300
+u2301:
+	goto	l269
+u2300:
+	goto	l272
 	
 l271:	
-	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2321
-	goto	u2320
-u2321:
-	goto	l271
-u2320:
-	goto	l274
-	
-l273:	
 	line	437
 ;MCU_16f1516_B1.c: 437: while(!ACKEN)
-	goto	l274
+	goto	l272
 	
-l275:	
+l273:	
 	line	438
 ;MCU_16f1516_B1.c: 438: ACKEN=1;
 	bsf	(4276/8)^0200h,(4276)&7	;volatile
 	
-l274:	
+l272:	
 	line	437
 	btfss	(4276/8)^0200h,(4276)&7	;volatile
+	goto	u2311
+	goto	u2310
+u2311:
+	goto	l273
+u2310:
+	goto	l275
+	
+l274:	
+	line	439
+;MCU_16f1516_B1.c: 439: while(ACKEN);
+	goto	l275
+	
+l276:	
+	
+l275:	
+	btfsc	(4276/8)^0200h,(4276)&7	;volatile
+	goto	u2321
+	goto	u2320
+u2321:
+	goto	l275
+u2320:
+	goto	l278
+	
+l277:	
+	line	440
+;MCU_16f1516_B1.c: 440: while(RCEN);
+	goto	l278
+	
+l279:	
+	
+l278:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
 	goto	u2331
 	goto	u2330
 u2331:
-	goto	l275
+	goto	l278
 u2330:
-	goto	l277
-	
-l276:	
-	line	439
-;MCU_16f1516_B1.c: 439: while(ACKEN);
-	goto	l277
-	
-l278:	
-	
-l277:	
-	btfsc	(4276/8)^0200h,(4276)&7	;volatile
-	goto	u2341
-	goto	u2340
-u2341:
-	goto	l277
-u2340:
-	goto	l280
-	
-l279:	
-	line	440
-;MCU_16f1516_B1.c: 440: while(RCEN);
-	goto	l280
-	
-l281:	
 	
 l280:	
-	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2351
-	goto	u2350
-u2351:
-	goto	l280
-u2350:
-	
-l282:	
 	line	441
 ;MCU_16f1516_B1.c: 441: RCEN=1;
 	bsf	(4275/8)^0200h,(4275)&7	;volatile
 	line	442
 ;MCU_16f1516_B1.c: 442: while(RCEN);
-	goto	l283
+	goto	l281
 	
-l284:	
+l282:	
+	
+l281:	
+	btfsc	(4275/8)^0200h,(4275)&7	;volatile
+	goto	u2341
+	goto	u2340
+u2341:
+	goto	l281
+u2340:
+	goto	l284
 	
 l283:	
-	btfsc	(4275/8)^0200h,(4275)&7	;volatile
-	goto	u2361
-	goto	u2360
-u2361:
-	goto	l283
-u2360:
-	goto	l286
-	
-l285:	
 	line	444
 ;MCU_16f1516_B1.c: 444: while(SEN);
-	goto	l286
+	goto	l284
 	
-l287:	
+l285:	
+	
+l284:	
+	btfsc	(4272/8)^0200h,(4272)&7	;volatile
+	goto	u2351
+	goto	u2350
+u2351:
+	goto	l284
+u2350:
+	goto	l287
 	
 l286:	
-	btfsc	(4272/8)^0200h,(4272)&7	;volatile
-	goto	u2371
-	goto	u2370
-u2371:
-	goto	l286
-u2370:
-	goto	l289
-	
-l288:	
 	line	445
 ;MCU_16f1516_B1.c: 445: while(!PEN)
-	goto	l289
+	goto	l287
 	
-l290:	
+l288:	
 	line	446
 ;MCU_16f1516_B1.c: 446: PEN=1;
 	bsf	(4274/8)^0200h,(4274)&7	;volatile
 	
-l289:	
+l287:	
 	line	445
 	btfss	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u2381
-	goto	u2380
-u2381:
+	goto	u2361
+	goto	u2360
+u2361:
+	goto	l288
+u2360:
 	goto	l290
-u2380:
-	goto	l292
 	
-l291:	
+l289:	
 	line	447
 ;MCU_16f1516_B1.c: 447: while(PEN);
-	goto	l292
+	goto	l290
 	
-l293:	
+l291:	
+	
+l290:	
+	btfsc	(4274/8)^0200h,(4274)&7	;volatile
+	goto	u2371
+	goto	u2370
+u2371:
+	goto	l290
+u2370:
+	goto	l293
 	
 l292:	
-	btfsc	(4274/8)^0200h,(4274)&7	;volatile
-	goto	u2391
-	goto	u2390
-u2391:
-	goto	l292
-u2390:
-	goto	l295
-	
-l294:	
 	line	450
 	
-l295:	
+l293:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_Master_Reception
@@ -6832,7 +6781,7 @@ psect	intentry
 	movwf	(??_ISR+0)
 	line	58
 	
-i1l2304:	
+i1l2292:	
 ;MCU_16f1516_B1.c: 58: __nop();
 	opt	asmopt_off
 	nop
@@ -6844,12 +6793,12 @@ i1l2304:
 	opt	asmopt_on
 	line	62
 	
-i1l2306:	
+i1l2294:	
 ;MCU_16f1516_B1.c: 62: TMR1_ISR();
 	fcall	_TMR1_ISR
 	line	66
 	
-i1l2308:	
+i1l2296:	
 ;MCU_16f1516_B1.c: 66: __nop();
 	opt	asmopt_off
 	nop
@@ -6862,7 +6811,7 @@ i1l2308:
 	fcall	_I2C_ISR
 	line	71
 	
-i1l171:	
+i1l169:	
 	movlb 0	; select bank0
 	movf	(??_ISR+0),w
 	movwf	btemp+1
@@ -6919,49 +6868,49 @@ _UART_ISR:
 ; Regs used in _UART_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	519
 	
-i1l2162:	
+i1l2150:	
 ;MCU_16f1516_B1.c: 518: char i;
 ;MCU_16f1516_B1.c: 519: if(RCIE && RCIF)
 	movlb 1	; select bank1
 	btfss	(1165/8)^080h,(1165)&7	;volatile
-	goto	u283_21
-	goto	u283_20
-u283_21:
-	goto	i1l323
-u283_20:
+	goto	u279_21
+	goto	u279_20
+u279_21:
+	goto	i1l321
+u279_20:
 	
-i1l2164:	
+i1l2152:	
 	movlb 0	; select bank0
 	btfss	(141/8),(141)&7	;volatile
-	goto	u284_21
-	goto	u284_20
-u284_21:
-	goto	i1l323
-u284_20:
-	goto	i1l320
+	goto	u280_21
+	goto	u280_20
+u280_21:
+	goto	i1l321
+u280_20:
+	goto	i1l318
 	line	521
 	
-i1l2166:	
+i1l2154:	
 ;MCU_16f1516_B1.c: 520: {
 ;MCU_16f1516_B1.c: 521: while(!RCIDL);
-	goto	i1l320
+	goto	i1l318
 	
-i1l321:	
+i1l319:	
 	
-i1l320:	
+i1l318:	
 	movlb 3	; select bank3
 	btfss	(3326/8)^0180h,(3326)&7	;volatile
-	goto	u285_21
-	goto	u285_20
-u285_21:
-	goto	i1l320
-u285_20:
-	goto	i1l2168
+	goto	u281_21
+	goto	u281_20
+u281_21:
+	goto	i1l318
+u281_20:
+	goto	i1l2156
 	
-i1l322:	
+i1l320:	
 	line	523
 	
-i1l2168:	
+i1l2156:	
 ;MCU_16f1516_B1.c: 523: UART->RxData[0]=RCREG;
 	movf	(409)^0180h,w	;volatile
 	movwf	(??_UART_ISR+0)+0
@@ -6976,13 +6925,13 @@ i1l2168:
 	movwf	indf1
 	line	532
 	
-i1l2170:	
+i1l2158:	
 ;MCU_16f1516_B1.c: 532: RA1=~RA1;
 	movlw	1<<((97)&7)
 	xorwf	((97)/8),f
 	line	533
 	
-i1l2172:	
+i1l2160:	
 ;MCU_16f1516_B1.c: 533: setSegmentDisplayNumber(UART->RxData[0]);
 	movf	(_UART),w
 	addlw	020h
@@ -6998,13 +6947,13 @@ i1l2172:
 	movf	1+(??_UART_ISR+0)+0,w
 	movwf	(i1setSegmentDisplayNumber@number+1)
 	fcall	i1_setSegmentDisplayNumber
-	goto	i1l323
+	goto	i1l321
 	line	534
 	
-i1l319:	
+i1l317:	
 	line	535
 	
-i1l323:	
+i1l321:	
 	return
 	opt stack 0
 GLOBAL	__end_of_UART_ISR
@@ -7059,7 +7008,7 @@ i1_setSegmentDisplayNumber:
 ; Regs used in i1_setSegmentDisplayNumber: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	23
 	
-i1l2078:	
+i1l2066:	
 ;SegmentDisplay_A2.c: 22: char i;
 ;SegmentDisplay_A2.c: 23: if(Segment->Enable)
 	movlb 0	; select bank0
@@ -7069,14 +7018,14 @@ i1l2078:
 	clrf fsr1h	
 	
 	btfss	indf1,0
-	goto	u269_21
-	goto	u269_20
-u269_21:
-	goto	i1l481
-u269_20:
+	goto	u265_21
+	goto	u265_20
+u265_21:
+	goto	i1l473
+u265_20:
 	line	25
 	
-i1l2080:	
+i1l2068:	
 ;SegmentDisplay_A2.c: 24: {
 ;SegmentDisplay_A2.c: 25: Segment->GO=1;
 	movf	(_Segment),w
@@ -7093,14 +7042,14 @@ i1l2080:
 	clrf fsr1h	
 	
 	btfss	indf1,2
-	goto	u270_21
-	goto	u270_20
-u270_21:
-	goto	i1l2088
-u270_20:
+	goto	u266_21
+	goto	u266_20
+u266_21:
+	goto	i1l2076
+u266_20:
 	line	28
 	
-i1l2082:	
+i1l2070:	
 ;SegmentDisplay_A2.c: 27: {
 ;SegmentDisplay_A2.c: 28: Segment->Num[0]=(number & 0x000f);
 	movf	(i1setSegmentDisplayNumber@number),w
@@ -7115,7 +7064,7 @@ i1l2082:
 	movwf	indf1
 	line	29
 	
-i1l2084:	
+i1l2072:	
 ;SegmentDisplay_A2.c: 29: Segment->Num[1]=((number>>4)&0x000f);
 	movf	(i1setSegmentDisplayNumber@number+1),w
 	movwf	(??i1_setSegmentDisplayNumber+0)+0+1
@@ -7123,12 +7072,12 @@ i1l2084:
 	movwf	(??i1_setSegmentDisplayNumber+0)+0
 	movlw	04h
 	movwf	(??i1_setSegmentDisplayNumber+2)+0
-u271_25:
+u267_25:
 	rlf	(??i1_setSegmentDisplayNumber+0)+1,w
 	rrf	(??i1_setSegmentDisplayNumber+0)+1,f
 	rrf	(??i1_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??i1_setSegmentDisplayNumber+2)+0,f
-	goto	u271_25
+	goto	u267_25
 	movf	0+(??i1_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??i1_setSegmentDisplayNumber+3)+0
@@ -7141,7 +7090,7 @@ u271_25:
 	movwf	indf1
 	line	30
 	
-i1l2086:	
+i1l2074:	
 ;SegmentDisplay_A2.c: 30: Segment->Num[2]=((number>>8)&0x000f);
 	movf	(i1setSegmentDisplayNumber@number+1),w
 	andlw	0Fh
@@ -7161,12 +7110,12 @@ i1l2086:
 	movwf	(??i1_setSegmentDisplayNumber+0)+0
 	movlw	0Ch
 	movwf	(??i1_setSegmentDisplayNumber+2)+0
-u272_25:
+u268_25:
 	rlf	(??i1_setSegmentDisplayNumber+0)+1,w
 	rrf	(??i1_setSegmentDisplayNumber+0)+1,f
 	rrf	(??i1_setSegmentDisplayNumber+0)+0,f
 	decfsz	(??i1_setSegmentDisplayNumber+2)+0,f
-	goto	u272_25
+	goto	u268_25
 	movf	0+(??i1_setSegmentDisplayNumber+0)+0,w
 	andlw	0Fh
 	movwf	(??i1_setSegmentDisplayNumber+3)+0
@@ -7179,12 +7128,12 @@ u272_25:
 	movwf	indf1
 	line	32
 ;SegmentDisplay_A2.c: 32: }
-	goto	i1l2116
+	goto	i1l2104
 	line	33
 	
-i1l468:	
+i1l460:	
 	
-i1l2088:	
+i1l2076:	
 ;SegmentDisplay_A2.c: 33: else if(Segment->Dec)
 	movf	(_Segment),w
 	addlw	015h
@@ -7192,14 +7141,14 @@ i1l2088:
 	clrf fsr1h	
 	
 	btfss	indf1,3
-	goto	u273_21
-	goto	u273_20
-u273_21:
-	goto	i1l2116
-u273_20:
+	goto	u269_21
+	goto	u269_20
+u269_21:
+	goto	i1l2104
+u269_20:
 	line	35
 	
-i1l2090:	
+i1l2078:	
 ;SegmentDisplay_A2.c: 34: {
 ;SegmentDisplay_A2.c: 35: if(number > 0x270f)
 	movf	(i1setSegmentDisplayNumber@number+1),w
@@ -7208,43 +7157,43 @@ i1l2090:
 	movlw	(high(02710h))^80h
 	subwf	(??i1_setSegmentDisplayNumber+0)+0,w
 	skipz
-	goto	u274_25
+	goto	u270_25
 	movlw	low(02710h)
 	subwf	(i1setSegmentDisplayNumber@number),w
-u274_25:
+u270_25:
 
 	skipc
-	goto	u274_21
-	goto	u274_20
-u274_21:
-	goto	i1l2104
-u274_20:
+	goto	u270_21
+	goto	u270_20
+u270_21:
+	goto	i1l2092
+u270_20:
 	line	37
 	
-i1l2092:	
+i1l2080:	
 ;SegmentDisplay_A2.c: 36: {
 ;SegmentDisplay_A2.c: 37: for(i=0 ; i<4; i++)
 	clrf	(i1setSegmentDisplayNumber@i)
 	
-i1l2094:	
+i1l2082:	
 	movlw	(04h)
 	subwf	(i1setSegmentDisplayNumber@i),w
 	skipc
-	goto	u275_21
-	goto	u275_20
-u275_21:
-	goto	i1l2098
-u275_20:
-	goto	i1l2116
+	goto	u271_21
+	goto	u271_20
+u271_21:
+	goto	i1l2086
+u271_20:
+	goto	i1l2104
 	
-i1l2096:	
-	goto	i1l2116
+i1l2084:	
+	goto	i1l2104
 	line	38
 	
-i1l472:	
+i1l464:	
 	line	39
 	
-i1l2098:	
+i1l2086:	
 ;SegmentDisplay_A2.c: 38: {
 ;SegmentDisplay_A2.c: 39: Segment->Num[i]=16;
 	movlw	(010h)
@@ -7262,34 +7211,34 @@ i1l2098:
 	movwf	indf1
 	line	37
 	
-i1l2100:	
+i1l2088:	
 	movlw	(01h)
 	movwf	(??i1_setSegmentDisplayNumber+0)+0
 	movf	(??i1_setSegmentDisplayNumber+0)+0,w
 	addwf	(i1setSegmentDisplayNumber@i),f
 	
-i1l2102:	
+i1l2090:	
 	movlw	(04h)
 	subwf	(i1setSegmentDisplayNumber@i),w
 	skipc
-	goto	u276_21
-	goto	u276_20
-u276_21:
-	goto	i1l2098
-u276_20:
-	goto	i1l2116
+	goto	u272_21
+	goto	u272_20
+u272_21:
+	goto	i1l2086
+u272_20:
+	goto	i1l2104
 	
-i1l473:	
+i1l465:	
 	line	41
 ;SegmentDisplay_A2.c: 40: }
 ;SegmentDisplay_A2.c: 41: }
-	goto	i1l2116
+	goto	i1l2104
 	line	42
 	
-i1l471:	
+i1l463:	
 	line	44
 	
-i1l2104:	
+i1l2092:	
 ;SegmentDisplay_A2.c: 42: else
 ;SegmentDisplay_A2.c: 43: {
 ;SegmentDisplay_A2.c: 44: Segment->Num[3]=(number/1000);
@@ -7317,7 +7266,7 @@ i1l2104:
 	movwf	indf1
 	line	45
 	
-i1l2106:	
+i1l2094:	
 ;SegmentDisplay_A2.c: 45: number%=1000;
 	movlw	low(03E8h)
 	movwf	(i1___awmod@divisor)
@@ -7340,7 +7289,7 @@ i1l2106:
 
 	line	46
 	
-i1l2108:	
+i1l2096:	
 ;SegmentDisplay_A2.c: 46: Segment->Num[2]=(number/100);
 	movlw	low(064h)
 	movwf	(i1___awdiv@divisor)
@@ -7387,7 +7336,7 @@ i1l2108:
 
 	line	48
 	
-i1l2110:	
+i1l2098:	
 ;SegmentDisplay_A2.c: 48: Segment->Num[1]=(number/10);
 	movlw	low(0Ah)
 	movwf	(i1___awdiv@divisor)
@@ -7413,7 +7362,7 @@ i1l2110:
 	movwf	indf1
 	line	49
 	
-i1l2112:	
+i1l2100:	
 ;SegmentDisplay_A2.c: 49: number%=10;
 	movlw	low(0Ah)
 	movwf	(i1___awmod@divisor)
@@ -7436,7 +7385,7 @@ i1l2112:
 
 	line	50
 	
-i1l2114:	
+i1l2102:	
 ;SegmentDisplay_A2.c: 50: Segment->Num[0]=number;
 	movf	(i1setSegmentDisplayNumber@number),w
 	movlb 0	; select bank0
@@ -7448,20 +7397,20 @@ i1l2114:
 	
 	movf	(??i1_setSegmentDisplayNumber+0)+0,w
 	movwf	indf1
-	goto	i1l2116
+	goto	i1l2104
 	line	51
 	
-i1l474:	
-	goto	i1l2116
+i1l466:	
+	goto	i1l2104
 	line	52
 	
-i1l470:	
-	goto	i1l2116
+i1l462:	
+	goto	i1l2104
 	line	53
 	
-i1l469:	
+i1l461:	
 	
-i1l2116:	
+i1l2104:	
 ;SegmentDisplay_A2.c: 51: }
 ;SegmentDisplay_A2.c: 52: }
 ;SegmentDisplay_A2.c: 53: if(Segment->Num[3] > 0)
@@ -7474,14 +7423,14 @@ i1l2116:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u277_21
-	goto	u277_20
-u277_21:
-	goto	i1l2120
-u277_20:
+	goto	u273_21
+	goto	u273_20
+u273_21:
+	goto	i1l2108
+u273_20:
 	line	55
 	
-i1l2118:	
+i1l2106:	
 ;SegmentDisplay_A2.c: 54: {
 ;SegmentDisplay_A2.c: 55: Segment->DisplayCount=3;
 	movlw	(03h)
@@ -7495,12 +7444,12 @@ i1l2118:
 	movwf	indf1
 	line	56
 ;SegmentDisplay_A2.c: 56: }
-	goto	i1l481
+	goto	i1l473
 	line	57
 	
-i1l475:	
+i1l467:	
 	
-i1l2120:	
+i1l2108:	
 ;SegmentDisplay_A2.c: 57: else if(Segment->Num[2] > 0)
 	movf	(_Segment),w
 	addlw	013h
@@ -7510,14 +7459,14 @@ i1l2120:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u278_21
-	goto	u278_20
-u278_21:
-	goto	i1l2124
-u278_20:
+	goto	u274_21
+	goto	u274_20
+u274_21:
+	goto	i1l2112
+u274_20:
 	line	59
 	
-i1l2122:	
+i1l2110:	
 ;SegmentDisplay_A2.c: 58: {
 ;SegmentDisplay_A2.c: 59: Segment->DisplayCount=2;
 	movlw	(02h)
@@ -7531,12 +7480,12 @@ i1l2122:
 	movwf	indf1
 	line	60
 ;SegmentDisplay_A2.c: 60: }
-	goto	i1l481
+	goto	i1l473
 	line	61
 	
-i1l477:	
+i1l469:	
 	
-i1l2124:	
+i1l2112:	
 ;SegmentDisplay_A2.c: 61: else if(Segment->Num[1] > 0)
 	movf	(_Segment),w
 	addlw	012h
@@ -7546,14 +7495,14 @@ i1l2124:
 	movf	indf1,w
 	xorlw	0&0ffh
 	skipnz
-	goto	u279_21
-	goto	u279_20
-u279_21:
-	goto	i1l2128
-u279_20:
+	goto	u275_21
+	goto	u275_20
+u275_21:
+	goto	i1l2116
+u275_20:
 	line	63
 	
-i1l2126:	
+i1l2114:	
 ;SegmentDisplay_A2.c: 62: {
 ;SegmentDisplay_A2.c: 63: Segment->DisplayCount=1;
 	movf	(_Segment),w
@@ -7565,13 +7514,13 @@ i1l2126:
 	incf	indf1,f
 	line	64
 ;SegmentDisplay_A2.c: 64: }
-	goto	i1l481
+	goto	i1l473
 	line	65
 	
-i1l479:	
+i1l471:	
 	line	67
 	
-i1l2128:	
+i1l2116:	
 ;SegmentDisplay_A2.c: 65: else
 ;SegmentDisplay_A2.c: 66: {
 ;SegmentDisplay_A2.c: 67: Segment->DisplayCount=0;
@@ -7581,23 +7530,23 @@ i1l2128:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	i1l481
+	goto	i1l473
 	line	68
 	
-i1l480:	
-	goto	i1l481
+i1l472:	
+	goto	i1l473
 	
-i1l478:	
-	goto	i1l481
+i1l470:	
+	goto	i1l473
 	
-i1l476:	
-	goto	i1l481
+i1l468:	
+	goto	i1l473
 	line	69
 	
-i1l467:	
+i1l459:	
 	line	70
 	
-i1l481:	
+i1l473:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1_setSegmentDisplayNumber
@@ -7652,20 +7601,20 @@ i1___awmod:
 ; Regs used in i1___awmod: [wreg+status,2+status,0]
 	line	13
 	
-i1l1868:	
+i1l1858:	
 	clrf	(i1___awmod@sign)
 	line	14
 	
-i1l1870:	
+i1l1860:	
 	btfss	(i1___awmod@dividend+1),7
-	goto	u211_21
-	goto	u211_20
-u211_21:
-	goto	i1l1876
-u211_20:
+	goto	u209_21
+	goto	u209_20
+u209_21:
+	goto	i1l1866
+u209_20:
 	line	15
 	
-i1l1872:	
+i1l1862:	
 	comf	(i1___awmod@dividend),f
 	comf	(i1___awmod@dividend+1),f
 	incf	(i1___awmod@dividend),f
@@ -7673,166 +7622,166 @@ i1l1872:
 	incf	(i1___awmod@dividend+1),f
 	line	16
 	
-i1l1874:	
+i1l1864:	
 	clrf	(i1___awmod@sign)
 	incf	(i1___awmod@sign),f
-	goto	i1l1876
+	goto	i1l1866
 	line	17
 	
-i1l664:	
+i1l656:	
 	line	18
 	
-i1l1876:	
+i1l1866:	
 	btfss	(i1___awmod@divisor+1),7
-	goto	u212_21
-	goto	u212_20
-u212_21:
-	goto	i1l1880
-u212_20:
+	goto	u210_21
+	goto	u210_20
+u210_21:
+	goto	i1l1870
+u210_20:
 	line	19
 	
-i1l1878:	
+i1l1868:	
 	comf	(i1___awmod@divisor),f
 	comf	(i1___awmod@divisor+1),f
 	incf	(i1___awmod@divisor),f
 	skipnz
 	incf	(i1___awmod@divisor+1),f
-	goto	i1l1880
+	goto	i1l1870
 	
-i1l665:	
+i1l657:	
 	line	20
 	
-i1l1880:	
+i1l1870:	
 	movf	(i1___awmod@divisor+1),w
 	iorwf	(i1___awmod@divisor),w
 	skipnz
-	goto	u213_21
-	goto	u213_20
-u213_21:
-	goto	i1l1898
-u213_20:
+	goto	u211_21
+	goto	u211_20
+u211_21:
+	goto	i1l1888
+u211_20:
 	line	21
 	
-i1l1882:	
+i1l1872:	
 	clrf	(i1___awmod@counter)
 	incf	(i1___awmod@counter),f
 	line	22
-	goto	i1l1888
+	goto	i1l1878
 	
-i1l668:	
+i1l660:	
 	line	23
 	
-i1l1884:	
+i1l1874:	
 	movlw	01h
 	
-u214_25:
+u212_25:
 	lslf	(i1___awmod@divisor),f
 	rlf	(i1___awmod@divisor+1),f
 	decfsz	wreg,f
-	goto	u214_25
+	goto	u212_25
 	line	24
 	
-i1l1886:	
+i1l1876:	
 	movlw	(01h)
 	movwf	(??i1___awmod+0)+0
 	movf	(??i1___awmod+0)+0,w
 	addwf	(i1___awmod@counter),f
-	goto	i1l1888
+	goto	i1l1878
 	line	25
 	
-i1l667:	
+i1l659:	
 	line	22
 	
-i1l1888:	
+i1l1878:	
 	btfss	(i1___awmod@divisor+1),(15)&7
-	goto	u215_21
-	goto	u215_20
-u215_21:
-	goto	i1l1884
-u215_20:
-	goto	i1l1890
+	goto	u213_21
+	goto	u213_20
+u213_21:
+	goto	i1l1874
+u213_20:
+	goto	i1l1880
 	
-i1l669:	
-	goto	i1l1890
+i1l661:	
+	goto	i1l1880
 	line	26
 	
-i1l670:	
+i1l662:	
 	line	27
 	
-i1l1890:	
+i1l1880:	
 	movf	(i1___awmod@divisor+1),w
 	subwf	(i1___awmod@dividend+1),w
 	skipz
-	goto	u216_25
+	goto	u214_25
 	movf	(i1___awmod@divisor),w
 	subwf	(i1___awmod@dividend),w
-u216_25:
+u214_25:
 	skipc
-	goto	u216_21
-	goto	u216_20
-u216_21:
-	goto	i1l1894
-u216_20:
+	goto	u214_21
+	goto	u214_20
+u214_21:
+	goto	i1l1884
+u214_20:
 	line	28
 	
-i1l1892:	
+i1l1882:	
 	movf	(i1___awmod@divisor),w
 	subwf	(i1___awmod@dividend),f
 	movf	(i1___awmod@divisor+1),w
 	subwfb	(i1___awmod@dividend+1),f
-	goto	i1l1894
+	goto	i1l1884
 	
-i1l671:	
+i1l663:	
 	line	29
 	
-i1l1894:	
+i1l1884:	
 	movlw	01h
 	
-u217_25:
+u215_25:
 	lsrf	(i1___awmod@divisor+1),f
 	rrf	(i1___awmod@divisor),f
 	decfsz	wreg,f
-	goto	u217_25
+	goto	u215_25
 	line	30
 	
-i1l1896:	
+i1l1886:	
 	movlw	low(01h)
 	subwf	(i1___awmod@counter),f
 	btfss	status,2
-	goto	u218_21
-	goto	u218_20
-u218_21:
-	goto	i1l1890
-u218_20:
-	goto	i1l1898
+	goto	u216_21
+	goto	u216_20
+u216_21:
+	goto	i1l1880
+u216_20:
+	goto	i1l1888
 	
-i1l672:	
-	goto	i1l1898
+i1l664:	
+	goto	i1l1888
 	line	31
 	
-i1l666:	
+i1l658:	
 	line	32
 	
-i1l1898:	
+i1l1888:	
 	movf	(i1___awmod@sign),w
 	skipz
-	goto	u219_20
-	goto	i1l1902
-u219_20:
+	goto	u217_20
+	goto	i1l1892
+u217_20:
 	line	33
 	
-i1l1900:	
+i1l1890:	
 	comf	(i1___awmod@dividend),f
 	comf	(i1___awmod@dividend+1),f
 	incf	(i1___awmod@dividend),f
 	skipnz
 	incf	(i1___awmod@dividend+1),f
-	goto	i1l1902
+	goto	i1l1892
 	
-i1l673:	
+i1l665:	
 	line	34
 	
-i1l1902:	
+i1l1892:	
 	movf	(i1___awmod@dividend+1),w
 	clrf	(?i1___awmod+1)
 	addwf	(?i1___awmod+1)
@@ -7840,12 +7789,12 @@ i1l1902:
 	clrf	(?i1___awmod)
 	addwf	(?i1___awmod)
 
-	goto	i1l674
+	goto	i1l666
 	
-i1l1904:	
+i1l1894:	
 	line	35
 	
-i1l674:	
+i1l666:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1___awmod
@@ -7901,20 +7850,20 @@ i1___awdiv:
 ; Regs used in i1___awdiv: [wreg+status,2+status,0]
 	line	14
 	
-i1l1824:	
+i1l1814:	
 	clrf	(i1___awdiv@sign)
 	line	15
 	
-i1l1826:	
+i1l1816:	
 	btfss	(i1___awdiv@divisor+1),7
-	goto	u201_21
-	goto	u201_20
-u201_21:
-	goto	i1l1832
-u201_20:
+	goto	u199_21
+	goto	u199_20
+u199_21:
+	goto	i1l1822
+u199_20:
 	line	16
 	
-i1l1828:	
+i1l1818:	
 	comf	(i1___awdiv@divisor),f
 	comf	(i1___awdiv@divisor+1),f
 	incf	(i1___awdiv@divisor),f
@@ -7922,25 +7871,25 @@ i1l1828:
 	incf	(i1___awdiv@divisor+1),f
 	line	17
 	
-i1l1830:	
+i1l1820:	
 	clrf	(i1___awdiv@sign)
 	incf	(i1___awdiv@sign),f
-	goto	i1l1832
+	goto	i1l1822
 	line	18
 	
-i1l651:	
+i1l643:	
 	line	19
 	
-i1l1832:	
+i1l1822:	
 	btfss	(i1___awdiv@dividend+1),7
-	goto	u202_21
-	goto	u202_20
-u202_21:
-	goto	i1l1838
-u202_20:
+	goto	u200_21
+	goto	u200_20
+u200_21:
+	goto	i1l1828
+u200_20:
 	line	20
 	
-i1l1834:	
+i1l1824:	
 	comf	(i1___awdiv@dividend),f
 	comf	(i1___awdiv@dividend+1),f
 	incf	(i1___awdiv@dividend),f
@@ -7948,166 +7897,166 @@ i1l1834:
 	incf	(i1___awdiv@dividend+1),f
 	line	21
 	
-i1l1836:	
+i1l1826:	
 	movlw	(01h)
 	movwf	(??i1___awdiv+0)+0
 	movf	(??i1___awdiv+0)+0,w
 	xorwf	(i1___awdiv@sign),f
-	goto	i1l1838
+	goto	i1l1828
 	line	22
 	
-i1l652:	
+i1l644:	
 	line	23
 	
-i1l1838:	
+i1l1828:	
 	clrf	(i1___awdiv@quotient)
 	clrf	(i1___awdiv@quotient+1)
 	line	24
 	
-i1l1840:	
+i1l1830:	
 	movf	(i1___awdiv@divisor+1),w
 	iorwf	(i1___awdiv@divisor),w
 	skipnz
-	goto	u203_21
-	goto	u203_20
-u203_21:
-	goto	i1l1860
-u203_20:
+	goto	u201_21
+	goto	u201_20
+u201_21:
+	goto	i1l1850
+u201_20:
 	line	25
 	
-i1l1842:	
+i1l1832:	
 	clrf	(i1___awdiv@counter)
 	incf	(i1___awdiv@counter),f
 	line	26
-	goto	i1l1848
+	goto	i1l1838
 	
-i1l655:	
+i1l647:	
 	line	27
 	
-i1l1844:	
+i1l1834:	
 	movlw	01h
 	
-u204_25:
+u202_25:
 	lslf	(i1___awdiv@divisor),f
 	rlf	(i1___awdiv@divisor+1),f
 	decfsz	wreg,f
-	goto	u204_25
+	goto	u202_25
 	line	28
 	
-i1l1846:	
+i1l1836:	
 	movlw	(01h)
 	movwf	(??i1___awdiv+0)+0
 	movf	(??i1___awdiv+0)+0,w
 	addwf	(i1___awdiv@counter),f
-	goto	i1l1848
+	goto	i1l1838
 	line	29
 	
-i1l654:	
+i1l646:	
 	line	26
 	
-i1l1848:	
+i1l1838:	
 	btfss	(i1___awdiv@divisor+1),(15)&7
-	goto	u205_21
-	goto	u205_20
-u205_21:
-	goto	i1l1844
-u205_20:
-	goto	i1l1850
+	goto	u203_21
+	goto	u203_20
+u203_21:
+	goto	i1l1834
+u203_20:
+	goto	i1l1840
 	
-i1l656:	
-	goto	i1l1850
+i1l648:	
+	goto	i1l1840
 	line	30
 	
-i1l657:	
+i1l649:	
 	line	31
 	
-i1l1850:	
+i1l1840:	
 	movlw	01h
 	
-u206_25:
+u204_25:
 	lslf	(i1___awdiv@quotient),f
 	rlf	(i1___awdiv@quotient+1),f
 	decfsz	wreg,f
-	goto	u206_25
+	goto	u204_25
 	line	32
 	movf	(i1___awdiv@divisor+1),w
 	subwf	(i1___awdiv@dividend+1),w
 	skipz
-	goto	u207_25
+	goto	u205_25
 	movf	(i1___awdiv@divisor),w
 	subwf	(i1___awdiv@dividend),w
-u207_25:
+u205_25:
 	skipc
-	goto	u207_21
-	goto	u207_20
-u207_21:
-	goto	i1l1856
-u207_20:
+	goto	u205_21
+	goto	u205_20
+u205_21:
+	goto	i1l1846
+u205_20:
 	line	33
 	
-i1l1852:	
+i1l1842:	
 	movf	(i1___awdiv@divisor),w
 	subwf	(i1___awdiv@dividend),f
 	movf	(i1___awdiv@divisor+1),w
 	subwfb	(i1___awdiv@dividend+1),f
 	line	34
 	
-i1l1854:	
+i1l1844:	
 	bsf	(i1___awdiv@quotient)+(0/8),(0)&7
-	goto	i1l1856
+	goto	i1l1846
 	line	35
 	
-i1l658:	
+i1l650:	
 	line	36
 	
-i1l1856:	
+i1l1846:	
 	movlw	01h
 	
-u208_25:
+u206_25:
 	lsrf	(i1___awdiv@divisor+1),f
 	rrf	(i1___awdiv@divisor),f
 	decfsz	wreg,f
-	goto	u208_25
+	goto	u206_25
 	line	37
 	
-i1l1858:	
+i1l1848:	
 	movlw	low(01h)
 	subwf	(i1___awdiv@counter),f
 	btfss	status,2
-	goto	u209_21
-	goto	u209_20
-u209_21:
+	goto	u207_21
+	goto	u207_20
+u207_21:
+	goto	i1l1840
+u207_20:
 	goto	i1l1850
-u209_20:
-	goto	i1l1860
 	
-i1l659:	
-	goto	i1l1860
+i1l651:	
+	goto	i1l1850
 	line	38
 	
-i1l653:	
+i1l645:	
 	line	39
 	
-i1l1860:	
+i1l1850:	
 	movf	(i1___awdiv@sign),w
 	skipz
-	goto	u210_20
-	goto	i1l1864
-u210_20:
+	goto	u208_20
+	goto	i1l1854
+u208_20:
 	line	40
 	
-i1l1862:	
+i1l1852:	
 	comf	(i1___awdiv@quotient),f
 	comf	(i1___awdiv@quotient+1),f
 	incf	(i1___awdiv@quotient),f
 	skipnz
 	incf	(i1___awdiv@quotient+1),f
-	goto	i1l1864
+	goto	i1l1854
 	
-i1l660:	
+i1l652:	
 	line	41
 	
-i1l1864:	
+i1l1854:	
 	movf	(i1___awdiv@quotient+1),w
 	clrf	(?i1___awdiv+1)
 	addwf	(?i1___awdiv+1)
@@ -8115,12 +8064,12 @@ i1l1864:
 	clrf	(?i1___awdiv)
 	addwf	(?i1___awdiv)
 
-	goto	i1l661
+	goto	i1l653
 	
-i1l1866:	
+i1l1856:	
 	line	42
 	
-i1l661:	
+i1l653:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1___awdiv
@@ -8173,27 +8122,27 @@ _TMR1_ISR:
 ; Regs used in _TMR1_ISR: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	127
 	
-i1l2148:	
+i1l2136:	
 ;MCU_16f1516_B1.c: 127: if(TMR1IE && TMR1IF)
 	movlb 1	; select bank1
 	btfss	(1160/8)^080h,(1160)&7	;volatile
-	goto	u280_21
-	goto	u280_20
-u280_21:
-	goto	i1l179
-u280_20:
+	goto	u276_21
+	goto	u276_20
+u276_21:
+	goto	i1l177
+u276_20:
 	
-i1l2150:	
+i1l2138:	
 	movlb 0	; select bank0
 	btfss	(136/8),(136)&7	;volatile
-	goto	u281_21
-	goto	u281_20
-u281_21:
-	goto	i1l179
-u281_20:
+	goto	u277_21
+	goto	u277_20
+u277_21:
+	goto	i1l177
+u277_20:
 	line	129
 	
-i1l2152:	
+i1l2140:	
 ;MCU_16f1516_B1.c: 128: {
 ;MCU_16f1516_B1.c: 129: TMR1H=((65536-700)/256);
 	movlw	(0FDh)
@@ -8204,12 +8153,12 @@ i1l2152:
 	movwf	(22)	;volatile
 	line	131
 	
-i1l2154:	
+i1l2142:	
 ;MCU_16f1516_B1.c: 131: TMR1IF=0;
 	bcf	(136/8),(136)&7	;volatile
 	line	132
 	
-i1l2156:	
+i1l2144:	
 ;MCU_16f1516_B1.c: 132: Timer1->Count++;
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -8222,7 +8171,7 @@ i1l2156:
 	incf	indf1,f
 	line	133
 	
-i1l2158:	
+i1l2146:	
 ;MCU_16f1516_B1.c: 133: if(Timer1->Count == 20)
 	incf	(_Timer1),w
 	movwf	fsr1l
@@ -8231,19 +8180,19 @@ i1l2158:
 	moviw	[0]fsr1
 	xorlw	low(014h)
 	skipz
-	goto	u282_25
+	goto	u278_25
 	moviw	[1]fsr1
 	xorlw	high(014h)
-u282_25:
+u278_25:
 	skipz
-	goto	u282_21
-	goto	u282_20
-u282_21:
-	goto	i1l179
-u282_20:
+	goto	u278_21
+	goto	u278_20
+u278_21:
+	goto	i1l177
+u278_20:
 	line	135
 	
-i1l2160:	
+i1l2148:	
 ;MCU_16f1516_B1.c: 134: {
 ;MCU_16f1516_B1.c: 135: Timer1->Count=0;
 	incf	(_Timer1),w
@@ -8260,17 +8209,17 @@ i1l2160:
 	clrf fsr1h	
 	
 	bsf	indf1,2
-	goto	i1l179
+	goto	i1l177
 	line	137
 	
-i1l178:	
-	goto	i1l179
+i1l176:	
+	goto	i1l177
 	line	138
 	
-i1l177:	
+i1l175:	
 	line	139
 	
-i1l179:	
+i1l177:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR1_ISR
@@ -8322,34 +8271,34 @@ _I2C_ISR:
 ; Regs used in _I2C_ISR: [wregfsr1]
 	line	262
 	
-i1l2174:	
+i1l2162:	
 ;MCU_16f1516_B1.c: 262: if(SSPIE && SSPIF)
 	movlb 1	; select bank1
 	btfss	(1163/8)^080h,(1163)&7	;volatile
-	goto	u286_21
-	goto	u286_20
-u286_21:
-	goto	i1l186
-u286_20:
+	goto	u282_21
+	goto	u282_20
+u282_21:
+	goto	i1l184
+u282_20:
 	
-i1l2176:	
+i1l2164:	
 	movlb 0	; select bank0
 	btfss	(139/8),(139)&7	;volatile
-	goto	u287_21
-	goto	u287_20
-u287_21:
-	goto	i1l186
-u287_20:
+	goto	u283_21
+	goto	u283_20
+u283_21:
+	goto	i1l184
+u283_20:
 	line	264
 	
-i1l2178:	
+i1l2166:	
 ;MCU_16f1516_B1.c: 263: {
 ;MCU_16f1516_B1.c: 264: SSPIE=0;
 	movlb 1	; select bank1
 	bcf	(1163/8)^080h,(1163)&7	;volatile
 	line	265
 	
-i1l2180:	
+i1l2168:	
 ;MCU_16f1516_B1.c: 265: I2C->SlaveGO=1;
 	movlb 0	; select bank0
 	movf	(_I2C),w
@@ -8359,13 +8308,13 @@ i1l2180:
 	movwf fsr1h	
 	
 	bsf	indf1,0
-	goto	i1l186
+	goto	i1l184
 	line	272
 	
-i1l185:	
+i1l183:	
 	line	273
 	
-i1l186:	
+i1l184:	
 	return
 	opt stack 0
 GLOBAL	__end_of_I2C_ISR

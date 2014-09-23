@@ -111,15 +111,15 @@
 [v _UART_Main UART_Main `(v  1 e 0 0 ]
 "554
 [v _UART_Transmit UART_Transmit `(v  1 e 0 0 ]
-"569
+"573
 [v _UART_Receive UART_Receive `(v  1 e 0 0 ]
-"595
+"599
 [v _UART_SetData UART_SetData `(v  1 e 0 0 ]
-"608
+"612
 [v _putch putch `(v  1 e 0 0 ]
-"616
+"620
 [v _getch getch `(uc  1 e 1 0 ]
-"623
+"627
 [v _getche getche `(uc  1 e 1 0 ]
 "6 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c
 [v _main main `(v  1 e 0 0 ]
@@ -246,8 +246,6 @@
 [v _TRISC6 TRISC6 `VEb  1 e 0 @1142 ]
 "4745
 [v _TRISC7 TRISC7 `VEb  1 e 0 @1143 ]
-"4747
-[v _TRMT TRMT `VEb  1 e 0 @3313 ]
 "4753
 [v _TX9 TX9 `VEb  1 e 0 @3318 ]
 "4759
@@ -363,15 +361,15 @@
 {
 "556
 [v UART_Transmit@i i `uc  1 a 1 37 ]
-"568
+"572
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
-[s S544 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+[s S542 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
 "533
-[u S547 . 4 `ui 1 _val 2 0 `S544 1 _str 4 0 ]
-[v printf@_val _val `S547  1 a 4 30 ]
+[u S545 . 4 `ui 1 _val 2 0 `S542 1 _str 4 0 ]
+[v printf@_val _val `S545  1 a 4 30 ]
 "499
 [v printf@c c `c  1 a 1 34 ]
 "506
@@ -384,13 +382,13 @@
 [v printf@f f `*.25DCCuc  1 p 2 19 ]
 "1550
 } 0
-"608 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c
+"612 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c
 [v _putch putch `(v  1 e 0 0 ]
 {
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 5 ]
-"614
+"618
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -414,12 +412,12 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 7 ]
 "31
 } 0
-"569 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c
+"573 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c
 [v _UART_Receive UART_Receive `(v  1 e 0 0 ]
 {
-"571
+"575
 [v UART_Receive@i i `uc  1 a 1 8 ]
-"594
+"598
 } 0
 "72 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
 [v _SegmentDisplay_Main SegmentDisplay_Main `(v  1 e 0 0 ]

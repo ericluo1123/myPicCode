@@ -554,17 +554,21 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void UART_Transmit()
 	{
 		char i;
+
+		//UART->TxData[31]='\n';
 		for(i=0;i<32;i++)
 		{	
-			while(!TRMT);	
-			//printf("%x",UART->TxData[i]);	
-			printf("%d",i);	
-			while(!TRMT);
-			printf(",");
-			//while(!TRMT);
-			//TXREG=UART->TxData[i];
+		//	printf("%d,",i);
+		//	printf("%d,",UART->TxData[i]);	
+		//	while(!TRMT);
+		//	while(!TXIF)	/* set when register is empty */
+		//		continue;
+			printf("%d,",i);
+		//	TXREG = UART->TxData[i];
+		//	TXREG=UART->TxData[i];
+		//	printf(",");
 		}
-		//printf("\n");
+		//printf("0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,");
 	}
 	void UART_Receive()
 	{

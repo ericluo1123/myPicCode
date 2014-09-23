@@ -3045,13 +3045,14 @@ UART_Transmit();
 void UART_Transmit()
 {
 char i;
+
+
 for(i=0;i<32;i++)
 {
-while(!TRMT);
 
-printf("%d",i);
-while(!TRMT);
-printf(",");
+# 566
+printf("%d,",i);
+
 
 
 }
@@ -3070,13 +3071,13 @@ I2C->BufferWriter[i]=UART->RxData[i];
 }
 I2C->MasterTxGO=1;
 
-# 594
+# 598
 }
 void UART_SetData()
 {
 char i;
 
-# 606
+# 610
 }
 
 void putch(unsigned char byte)
