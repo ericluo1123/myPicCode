@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"98 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
+"96 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"146
+"144
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
@@ -32,33 +32,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
 [s S12 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
 [n S12 DelayOff Enable GO Value SecondTime MinuteTime ]
-"7 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
-[n S13 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
 "178 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
-[s S246 :1 `uc 1 `ui 1 `ui 1 `ui 1 ]
-[n S246 Timer0 Timeout Count Count1 DimmerCount ]
+[s S245 :1 `uc 1 `ui 1 `ui 1 `ui 1 ]
+[n S245 Timer0 Timeout Count Count1 DimmerCount ]
 "424
-[s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
-[n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
-"29 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _setPowerFault_Initialization `(v ~T0 @X0 0 ef ]
-"30
-[v _setPowerFault_Main `(v ~T0 @X0 0 ef ]
-"133 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
-[v _getAD `(i ~T0 @X0 0 ef2`uc`uc ]
-"198 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _getLoad_Safe `(uc ~T0 @X0 0 ef ]
-"31 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _setPowerFault_Exceptions `(v ~T0 @X0 0 ef1`uc ]
-"113 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _DimmerLights_Exceptions `(v ~T0 @X0 0 ef1`uc ]
-"55 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
-[v _setLED `(v ~T0 @X0 0 ef2`uc`uc ]
-"50 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
-[v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
-"63 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
-[v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
+[s S246 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
+[n S246 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -92,21 +71,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Activity_B1.h: 59: typedef int ADtype;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 98: struct Product
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 99: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 100: unsigned char Data[32];
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 101: };
-"102 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 96: struct Product
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 97: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 98: unsigned char Data[32];
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 99: };
+"100 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
 [v _Product `*S2 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 102: struct Product *Product;
-"103
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 100: struct Product *Product;
+"101
 [v _VarProduct `S2 ~T0 @X0 1 e ]
 [i _VarProduct
 :U ..
 :U ..
 :U ..
-"106
+"104
 -> -> 99 `i `uc
 -> -> 2 `i `uc
 -> -> 0 `i `uc
@@ -117,81 +95,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
+"105
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"106
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 "107
 -> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
 "108
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"109
--> -> 0 `i `uc
-"110
 -> -> 0 `i `uc
 ..
 ..
 ..
 ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 103: struct Product VarProduct=
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 104: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 105: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 106: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 107: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 108: 1,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 109: 0x00,0x00
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 110: }
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 111: };
-"176
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 101: struct Product VarProduct=
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 102: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 103: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 104: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 105: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 106: 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 107: 0x00,0x00
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 108: }
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 109: };
+"174
 [v _VarTMain `S3 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 146: struct TMain
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 147: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 148: unsigned PowerON:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 149: unsigned T0_Timerout:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 150: unsigned T1_Timerout:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 151: unsigned Flag:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 152: unsigned GO:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 153: unsigned FirstOpen:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 154: unsigned int PowerCount;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 155: unsigned SelfTest:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 156: unsigned First:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 158: unsigned int Count;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 159: unsigned int Count1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 160: unsigned int Count2;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 161: unsigned int Count3;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 162: unsigned char IOC_Count;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 163: unsigned char Test;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 165: unsigned i:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 166: unsigned j:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 167: unsigned k:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 168: unsigned l:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 169: unsigned m:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 170: unsigned n:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 171: unsigned o:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 172: unsigned p:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 173: unsigned q:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 174: unsigned r:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 175: }
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 176: struct TMain VarTMain;
-"177
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 144: struct TMain
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 145: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 146: unsigned PowerON:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 147: unsigned T0_Timerout:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 148: unsigned T1_Timerout:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 149: unsigned Flag:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 150: unsigned GO:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 151: unsigned FirstOpen:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 152: unsigned int PowerCount;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 153: unsigned SelfTest:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 154: unsigned First:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 156: unsigned int Count;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 157: unsigned int Count1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 158: unsigned int Count2;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 159: unsigned int Count3;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 160: unsigned char IOC_Count;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 161: unsigned char Test;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 163: unsigned i:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 164: unsigned j:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 165: unsigned k:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 166: unsigned l:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 167: unsigned m:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 168: unsigned n:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 169: unsigned o:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 170: unsigned p:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 171: unsigned q:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 172: unsigned r:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 173: }
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 174: struct TMain VarTMain;
+"175
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 177: struct TMain *TMain;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 181: void MainT_Initialization();
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 182: void MainT();
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 175: struct TMain *TMain;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 179: void MainT_Initialization();
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 180: void MainT();
+[; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
 [; ;Switch_B1.h: 15: unsigned Enable:1;
@@ -214,6 +193,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "35
 [v _Sw1 `S4 ~T0 @X0 1 e ]
 [; ;Switch_B1.h: 35: struct Switch Sw1;
+"38
+[v _Sw2 `S4 ~T0 @X0 1 e ]
+[; ;Switch_B1.h: 38: struct Switch Sw2;
 [; ;Switch_B1.h: 45: void SwPointSelect(char);
 [; ;Switch_B1.h: 46: void Switch_Initialization();
 [; ;Switch_B1.h: 47: void Switch_Main();
@@ -703,6 +685,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "91
 [v _RFSW1 `S8 ~T0 @X0 1 e ]
 [; ;RF_Control_B1.h: 91: struct RFSW RFSW1;
+"95
+[v _RFSW2 `S8 ~T0 @X0 1 e ]
+[; ;RF_Control_B1.h: 95: struct RFSW RFSW2;
 [; ;RF_Control_B1.h: 104: void setRF_DimmerValue(char);
 [; ;RF_Control_B1.h: 105: void setRF_DimmerLights(char,char);
 [; ;OverLoad_B1.h: 138: struct OverLoad
@@ -805,6 +790,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "87
 [v _DimmerLights1 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 87: struct DimmerLights DimmerLights1;
+"91
+[v _DimmerLights22 `*S10 ~T0 @X0 1 e ]
+[; ;Dimmer_B1.h: 91: struct DimmerLights *DimmerLights22;
+"92
+[v _DimmerLights2 `S10 ~T0 @X0 1 e ]
+[; ;Dimmer_B1.h: 92: struct DimmerLights DimmerLights2;
 [; ;Dimmer_B1.h: 110: void DimmerLightsPointSelect(char);
 [; ;Dimmer_B1.h: 111: void DimmerLights_Initialization();
 [; ;Dimmer_B1.h: 112: void DimmerLights_Main();
@@ -855,38 +846,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30
 [v _DlySw1 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 30: struct DelayOff DlySw1;
+"34
+[v _DlySw2 `S12 ~T0 @X0 1 e ]
+[; ;DelayOff_B1.h: 34: struct DelayOff DlySw2;
 [; ;DelayOff_B1.h: 41: void DelayOff_Initialization();
 [; ;DelayOff_B1.h: 42: void DelayOff_Main();
 [; ;DelayOff_B1.h: 43: char DelayTimejudge(char);
 [; ;DelayOff_B1.h: 44: void DlyOff_Initialization(char);
 [; ;DelayOff_B1.h: 45: void DlyOff_Main(char);
 [; ;DelayOff_B1.h: 46: void setDelayOff_GO(char,char,char);
-[; ;PowerFault_B1.h: 7: struct PF
-[; ;PowerFault_B1.h: 8: {
-[; ;PowerFault_B1.h: 9: unsigned Enable:1;
-[; ;PowerFault_B1.h: 10: unsigned ERROR:1;
-[; ;PowerFault_B1.h: 11: unsigned Safe:1;
-[; ;PowerFault_B1.h: 12: unsigned ADtoGO:1;
-[; ;PowerFault_B1.h: 13: unsigned ADtype AD;
-[; ;PowerFault_B1.h: 14: unsigned ADtype ADRES;
-[; ;PowerFault_B1.h: 15: unsigned char Count;
-[; ;PowerFault_B1.h: 16: unsigned int Time;
-[; ;PowerFault_B1.h: 17: };
-"18 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _PF `*S13 ~T0 @X0 1 e ]
-[; ;PowerFault_B1.h: 18: struct PF *PF;
-"21
-[v _PF1 `S13 ~T0 @X0 1 e ]
-[; ;PowerFault_B1.h: 21: struct PF PF1;
-[; ;PowerFault_B1.h: 26: void PowerFault_Initialization();
-[; ;PowerFault_B1.h: 27: void PowerFault_Main();
-[; ;PowerFault_B1.h: 28: void getPowerFault_AD(char);
-[; ;PowerFault_B1.h: 29: void setPowerFault_Initialization();
-[; ;PowerFault_B1.h: 30: void setPowerFault_Main();
-[; ;PowerFault_B1.h: 31: void setPowerFault_Exceptions(char);
-[; ;PowerFault_B1.h: 32: void setPF_Enable(char);
-[; ;PowerFault_B1.h: 33: char getPF_Safe();
-[; ;PowerFault_B1.h: 34: char getPF_ERROR();
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1518.h: 47: extern volatile unsigned char INDF0 @ 0x000;
@@ -2717,10 +2685,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 184: unsigned int DimmerCount;
 [; ;MCU_16F1518_B1.h: 185: };
 "187 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
-[v _VarTimer0 `S246 ~T0 @X0 1 e ]
+[v _VarTimer0 `S245 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 187: struct Timer0 VarTimer0;
 "188
-[v _Timer0 `*S246 ~T0 @X0 1 e ]
+[v _Timer0 `*S245 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 188: struct Timer0 *Timer0;
 [; ;MCU_16F1518_B1.h: 190: void TMR0_Set();
 [; ;MCU_16F1518_B1.h: 191: void TMR0_ISR();
@@ -2741,10 +2709,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 432: unsigned int Time;
 [; ;MCU_16F1518_B1.h: 433: };
 "434
-[v _Memory `*S247 ~T0 @X0 1 e ]
+[v _Memory `*S246 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 434: struct FlashMemory *Memory;
 "435
-[v _VarMemory `S247 ~T0 @X0 1 e ]
+[v _VarMemory `S246 ~T0 @X0 1 e ]
 [i _VarMemory
 :U ..
 :U ..
@@ -2804,417 +2772,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 463: void Flash_Memory_Erasing();
 [; ;MCU_16F1518_B1.h: 464: void Flash_Memory_Modify();
 [; ;MCU_16F1518_B1.h: 465: void Flash_Memory_Main();
-"15 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c
-[v _PowerFault_Initialization `(v ~T0 @X0 1 ef ]
-"16
-{
-[; ;PowerFault_B1.c: 15: void PowerFault_Initialization()
-[; ;PowerFault_B1.c: 16: {
-[e :U _PowerFault_Initialization ]
-[f ]
-[; ;PowerFault_B1.c: 18: setPowerFault_Initialization();
-"18
-[e ( _setPowerFault_Initialization ..  ]
-[; ;PowerFault_B1.c: 20: }
-"20
-[e :UE 248 ]
-}
-"22
-[v _PowerFault_Main `(v ~T0 @X0 1 ef ]
-"23
-{
-[; ;PowerFault_B1.c: 22: void PowerFault_Main()
-[; ;PowerFault_B1.c: 23: {
-[e :U _PowerFault_Main ]
-[f ]
-[; ;PowerFault_B1.c: 25: setPowerFault_Main();
-"25
-[e ( _setPowerFault_Main ..  ]
-[; ;PowerFault_B1.c: 27: }
-"27
-[e :UE 249 ]
-}
-"29
-[v _setPowerFault_Initialization `(v ~T0 @X0 1 ef ]
-"30
-{
-[; ;PowerFault_B1.c: 29: void setPowerFault_Initialization()
-[; ;PowerFault_B1.c: 30: {
-[e :U _setPowerFault_Initialization ]
-[f ]
-[; ;PowerFault_B1.c: 31: PF=&PF1;
-"31
-[e = _PF &U _PF1 ]
-[; ;PowerFault_B1.c: 32: PF->Enable=1;
-"32
-[e = . *U _PF 0 -> -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 33: PF->Safe=1;
-"33
-[e = . *U _PF 2 -> -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 34: }
-"34
-[e :UE 250 ]
-}
-"36
-[v _setPF_Enable `(v ~T0 @X0 1 ef1`uc ]
-"37
-{
-[; ;PowerFault_B1.c: 36: void setPF_Enable(char command)
-[; ;PowerFault_B1.c: 37: {
-[e :U _setPF_Enable ]
-"36
-[v _command `uc ~T0 @X0 1 r1 ]
-"37
-[f ]
-[; ;PowerFault_B1.c: 38: PF->Enable=command;
-"38
-[e = . *U _PF 0 _command ]
-[; ;PowerFault_B1.c: 39: }
-"39
-[e :UE 251 ]
-}
-"40
-[v _getPF_Safe `(uc ~T0 @X0 1 ef ]
-"41
-{
-[; ;PowerFault_B1.c: 40: char getPF_Safe()
-[; ;PowerFault_B1.c: 41: {
-[e :U _getPF_Safe ]
-[f ]
-[; ;PowerFault_B1.c: 42: return PF->Safe;
-"42
-[e ) . *U _PF 2 ]
-[e $UE 252  ]
-[; ;PowerFault_B1.c: 43: }
-"43
-[e :UE 252 ]
-}
-"44
-[v _getPF_ERROR `(uc ~T0 @X0 1 ef ]
-"45
-{
-[; ;PowerFault_B1.c: 44: char getPF_ERROR()
-[; ;PowerFault_B1.c: 45: {
-[e :U _getPF_ERROR ]
-[f ]
-[; ;PowerFault_B1.c: 46: return PF->ERROR;
-"46
-[e ) . *U _PF 1 ]
-[e $UE 253  ]
-[; ;PowerFault_B1.c: 47: }
-"47
-[e :UE 253 ]
-}
-"49
-[v _getPowerFault_AD `(v ~T0 @X0 1 ef1`uc ]
-"50
-{
-[; ;PowerFault_B1.c: 49: void getPowerFault_AD(char channel)
-[; ;PowerFault_B1.c: 50: {
-[e :U _getPowerFault_AD ]
-"49
-[v _channel `uc ~T0 @X0 1 r1 ]
-"50
-[f ]
-[; ;PowerFault_B1.c: 51: if(PF->ADtoGO)
-"51
-[e $ ! != -> . *U _PF 3 `i -> -> -> 0 `i `uc `i 255  ]
-[; ;PowerFault_B1.c: 52: {
-"52
-{
-[; ;PowerFault_B1.c: 53: PF->ADRES=getAD(channel,0xf0);
-"53
-[e = . *U _PF 5 -> ( _getAD (2 , _channel -> -> 240 `i `uc `ui ]
-[; ;PowerFault_B1.c: 54: if(PF->AD < PF->ADRES)
-"54
-[e $ ! < . *U _PF 4 . *U _PF 5 256  ]
-[; ;PowerFault_B1.c: 55: {
-"55
-{
-[; ;PowerFault_B1.c: 56: PF->AD=PF->ADRES;
-"56
-[e = . *U _PF 4 . *U _PF 5 ]
-"57
-}
-[e :U 256 ]
-"58
-}
-[e :U 255 ]
-[; ;PowerFault_B1.c: 57: }
-[; ;PowerFault_B1.c: 58: }
-[; ;PowerFault_B1.c: 59: }
-"59
-[e :UE 254 ]
-}
-"61
-[v _setPowerFault_Main `(v ~T0 @X0 1 ef ]
-"62
-{
-[; ;PowerFault_B1.c: 61: void setPowerFault_Main()
-[; ;PowerFault_B1.c: 62: {
-[e :U _setPowerFault_Main ]
-[f ]
-[; ;PowerFault_B1.c: 63: if(PF->Enable)
-"63
-[e $ ! != -> . *U _PF 0 `i -> -> -> 0 `i `uc `i 258  ]
-[; ;PowerFault_B1.c: 64: {
-"64
-{
-[; ;PowerFault_B1.c: 65: if(PF->ADtoGO == 0)
-"65
-[e $ ! == -> . *U _PF 3 `i -> 0 `i 259  ]
-[; ;PowerFault_B1.c: 66: {
-"66
-{
-[; ;PowerFault_B1.c: 67: PF->Time++;
-"67
-[e ++ . *U _PF 7 -> -> 1 `i `ui ]
-[; ;PowerFault_B1.c: 68: if(PF->Time >= 700)
-"68
-[e $ ! >= . *U _PF 7 -> -> 700 `i `ui 260  ]
-[; ;PowerFault_B1.c: 69: {
-"69
-{
-[; ;PowerFault_B1.c: 70: if(getLoad_Safe() && 1)
-"70
-[e $ ! && != -> ( _getLoad_Safe ..  `i -> -> -> 0 `i `uc `i != -> 1 `i -> 0 `i 261  ]
-[; ;PowerFault_B1.c: 71: {
-"71
-{
-[; ;PowerFault_B1.c: 72: PF->Time=0;
-"72
-[e = . *U _PF 7 -> -> 0 `i `ui ]
-[; ;PowerFault_B1.c: 73: PF->ADtoGO=1;
-"73
-[e = . *U _PF 3 -> -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 74: PF->Safe=0;
-"74
-[e = . *U _PF 2 -> -> 0 `i `uc ]
-"75
-}
-[; ;PowerFault_B1.c: 75: }
-[e $U 262  ]
-"76
-[e :U 261 ]
-[; ;PowerFault_B1.c: 76: else
-[; ;PowerFault_B1.c: 77: {
-"77
-{
-[; ;PowerFault_B1.c: 78: PF->Time=700;
-"78
-[e = . *U _PF 7 -> -> 700 `i `ui ]
-"79
-}
-[e :U 262 ]
-"80
-}
-[e :U 260 ]
-"81
-}
-[; ;PowerFault_B1.c: 79: }
-[; ;PowerFault_B1.c: 80: }
-[; ;PowerFault_B1.c: 81: }
-[e $U 263  ]
-"82
-[e :U 259 ]
-[; ;PowerFault_B1.c: 82: else
-[; ;PowerFault_B1.c: 83: {
-"83
-{
-[; ;PowerFault_B1.c: 84: PF->Time++;
-"84
-[e ++ . *U _PF 7 -> -> 1 `i `ui ]
-[; ;PowerFault_B1.c: 85: if(PF->Time >= 2)
-"85
-[e $ ! >= . *U _PF 7 -> -> 2 `i `ui 264  ]
-[; ;PowerFault_B1.c: 86: {
-"86
-{
-[; ;PowerFault_B1.c: 87: PF->Time=0;
-"87
-[e = . *U _PF 7 -> -> 0 `i `ui ]
-[; ;PowerFault_B1.c: 88: PF->ADtoGO=0;
-"88
-[e = . *U _PF 3 -> -> 0 `i `uc ]
-[; ;PowerFault_B1.c: 90: if(PF->ERROR)
-"90
-[e $ ! != -> . *U _PF 1 `i -> -> -> 0 `i `uc `i 265  ]
-[; ;PowerFault_B1.c: 91: {
-"91
-{
-[; ;PowerFault_B1.c: 92: if(PF->AD <= (300+100) && PF->AD >= (300-100))
-"92
-[e $ ! && <= . *U _PF 4 -> + -> 300 `i -> 100 `i `ui >= . *U _PF 4 -> - -> 300 `i -> 100 `i `ui 266  ]
-[; ;PowerFault_B1.c: 93: {
-"93
-{
-[; ;PowerFault_B1.c: 94: PF->Count++;
-"94
-[e ++ . *U _PF 6 -> -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 95: if(PF->Count > 1)
-"95
-[e $ ! > -> . *U _PF 6 `i -> 1 `i 267  ]
-[; ;PowerFault_B1.c: 96: {
-"96
-{
-[; ;PowerFault_B1.c: 97: PF->Count=0;
-"97
-[e = . *U _PF 6 -> -> 0 `i `uc ]
-[; ;PowerFault_B1.c: 98: setPowerFault_Exceptions(0);
-"98
-[e ( _setPowerFault_Exceptions (1 -> -> 0 `i `uc ]
-"99
-}
-[e :U 267 ]
-"100
-}
-[; ;PowerFault_B1.c: 99: }
-[; ;PowerFault_B1.c: 100: }
-[e $U 268  ]
-"101
-[e :U 266 ]
-[; ;PowerFault_B1.c: 101: else
-[; ;PowerFault_B1.c: 102: {
-"102
-{
-[; ;PowerFault_B1.c: 103: PF->Count=0;
-"103
-[e = . *U _PF 6 -> -> 0 `i `uc ]
-"104
-}
-[e :U 268 ]
-"105
-}
-[; ;PowerFault_B1.c: 104: }
-[; ;PowerFault_B1.c: 105: }
-[e $U 269  ]
-"106
-[e :U 265 ]
-[; ;PowerFault_B1.c: 106: else
-[; ;PowerFault_B1.c: 107: {
-"107
-{
-[; ;PowerFault_B1.c: 108: if(PF->AD >= (300+100) || PF->AD <= (310-100))
-"108
-[e $ ! || >= . *U _PF 4 -> + -> 300 `i -> 100 `i `ui <= . *U _PF 4 -> - -> 310 `i -> 100 `i `ui 270  ]
-[; ;PowerFault_B1.c: 109: {
-"109
-{
-[; ;PowerFault_B1.c: 110: PF->Count++;
-"110
-[e ++ . *U _PF 6 -> -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 111: if(PF->Count > 1)
-"111
-[e $ ! > -> . *U _PF 6 `i -> 1 `i 271  ]
-[; ;PowerFault_B1.c: 112: {
-"112
-{
-[; ;PowerFault_B1.c: 113: PF->Count=0;
-"113
-[e = . *U _PF 6 -> -> 0 `i `uc ]
-[; ;PowerFault_B1.c: 114: setPowerFault_Exceptions(1);
-"114
-[e ( _setPowerFault_Exceptions (1 -> -> 1 `i `uc ]
-"115
-}
-[e :U 271 ]
-"116
-}
-[; ;PowerFault_B1.c: 115: }
-[; ;PowerFault_B1.c: 116: }
-[e $U 272  ]
-"117
-[e :U 270 ]
-[; ;PowerFault_B1.c: 117: else
-[; ;PowerFault_B1.c: 118: {
-"118
-{
-[; ;PowerFault_B1.c: 119: PF->Count=0;
-"119
-[e = . *U _PF 6 -> -> 0 `i `uc ]
-"120
-}
-[e :U 272 ]
-"122
-}
-[e :U 269 ]
-[; ;PowerFault_B1.c: 120: }
-[; ;PowerFault_B1.c: 122: }
-[; ;PowerFault_B1.c: 123: if(PF->ERROR == 0)
-"123
-[e $ ! == -> . *U _PF 1 `i -> 0 `i 273  ]
-[; ;PowerFault_B1.c: 124: {
-"124
-{
-[; ;PowerFault_B1.c: 125: PF->Safe=1;
-"125
-[e = . *U _PF 2 -> -> 1 `i `uc ]
-"126
-}
-[e :U 273 ]
-[; ;PowerFault_B1.c: 126: }
-[; ;PowerFault_B1.c: 127: PF->AD=0;
-"127
-[e = . *U _PF 4 -> -> 0 `i `ui ]
-"128
-}
-[e :U 264 ]
-"129
-}
-[e :U 263 ]
-"130
-}
-[e :U 258 ]
-[; ;PowerFault_B1.c: 128: }
-[; ;PowerFault_B1.c: 129: }
-[; ;PowerFault_B1.c: 130: }
-[; ;PowerFault_B1.c: 131: }
-"131
-[e :UE 257 ]
-}
-"133
-[v _setPowerFault_Exceptions `(v ~T0 @X0 1 ef1`uc ]
-"134
-{
-[; ;PowerFault_B1.c: 133: void setPowerFault_Exceptions(char command)
-[; ;PowerFault_B1.c: 134: {
-[e :U _setPowerFault_Exceptions ]
-"133
-[v _command `uc ~T0 @X0 1 r1 ]
-"134
-[f ]
-[; ;PowerFault_B1.c: 135: PF->ERROR=command;
-"135
-[e = . *U _PF 1 _command ]
-[; ;PowerFault_B1.c: 136: PF->Safe=(~command) & 0x01;
-"136
-[e = . *U _PF 2 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 137: if(command == 1)
-"137
-[e $ ! == -> _command `i -> 1 `i 275  ]
-[; ;PowerFault_B1.c: 138: {
-"138
-{
-[; ;PowerFault_B1.c: 139: DimmerLights_Exceptions(3);
-"139
-[e ( _DimmerLights_Exceptions (1 -> -> 3 `i `uc ]
-[; ;PowerFault_B1.c: 141: setLED(2,1);
-"141
-[e ( _setLED (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"143
-}
-[e :U 275 ]
-[; ;PowerFault_B1.c: 143: }
-[; ;PowerFault_B1.c: 144: setLED(99,command+10);
-"144
-[e ( _setLED (2 , -> -> 99 `i `uc -> + -> _command `i -> 10 `i `uc ]
-[; ;PowerFault_B1.c: 146: setSw_Enable((~command) & 0x01);
-"146
-[e ( _setSw_Enable (1 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 148: setRF_Enable(1,(~command) & 0x01);
-"148
-[e ( _setRF_Enable (2 , -> -> 1 `i `uc -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;PowerFault_B1.c: 151: }
-"151
-[e :UE 274 ]
-}

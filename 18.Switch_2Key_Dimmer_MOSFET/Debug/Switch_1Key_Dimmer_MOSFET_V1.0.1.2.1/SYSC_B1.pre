@@ -69,10 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
-typedef int ADtype;
-
-# 98 "C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h"
+# 96 "C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h"
 struct Product
 {
 unsigned char Data[32];
@@ -83,12 +80,12 @@ struct Product VarProduct=
 {
 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-1,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 0x00,0x00
 }
 };
 
-# 146
+# 144
 struct TMain
 {
 unsigned PowerON:1;
@@ -127,6 +124,9 @@ struct TMain *TMain;
 void MainT_Initialization();
 void MainT();
 
+# 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
+typedef int ADtype;
+
 # 13 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h"
 struct Switch
 {
@@ -151,6 +151,9 @@ struct Switch *Sw;
 
 
 struct Switch Sw1;
+
+
+struct Switch Sw2;
 
 # 45
 void SwPointSelect(char);
@@ -437,6 +440,10 @@ void setRFSW_Status(char,char);
 
 struct RFSW RFSW1;
 
+
+
+struct RFSW RFSW2;
+
 # 104
 void setRF_DimmerValue(char);
 void setRF_DimmerLights(char,char);
@@ -552,6 +559,11 @@ struct DimmerLights *DimmerLightsIntr;
 struct DimmerLights *DimmerLights11;
 struct DimmerLights DimmerLights1;
 
+
+
+struct DimmerLights *DimmerLights22;
+struct DimmerLights DimmerLights2;
+
 # 110
 void DimmerLightsPointSelect(char);
 void DimmerLights_Initialization();
@@ -612,6 +624,10 @@ struct DelayOff *DelayOff;
 
 struct DelayOff DlySw1;
 
+
+
+struct DelayOff DlySw2;
+
 # 41
 void DelayOff_Initialization();
 void DelayOff_Main();
@@ -619,36 +635,6 @@ char DelayTimejudge(char);
 void DlyOff_Initialization(char);
 void DlyOff_Main(char);
 void setDelayOff_GO(char,char,char);
-
-# 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h"
-struct PF
-{
-unsigned Enable:1;
-unsigned ERROR:1;
-unsigned Safe:1;
-unsigned ADtoGO:1;
-unsigned ADtype AD;
-unsigned ADtype ADRES;
-unsigned char Count;
-unsigned int Time;
-};
-struct PF *PF;
-
-
-struct PF PF1;
-
-
-
-
-void PowerFault_Initialization();
-void PowerFault_Main();
-void getPowerFault_AD(char);
-void setPowerFault_Initialization();
-void setPowerFault_Main();
-void setPowerFault_Exceptions(char);
-void setPF_Enable(char);
-char getPF_Safe();
-char getPF_ERROR();
 
 # 21 "C:\Program Files (x86)\Microchip\xc8\v1.32\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;

@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"98 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
+"96 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"146
+"144
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
@@ -32,15 +32,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
 [s S12 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
 [n S12 DelayOff Enable GO Value SecondTime MinuteTime ]
-"7 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
-[n S13 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
 "178 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
-[s S246 :1 `uc 1 `ui 1 `ui 1 `ui 1 ]
-[n S246 Timer0 Timeout Count Count1 DimmerCount ]
+[s S245 :1 `uc 1 `ui 1 `ui 1 `ui 1 ]
+[n S245 Timer0 Timeout Count Count1 DimmerCount ]
 "424
-[s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
-[n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+[s S246 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
+[n S246 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 "192 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
 [v _setLoad_AH_AL_Restore `(v ~T0 @X0 0 ef ]
 "133 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
@@ -49,9 +46,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setLoad_Exceptions `(v ~T0 @X0 0 ef1`uc ]
 "135 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
 [v _setDimmerLights_Clear `(v ~T0 @X0 0 ef2`uc`uc ]
-"33 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _getPF_Safe `(uc ~T0 @X0 0 ef ]
-"113 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
+"113
 [v _DimmerLights_Exceptions `(v ~T0 @X0 0 ef1`uc ]
 "55 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _setLED `(v ~T0 @X0 0 ef2`uc`uc ]
@@ -92,21 +87,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Activity_B1.h: 59: typedef int ADtype;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 98: struct Product
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 99: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 100: unsigned char Data[32];
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 101: };
-"102 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 96: struct Product
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 97: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 98: unsigned char Data[32];
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 99: };
+"100 C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h
 [v _Product `*S2 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 102: struct Product *Product;
-"103
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 100: struct Product *Product;
+"101
 [v _VarProduct `S2 ~T0 @X0 1 e ]
 [i _VarProduct
 :U ..
 :U ..
 :U ..
-"106
+"104
 -> -> 99 `i `uc
 -> -> 2 `i `uc
 -> -> 0 `i `uc
@@ -117,81 +111,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
+"105
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"106
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 "107
 -> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
 "108
--> -> 1 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"109
--> -> 0 `i `uc
-"110
 -> -> 0 `i `uc
 ..
 ..
 ..
 ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 103: struct Product VarProduct=
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 104: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 105: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 106: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 107: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 108: 1,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 109: 0x00,0x00
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 110: }
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 111: };
-"176
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 101: struct Product VarProduct=
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 102: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 103: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 104: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 105: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 106: 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 107: 0x00,0x00
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 108: }
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 109: };
+"174
 [v _VarTMain `S3 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 146: struct TMain
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 147: {
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 148: unsigned PowerON:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 149: unsigned T0_Timerout:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 150: unsigned T1_Timerout:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 151: unsigned Flag:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 152: unsigned GO:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 153: unsigned FirstOpen:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 154: unsigned int PowerCount;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 155: unsigned SelfTest:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 156: unsigned First:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 158: unsigned int Count;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 159: unsigned int Count1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 160: unsigned int Count2;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 161: unsigned int Count3;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 162: unsigned char IOC_Count;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 163: unsigned char Test;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 165: unsigned i:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 166: unsigned j:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 167: unsigned k:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 168: unsigned l:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 169: unsigned m:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 170: unsigned n:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 171: unsigned o:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 172: unsigned p:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 173: unsigned q:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 174: unsigned r:1;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 175: }
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 176: struct TMain VarTMain;
-"177
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 144: struct TMain
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 145: {
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 146: unsigned PowerON:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 147: unsigned T0_Timerout:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 148: unsigned T1_Timerout:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 149: unsigned Flag:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 150: unsigned GO:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 151: unsigned FirstOpen:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 152: unsigned int PowerCount;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 153: unsigned SelfTest:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 154: unsigned First:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 156: unsigned int Count;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 157: unsigned int Count1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 158: unsigned int Count2;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 159: unsigned int Count3;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 160: unsigned char IOC_Count;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 161: unsigned char Test;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 163: unsigned i:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 164: unsigned j:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 165: unsigned k:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 166: unsigned l:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 167: unsigned m:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 168: unsigned n:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 169: unsigned o:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 170: unsigned p:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 171: unsigned q:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 172: unsigned r:1;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 173: }
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 174: struct TMain VarTMain;
+"175
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 177: struct TMain *TMain;
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 181: void MainT_Initialization();
-[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 182: void MainT();
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 175: struct TMain *TMain;
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 179: void MainT_Initialization();
+[; ;Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h: 180: void MainT();
+[; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
 [; ;Switch_B1.h: 15: unsigned Enable:1;
@@ -214,6 +209,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "35
 [v _Sw1 `S4 ~T0 @X0 1 e ]
 [; ;Switch_B1.h: 35: struct Switch Sw1;
+"38
+[v _Sw2 `S4 ~T0 @X0 1 e ]
+[; ;Switch_B1.h: 38: struct Switch Sw2;
 [; ;Switch_B1.h: 45: void SwPointSelect(char);
 [; ;Switch_B1.h: 46: void Switch_Initialization();
 [; ;Switch_B1.h: 47: void Switch_Main();
@@ -703,6 +701,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "91
 [v _RFSW1 `S8 ~T0 @X0 1 e ]
 [; ;RF_Control_B1.h: 91: struct RFSW RFSW1;
+"95
+[v _RFSW2 `S8 ~T0 @X0 1 e ]
+[; ;RF_Control_B1.h: 95: struct RFSW RFSW2;
 [; ;RF_Control_B1.h: 104: void setRF_DimmerValue(char);
 [; ;RF_Control_B1.h: 105: void setRF_DimmerLights(char,char);
 [; ;OverLoad_B1.h: 138: struct OverLoad
@@ -805,6 +806,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "87
 [v _DimmerLights1 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 87: struct DimmerLights DimmerLights1;
+"91
+[v _DimmerLights22 `*S10 ~T0 @X0 1 e ]
+[; ;Dimmer_B1.h: 91: struct DimmerLights *DimmerLights22;
+"92
+[v _DimmerLights2 `S10 ~T0 @X0 1 e ]
+[; ;Dimmer_B1.h: 92: struct DimmerLights DimmerLights2;
 [; ;Dimmer_B1.h: 110: void DimmerLightsPointSelect(char);
 [; ;Dimmer_B1.h: 111: void DimmerLights_Initialization();
 [; ;Dimmer_B1.h: 112: void DimmerLights_Main();
@@ -855,38 +862,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30
 [v _DlySw1 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 30: struct DelayOff DlySw1;
+"34
+[v _DlySw2 `S12 ~T0 @X0 1 e ]
+[; ;DelayOff_B1.h: 34: struct DelayOff DlySw2;
 [; ;DelayOff_B1.h: 41: void DelayOff_Initialization();
 [; ;DelayOff_B1.h: 42: void DelayOff_Main();
 [; ;DelayOff_B1.h: 43: char DelayTimejudge(char);
 [; ;DelayOff_B1.h: 44: void DlyOff_Initialization(char);
 [; ;DelayOff_B1.h: 45: void DlyOff_Main(char);
 [; ;DelayOff_B1.h: 46: void setDelayOff_GO(char,char,char);
-[; ;PowerFault_B1.h: 7: struct PF
-[; ;PowerFault_B1.h: 8: {
-[; ;PowerFault_B1.h: 9: unsigned Enable:1;
-[; ;PowerFault_B1.h: 10: unsigned ERROR:1;
-[; ;PowerFault_B1.h: 11: unsigned Safe:1;
-[; ;PowerFault_B1.h: 12: unsigned ADtoGO:1;
-[; ;PowerFault_B1.h: 13: unsigned ADtype AD;
-[; ;PowerFault_B1.h: 14: unsigned ADtype ADRES;
-[; ;PowerFault_B1.h: 15: unsigned char Count;
-[; ;PowerFault_B1.h: 16: unsigned int Time;
-[; ;PowerFault_B1.h: 17: };
-"18 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _PF `*S13 ~T0 @X0 1 e ]
-[; ;PowerFault_B1.h: 18: struct PF *PF;
-"21
-[v _PF1 `S13 ~T0 @X0 1 e ]
-[; ;PowerFault_B1.h: 21: struct PF PF1;
-[; ;PowerFault_B1.h: 26: void PowerFault_Initialization();
-[; ;PowerFault_B1.h: 27: void PowerFault_Main();
-[; ;PowerFault_B1.h: 28: void getPowerFault_AD(char);
-[; ;PowerFault_B1.h: 29: void setPowerFault_Initialization();
-[; ;PowerFault_B1.h: 30: void setPowerFault_Main();
-[; ;PowerFault_B1.h: 31: void setPowerFault_Exceptions(char);
-[; ;PowerFault_B1.h: 32: void setPF_Enable(char);
-[; ;PowerFault_B1.h: 33: char getPF_Safe();
-[; ;PowerFault_B1.h: 34: char getPF_ERROR();
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1518.h: 47: extern volatile unsigned char INDF0 @ 0x000;
@@ -2717,10 +2701,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 184: unsigned int DimmerCount;
 [; ;MCU_16F1518_B1.h: 185: };
 "187 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h
-[v _VarTimer0 `S246 ~T0 @X0 1 e ]
+[v _VarTimer0 `S245 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 187: struct Timer0 VarTimer0;
 "188
-[v _Timer0 `*S246 ~T0 @X0 1 e ]
+[v _Timer0 `*S245 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 188: struct Timer0 *Timer0;
 [; ;MCU_16F1518_B1.h: 190: void TMR0_Set();
 [; ;MCU_16F1518_B1.h: 191: void TMR0_ISR();
@@ -2741,10 +2725,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_16F1518_B1.h: 432: unsigned int Time;
 [; ;MCU_16F1518_B1.h: 433: };
 "434
-[v _Memory `*S247 ~T0 @X0 1 e ]
+[v _Memory `*S246 ~T0 @X0 1 e ]
 [; ;MCU_16F1518_B1.h: 434: struct FlashMemory *Memory;
 "435
-[v _VarMemory `S247 ~T0 @X0 1 e ]
+[v _VarMemory `S246 ~T0 @X0 1 e ]
 [i _VarMemory
 :U ..
 :U ..
@@ -2823,7 +2807,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setLoad_AH_AL_Restore ..  ]
 [; ;OverLoad_B1.c: 13: }
 "13
-[e :UE 248 ]
+[e :UE 247 ]
 }
 "15
 [v _getLoad_AD `(v ~T0 @X0 1 ef1`uc ]
@@ -2844,7 +2828,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _j -> -> 0 `i `uc ]
 [; ;OverLoad_B1.c: 19: if(Load->ADtoGO)
 "19
-[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 250  ]
+[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 249  ]
 [; ;OverLoad_B1.c: 20: {
 "20
 {
@@ -2855,15 +2839,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "22
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 251  ]
-[e $U 252  ]
+[e $ < -> _i `i -> 5 `i 250  ]
+[e $U 251  ]
 "23
-[e :U 251 ]
+[e :U 250 ]
 [; ;OverLoad_B1.c: 23: {
 {
 [; ;OverLoad_B1.c: 24: if(Load->AH[i] < Load->ADRES)
 "24
-[e $ ! < *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux . *U _Load 15 254  ]
+[e $ ! < *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux . *U _Load 15 253  ]
 [; ;OverLoad_B1.c: 25: {
 "25
 {
@@ -2875,23 +2859,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _j -> -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 28: break;
 "28
-[e $U 252  ]
+[e $U 251  ]
 "29
 }
-[e :U 254 ]
+[e :U 253 ]
 "30
 }
 "22
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 251  ]
-[e :U 252 ]
+[e $ < -> _i `i -> 5 `i 250  ]
+[e :U 251 ]
 "30
 }
 [; ;OverLoad_B1.c: 29: }
 [; ;OverLoad_B1.c: 30: }
 [; ;OverLoad_B1.c: 31: if(!j)
 "31
-[e $ ! ! != -> _j `i -> -> -> 0 `i `uc `i 255  ]
+[e $ ! ! != -> _j `i -> -> -> 0 `i `uc `i 254  ]
 [; ;OverLoad_B1.c: 32: {
 "32
 {
@@ -2899,15 +2883,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "33
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 256  ]
-[e $U 257  ]
+[e $ < -> _i `i -> 5 `i 255  ]
+[e $U 256  ]
 "34
-[e :U 256 ]
+[e :U 255 ]
 [; ;OverLoad_B1.c: 34: {
 {
 [; ;OverLoad_B1.c: 35: if(Load->AL[i] > Load->ADRES)
 "35
-[e $ ! > *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux . *U _Load 15 259  ]
+[e $ ! > *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux . *U _Load 15 258  ]
 [; ;OverLoad_B1.c: 36: {
 "36
 {
@@ -2916,31 +2900,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux . *U _Load 15 ]
 [; ;OverLoad_B1.c: 38: break;
 "38
-[e $U 257  ]
+[e $U 256  ]
 "39
 }
-[e :U 259 ]
+[e :U 258 ]
 "40
 }
 "33
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 256  ]
-[e :U 257 ]
+[e $ < -> _i `i -> 5 `i 255  ]
+[e :U 256 ]
 "40
 }
 "41
 }
-[e :U 255 ]
+[e :U 254 ]
 "42
 }
-[e :U 250 ]
+[e :U 249 ]
 [; ;OverLoad_B1.c: 39: }
 [; ;OverLoad_B1.c: 40: }
 [; ;OverLoad_B1.c: 41: }
 [; ;OverLoad_B1.c: 42: }
 [; ;OverLoad_B1.c: 43: }
 "43
-[e :UE 249 ]
+[e :UE 248 ]
 }
 "45
 [v _Load_Main `(v ~T0 @X0 1 ef ]
@@ -2955,7 +2939,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 47: char i;
 [; ;OverLoad_B1.c: 48: if(Load->ERROR)
 "48
-[e $ ! != -> . *U _Load 5 `i -> -> -> 0 `i `uc `i 261  ]
+[e $ ! != -> . *U _Load 5 `i -> -> -> 0 `i `uc `i 260  ]
 [; ;OverLoad_B1.c: 49: {
 "49
 {
@@ -2964,7 +2948,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Load 7 -> -> 1 `i `ui ]
 [; ;OverLoad_B1.c: 51: if(Load->ErrorTime >= 1000)
 "51
-[e $ ! >= . *U _Load 7 -> -> 1000 `i `ui 262  ]
+[e $ ! >= . *U _Load 7 -> -> 1000 `i `ui 261  ]
 [; ;OverLoad_B1.c: 52: {
 "52
 {
@@ -2976,21 +2960,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setLoad_Exceptions (1 -> -> 0 `i `uc ]
 "55
 }
-[e :U 262 ]
+[e :U 261 ]
 "56
 }
 [; ;OverLoad_B1.c: 55: }
 [; ;OverLoad_B1.c: 56: }
-[e $U 263  ]
+[e $U 262  ]
 "57
-[e :U 261 ]
+[e :U 260 ]
 [; ;OverLoad_B1.c: 57: else
 [; ;OverLoad_B1.c: 58: {
 "58
 {
 [; ;OverLoad_B1.c: 59: if(Load->ADtoGO)
 "59
-[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 264  ]
+[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 263  ]
 [; ;OverLoad_B1.c: 60: {
 "60
 {
@@ -2999,7 +2983,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Load 6 -> -> 1 `i `ui ]
 [; ;OverLoad_B1.c: 62: if(Load->Time >= 5)
 "62
-[e $ ! >= . *U _Load 6 -> -> 5 `i `ui 265  ]
+[e $ ! >= . *U _Load 6 -> -> 5 `i `ui 264  ]
 [; ;OverLoad_B1.c: 63: {
 "63
 {
@@ -3016,10 +3000,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "67
 {
 [e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 266  ]
-[e $U 267  ]
+[e $ < -> _i `i -> 4 `i 265  ]
+[e $U 266  ]
 "68
-[e :U 266 ]
+[e :U 265 ]
 [; ;OverLoad_B1.c: 68: {
 {
 [; ;OverLoad_B1.c: 69: Load->ADH+=Load->AH[i];
@@ -3032,8 +3016,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "67
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 266  ]
-[e :U 267 ]
+[e $ < -> _i `i -> 4 `i 265  ]
+[e :U 266 ]
 "71
 }
 [; ;OverLoad_B1.c: 71: }
@@ -3045,7 +3029,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =/ . *U _Load 14 -> -> 3 `uc `ui ]
 [; ;OverLoad_B1.c: 74: if(Load->ADH > Load->ADL)
 "74
-[e $ ! > . *U _Load 13 . *U _Load 14 269  ]
+[e $ ! > . *U _Load 13 . *U _Load 14 268  ]
 [; ;OverLoad_B1.c: 75: {
 "75
 {
@@ -3054,7 +3038,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 12 - . *U _Load 13 . *U _Load 14 ]
 [; ;OverLoad_B1.c: 78: if(Load->Count < 2)
 "78
-[e $ ! < -> . *U _Load 19 `i -> 2 `i 270  ]
+[e $ ! < -> . *U _Load 19 `i -> 2 `i 269  ]
 [; ;OverLoad_B1.c: 79: {
 "79
 {
@@ -3063,7 +3047,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Load 19 -> -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 81: if(Load->Count == 1)
 "81
-[e $ ! == -> . *U _Load 19 `i -> 1 `i 271  ]
+[e $ ! == -> . *U _Load 19 `i -> 1 `i 270  ]
 [; ;OverLoad_B1.c: 82: {
 "82
 {
@@ -3073,52 +3057,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 "84
 }
 [; ;OverLoad_B1.c: 84: }
-[e $U 272  ]
+[e $U 271  ]
 "85
-[e :U 271 ]
+[e :U 270 ]
 [; ;OverLoad_B1.c: 85: else if(Load->Count == 2)
-[e $ ! == -> . *U _Load 19 `i -> 2 `i 273  ]
+[e $ ! == -> . *U _Load 19 `i -> 2 `i 272  ]
 [; ;OverLoad_B1.c: 86: {
 "86
 {
 [; ;OverLoad_B1.c: 87: if(Load->LightsCount == 1)
 "87
-[e $ ! == -> . *U _Load 23 `i -> 1 `i 274  ]
+[e $ ! == -> . *U _Load 23 `i -> 1 `i 273  ]
 [; ;OverLoad_B1.c: 88: {
 "88
 {
-[; ;OverLoad_B1.c: 89: Load->JudgeValue=0x42;
+[; ;OverLoad_B1.c: 89: Load->JudgeValue=0x32;
 "89
-[e = . *U _Load 17 -> -> 66 `i `ui ]
+[e = . *U _Load 17 -> -> 50 `i `ui ]
 "90
 }
 [; ;OverLoad_B1.c: 90: }
-[e $U 275  ]
+[e $U 274  ]
 "91
-[e :U 274 ]
+[e :U 273 ]
 [; ;OverLoad_B1.c: 91: else
 [; ;OverLoad_B1.c: 92: {
 "92
 {
-[; ;OverLoad_B1.c: 93: Load->JudgeValue=(0x42+Load->TotalLoad)-0x08;
+[; ;OverLoad_B1.c: 93: Load->JudgeValue=(0x32+Load->TotalLoad)-0x08;
 "93
-[e = . *U _Load 17 - + -> -> 66 `i `ui . *U _Load 9 -> -> 8 `i `ui ]
+[e = . *U _Load 17 - + -> -> 50 `i `ui . *U _Load 9 -> -> 8 `i `ui ]
 "94
 }
-[e :U 275 ]
+[e :U 274 ]
 "95
 }
-[e :U 273 ]
-"96
 [e :U 272 ]
+"96
+[e :U 271 ]
 }
-[e :U 270 ]
+[e :U 269 ]
 [; ;OverLoad_B1.c: 94: }
 [; ;OverLoad_B1.c: 95: }
 [; ;OverLoad_B1.c: 96: }
 [; ;OverLoad_B1.c: 98: if(Load->AD >= Load->JudgeValue)
 "98
-[e $ ! >= . *U _Load 12 . *U _Load 17 276  ]
+[e $ ! >= . *U _Load 12 . *U _Load 17 275  ]
 [; ;OverLoad_B1.c: 99: {
 "99
 {
@@ -3127,7 +3111,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Load 21 -> -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 101: if(Load->ErrorCount >2)
 "101
-[e $ ! > -> . *U _Load 21 `i -> 2 `i 277  ]
+[e $ ! > -> . *U _Load 21 `i -> 2 `i 276  ]
 [; ;OverLoad_B1.c: 102: {
 "102
 {
@@ -3154,14 +3138,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 23 ]
 "113
 }
-[e :U 277 ]
+[e :U 276 ]
 "114
 }
 [; ;OverLoad_B1.c: 113: }
 [; ;OverLoad_B1.c: 114: }
-[e $U 278  ]
+[e $U 277  ]
 "115
-[e :U 276 ]
+[e :U 275 ]
 [; ;OverLoad_B1.c: 115: else
 [; ;OverLoad_B1.c: 116: {
 "116
@@ -3171,7 +3155,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 21 -> -> 0 `i `uc ]
 [; ;OverLoad_B1.c: 118: if(Load->SafeCount < 10)
 "118
-[e $ ! < -> . *U _Load 27 `i -> 10 `i 279  ]
+[e $ ! < -> . *U _Load 27 `i -> 10 `i 278  ]
 [; ;OverLoad_B1.c: 119: {
 "119
 {
@@ -3180,11 +3164,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Load 27 -> -> 1 `i `uc ]
 "121
 }
-[e :U 279 ]
+[e :U 278 ]
 [; ;OverLoad_B1.c: 121: }
 [; ;OverLoad_B1.c: 122: if(Load->SafeCount >= 10)
 "122
-[e $ ! >= -> . *U _Load 27 `i -> 10 `i 280  ]
+[e $ ! >= -> . *U _Load 27 `i -> 10 `i 279  ]
 [; ;OverLoad_B1.c: 123: {
 "123
 {
@@ -3194,9 +3178,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 127: setDimmerLights_Clear(1,1);
 "127
 [e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 131: setDimmerLights_Clear(2,1);
+"131
+[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 138: if(Load->StatusOn)
 "138
-[e $ ! != -> . *U _Load 31 `i -> -> -> 0 `i `uc `i 281  ]
+[e $ ! != -> . *U _Load 31 `i -> -> -> 0 `i `uc `i 280  ]
 [; ;OverLoad_B1.c: 139: {
 "139
 {
@@ -3208,11 +3195,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 9 . *U _Load 12 ]
 "143
 }
-[e :U 281 ]
+[e :U 280 ]
 [; ;OverLoad_B1.c: 143: }
 [; ;OverLoad_B1.c: 145: if(Load->StatusOff)
 "145
-[e $ ! != -> . *U _Load 32 `i -> -> -> 0 `i `uc `i 282  ]
+[e $ ! != -> . *U _Load 32 `i -> -> -> 0 `i `uc `i 281  ]
 [; ;OverLoad_B1.c: 146: {
 "146
 {
@@ -3222,21 +3209,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 148: Load->TotalLoad=Load->AD;
 "148
 [e = . *U _Load 9 . *U _Load 12 ]
-[; ;OverLoad_B1.c: 149: Load->JudgeValue=0x42*Load->LightsCount;
+[; ;OverLoad_B1.c: 149: Load->JudgeValue=0x32*Load->LightsCount;
 "149
-[e = . *U _Load 17 -> * -> 66 `i -> . *U _Load 23 `i `ui ]
+[e = . *U _Load 17 -> * -> 50 `i -> . *U _Load 23 `i `ui ]
 "150
 }
-[e :U 282 ]
+[e :U 281 ]
 "151
 }
-[e :U 280 ]
+[e :U 279 ]
 "152
 }
-[e :U 278 ]
+[e :U 277 ]
 "153
 }
-[e :U 269 ]
+[e :U 268 ]
 [; ;OverLoad_B1.c: 150: }
 [; ;OverLoad_B1.c: 151: }
 [; ;OverLoad_B1.c: 152: }
@@ -3270,27 +3257,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
 "166
 }
-[e :U 265 ]
+[e :U 264 ]
 "167
 }
 [; ;OverLoad_B1.c: 166: }
 [; ;OverLoad_B1.c: 167: }
-[e $U 283  ]
+[e $U 282  ]
 "168
-[e :U 264 ]
+[e :U 263 ]
 [; ;OverLoad_B1.c: 168: else
 [; ;OverLoad_B1.c: 169: {
 "169
 {
 [; ;OverLoad_B1.c: 170: if(Load->GO)
 "170
-[e $ ! != -> . *U _Load 1 `i -> -> -> 0 `i `uc `i 284  ]
+[e $ ! != -> . *U _Load 1 `i -> -> -> 0 `i `uc `i 283  ]
 [; ;OverLoad_B1.c: 171: {
 "171
 {
 [; ;OverLoad_B1.c: 172: if(!Load->LightsON)
 "172
-[e $ ! ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 285  ]
+[e $ ! ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 284  ]
 [; ;OverLoad_B1.c: 173: {
 "173
 {
@@ -3302,11 +3289,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 3 -> -> 0 `i `uc ]
 "176
 }
-[e :U 285 ]
+[e :U 284 ]
 [; ;OverLoad_B1.c: 176: }
-[; ;OverLoad_B1.c: 177: if(1 && getPF_Safe())
+[; ;OverLoad_B1.c: 177: if(1 && 1)
 "177
-[e $ ! && != -> 1 `i -> 0 `i != -> ( _getPF_Safe ..  `i -> -> -> 0 `i `uc `i 286  ]
+[e $ ! && != -> 1 `i -> 0 `i != -> 1 `i -> 0 `i 285  ]
 [; ;OverLoad_B1.c: 178: {
 "178
 {
@@ -3315,21 +3302,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 4 -> -> 1 `i `uc ]
 "180
 }
-[e :U 286 ]
+[e :U 285 ]
 "181
 }
 [; ;OverLoad_B1.c: 180: }
 [; ;OverLoad_B1.c: 181: }
-[e $U 287  ]
+[e $U 286  ]
 "182
-[e :U 284 ]
+[e :U 283 ]
 [; ;OverLoad_B1.c: 182: else
 [; ;OverLoad_B1.c: 183: {
 "183
 {
 [; ;OverLoad_B1.c: 184: if(Load->LightsON)
 "184
-[e $ ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 288  ]
+[e $ ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 287  ]
 [; ;OverLoad_B1.c: 185: {
 "185
 {
@@ -3366,6 +3353,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 198: setDimmerLights_Clear(1,1);
 "198
 [e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;OverLoad_B1.c: 202: setDimmerLights_Clear(2,1);
+"202
+[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 209: Product->Data[2]=(Load->AD >> 8);
 "209
 [e = *U + &U . *U _Product 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
@@ -3392,23 +3382,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
 "222
 }
-[e :U 288 ]
+[e :U 287 ]
 "223
 }
-[e :U 287 ]
+[e :U 286 ]
 "224
 }
-[e :U 283 ]
+[e :U 282 ]
 "225
 }
-[e :U 263 ]
+[e :U 262 ]
 [; ;OverLoad_B1.c: 222: }
 [; ;OverLoad_B1.c: 223: }
 [; ;OverLoad_B1.c: 224: }
 [; ;OverLoad_B1.c: 225: }
 [; ;OverLoad_B1.c: 226: }
 "226
-[e :UE 260 ]
+[e :UE 259 ]
 }
 "228
 [v _setLoad_Exceptions `(v ~T0 @X0 1 ef1`uc ]
@@ -3432,19 +3422,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 8 _command ]
 [; ;OverLoad_B1.c: 234: if(command)
 "234
-[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 290  ]
+[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 289  ]
 [; ;OverLoad_B1.c: 235: {
 "235
 {
 [; ;OverLoad_B1.c: 236: DimmerLights_Exceptions(2);
 "236
 [e ( _DimmerLights_Exceptions (1 -> -> 2 `i `uc ]
-[; ;OverLoad_B1.c: 238: setLED(2,1);
-"238
-[e ( _setLED (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "240
 }
-[e :U 290 ]
+[e :U 289 ]
 [; ;OverLoad_B1.c: 240: }
 [; ;OverLoad_B1.c: 241: setLED(99,command+10);
 "241
@@ -3457,7 +3444,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setRF_Enable (2 , -> -> 1 `i `uc -> & ~ -> _command `i -> 1 `i `uc ]
 [; ;OverLoad_B1.c: 249: }
 "249
-[e :UE 289 ]
+[e :UE 288 ]
 }
 "251
 [v _setLoad_Count `(v ~T0 @X0 1 ef1`uc ]
@@ -3478,7 +3465,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 27 _command ]
 [; ;OverLoad_B1.c: 255: }
 "255
-[e :UE 291 ]
+[e :UE 290 ]
 }
 "257
 [v _setLoad_Enable `(v ~T0 @X0 1 ef1`uc ]
@@ -3499,7 +3486,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 1 -> -> 0 `i `uc ]
 [; ;OverLoad_B1.c: 261: }
 "261
-[e :UE 292 ]
+[e :UE 291 ]
 }
 "262
 [v _setLoad_GO `(v ~T0 @X0 1 ef1`uc ]
@@ -3517,7 +3504,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 1 _command ]
 [; ;OverLoad_B1.c: 265: }
 "265
-[e :UE 293 ]
+[e :UE 292 ]
 }
 "266
 [v _setLoad_StatusOn `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -3539,7 +3526,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 31 _command ]
 [; ;OverLoad_B1.c: 271: if(lights == 1)
 "271
-[e $ ! == -> _lights `i -> 1 `i 295  ]
+[e $ ! == -> _lights `i -> 1 `i 294  ]
 [; ;OverLoad_B1.c: 272: {
 "272
 {
@@ -3548,11 +3535,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 28 -> -> 1 `i `uc ]
 "274
 }
-[e :U 295 ]
+[e :U 294 ]
 [; ;OverLoad_B1.c: 274: }
 [; ;OverLoad_B1.c: 275: if(lights == 2)
 "275
-[e $ ! == -> _lights `i -> 2 `i 296  ]
+[e $ ! == -> _lights `i -> 2 `i 295  ]
 [; ;OverLoad_B1.c: 276: {
 "276
 {
@@ -3561,11 +3548,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 29 -> -> 1 `i `uc ]
 "278
 }
-[e :U 296 ]
+[e :U 295 ]
 [; ;OverLoad_B1.c: 278: }
 [; ;OverLoad_B1.c: 279: if(lights == 3)
 "279
-[e $ ! == -> _lights `i -> 3 `i 297  ]
+[e $ ! == -> _lights `i -> 3 `i 296  ]
 [; ;OverLoad_B1.c: 280: {
 "280
 {
@@ -3574,11 +3561,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 30 -> -> 1 `i `uc ]
 "282
 }
-[e :U 297 ]
+[e :U 296 ]
 [; ;OverLoad_B1.c: 282: }
 [; ;OverLoad_B1.c: 283: }
 "283
-[e :UE 294 ]
+[e :UE 293 ]
 }
 "284
 [v _setLoad_StatusOff `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -3600,7 +3587,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =- . *U _Load 27 -> -> 2 `i `uc ]
 [; ;OverLoad_B1.c: 288: if(lights == 1)
 "288
-[e $ ! == -> _lights `i -> 1 `i 299  ]
+[e $ ! == -> _lights `i -> 1 `i 298  ]
 [; ;OverLoad_B1.c: 289: {
 "289
 {
@@ -3609,11 +3596,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 28 -> -> 0 `i `uc ]
 "291
 }
-[e :U 299 ]
+[e :U 298 ]
 [; ;OverLoad_B1.c: 291: }
 [; ;OverLoad_B1.c: 292: if(lights == 2)
 "292
-[e $ ! == -> _lights `i -> 2 `i 300  ]
+[e $ ! == -> _lights `i -> 2 `i 299  ]
 [; ;OverLoad_B1.c: 293: {
 "293
 {
@@ -3622,11 +3609,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 29 -> -> 0 `i `uc ]
 "295
 }
-[e :U 300 ]
+[e :U 299 ]
 [; ;OverLoad_B1.c: 295: }
 [; ;OverLoad_B1.c: 296: if(lights == 3)
 "296
-[e $ ! == -> _lights `i -> 3 `i 301  ]
+[e $ ! == -> _lights `i -> 3 `i 300  ]
 [; ;OverLoad_B1.c: 297: {
 "297
 {
@@ -3635,11 +3622,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Load 30 -> -> 0 `i `uc ]
 "299
 }
-[e :U 301 ]
+[e :U 300 ]
 [; ;OverLoad_B1.c: 299: }
 [; ;OverLoad_B1.c: 300: }
 "300
-[e :UE 298 ]
+[e :UE 297 ]
 }
 "301
 [v _getLoad_Safe `(uc ~T0 @X0 1 ef ]
@@ -3652,10 +3639,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 303: return Load->Safe;
 "303
 [e ) . *U _Load 3 ]
-[e $UE 302  ]
+[e $UE 301  ]
 [; ;OverLoad_B1.c: 304: }
 "304
-[e :UE 302 ]
+[e :UE 301 ]
 }
 "305
 [v _getLoad_ERROR `(uc ~T0 @X0 1 ef ]
@@ -3668,10 +3655,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OverLoad_B1.c: 307: return Load->ERROR;
 "307
 [e ) . *U _Load 5 ]
-[e $UE 303  ]
+[e $UE 302  ]
 [; ;OverLoad_B1.c: 308: }
 "308
-[e :UE 303 ]
+[e :UE 302 ]
 }
 "310
 [v _setLoad_AH_AL_Restore `(v ~T0 @X0 1 ef ]
@@ -3688,10 +3675,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "313
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 305  ]
-[e $U 306  ]
+[e $ < -> _i `i -> 5 `i 304  ]
+[e $U 305  ]
 "314
-[e :U 305 ]
+[e :U 304 ]
 [; ;OverLoad_B1.c: 314: {
 {
 [; ;OverLoad_B1.c: 315: Load->AH[i]=0;
@@ -3704,12 +3691,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "313
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 305  ]
-[e :U 306 ]
+[e $ < -> _i `i -> 5 `i 304  ]
+[e :U 305 ]
 "317
 }
 [; ;OverLoad_B1.c: 317: }
 [; ;OverLoad_B1.c: 318: }
 "318
-[e :UE 304 ]
+[e :UE 303 ]
 }

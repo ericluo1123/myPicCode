@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.32 build 58300 
-                                                                                                           Mon Sep 22 16:56:08 2014
+                                                                                                           Tue Sep 23 16:21:51 2014
 
 
      1                           
@@ -150,9 +150,9 @@ Microchip Technology PIC Macro Assembler V1.32 build 58300
 
 
 Microchip Technology PIC Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                               Mon Sep 22 16:56:08 2014
+Symbol Table                                                                                               Tue Sep 23 16:21:51 2014
 
-               ___sp 0000                 _main 1431                 start 0016               stackhi 231F  
+               ___sp 0000                 _main 114E                 start 0016               stackhi 231F  
              stacklo 2187  start_initialization 0018             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

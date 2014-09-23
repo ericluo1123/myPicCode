@@ -93,6 +93,7 @@ void MainT_Initialization()
 {
 	#ifndef _16F723A
 		Product=&VarProduct;
+		Product->Data[20]=KeyID;
 	#endif
 
 	TMain=&VarTMain;

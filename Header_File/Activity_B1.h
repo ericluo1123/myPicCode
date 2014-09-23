@@ -148,7 +148,7 @@
 	#define DelayOff_use 1
 
 //PowerFault
-	#define PowerFault_use 1
+	#define PowerFault_use 0
 
 //Dimmer Lights
 	#define Dimmer_use 						1

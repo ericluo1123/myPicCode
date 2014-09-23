@@ -27,7 +27,7 @@
 	#define	Name_Version 			1	//1
 	#define Name_SerialNumber		0	//2
 	#define Properties_Product		1	//3
-	#define Properties_Keys			1	//4
+	#define Properties_Keys			2	//4
 	#define Properties_Country		1	//5
 
 
@@ -45,7 +45,7 @@
 	#define Properties_Dimmer			0
 								
 //MCU
-	#define	Key1_3				RA0		//pin2  1	
+	#define	Key2_1				RA0		//pin2  1	
   	#define OverLoad1			RA1		//pin3	1	
  	#define SYSC1				RA2		//pin4	1		
  	#define	LED1				RA3		//pin5	0	
@@ -55,10 +55,10 @@
 	#define	Mosfet1				RA7		//pin9	0			
 		
 	#define CC2500_GDO0			RB0		//pin21 1	
-	#define Key1_4				RB1		//pin22 1	
+	#define Key2_2				RB1		//pin22 1	
 	#define DimmerReference1	RB2		//pin23 1
 	#define Buzzer1				RB3		//pin24	0
-//	#define Triac2				RB4		//pin25 0	
+	#define Mosfet2				RB4		//pin25 0	
 	#define ErrLED				RB5		//pin26	0
 	#define PinEmpty1			RB6		//pin27	0	
 	#define PinEmpty2			RB7		//pin28 0	
@@ -91,8 +91,6 @@
 	#define OverTemp_Channel		AN2
 	#define PFV_Channel				AN4	
 
-	#include "Activity_B1.h"
-
 
 //Global extern variable declaration
 	struct Product
@@ -105,7 +103,7 @@
 		{
 		 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 		 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-		 KeyID,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+		 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 		 0x00,0x00
 		}
 	};
@@ -182,6 +180,7 @@
 	void MainT();
 	//end
 
+	#include "Activity_B1.h"
 	#include "Switch_B1.h"
 	#include "Buzzer_B1.h"
 	#include "LED_B1.h"

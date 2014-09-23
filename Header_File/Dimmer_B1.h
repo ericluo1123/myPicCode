@@ -520,12 +520,10 @@
 								{\
 									DimmerLights11->MosfetClose=0;\
 									DimmerLights11->StatusFlag=0;\
-									while(LED1)\
-										LED1=0;\
-									while(LED2)\
-										setLED2(1);\
+									DimmerLights11->Clear=1;\
+									LED1=0;\
+									setLED2(1);\
 									ID_1KEY_0;\
-									DimmerLights->Close=1;\
 									Dimmer->Detect=1;\
 									setLoad_StatusOff(1,lights,1);\
 								}\
@@ -623,10 +621,10 @@
 								{\
 									DimmerLights11->MosfetClose=0;\
 									DimmerLights11->StatusFlag=0;\
+									DimmerLights11->Clear=1;\
 									LED1=0;\
 									setLED2(1);\
 									Dimmer->Detect=1;\
-									DimmerLights11->Clear=1;\
 									setLoad_StatusOff(lights,1);\
 								}\
 							}\
@@ -696,6 +694,204 @@
 									else\
 									{\
 										DimmerLights11->Signal=0;\
+									}\
+								}\
+							}\
+						}\
+					}\
+					;
+			#endif
+		#endif
+
+		#ifdef Mosfet2
+
+			#if Dimmer_Full_Wave == 1
+				#define setDimmerLights22_Control(lights)\
+					if(DimmerLights22->GO)\//reclock
+					{\
+						DimmerLights22->Count++;\
+						if(DimmerLights22->Count >= DimmerLights22->DimmingValue)\
+						{\
+							DimmerLights22->Count=0;\
+							DimmerLights22->GO=0;\
+							DimmerLights22->Flag=1;\
+							if(DimmerLights22->StatusFlag)\
+							{\
+								Mosfet2=0;\
+								if(DimmerLights22->MosfetClose)\
+								{\
+									DimmerLights22->MosfetClose=0;\
+									DimmerLights22->StatusFlag=0;\
+									DimmerLights22->Clear=1;\
+									LED2=0;\
+									Dimmer->Detect=1;\
+									setLoad_StatusOff(1,lights,1);\
+								}\
+							}\
+						}\
+					}\
+					else\
+					{\
+						if(DimmerLights22->MosfetOpen)\
+						{\
+							DimmerLights22->Count++;\
+							if(DimmerLights22->Count >= MosfetOpenToCloseValue)\
+							{\
+								DimmerLights22->Count=0;\
+								DimmerLights22->MosfetOpen=0;\
+							}\
+						}\
+						if(DimmerLights22->Flag)\
+						{\
+							DimmerLights22->Flag=0;\
+							if(DimmerLights22->Signal)\
+							{\
+								DimmerLights22->DimmingTime++;\
+								if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue)\
+								{\
+									DimmerLights22->DimmingTime=0;\
+									if(DimmerLights22->AdjFlag)\
+									{\
+										if(!DimmerLights22->AdjStatus)\
+										{\
+											if(DimmerLights22->DimmingValue < Dimmer_Maxum)\
+											{\
+												DimmerLights22->DimmingValue++;\
+											}\
+											else\
+											{\
+												DimmerLights22->AdjStatus=1;\
+											}\
+										}\
+										else\
+										{\
+											if(DimmerLights22->DimmingValue > Dimmer_Minimum)\
+											{\
+												DimmerLights22->DimmingValue--;\
+											}\
+											else\
+											{\
+												DimmerLights22->AdjStatus=0;\
+											}\
+										}\
+									}\
+									else if(DimmerLights22->AdjRF)\
+									{\
+										if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->DimmingValue++;\
+										}\
+										else if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->DimmingValue--;\
+										}\
+										if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->AdjRF=0;\
+											DimmerLights22->Signal=0;\
+										}\
+									}\
+									else\
+									{\
+										DimmerLights22->Signal=0;\
+									}\
+								}\
+							}\
+						}\
+					}\
+					;
+			#endif
+		
+			#if Dimmer_Half_Wave == 1
+
+				#define setDimmerLights22_Control(lights)\
+					if(DimmerLights22->GO)\//reclock
+					{\
+						DimmerLights22->Count++;\
+						if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction))\
+						{\
+							DimmerLights22->Count=0;\
+							DimmerLights22->GO=0;\
+							DimmerLights22->Flag=1;\
+							if(DimmerLights22->StatusFlag)\
+							{\
+								Mosfet2=0;\
+								if(DimmerLights22->MosfetClose)\
+								{\
+									DimmerLights22->MosfetClose=0;\
+									DimmerLights22->StatusFlag=0;\
+									DimmerLights22->Clear=1;\
+									LED2=0;\
+									Dimmer->Detect=1;\
+									setLoad_StatusOff(lights,1);\
+								}\
+							}\
+						}\
+					}\
+					else\
+					{\
+						if(DimmerLights22->MosfetOpen)\
+						{\
+							DimmerLights22->Count++;\
+							if(DimmerLights22->Count >= MosfetOpenToCloseValue)\
+							{\
+								DimmerLights22->Count=0;\
+								DimmerLights22->MosfetOpen=0;\
+							}\
+						}\
+						if(DimmerLights22->Flag)\
+						{\
+							DimmerLights22->Flag=0;\
+							if(DimmerLights22->Signal)\
+							{\
+								DimmerLights22->DimmingTime++;\
+								if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue)\
+								{\
+									DimmerLights22->DimmingTime=0;\
+									if(DimmerLights22->AdjFlag)\
+									{\
+										if(DimmerLights22->AdjStatus == 0)\
+										{\
+											if(DimmerLights22->DimmingValue < Dimmer_Maxum)\
+											{\
+												DimmerLights22->DimmingValue++;\
+											}\
+											else\
+											{\
+												DimmerLights22->AdjStatus=1;\
+											}\
+										}\
+										else\
+										{\
+											if(DimmerLights22->DimmingValue > Dimmer_Minimum)\
+											{\
+												DimmerLights22->DimmingValue--;\
+											}\
+											else\
+											{\
+												DimmerLights22->AdjStatus=0;\
+											}\
+										}\
+									}\
+									else if(DimmerLights22->AdjRF)\
+									{\
+										if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->DimmingValue++;\
+										}\
+										else if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->DimmingValue--;\
+										}\
+										if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue)\
+										{\
+											DimmerLights22->AdjRF=0;\
+											DimmerLights22->Signal=0;\
+										}\
+									}\
+									else\
+									{\
+										DimmerLights22->Signal=0;\
 									}\
 								}\
 							}\

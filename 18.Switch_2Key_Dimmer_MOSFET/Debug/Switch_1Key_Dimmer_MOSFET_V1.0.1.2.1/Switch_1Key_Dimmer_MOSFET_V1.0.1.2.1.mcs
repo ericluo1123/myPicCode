@@ -11,7 +11,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File001]
@@ -24,7 +24,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File002]
@@ -37,7 +37,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File003]
@@ -50,7 +50,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File004]
@@ -63,7 +63,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File005]
@@ -76,7 +76,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File006]
@@ -89,7 +89,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File007]
@@ -102,7 +102,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File008]
@@ -115,7 +115,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File009]
@@ -128,7 +128,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File010]
@@ -141,7 +141,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File011]
@@ -154,7 +154,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File012]
@@ -167,7 +167,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File013]
@@ -180,7 +180,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File014]
@@ -193,7 +193,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File015]
@@ -206,7 +206,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File016]
@@ -219,7 +219,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File017]
@@ -232,7 +232,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File018]
@@ -245,7 +245,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File019]
@@ -258,7 +258,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File020]
@@ -271,7 +271,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File021]
@@ -284,7 +284,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File022]
@@ -297,7 +297,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File023]
@@ -310,7 +310,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File024]
@@ -323,7 +323,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File025]
@@ -336,7 +336,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File026]
@@ -349,7 +349,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File027]
@@ -362,7 +362,7 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File028]
@@ -375,6 +375,6 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File;C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Buzzer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CDS_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_16f1518_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PIR_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\SYSC_B1.c|C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString= C9=2,1
+ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=

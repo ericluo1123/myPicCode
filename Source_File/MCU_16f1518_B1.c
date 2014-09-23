@@ -171,6 +171,30 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 						DimmerLights22->GO=1;
 					}
 				#endif
+
+				#if Control_Method_Mosfet == 1
+					if(!DimmerLights22->GO  && !DimmerLights22->MosfetOpen)
+					{	
+						DimmerLights22->GO=1;
+						if(DimmerLights22->StatusFlag)
+						{
+							Mosfet2=1;
+				
+/*
+							Dimmer->Correction=0;
+							DimmerLights11->MosfetOpen=1;	
+							if(DimmerReference1)
+							{
+								DimmerLights->MosfetHi=1;		
+							}
+							else
+							{
+								DimmerLights->MosfetLow=1;	
+							}
+*/
+						}
+					}
+				#endif
 			#endif
 	
 			#ifdef use_3KEY
