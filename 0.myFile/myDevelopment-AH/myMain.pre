@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 83 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
+# 83 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h"
 typedef int ADtype;
 
 # 240
@@ -2633,11 +2633,11 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
-void Mcu_Initial();
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h"
+void Mcu_Initialization();
 void IO_Set();
 
-# 242
+# 409
 struct Timer1
 {
 unsigned Timeout:1;
@@ -2649,34 +2649,7 @@ struct Timer1 *Timer1;
 void TMR1_Set();
 void TMR1_ISR();
 
-# 338
-struct UART
-{
-unsigned char TxData[32];
-unsigned char RxData[32];
-unsigned char Count;
-unsigned char TxLength;
-unsigned char RxLength;
-unsigned TxGO:1;
-unsigned RxGO:1;
-};
-struct UART *UART;
-struct UART VarUart;
-
-
-
-
-void putch(unsigned char);
-unsigned char getch(void);
-unsigned char getche(void);
-void UART_Set();
-void UART_ISR();
-void UART_Main();
-void UART_Transmit();
-void UART_Receive();
-void UART_SetData();
-
-# 380
+# 450
 struct I2C
 {
 unsigned char BufferReader[32];
@@ -2701,11 +2674,37 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
+# 542
+struct UART
+{
+unsigned char TxData[32];
+unsigned char RxData[32];
+unsigned char Count;
+unsigned char TxLength;
+unsigned char RxLength;
+unsigned TxGO:1;
+unsigned RxGO:1;
+};
+struct UART *UART;
+struct UART VarUart;
+
+
+
+void putch(unsigned char);
+unsigned char getch(void);
+unsigned char getche(void);
+void UART_Set();
+void UART_ISR();
+void UART_Main();
+void UART_Transmit();
+void UART_Receive();
+void UART_SetData();
+
 # 6 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c"
 void main()
 {
 MainT_Initial();
-Mcu_Initial();
+Mcu_Initialization();
 SegmentDisplay_Initial();
 ;;
 __nop();

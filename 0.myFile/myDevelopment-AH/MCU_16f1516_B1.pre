@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 83 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h"
+# 83 "C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h"
 typedef int ADtype;
 
 # 240
@@ -2633,11 +2633,11 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
-void Mcu_Initial();
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h"
+void Mcu_Initialization();
 void IO_Set();
 
-# 242
+# 409
 struct Timer1
 {
 unsigned Timeout:1;
@@ -2649,34 +2649,7 @@ struct Timer1 *Timer1;
 void TMR1_Set();
 void TMR1_ISR();
 
-# 338
-struct UART
-{
-unsigned char TxData[32];
-unsigned char RxData[32];
-unsigned char Count;
-unsigned char TxLength;
-unsigned char RxLength;
-unsigned TxGO:1;
-unsigned RxGO:1;
-};
-struct UART *UART;
-struct UART VarUart;
-
-
-
-
-void putch(unsigned char);
-unsigned char getch(void);
-unsigned char getche(void);
-void UART_Set();
-void UART_ISR();
-void UART_Main();
-void UART_Transmit();
-void UART_Receive();
-void UART_SetData();
-
-# 380
+# 450
 struct I2C
 {
 unsigned char BufferReader[32];
@@ -2701,6 +2674,32 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
+# 542
+struct UART
+{
+unsigned char TxData[32];
+unsigned char RxData[32];
+unsigned char Count;
+unsigned char TxLength;
+unsigned char RxLength;
+unsigned TxGO:1;
+unsigned RxGO:1;
+};
+struct UART *UART;
+struct UART VarUart;
+
+
+
+void putch(unsigned char);
+unsigned char getch(void);
+unsigned char getche(void);
+void UART_Set();
+void UART_ISR();
+void UART_Main();
+void UART_Transmit();
+void UART_Receive();
+void UART_SetData();
+
 # 7 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c"
 __config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF");
 __config("__CONFIG", "pic", "VCAPEN_OFF & WRT_BOOT");
@@ -2713,17 +2712,17 @@ OSCCON=0x78; ;;
 
 IO_Set();
 
-__nop();
+;;
 
 TMR1_Set();
 
-__nop();
+;;
 
 
 
-__nop();
+;;
 
-__nop();
+;;
 
 I2C_Set();
 
@@ -2753,22 +2752,22 @@ PORTC=0b00011001;;
 
 void ISR(void) interrupt 0
 {
-__nop();
+;;
 
-__nop();
+;;
 
 TMR1_ISR();
 
 
 
-__nop();
+;;
 
 UART_ISR();
 
 I2C_ISR();
 }
 
-# 114
+# 115
 void TMR1_Set()
 {
 Timer1=&VarTimer1;
@@ -2796,7 +2795,7 @@ TMain->T1_Timerout=1;
 }
 }
 
-# 233
+# 234
 void I2C_Set()
 {
 I2C=&VarI2C;
@@ -2807,7 +2806,7 @@ SSPCON2 = 0;
 
 SSPCON1=0b101000;
 
-# 258
+# 259
 }
 
 void I2C_ISR()
@@ -2817,7 +2816,7 @@ if(SSPIE && SSPIF)
 SSPIE=0;
 I2C->SlaveGO=1;
 
-# 272
+# 273
 }
 }
 
@@ -2825,7 +2824,7 @@ void I2C_Main()
 {
 char i;
 
-# 302
+# 303
 if(I2C->MasterRxGO)
 {
 I2C->MasterRxGO=0;
@@ -2869,7 +2868,7 @@ I2C_Master_Transmission();
 void I2C_SetData(char command)
 {
 
-# 373
+# 374
 }
 
 void I2C_Master_Transmission()
@@ -2991,7 +2990,7 @@ I2C->SlaveRxGO=1;
 
 }
 
-# 498
+# 499
 void UART_Set()
 {
 UART=&VarUart;
@@ -3019,7 +3018,7 @@ while(!RCIDL);
 
 UART->RxData[0]=RCREG;
 
-# 532
+# 533
 RA1=~RA1;
 setSegmentDisplayNumber(UART->RxData[0]);
 }
@@ -3050,7 +3049,7 @@ char i;
 for(i=0;i<32;i++)
 {
 
-# 566
+# 567
 printf("%d,",i);
 
 
@@ -3071,13 +3070,13 @@ I2C->BufferWriter[i]=UART->RxData[i];
 }
 I2C->MasterTxGO=1;
 
-# 598
+# 599
 }
 void UART_SetData()
 {
 char i;
 
-# 610
+# 611
 }
 
 void putch(unsigned char byte)

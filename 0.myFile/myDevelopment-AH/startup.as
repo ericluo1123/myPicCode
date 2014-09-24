@@ -8,7 +8,7 @@
 	; Compiler options:
 	;
 	; -omyDevelopment-AH.cof -mmyDevelopment-AH.map --summary=default \
-	; --output=default MCU_16f1516_B1.p1 myMain.p1 SegmentDisplay_A2.p1 \
+	; --output=default myMain.p1 SegmentDisplay_A2.p1 MCU_B1.p1 \
 	; --chip=16F1516 \
 	; -IC:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release \
 	; -IC:\Users\Eric\Documents\GitHub\myPicCode\Header_File -P \
@@ -78,12 +78,12 @@ reset_vec:
 start
 
 ;Initialize the stack pointer (FSR1)
-;Stack space: 02133h-021EFh (189 bytes)
+;Stack space: 02134h-021EFh (188 bytes)
 
 	fsr1l	equ	6
 	fsr1h	equ	7
 	global stacklo, stackhi
-	stacklo	equ	02133h
+	stacklo	equ	02134h
 	stackhi	equ	021EFh
 
 

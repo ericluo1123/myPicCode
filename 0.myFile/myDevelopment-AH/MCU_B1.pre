@@ -1,5 +1,5 @@
 
-# 1 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
+# 1 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 
 # 8 "C:\Program Files (x86)\Microchip\xc8\v1.33\include\stdio.h"
 typedef int ptrdiff_t;
@@ -2700,104 +2700,404 @@ void UART_Transmit();
 void UART_Receive();
 void UART_SetData();
 
-# 8 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c"
-void SegmentDisplay_Initial()
+# 14 "C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+__config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF");
+__config("__CONFIG", "pic", "VCAPEN_OFF & WRT_BOOT");
+
+# 24
+void Mcu_Initialization()
 {
-Segment=&VarSegment;
-Segment->Enable=1;
 
-Segment->Dec=1;
+OSCCON=0x78; ;;
 
-# 18
+IO_Set();
+
+;;
+
+TMR1_Set();
+
+;;
+
+
+
+;;
+
+;;
+
+I2C_Set();
+
+UART_Set();
+
+;;
 }
 
-void setSegmentDisplayNumber(int number)
+void IO_Set()
+{
+
+# 64
+TRISA=0b00001001;;
+TRISB=0b00000000;;
+TRISC=0b00011001;;
+LATA=0b00000000;;
+LATB=0b00000000;;
+LATC=0b00000000;;
+ANSELA=0b00000001;;
+ANSELB=0b00000000;;
+ANSELC=0b00000000;;
+PORTA=0b00001001;;
+PORTB=0b00000000;;
+PORTC=0b00011001;;
+
+# 92
+}
+
+
+
+
+void ISR(void) interrupt 0
+{
+;;
+
+;;
+
+TMR1_ISR();
+
+
+
+;;
+
+UART_ISR();
+}
+
+# 238
+void TMR1_Set()
+{
+Timer1=&VarTimer1;
+T1CON=(0x40 | 0x00 | 0x01);
+TMR1H=((65536-700)/256);
+TMR1L=((65536-700)%256);
+TMR1IE=1;
+PEIE=1;
+GIE=1;
+}
+
+void TMR1_ISR()
+{
+if(TMR1IE && TMR1IF)
+{
+TMR1H=((65536-700)/256);
+TMR1L=((65536-700)%256);
+TMR1IF=0;
+Timer1->Count++;
+if(Timer1->Count == 20)
+{
+Timer1->Count=0;
+TMain->T1_Timerout=1;
+}
+}
+
+# 270
+}
+
+# 399
+void I2C_Set()
+{
+I2C=&VarI2C;
+
+SSPADD = 0x09;
+SSPSTAT = 0x80;
+SSPCON2 = 0;
+
+SSPCON1=0b101000;
+
+# 424
+}
+
+void I2C_ISR()
+{
+if(SSPIE && SSPIF)
+{
+SSPIE=0;
+I2C->SlaveGO=1;
+
+# 438
+}
+}
+
+void I2C_Main()
 {
 char i;
-if(Segment->Enable)
+
+# 468
+if(I2C->MasterRxGO)
 {
-Segment->GO=1;
-if(Segment->Hex)
+I2C->MasterRxGO=0;
+I2C_Master_Reception();
+TMain->Test=1;
+RA1=~RA1;
+
+for(i=0;i<32;i++)
 {
-Segment->Num[0]=(number & 0x000f);
-Segment->Num[1]=((number>>4)&0x000f);
-Segment->Num[2]=((number>>8)&0x000f);
-Segment->Num[3]=((number>>12)&0x000f);
+UART->TxData[i]=I2C->BufferReader[i];
 }
-else if(Segment->Dec)
+UART->TxGO=1;
+
+}
+else
 {
-if(number > 0x270f)
+if(RC0)
 {
-for(i=0 ; i<4; i++)
+if(!I2C->SS)
 {
-Segment->Num[i]=16;
+I2C->SS=1;
+I2C->MasterRxGO=1;
 }
 }
 else
 {
-Segment->Num[3]=(number/1000);
-number%=1000;
-Segment->Num[2]=(number/100);
-number%=100;
-Segment->Num[1]=(number/10);
-number%=10;
-Segment->Num[0]=number;
-}
-}
-if(Segment->Num[3] > 0)
+if(I2C->SS)
 {
-Segment->DisplayCount=3;
+I2C->SS=0;
 }
-else if(Segment->Num[2] > 0)
+if(I2C->MasterTxGO)
 {
-Segment->DisplayCount=2;
-}
-else if(Segment->Num[1] > 0)
-{
-Segment->DisplayCount=1;
-}
-else
-{
-Segment->DisplayCount=0;
+I2C->MasterTxGO=0;
+I2C_Master_Transmission();
 }
 }
 }
 
-void SegmentDisplay_Main()
-{
-if(Segment->GO)
-{
-Segment->Time++;
-if(Segment->Time == 5)
-{
-Segment->Time=0;
-PORTA&=0x0f;
-if(Segment->ComCount == 0)
-{
-RA4=1;
+
 }
-else if(Segment->ComCount == 1)
+void I2C_SetData(char command)
 {
-RA5=1;
+
+# 539
 }
-else if(Segment->ComCount == 2)
+
+void I2C_Master_Transmission()
 {
-RA6=1;
+char i;
+while(SEN);
+SEN=1;
+
+while(SEN);
+
+
+SSPBUF=0x10;
+while(BF);
+
+
+while(ACKSTAT);
+
+for(i=0;i<32;i++)
+{
+while(SEN);
+SSPBUF=I2C->BufferWriter[i];
+while(BF);
+
+
+while(ACKSTAT);
 }
-else if(Segment->ComCount == 3)
-{
-RA7=1;
+
+while(SEN);
+while(!PEN)
+PEN=1;
+while(PEN);
+
+
 }
-PORTB=Segment->Display[Segment->Num[Segment->ComCount]];
-if(Segment->ComCount < Segment->DisplayCount)
+
+void I2C_Master_Reception()
 {
-Segment->ComCount++;
+char i;
+while(SEN);
+SEN=1;
+while(SEN);
+
+
+SSPBUF=0x11;
+
+
+while(BF);
+while(ACKSTAT);
+
+
+for(i=0;i<32;i++)
+{
+while(SEN);
+while(RCEN);
+RCEN=1;
+while(RCEN);
+I2C->BufferReader[i]=SSPBUF;
+while(!ACKEN)
+ACKEN=1;
+while(ACKEN);
+}
+while(RCEN);
+RCEN=1;
+while(RCEN);
+while(!ACKEN)
+ACKEN=1;
+while(ACKEN);
+while(RCEN);
+RCEN=1;
+while(RCEN);
+
+while(SEN);
+while(!PEN)
+PEN=1;
+while(PEN);
+
+
+}
+
+void I2C_Slave_Mode()
+{
+char i;
+SSPIF=0;
+I2C->Address=SSPBUF;
+
+if(R_nW)
+{
+SSPOV=0;
+for(i=0;i<32;i++)
+{
+SSPBUF=I2C->BufferWriter[i];
+
+CKP=1;
+while(!SSPIF);
+SSPIF=0;
+while(ACKSTAT);
+}
+CKP=1;
+
+I2C->SlaveTxGO=1;
 }
 else
 {
-Segment->ComCount=0;
+
+CKP=1;
+for(i=0;i<32;i++)
+{
+while(!SSPIF);
+SSPIF=0;
+I2C->BufferReader[i]=SSPBUF;
+
+CKP=1;
+}
+
+CKP=1;
+I2C->SlaveRxGO=1;
+}
+
+
+}
+
+# 665
+void UART_Set()
+{
+UART=&VarUart;
+TRISC7 = 1;
+TRISC6 = 1;
+SPBRG = ((int)(16000000L/(16UL * 19200) -1));
+SPBRGH = 0;
+BRG16 = 0;
+RCSTA = (0|0x90);
+TXSTA = (0x4|0|0x20);
+TX9=0;
+RX9=0;
+TXIE=0;
+RCIE=1;
+PEIE=1;
+GIE=1;
+}
+
+void UART_ISR()
+{
+char i;
+if(RCIE && RCIF)
+{
+while(!RCIDL);
+
+UART->RxData[0]=RCREG;
+
+# 699
+RA1=~RA1;
+setSegmentDisplayNumber(UART->RxData[0]);
+}
+}
+void UART_Main()
+{
+if(UART->RxGO)
+{
+UART->RxGO=0;
+UART_Receive();
+RCIE=1;
+setSegmentDisplayNumber(UART->RxData[0]);
+}
+else
+{
+if(UART->TxGO)
+{
+UART->TxGO=0;
+UART_Transmit();
 }
 }
 }
+void UART_Transmit()
+{
+char i;
+
+for(i=0;i<32;i++)
+{
+
+printf("%x,",UART->TxData[i]);
+
+# 736
+}
+}
+void UART_Receive()
+{
+char i;
+RA1=~RA1;
+
+TMain->Test=1;
+
+for(i=0;i<32;i++)
+{
+I2C->BufferWriter[i]=UART->RxData[i];
+}
+I2C->MasterTxGO=1;
+
+# 763
+}
+void UART_SetData()
+{
+char i;
+
+# 775
+}
+
+void putch(unsigned char byte)
+{
+
+while(!TXIF)
+continue;
+TXREG = byte;
+}
+
+unsigned char getch() {
+
+while(!RCIF)
+continue;
+return RCREG;
+}
+
+unsigned char getche(void)
+{
+unsigned char c;
+putch(c = getch());
+return c;
 }
 
