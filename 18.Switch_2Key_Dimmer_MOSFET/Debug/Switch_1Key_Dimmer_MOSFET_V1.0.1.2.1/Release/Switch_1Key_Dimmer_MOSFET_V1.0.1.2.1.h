@@ -4,25 +4,24 @@
 
 //Include
 	#include <stdio.h>
-	//end
 
-	/**Version information
-		Name_Version 			:	1~255 
+/**Version information
+	Name_Version 			:	1~255 
 
-		Name_SerialNumber		:	0~255
+	Name_SerialNumber		:	0~255
  
-		Properties_Product		:	1:Switch
+	Properties_Product		:	1:Switch
 									2:PIR
 
-		Properties_Keys			:	1:1key
+	Properties_Keys			:	1:1key
 									2:2key
 									3:3key
 
-		Properties_Country		:	1:USA
+	Properties_Country		:	1:USA
 									2:EP
 									3:TW
 									4:CHI
-	**/
+**/
 
 	#define	Name_Version 			1	//1
 	#define Name_SerialNumber		0	//2
@@ -30,21 +29,17 @@
 	#define Properties_Keys			2	//4
 	#define Properties_Country		1	//5
 
-
-	#define Create_Date		_20140821_
-	#define Debug 1
-	#define Release_Date	?
-	#define PCB_Name _TH-302PV11-1-Dim_20140722_
-
-	//option
+//Control Option
 	#define Control_Method_Mosfet		1
 	#define Control_Method_Triac		0
 	#define Control_Method_Relay		0
 	#define Control_Method_TriacRelay	0
 	#define Properties_Neutral			0
-	#define Properties_Dimmer			0
+	#define Properties_Dimmer			1
+	#define Debug 1
+	#define PCB_Name "TH-302PV11-1-Dim(20140722)"
 								
-//MCU
+//MCU define
 	#define	Key2_1				RA0		//pin2  1	
   	#define OverLoad1			RA1		//pin3	1	
  	#define SYSC1				RA2		//pin4	1		
@@ -86,100 +81,62 @@
 	#define _PORTB 	0b00000111;
 	#define _PORTC 	0b00001100;
 	
-//ADC channel
+	//ADC channel
 	#define OverLoad_Channel		AN1
 	#define OverTemp_Channel		AN2
 	#define PFV_Channel				AN4	
 
+//Mcu Function Option
 
-//Global extern variable declaration
-	struct Product
-	{
-		unsigned char Data[32];
-	};
-	struct Product *Product;
-	struct Product VarProduct=
-	{
-		{
-		 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-		 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-		 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-		 0x00,0x00
-		}
-	};
-	//0=Command	
-	//1=Command
-	//1=Temperature
-	//3=Temperature
-	//4=Humidity
-	//5=Humidity 
-	//6=Barometric pressure 
-	//7=Barometric pressure 
-	//8=Electricity
-	//9=Dimmer
-	//10=Electric  current 
-	//11=Year
-	//12=Week 
-	//13=Serial  Number
-	//14=Serial  Number
-	//15=Lights Status
-	//16=Timmer Command
-	//17=Timmer Time
-	//18=Reserved
-	//19=Reserved
-	//20=Key ID
-	//21=Key1 Dimmer Value
-	//22=Key2 Dimmer Value
-	//23=Key3 Dimmer Value
-	//24=TemperatureH
-	//25=TemperatureL
-	//26=?
-	//27=Key1 Timer
-	//28=Key2 Timer
-	//29=Key3 Timer
+	//ADC 
+	#define ADC_use 1	
+	//Oscillator (System FOSC)
+ 	#define	System_Fosc_16M				//_16M														
+	//Timer0
+  	#define Timer0_use	1
+	//Timer1
+	#define Timer1_use	0	
+	//INT
+	#define INT_use 1
+	//UART
+	#define UART_use 0  
+	//I2C
+	#define I2C_use 0
+	//IOC
+	#define IOC_use 1
+	//FlashMemory_use
+	#define FlashMemory_use 1
 
-
-	#define setProductData(address,data) Product->Data[address]=data
-
-	struct TMain
-	{
-		unsigned PowerON:1;
-		unsigned T0_Timerout:1;
-		unsigned T1_Timerout:1;
-		unsigned Flag:1;
-		unsigned GO:1;
-		unsigned FirstOpen:1;
-		unsigned int PowerCount;
-		unsigned SelfTest:1;
-		unsigned First:1;
 	
-		unsigned int Count;
-		unsigned int Count1;
-		unsigned int Count2;
-		unsigned int Count3;
-		unsigned char IOC_Count;
-		unsigned char Test;		
+//Function Option
 
-		unsigned i:1;
-		unsigned j:1;
-		unsigned k:1;
-		unsigned l:1;
-		unsigned m:1;
-		unsigned n:1;
-		unsigned o:1;
-		unsigned p:1;
-		unsigned q:1;
-		unsigned r:1;
-	}
-	struct TMain VarTMain;
-	struct TMain *TMain;
+	//SYSC
+	#define SYSC_use 0
+	//OverTemperature
+	#define OverTemperature_use 0
+	//OverLoad
+	#define OverLoad_use 1
+	//LED
+	#define LED_use 1
+	//Buzzer
+	#define Buzzer_use 1	
+	//Switch
+	#define Switch_use 1
+	//Lights
+	#define LightsControl_use 	0
+	//RF cc2500
+	#define CC2500_use	1
+	//DelayOff
+	#define DelayOff_use 1
+	//PowerFault
+	#define PowerFault_use 0
+	//Dimmer Lights
+	#define Dimmer_use 	1
 
 
-//Routine declaration
-	void MainT_Initialization();
-	void MainT();
-	//end
 
+
+	#include "Main_B1.h"
 	#include "Activity_B1.h"
 	#include "Switch_B1.h"
 	#include "Buzzer_B1.h"
@@ -195,7 +152,8 @@
 	#include "PIR_B1.h"
 	#include "SYSC_B1.h"
 	#include "TriacRelay_B1.h"
-
+	#include "MCU_B1.h"
+/*
 	#ifdef _16F723A
 		#include "MCU_16F723A_B1.h"
 	#endif
@@ -207,7 +165,7 @@
 	#ifdef _16F1518
 		#include "MCU_16F1518_B1.h"
 	#endif
-
+*/
 
 //end file
 #endif

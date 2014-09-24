@@ -3,6 +3,11 @@
 #define _PIR_H_
 
 	#if PIR_use == 1
+
+		#define RangeMaximum	45
+		#define RangeMedium		25
+		#define RangeMinimum	8
+
 		struct PIR
 		{
 			//enable
@@ -50,8 +55,6 @@
 		void PIR_Initialization();
 		void PIR_Main();
 		void getPIR_AD(char,char,char);
-		void setPIR_Initialization();
-		void setPIR_Main();
 	#else
 		#define selectPIRPoint(char) ;
 		#define PIR_Initialization() ;

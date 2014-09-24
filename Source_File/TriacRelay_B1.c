@@ -4,7 +4,7 @@
 #include "Select_File.h"
 
 //Routine main
-#if TriacRelay_use == 1 
+#if LightsControl_use == 1 
 
 	void LightsPointSelect(char lights)
 	{
@@ -77,113 +77,64 @@
 	}
 	void setLights_Main(char lights)
 	{
-		char open=1,close=1;
+		char clear=1;
 		LightsPointSelect(lights);
-		if(Lights->Trigger)
-		{
-			#if Switch_Class == 3
-				if(lights == 1)
-				{
-					if(!Lights22->Open || !Lights33->Open)
-					{
-						open=0;
-					}
-				}
-				if(lights == 2)
-				{
-					if(!Lights11->Open || !Lights33->Open)
-					{
-						open=0;
-					}
-				}
-				if(lights == 3)
-				{
-					if(!Lights11->Open || !Lights22->Open)
-					{
-						open=0;
-					}
-				}
-			#endif
 
-			#if Switch_Class == 2
-					if(lights == 1)
-					{
-						if(!Lights22->Open)
-						{
-							open=0;
-						}
-					}
-					if(lights == 2)
-					{
-						if(!Lights11->Open)
-						{
-							open=0;
-						}
-					}
-			#endif
-		
-			if(open)
+		#if Switch_Class == 3
+			if(lights == 1)
+			{
+				clear=(!Lights22->Clear || !Lights33->Clear)?0:1;
+			}
+			else if(lights == 2)
+			{
+				clear=(!Lights11->Clear || !Lights33->Clear)?0:1;
+			}
+			else if(lights == 3)
+			{
+				clear=(!Lights11->Clear || !Lights22->Clear)?0:1;
+			}
+		#endif
+
+		#if Switch_Class == 2
+			if(lights == 1)
+			{
+				clear=(!Lights22->Clear)?0:1;
+			}
+			else if(lights == 2)
+			{
+				clear=(!Lights11->Clear)?0:1;
+			}
+		#endif
+
+		if(Lights->Trigger)
+		{		
+			if(clear)
 			{
 				if(Lights->Switch)
 				{
-					#if Switch_Class == 3
-						if(lights == 1)
-						{
-							if(!Lights22->Close || !Lights33->Close)
-							{
-								close=0;
-							}
-						}
-						if(lights == 2)
-						{
-							if(!Lights11->Close || !Lights33->Close)
-							{
-								close=0;
-							}
-						}
-						if(lights == 3)
-						{
-							if(!Lights11->Close || !Lights22->Close)
-							{
-								close=0;
-							}
-						}
-					#endif
+					Lights->Trigger=0;
+					setLights(lights,1);
 
-					#ifdef Switch_Class == 2
-						if(lights == 1)
-						{
-							if(!Lights22->Close)
-							{
-								close=0;
-							}
-						}
-						if(lights == 2)
-						{
-							if(!Lights11->Close)
-							{
-								close=0;
-							}
-						}
+					#if OverLoad_use == 1
+						Lights->Clear=0;
 					#endif
-
-					if(close)
-					{
-						Lights->Trigger=0;
-						Lights->Open=0;
-						Lights->Close=1;
-						setLights(lights,1);
-					}
 				}
 				else
 				{
 					Lights->Trigger=0;
-					Lights->Open=1;
-					Lights->Close=0;
 					setLights(lights,0);
+
+					#if OverLoad_use == 1
+						Lights->Clear=0;
+					#endif
 				}
 			}
 		}
+	}
+	void setLights_Clear(char lights,char command)
+	{
+		LightsPointSelect(lights);	
+		Lights->Clear=command;
 	}
 	void setLights_Trigger(char lights,char command)
 	{

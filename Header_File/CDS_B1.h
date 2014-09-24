@@ -23,19 +23,19 @@
 			struct CDS _CDS1;
 		#endif
 
-		void selectCDSPoint(char);
+		//void selectCDSPoint(char);
 		void CDS_Initialization();
 		void CDS_Main();
-		void setCDS_Initialization(char);
-		void setCDS_Main(char);
+		//void setCDS_Initialization(char);
+		//void setCDS_Main(char);
 		void getCDS_AD(char,char,char);
 
 	#else
-		#define selectCDSPoint(char) ;
+		//#define selectCDSPoint(char) ;
 		#define CDS_Initialization() ;
 		#define CDS_Main() ;
-		#define setCDS_Initialization(char) ;
-		#define setCDS_Main(char) ;
+		//#define setCDS_Initialization(char) ;
+		//#define setCDS_Main(char) ;
 		#define getCDS_AD(char,char,char) ;
 
 	#endif

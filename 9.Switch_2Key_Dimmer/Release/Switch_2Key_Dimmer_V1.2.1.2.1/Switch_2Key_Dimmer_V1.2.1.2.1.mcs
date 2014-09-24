@@ -93,19 +93,6 @@ ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
 [File007]
-Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\MCU_16f1518_B1.p1
-Folder=Intermediary
-DeviceName=PIC16F1518
-LanguageToolSuiteID={38171385-97B2-4EC5-BF2C-C2C027BA5B04}
-LanguageToolID={B6D1F1C2-3E8A-49F6-9C0A-75F5EBE32222}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.32\bin\xc8.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|Release\Buzzer_B1.c|Release\CC2500_B1.c|Release\CDS_B1.c|Release\DelayOff_B1.c|Release\Dimmer_B1.c|Release\LED_B1.c|Release\main.c|Release\MCU_16f1518_B1.c|Release\OverLoad_B1.c|Release\OverTemperature_B1.c|Release\PIR_B1.c|Release\PowerFault_B1.c|Release\RF_Control_B1.c|Release\Switch_B1.c|Release\SYSC_B1.c|Release\TriacRelay_B1.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=2,1
-TraceCmdString=
-DebugOptions=
-[File008]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\OverLoad_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -118,7 +105,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File009]
+[File008]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\OverTemperature_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -131,7 +118,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File010]
+[File009]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\PIR_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -144,7 +131,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File011]
+[File010]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\PowerFault_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -157,7 +144,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File012]
+[File011]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\RF_Control_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -170,7 +157,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File013]
+[File012]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -183,7 +170,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File014]
+[File013]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\SYSC_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -196,7 +183,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File015]
+[File014]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\TriacRelay_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1518
@@ -209,7 +196,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File016]
+[File015]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.cof
 Folder=Output
 DeviceName=PIC16F1518
@@ -222,7 +209,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File017]
+[File016]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.hex
 Folder=Output
 DeviceName=PIC16F1518
@@ -235,7 +222,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File018]
+[File017]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.sym
 Folder=Output
 DeviceName=PIC16F1518
@@ -248,7 +235,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File019]
+[File018]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.map
 Folder=Output
 DeviceName=PIC16F1518
@@ -261,7 +248,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File020]
+[File019]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.hxl
 Folder=Output
 DeviceName=PIC16F1518
@@ -274,7 +261,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File021]
+[File020]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\startup.lst
 Folder=Output
 DeviceName=PIC16F1518
@@ -287,7 +274,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File022]
+[File021]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\startup.rlf
 Folder=Output
 DeviceName=PIC16F1518
@@ -300,7 +287,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File023]
+[File022]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\doprnt.p1
 Folder=Output
 DeviceName=PIC16F1518
@@ -313,7 +300,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File024]
+[File023]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\doprnt.pre
 Folder=Output
 DeviceName=PIC16F1518
@@ -326,7 +313,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File025]
+[File024]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.obj
 Folder=Output
 DeviceName=PIC16F1518
@@ -339,7 +326,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File026]
+[File025]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.lst
 Folder=Output
 DeviceName=PIC16F1518
@@ -352,7 +339,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File027]
+[File026]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.rlf
 Folder=Output
 DeviceName=PIC16F1518
@@ -365,7 +352,7 @@ SuiteArgsString=
 ToolArgsString=C9=2,1
 TraceCmdString=
 DebugOptions=
-[File028]
+[File027]
 Location=C:\Users\taianluo\Documents\GitHub\myPicCode\9.Switch_2Key_Dimmer\Release\Switch_2Key_Dimmer_V1.2.1.2.1\Switch_2Key_Dimmer_V1.2.1.2.1.sdb
 Folder=Output
 DeviceName=PIC16F1518

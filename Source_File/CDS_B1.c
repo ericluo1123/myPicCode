@@ -4,7 +4,7 @@
 
 #if CDS_use == 1
 
-	void setCDSPoint(char cds)
+/*	void setCDSPoint(char cds)
 	{
 		#ifdef CDS_1
 			if(cds == 1)
@@ -13,30 +13,17 @@
 			}
 		#endif
 	}
+*/
 	void CDS_Initialization()
 	{
-		#ifdef CDS_1
-			setCDS_Initialization(1);
-		#endif
-
-	}
-	void setCDS_Initialization(char cds)
-	{
-		setCDSPoint(cds);
+		CDS=&_CDS1;
 		CDS->Enable=1;
-		setLED(cds,1);
-		setLED(cds+1,0);
+		setLED(1,1);
+		setLED(2,0);
 	}
 	void CDS_Main()
 	{
-		#ifdef CDS_1
-			setCDS_Main(1);
-		#endif
-	}
-
-	void setCDS_Main(char cds)
-	{
-		setCDSPoint(cds);
+		//setCDSPoint(cds);
 		if(CDS->Enable)
 		{
 			if(!CDS->GO)
@@ -80,7 +67,7 @@
 	void getCDS_AD(char cds,char channel1,char channel2)
 	{
 		char i=0,j=0;
-		setCDSPoint(cds);
+		//setCDSPoint(cds);
 		if(CDS->ADtoGO)
 		{
 			CDS->ADtoGO=0;

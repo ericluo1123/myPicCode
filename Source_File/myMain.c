@@ -1,12 +1,12 @@
 
 // Includes
-#include "../Release/Select_File.h"
+#include "Select_File.h"
 
 //main
 void main()
 {
 	MainT_Initial();
-	Mcu_Initial();
+	Mcu_Initialization();
 	SegmentDisplay_Initial();
 	RF_Initialization();
 	CC2500_PowerOnInitial();

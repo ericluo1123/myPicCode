@@ -10,9 +10,9 @@
 	; -oSwitch_1Key_Dimmer_MOSFET_V1.0.1.2.1.cof \
 	; -mSwitch_1Key_Dimmer_MOSFET_V1.0.1.2.1.map --summary=default \
 	; --output=default Buzzer_B1.p1 CC2500_B1.p1 CDS_B1.p1 DelayOff_B1.p1 \
-	; Dimmer_B1.p1 LED_B1.p1 main.p1 MCU_16f1518_B1.p1 OverLoad_B1.p1 \
-	; OverTemperature_B1.p1 PIR_B1.p1 PowerFault_B1.p1 RF_Control_B1.p1 \
-	; Switch_B1.p1 SYSC_B1.p1 TriacRelay_B1.p1 --chip=16F1518 \
+	; Dimmer_B1.p1 LED_B1.p1 main.p1 OverLoad_B1.p1 OverTemperature_B1.p1 \
+	; PIR_B1.p1 PowerFault_B1.p1 RF_Control_B1.p1 Switch_B1.p1 SYSC_B1.p1 \
+	; TriacRelay_B1.p1 MCU_B1.p1 --chip=16F1518 \
 	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\Header_File \
 	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release \
 	; -P --runtime=default --opt=default -N-1 -D__DEBUG=1 -g --asmlist \

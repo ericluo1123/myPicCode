@@ -15,7 +15,7 @@
 
 
 //=================================================================
-	#if TriacRelay_use == 1 
+	#if LightsControl_use == 1 
 
 		//Global extern variable declaration
 		struct Lights
@@ -36,19 +36,20 @@
 			unsigned char RelayValue;
 			unsigned RelaySet:1;
 			unsigned char Number;
+			unsigned Clear:1;
 		};
 		struct Lights *Lights;
 
 
-		#ifdef 1KEY_use
+		#ifdef use_1KEY
 			struct Lights Lights1;
 		#endif
 
-		#ifdef 2KEY_use
+		#ifdef use_2KEY
 			struct Lights Lights2;
 		#endif
 
-		#ifdef 3KEY_use
+		#ifdef use_3KEY
 			struct Lights Lights3;
 		#endif
 
@@ -64,7 +65,8 @@
 		void setLights_ERROR(char);
 		void setLights_TriggerERROR(char,char); 
 		void Lights_Control(char);
-	
+
+		void setLights_Clear(char,char);
 		void setLights_Trigger(char,char); 
 		void setLights_Switch(char,char); 
 		void setLights_Open(char,char);
@@ -79,6 +81,7 @@
 		#define Lights_ERROR() ;
 		#define Lights_Close() ;	
 
+		#define setLights_Clear(char,char) ;
 		#define setLights_Initialization(char) ;
 		#define setLights_GO(char,char) ;
 		#define setLights_Main(char) ;

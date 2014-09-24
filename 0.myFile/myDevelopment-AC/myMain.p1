@@ -1,21 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"244 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"244 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _Product `*S2  1 e ]
-"245 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"245 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _VarProduct `S2  1 e ]
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO PowerCount Count Count1 Count2 Count3 IOC_Count Test FirstOpen i j k l m n o p q r ]
-"285 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"285 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _VarTMain `S3  1 e ]
-"286 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"286 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _TMain `*S3  1 e ]
 [s S4 `uc -> 17 `i `uc -> 4 `i :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S4 Segment Display Num Enable GO Hex Dec ComCount DisplayCount Count Time ]
-"68 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"68 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [v _Segment `*S4  1 e ]
-"69 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"69 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [v _VarSegment `S4  1 e ]
 "132 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic16f1516.h
 [v _INDF0 `Vuc  1 e@0 ]
@@ -1269,34 +1269,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TOSHbits `VS135  1 e@4079 ]
 [s S137 :1 `uc 1 `ui 1 ]
 [n S137 Timer1 Timeout Count ]
-"247 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"414 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarTimer1 `S137  1 e ]
-"248 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"415 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Timer1 `*S137  1 e ]
 [s S138 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S138 I2C BufferReader BufferWriter Count Address SlaveGO SlaveRxGO SlaveTxGO MasterTxGO MasterRxGO SS ]
-"393 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"463 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarI2C `S138  1 e ]
-"394 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"464 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _I2C `*S138  1 e ]
+[s S139 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S139 UART TxData RxData Count TxLength RxLength TxGO RxGO ]
+"552 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _UART `*S139  1 e ]
+"553 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _VarUart `S139  1 e ]
 [p mainexit ]
-"290 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"290 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _MainT_Initial `(v  0 ef ]
-"11 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
-[v _Mcu_Initial `(v  0 ef ]
-"73 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _Mcu_Initialization `(v  0 ef ]
+"73 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [v _SegmentDisplay_Initial `(v  0 ef ]
 "28 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\pic.h
 [v __nop `(v  0 ef ]
 [p i __nop ]
-"291 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"291 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _MainT `(v  0 ef ]
-"401 G:\Program\PIC\Header_File\MCU_16F1516_B1.h
+"471 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _I2C_Main `(v  0 ef ]
-"75 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"562 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _UART_Main `(v  0 ef ]
+"75 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [v _SegmentDisplay_Main `(v  0 ef ]
-"74 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
-[v _setSegmentDisplayNumber `(v  0 ef1`i ]
 [; ;stdio.h: 12: typedef int ptrdiff_t;
 [; ;stdio.h: 13: typedef unsigned size_t;
 [; ;stdio.h: 14: typedef unsigned short wchar_t;
@@ -1336,7 +1342,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myDevelopment-A.h: 242: unsigned char Data[32];
 [; ;myDevelopment-A.h: 243: };
 [; ;myDevelopment-A.h: 244: struct Product *Product;
-"245 G:\Program\PIC\0.myFile\myDevelopment-AH\Release\../Release/myDevelopment-A.h
+"245 C:\Users\taianluo\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [i _VarProduct
 :U ..
 :U ..
@@ -1435,7 +1441,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SegmentDisplay_A2.h: 66: unsigned char Time;
 [; ;SegmentDisplay_A2.h: 67: };
 [; ;SegmentDisplay_A2.h: 68: struct Segment *Segment;
-"69 G:\Program\PIC\Header_File\SegmentDisplay_A2.h
+"69 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [i _VarSegment
 :U ..
 :U ..
@@ -2584,40 +2590,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 28: extern void _nop(void);
 [; ;pic.h: 80: extern unsigned int flash_read(unsigned short addr);
 [; ;pic.h: 154: extern void _delay(unsigned long);
-[; ;MCU_16F1516_B1.h: 11: void Mcu_Initial();
-[; ;MCU_16F1516_B1.h: 12: void IO_Set();
-[; ;MCU_16F1516_B1.h: 242: struct Timer1
-[; ;MCU_16F1516_B1.h: 243: {
-[; ;MCU_16F1516_B1.h: 244: unsigned Timeout:1;
-[; ;MCU_16F1516_B1.h: 245: unsigned int Count;
-[; ;MCU_16F1516_B1.h: 246: };
-[; ;MCU_16F1516_B1.h: 247: struct Timer1 VarTimer1;
-[; ;MCU_16F1516_B1.h: 248: struct Timer1 *Timer1;
-[; ;MCU_16F1516_B1.h: 250: void TMR1_Set();
-[; ;MCU_16F1516_B1.h: 251: void TMR1_ISR();
-[; ;MCU_16F1516_B1.h: 380: struct I2C
-[; ;MCU_16F1516_B1.h: 381: {
-[; ;MCU_16F1516_B1.h: 382: unsigned char BufferReader[32];
-[; ;MCU_16F1516_B1.h: 383: unsigned char BufferWriter[32];
-[; ;MCU_16F1516_B1.h: 384: unsigned char Count;
-[; ;MCU_16F1516_B1.h: 385: unsigned char Address;
-[; ;MCU_16F1516_B1.h: 386: unsigned SlaveGO:1;
-[; ;MCU_16F1516_B1.h: 387: unsigned SlaveRxGO:1;
-[; ;MCU_16F1516_B1.h: 388: unsigned SlaveTxGO:1;
-[; ;MCU_16F1516_B1.h: 389: unsigned MasterTxGO:1;
-[; ;MCU_16F1516_B1.h: 390: unsigned MasterRxGO:1;
-[; ;MCU_16F1516_B1.h: 391: unsigned SS:1;
-[; ;MCU_16F1516_B1.h: 392: }
-[; ;MCU_16F1516_B1.h: 393: struct I2C VarI2C;
-[; ;MCU_16F1516_B1.h: 394: struct I2C *I2C;
-[; ;MCU_16F1516_B1.h: 396: void I2C_Set();
-[; ;MCU_16F1516_B1.h: 397: void I2C_ISR();
-[; ;MCU_16F1516_B1.h: 398: void I2C_Master_Transmission();
-[; ;MCU_16F1516_B1.h: 399: void I2C_Master_Reception();
-[; ;MCU_16F1516_B1.h: 400: void I2C_Slave_Mode();
-[; ;MCU_16F1516_B1.h: 401: void I2C_Main();
-[; ;MCU_16F1516_B1.h: 402: void I2C_SetData(char);
-"7 G:\Program\PIC\Source_File\myMain.c
+[; ;MCU_B1.h: 11: void Mcu_Initialization();
+[; ;MCU_B1.h: 12: void IO_Set();
+[; ;MCU_B1.h: 409: struct Timer1
+[; ;MCU_B1.h: 410: {
+[; ;MCU_B1.h: 411: unsigned Timeout:1;
+[; ;MCU_B1.h: 412: unsigned int Count;
+[; ;MCU_B1.h: 413: };
+[; ;MCU_B1.h: 414: struct Timer1 VarTimer1;
+[; ;MCU_B1.h: 415: struct Timer1 *Timer1;
+[; ;MCU_B1.h: 417: void TMR1_Set();
+[; ;MCU_B1.h: 418: void TMR1_ISR();
+[; ;MCU_B1.h: 450: struct I2C
+[; ;MCU_B1.h: 451: {
+[; ;MCU_B1.h: 452: unsigned char BufferReader[32];
+[; ;MCU_B1.h: 453: unsigned char BufferWriter[32];
+[; ;MCU_B1.h: 454: unsigned char Count;
+[; ;MCU_B1.h: 455: unsigned char Address;
+[; ;MCU_B1.h: 456: unsigned SlaveGO:1;
+[; ;MCU_B1.h: 457: unsigned SlaveRxGO:1;
+[; ;MCU_B1.h: 458: unsigned SlaveTxGO:1;
+[; ;MCU_B1.h: 459: unsigned MasterTxGO:1;
+[; ;MCU_B1.h: 460: unsigned MasterRxGO:1;
+[; ;MCU_B1.h: 461: unsigned SS:1;
+[; ;MCU_B1.h: 462: }
+[; ;MCU_B1.h: 463: struct I2C VarI2C;
+[; ;MCU_B1.h: 464: struct I2C *I2C;
+[; ;MCU_B1.h: 466: void I2C_Set();
+[; ;MCU_B1.h: 467: void I2C_ISR();
+[; ;MCU_B1.h: 468: void I2C_Master_Transmission();
+[; ;MCU_B1.h: 469: void I2C_Master_Reception();
+[; ;MCU_B1.h: 470: void I2C_Slave_Mode();
+[; ;MCU_B1.h: 471: void I2C_Main();
+[; ;MCU_B1.h: 472: void I2C_SetData(char);
+[; ;MCU_B1.h: 542: struct UART
+[; ;MCU_B1.h: 543: {
+[; ;MCU_B1.h: 544: unsigned char TxData[32];
+[; ;MCU_B1.h: 545: unsigned char RxData[32];
+[; ;MCU_B1.h: 546: unsigned char Count;
+[; ;MCU_B1.h: 547: unsigned char TxLength;
+[; ;MCU_B1.h: 548: unsigned char RxLength;
+[; ;MCU_B1.h: 549: unsigned TxGO:1;
+[; ;MCU_B1.h: 550: unsigned RxGO:1;
+[; ;MCU_B1.h: 551: };
+[; ;MCU_B1.h: 552: struct UART *UART;
+[; ;MCU_B1.h: 553: struct UART VarUart;
+[; ;MCU_B1.h: 557: void putch(unsigned char);
+[; ;MCU_B1.h: 558: unsigned char getch(void);
+[; ;MCU_B1.h: 559: unsigned char getche(void);
+[; ;MCU_B1.h: 560: void UART_Set();
+[; ;MCU_B1.h: 561: void UART_ISR();
+[; ;MCU_B1.h: 562: void UART_Main();
+[; ;MCU_B1.h: 563: void UART_Transmit();
+[; ;MCU_B1.h: 564: void UART_Receive();
+[; ;MCU_B1.h: 565: void UART_SetData();
+"7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\myMain.c
 [v _main `(v  1 ef ]
 {
 [; ;myMain.c: 6: void main()
@@ -2627,9 +2654,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 8: MainT_Initial();
 "8
 [e ( _MainT_Initial ..  ]
-[; ;myMain.c: 9: Mcu_Initial();
+[; ;myMain.c: 9: Mcu_Initialization();
 "9
-[e ( _Mcu_Initial ..  ]
+[e ( _Mcu_Initialization ..  ]
 [; ;myMain.c: 10: SegmentDisplay_Initial();
 "10
 [e ( _SegmentDisplay_Initial ..  ]
@@ -2639,13 +2666,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( __nop ..  ]
 [; ;myMain.c: 13: while(1)
 "13
-[e :U 141 ]
+[e :U 142 ]
 [; ;myMain.c: 14: {
 "14
 {
 [; ;myMain.c: 17: if(TMain->T1_Timerout)
 "17
-[e $ ! != -> . *U _TMain 2 `i -> -> -> 0 `i `uc `i 143  ]
+[e $ ! != -> . *U _TMain 2 `i -> -> -> 0 `i `uc `i 144  ]
 [; ;myMain.c: 18: {
 "18
 {
@@ -2657,7 +2684,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _MainT ..  ]
 [; ;myMain.c: 21: if(TMain->PowerON)
 "21
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 144  ]
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 145  ]
 [; ;myMain.c: 22: {
 "22
 {
@@ -2665,28 +2692,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 24: I2C_Main();
 "24
 [e ( _I2C_Main ..  ]
-[; ;myMain.c: 25: ;;
+[; ;myMain.c: 25: UART_Main();
+"25
+[e ( _UART_Main ..  ]
 [; ;myMain.c: 26: SegmentDisplay_Main();
 "26
 [e ( _SegmentDisplay_Main ..  ]
 "27
 }
-[e :U 144 ]
+[e :U 145 ]
 "28
 }
-[e :U 143 ]
+[e :U 144 ]
 "29
 }
-[e :U 140 ]
+[e :U 141 ]
 "13
-[e $U 141  ]
-[e :U 142 ]
+[e $U 142  ]
+[e :U 143 ]
 [; ;myMain.c: 27: }
 [; ;myMain.c: 28: }
 [; ;myMain.c: 29: }
 [; ;myMain.c: 30: }
 "30
-[e :UE 139 ]
+[e :UE 140 ]
 }
 "34
 [v _MainT_Initial `(v  1 ef ]
@@ -2706,7 +2735,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _Product &U _VarProduct ]
 [; ;myMain.c: 38: }
 "38
-[e :UE 145 ]
+[e :UE 146 ]
 }
 "42
 [v _MainT `(v  1 ef ]
@@ -2720,7 +2749,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 43: char i;
 [; ;myMain.c: 45: if(!TMain->PowerON)
 "45
-[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 147  ]
+[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 148  ]
 [; ;myMain.c: 46: {
 "46
 {
@@ -2729,7 +2758,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _TMain 5 -> -> 1 `i `ui ]
 [; ;myMain.c: 48: if(TMain->PowerCount == 1500)
 "48
-[e $ ! == . *U _TMain 5 -> -> 1500 `i `ui 148  ]
+[e $ ! == . *U _TMain 5 -> -> 1500 `i `ui 149  ]
 [; ;myMain.c: 49: {
 "49
 {
@@ -2741,14 +2770,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 0 -> -> 1 `i `uc ]
 "56
 }
-[e :U 148 ]
+[e :U 149 ]
 "57
 }
 [; ;myMain.c: 56: }
 [; ;myMain.c: 57: }
-[e $U 149  ]
+[e $U 150  ]
 "58
-[e :U 147 ]
+[e :U 148 ]
 [; ;myMain.c: 58: else
 [; ;myMain.c: 59: {
 "59
@@ -2758,7 +2787,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _TMain 7 -> -> 1 `i `ui ]
 [; ;myMain.c: 61: if(TMain->Count1 == 1000)
 "61
-[e $ ! == . *U _TMain 7 -> -> 1000 `i `ui 150  ]
+[e $ ! == . *U _TMain 7 -> -> 1000 `i `ui 151  ]
 [; ;myMain.c: 62: {
 "62
 {
@@ -2768,70 +2797,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 64: RA2=~RA2;
 "64
 [e = _RA2 ! _RA2 ]
-[; ;myMain.c: 73: if(TMain->Flag == 0)
-"73
-[e $ ! == -> . *U _TMain 3 `i -> 0 `i 151  ]
-[; ;myMain.c: 74: {
-"74
-{
-"77
-}
-[e :U 151 ]
-[; ;myMain.c: 77: }
-[; ;myMain.c: 79: if(TMain->Test)
+[; ;myMain.c: 78: if(TMain->Flag == 0)
+"78
+[e $ ! == -> . *U _TMain 3 `i -> 0 `i 152  ]
+[; ;myMain.c: 79: {
 "79
-[e $ ! != -> . *U _TMain 11 `i -> -> -> 0 `i `uc `i 152  ]
-[; ;myMain.c: 80: {
-"80
 {
-[; ;myMain.c: 81: setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
-"81
-[e ( _setSegmentDisplayNumber (1 -> *U + &U . *U _I2C 0 * -> . *U _I2C 2 `ux -> -> # *U &U . *U _I2C 0 `ui `ux `i ]
-[; ;myMain.c: 82: I2C->Count++;
 "82
-[e ++ . *U _I2C 2 -> -> 1 `i `uc ]
-[; ;myMain.c: 83: if(I2C->Count==32)
-"83
-[e $ ! == -> . *U _I2C 2 `i -> 32 `i 153  ]
-[; ;myMain.c: 84: {
-"84
-{
-[; ;myMain.c: 85: I2C->Count=0;
-"85
-[e = . *U _I2C 2 -> -> 0 `i `uc ]
-"86
-}
-[e :U 153 ]
-"87
 }
 [e :U 152 ]
-"100
+"105
+}
+[e :U 151 ]
+[; ;myMain.c: 82: }
+[; ;myMain.c: 105: }
+[; ;myMain.c: 108: TMain->Count2++;
+"108
+[e ++ . *U _TMain 8 -> -> 1 `i `ui ]
+[; ;myMain.c: 109: if(TMain->Count2 == 2000)
+"109
+[e $ ! == . *U _TMain 8 -> -> 2000 `i `ui 153  ]
+[; ;myMain.c: 110: {
+"110
+{
+[; ;myMain.c: 111: TMain->Count2=0;
+"111
+[e = . *U _TMain 8 -> -> 0 `i `ui ]
+"124
+}
+[e :U 153 ]
+"127
 }
 [e :U 150 ]
-[; ;myMain.c: 86: }
-[; ;myMain.c: 87: }
-[; ;myMain.c: 100: }
-[; ;myMain.c: 103: TMain->Count2++;
-"103
-[e ++ . *U _TMain 8 -> -> 1 `i `ui ]
-[; ;myMain.c: 104: if(TMain->Count2 == 2000)
-"104
-[e $ ! == . *U _TMain 8 -> -> 2000 `i `ui 154  ]
-[; ;myMain.c: 105: {
-"105
-{
-[; ;myMain.c: 106: TMain->Count2=0;
-"106
-[e = . *U _TMain 8 -> -> 0 `i `ui ]
-"119
-}
-[e :U 154 ]
-"122
-}
-[e :U 149 ]
-[; ;myMain.c: 119: }
-[; ;myMain.c: 122: }
-[; ;myMain.c: 123: }
-"123
-[e :UE 146 ]
+[; ;myMain.c: 124: }
+[; ;myMain.c: 127: }
+[; ;myMain.c: 128: }
+"128
+[e :UE 147 ]
 }

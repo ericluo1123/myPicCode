@@ -27,6 +27,7 @@
 		#define CorrectionValue 8//14
 	//	#define TriacTimeValue	1
 		#define DetectTime 50
+		#define DimmerTuneValue 157
 
 		//private
 		struct DimmerLights
@@ -62,10 +63,8 @@
 
 			unsigned Clear:1;
 
-			unsigned MosfetHi:1;
-			unsigned MosfetLow:1;
-			unsigned char MosfetHiCount;
-			unsigned char MosfetLowCount;
+			unsigned MosfetSignal:1;
+			unsigned char MosfetSignalCount;
 			
 		};
 		struct DimmerLights *DimmerLights;
@@ -605,6 +604,24 @@
 			#if Dimmer_Half_Wave == 1
 
 				#define setDimmerLights11_Control(lights)\
+					if(DimmerLights11->MosfetSignal)\
+					{\
+						DimmerLights11->MosfetSignalCount++;\
+						if(DimmerLights11->MosfetSignalCount == DimmerTuneValue)\
+						{\
+							DimmerLights11->MosfetSignalCount=0;\
+							DimmerLights11->MosfetSignal=0;\
+							if(!DimmerLights11->GO  && !DimmerLights11->MosfetOpen)\
+							{\
+								DimmerLights11->GO=1;\
+								if(DimmerLights11->StatusFlag)\
+								{\
+									Mosfet1=0;\
+									ID_1KEY_1;\
+								}\
+							}\
+						}\
+					}\
 					if(DimmerLights11->GO)\//reclock
 					{\
 						DimmerLights11->Count++;\
@@ -615,7 +632,7 @@
 							DimmerLights11->Flag=1;\
 							if(DimmerLights11->StatusFlag)\
 							{\
-								Mosfet1=0;\
+								Mosfet1=1;\
 								ID_1KEY_0;\
 								if(DimmerLights11->MosfetClose)\
 								{\
@@ -805,6 +822,23 @@
 			#if Dimmer_Half_Wave == 1
 
 				#define setDimmerLights22_Control(lights)\
+					if(DimmerLights22->MosfetSignal)\
+					{\
+						DimmerLights22->MosfetSignalCount++;\
+						if(DimmerLights22->MosfetSignalCount == DimmerTuneValue-10)\
+						{\
+							DimmerLights22->MosfetSignalCount=0;\
+							DimmerLights22->MosfetSignal=0;\
+							if(!DimmerLights22->GO  && !DimmerLights22->MosfetOpen)\
+							{\
+								DimmerLights22->GO=1;\
+								if(DimmerLights22->StatusFlag)\
+								{\
+									Mosfet2=0;\
+								}\
+							}\
+						}\
+					}\
 					if(DimmerLights22->GO)\//reclock
 					{\
 						DimmerLights22->Count++;\
@@ -815,7 +849,7 @@
 							DimmerLights22->Flag=1;\
 							if(DimmerLights22->StatusFlag)\
 							{\
-								Mosfet2=0;\
+								Mosfet2=1;\
 								if(DimmerLights22->MosfetClose)\
 								{\
 									DimmerLights22->MosfetClose=0;\

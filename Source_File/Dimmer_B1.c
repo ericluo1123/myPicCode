@@ -11,6 +11,9 @@
 			{
 				DimmerLights=&DimmerLights1;	
 			}
+			#ifdef Mosfet1	
+				Mosfet1=1;
+			#endif
 		#endif
 
 		#ifdef use_2KEY
@@ -18,6 +21,9 @@
 			{
 				DimmerLights=&DimmerLights2;	
 			}
+			#ifdef Mosfet2	
+				Mosfet2=1;
+			#endif
 		#endif
 
 		#ifdef use_3KEY
@@ -25,6 +31,9 @@
 			{
 				DimmerLights=&DimmerLights3;	
 			}
+			#ifdef Mosfet3	
+				Mosfet3=1;
+			#endif
 		#endif		
 	}
 

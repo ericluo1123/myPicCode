@@ -15,7 +15,7 @@
 	//oscillator
 	//System Clock Select=FOSC<2:0>
 
-//PLLEN = 1
+  //PLLEN = 1
   #ifdef System_Fosc_16M
  	 #define _OSCCON 0x3c
 	 #define FOSC 16000000

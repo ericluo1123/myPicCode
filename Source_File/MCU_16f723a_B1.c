@@ -69,7 +69,6 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void TMR0_Set()
 	{
 		Timer0=&VarTimer0;
-		Timer0->DimmerCountValue=158;
 		OPTION_REG=OPTION_REG_Value;
 		TMR0=TMR0_Value;
 		TMR0IE=1;
@@ -85,15 +84,15 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 
 			#if Dimmer_use == 1
 
-				#ifdef Triac1	
+				#ifdef use_1KEY
 					setDimmerLights11_Control(1);
 				#endif
 
-				#ifdef Triac2
+				#ifdef use_2KEY
 					setDimmerLights22_Control(2);
 				#endif
 
-				#ifdef Triac3
+				#ifdef use_3KEY
 					setDimmerLights33_Control(3);
 				#endif
 	
@@ -105,6 +104,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				Timer0->Count=0;
 				TMain->T0_Timerout=1;
 			}
+
+			#if Buzzer_use == 1
+				if(Buz->GO)
+				{
+					Buz->Time++;
+				}
+			#endif	
 		}
 	}
 	//*********************************************************
@@ -112,16 +118,68 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	{
 		TMR0=255;
 
-		#if Switch_Key == 1 || Switch_Key == 2 || Switch_Key == 3
-			#ifdef Triac1
-				DimmerLights11->GO=1;
+		#if Dimmer_use == 1
+			#ifdef use_1KEY
+				#if Control_Method_Triac == 1
+					if(!DimmerLights11->GO)
+					{	
+						DimmerLights11->GO=1;
+					}
+				#endif
+	
+				#if Control_Method_Mosfet == 1
+					if(!DimmerLights11->MosfetSignal)
+					{
+						DimmerLights11->MosfetSignal=1;
+					}
+/*
+					if(!DimmerLights11->GO  && !DimmerLights11->MosfetOpen)
+					{	
+						DimmerLights11->GO=1;
+						if(DimmerLights11->StatusFlag)
+						{
+							Mosfet1=1;
+							ID_1KEY_1;
+						}
+					}
+*/
+				#endif
 			#endif
-			#ifdef Triac2
-				DimmerLights22->GO=1;
+	
+			#ifdef use_2KEY
+				#if Control_Method_Triac == 1
+					if(!DimmerLights22->GO)
+					{	
+						DimmerLights22->GO=1;
+					}
+				#endif
+
+				#if Control_Method_Mosfet == 1
+
+					if(!DimmerLights22->MosfetSignal)
+					{
+						DimmerLights22->MosfetSignal=1;
+					}
+
+			/*		if(!DimmerLights22->GO  && !DimmerLights22->MosfetOpen)
+					{	
+						DimmerLights22->GO=1;
+						if(DimmerLights22->StatusFlag)
+						{
+							Mosfet2=1;
+						}
+					}*/
+				#endif
 			#endif
-			#ifdef Triac3
-				DimmerLights33->GO=1;
-			#endif
+	
+			#ifdef use_3KEY
+				#if Control_Method_Triac == 1
+					if(!DimmerLights33->GO)
+					{	
+						DimmerLights33->GO=1;
+					}
+				#endif
+			#endif	
 		#endif
 	}
 
@@ -157,6 +215,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				TMain->T1_Timerout=1;
 			}
 		}
+
+		#if Buzzer_use == 1
+			if(Buz->GO)
+			{
+				Buz->Time++;
+			}
+		#endif
 	}
 
 #endif
@@ -169,7 +234,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void INT_Set()
 	{
 		WPUB0=0;
-		//INTE=1;
+		INTE=1;
 		PEIE=1;
 		GIE=1;
 	}
@@ -198,8 +263,23 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void IOC_Set()
 	{
 		WPUB2=0;
-		IOCBP=0b00000100;
-		IOCBN=0b00000100;
+		#if Control_Method_Triac == 1
+			IOCBP=0b00000100;
+			IOCBN=0b00000100;
+		#endif
+
+		#if Control_Method_Mosfet == 1
+			#if Dimmer_Half_Wave == 1
+				IOCBP=0b00000100;
+				IOCBN=0b00000100;
+			#endif
+
+			#if Dimmer_Full_Wave == 1
+				IOCBP=0b00000000;	//Positive
+				IOCBN=0b00000100;	//Negative
+			#endif
+		#endif
+
 		IOCBF=0b00000000;
 		IOCIE=1;
 		IOCIF=0;
@@ -214,7 +294,25 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			IOCIF=0;
 			if(TMain->PowerON == 1)
 			{
-				setDimmerReClock();
+				#if Dimmer_use == 1
+
+					#if Control_Method_Triac == 1
+						setDimmerReClock();
+						if(DimmerReference1)
+						{
+							Dimmer->Correction=0;
+						}
+						else
+						{
+							Dimmer->Correction=CorrectionValue;		
+						}
+					#endif
+
+					#if Control_Method_Mosfet == 1
+						Dimmer->Correction=0;
+						setDimmerReClock();	
+					#endif
+				#endif
 			}
 		}
 	}
@@ -240,11 +338,12 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		return ADC_ADRES;
 	}
 	//*********************************************************
-	void setADCGO()
+/*	void setADCGO()
 	{
 		ADGO=1;
 		while(ADGO);
 	}
+*/
 #endif
 //*********************************************************
 

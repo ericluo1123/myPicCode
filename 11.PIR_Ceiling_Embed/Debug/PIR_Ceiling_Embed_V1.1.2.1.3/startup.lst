@@ -1,0 +1,124 @@
+
+
+Microchip Technology PIC Macro Assembler V1.32 build 58300 
+                                                                                                           Wed Sep 24 15:22:00 2014
+
+
+     1                           
+     2                           	; Microchip MPLAB XC8 C Compiler V1.32
+     3                           	; Copyright (C) 1984-2014 HI-TECH Software
+     4                           
+     5                           	; Auto-generated runtime startup code for final link stage.
+     6                           
+     7                           	;
+     8                           	; Compiler options:
+     9                           	;
+    10                           	; -oPIR_Ceiling_Embed_V1.1.2.1.3.cof -mPIR_Ceiling_Embed_V1.1.2.1.3.map \
+    11                           	; --summary=default --output=default Buzzer_B1.p1 CC2500_B1.p1 \
+    12                           	; CDS_B1.p1 DelayOff_B1.p1 Dimmer_B1.p1 LED_B1.p1 main.p1 \
+    13                           	; OverLoad_B1.p1 OverTemperature_B1.p1 PIR_B1.p1 PowerFault_B1.p1 \
+    14                           	; RF_Control_B1.p1 Switch_B1.p1 SYSC_B1.p1 TriacRelay_B1.p1 MCU_B1.p1 \
+    15                           	; --chip=16F723A \
+    16                           	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\Header_File \
+    17                           	; -IC:\Users\taianluo\Documents\GitHub\myPicCode\11.PIR_Ceiling_Embed\Debug\PIR_Ceiling_Embed_V1.1.
+                                 2.1.3\Release \
+    18                           	; -P --runtime=default --opt=default -N-1 -D__DEBUG=1 -g --asmlist \
+    19                           	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
+    20                           	; --warnformat=Warning [%n] %f; %l.%c %s
+    21                           	;
+    22                           
+    23                           
+    24                           	processor	16F723A
+    25                           
+    26                           	global	_main,start,reset_vec
+    27                           	fnroot	_main
+    28                           	psect	config,class=CONFIG,delta=2,noexec
+    29                           	psect	idloc,class=IDLOC,delta=2,noexec
+    30                           	psect	code,class=CODE,delta=2
+    31                           	psect	powerup,class=CODE,delta=2
+    32                           	psect	reset_vec,class=CODE,delta=2
+    33                           	psect	maintext,class=CODE,delta=2
+    34  0000                     	Z	set	2
+    35  0002                     	PCL	set	2
+    36  0002                     	INDF	set	0
+    37  0000                     
+    38                           	STATUS	equ	3
+    39  0003                     	PCLATH	equ	0Ah
+    40  000A                     
+    41                           	psect	eeprom_data,class=EEDATA,delta=2,space=3,noexec
+    42                           	psect	intentry,class=CODE,delta=2
+    43                           	psect	functab,class=CODE,delta=2
+    44                           	global	intlevel0,intlevel1,intlevel2, intlevel3, intlevel4, intlevel5
+    45                           intlevel0:
+    46  0000                     intlevel1:
+    47  0000                     intlevel2:
+    48  0000                     intlevel3:
+    49  0000                     intlevel4:
+    50  0000                     intlevel5:
+    51  0000                     	psect	init,class=CODE,delta=2
+    52                           	psect	cinit,class=CODE,delta=2
+    53                           	psect	text,class=CODE,delta=2
+    54                           	psect	end_init,class=CODE,delta=2
+    55                           	psect	clrtext,class=CODE,delta=2
+    56                           	FSR	set	4
+    57  0004                     	psect	strings,class=CODE,delta=2,reloc=256
+    58                           
+    59                           	global stacklo, stackhi
+    60                           	stacklo	equ	0
+    61  0000                     	stackhi	equ	0
+    62  0000                     
+    63                           
+    64                           	psect	stack,class=STACK,space=2,noexec
+    65                           	global ___sp,___int_sp
+    66                           	___sp:
+    67  0000                     	___int_sp:
+    68  0000                     	psect	reset_vec
+    69                           reset_vec:
+    70  0000                     	; No powerup routine
+    71                           	global start
+    72                           
+    73                           ; jump to start
+    74                           	goto	start & 0x7FF | (reset_vec & not 0x7FF)
+    75  0000  118A  2811         
+    76                           
+    77                           
+    78                           	psect	init
+    79                           start
+    80  0011                     	psect	end_init
+    81                           	global start_initialization
+    82                           	ljmp start_initialization	;jump to C runtime clear & initialization
+    83  0011  118A  2813         
+    84                           ; Config register CONFIG1 @ 0x2007
+    85                           ;	Watchdog Timer Enable bit
+    86                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+    87                           ;	Power-up Timer Enable bit
+    88                           ;	PWRTE = 0x1, unprogrammed default
+    89                           ;	Code Protection bit
+    90                           ;	CP = 0x1, unprogrammed default
+    91                           ;	Brown-out Reset Selection bits
+    92                           ;	BOREN = OFF, BOR disabled
+    93                           ;	Brown-out Reset Voltage selection bit
+    94                           ;	BORV = 0x1, unprogrammed default
+    95                           ;	In-Circuit Debugger Mode bit
+    96                           ;	DEBUG = 0x1, unprogrammed default
+    97                           ;	RE3/MCLR Pin Function Select bit
+    98                           ;	MCLRE = 0x1, unprogrammed default
+    99                           ;	Oscillator Selection bits
+   100                           ;	FOSC = INTOSCIO, INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC
+                                 1/CLKIN
+   101                           ;	INTOSC PLL Enable bit
+   102                           ;	PLLEN = 0x1, unprogrammed default
+   103                           
+   104                           	psect	config
+   105                           		org 0x0
+   106  2007                     		dw 0xFCF4
+   107  2007  FCF4               
+
+
+Microchip Technology PIC Macro Assembler V1.32 build 58300 
+Symbol Table                                                                                               Wed Sep 24 15:22:00 2014
+
+               ___sp 0000                 _main 02AB                 start 0011               stackhi 0000  
+             stacklo 0000  start_initialization 0013             ___int_sp 0000             intlevel0 0000  
+           intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
+           intlevel5 0000             reset_vec 0000  

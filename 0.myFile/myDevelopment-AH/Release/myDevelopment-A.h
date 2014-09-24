@@ -294,7 +294,9 @@
 	#include "SegmentDisplay_A2.h"
 	#include "CC2500_B1.h"
 	#include "RF_Control_B1.h"
+	#include "MCU_B1.h"
 
+/*
 	#ifdef _16F723A
 		#include "MCU_16F723A_B1.h"
 	#endif
@@ -306,6 +308,6 @@
 	#ifdef _16F1518
 		#include "MCU_16F1518_B1.h"
 	#endif
-
+*/
 //end file
 #endif

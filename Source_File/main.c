@@ -148,6 +148,8 @@ void MainT()
 			if(TMain->Count1 == 100)	//*10ms
 			{
 				TMain->Count1=0;
+	
+			//	setBuz(1,100);
 			//	setTxData(1);
 			//	ErrLED=~ErrLED;
 			//	setProductData(2,Sw1->DebounceTime);
@@ -160,24 +162,27 @@ void MainT()
 			//	TMain->Count3++;
 				if(TMain->Flag)
 				{
-				//	TMain->Flag=0;
-				//	setLights_Trigger(1,1);
-				//	setLights_Switch(1,1);
+					TMain->Flag=0;
+				//	setLights(1,1);
+					setLights_Trigger(1,1);
+					setLights_Switch(1,1);
 	
 				//	setLED(1,1);
 				//	setLED(2,0);
 				//	setLED(3,1);
+				//	setLED(99,1);
 				}
 				else
 				{
 					TMain->Flag=1;
-				//	setLED(99,11);
-				//	setLights_Trigger(1,1);
-				//	setLights_Switch(1,0);
+				//	setLights(1,0);
+					setLights_Trigger(1,1);
+					setLights_Switch(1,0);
 				//	setLED(99,0);
 				//	setLED(1,0);
 				//	setLED(2,1);
 				//	setLED(3,0);
+				//	setLED(99,0);
 				}
 			}
 		#endif

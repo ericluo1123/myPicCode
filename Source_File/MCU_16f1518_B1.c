@@ -85,15 +85,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		{
 			TMR0=TMR0_Value;
 			TMR0IF=0;
-/*
-			Timer0->Count1++;
-			if(Timer0->Count1 >= 166)
-			{
-				Timer0->Count1=0;			
-				setDimmerReClock();
-				ErrLED=~ErrLED;
-			}	
-*/
+
 			#if Dimmer_use == 1
 
 				#ifdef use_1KEY
@@ -140,6 +132,11 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				#endif
 	
 				#if Control_Method_Mosfet == 1
+					if(!DimmerLights11->MosfetSignal)
+					{
+						DimmerLights11->MosfetSignal=1;
+					}
+/*
 					if(!DimmerLights11->GO  && !DimmerLights11->MosfetOpen)
 					{	
 						DimmerLights11->GO=1;
@@ -147,20 +144,9 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 						{
 							Mosfet1=1;
 							ID_1KEY_1;
-/*
-							Dimmer->Correction=0;
-							DimmerLights11->MosfetOpen=1;	
-							if(DimmerReference1)
-							{
-								DimmerLights->MosfetHi=1;		
-							}
-							else
-							{
-								DimmerLights->MosfetLow=1;	
-							}
-*/
 						}
 					}
+*/
 				#endif
 			#endif
 	
@@ -173,27 +159,20 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				#endif
 
 				#if Control_Method_Mosfet == 1
-					if(!DimmerLights22->GO  && !DimmerLights22->MosfetOpen)
+
+					if(!DimmerLights22->MosfetSignal)
+					{
+						DimmerLights22->MosfetSignal=1;
+					}
+
+			/*		if(!DimmerLights22->GO  && !DimmerLights22->MosfetOpen)
 					{	
 						DimmerLights22->GO=1;
 						if(DimmerLights22->StatusFlag)
 						{
 							Mosfet2=1;
-				
-/*
-							Dimmer->Correction=0;
-							DimmerLights11->MosfetOpen=1;	
-							if(DimmerReference1)
-							{
-								DimmerLights->MosfetHi=1;		
-							}
-							else
-							{
-								DimmerLights->MosfetLow=1;	
-							}
-*/
 						}
-					}
+					}*/
 				#endif
 			#endif
 	
@@ -240,6 +219,13 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 				TMain->T1_Timerout=1;
 			}
 		}
+
+		#if Buzzer_use == 1
+			if(Buz->GO)
+			{
+				Buz->Time++;
+			}
+		#endif
 	}
 
 #endif

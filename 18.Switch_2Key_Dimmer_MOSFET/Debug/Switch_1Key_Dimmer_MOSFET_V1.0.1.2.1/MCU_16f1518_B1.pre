@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 96 "C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h"
+# 144 "C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h"
 struct Product
 {
 unsigned char Data[32];
@@ -85,7 +85,7 @@ struct Product VarProduct=
 }
 };
 
-# 144
+# 192
 struct TMain
 {
 unsigned PowerON:1;
@@ -512,7 +512,7 @@ void setLoad_StatusOff(char,char);
 char getLoad_Safe();
 char getLoad_ERROR();
 
-# 32 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
+# 33 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
 struct DimmerLights
 {
 unsigned GO:1;
@@ -546,16 +546,14 @@ unsigned char DetectCount;
 
 unsigned Clear:1;
 
-unsigned MosfetHi:1;
-unsigned MosfetLow:1;
-unsigned char MosfetHiCount;
-unsigned char MosfetLowCount;
+unsigned MosfetSignal:1;
+unsigned char MosfetSignalCount;
 
 };
 struct DimmerLights *DimmerLights;
 struct DimmerLights *DimmerLightsIntr;
 
-# 86
+# 85
 struct DimmerLights *DimmerLights11;
 struct DimmerLights DimmerLights1;
 
@@ -564,7 +562,7 @@ struct DimmerLights DimmerLights1;
 struct DimmerLights *DimmerLights22;
 struct DimmerLights DimmerLights2;
 
-# 110
+# 109
 void DimmerLightsPointSelect(char);
 void DimmerLights_Initialization();
 void DimmerLights_Main();
@@ -592,7 +590,7 @@ char getDimmerLights_Trigger();
 
 void setDimmerLights_Clear(char,char);
 
-# 142
+# 141
 struct Dimmer
 {
 
@@ -3269,11 +3267,11 @@ TMR0=(256-90);
 TMR0IF=0;
 
 # 100
-if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=0; ;; if(DimmerLights11->MosfetClose) { DimmerLights11->MosfetClose=0; DimmerLights11->StatusFlag=0; DimmerLights11->Clear=1; RA3=0; ;(1); Dimmer->Detect=1; setLoad_StatusOff(1,1); } } } } else { if(DimmerLights11->MosfetOpen) { DimmerLights11->Count++; if(DimmerLights11->Count >= 20) { DimmerLights11->Count=0; DimmerLights11->MosfetOpen=0; } } if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue < ((char)(65*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue > ((char)(20*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { DimmerLights11->Signal=0; } } } } } ;;
+if(DimmerLights11->MosfetSignal) { DimmerLights11->MosfetSignalCount++; if(DimmerLights11->MosfetSignalCount == 157) { DimmerLights11->MosfetSignalCount=0; DimmerLights11->MosfetSignal=0; if(!DimmerLights11->GO && !DimmerLights11->MosfetOpen) { DimmerLights11->GO=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } } } if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=0; ;; if(DimmerLights11->MosfetClose) { DimmerLights11->MosfetClose=0; DimmerLights11->StatusFlag=0; DimmerLights11->Clear=1; RA3=0; ;(1); Dimmer->Detect=1; setLoad_StatusOff(1,1); } } } } else { if(DimmerLights11->MosfetOpen) { DimmerLights11->Count++; if(DimmerLights11->Count >= 20) { DimmerLights11->Count=0; DimmerLights11->MosfetOpen=0; } } if(DimmerLights11->Flag) { DimmerLights11->Flag=0; if(DimmerLights11->Signal) { DimmerLights11->DimmingTime++; if(DimmerLights11->DimmingTime >= DimmerLights11->DimmingTimeValue) { DimmerLights11->DimmingTime=0; if(DimmerLights11->AdjFlag) { if(DimmerLights11->AdjStatus == 0) { if(DimmerLights11->DimmingValue < ((char)(65*1.5))) { DimmerLights11->DimmingValue++; } else { DimmerLights11->AdjStatus=1; } } else { if(DimmerLights11->DimmingValue > ((char)(20*1.5))) { DimmerLights11->DimmingValue--; } else { DimmerLights11->AdjStatus=0; } } } else if(DimmerLights11->AdjRF) { if(DimmerLights11->DimmingValue < DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue++; } else if(DimmerLights11->DimmingValue > DimmerLights11->MaxmumValue) { DimmerLights11->DimmingValue--; } if(DimmerLights11->DimmingValue == DimmerLights11->MaxmumValue) { DimmerLights11->AdjRF=0; DimmerLights11->Signal=0; } } else { DimmerLights11->Signal=0; } } } } } ;;
 
 
 
-if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=0; if(DimmerLights22->MosfetClose) { DimmerLights22->MosfetClose=0; DimmerLights22->StatusFlag=0; DimmerLights22->Clear=1; RC7=0; Dimmer->Detect=1; setLoad_StatusOff(2,1); } } } } else { if(DimmerLights22->MosfetOpen) { DimmerLights22->Count++; if(DimmerLights22->Count >= 20) { DimmerLights22->Count=0; DimmerLights22->MosfetOpen=0; } } if(DimmerLights22->Flag) { DimmerLights22->Flag=0; if(DimmerLights22->Signal) { DimmerLights22->DimmingTime++; if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue) { DimmerLights22->DimmingTime=0; if(DimmerLights22->AdjFlag) { if(DimmerLights22->AdjStatus == 0) { if(DimmerLights22->DimmingValue < ((char)(65*1.5))) { DimmerLights22->DimmingValue++; } else { DimmerLights22->AdjStatus=1; } } else { if(DimmerLights22->DimmingValue > ((char)(20*1.5))) { DimmerLights22->DimmingValue--; } else { DimmerLights22->AdjStatus=0; } } } else if(DimmerLights22->AdjRF) { if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue++; } else if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue--; } if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue) { DimmerLights22->AdjRF=0; DimmerLights22->Signal=0; } } else { DimmerLights22->Signal=0; } } } } } ;;
+if(DimmerLights22->MosfetSignal) { DimmerLights22->MosfetSignalCount++; if(DimmerLights22->MosfetSignalCount == 157-10) { DimmerLights22->MosfetSignalCount=0; DimmerLights22->MosfetSignal=0; if(!DimmerLights22->GO && !DimmerLights22->MosfetOpen) { DimmerLights22->GO=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } } if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=0; if(DimmerLights22->MosfetClose) { DimmerLights22->MosfetClose=0; DimmerLights22->StatusFlag=0; DimmerLights22->Clear=1; RC7=0; Dimmer->Detect=1; setLoad_StatusOff(2,1); } } } } else { if(DimmerLights22->MosfetOpen) { DimmerLights22->Count++; if(DimmerLights22->Count >= 20) { DimmerLights22->Count=0; DimmerLights22->MosfetOpen=0; } } if(DimmerLights22->Flag) { DimmerLights22->Flag=0; if(DimmerLights22->Signal) { DimmerLights22->DimmingTime++; if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue) { DimmerLights22->DimmingTime=0; if(DimmerLights22->AdjFlag) { if(DimmerLights22->AdjStatus == 0) { if(DimmerLights22->DimmingValue < ((char)(65*1.5))) { DimmerLights22->DimmingValue++; } else { DimmerLights22->AdjStatus=1; } } else { if(DimmerLights22->DimmingValue > ((char)(20*1.5))) { DimmerLights22->DimmingValue--; } else { DimmerLights22->AdjStatus=0; } } } else if(DimmerLights22->AdjRF) { if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue++; } else if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue--; } if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue) { DimmerLights22->AdjRF=0; DimmerLights22->Signal=0; } } else { DimmerLights22->Signal=0; } } } } } ;;
 
 # 113
 Timer0->Count++;
@@ -3297,34 +3295,21 @@ void setDimmerReClock()
 TMR0=255;
 
 # 143
-if(!DimmerLights11->GO && !DimmerLights11->MosfetOpen)
+if(!DimmerLights11->MosfetSignal)
 {
-DimmerLights11->GO=1;
-if(DimmerLights11->StatusFlag)
+DimmerLights11->MosfetSignal=1;
+}
+
+# 171
+if(!DimmerLights22->MosfetSignal)
 {
-RA7=1;
-;;
-
-# 162
-}
+DimmerLights22->MosfetSignal=1;
 }
 
-# 176
-if(!DimmerLights22->GO && !DimmerLights22->MosfetOpen)
-{
-DimmerLights22->GO=1;
-if(DimmerLights22->StatusFlag)
-{
-RB4=1;
-
-# 195
-}
+# 196
 }
 
-# 209
-}
-
-# 252
+# 239
 void INT_Set()
 {
 WPUB0=0;
@@ -3349,16 +3334,16 @@ INTF=0;
 INTE=command;
 }
 
-# 281
+# 268
 void IOC_Set()
 {
 WPUB2=0;
 
-# 291
+# 278
 IOCBP=0b00000100;
 IOCBN=0b00000100;
 
-# 301
+# 288
 IOCBF=0b00000000;
 
 IOCIE=1;
@@ -3376,7 +3361,7 @@ IOCIF=0;
 if(TMain->PowerON)
 {
 
-# 332
+# 319
 Dimmer->Correction=0;
 setDimmerReClock();
 
@@ -3385,7 +3370,7 @@ setDimmerReClock();
 }
 }
 
-# 346
+# 333
 void ADC_Set()
 {
 ADCON1=0xf2;
@@ -3401,7 +3386,7 @@ while(GO_nDONE);
 return ((ADRESH*256)+ADRESL);
 }
 
-# 472
+# 459
 void Flash_Memory_Initialization()
 {
 char i;
@@ -3411,7 +3396,7 @@ Product->Data[12]=Flash_Memory_Read(0);
 Product->Data[13]=Flash_Memory_Read(1);
 Product->Data[14]=Flash_Memory_Read(2);
 
-# 485
+# 472
 i=setPercentValue(((char)(65*1.5)));
 Product->Data[21]=i;
 Product->Data[22]=i;
@@ -3530,7 +3515,7 @@ Memory->Data[0]=Product->Data[12];
 Memory->Data[1]=Product->Data[13];
 Memory->Data[2]=Product->Data[14];
 
-# 607
+# 594
 if(Memory->LoopSave)
 {
 Memory->LoopSave=0;

@@ -124,15 +124,34 @@
 								Load->Safe=1;
 
 								#ifdef use_1KEY			
-									setDimmerLights_Clear(1,1);
+									#ifdef Dimmer_use == 1
+										setDimmerLights_Clear(1,1);
+									#endif
+
+									#ifdef LightsControl_use == 1
+										setLights_Clear(1,1);
+									#endif
 								#endif
 
 								#ifdef use_2KEY	
-									setDimmerLights_Clear(2,1);
+									#ifdef Dimmer_use == 1
+										setDimmerLights_Clear(2,1);
+									#endif
+									
+									#ifdef LightsControl_use == 1
+										setLights_Clear(2,1);
+									#endif
 								#endif
 
-								#ifdef use_3KEY			
-									setDimmerLights_Clear(3,1);
+								#ifdef use_3KEY		
+									#ifdef Dimmer_use == 1
+										setDimmerLights_Clear(3,1);
+									#endif	
+
+									#ifdef LightsControl_use == 1
+										setLights_Clear(3,1);
+									#endif
+									
 								#endif	
 
 								if(Load->StatusOn)
@@ -194,16 +213,35 @@
 						Load->AD=0;
 						setLoad_AH_AL_Restore();
 
-						#ifdef use_1KEY		
-							setDimmerLights_Clear(1,1);
+						#ifdef use_1KEY			
+							#ifdef Dimmer_use == 1
+								setDimmerLights_Clear(1,1);
+							#endif
+
+							#ifdef LightsControl_use == 1
+								setLights_Clear(1,1);
+							#endif
 						#endif
 
-						#ifdef use_2KEY			
-							setDimmerLights_Clear(2,1);
+						#ifdef use_2KEY	
+							#ifdef Dimmer_use == 1
+								setDimmerLights_Clear(2,1);
+							#endif
+								
+							#ifdef LightsControl_use == 1
+								setLights_Clear(2,1);
+							#endif
 						#endif
 
-						#ifdef use_3KEY			
-							setDimmerLights_Clear(3,1);
+						#ifdef use_3KEY		
+							#ifdef Dimmer_use == 1
+								setDimmerLights_Clear(3,1);
+							#endif	
+
+							#ifdef LightsControl_use == 1
+								setLights_Clear(3,1);
+							#endif
+									
 						#endif	
 						
 						setProductData(2,(Load->AD >> 8));

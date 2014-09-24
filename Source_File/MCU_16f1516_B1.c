@@ -88,6 +88,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		{
 			TMR0=TMR0_Value;
 			TMR0IF=0;
+
 			Dimmer_Main();
 			Timer0->Count++;
 			if(Timer0->Count == TMR0_1ms)//1ms

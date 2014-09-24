@@ -69,7 +69,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 96 "C:\Users\taianluo\Documents\GitHub\myPicCode\18.Switch_2Key_Dimmer_MOSFET\Debug\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1\Release\Switch_1Key_Dimmer_MOSFET_V1.0.1.2.1.h"
+# 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h"
 struct Product
 {
 unsigned char Data[32];
@@ -85,7 +85,7 @@ struct Product VarProduct=
 }
 };
 
-# 144
+# 56
 struct TMain
 {
 unsigned PowerON:1;
@@ -512,7 +512,7 @@ void setLoad_StatusOff(char,char);
 char getLoad_Safe();
 char getLoad_ERROR();
 
-# 32 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
+# 33 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
 struct DimmerLights
 {
 unsigned GO:1;
@@ -546,16 +546,14 @@ unsigned char DetectCount;
 
 unsigned Clear:1;
 
-unsigned MosfetHi:1;
-unsigned MosfetLow:1;
-unsigned char MosfetHiCount;
-unsigned char MosfetLowCount;
+unsigned MosfetSignal:1;
+unsigned char MosfetSignalCount;
 
 };
 struct DimmerLights *DimmerLights;
 struct DimmerLights *DimmerLightsIntr;
 
-# 86
+# 85
 struct DimmerLights *DimmerLights11;
 struct DimmerLights DimmerLights1;
 
@@ -564,7 +562,7 @@ struct DimmerLights DimmerLights1;
 struct DimmerLights *DimmerLights22;
 struct DimmerLights DimmerLights2;
 
-# 110
+# 109
 void DimmerLightsPointSelect(char);
 void DimmerLights_Initialization();
 void DimmerLights_Main();
@@ -592,7 +590,7 @@ char getDimmerLights_Trigger();
 
 void setDimmerLights_Clear(char,char);
 
-# 142
+# 141
 struct Dimmer
 {
 
@@ -3120,16 +3118,16 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_16F1518_B1.h"
+# 11 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h"
 void Mcu_Initialization();
 void IO_Set();
 
-# 132
+# 296
 void ADC_Set();
 ADtype getAD(char,char);
 void setADCGO();
 
-# 178
+# 342
 struct Timer0
 {
 unsigned Timeout:1;
@@ -3146,16 +3144,16 @@ void TMR0_Set();
 void TMR0_ISR();
 void setDimmerReClock();
 
-# 263
+# 428
 void INT_Set();
 void INT_ISR();
 void setINT_GO(char);
 
-# 276
+# 441
 void IOC_Set();
 void IOC_ISR();
 
-# 424
+# 585
 struct FlashMemory
 {
 unsigned char Data[32];
@@ -3176,7 +3174,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 459
+# 620
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3194,6 +3192,9 @@ if(lights == 1)
 DimmerLights=&DimmerLights1;
 }
 
+RA7=1;
+
+
 
 
 if(lights == 2)
@@ -3201,7 +3202,9 @@ if(lights == 2)
 DimmerLights=&DimmerLights2;
 }
 
-# 29
+RB4=1;
+
+# 38
 }
 
 
@@ -3216,7 +3219,7 @@ setDimmerLights_Initialization(1);
 DimmerLights22=&DimmerLights2;
 setDimmerLights_Initialization(2);
 
-# 50
+# 59
 Dimmer_Initialization();
 
 
@@ -3226,14 +3229,14 @@ void setDimmerLights_Initialization(char lights)
 DimmerLightsPointSelect(lights);
 DimmerLights->Clear=1;
 
-# 63
+# 72
 DimmerLights->MaxmumValue=((char)(65*1.5));
 DimmerLights->MinimumValue=((char)(20*1.5));
 
-# 78
+# 87
 DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
 
-# 90
+# 99
 }
 
 void DimmerLights_Close()
@@ -3258,7 +3261,7 @@ setDimmerLights_Main(1);
 
 setDimmerLights_Main(2);
 
-# 119
+# 128
 DimmerLights_Close();
 }
 
@@ -3267,7 +3270,7 @@ void setDimmerLights_Main(char lights)
 char clear=1;
 DimmerLightsPointSelect(lights);
 
-# 143
+# 152
 if(lights == 1)
 {
 clear=(!DimmerLights22->Clear)?0:1;
@@ -3328,10 +3331,10 @@ char getDimmerLights_StatusFlag()
 {
 char Status=0;
 
-# 208
+# 217
 Status=(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)?1:0;
 
-# 215
+# 224
 return Status;
 }
 
@@ -3339,10 +3342,10 @@ char getDimmerLights_Trigger()
 {
 char Status=0;
 
-# 227
+# 236
 Status=(DimmerLights11->Trigger || DimmerLights22->Trigger)?1:0;
 
-# 234
+# 243
 return Status;
 }
 
@@ -3361,7 +3364,7 @@ setDimmerLights_ERROR(1);
 
 setDimmerLights_ERROR(2);
 
-# 255
+# 264
 }
 else if(status == 2)
 {
@@ -3376,7 +3379,7 @@ setDimmerLights_ERROR(1);
 
 setDimmerLights_ERROR(2);
 
-# 272
+# 281
 }
 
 
@@ -3385,7 +3388,7 @@ setDimmerLights_TriggerERROR(1,0);
 
 setDimmerLights_TriggerERROR(2,0);
 
-# 284
+# 293
 if(TMain->SelfTest == 0)
 {
 TMain->i=0;
@@ -3468,7 +3471,7 @@ DimmerLights->AdjFlag=0;
 DimmerLights->AdjStatus=0;
 DimmerLights->DimmingTimeValue=3;
 
-# 376
+# 385
 }
 }
 
@@ -3489,7 +3492,7 @@ DimmerLights->AdjFlag=0;
 setLoad_StatusOff(0,1);
 DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
 
-# 402
+# 411
 setRF_DimmerLights(lights,1);
 setTxData(1);
 }
@@ -3541,11 +3544,11 @@ DimmerLightsPointSelect(lights);
 DimmerLights->Clear=command;
 }
 
-# 481
+# 490
 char getPercentValue(char value)
 {
 
-# 490
+# 499
 float i=((char)(65*1.5))-((char)(20*1.5));
 i/=100;
 return (char)(((100-value)*i)+((char)(65*1.5)));
@@ -3555,7 +3558,7 @@ return (char)(((100-value)*i)+((char)(65*1.5)));
 char setPercentValue(char value)
 {
 
-# 505
+# 514
 float i=((char)(65*1.5))-((char)(20*1.5));
 i/=100;
 return (100-(char)((value-((char)(65*1.5)))/i));
