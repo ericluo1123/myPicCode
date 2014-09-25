@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"7 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"9 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
-"56
+"58
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
@@ -39,17 +39,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
 [n S14 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
 "342 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[s S247 :1 `uc 1 `ui 1 `ui 1 `ui 1 ]
-[n S247 Timer0 Timeout Count Count1 DimmerCount ]
-"585
+[s S247 :1 `uc 1 `ui 1 `ui 1 `ui 1 :1 `uc 1 `uc 1 ]
+[n S247 Timer0 Timeout Count Count1 DimmerCount Reset ResetCount ]
+"588
 [s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 [p mainexit ]
-"91 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"93 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT_Initialization `(v ~T0 @X0 0 ef ]
 "11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Mcu_Initialization `(v ~T0 @X0 0 ef ]
-"620
+"623
 [v _Flash_Memory_Initialization `(v ~T0 @X0 0 ef ]
 "50 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _LED_Initialization `(v ~T0 @X0 0 ef ]
@@ -79,9 +79,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _getPowerFault_AD `(v ~T0 @X0 0 ef1`uc ]
 "52 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
 [v _Buzzer_Main `(v ~T0 @X0 0 ef ]
-"92 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"94 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT `(v ~T0 @X0 0 ef ]
-"626 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+"95
+[v _MainT_Clock `(v ~T0 @X0 0 ef ]
+"629 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Flash_Memory_Main `(v ~T0 @X0 0 ef ]
 "51 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _LED_Main `(v ~T0 @X0 0 ef ]
@@ -109,6 +111,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
 "63 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
+"4533 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
+[v _RB5 `Vb ~T0 @X0 0 e@109 ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -142,20 +146,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Main_B1.h: 7: struct Product
-[; ;Main_B1.h: 8: {
-[; ;Main_B1.h: 9: unsigned char Data[32];
-[; ;Main_B1.h: 10: };
-"11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+[; ;Main_B1.h: 9: volatile struct Product
+[; ;Main_B1.h: 10: {
+[; ;Main_B1.h: 11: unsigned char Data[32];
+[; ;Main_B1.h: 12: };
+"13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _Product `*S2 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 11: struct Product *Product;
-"12
+[; ;Main_B1.h: 13: struct Product *Product;
+"14
 [v _VarProduct `S2 ~T0 @X0 1 e ]
 [i _VarProduct
 :U ..
 :U ..
 :U ..
-"15
+"17
 -> -> 99 `i `uc
 -> -> 2 `i `uc
 -> -> 0 `i `uc
@@ -166,81 +170,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
-"16
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 255 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"17
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
 "18
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
 "19
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"20
+-> -> 0 `i `uc
+"21
 -> -> 0 `i `uc
 ..
 ..
 ..
 ]
-[; ;Main_B1.h: 12: struct Product VarProduct=
-[; ;Main_B1.h: 13: {
-[; ;Main_B1.h: 14: {
-[; ;Main_B1.h: 15: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Main_B1.h: 16: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
-[; ;Main_B1.h: 17: 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
-[; ;Main_B1.h: 18: 0x00,0x00
-[; ;Main_B1.h: 19: }
-[; ;Main_B1.h: 20: };
-"86
+[; ;Main_B1.h: 14: struct Product VarProduct=
+[; ;Main_B1.h: 15: {
+[; ;Main_B1.h: 16: {
+[; ;Main_B1.h: 17: 0x63,0x02,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Main_B1.h: 18: 0x00,0x00,0xff,0xff,0xff,0x00,0x00,0x00,0x00,0x00,
+[; ;Main_B1.h: 19: 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+[; ;Main_B1.h: 20: 0x00,0x00
+[; ;Main_B1.h: 21: }
+[; ;Main_B1.h: 22: };
+"88
 [v _VarTMain `S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 56: struct TMain
-[; ;Main_B1.h: 57: {
-[; ;Main_B1.h: 58: unsigned PowerON:1;
-[; ;Main_B1.h: 59: unsigned T0_Timerout:1;
-[; ;Main_B1.h: 60: unsigned T1_Timerout:1;
-[; ;Main_B1.h: 61: unsigned Flag:1;
-[; ;Main_B1.h: 62: unsigned GO:1;
-[; ;Main_B1.h: 63: unsigned FirstOpen:1;
-[; ;Main_B1.h: 64: unsigned int PowerCount;
-[; ;Main_B1.h: 65: unsigned SelfTest:1;
-[; ;Main_B1.h: 66: unsigned First:1;
-[; ;Main_B1.h: 68: unsigned int Count;
-[; ;Main_B1.h: 69: unsigned int Count1;
-[; ;Main_B1.h: 70: unsigned int Count2;
-[; ;Main_B1.h: 71: unsigned int Count3;
-[; ;Main_B1.h: 72: unsigned char IOC_Count;
-[; ;Main_B1.h: 73: unsigned char Test;
-[; ;Main_B1.h: 75: unsigned i:1;
-[; ;Main_B1.h: 76: unsigned j:1;
-[; ;Main_B1.h: 77: unsigned k:1;
-[; ;Main_B1.h: 78: unsigned l:1;
-[; ;Main_B1.h: 79: unsigned m:1;
-[; ;Main_B1.h: 80: unsigned n:1;
-[; ;Main_B1.h: 81: unsigned o:1;
-[; ;Main_B1.h: 82: unsigned p:1;
-[; ;Main_B1.h: 83: unsigned q:1;
-[; ;Main_B1.h: 84: unsigned r:1;
-[; ;Main_B1.h: 85: }
-[; ;Main_B1.h: 86: struct TMain VarTMain;
-"87
+[; ;Main_B1.h: 58: struct TMain
+[; ;Main_B1.h: 59: {
+[; ;Main_B1.h: 60: unsigned PowerON:1;
+[; ;Main_B1.h: 61: unsigned T0_Timerout:1;
+[; ;Main_B1.h: 62: unsigned T1_Timerout:1;
+[; ;Main_B1.h: 63: unsigned Flag:1;
+[; ;Main_B1.h: 64: unsigned GO:1;
+[; ;Main_B1.h: 65: unsigned FirstOpen:1;
+[; ;Main_B1.h: 66: unsigned int PowerCount;
+[; ;Main_B1.h: 67: unsigned SelfTest:1;
+[; ;Main_B1.h: 68: unsigned First:1;
+[; ;Main_B1.h: 70: unsigned int Count;
+[; ;Main_B1.h: 71: unsigned int Count1;
+[; ;Main_B1.h: 72: unsigned int Count2;
+[; ;Main_B1.h: 73: unsigned int Count3;
+[; ;Main_B1.h: 74: unsigned char IOC_Count;
+[; ;Main_B1.h: 75: unsigned char Test;
+[; ;Main_B1.h: 77: unsigned i:1;
+[; ;Main_B1.h: 78: unsigned j:1;
+[; ;Main_B1.h: 79: unsigned k:1;
+[; ;Main_B1.h: 80: unsigned l:1;
+[; ;Main_B1.h: 81: unsigned m:1;
+[; ;Main_B1.h: 82: unsigned n:1;
+[; ;Main_B1.h: 83: unsigned o:1;
+[; ;Main_B1.h: 84: unsigned p:1;
+[; ;Main_B1.h: 85: unsigned q:1;
+[; ;Main_B1.h: 86: unsigned r:1;
+[; ;Main_B1.h: 87: }
+[; ;Main_B1.h: 88: struct TMain VarTMain;
+"89
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 87: struct TMain *TMain;
-[; ;Main_B1.h: 91: void MainT_Initialization();
-[; ;Main_B1.h: 92: void MainT();
+[; ;Main_B1.h: 89: struct TMain *TMain;
+[; ;Main_B1.h: 93: void MainT_Initialization();
+[; ;Main_B1.h: 94: void MainT();
+[; ;Main_B1.h: 95: void MainT_Clock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2808,68 +2813,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 345: unsigned int Count;
 [; ;MCU_B1.h: 346: unsigned int Count1;
 [; ;MCU_B1.h: 348: unsigned int DimmerCount;
-[; ;MCU_B1.h: 349: };
-"351 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[; ;MCU_B1.h: 350: unsigned Reset:1;
+[; ;MCU_B1.h: 351: unsigned char ResetCount;
+[; ;MCU_B1.h: 352: };
+"354 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarTimer0 `S247 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 351: struct Timer0 VarTimer0;
-"352
+[; ;MCU_B1.h: 354: struct Timer0 VarTimer0;
+"355
 [v _Timer0 `*S247 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 352: struct Timer0 *Timer0;
-[; ;MCU_B1.h: 354: void TMR0_Set();
-[; ;MCU_B1.h: 355: void TMR0_ISR();
-[; ;MCU_B1.h: 356: void setDimmerReClock();
-[; ;MCU_B1.h: 428: void INT_Set();
-[; ;MCU_B1.h: 429: void INT_ISR();
-[; ;MCU_B1.h: 430: void setINT_GO(char);
-[; ;MCU_B1.h: 441: void IOC_Set();
-[; ;MCU_B1.h: 442: void IOC_ISR();
-[; ;MCU_B1.h: 585: struct FlashMemory
-[; ;MCU_B1.h: 586: {
-[; ;MCU_B1.h: 587: unsigned char Data[32];
-[; ;MCU_B1.h: 588: unsigned char ReadDataH;
-[; ;MCU_B1.h: 589: unsigned char ReadDataL;
-[; ;MCU_B1.h: 590: unsigned Modify:1;
-[; ;MCU_B1.h: 591: unsigned GO:1;
-[; ;MCU_B1.h: 592: unsigned LoopSave:1;
-[; ;MCU_B1.h: 593: unsigned int Time;
-[; ;MCU_B1.h: 594: };
-"595
+[; ;MCU_B1.h: 355: struct Timer0 *Timer0;
+[; ;MCU_B1.h: 357: void TMR0_Set();
+[; ;MCU_B1.h: 358: void TMR0_ISR();
+[; ;MCU_B1.h: 359: void setDimmerReClock();
+[; ;MCU_B1.h: 431: void INT_Set();
+[; ;MCU_B1.h: 432: void INT_ISR();
+[; ;MCU_B1.h: 433: void setINT_GO(char);
+[; ;MCU_B1.h: 444: void IOC_Set();
+[; ;MCU_B1.h: 445: void IOC_ISR();
+[; ;MCU_B1.h: 588: struct FlashMemory
+[; ;MCU_B1.h: 589: {
+[; ;MCU_B1.h: 590: unsigned char Data[32];
+[; ;MCU_B1.h: 591: unsigned char ReadDataH;
+[; ;MCU_B1.h: 592: unsigned char ReadDataL;
+[; ;MCU_B1.h: 593: unsigned Modify:1;
+[; ;MCU_B1.h: 594: unsigned GO:1;
+[; ;MCU_B1.h: 595: unsigned LoopSave:1;
+[; ;MCU_B1.h: 596: unsigned int Time;
+[; ;MCU_B1.h: 597: };
+"598
 [v _Memory `*S248 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 595: struct FlashMemory *Memory;
-"596
+[; ;MCU_B1.h: 598: struct FlashMemory *Memory;
+"599
 [v _VarMemory `S248 ~T0 @X0 1 e ]
 [i _VarMemory
 :U ..
 :U ..
 :U ..
-"598
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"599
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
-"600
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
 "601
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"602
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"603
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"604
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -2882,21 +2889,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[; ;MCU_B1.h: 596: struct FlashMemory VarMemory={
-[; ;MCU_B1.h: 597: {
-[; ;MCU_B1.h: 598: 0,0,0,0,0,0,0,0,
-[; ;MCU_B1.h: 599: 0,0,0,0,0,0,0,0,
-[; ;MCU_B1.h: 600: 0,0,0,0,0,0,0,0,
+[; ;MCU_B1.h: 599: struct FlashMemory VarMemory={
+[; ;MCU_B1.h: 600: {
 [; ;MCU_B1.h: 601: 0,0,0,0,0,0,0,0,
-[; ;MCU_B1.h: 602: }
-[; ;MCU_B1.h: 603: };
-[; ;MCU_B1.h: 620: void Flash_Memory_Initialization();
-[; ;MCU_B1.h: 621: void Flash_Memory_Unlock();
-[; ;MCU_B1.h: 622: char Flash_Memory_Read(char);
-[; ;MCU_B1.h: 623: void Flash_Memory_Write();
-[; ;MCU_B1.h: 624: void Flash_Memory_Erasing();
-[; ;MCU_B1.h: 625: void Flash_Memory_Modify();
-[; ;MCU_B1.h: 626: void Flash_Memory_Main();
+[; ;MCU_B1.h: 602: 0,0,0,0,0,0,0,0,
+[; ;MCU_B1.h: 603: 0,0,0,0,0,0,0,0,
+[; ;MCU_B1.h: 604: 0,0,0,0,0,0,0,0,
+[; ;MCU_B1.h: 605: }
+[; ;MCU_B1.h: 606: };
+[; ;MCU_B1.h: 623: void Flash_Memory_Initialization();
+[; ;MCU_B1.h: 624: void Flash_Memory_Unlock();
+[; ;MCU_B1.h: 625: char Flash_Memory_Read(char);
+[; ;MCU_B1.h: 626: void Flash_Memory_Write();
+[; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
+[; ;MCU_B1.h: 628: void Flash_Memory_Modify();
+[; ;MCU_B1.h: 629: void Flash_Memory_Main();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
 [v _main `(v ~T0 @X0 1 ef ]
 "8
@@ -2989,195 +2996,232 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 66: MainT();
 "66
 [e ( _MainT ..  ]
-[; ;main.c: 67: if(TMain->PowerON)
+[; ;main.c: 67: MainT_Clock();
 "67
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 255  ]
-[; ;main.c: 68: {
+[e ( _MainT_Clock ..  ]
+[; ;main.c: 68: if(TMain->PowerON)
 "68
-{
-[; ;main.c: 69: Flash_Memory_Main();
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 255  ]
+[; ;main.c: 69: {
 "69
+{
+[; ;main.c: 70: Flash_Memory_Main();
+"70
 [e ( _Flash_Memory_Main ..  ]
-[; ;main.c: 71: LED_Main();
-"71
+[; ;main.c: 72: LED_Main();
+"72
 [e ( _LED_Main ..  ]
-[; ;main.c: 73: ;;
-[; ;main.c: 74: Temp_Main();
-"74
-[e ( _Temp_Main ..  ]
-[; ;main.c: 75: Load_Main();
+[; ;main.c: 74: ;;
+[; ;main.c: 75: Temp_Main();
 "75
-[e ( _Load_Main ..  ]
-[; ;main.c: 76: PowerFault_Main();
+[e ( _Temp_Main ..  ]
+[; ;main.c: 76: Load_Main();
 "76
+[e ( _Load_Main ..  ]
+[; ;main.c: 77: PowerFault_Main();
+"77
 [e ( _PowerFault_Main ..  ]
-[; ;main.c: 78: ;;
-[; ;main.c: 79: DimmerLights_Main();
-"79
-[e ( _DimmerLights_Main ..  ]
-[; ;main.c: 80: Switch_Main();
+[; ;main.c: 79: ;;
+[; ;main.c: 80: DimmerLights_Main();
 "80
+[e ( _DimmerLights_Main ..  ]
+[; ;main.c: 81: Switch_Main();
+"81
 [e ( _Switch_Main ..  ]
-[; ;main.c: 81: ;;
 [; ;main.c: 82: ;;
-[; ;main.c: 84: RF_Main();
-"84
-[e ( _RF_Main ..  ]
-[; ;main.c: 85: DelayOff_Main();
+[; ;main.c: 83: ;;
+[; ;main.c: 85: RF_Main();
 "85
-[e ( _DelayOff_Main ..  ]
+[e ( _RF_Main ..  ]
+[; ;main.c: 86: DelayOff_Main();
 "86
-}
-[e :U 255 ]
+[e ( _DelayOff_Main ..  ]
 "87
 }
-[e :U 254 ]
+[e :U 255 ]
 "88
+}
+[e :U 254 ]
+"89
 }
 [e :U 250 ]
 "30
 [e $U 251  ]
 [e :U 252 ]
-[; ;main.c: 86: }
 [; ;main.c: 87: }
 [; ;main.c: 88: }
 [; ;main.c: 89: }
-"89
+[; ;main.c: 90: }
+"90
 [e :UE 249 ]
 }
-"92
-[v _MainT_Initialization `(v ~T0 @X0 1 ef ]
 "93
+[v _MainT_Initialization `(v ~T0 @X0 1 ef ]
+"94
 {
-[; ;main.c: 92: void MainT_Initialization()
-[; ;main.c: 93: {
+[; ;main.c: 93: void MainT_Initialization()
+[; ;main.c: 94: {
 [e :U _MainT_Initialization ]
 [f ]
-[; ;main.c: 95: Product=&VarProduct;
-"95
-[e = _Product &U _VarProduct ]
-[; ;main.c: 96: Product->Data[20]=210;
+[; ;main.c: 96: Product=&VarProduct;
 "96
+[e = _Product &U _VarProduct ]
+[; ;main.c: 97: Product->Data[20]=210;
+"97
 [e = *U + &U . *U _Product 0 * -> -> -> 20 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 210 `i `uc ]
-[; ;main.c: 99: TMain=&VarTMain;
-"99
+[; ;main.c: 100: TMain=&VarTMain;
+"100
 [e = _TMain &U _VarTMain ]
-[; ;main.c: 102: }
-"102
+[; ;main.c: 103: }
+"103
 [e :UE 256 ]
 }
-"104
-[v _MainT `(v ~T0 @X0 1 ef ]
 "105
+[v _MainT `(v ~T0 @X0 1 ef ]
+"106
 {
-[; ;main.c: 104: void MainT()
-[; ;main.c: 105: {
+[; ;main.c: 105: void MainT()
+[; ;main.c: 106: {
 [e :U _MainT ]
 [f ]
-[; ;main.c: 107: if(!TMain->PowerON)
-"107
-[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 258  ]
-[; ;main.c: 108: {
+[; ;main.c: 108: if(!TMain->PowerON)
 "108
-{
-[; ;main.c: 109: TMain->PowerCount++;
+[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 258  ]
+[; ;main.c: 109: {
 "109
-[e ++ . *U _TMain 6 -> -> 1 `i `ui ]
-[; ;main.c: 110: if(TMain->PowerCount == 150)
-"110
-[e $ ! == . *U _TMain 6 -> -> 150 `i `ui 259  ]
-[; ;main.c: 111: {
-"111
 {
-[; ;main.c: 112: TMain->PowerCount=0;
+[; ;main.c: 110: TMain->PowerCount++;
+"110
+[e ++ . *U _TMain 6 -> -> 1 `i `ui ]
+[; ;main.c: 111: if(TMain->PowerCount == 150)
+"111
+[e $ ! == . *U _TMain 6 -> -> 150 `i `ui 259  ]
+[; ;main.c: 112: {
 "112
-[e = . *U _TMain 6 -> -> 0 `i `ui ]
-[; ;main.c: 113: TMain->PowerON=1;
+{
+[; ;main.c: 113: TMain->PowerCount=0;
 "113
+[e = . *U _TMain 6 -> -> 0 `i `ui ]
+[; ;main.c: 114: TMain->PowerON=1;
+"114
 [e = . *U _TMain 0 -> -> 1 `i `uc ]
-[; ;main.c: 116: setTemp_Enable(1);
-"116
+[; ;main.c: 117: setTemp_Enable(1);
+"117
 [e ( _setTemp_Enable (1 -> -> 1 `i `uc ]
-[; ;main.c: 120: setLoad_Enable(1);
-"120
+[; ;main.c: 121: setLoad_Enable(1);
+"121
 [e ( _setLoad_Enable (1 -> -> 1 `i `uc ]
-[; ;main.c: 126: setBuz(3,50);
-"126
-[e ( _setBuz (2 , -> -> 3 `i `uc -> 50 `i ]
-[; ;main.c: 127: TMain->SelfTest=1;
+[; ;main.c: 127: setBuz(3,50);
 "127
+[e ( _setBuz (2 , -> -> 3 `i `uc -> 50 `i ]
+[; ;main.c: 128: TMain->SelfTest=1;
+"128
 [e = . *U _TMain 7 -> -> 1 `i `uc ]
-[; ;main.c: 129: setSw_Enable(1);
-"129
+[; ;main.c: 130: setSw_Enable(1);
+"130
 [e ( _setSw_Enable (1 -> -> 1 `i `uc ]
-[; ;main.c: 132: setRF_Enable(1,1);
-"132
+[; ;main.c: 133: setRF_Enable(1,1);
+"133
 [e ( _setRF_Enable (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"136
-}
-[e :U 259 ]
 "137
 }
-[; ;main.c: 136: }
-[; ;main.c: 137: }
-[e $U 260  ]
+[e :U 259 ]
 "138
-[e :U 258 ]
-[; ;main.c: 138: else
-[; ;main.c: 139: {
+}
+[; ;main.c: 137: }
+[; ;main.c: 138: }
+[e $U 260  ]
 "139
+[e :U 258 ]
+[; ;main.c: 139: else
+[; ;main.c: 140: {
+"140
 {
-[; ;main.c: 147: TMain->Count1++;
-"147
-[e ++ . *U _TMain 10 -> -> 1 `i `ui ]
-[; ;main.c: 148: if(TMain->Count1 == 100)
+[; ;main.c: 148: TMain->Count1++;
 "148
-[e $ ! == . *U _TMain 10 -> -> 100 `i `ui 261  ]
-[; ;main.c: 149: {
+[e ++ . *U _TMain 10 -> -> 1 `i `ui ]
+[; ;main.c: 149: if(TMain->Count1 == 100)
 "149
-{
-[; ;main.c: 150: TMain->Count1=0;
+[e $ ! == . *U _TMain 10 -> -> 100 `i `ui 261  ]
+[; ;main.c: 150: {
 "150
+{
+[; ;main.c: 151: TMain->Count1=0;
+"151
 [e = . *U _TMain 10 -> -> 0 `i `ui ]
-[; ;main.c: 163: if(TMain->Flag)
-"163
-[e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 262  ]
-[; ;main.c: 164: {
+[; ;main.c: 164: if(TMain->Flag)
 "164
-{
-[; ;main.c: 165: TMain->Flag=0;
+[e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 262  ]
+[; ;main.c: 165: {
 "165
-[e = . *U _TMain 3 -> -> 0 `i `uc ]
-[; ;main.c: 167: ;;
-[; ;main.c: 168: ;;
-"174
-}
-[; ;main.c: 174: }
-[e $U 263  ]
-"175
-[e :U 262 ]
-[; ;main.c: 175: else
-[; ;main.c: 176: {
-"176
 {
-[; ;main.c: 177: TMain->Flag=1;
-"177
-[e = . *U _TMain 3 -> -> 1 `i `uc ]
-[; ;main.c: 179: ;;
-[; ;main.c: 180: ;;
-"186
+[; ;main.c: 166: TMain->Flag=0;
+"166
+[e = . *U _TMain 3 -> -> 0 `i `uc ]
+"175
 }
-[e :U 263 ]
+[; ;main.c: 175: }
+[e $U 263  ]
+"176
+[e :U 262 ]
+[; ;main.c: 176: else
+[; ;main.c: 177: {
+"177
+{
+[; ;main.c: 178: TMain->Flag=1;
+"178
+[e = . *U _TMain 3 -> -> 1 `i `uc ]
 "187
 }
+[e :U 263 ]
+"188
+}
 [e :U 261 ]
-"189
+"190
 }
 [e :U 260 ]
-[; ;main.c: 186: }
 [; ;main.c: 187: }
-[; ;main.c: 189: }
+[; ;main.c: 188: }
 [; ;main.c: 190: }
-"190
+[; ;main.c: 191: }
+"191
 [e :UE 257 ]
+}
+"193
+[v _MainT_Clock `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 193: void MainT_Clock(){
+[e :U _MainT_Clock ]
+[f ]
+"194
+[v _i `uc ~T0 @X0 1 a ]
+[; ;main.c: 194: char i;
+[; ;main.c: 196: if(RB5){
+"196
+[e $ ! _RB5 265  ]
+{
+[; ;main.c: 197: RB5=0;
+"197
+[e = _RB5 -> -> 0 `i `b ]
+[; ;main.c: 198: for(i=0 ;i<10 ; i++);
+"198
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 10 `i 266  ]
+[e $U 267  ]
+[e :U 266 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 10 `i 266  ]
+[e :U 267 ]
+}
+[; ;main.c: 199: RB5=1;
+"199
+[e = _RB5 -> -> 1 `i `b ]
+"200
+}
+[e :U 265 ]
+[; ;main.c: 200: }
+[; ;main.c: 208: }
+"208
+[e :UE 264 ]
 }

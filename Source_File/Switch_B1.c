@@ -333,15 +333,45 @@
 	//*********************************************************	
 	void Sw_DimmerAdjFunc(char sw)
 	{
-		if(Sw->Flag)
+		char Idle=1;
+		#if Switch_Class == 3
+			if(sw == 1)
+			{
+				Idle=(DimmerLights22->AdjGo || DimmerLights33->AdjGo)?0:1;
+			}
+			else if(sw == 2)
+			{
+				Idle=(DimmerLights11->AdjGo || DimmerLights33->AdjGo)?0:1;
+			}
+			else if(sw == 3)
+			{
+				Idle=(DimmerLights11->AdjGo || DimmerLights22->AdjGo)?0:1;
+			}
+		#endif
+
+		#if Switch_Class == 2
+			if(sw == 1)
+			{
+				Idle=(DimmerLights22->AdjGo)?0:1;
+			}
+			else if(sw == 2)
+			{
+				Idle=(DimmerLights11->AdjGo)?0:1;
+			}
+		#endif
+
+		if(Idle)
 		{
-			Sw->Adj=1;
-			Sw->Status=1;
-			setRFSW_Status(sw,1);
-
-			setDimmerLights_TriggerAdj(sw,1);
-			setDimmerLights_AdjGo(sw,1);
-
+			if(Sw->Flag)
+			{
+				Sw->Adj=1;
+				Sw->Status=1;
+				setRFSW_Status(sw,1);
+	
+				setDimmerLights_TriggerAdj(sw,1);
+				setDimmerLights_AdjGo(sw,1);
+	
+			}
 		}
 	}
 	//*********************************************************	

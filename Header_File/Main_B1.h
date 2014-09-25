@@ -3,8 +3,10 @@
 #define	_Main_H_
 
 //Global extern variable declaration
+//	extern volatile 
+
 	#ifndef _16F723A 
-		struct Product
+		volatile struct Product
 		{
 			unsigned char Data[32];
 		};
@@ -90,6 +92,7 @@
 //Routine declaration
 	void MainT_Initialization();
 	void MainT();
+	void MainT_ResetClock();
 	//end
 
 

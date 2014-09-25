@@ -69,8 +69,8 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h"
-struct Product
+# 9 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h"
+volatile struct Product
 {
 unsigned char Data[32];
 };
@@ -85,7 +85,7 @@ struct Product VarProduct=
 }
 };
 
-# 56
+# 58
 struct TMain
 {
 unsigned PowerON:1;
@@ -123,6 +123,7 @@ struct TMain *TMain;
 
 void MainT_Initialization();
 void MainT();
+void MainT_Clock();
 
 # 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
@@ -3199,6 +3200,9 @@ unsigned int Count;
 unsigned int Count1;
 
 unsigned int DimmerCount;
+
+unsigned Reset:1;
+unsigned char ResetCount;
 };
 
 struct Timer0 VarTimer0;
@@ -3208,16 +3212,16 @@ void TMR0_Set();
 void TMR0_ISR();
 void setDimmerReClock();
 
-# 428
+# 431
 void INT_Set();
 void INT_ISR();
 void setINT_GO(char);
 
-# 441
+# 444
 void IOC_Set();
 void IOC_ISR();
 
-# 585
+# 588
 struct FlashMemory
 {
 unsigned char Data[32];
@@ -3238,7 +3242,7 @@ struct FlashMemory VarMemory={
 }
 };
 
-# 620
+# 623
 void Flash_Memory_Initialization();
 void Flash_Memory_Unlock();
 char Flash_Memory_Read(char);
@@ -3518,6 +3522,21 @@ setTxData(1);
 
 void Sw_DimmerAdjFunc(char sw)
 {
+char Idle=1;
+
+# 353
+if(sw == 1)
+{
+Idle=(DimmerLights22->AdjGo)?0:1;
+}
+else if(sw == 2)
+{
+Idle=(DimmerLights11->AdjGo)?0:1;
+}
+
+
+if(Idle)
+{
 if(Sw->Flag)
 {
 Sw->Adj=1;
@@ -3527,6 +3546,7 @@ setRFSW_Status(sw,1);
 setDimmerLights_TriggerAdj(sw,1);
 setDimmerLights_AdjGo(sw,1);
 
+}
 }
 }
 
@@ -3549,7 +3569,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 376
+# 406
 }
 }
 

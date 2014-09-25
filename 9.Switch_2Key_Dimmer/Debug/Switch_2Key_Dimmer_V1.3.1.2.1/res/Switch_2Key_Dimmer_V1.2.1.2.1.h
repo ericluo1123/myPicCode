@@ -90,7 +90,7 @@
 	//ADC 
 	#define ADC_use 1	
 	//Oscillator (System FOSC)
- 	#define	System_Fosc_16M				//_16M														
+ 	#define	System_Fosc_16M			//_16M														
 	//Timer0
   	#define Timer0_use	1
 	//Timer1
@@ -132,8 +132,7 @@
 	//Dimmer Lights
 	#define Dimmer_use 	1
 
-
-
+//include
 
 	#include "Main_B1.h"
 	#include "Activity_B1.h"
@@ -153,18 +152,5 @@
 	#include "TriacRelay_B1.h"
 	#include "MCU_B1.h"
 
-/*
-	#ifdef _16F723A
-		#include "MCU_16F723A.h"
-	#endif
-
-	#ifdef _16F1516
-		#include "MCU_16F1516_A.h"
-	#endif
-
-	#ifdef _16F1518
-		#include "MCU_16F1518_B1.h"
-	#endif
-*/
 //end file
 #endif

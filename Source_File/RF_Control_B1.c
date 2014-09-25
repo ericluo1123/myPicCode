@@ -61,7 +61,7 @@
 		if(RF->Enable)
 		{
 			#if Sleep_Mode == 0
-				#if	Switch_Class == 3 
+				#if	Switch_Class == 3
 					RF->Key=((Key1 || Key2 || Key3) && !RF->Learn)?1:0;//¦³Áä«ö¤U
 				#endif
 	
@@ -85,9 +85,9 @@
 						#elif UART_use == 1
 							UART_SetData();
 						#else 
-							getRxData(1);
-						//	ErrLED=~ErrLED;
+							getRxData(1);						
 						#endif
+					//	ErrLED=~ErrLED;
 					}
 					else
 					{
@@ -157,25 +157,25 @@
 	
 					RF_Data[0]=0x63;//Product->Data[0];		//Command
 					RF_Data[1]=0x02;//Product->Data[1];		//Command
-					RF_Data[2]=Product->Data[2];		//Temperature
-					RF_Data[3]=Product->Data[3];		//Temperature
-					RF_Data[4]=Product->Data[4];		//Humidity
-					RF_Data[5]=Product->Data[5];		//Humidity 
-					RF_Data[6]=Product->Data[6];		//Barometric pressure
-					RF_Data[7]=Product->Data[7];		//Barometric pressure
-					RF_Data[8]=Product->Data[8];		//Electricity
-					RF_Data[9]=Product->Data[9];		//Dimmer
-					RF_Data[10]=Product->Data[10];		//Electric  current
-					RF_Data[11]=Product->Data[11];		//Year
-					RF_Data[12]=Product->Data[12];		//Week 
-					RF_Data[13]=Product->Data[13];		//Serial  Number
-					RF_Data[14]=Product->Data[14];		//Serial  Number
-					RF_Data[15]=Product->Data[15];		//Lights Status
-					RF_Data[16]=Product->Data[16];		//Timmer Command
-					RF_Data[17]=Product->Data[17];		//Timmer Time
-					RF_Data[18]=Product->Data[18];		//Reserved
-					RF_Data[19]=Product->Data[19];		//Reserved
-					RF_Data[20]=KeyID;//Product->Data[20];		//Key ID
+					RF_Data[2]=Product->Data[2];			//Temperature
+					RF_Data[3]=Product->Data[3];			//Temperature
+					RF_Data[4]=Product->Data[4];			//Humidity
+					RF_Data[5]=Product->Data[5];			//Humidity 
+					RF_Data[6]=Product->Data[6];			//Barometric pressure
+					RF_Data[7]=Product->Data[7];			//Barometric pressure
+					RF_Data[8]=Product->Data[8];			//Electricity
+					RF_Data[9]=Product->Data[9];			//Dimmer
+					RF_Data[10]=Product->Data[10];			//Electric  current
+					RF_Data[11]=Product->Data[11];			//Year
+					RF_Data[12]=Product->Data[12];			//Week 
+					RF_Data[13]=Product->Data[13];			//Serial  Number
+					RF_Data[14]=Product->Data[14];			//Serial  Number
+					RF_Data[15]=Product->Data[15];			//Lights Status
+					RF_Data[16]=Product->Data[16];			//Timmer Command
+					RF_Data[17]=Product->Data[17];			//Timmer Time
+					RF_Data[18]=Product->Data[18];			//Reserved
+					RF_Data[19]=Product->Data[19];			//Reserved
+					RF_Data[20]=KeyID;//Product->Data[20];	//Key ID
 	
 				}
 			#endif

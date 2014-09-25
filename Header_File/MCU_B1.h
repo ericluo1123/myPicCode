@@ -346,6 +346,9 @@
 			unsigned int Count1;
 			
 			unsigned int DimmerCount;
+
+			unsigned Reset:1;
+			unsigned char ResetCount;
 		};
 		//Virable declaration
 		struct Timer0 VarTimer0;
