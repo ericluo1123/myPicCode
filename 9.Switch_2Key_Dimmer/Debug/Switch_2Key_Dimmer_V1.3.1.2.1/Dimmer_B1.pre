@@ -70,7 +70,7 @@ extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
 # 9 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h"
-volatile struct Product
+struct Product
 {
 unsigned char Data[32];
 };
@@ -115,6 +115,7 @@ unsigned o:1;
 unsigned p:1;
 unsigned q:1;
 unsigned r:1;
+unsigned ClockStop:1;
 }
 struct TMain VarTMain;
 struct TMain *TMain;
@@ -123,7 +124,7 @@ struct TMain *TMain;
 
 void MainT_Initialization();
 void MainT();
-void MainT_Clock();
+void MainT_ResetClock();
 
 # 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
@@ -482,70 +483,6 @@ struct RFSW RFSW2;
 # 104
 void setRF_DimmerValue(char);
 void setRF_DimmerLights(char,char);
-
-# 138 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h"
-struct OverLoad
-{
-unsigned Enable:1;
-unsigned GO:1;
-unsigned LightsON:1;
-unsigned Safe:1;
-unsigned ADtoGO:1;
-unsigned ERROR:1;
-unsigned int Time;
-unsigned int ErrorTime;
-unsigned char ErrorStatus;
-
-unsigned ADtype TotalLoad;
-unsigned ADtype AH[9];
-unsigned ADtype AL[9];
-unsigned ADtype AD;
-unsigned ADtype ADH;
-unsigned ADtype ADL;
-unsigned ADtype ADRES;
-
-unsigned int LightsJudgeValue;
-unsigned int JudgeValue;
-unsigned int Judge;
-
-unsigned char Count;
-unsigned char OffCount;
-unsigned char ErrorCount;
-unsigned char UpdateCount;
-unsigned char LightsCount;
-unsigned char NumberCount;
-unsigned char CloseCount;
-unsigned char ADCount;
-unsigned char SafeCount;
-
-unsigned char Lights1Status;
-unsigned char Lights2Status;
-unsigned char Lights3Status;
-unsigned StatusOn:1;
-unsigned StatusOff:1;
-};
-
-struct OverLoad *Load;
-
-
-struct OverLoad Load1;
-
-
-
-
-void Load_Initialization();
-void Load_Main();
-void getLoad_AD(char);
-void setLoad_Exceptions(char);
-void setLoad_Enable(char);
-void setLoad_AH_AL_Restore();
-
-void setLoad_Count(char);
-void setLoad_GO(char);
-void setLoad_StatusOn(char,char);
-void setLoad_StatusOff(char,char);
-char getLoad_Safe();
-char getLoad_ERROR();
 
 # 33 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h"
 struct DimmerLights
@@ -3308,7 +3245,7 @@ if(Dimmer->Detect)
 Dimmer->Detect=0;
 if(!getDimmerLights_StatusFlag())
 {
-setLoad_GO(0);
+;;
 Memory->GO=1; if(!1) { Memory->Time=1; } ;;
 }
 }
@@ -3352,18 +3289,14 @@ if(DimmerLights->Switch)
 DimmerLights->Trigger=0;
 setDimmerLights(lights,1);
 
-
-DimmerLights->Clear=0;
-
+# 174
 }
 else
 {
 DimmerLights->Trigger=0;
 setDimmerLights(lights,0);
 
-
-DimmerLights->Clear=0;
-
+# 183
 }
 }
 }
@@ -3472,7 +3405,7 @@ DimmerLights->StatusFlag=0;
 DimmerLights->DimmingTimeValue=3;
 DimmerLights->DimmingValue=DimmerLights->MinimumValue;
 Dimmer->Detect=1;
-setLoad_StatusOff(lights,1);
+;;
 setLED(lights,1);
 setSw_Status(lights,0);
 setRFSW_Status(lights,0);
@@ -3497,7 +3430,7 @@ if(status)
 DimmerLights->Status=1;
 setLED(lights,0);
 ;(0);
-setLoad_Count(0);
+;;
 
 DimmerLights->Signal=1;
 DimmerLights->DimmingTimeValue=3;
@@ -3505,7 +3438,7 @@ DimmerLights->DimmingTimeValue=3;
 if(!DimmerLights->StatusFlag)
 {
 DimmerLights->StatusFlag=1;
-setLoad_StatusOn(lights,1);
+;;
 Memory->GO=0; if(!0) { Memory->Time=0; } ;;
 
 
@@ -3547,7 +3480,7 @@ if(DimmerLights->AdjFlag)
 {
 DimmerLights->Signal=0;
 DimmerLights->AdjFlag=0;
-setLoad_StatusOff(0,1);
+;;
 DimmerLights->MaxmumValue=DimmerLights->DimmingValue;
 
 # 411

@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ClockStop ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -23,27 +23,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "77
 [s S9 :1 `uc 1 ]
 [n S9 RFSW Status ]
-"138 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `ui -> 9 `i `ui -> 9 `i `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S10 OverLoad Enable GO LightsON Safe ADtoGO ERROR Time ErrorTime ErrorStatus TotalLoad AH AL AD ADH ADL ADRES LightsJudgeValue JudgeValue Judge Count OffCount ErrorCount UpdateCount LightsCount NumberCount CloseCount ADCount SafeCount Lights1Status Lights2Status Lights3Status StatusOn StatusOff ]
 "33 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
-[n S11 DimmerLights GO Signal AdjRF AdjFlag AdjStatus Status StatusFlag OverLoad DimmingTime DimmingTimeValue Count DimmingValue MaxmumValue MinimumValue Flag TriacTime Switch Trigger AdjGo TriggerAdj Triac MosfetOpen MosfetClose DetectOpen DetectClose DetectCount Clear MosfetSignal MosfetSignalCount ]
+[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
+[n S10 DimmerLights GO Signal AdjRF AdjFlag AdjStatus Status StatusFlag OverLoad DimmingTime DimmingTimeValue Count DimmingValue MaxmumValue MinimumValue Flag TriacTime Switch Trigger AdjGo TriggerAdj Triac MosfetOpen MosfetClose DetectOpen DetectClose DetectCount Clear MosfetSignal MosfetSignalCount ]
 "141
-[s S12 :1 `uc 1 `uc 1 `uc 1 ]
-[n S12 Dimmer Detect Load Correction ]
+[s S11 :1 `uc 1 `uc 1 `uc 1 ]
+[n S11 Dimmer Detect Load Correction ]
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
-[s S13 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
-[n S13 DelayOff Enable GO Value SecondTime MinuteTime ]
+[s S12 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
+[n S12 DelayOff Enable GO Value SecondTime MinuteTime ]
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
-[n S14 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
+[n S13 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
 "342 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[s S247 :1 `uc 1 `ui 1 `ui 1 `ui 1 :1 `uc 1 `uc 1 ]
-[n S247 Timer0 Timeout Count Count1 DimmerCount Reset ResetCount ]
+[s S246 :1 `uc 1 `ui 1 `ui 1 `ui 1 :1 `uc 1 `uc 1 ]
+[n S246 Timer0 Timeout Count Count1 DimmerCount Reset ResetCount ]
 "588
-[s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
-[n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+[s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
+[n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 "4529 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _RB3 `Vb ~T0 @X0 0 e@107 ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
@@ -79,7 +76,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Main_B1.h: 9: volatile struct Product
+[; ;Main_B1.h: 9: struct Product
 [; ;Main_B1.h: 10: {
 [; ;Main_B1.h: 11: unsigned char Data[32];
 [; ;Main_B1.h: 12: };
@@ -142,7 +139,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"88
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -171,14 +168,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 84: unsigned p:1;
 [; ;Main_B1.h: 85: unsigned q:1;
 [; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: }
-[; ;Main_B1.h: 88: struct TMain VarTMain;
-"89
+[; ;Main_B1.h: 87: unsigned ClockStop:1;
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 89: struct TMain *TMain;
-[; ;Main_B1.h: 93: void MainT_Initialization();
-[; ;Main_B1.h: 94: void MainT();
-[; ;Main_B1.h: 95: void MainT_Clock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
+[; ;Main_B1.h: 96: void MainT_ResetClock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -729,60 +727,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RF_Control_B1.h: 95: struct RFSW RFSW2;
 [; ;RF_Control_B1.h: 104: void setRF_DimmerValue(char);
 [; ;RF_Control_B1.h: 105: void setRF_DimmerLights(char,char);
-[; ;OverLoad_B1.h: 138: struct OverLoad
-[; ;OverLoad_B1.h: 139: {
-[; ;OverLoad_B1.h: 140: unsigned Enable:1;
-[; ;OverLoad_B1.h: 141: unsigned GO:1;
-[; ;OverLoad_B1.h: 142: unsigned LightsON:1;
-[; ;OverLoad_B1.h: 143: unsigned Safe:1;
-[; ;OverLoad_B1.h: 144: unsigned ADtoGO:1;
-[; ;OverLoad_B1.h: 145: unsigned ERROR:1;
-[; ;OverLoad_B1.h: 146: unsigned int Time;
-[; ;OverLoad_B1.h: 147: unsigned int ErrorTime;
-[; ;OverLoad_B1.h: 148: unsigned char ErrorStatus;
-[; ;OverLoad_B1.h: 150: unsigned ADtype TotalLoad;
-[; ;OverLoad_B1.h: 151: unsigned ADtype AH[9];
-[; ;OverLoad_B1.h: 152: unsigned ADtype AL[9];
-[; ;OverLoad_B1.h: 153: unsigned ADtype AD;
-[; ;OverLoad_B1.h: 154: unsigned ADtype ADH;
-[; ;OverLoad_B1.h: 155: unsigned ADtype ADL;
-[; ;OverLoad_B1.h: 156: unsigned ADtype ADRES;
-[; ;OverLoad_B1.h: 158: unsigned int LightsJudgeValue;
-[; ;OverLoad_B1.h: 159: unsigned int JudgeValue;
-[; ;OverLoad_B1.h: 160: unsigned int Judge;
-[; ;OverLoad_B1.h: 162: unsigned char Count;
-[; ;OverLoad_B1.h: 163: unsigned char OffCount;
-[; ;OverLoad_B1.h: 164: unsigned char ErrorCount;
-[; ;OverLoad_B1.h: 165: unsigned char UpdateCount;
-[; ;OverLoad_B1.h: 166: unsigned char LightsCount;
-[; ;OverLoad_B1.h: 167: unsigned char NumberCount;
-[; ;OverLoad_B1.h: 168: unsigned char CloseCount;
-[; ;OverLoad_B1.h: 169: unsigned char ADCount;
-[; ;OverLoad_B1.h: 170: unsigned char SafeCount;
-[; ;OverLoad_B1.h: 172: unsigned char Lights1Status;
-[; ;OverLoad_B1.h: 173: unsigned char Lights2Status;
-[; ;OverLoad_B1.h: 174: unsigned char Lights3Status;
-[; ;OverLoad_B1.h: 175: unsigned StatusOn:1;
-[; ;OverLoad_B1.h: 176: unsigned StatusOff:1;
-[; ;OverLoad_B1.h: 177: };
-"179 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _Load `*S10 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 179: struct OverLoad *Load;
-"182
-[v _Load1 `S10 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 182: struct OverLoad Load1;
-[; ;OverLoad_B1.h: 187: void Load_Initialization();
-[; ;OverLoad_B1.h: 188: void Load_Main();
-[; ;OverLoad_B1.h: 189: void getLoad_AD(char);
-[; ;OverLoad_B1.h: 190: void setLoad_Exceptions(char);
-[; ;OverLoad_B1.h: 191: void setLoad_Enable(char);
-[; ;OverLoad_B1.h: 192: void setLoad_AH_AL_Restore();
-[; ;OverLoad_B1.h: 194: void setLoad_Count(char);
-[; ;OverLoad_B1.h: 195: void setLoad_GO(char);
-[; ;OverLoad_B1.h: 196: void setLoad_StatusOn(char,char);
-[; ;OverLoad_B1.h: 197: void setLoad_StatusOff(char,char);
-[; ;OverLoad_B1.h: 198: char getLoad_Safe();
-[; ;OverLoad_B1.h: 199: char getLoad_ERROR();
 [; ;Dimmer_B1.h: 33: struct DimmerLights
 [; ;Dimmer_B1.h: 34: {
 [; ;Dimmer_B1.h: 35: unsigned GO:1;
@@ -816,22 +760,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.h: 67: unsigned char MosfetSignalCount;
 [; ;Dimmer_B1.h: 69: };
 "70 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _DimmerLights `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 70: struct DimmerLights *DimmerLights;
 "71
-[v _DimmerLightsIntr `*S11 ~T0 @X0 1 e ]
+[v _DimmerLightsIntr `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 71: struct DimmerLights *DimmerLightsIntr;
 "85
-[v _DimmerLights11 `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights11 `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 85: struct DimmerLights *DimmerLights11;
 "86
-[v _DimmerLights1 `S11 ~T0 @X0 1 e ]
+[v _DimmerLights1 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 86: struct DimmerLights DimmerLights1;
 "90
-[v _DimmerLights22 `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights22 `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 90: struct DimmerLights *DimmerLights22;
 "91
-[v _DimmerLights2 `S11 ~T0 @X0 1 e ]
+[v _DimmerLights2 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 91: struct DimmerLights DimmerLights2;
 [; ;Dimmer_B1.h: 109: void DimmerLightsPointSelect(char);
 [; ;Dimmer_B1.h: 110: void DimmerLights_Initialization();
@@ -863,10 +807,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.h: 148: unsigned char Correction;
 [; ;Dimmer_B1.h: 149: };
 "150
-[v _Dimmer `*S12 ~T0 @X0 1 e ]
+[v _Dimmer `*S11 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 150: struct Dimmer *Dimmer;
 "153
-[v _Dimmer1 `S12 ~T0 @X0 1 e ]
+[v _Dimmer1 `S11 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 153: struct Dimmer Dimmer1;
 [; ;Dimmer_B1.h: 156: void Dimmer_Initialization();
 [; ;DelayOff_B1.h: 19: struct DelayOff
@@ -878,13 +822,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;DelayOff_B1.h: 25: unsigned char MinuteTime;
 [; ;DelayOff_B1.h: 26: };
 "27 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
-[v _DelayOff `*S13 ~T0 @X0 1 e ]
+[v _DelayOff `*S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 27: struct DelayOff *DelayOff;
 "30
-[v _DlySw1 `S13 ~T0 @X0 1 e ]
+[v _DlySw1 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 30: struct DelayOff DlySw1;
 "34
-[v _DlySw2 `S13 ~T0 @X0 1 e ]
+[v _DlySw2 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 34: struct DelayOff DlySw2;
 [; ;DelayOff_B1.h: 41: void DelayOff_Initialization();
 [; ;DelayOff_B1.h: 42: void DelayOff_Main();
@@ -904,10 +848,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;PowerFault_B1.h: 16: unsigned int Time;
 [; ;PowerFault_B1.h: 17: };
 "18 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _PF `*S14 ~T0 @X0 1 e ]
+[v _PF `*S13 ~T0 @X0 1 e ]
 [; ;PowerFault_B1.h: 18: struct PF *PF;
 "21
-[v _PF1 `S14 ~T0 @X0 1 e ]
+[v _PF1 `S13 ~T0 @X0 1 e ]
 [; ;PowerFault_B1.h: 21: struct PF PF1;
 [; ;PowerFault_B1.h: 26: void PowerFault_Initialization();
 [; ;PowerFault_B1.h: 27: void PowerFault_Main();
@@ -2750,10 +2694,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 351: unsigned char ResetCount;
 [; ;MCU_B1.h: 352: };
 "354 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[v _VarTimer0 `S247 ~T0 @X0 1 e ]
+[v _VarTimer0 `S246 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 354: struct Timer0 VarTimer0;
 "355
-[v _Timer0 `*S247 ~T0 @X0 1 e ]
+[v _Timer0 `*S246 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 355: struct Timer0 *Timer0;
 [; ;MCU_B1.h: 357: void TMR0_Set();
 [; ;MCU_B1.h: 358: void TMR0_ISR();
@@ -2774,10 +2718,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 596: unsigned int Time;
 [; ;MCU_B1.h: 597: };
 "598
-[v _Memory `*S248 ~T0 @X0 1 e ]
+[v _Memory `*S247 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 598: struct FlashMemory *Memory;
 "599
-[v _VarMemory `S248 ~T0 @X0 1 e ]
+[v _VarMemory `S247 ~T0 @X0 1 e ]
 [i _VarMemory
 :U ..
 :U ..
@@ -2853,7 +2797,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 0 -> -> 1 `i `uc ]
 [; ;Buzzer_B1.c: 14: }
 "14
-[e :UE 249 ]
+[e :UE 248 ]
 }
 "17
 [v _setBuz_Enable `(v ~T0 @X0 1 ef1`uc ]
@@ -2871,7 +2815,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 0 _command ]
 [; ;Buzzer_B1.c: 20: }
 "20
-[e :UE 250 ]
+[e :UE 249 ]
 }
 "22
 [v _setBuz `(v ~T0 @X0 1 ef2`uc`i ]
@@ -2890,13 +2834,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =* _time -> 20 `i ]
 [; ;Buzzer_B1.c: 25: if(Buz->Enable)
 "25
-[e $ ! != -> . *U _Buz 0 `i -> -> -> 0 `i `uc `i 252  ]
+[e $ ! != -> . *U _Buz 0 `i -> -> -> 0 `i `uc `i 251  ]
 [; ;Buzzer_B1.c: 26: {
 "26
 {
 [; ;Buzzer_B1.c: 27: if(!Buz->GO)
 "27
-[e $ ! ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 253  ]
+[e $ ! ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 252  ]
 [; ;Buzzer_B1.c: 28: {
 "28
 {
@@ -2915,16 +2859,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "34
 }
 [; ;Buzzer_B1.c: 34: }
-[e $U 254  ]
+[e $U 253  ]
 "35
-[e :U 253 ]
+[e :U 252 ]
 [; ;Buzzer_B1.c: 35: else
 [; ;Buzzer_B1.c: 36: {
 "36
 {
 [; ;Buzzer_B1.c: 37: if(!Buz->BufferStatus1)
 "37
-[e $ ! ! != -> . *U _Buz 3 `i -> -> -> 0 `i `uc `i 255  ]
+[e $ ! ! != -> . *U _Buz 3 `i -> -> -> 0 `i `uc `i 254  ]
 [; ;Buzzer_B1.c: 38: {
 "38
 {
@@ -2940,11 +2884,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "42
 }
 [; ;Buzzer_B1.c: 42: }
-[e $U 256  ]
+[e $U 255  ]
 "43
-[e :U 255 ]
+[e :U 254 ]
 [; ;Buzzer_B1.c: 43: else if(!Buz->BufferStatus2)
-[e $ ! ! != -> . *U _Buz 4 `i -> -> -> 0 `i `uc `i 257  ]
+[e $ ! ! != -> . *U _Buz 4 `i -> -> -> 0 `i `uc `i 256  ]
 [; ;Buzzer_B1.c: 44: {
 "44
 {
@@ -2959,20 +2903,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 12 -> _time `ui ]
 "48
 }
-[e :U 257 ]
-"49
 [e :U 256 ]
+"49
+[e :U 255 ]
 }
-[e :U 254 ]
+[e :U 253 ]
 "50
 }
-[e :U 252 ]
+[e :U 251 ]
 [; ;Buzzer_B1.c: 48: }
 [; ;Buzzer_B1.c: 49: }
 [; ;Buzzer_B1.c: 50: }
 [; ;Buzzer_B1.c: 51: }
 "51
-[e :UE 251 ]
+[e :UE 250 ]
 }
 "53
 [v _Buzzer_Main `(v ~T0 @X0 1 ef ]
@@ -2987,13 +2931,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 5 -> ? _RB3 : -> 1 `i -> 0 `i `uc ]
 [; ;Buzzer_B1.c: 57: if(Buz->GO)
 "57
-[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 259  ]
+[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 258  ]
 [; ;Buzzer_B1.c: 58: {
 "58
 {
 [; ;Buzzer_B1.c: 60: if(Buz->Time >= Buz->TimeValue)
 "60
-[e $ ! >= . *U _Buz 6 . *U _Buz 10 260  ]
+[e $ ! >= . *U _Buz 6 . *U _Buz 10 259  ]
 [; ;Buzzer_B1.c: 61: {
 "61
 {
@@ -3002,19 +2946,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 6 -> -> 0 `i `ui ]
 [; ;Buzzer_B1.c: 63: if(!Buz->Switch)
 "63
-[e $ ! ! != -> . *U _Buz 5 `i -> -> -> 0 `i `uc `i 261  ]
+[e $ ! ! != -> . *U _Buz 5 `i -> -> -> 0 `i `uc `i 260  ]
 [; ;Buzzer_B1.c: 64: {
 "64
 {
 [; ;Buzzer_B1.c: 65: if(Buz->Count == 0)
 "65
-[e $ ! == -> . *U _Buz 7 `i -> 0 `i 262  ]
+[e $ ! == -> . *U _Buz 7 `i -> 0 `i 261  ]
 [; ;Buzzer_B1.c: 66: {
 "66
 {
 [; ;Buzzer_B1.c: 67: if(Buz->BufferStatus1)
 "67
-[e $ ! != -> . *U _Buz 3 `i -> -> -> 0 `i `uc `i 263  ]
+[e $ ! != -> . *U _Buz 3 `i -> -> -> 0 `i `uc `i 262  ]
 [; ;Buzzer_B1.c: 68: {
 "68
 {
@@ -3030,11 +2974,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "72
 }
 [; ;Buzzer_B1.c: 72: }
-[e $U 264  ]
+[e $U 263  ]
 "73
-[e :U 263 ]
+[e :U 262 ]
 [; ;Buzzer_B1.c: 73: else if(Buz->BufferStatus2)
-[e $ ! != -> . *U _Buz 4 `i -> -> -> 0 `i `uc `i 265  ]
+[e $ ! != -> . *U _Buz 4 `i -> -> -> 0 `i `uc `i 264  ]
 [; ;Buzzer_B1.c: 74: {
 "74
 {
@@ -3050,9 +2994,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "78
 }
 [; ;Buzzer_B1.c: 78: }
-[e $U 266  ]
+[e $U 265  ]
 "79
-[e :U 265 ]
+[e :U 264 ]
 [; ;Buzzer_B1.c: 79: else
 [; ;Buzzer_B1.c: 80: {
 "80
@@ -3062,15 +3006,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Buz 1 -> -> 0 `i `uc ]
 "82
 }
-[e :U 266 ]
-[e :U 264 ]
+[e :U 265 ]
+[e :U 263 ]
 "83
 }
 [; ;Buzzer_B1.c: 82: }
 [; ;Buzzer_B1.c: 83: }
-[e $U 267  ]
+[e $U 266  ]
 "84
-[e :U 262 ]
+[e :U 261 ]
 [; ;Buzzer_B1.c: 84: else
 [; ;Buzzer_B1.c: 85: {
 "85
@@ -3083,14 +3027,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RB3 -> -> 1 `i `b ]
 "89
 }
-[e :U 267 ]
+[e :U 266 ]
 "90
 }
 [; ;Buzzer_B1.c: 89: }
 [; ;Buzzer_B1.c: 90: }
-[e $U 268  ]
+[e $U 267  ]
 "91
-[e :U 261 ]
+[e :U 260 ]
 [; ;Buzzer_B1.c: 91: else
 [; ;Buzzer_B1.c: 92: {
 "92
@@ -3106,17 +3050,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e -- . *U _Buz 7 -> -> 1 `i `uc ]
 "98
 }
-[e :U 268 ]
+[e :U 267 ]
 "99
 }
-[e :U 260 ]
+[e :U 259 ]
 "100
 }
-[e :U 259 ]
+[e :U 258 ]
 [; ;Buzzer_B1.c: 98: }
 [; ;Buzzer_B1.c: 99: }
 [; ;Buzzer_B1.c: 100: }
 [; ;Buzzer_B1.c: 101: }
 "101
-[e :UE 258 ]
+[e :UE 257 ]
 }

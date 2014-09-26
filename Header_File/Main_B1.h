@@ -6,7 +6,7 @@
 //	extern volatile 
 
 	#ifndef _16F723A 
-		volatile struct Product
+		struct Product
 		{
 			unsigned char Data[32];
 		};
@@ -84,6 +84,7 @@
 		unsigned p:1;
 		unsigned q:1;
 		unsigned r:1;
+		unsigned ClockStop:1;
 	}
 	struct TMain VarTMain;
 	struct TMain *TMain;

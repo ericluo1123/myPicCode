@@ -198,7 +198,7 @@
 "105
 [v _MainT MainT `(v  1 e 0 0 ]
 "193
-[v _MainT_Clock MainT_Clock `(v  1 e 0 0 ]
+[v _MainT_ResetClock MainT_ResetClock `(v  1 e 0 0 ]
 "24 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _Mcu_Initialization Mcu_Initialization `(v  1 e 0 0 ]
 "50
@@ -239,31 +239,6 @@
 [v _Flash_Memory_Erasing Flash_Memory_Erasing `(v  1 e 0 0 ]
 "927
 [v _Flash_Memory_Modify Flash_Memory_Modify `(v  1 e 0 0 ]
-"8 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _Load_Initialization Load_Initialization `(v  1 e 0 0 ]
-"15
-[v _getLoad_AD getLoad_AD `(v  1 e 0 0 ]
-"45
-[v _Load_Main Load_Main `(v  1 e 0 0 ]
-"266
-[v _setLoad_Exceptions setLoad_Exceptions `(v  1 e 0 0 ]
-"289
-[v _setLoad_Count setLoad_Count `(v  1 e 0 0 ]
-"295
-[v _setLoad_Enable setLoad_Enable `(v  1 e 0 0 ]
-"300
-[v _setLoad_GO setLoad_GO `(v  1 e 0 0 ]
-"304
-[v _setLoad_StatusOn setLoad_StatusOn `(v  1 e 0 0 ]
-"322
-[v _setLoad_StatusOff setLoad_StatusOff `(v  1 e 0 0 ]
-[v i1_setLoad_StatusOff setLoad_StatusOff `(v  1 e 0 0 ]
-"339
-[v _getLoad_Safe getLoad_Safe `(uc  1 e 1 0 ]
-"343
-[v _getLoad_ERROR getLoad_ERROR `(uc  1 e 1 0 ]
-"348
-[v _setLoad_AH_AL_Restore setLoad_AH_AL_Restore `(v  1 e 0 0 ]
 "15 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c
 [v _Temp_Initialization Temp_Initialization `(v  1 e 0 0 ]
 "22
@@ -329,17 +304,17 @@
 [v _setLog_Code setLog_Code `(v  1 e 0 0 ]
 "271
 [v _setControl_Lights_Table setControl_Lights_Table `(v  1 e 0 0 ]
-"346
+"347
 [v _RfSWPointSelect RfSWPointSelect `(v  1 e 0 0 ]
-"368
+"369
 [v _setRFSW_Control setRFSW_Control `(v  1 e 0 0 ]
-"408
+"409
 [v _setRFSW_AdjControl setRFSW_AdjControl `(v  1 e 0 0 ]
-"424
+"425
 [v _setRFSW_Status setRFSW_Status `(v  1 e 0 0 ]
-"432
+"433
 [v _setRF_DimmerValue setRF_DimmerValue `(v  1 e 0 0 ]
-"444
+"445
 [v _setRF_DimmerLights setRF_DimmerLights `(v  1 e 0 0 ]
 "9 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c
 [v _TouchPower TouchPower `(v  1 e 0 0 ]
@@ -493,7 +468,7 @@
 [v _WR WR `VEb  1 e 0 @3241 ]
 "4799
 [v _WREN WREN `VEb  1 e 0 @3242 ]
-[s S61 Buzzer 12 `uc 1 Enable 1 0 :1:0 
+[s S62 Buzzer 12 `uc 1 Enable 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 PowerON 1 0 :1:2 
 `uc 1 BufferStatus1 1 0 :1:3 
@@ -501,9 +476,9 @@
 `uc 1 Switch 1 0 :1:5 
 `ui 1 Time 2 1 `uc 1 Count 1 3 `uc 1 CountBuffer1 1 4 `uc 1 CountBuffer2 1 5 `ui 1 TimeValue 2 6 `ui 1 TimeValueBuffer1 2 8 `ui 1 TimeValueBuffer2 2 10 ]
 "40 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
-[v _Buz Buz `*.5S61  1 e 1 0 ]
+[v _Buz Buz `*.5S62  1 e 1 0 ]
 "43
-[v _Buz1 Buz1 `S61  1 e 12 0 ]
+[v _Buz1 Buz1 `S62  1 e 12 0 ]
 "161 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
 [v _CC2500_rfSettings CC2500_rfSettings `DCC[47]uc  1 e 47 0 ]
 "218
@@ -541,16 +516,16 @@
 [v _Tx_Length Tx_Length `uc  1 e 1 0 ]
 "292
 [v _CC2500_patable_vaule CC2500_patable_vaule `DCC[8]uc  1 e 8 0 ]
-[s S174 DelayOff 5 `uc 1 Enable 1 0 :1:0 
+[s S141 DelayOff 5 `uc 1 Enable 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 Value 1 1 `ui 1 SecondTime 2 2 `uc 1 MinuteTime 1 4 ]
 "27 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
-[v _DelayOff DelayOff `*.4S174  1 e 1 0 ]
+[v _DelayOff DelayOff `*.4S141  1 e 1 0 ]
 "30
-[v _DlySw1 DlySw1 `S174  1 e 5 0 ]
+[v _DlySw1 DlySw1 `S141  1 e 5 0 ]
 "34
-[v _DlySw2 DlySw2 `S174  1 e 5 0 ]
-[s S140 DimmerLights 14 `uc 1 GO 1 0 :1:0 
+[v _DlySw2 DlySw2 `S141  1 e 5 0 ]
+[s S107 DimmerLights 14 `uc 1 GO 1 0 :1:0 
 `uc 1 Signal 1 0 :1:1 
 `uc 1 AdjRF 1 0 :1:2 
 `uc 1 AdjFlag 1 0 :1:3 
@@ -572,34 +547,34 @@
 `uc 1 MosfetSignal 1 12 :1:1 
 `uc 1 MosfetSignalCount 1 13 ]
 "70 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _DimmerLights DimmerLights `*.5S140  1 e 1 0 ]
+[v _DimmerLights DimmerLights `*.5S107  1 e 1 0 ]
 "71
-[v _DimmerLightsIntr DimmerLightsIntr `*.1S140  1 e 1 0 ]
+[v _DimmerLightsIntr DimmerLightsIntr `*.1S107  1 e 1 0 ]
 "85
-[v _DimmerLights11 DimmerLights11 `*.5S140  1 e 1 0 ]
+[v _DimmerLights11 DimmerLights11 `*.5S107  1 e 1 0 ]
 "86
-[v _DimmerLights1 DimmerLights1 `S140  1 e 14 0 ]
+[v _DimmerLights1 DimmerLights1 `S107  1 e 14 0 ]
 "90
-[v _DimmerLights22 DimmerLights22 `*.5S140  1 e 1 0 ]
+[v _DimmerLights22 DimmerLights22 `*.5S107  1 e 1 0 ]
 "91
-[v _DimmerLights2 DimmerLights2 `S140  1 e 14 0 ]
-[s S170 Dimmer 3 `uc 1 Detect 1 0 :1:0 
+[v _DimmerLights2 DimmerLights2 `S107  1 e 14 0 ]
+[s S137 Dimmer 3 `uc 1 Detect 1 0 :1:0 
 `uc 1 Load 1 1 `uc 1 Correction 1 2 ]
 "150
-[v _Dimmer Dimmer `*.4S170  1 e 1 0 ]
+[v _Dimmer Dimmer `*.4S137  1 e 1 0 ]
 "153
-[v _Dimmer1 Dimmer1 `S170  1 e 3 0 ]
-[s S75 LED 4 `uc 1 Enable 1 0 :1:0 
+[v _Dimmer1 Dimmer1 `S137  1 e 3 0 ]
+[s S76 LED 4 `uc 1 Enable 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `ui 1 Time 2 1 `uc 1 Number 1 3 ]
 "28 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
-[v _LED LED `*.4S75  1 e 1 0 ]
+[v _LED LED `*.4S76  1 e 1 0 ]
 "32
-[v _VarErrLED VarErrLED `S75  1 e 4 0 ]
+[v _VarErrLED VarErrLED `S76  1 e 4 0 ]
 "37
-[v _VarLED1 VarLED1 `S75  1 e 4 0 ]
+[v _VarLED1 VarLED1 `S76  1 e 4 0 ]
 "42
-[v _VarLED2 VarLED2 `S75  1 e 4 0 ]
+[v _VarLED2 VarLED2 `S76  1 e 4 0 ]
 [s S19 Product 32 `[32]uc 1 Data 32 0 ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _Product Product `*.5S19  1 e 1 0 ]
@@ -623,59 +598,47 @@
 `uc 1 p 1 14 :1:7 
 `uc 1 q 1 15 :1:0 
 `uc 1 r 1 15 :1:1 
+`uc 1 ClockStop 1 15 :1:2 
 ]
-"88
-[v _VarTMain VarTMain `S21  1 e 16 0 ]
 "89
+[v _VarTMain VarTMain `S21  1 e 16 0 ]
+"90
 [v _TMain TMain `*.5S21  1 e 1 0 ]
-[s S189 Timer0 9 `uc 1 Timeout 1 0 :1:0 
+[s S156 Timer0 9 `uc 1 Timeout 1 0 :1:0 
 `ui 1 Count 2 1 `ui 1 Count1 2 3 `ui 1 DimmerCount 2 5 `uc 1 Reset 1 7 :1:0 
 `uc 1 ResetCount 1 8 ]
 "354 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[v _VarTimer0 VarTimer0 `S189  1 e 9 0 ]
+[v _VarTimer0 VarTimer0 `S156  1 e 9 0 ]
 "355
-[v _Timer0 Timer0 `*.4S189  1 e 1 0 ]
-[s S196 FlashMemory 37 `[32]uc 1 Data 32 0 `uc 1 ReadDataH 1 32 `uc 1 ReadDataL 1 33 `uc 1 Modify 1 34 :1:0 
+[v _Timer0 Timer0 `*.4S156  1 e 1 0 ]
+[s S163 FlashMemory 37 `[32]uc 1 Data 32 0 `uc 1 ReadDataH 1 32 `uc 1 ReadDataL 1 33 `uc 1 Modify 1 34 :1:0 
 `uc 1 GO 1 34 :1:1 
 `uc 1 LoopSave 1 34 :1:2 
 `ui 1 Time 2 35 ]
 "598
-[v _Memory Memory `*.6S196  1 e 1 0 ]
+[v _Memory Memory `*.6S163  1 e 1 0 ]
 "599
-[v _VarMemory VarMemory `S196  1 e 37 0 ]
-[s S106 OverLoad 71 `uc 1 Enable 1 0 :1:0 
-`uc 1 GO 1 0 :1:1 
-`uc 1 LightsON 1 0 :1:2 
-`uc 1 Safe 1 0 :1:3 
-`uc 1 ADtoGO 1 0 :1:4 
-`uc 1 ERROR 1 0 :1:5 
-`ui 1 Time 2 1 `ui 1 ErrorTime 2 3 `uc 1 ErrorStatus 1 5 `ui 1 TotalLoad 2 6 `[9]ui 1 AH 18 8 `[9]ui 1 AL 18 26 `ui 1 AD 2 44 `ui 1 ADH 2 46 `ui 1 ADL 2 48 `ui 1 ADRES 2 50 `ui 1 LightsJudgeValue 2 52 `ui 1 JudgeValue 2 54 `ui 1 Judge 2 56 `uc 1 Count 1 58 `uc 1 OffCount 1 59 `uc 1 ErrorCount 1 60 `uc 1 UpdateCount 1 61 `uc 1 LightsCount 1 62 `uc 1 NumberCount 1 63 `uc 1 CloseCount 1 64 `uc 1 ADCount 1 65 `uc 1 SafeCount 1 66 `uc 1 Lights1Status 1 67 `uc 1 Lights2Status 1 68 `uc 1 Lights3Status 1 69 `uc 1 StatusOn 1 70 :1:0 
-`uc 1 StatusOff 1 70 :1:1 
-]
-"179 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _Load Load `*.6S106  1 e 1 0 ]
-"182
-[v _Load1 Load1 `S106  1 e 71 0 ]
-[s S80 OverTemp 14 `uc 1 Enable 1 0 :1:0 
+[v _VarMemory VarMemory `S163  1 e 37 0 ]
+[s S81 OverTemp 14 `uc 1 Enable 1 0 :1:0 
 `uc 1 ERROR 1 0 :1:1 
 `uc 1 ADtoGO 1 0 :1:2 
 `uc 1 LoadADGO 1 0 :1:3 
 `uc 1 Safe 1 0 :1:4 
 `ui 1 Time 2 1 `uc 1 Count 1 3 `ui 1 AD 2 4 `[2]ui 1 ADH 4 6 `ui 1 ADRES 2 10 `uc 1 AD1 1 12 `uc 1 AD2 1 13 ]
 "24 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverTemperature_B1.h
-[v _Temp Temp `*.5S80  1 e 1 0 ]
+[v _Temp Temp `*.5S81  1 e 1 0 ]
 "38
-[v _Temp1 Temp1 `S80  1 e 14 0 ]
-[s S180 PF 8 `uc 1 Enable 1 0 :1:0 
+[v _Temp1 Temp1 `S81  1 e 14 0 ]
+[s S147 PF 8 `uc 1 Enable 1 0 :1:0 
 `uc 1 ERROR 1 0 :1:1 
 `uc 1 Safe 1 0 :1:2 
 `uc 1 ADtoGO 1 0 :1:3 
 `ui 1 AD 2 1 `ui 1 ADRES 2 3 `uc 1 Count 1 5 `ui 1 Time 2 6 ]
 "18 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _PF PF `*.5S180  1 e 1 0 ]
+[v _PF PF `*.5S147  1 e 1 0 ]
 "21
-[v _PF1 PF1 `S180  1 e 8 0 ]
-[s S93 RF 3 `uc 1 Enable 1 0 :1:0 
+[v _PF1 PF1 `S147  1 e 8 0 ]
+[s S94 RF 3 `uc 1 Enable 1 0 :1:0 
 `uc 1 ReceiveGO 1 0 :1:1 
 `uc 1 TransceiveGO 1 0 :1:2 
 `uc 1 RxStatus 1 0 :1:3 
@@ -686,18 +649,18 @@
 `uc 1 DebounceTime 1 1 `uc 1 Sleep 1 2 :1:0 
 ]
 "50 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
-[v _RF RF `*.4S93  1 e 1 0 ]
+[v _RF RF `*.4S94  1 e 1 0 ]
 "53
-[v _RF1 RF1 `S93  1 e 3 0 ]
-[s S104 RFSW 1 `uc 1 Status 1 0 :1:0 
+[v _RF1 RF1 `S94  1 e 3 0 ]
+[s S105 RFSW 1 `uc 1 Status 1 0 :1:0 
 ]
 "81
-[v _RFSW RFSW `*.4S104  1 e 1 0 ]
+[v _RFSW RFSW `*.4S105  1 e 1 0 ]
 "91
-[v _RFSW1 RFSW1 `S104  1 e 1 0 ]
+[v _RFSW1 RFSW1 `S105  1 e 1 0 ]
 "95
-[v _RFSW2 RFSW2 `S104  1 e 1 0 ]
-[s S47 Switch 9 `uc 1 Enable 1 0 :1:0 
+[v _RFSW2 RFSW2 `S105  1 e 1 0 ]
+[s S48 Switch 9 `uc 1 Enable 1 0 :1:0 
 `uc 1 Touch 1 0 :1:1 
 `uc 1 Debounce 1 0 :1:2 
 `uc 1 Hold1 1 0 :1:3 
@@ -708,11 +671,11 @@
 `uc 1 Adj 1 1 :1:0 
 `uc 1 DebounceTime 1 2 `ui 1 Hold1Time 2 3 `ui 1 Hold2Time 2 5 `ui 1 Hold3Time 2 7 ]
 "31 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
-[v _Sw Sw `*.5S47  1 e 1 0 ]
+[v _Sw Sw `*.5S48  1 e 1 0 ]
 "35
-[v _Sw1 Sw1 `S47  1 e 9 0 ]
+[v _Sw1 Sw1 `S48  1 e 9 0 ]
 "38
-[v _Sw2 Sw2 `S47  1 e 9 0 ]
+[v _Sw2 Sw2 `S48  1 e 9 0 ]
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
 [v _main main `(v  1 e 0 0 ]
 {
@@ -735,19 +698,6 @@
 "51
 [v getPowerFault_AD@channel channel `uc  1 a 1 8 ]
 "59
-} 0
-"15 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _getLoad_AD getLoad_AD `(v  1 e 0 0 ]
-{
-[v getLoad_AD@channel channel `uc  1 a 1 wreg ]
-"17
-[v getLoad_AD@i i `uc  1 a 1 11 ]
-[v getLoad_AD@j j `uc  1 a 1 10 ]
-"15
-[v getLoad_AD@channel channel `uc  1 a 1 wreg ]
-"17
-[v getLoad_AD@channel channel `uc  1 a 1 9 ]
-"43
 } 0
 "381 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _getAD getAD `(i  1 e 2 0 ]
@@ -778,7 +728,12 @@
 [v setOverTemp_Exceptions@command command `uc  1 a 1 12 ]
 "162
 } 0
-"15
+"40 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c
+[v _getPF_Safe getPF_Safe `(uc  1 e 1 0 ]
+{
+"43
+} 0
+"15 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c
 [v _Temp_Initialization Temp_Initialization `(v  1 e 0 0 ]
 {
 "20
@@ -799,7 +754,7 @@
 [v setSw_Main@sw sw `uc  1 a 1 wreg ]
 [v setSw_Main@sw sw `uc  1 a 1 wreg ]
 "114
-[v setSw_Main@sw sw `uc  1 a 1 73 ]
+[v setSw_Main@sw sw `uc  1 a 1 2 ]
 "249
 } 0
 "31 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
@@ -895,7 +850,7 @@
 [v setRF_Main@rf rf `uc  1 a 1 wreg ]
 [v setRF_Main@rf rf `uc  1 a 1 wreg ]
 "60
-[v setRF_Main@rf rf `uc  1 a 1 74 ]
+[v setRF_Main@rf rf `uc  1 a 1 2 ]
 "138
 } 0
 "214
@@ -904,7 +859,7 @@
 [v getRxData@rf rf `uc  1 a 1 wreg ]
 [v getRxData@rf rf `uc  1 a 1 wreg ]
 "217
-[v getRxData@rf rf `uc  1 a 1 72 ]
+[v getRxData@rf rf `uc  1 a 1 0 ]
 "254
 } 0
 "256
@@ -923,16 +878,16 @@
 [v setControl_Lights_Table@rf rf `uc  1 a 1 wreg ]
 "273
 [v setControl_Lights_Table@rf rf `uc  1 a 1 71 ]
-"344
+"345
 } 0
-"368
+"369
 [v _setRFSW_Control setRFSW_Control `(v  1 e 0 0 ]
 {
 [v setRFSW_Control@sw sw `uc  1 a 1 wreg ]
 [v setRFSW_Control@sw sw `uc  1 a 1 wreg ]
-"370
+"371
 [v setRFSW_Control@sw sw `uc  1 a 1 67 ]
-"406
+"407
 } 0
 "92 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c
 [v _setDelayOff_GO setDelayOff_GO `(v  1 e 0 0 ]
@@ -957,23 +912,23 @@
 [v DelayTimejudge@value value `uc  1 a 1 2 ]
 "147
 } 0
-"408 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
+"409 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
 [v _setRFSW_AdjControl setRFSW_AdjControl `(v  1 e 0 0 ]
 {
 [v setRFSW_AdjControl@sw sw `uc  1 a 1 wreg ]
 [v setRFSW_AdjControl@sw sw `uc  1 a 1 wreg ]
-"410
+"411
 [v setRFSW_AdjControl@sw sw `uc  1 a 1 70 ]
-"422
+"423
 } 0
-"432
+"433
 [v _setRF_DimmerValue setRF_DimmerValue `(v  1 e 0 0 ]
 {
 [v setRF_DimmerValue@lights lights `uc  1 a 1 wreg ]
 [v setRF_DimmerValue@lights lights `uc  1 a 1 wreg ]
-"434
+"435
 [v setRF_DimmerValue@lights lights `uc  1 a 1 67 ]
-"442
+"443
 } 0
 "423 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
 [v _setDimmerLights_AdjRF setDimmerLights_AdjRF `(v  1 e 0 0 ]
@@ -1102,10 +1057,38 @@
 [v setPowerFault_Exceptions@command command `uc  1 a 1 12 ]
 "151
 } 0
-"339 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _getLoad_Safe getLoad_Safe `(uc  1 e 1 0 ]
+"246 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
+[v _DimmerLights_Exceptions DimmerLights_Exceptions `(v  1 e 0 0 ]
 {
-"342
+[v DimmerLights_Exceptions@status status `uc  1 a 1 wreg ]
+[v DimmerLights_Exceptions@status status `uc  1 a 1 wreg ]
+"248
+[v DimmerLights_Exceptions@status status `uc  1 a 1 10 ]
+"300
+} 0
+"320
+[v _setDimmerLights_TriggerERROR setDimmerLights_TriggerERROR `(v  1 e 0 0 ]
+{
+[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 wreg ]
+[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 wreg ]
+[v setDimmerLights_TriggerERROR@command command `uc  1 p 1 2 ]
+"322
+[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 3 ]
+"327
+} 0
+"302
+[v _setDimmerLights_ERROR setDimmerLights_ERROR `(v  1 e 0 0 ]
+{
+[v setDimmerLights_ERROR@lights lights `uc  1 a 1 wreg ]
+[v setDimmerLights_ERROR@lights lights `uc  1 a 1 wreg ]
+"304
+[v setDimmerLights_ERROR@lights lights `uc  1 a 1 5 ]
+"319
+} 0
+"26 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c
+[v _getTemp_Safe getTemp_Safe `(uc  1 e 1 0 ]
+{
+"29
 } 0
 "15 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c
 [v _PowerFault_Initialization PowerFault_Initialization `(v  1 e 0 0 ]
@@ -1147,17 +1130,17 @@
 {
 "379
 } 0
-"93 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
+"193 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
+[v _MainT_ResetClock MainT_ResetClock `(v  1 e 0 0 ]
+{
+"194
+[v MainT_ResetClock@i i `uc  1 a 1 1 ]
+"210
+} 0
+"93
 [v _MainT_Initialization MainT_Initialization `(v  1 e 0 0 ]
 {
 "103
-} 0
-"193
-[v _MainT_Clock MainT_Clock `(v  1 e 0 0 ]
-{
-"194
-[v MainT_Clock@i i `uc  1 a 1 1 ]
-"208
 } 0
 "105
 [v _MainT MainT `(v  1 e 0 0 ]
@@ -1172,31 +1155,6 @@
 "24
 [v setTemp_Enable@command command `uc  1 a 1 0 ]
 "25
-} 0
-"295 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _setLoad_Enable setLoad_Enable `(v  1 e 0 0 ]
-{
-[v setLoad_Enable@command command `uc  1 a 1 wreg ]
-[v setLoad_Enable@command command `uc  1 a 1 wreg ]
-"297
-[v setLoad_Enable@command command `uc  1 a 1 0 ]
-"299
-} 0
-"45
-[v _Load_Main Load_Main `(v  1 e 0 0 ]
-{
-"47
-[v Load_Main@i i `uc  1 a 1 17 ]
-"264
-} 0
-"266
-[v _setLoad_Exceptions setLoad_Exceptions `(v  1 e 0 0 ]
-{
-[v setLoad_Exceptions@command command `uc  1 a 1 wreg ]
-[v setLoad_Exceptions@command command `uc  1 a 1 wreg ]
-"268
-[v setLoad_Exceptions@command command `uc  1 a 1 12 ]
-"287
 } 0
 "86 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c
 [v _setSw_Enable setSw_Enable `(v  1 e 0 0 ]
@@ -1225,78 +1183,6 @@
 "301
 [v setINT_GO@command command `uc  1 a 1 0 ]
 "303
-} 0
-"246 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
-[v _DimmerLights_Exceptions DimmerLights_Exceptions `(v  1 e 0 0 ]
-{
-[v DimmerLights_Exceptions@status status `uc  1 a 1 wreg ]
-[v DimmerLights_Exceptions@status status `uc  1 a 1 wreg ]
-"248
-[v DimmerLights_Exceptions@status status `uc  1 a 1 10 ]
-"300
-} 0
-"320
-[v _setDimmerLights_TriggerERROR setDimmerLights_TriggerERROR `(v  1 e 0 0 ]
-{
-[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 wreg ]
-[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 wreg ]
-[v setDimmerLights_TriggerERROR@command command `uc  1 p 1 2 ]
-"322
-[v setDimmerLights_TriggerERROR@lights lights `uc  1 a 1 3 ]
-"327
-} 0
-"302
-[v _setDimmerLights_ERROR setDimmerLights_ERROR `(v  1 e 0 0 ]
-{
-[v setDimmerLights_ERROR@lights lights `uc  1 a 1 wreg ]
-[v setDimmerLights_ERROR@lights lights `uc  1 a 1 wreg ]
-"304
-[v setDimmerLights_ERROR@lights lights `uc  1 a 1 5 ]
-"319
-} 0
-"456
-[v _setDimmerLights_Clear setDimmerLights_Clear `(v  1 e 0 0 ]
-{
-[v setDimmerLights_Clear@lights lights `uc  1 a 1 wreg ]
-[v setDimmerLights_Clear@lights lights `uc  1 a 1 wreg ]
-[v setDimmerLights_Clear@command command `uc  1 p 1 2 ]
-"458
-[v setDimmerLights_Clear@lights lights `uc  1 a 1 3 ]
-"460
-} 0
-"26 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c
-[v _getTemp_Safe getTemp_Safe `(uc  1 e 1 0 ]
-{
-"29
-} 0
-"40 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c
-[v _getPF_Safe getPF_Safe `(uc  1 e 1 0 ]
-{
-"43
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 7 ]
-"6
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
-"31
-} 0
-"8 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _Load_Initialization Load_Initialization `(v  1 e 0 0 ]
-{
-"13
-} 0
-"348
-[v _setLoad_AH_AL_Restore setLoad_AH_AL_Restore `(v  1 e 0 0 ]
-{
-"350
-[v setLoad_AH_AL_Restore@i i `uc  1 a 1 1 ]
-"356
 } 0
 "51 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c
 [v _LED_Main LED_Main `(v  1 e 0 0 ]
@@ -1402,17 +1288,7 @@
 [v setDimmerLights_Adj@lights lights `uc  1 a 1 68 ]
 "415
 } 0
-"322 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _setLoad_StatusOff setLoad_StatusOff `(v  1 e 0 0 ]
-{
-[v setLoad_StatusOff@lights lights `uc  1 a 1 wreg ]
-[v setLoad_StatusOff@lights lights `uc  1 a 1 wreg ]
-[v setLoad_StatusOff@command command `uc  1 p 1 0 ]
-"324
-[v setLoad_StatusOff@lights lights `uc  1 a 1 1 ]
-"338
-} 0
-"330 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
+"330
 [v _setDimmerLights setDimmerLights `(v  1 e 0 0 ]
 {
 [v setDimmerLights@lights lights `uc  1 a 1 wreg ]
@@ -1421,25 +1297,6 @@
 "332
 [v setDimmerLights@lights lights `uc  1 a 1 6 ]
 "386
-} 0
-"304 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _setLoad_StatusOn setLoad_StatusOn `(v  1 e 0 0 ]
-{
-[v setLoad_StatusOn@lights lights `uc  1 a 1 wreg ]
-[v setLoad_StatusOn@lights lights `uc  1 a 1 wreg ]
-[v setLoad_StatusOn@command command `uc  1 p 1 0 ]
-"306
-[v setLoad_StatusOn@lights lights `uc  1 a 1 1 ]
-"321
-} 0
-"289
-[v _setLoad_Count setLoad_Count `(v  1 e 0 0 ]
-{
-[v setLoad_Count@command command `uc  1 a 1 wreg ]
-[v setLoad_Count@command command `uc  1 a 1 wreg ]
-"291
-[v setLoad_Count@command command `uc  1 a 1 1 ]
-"293
 } 0
 "74 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c
 [v _setLED setLED `(v  1 e 0 0 ]
@@ -1465,16 +1322,7 @@
 {
 "112
 } 0
-"300 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _setLoad_GO setLoad_GO `(v  1 e 0 0 ]
-{
-[v setLoad_GO@command command `uc  1 a 1 wreg ]
-[v setLoad_GO@command command `uc  1 a 1 wreg ]
-"302
-[v setLoad_GO@command command `uc  1 a 1 0 ]
-"303
-} 0
-"208 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
+"208
 [v _getDimmerLights_StatusFlag getDimmerLights_StatusFlag `(uc  1 e 1 0 ]
 {
 "210
@@ -1551,18 +1399,18 @@
 [v SwPointSelect@sw sw `uc  1 a 1 1 ]
 "36
 } 0
-"444 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
+"445 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
 [v _setRF_DimmerLights setRF_DimmerLights `(v  1 e 0 0 ]
 {
 [v setRF_DimmerLights@lights lights `uc  1 a 1 wreg ]
-"446
+"447
 [v setRF_DimmerLights@status status `uc  1 a 1 64 ]
-"444
+"445
 [v setRF_DimmerLights@lights lights `uc  1 a 1 wreg ]
 [v setRF_DimmerLights@on on `uc  1 p 1 61 ]
-"447
+"448
 [v setRF_DimmerLights@lights lights `uc  1 a 1 65 ]
-"465
+"466
 } 0
 "505 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
 [v _setPercentValue setPercentValue `(uc  1 e 1 0 ]
@@ -1619,24 +1467,24 @@
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
-"424 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
+"425 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c
 [v _setRFSW_Status setRFSW_Status `(v  1 e 0 0 ]
 {
 [v setRFSW_Status@sw sw `uc  1 a 1 wreg ]
 [v setRFSW_Status@sw sw `uc  1 a 1 wreg ]
 [v setRFSW_Status@command command `uc  1 p 1 2 ]
-"426
+"427
 [v setRFSW_Status@sw sw `uc  1 a 1 3 ]
-"428
+"429
 } 0
-"346
+"347
 [v _RfSWPointSelect RfSWPointSelect `(v  1 e 0 0 ]
 {
 [v RfSWPointSelect@sw sw `uc  1 a 1 wreg ]
 [v RfSWPointSelect@sw sw `uc  1 a 1 wreg ]
-"349
+"350
 [v RfSWPointSelect@sw sw `uc  1 a 1 1 ]
-"366
+"367
 } 0
 "445 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c
 [v _setDimmerLights_Trigger setDimmerLights_Trigger `(v  1 e 0 0 ]
@@ -1815,17 +1663,7 @@
 {
 "162
 } 0
-"322 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v i1_setLoad_StatusOff setLoad_StatusOff `(v  1 e 0 0 ]
-{
-[v i1setLoad_StatusOff@lights lights `uc  1 a 1 wreg ]
-[v i1setLoad_StatusOff@lights lights `uc  1 a 1 wreg ]
-[v i1setLoad_StatusOff@command command `uc  1 p 1 0 ]
-"324
-[v i1setLoad_StatusOff@lights lights `uc  1 a 1 1 ]
 "338
-} 0
-"338 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _IOC_ISR IOC_ISR `(v  1 e 0 0 ]
 {
 "367

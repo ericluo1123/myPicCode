@@ -312,6 +312,7 @@
 				else if(RF_Data[15] == 0x11)
 				{
 					setRFSW_AdjControl(1);
+					TMain->ClockStop=1;
 				}
 			#endif
 		#endif

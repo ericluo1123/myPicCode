@@ -114,7 +114,7 @@
 	//OverTemperature
 	#define OverTemperature_use 1
 	//OverLoad
-	#define OverLoad_use 1
+	#define OverLoad_use 0
 	//LED
 	#define LED_use 1
 	//Buzzer

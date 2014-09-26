@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ClockStop ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -23,47 +23,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "77
 [s S9 :1 `uc 1 ]
 [n S9 RFSW Status ]
-"138 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 `ui -> 9 `i `ui -> 9 `i `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S10 OverLoad Enable GO LightsON Safe ADtoGO ERROR Time ErrorTime ErrorStatus TotalLoad AH AL AD ADH ADL ADRES LightsJudgeValue JudgeValue Judge Count OffCount ErrorCount UpdateCount LightsCount NumberCount CloseCount ADCount SafeCount Lights1Status Lights2Status Lights3Status StatusOn StatusOff ]
 "33 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[s S11 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
-[n S11 DimmerLights GO Signal AdjRF AdjFlag AdjStatus Status StatusFlag OverLoad DimmingTime DimmingTimeValue Count DimmingValue MaxmumValue MinimumValue Flag TriacTime Switch Trigger AdjGo TriggerAdj Triac MosfetOpen MosfetClose DetectOpen DetectClose DetectCount Clear MosfetSignal MosfetSignalCount ]
+[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
+[n S10 DimmerLights GO Signal AdjRF AdjFlag AdjStatus Status StatusFlag OverLoad DimmingTime DimmingTimeValue Count DimmingValue MaxmumValue MinimumValue Flag TriacTime Switch Trigger AdjGo TriggerAdj Triac MosfetOpen MosfetClose DetectOpen DetectClose DetectCount Clear MosfetSignal MosfetSignalCount ]
 "141
-[s S12 :1 `uc 1 `uc 1 `uc 1 ]
-[n S12 Dimmer Detect Load Correction ]
+[s S11 :1 `uc 1 `uc 1 `uc 1 ]
+[n S11 Dimmer Detect Load Correction ]
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
-[s S13 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
-[n S13 DelayOff Enable GO Value SecondTime MinuteTime ]
+[s S12 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `uc 1 ]
+[n S12 DelayOff Enable GO Value SecondTime MinuteTime ]
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
-[n S14 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `uc 1 `ui 1 ]
+[n S13 PF Enable ERROR Safe ADtoGO AD ADRES Count Time ]
 "342 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[s S247 :1 `uc 1 `ui 1 `ui 1 `ui 1 :1 `uc 1 `uc 1 ]
-[n S247 Timer0 Timeout Count Count1 DimmerCount Reset ResetCount ]
+[s S246 :1 `uc 1 `ui 1 `ui 1 `ui 1 :1 `uc 1 `uc 1 ]
+[n S246 Timer0 Timeout Count Count1 DimmerCount Reset ResetCount ]
 "588
-[s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
-[n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
-"192 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _setLoad_AH_AL_Restore `(v ~T0 @X0 0 ef ]
-"297 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[v _getAD `(i ~T0 @X0 0 ef2`uc`uc ]
-"190 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _setLoad_Exceptions `(v ~T0 @X0 0 ef1`uc ]
-"134 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _setDimmerLights_Clear `(v ~T0 @X0 0 ef2`uc`uc ]
-"51 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverTemperature_B1.h
-[v _getTemp_Safe `(uc ~T0 @X0 0 ef ]
-"33 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _getPF_Safe `(uc ~T0 @X0 0 ef ]
-"112 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _DimmerLights_Exceptions `(v ~T0 @X0 0 ef1`uc ]
-"55 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
-[v _setLED `(v ~T0 @X0 0 ef2`uc`uc ]
-"50 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
-[v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
-"63 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
-[v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
+[s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
+[n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -97,7 +74,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 201: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 205: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 206: extern int printf(const char *, ...);
-[; ;Main_B1.h: 9: volatile struct Product
+[; ;Main_B1.h: 9: struct Product
 [; ;Main_B1.h: 10: {
 [; ;Main_B1.h: 11: unsigned char Data[32];
 [; ;Main_B1.h: 12: };
@@ -160,7 +137,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"88
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -189,14 +166,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 84: unsigned p:1;
 [; ;Main_B1.h: 85: unsigned q:1;
 [; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: }
-[; ;Main_B1.h: 88: struct TMain VarTMain;
-"89
+[; ;Main_B1.h: 87: unsigned ClockStop:1;
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 89: struct TMain *TMain;
-[; ;Main_B1.h: 93: void MainT_Initialization();
-[; ;Main_B1.h: 94: void MainT();
-[; ;Main_B1.h: 95: void MainT_Clock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
+[; ;Main_B1.h: 96: void MainT_ResetClock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -747,60 +725,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RF_Control_B1.h: 95: struct RFSW RFSW2;
 [; ;RF_Control_B1.h: 104: void setRF_DimmerValue(char);
 [; ;RF_Control_B1.h: 105: void setRF_DimmerLights(char,char);
-[; ;OverLoad_B1.h: 138: struct OverLoad
-[; ;OverLoad_B1.h: 139: {
-[; ;OverLoad_B1.h: 140: unsigned Enable:1;
-[; ;OverLoad_B1.h: 141: unsigned GO:1;
-[; ;OverLoad_B1.h: 142: unsigned LightsON:1;
-[; ;OverLoad_B1.h: 143: unsigned Safe:1;
-[; ;OverLoad_B1.h: 144: unsigned ADtoGO:1;
-[; ;OverLoad_B1.h: 145: unsigned ERROR:1;
-[; ;OverLoad_B1.h: 146: unsigned int Time;
-[; ;OverLoad_B1.h: 147: unsigned int ErrorTime;
-[; ;OverLoad_B1.h: 148: unsigned char ErrorStatus;
-[; ;OverLoad_B1.h: 150: unsigned ADtype TotalLoad;
-[; ;OverLoad_B1.h: 151: unsigned ADtype AH[9];
-[; ;OverLoad_B1.h: 152: unsigned ADtype AL[9];
-[; ;OverLoad_B1.h: 153: unsigned ADtype AD;
-[; ;OverLoad_B1.h: 154: unsigned ADtype ADH;
-[; ;OverLoad_B1.h: 155: unsigned ADtype ADL;
-[; ;OverLoad_B1.h: 156: unsigned ADtype ADRES;
-[; ;OverLoad_B1.h: 158: unsigned int LightsJudgeValue;
-[; ;OverLoad_B1.h: 159: unsigned int JudgeValue;
-[; ;OverLoad_B1.h: 160: unsigned int Judge;
-[; ;OverLoad_B1.h: 162: unsigned char Count;
-[; ;OverLoad_B1.h: 163: unsigned char OffCount;
-[; ;OverLoad_B1.h: 164: unsigned char ErrorCount;
-[; ;OverLoad_B1.h: 165: unsigned char UpdateCount;
-[; ;OverLoad_B1.h: 166: unsigned char LightsCount;
-[; ;OverLoad_B1.h: 167: unsigned char NumberCount;
-[; ;OverLoad_B1.h: 168: unsigned char CloseCount;
-[; ;OverLoad_B1.h: 169: unsigned char ADCount;
-[; ;OverLoad_B1.h: 170: unsigned char SafeCount;
-[; ;OverLoad_B1.h: 172: unsigned char Lights1Status;
-[; ;OverLoad_B1.h: 173: unsigned char Lights2Status;
-[; ;OverLoad_B1.h: 174: unsigned char Lights3Status;
-[; ;OverLoad_B1.h: 175: unsigned StatusOn:1;
-[; ;OverLoad_B1.h: 176: unsigned StatusOff:1;
-[; ;OverLoad_B1.h: 177: };
-"179 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\OverLoad_B1.h
-[v _Load `*S10 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 179: struct OverLoad *Load;
-"182
-[v _Load1 `S10 ~T0 @X0 1 e ]
-[; ;OverLoad_B1.h: 182: struct OverLoad Load1;
-[; ;OverLoad_B1.h: 187: void Load_Initialization();
-[; ;OverLoad_B1.h: 188: void Load_Main();
-[; ;OverLoad_B1.h: 189: void getLoad_AD(char);
-[; ;OverLoad_B1.h: 190: void setLoad_Exceptions(char);
-[; ;OverLoad_B1.h: 191: void setLoad_Enable(char);
-[; ;OverLoad_B1.h: 192: void setLoad_AH_AL_Restore();
-[; ;OverLoad_B1.h: 194: void setLoad_Count(char);
-[; ;OverLoad_B1.h: 195: void setLoad_GO(char);
-[; ;OverLoad_B1.h: 196: void setLoad_StatusOn(char,char);
-[; ;OverLoad_B1.h: 197: void setLoad_StatusOff(char,char);
-[; ;OverLoad_B1.h: 198: char getLoad_Safe();
-[; ;OverLoad_B1.h: 199: char getLoad_ERROR();
 [; ;Dimmer_B1.h: 33: struct DimmerLights
 [; ;Dimmer_B1.h: 34: {
 [; ;Dimmer_B1.h: 35: unsigned GO:1;
@@ -834,22 +758,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.h: 67: unsigned char MosfetSignalCount;
 [; ;Dimmer_B1.h: 69: };
 "70 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Dimmer_B1.h
-[v _DimmerLights `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 70: struct DimmerLights *DimmerLights;
 "71
-[v _DimmerLightsIntr `*S11 ~T0 @X0 1 e ]
+[v _DimmerLightsIntr `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 71: struct DimmerLights *DimmerLightsIntr;
 "85
-[v _DimmerLights11 `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights11 `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 85: struct DimmerLights *DimmerLights11;
 "86
-[v _DimmerLights1 `S11 ~T0 @X0 1 e ]
+[v _DimmerLights1 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 86: struct DimmerLights DimmerLights1;
 "90
-[v _DimmerLights22 `*S11 ~T0 @X0 1 e ]
+[v _DimmerLights22 `*S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 90: struct DimmerLights *DimmerLights22;
 "91
-[v _DimmerLights2 `S11 ~T0 @X0 1 e ]
+[v _DimmerLights2 `S10 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 91: struct DimmerLights DimmerLights2;
 [; ;Dimmer_B1.h: 109: void DimmerLightsPointSelect(char);
 [; ;Dimmer_B1.h: 110: void DimmerLights_Initialization();
@@ -881,10 +805,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Dimmer_B1.h: 148: unsigned char Correction;
 [; ;Dimmer_B1.h: 149: };
 "150
-[v _Dimmer `*S12 ~T0 @X0 1 e ]
+[v _Dimmer `*S11 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 150: struct Dimmer *Dimmer;
 "153
-[v _Dimmer1 `S12 ~T0 @X0 1 e ]
+[v _Dimmer1 `S11 ~T0 @X0 1 e ]
 [; ;Dimmer_B1.h: 153: struct Dimmer Dimmer1;
 [; ;Dimmer_B1.h: 156: void Dimmer_Initialization();
 [; ;DelayOff_B1.h: 19: struct DelayOff
@@ -896,13 +820,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;DelayOff_B1.h: 25: unsigned char MinuteTime;
 [; ;DelayOff_B1.h: 26: };
 "27 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
-[v _DelayOff `*S13 ~T0 @X0 1 e ]
+[v _DelayOff `*S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 27: struct DelayOff *DelayOff;
 "30
-[v _DlySw1 `S13 ~T0 @X0 1 e ]
+[v _DlySw1 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 30: struct DelayOff DlySw1;
 "34
-[v _DlySw2 `S13 ~T0 @X0 1 e ]
+[v _DlySw2 `S12 ~T0 @X0 1 e ]
 [; ;DelayOff_B1.h: 34: struct DelayOff DlySw2;
 [; ;DelayOff_B1.h: 41: void DelayOff_Initialization();
 [; ;DelayOff_B1.h: 42: void DelayOff_Main();
@@ -922,10 +846,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;PowerFault_B1.h: 16: unsigned int Time;
 [; ;PowerFault_B1.h: 17: };
 "18 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\PowerFault_B1.h
-[v _PF `*S14 ~T0 @X0 1 e ]
+[v _PF `*S13 ~T0 @X0 1 e ]
 [; ;PowerFault_B1.h: 18: struct PF *PF;
 "21
-[v _PF1 `S14 ~T0 @X0 1 e ]
+[v _PF1 `S13 ~T0 @X0 1 e ]
 [; ;PowerFault_B1.h: 21: struct PF PF1;
 [; ;PowerFault_B1.h: 26: void PowerFault_Initialization();
 [; ;PowerFault_B1.h: 27: void PowerFault_Main();
@@ -2768,10 +2692,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 351: unsigned char ResetCount;
 [; ;MCU_B1.h: 352: };
 "354 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[v _VarTimer0 `S247 ~T0 @X0 1 e ]
+[v _VarTimer0 `S246 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 354: struct Timer0 VarTimer0;
 "355
-[v _Timer0 `*S247 ~T0 @X0 1 e ]
+[v _Timer0 `*S246 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 355: struct Timer0 *Timer0;
 [; ;MCU_B1.h: 357: void TMR0_Set();
 [; ;MCU_B1.h: 358: void TMR0_ISR();
@@ -2792,10 +2716,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 596: unsigned int Time;
 [; ;MCU_B1.h: 597: };
 "598
-[v _Memory `*S248 ~T0 @X0 1 e ]
+[v _Memory `*S247 ~T0 @X0 1 e ]
 [; ;MCU_B1.h: 598: struct FlashMemory *Memory;
 "599
-[v _VarMemory `S248 ~T0 @X0 1 e ]
+[v _VarMemory `S247 ~T0 @X0 1 e ]
 [i _VarMemory
 :U ..
 :U ..
@@ -2855,919 +2779,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
-"8 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverLoad_B1.c
-[v _Load_Initialization `(v ~T0 @X0 1 ef ]
-"9
-{
-[; ;OverLoad_B1.c: 8: void Load_Initialization()
-[; ;OverLoad_B1.c: 9: {
-[e :U _Load_Initialization ]
-[f ]
-[; ;OverLoad_B1.c: 10: Load=&Load1;
-"10
-[e = _Load &U _Load1 ]
-[; ;OverLoad_B1.c: 11: Load->Safe=1;
-"11
-[e = . *U _Load 3 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 12: setLoad_AH_AL_Restore();
-"12
-[e ( _setLoad_AH_AL_Restore ..  ]
-[; ;OverLoad_B1.c: 13: }
-"13
-[e :UE 249 ]
-}
-"15
-[v _getLoad_AD `(v ~T0 @X0 1 ef1`uc ]
-"16
-{
-[; ;OverLoad_B1.c: 15: void getLoad_AD(char channel)
-[; ;OverLoad_B1.c: 16: {
-[e :U _getLoad_AD ]
-"15
-[v _channel `uc ~T0 @X0 1 r1 ]
-"16
-[f ]
-"17
-[v _i `uc ~T0 @X0 1 a ]
-[; ;OverLoad_B1.c: 17: char i=0,j=0;
-[e = _i -> -> 0 `i `uc ]
-[v _j `uc ~T0 @X0 1 a ]
-[e = _j -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 19: if(Load->ADtoGO)
-"19
-[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 251  ]
-[; ;OverLoad_B1.c: 20: {
-"20
-{
-[; ;OverLoad_B1.c: 21: Load->ADRES=getAD(channel,0xc0);
-"21
-[e = . *U _Load 15 -> ( _getAD (2 , _channel -> -> 192 `i `uc `ui ]
-[; ;OverLoad_B1.c: 22: for(i=0 ; i<5 ;i++)
-"22
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 252  ]
-[e $U 253  ]
-"23
-[e :U 252 ]
-[; ;OverLoad_B1.c: 23: {
-{
-[; ;OverLoad_B1.c: 24: if(Load->AH[i] < Load->ADRES)
-"24
-[e $ ! < *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux . *U _Load 15 255  ]
-[; ;OverLoad_B1.c: 25: {
-"25
-{
-[; ;OverLoad_B1.c: 26: Load->AH[i]=Load->ADRES;
-"26
-[e = *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux . *U _Load 15 ]
-[; ;OverLoad_B1.c: 27: j=1;
-"27
-[e = _j -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 28: break;
-"28
-[e $U 253  ]
-"29
-}
-[e :U 255 ]
-"30
-}
-"22
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 252  ]
-[e :U 253 ]
-"30
-}
-[; ;OverLoad_B1.c: 29: }
-[; ;OverLoad_B1.c: 30: }
-[; ;OverLoad_B1.c: 31: if(!j)
-"31
-[e $ ! ! != -> _j `i -> -> -> 0 `i `uc `i 256  ]
-[; ;OverLoad_B1.c: 32: {
-"32
-{
-[; ;OverLoad_B1.c: 33: for(i=0 ; i<5 ;i++)
-"33
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 257  ]
-[e $U 258  ]
-"34
-[e :U 257 ]
-[; ;OverLoad_B1.c: 34: {
-{
-[; ;OverLoad_B1.c: 35: if(Load->AL[i] > Load->ADRES)
-"35
-[e $ ! > *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux . *U _Load 15 260  ]
-[; ;OverLoad_B1.c: 36: {
-"36
-{
-[; ;OverLoad_B1.c: 37: Load->AL[i]=Load->ADRES;
-"37
-[e = *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux . *U _Load 15 ]
-[; ;OverLoad_B1.c: 38: break;
-"38
-[e $U 258  ]
-"39
-}
-[e :U 260 ]
-"40
-}
-"33
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 257  ]
-[e :U 258 ]
-"40
-}
-"41
-}
-[e :U 256 ]
-"42
-}
-[e :U 251 ]
-[; ;OverLoad_B1.c: 39: }
-[; ;OverLoad_B1.c: 40: }
-[; ;OverLoad_B1.c: 41: }
-[; ;OverLoad_B1.c: 42: }
-[; ;OverLoad_B1.c: 43: }
-"43
-[e :UE 250 ]
-}
-"45
-[v _Load_Main `(v ~T0 @X0 1 ef ]
-"46
-{
-[; ;OverLoad_B1.c: 45: void Load_Main()
-[; ;OverLoad_B1.c: 46: {
-[e :U _Load_Main ]
-[f ]
-"47
-[v _i `uc ~T0 @X0 1 a ]
-[; ;OverLoad_B1.c: 47: char i;
-[; ;OverLoad_B1.c: 48: if(Load->ERROR)
-"48
-[e $ ! != -> . *U _Load 5 `i -> -> -> 0 `i `uc `i 262  ]
-[; ;OverLoad_B1.c: 49: {
-"49
-{
-[; ;OverLoad_B1.c: 50: Load->ErrorTime++;
-"50
-[e ++ . *U _Load 7 -> -> 1 `i `ui ]
-[; ;OverLoad_B1.c: 51: if(Load->ErrorTime >= 1000)
-"51
-[e $ ! >= . *U _Load 7 -> -> 1000 `i `ui 263  ]
-[; ;OverLoad_B1.c: 52: {
-"52
-{
-[; ;OverLoad_B1.c: 53: Load->ErrorTime=0;
-"53
-[e = . *U _Load 7 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 54: setLoad_Exceptions(0);
-"54
-[e ( _setLoad_Exceptions (1 -> -> 0 `i `uc ]
-"55
-}
-[e :U 263 ]
-"56
-}
-[; ;OverLoad_B1.c: 55: }
-[; ;OverLoad_B1.c: 56: }
-[e $U 264  ]
-"57
-[e :U 262 ]
-[; ;OverLoad_B1.c: 57: else
-[; ;OverLoad_B1.c: 58: {
-"58
-{
-[; ;OverLoad_B1.c: 59: if(Load->ADtoGO)
-"59
-[e $ ! != -> . *U _Load 4 `i -> -> -> 0 `i `uc `i 265  ]
-[; ;OverLoad_B1.c: 60: {
-"60
-{
-[; ;OverLoad_B1.c: 61: Load->Time++;
-"61
-[e ++ . *U _Load 6 -> -> 1 `i `ui ]
-[; ;OverLoad_B1.c: 62: if(Load->Time >= 5)
-"62
-[e $ ! >= . *U _Load 6 -> -> 5 `i `ui 266  ]
-[; ;OverLoad_B1.c: 63: {
-"63
-{
-[; ;OverLoad_B1.c: 64: Load->Time=0;
-"64
-[e = . *U _Load 6 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 65: Load->ADtoGO=0;
-"65
-[e = . *U _Load 4 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 66: Load->LightsCount=Load->Lights1Status+Load->Lights2Status+Load->Lights3Status;
-"66
-[e = . *U _Load 23 -> + + -> . *U _Load 28 `i -> . *U _Load 29 `i -> . *U _Load 30 `i `uc ]
-[; ;OverLoad_B1.c: 67: for(i=1 ; i<4 ; i++)
-"67
-{
-[e = _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 267  ]
-[e $U 268  ]
-"68
-[e :U 267 ]
-[; ;OverLoad_B1.c: 68: {
-{
-[; ;OverLoad_B1.c: 69: Load->ADH+=Load->AH[i];
-"69
-[e =+ . *U _Load 13 *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux ]
-[; ;OverLoad_B1.c: 70: Load->ADL+=Load->AL[i];
-"70
-[e =+ . *U _Load 14 *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux ]
-"71
-}
-"67
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 267  ]
-[e :U 268 ]
-"71
-}
-[; ;OverLoad_B1.c: 71: }
-[; ;OverLoad_B1.c: 72: Load->ADH/=3;
-"72
-[e =/ . *U _Load 13 -> -> 3 `uc `ui ]
-[; ;OverLoad_B1.c: 73: Load->ADL/=3;
-"73
-[e =/ . *U _Load 14 -> -> 3 `uc `ui ]
-[; ;OverLoad_B1.c: 74: if(Load->ADH > Load->ADL)
-"74
-[e $ ! > . *U _Load 13 . *U _Load 14 270  ]
-[; ;OverLoad_B1.c: 75: {
-"75
-{
-[; ;OverLoad_B1.c: 76: Load->AD=(Load->ADH-Load->ADL);
-"76
-[e = . *U _Load 12 - . *U _Load 13 . *U _Load 14 ]
-[; ;OverLoad_B1.c: 78: if(Load->Count < 2)
-"78
-[e $ ! < -> . *U _Load 19 `i -> 2 `i 271  ]
-[; ;OverLoad_B1.c: 79: {
-"79
-{
-[; ;OverLoad_B1.c: 80: Load->Count++;
-"80
-[e ++ . *U _Load 19 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 81: if(Load->Count == 1)
-"81
-[e $ ! == -> . *U _Load 19 `i -> 1 `i 272  ]
-[; ;OverLoad_B1.c: 82: {
-"82
-{
-[; ;OverLoad_B1.c: 83: Load->JudgeValue=500;
-"83
-[e = . *U _Load 17 -> -> 500 `i `ui ]
-"84
-}
-[; ;OverLoad_B1.c: 84: }
-[e $U 273  ]
-"85
-[e :U 272 ]
-[; ;OverLoad_B1.c: 85: else if(Load->Count == 2)
-[e $ ! == -> . *U _Load 19 `i -> 2 `i 274  ]
-[; ;OverLoad_B1.c: 86: {
-"86
-{
-[; ;OverLoad_B1.c: 87: if(Load->LightsCount == 1)
-"87
-[e $ ! == -> . *U _Load 23 `i -> 1 `i 275  ]
-[; ;OverLoad_B1.c: 88: {
-"88
-{
-[; ;OverLoad_B1.c: 89: Load->JudgeValue=0x32;
-"89
-[e = . *U _Load 17 -> -> 50 `i `ui ]
-"90
-}
-[; ;OverLoad_B1.c: 90: }
-[e $U 276  ]
-"91
-[e :U 275 ]
-[; ;OverLoad_B1.c: 91: else
-[; ;OverLoad_B1.c: 92: {
-"92
-{
-[; ;OverLoad_B1.c: 93: Load->JudgeValue=(0x32+Load->TotalLoad)-0x08;
-"93
-[e = . *U _Load 17 - + -> -> 50 `i `ui . *U _Load 9 -> -> 8 `i `ui ]
-"94
-}
-[e :U 276 ]
-"95
-}
-[e :U 274 ]
-"96
-[e :U 273 ]
-}
-[e :U 271 ]
-[; ;OverLoad_B1.c: 94: }
-[; ;OverLoad_B1.c: 95: }
-[; ;OverLoad_B1.c: 96: }
-[; ;OverLoad_B1.c: 98: if(Load->AD >= Load->JudgeValue)
-"98
-[e $ ! >= . *U _Load 12 . *U _Load 17 277  ]
-[; ;OverLoad_B1.c: 99: {
-"99
-{
-[; ;OverLoad_B1.c: 100: Load->ErrorCount++;
-"100
-[e ++ . *U _Load 21 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 101: if(Load->ErrorCount >2)
-"101
-[e $ ! > -> . *U _Load 21 `i -> 2 `i 278  ]
-[; ;OverLoad_B1.c: 102: {
-"102
-{
-[; ;OverLoad_B1.c: 103: Load->ErrorCount=0;
-"103
-[e = . *U _Load 21 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 104: setLoad_Exceptions(1);
-"104
-[e ( _setLoad_Exceptions (1 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 106: Product->Data[4]=(Load->AD >> 8);
-"106
-[e = *U + &U . *U _Product 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 107: Product->Data[5]=Load->AD;
-"107
-[e = *U + &U . *U _Product 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 108: Product->Data[16]=(Load->JudgeValue >> 8);
-"108
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 109: Product->Data[17]=Load->JudgeValue;
-"109
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 110: Product->Data[8]=Load->LightsCount;
-"110
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 23 ]
-"113
-}
-[e :U 278 ]
-"114
-}
-[; ;OverLoad_B1.c: 113: }
-[; ;OverLoad_B1.c: 114: }
-[e $U 279  ]
-"115
-[e :U 277 ]
-[; ;OverLoad_B1.c: 115: else
-[; ;OverLoad_B1.c: 116: {
-"116
-{
-[; ;OverLoad_B1.c: 117: Load->ErrorCount=0;
-"117
-[e = . *U _Load 21 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 118: if(Load->SafeCount < 10)
-"118
-[e $ ! < -> . *U _Load 27 `i -> 10 `i 280  ]
-[; ;OverLoad_B1.c: 119: {
-"119
-{
-[; ;OverLoad_B1.c: 120: Load->SafeCount++;
-"120
-[e ++ . *U _Load 27 -> -> 1 `i `uc ]
-"121
-}
-[e :U 280 ]
-[; ;OverLoad_B1.c: 121: }
-[; ;OverLoad_B1.c: 122: if(Load->SafeCount >= 10)
-"122
-[e $ ! >= -> . *U _Load 27 `i -> 10 `i 281  ]
-[; ;OverLoad_B1.c: 123: {
-"123
-{
-[; ;OverLoad_B1.c: 124: Load->Safe=1;
-"124
-[e = . *U _Load 3 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 128: setDimmerLights_Clear(1,1);
-"128
-[e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 132: ;;
-[; ;OverLoad_B1.c: 138: setDimmerLights_Clear(2,1);
-"138
-[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 142: ;;
-[; ;OverLoad_B1.c: 157: if(Load->StatusOn)
-"157
-[e $ ! != -> . *U _Load 31 `i -> -> -> 0 `i `uc `i 282  ]
-[; ;OverLoad_B1.c: 158: {
-"158
-{
-[; ;OverLoad_B1.c: 159: Load->StatusOn=0;
-"159
-[e = . *U _Load 31 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 160: Load->TotalLoad=Load->AD;
-"160
-[e = . *U _Load 9 . *U _Load 12 ]
-"162
-}
-[e :U 282 ]
-[; ;OverLoad_B1.c: 162: }
-[; ;OverLoad_B1.c: 164: if(Load->StatusOff)
-"164
-[e $ ! != -> . *U _Load 32 `i -> -> -> 0 `i `uc `i 283  ]
-[; ;OverLoad_B1.c: 165: {
-"165
-{
-[; ;OverLoad_B1.c: 166: Load->StatusOff=0;
-"166
-[e = . *U _Load 32 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 167: Load->TotalLoad=Load->AD;
-"167
-[e = . *U _Load 9 . *U _Load 12 ]
-[; ;OverLoad_B1.c: 168: Load->JudgeValue=0x32*Load->LightsCount;
-"168
-[e = . *U _Load 17 -> * -> 50 `i -> . *U _Load 23 `i `ui ]
-"169
-}
-[e :U 283 ]
-"170
-}
-[e :U 281 ]
-"171
-}
-[e :U 279 ]
-"172
-}
-[e :U 270 ]
-[; ;OverLoad_B1.c: 169: }
-[; ;OverLoad_B1.c: 170: }
-[; ;OverLoad_B1.c: 171: }
-[; ;OverLoad_B1.c: 172: }
-[; ;OverLoad_B1.c: 173: setLoad_AH_AL_Restore();
-"173
-[e ( _setLoad_AH_AL_Restore ..  ]
-[; ;OverLoad_B1.c: 175: Product->Data[2]=(Load->AD >> 8);
-"175
-[e = *U + &U . *U _Product 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 176: Product->Data[3]=Load->AD;
-"176
-[e = *U + &U . *U _Product 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 177: Product->Data[8]=Load->LightsCount;
-"177
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 23 ]
-[; ;OverLoad_B1.c: 178: Product->Data[10]=Load->TotalLoad;
-"178
-[e = *U + &U . *U _Product 0 * -> -> -> 10 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 9 `uc ]
-[; ;OverLoad_B1.c: 179: Product->Data[16]=(Load->JudgeValue >> 8);
-"179
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 180: Product->Data[17]=Load->JudgeValue;
-"180
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 181: Product->Data[18]=Load->ErrorStatus;
-"181
-[e = *U + &U . *U _Product 0 * -> -> -> 18 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 8 ]
-[; ;OverLoad_B1.c: 182: Product->Data[19]=Load->Count;
-"182
-[e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
-"185
-}
-[e :U 266 ]
-"186
-}
-[; ;OverLoad_B1.c: 185: }
-[; ;OverLoad_B1.c: 186: }
-[e $U 284  ]
-"187
-[e :U 265 ]
-[; ;OverLoad_B1.c: 187: else
-[; ;OverLoad_B1.c: 188: {
-"188
-{
-[; ;OverLoad_B1.c: 189: if(Load->GO)
-"189
-[e $ ! != -> . *U _Load 1 `i -> -> -> 0 `i `uc `i 285  ]
-[; ;OverLoad_B1.c: 190: {
-"190
-{
-[; ;OverLoad_B1.c: 191: if(!Load->LightsON)
-"191
-[e $ ! ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 286  ]
-[; ;OverLoad_B1.c: 192: {
-"192
-{
-[; ;OverLoad_B1.c: 193: Load->LightsON=1;
-"193
-[e = . *U _Load 2 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 194: Load->Safe=0;
-"194
-[e = . *U _Load 3 -> -> 0 `i `uc ]
-"195
-}
-[e :U 286 ]
-[; ;OverLoad_B1.c: 195: }
-[; ;OverLoad_B1.c: 196: if(getTemp_Safe() && getPF_Safe())
-"196
-[e $ ! && != -> ( _getTemp_Safe ..  `i -> -> -> 0 `i `uc `i != -> ( _getPF_Safe ..  `i -> -> -> 0 `i `uc `i 287  ]
-[; ;OverLoad_B1.c: 197: {
-"197
-{
-[; ;OverLoad_B1.c: 198: Load->ADtoGO=1;
-"198
-[e = . *U _Load 4 -> -> 1 `i `uc ]
-"199
-}
-[e :U 287 ]
-"200
-}
-[; ;OverLoad_B1.c: 199: }
-[; ;OverLoad_B1.c: 200: }
-[e $U 288  ]
-"201
-[e :U 285 ]
-[; ;OverLoad_B1.c: 201: else
-[; ;OverLoad_B1.c: 202: {
-"202
-{
-[; ;OverLoad_B1.c: 203: if(Load->LightsON)
-"203
-[e $ ! != -> . *U _Load 2 `i -> -> -> 0 `i `uc `i 289  ]
-[; ;OverLoad_B1.c: 204: {
-"204
-{
-[; ;OverLoad_B1.c: 205: Load->LightsON=0;
-"205
-[e = . *U _Load 2 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 206: Load->Safe=1;
-"206
-[e = . *U _Load 3 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 207: Load->ErrorCount=0;
-"207
-[e = . *U _Load 21 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 208: Load->Count=0;
-"208
-[e = . *U _Load 19 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 209: Load->TotalLoad=0;
-"209
-[e = . *U _Load 9 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 210: Load->NumberCount=0;
-"210
-[e = . *U _Load 24 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 211: Load->StatusOn=0;
-"211
-[e = . *U _Load 31 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 212: Load->StatusOff=0;
-"212
-[e = . *U _Load 32 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 213: Load->AD=0;
-"213
-[e = . *U _Load 12 -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 214: setLoad_AH_AL_Restore();
-"214
-[e ( _setLoad_AH_AL_Restore ..  ]
-[; ;OverLoad_B1.c: 218: setDimmerLights_Clear(1,1);
-"218
-[e ( _setDimmerLights_Clear (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 222: ;;
-[; ;OverLoad_B1.c: 228: setDimmerLights_Clear(2,1);
-"228
-[e ( _setDimmerLights_Clear (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 232: ;;
-[; ;OverLoad_B1.c: 247: Product->Data[2]=(Load->AD >> 8);
-"247
-[e = *U + &U . *U _Product 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 12 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 248: Product->Data[3]=Load->AD;
-"248
-[e = *U + &U . *U _Product 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 12 `uc ]
-[; ;OverLoad_B1.c: 253: Product->Data[8]=Load->NumberCount;
-"253
-[e = *U + &U . *U _Product 0 * -> -> -> 8 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 24 ]
-[; ;OverLoad_B1.c: 254: Product->Data[10]=Load->TotalLoad;
-"254
-[e = *U + &U . *U _Product 0 * -> -> -> 10 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 9 `uc ]
-[; ;OverLoad_B1.c: 255: Product->Data[16]=(Load->JudgeValue >> 8);
-"255
-[e = *U + &U . *U _Product 0 * -> -> -> 16 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> >> . *U _Load 17 -> 8 `i `uc ]
-[; ;OverLoad_B1.c: 256: Product->Data[17]=Load->JudgeValue;
-"256
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> . *U _Load 17 `uc ]
-[; ;OverLoad_B1.c: 257: Product->Data[18]=Load->ErrorStatus;
-"257
-[e = *U + &U . *U _Product 0 * -> -> -> 18 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 8 ]
-[; ;OverLoad_B1.c: 258: Product->Data[19]=Load->Count;
-"258
-[e = *U + &U . *U _Product 0 * -> -> -> 19 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux . *U _Load 19 ]
-"260
-}
-[e :U 289 ]
-"261
-}
-[e :U 288 ]
-"262
-}
-[e :U 284 ]
-"263
-}
-[e :U 264 ]
-[; ;OverLoad_B1.c: 260: }
-[; ;OverLoad_B1.c: 261: }
-[; ;OverLoad_B1.c: 262: }
-[; ;OverLoad_B1.c: 263: }
-[; ;OverLoad_B1.c: 264: }
-"264
-[e :UE 261 ]
-}
-"266
-[v _setLoad_Exceptions `(v ~T0 @X0 1 ef1`uc ]
-"267
-{
-[; ;OverLoad_B1.c: 266: void setLoad_Exceptions(char command)
-[; ;OverLoad_B1.c: 267: {
-[e :U _setLoad_Exceptions ]
-"266
-[v _command `uc ~T0 @X0 1 r1 ]
-"267
-[f ]
-[; ;OverLoad_B1.c: 268: Load->ERROR=command;
-"268
-[e = . *U _Load 5 _command ]
-[; ;OverLoad_B1.c: 269: Load->Safe=(~command) & 0x01;
-"269
-[e = . *U _Load 3 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 270: Load->ErrorStatus=command;
-"270
-[e = . *U _Load 8 _command ]
-[; ;OverLoad_B1.c: 272: if(command)
-"272
-[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 291  ]
-[; ;OverLoad_B1.c: 273: {
-"273
-{
-[; ;OverLoad_B1.c: 274: DimmerLights_Exceptions(2);
-"274
-[e ( _DimmerLights_Exceptions (1 -> -> 2 `i `uc ]
-"278
-}
-[e :U 291 ]
-[; ;OverLoad_B1.c: 278: }
-[; ;OverLoad_B1.c: 279: setLED(99,command+10);
-"279
-[e ( _setLED (2 , -> -> 99 `i `uc -> + -> _command `i -> 10 `i `uc ]
-[; ;OverLoad_B1.c: 281: setSw_Enable((~command) & 0x01);
-"281
-[e ( _setSw_Enable (1 -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 283: setRF_Enable(1,(~command) & 0x01);
-"283
-[e ( _setRF_Enable (2 , -> -> 1 `i `uc -> & ~ -> _command `i -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 287: }
-"287
-[e :UE 290 ]
-}
-"289
-[v _setLoad_Count `(v ~T0 @X0 1 ef1`uc ]
-"290
-{
-[; ;OverLoad_B1.c: 289: void setLoad_Count(char command)
-[; ;OverLoad_B1.c: 290: {
-[e :U _setLoad_Count ]
-"289
-[v _command `uc ~T0 @X0 1 r1 ]
-"290
-[f ]
-[; ;OverLoad_B1.c: 291: Load->Count=command;
-"291
-[e = . *U _Load 19 _command ]
-[; ;OverLoad_B1.c: 292: Load->SafeCount=command;
-"292
-[e = . *U _Load 27 _command ]
-[; ;OverLoad_B1.c: 293: }
-"293
-[e :UE 292 ]
-}
-"295
-[v _setLoad_Enable `(v ~T0 @X0 1 ef1`uc ]
-"296
-{
-[; ;OverLoad_B1.c: 295: void setLoad_Enable(char command)
-[; ;OverLoad_B1.c: 296: {
-[e :U _setLoad_Enable ]
-"295
-[v _command `uc ~T0 @X0 1 r1 ]
-"296
-[f ]
-[; ;OverLoad_B1.c: 297: Load->Enable=command;
-"297
-[e = . *U _Load 0 _command ]
-[; ;OverLoad_B1.c: 298: Load->GO=0;
-"298
-[e = . *U _Load 1 -> -> 0 `i `uc ]
-[; ;OverLoad_B1.c: 299: }
-"299
-[e :UE 293 ]
-}
-"300
-[v _setLoad_GO `(v ~T0 @X0 1 ef1`uc ]
-"301
-{
-[; ;OverLoad_B1.c: 300: void setLoad_GO(char command)
-[; ;OverLoad_B1.c: 301: {
-[e :U _setLoad_GO ]
-"300
-[v _command `uc ~T0 @X0 1 r1 ]
-"301
-[f ]
-[; ;OverLoad_B1.c: 302: Load->GO=command;
-"302
-[e = . *U _Load 1 _command ]
-[; ;OverLoad_B1.c: 303: }
-"303
-[e :UE 294 ]
-}
-"304
-[v _setLoad_StatusOn `(v ~T0 @X0 1 ef2`uc`uc ]
-"305
-{
-[; ;OverLoad_B1.c: 304: void setLoad_StatusOn(char lights,char command)
-[; ;OverLoad_B1.c: 305: {
-[e :U _setLoad_StatusOn ]
-"304
-[v _lights `uc ~T0 @X0 1 r1 ]
-[v _command `uc ~T0 @X0 1 r2 ]
-"305
-[f ]
-[; ;OverLoad_B1.c: 306: Load->GO=1;
-"306
-[e = . *U _Load 1 -> -> 1 `i `uc ]
-[; ;OverLoad_B1.c: 307: Load->StatusOn=command;
-"307
-[e = . *U _Load 31 _command ]
-[; ;OverLoad_B1.c: 309: if(lights == 1)
-"309
-[e $ ! == -> _lights `i -> 1 `i 296  ]
-[; ;OverLoad_B1.c: 310: {
-"310
-{
-[; ;OverLoad_B1.c: 311: Load->Lights1Status=1;
-"311
-[e = . *U _Load 28 -> -> 1 `i `uc ]
-"312
-}
-[e :U 296 ]
-[; ;OverLoad_B1.c: 312: }
-[; ;OverLoad_B1.c: 313: if(lights == 2)
-"313
-[e $ ! == -> _lights `i -> 2 `i 297  ]
-[; ;OverLoad_B1.c: 314: {
-"314
-{
-[; ;OverLoad_B1.c: 315: Load->Lights2Status=1;
-"315
-[e = . *U _Load 29 -> -> 1 `i `uc ]
-"316
-}
-[e :U 297 ]
-[; ;OverLoad_B1.c: 316: }
-[; ;OverLoad_B1.c: 317: if(lights == 3)
-"317
-[e $ ! == -> _lights `i -> 3 `i 298  ]
-[; ;OverLoad_B1.c: 318: {
-"318
-{
-[; ;OverLoad_B1.c: 319: Load->Lights3Status=1;
-"319
-[e = . *U _Load 30 -> -> 1 `i `uc ]
-"320
-}
-[e :U 298 ]
-[; ;OverLoad_B1.c: 320: }
-[; ;OverLoad_B1.c: 321: }
-"321
-[e :UE 295 ]
-}
-"322
-[v _setLoad_StatusOff `(v ~T0 @X0 1 ef2`uc`uc ]
-"323
-{
-[; ;OverLoad_B1.c: 322: void setLoad_StatusOff(char lights,char command)
-[; ;OverLoad_B1.c: 323: {
-[e :U _setLoad_StatusOff ]
-"322
-[v _lights `uc ~T0 @X0 1 r1 ]
-[v _command `uc ~T0 @X0 1 r2 ]
-"323
-[f ]
-[; ;OverLoad_B1.c: 324: Load->StatusOff=command;
-"324
-[e = . *U _Load 32 _command ]
-[; ;OverLoad_B1.c: 325: Load->SafeCount-=2;
-"325
-[e =- . *U _Load 27 -> -> 2 `i `uc ]
-[; ;OverLoad_B1.c: 326: if(lights == 1)
-"326
-[e $ ! == -> _lights `i -> 1 `i 300  ]
-[; ;OverLoad_B1.c: 327: {
-"327
-{
-[; ;OverLoad_B1.c: 328: Load->Lights1Status=0;
-"328
-[e = . *U _Load 28 -> -> 0 `i `uc ]
-"329
-}
-[e :U 300 ]
-[; ;OverLoad_B1.c: 329: }
-[; ;OverLoad_B1.c: 330: if(lights == 2)
-"330
-[e $ ! == -> _lights `i -> 2 `i 301  ]
-[; ;OverLoad_B1.c: 331: {
-"331
-{
-[; ;OverLoad_B1.c: 332: Load->Lights2Status=0;
-"332
-[e = . *U _Load 29 -> -> 0 `i `uc ]
-"333
-}
-[e :U 301 ]
-[; ;OverLoad_B1.c: 333: }
-[; ;OverLoad_B1.c: 334: if(lights == 3)
-"334
-[e $ ! == -> _lights `i -> 3 `i 302  ]
-[; ;OverLoad_B1.c: 335: {
-"335
-{
-[; ;OverLoad_B1.c: 336: Load->Lights3Status=0;
-"336
-[e = . *U _Load 30 -> -> 0 `i `uc ]
-"337
-}
-[e :U 302 ]
-[; ;OverLoad_B1.c: 337: }
-[; ;OverLoad_B1.c: 338: }
-"338
-[e :UE 299 ]
-}
-"339
-[v _getLoad_Safe `(uc ~T0 @X0 1 ef ]
-"340
-{
-[; ;OverLoad_B1.c: 339: char getLoad_Safe()
-[; ;OverLoad_B1.c: 340: {
-[e :U _getLoad_Safe ]
-[f ]
-[; ;OverLoad_B1.c: 341: return Load->Safe;
-"341
-[e ) . *U _Load 3 ]
-[e $UE 303  ]
-[; ;OverLoad_B1.c: 342: }
-"342
-[e :UE 303 ]
-}
-"343
-[v _getLoad_ERROR `(uc ~T0 @X0 1 ef ]
-"344
-{
-[; ;OverLoad_B1.c: 343: char getLoad_ERROR()
-[; ;OverLoad_B1.c: 344: {
-[e :U _getLoad_ERROR ]
-[f ]
-[; ;OverLoad_B1.c: 345: return Load->ERROR;
-"345
-[e ) . *U _Load 5 ]
-[e $UE 304  ]
-[; ;OverLoad_B1.c: 346: }
-"346
-[e :UE 304 ]
-}
-"348
-[v _setLoad_AH_AL_Restore `(v ~T0 @X0 1 ef ]
-"349
-{
-[; ;OverLoad_B1.c: 348: void setLoad_AH_AL_Restore()
-[; ;OverLoad_B1.c: 349: {
-[e :U _setLoad_AH_AL_Restore ]
-[f ]
-"350
-[v _i `uc ~T0 @X0 1 a ]
-[; ;OverLoad_B1.c: 350: char i;
-[; ;OverLoad_B1.c: 351: for(i=0 ; i<5 ;i++)
-"351
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 5 `i 306  ]
-[e $U 307  ]
-"352
-[e :U 306 ]
-[; ;OverLoad_B1.c: 352: {
-{
-[; ;OverLoad_B1.c: 353: Load->AH[i]=0;
-"353
-[e = *U + &U . *U _Load 10 * -> _i `ux -> -> # *U &U . *U _Load 10 `ui `ux -> -> 0 `i `ui ]
-[; ;OverLoad_B1.c: 354: Load->AL[i]=0xffff;
-"354
-[e = *U + &U . *U _Load 11 * -> _i `ux -> -> # *U &U . *U _Load 11 `ui `ux -> 65535 `ui ]
-"355
-}
-"351
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 5 `i 306  ]
-[e :U 307 ]
-"355
-}
-[; ;OverLoad_B1.c: 355: }
-[; ;OverLoad_B1.c: 356: }
-"356
-[e :UE 305 ]
-}

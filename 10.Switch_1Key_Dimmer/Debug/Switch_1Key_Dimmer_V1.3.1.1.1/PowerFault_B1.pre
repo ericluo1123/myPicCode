@@ -70,7 +70,7 @@ extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
 # 9 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h"
-volatile struct Product
+struct Product
 {
 unsigned char Data[32];
 };
