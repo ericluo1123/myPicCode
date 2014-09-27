@@ -17,44 +17,112 @@ Version 3.2 HI-TECH Software Intermediate Code
 "453
 [s S239 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S239 I2C BufferReader BufferWriter Count Address SlaveGO SlaveRxGO SlaveTxGO MasterTxGO MasterRxGO SS ]
-"4533 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
-[v _RB5 `Vb ~T0 @X0 0 e@109 ]
-"4529
-[v _RB3 `Vb ~T0 @X0 0 e@107 ]
-"303 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
-[v _CC2500_WriteByte `(v ~T0 @X0 0 ef ]
-"308
-[v _CC2500_WriteCommand `(v ~T0 @X0 0 ef1`uc ]
-"4523 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
-[v _RB0 `Vb ~T0 @X0 0 e@104 ]
-"307 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
-[v _CC2500_ReadStatus `(v ~T0 @X0 0 ef1`uc ]
-"305
-[v _CC2500_ReadByte `(v ~T0 @X0 0 ef ]
-"69 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
-[v _setRF_RxStatus `(v ~T0 @X0 0 ef2`uc`uc ]
-"295 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
-[v _CC2500_PowerRST `(v ~T0 @X0 0 ef ]
-"296
-[v _CC2500_InitSetREG `(v ~T0 @X0 0 ef ]
-"297
-[v _CC2500_InitPATable `(v ~T0 @X0 0 ef ]
-"298
-[v _CC2500_ClearTXFIFO `(v ~T0 @X0 0 ef ]
-"299
-[v _CC2500_ClearRXFIFO `(v ~T0 @X0 0 ef ]
-"300
-[v _CC2500_FrequencyCabr `(v ~T0 @X0 0 ef ]
-"301
-[v _CC2500_SIDLEMode `(v ~T0 @X0 0 ef ]
-"4527 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
-[v _RB2 `Vb ~T0 @X0 0 e@106 ]
-"4525
-[v _RB1 `Vb ~T0 @X0 0 e@105 ]
-"311 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
-[v _DelayTime_1us `(v ~T0 @X0 0 ef1`i ]
-"304
-[v _CC2500_WriteREG `(v ~T0 @X0 0 ef2`uc`uc ]
+"1499 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _OSCCON `Vuc ~T0 @X0 0 e@153 ]
+"12 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _IO_Set `(v ~T0 @X0 0 ef ]
+"420
+[v _TMR1_Set `(v ~T0 @X0 0 ef ]
+"431
+[v _INT_Set `(v ~T0 @X0 0 ef ]
+"469
+[v _I2C_Set `(v ~T0 @X0 0 ef ]
+"1020 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _TRISA `Vuc ~T0 @X0 0 e@140 ]
+"1081
+[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
+"1142
+[v _TRISC `Vuc ~T0 @X0 0 e@142 ]
+"1806
+[v _LATA `Vuc ~T0 @X0 0 e@268 ]
+"1867
+[v _LATB `Vuc ~T0 @X0 0 e@269 ]
+"1928
+[v _LATC `Vuc ~T0 @X0 0 e@270 ]
+"2104
+[v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
+"2156
+[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
+"2213
+[v _ANSELC `Vuc ~T0 @X0 0 e@398 ]
+"412
+[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
+"473
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"534
+[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
+"421 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _TMR1_ISR `(v ~T0 @X0 0 ef ]
+"432
+[v _INT_ISR `(v ~T0 @X0 0 ef ]
+"470
+[v _I2C_ISR `(v ~T0 @X0 0 ef ]
+"772 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _T1CON `Vuc ~T0 @X0 0 e@24 ]
+"753
+[v _TMR1H `Vuc ~T0 @X0 0 e@23 ]
+"734
+[v _TMR1L `Vuc ~T0 @X0 0 e@22 ]
+"4687
+[v _TMR1IE `Vb ~T0 @X0 0 e@1160 ]
+"4495
+[v _PEIE `Vb ~T0 @X0 0 e@94 ]
+"4357
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"4689
+[v _TMR1IF `Vb ~T0 @X0 0 e@136 ]
+"4779
+[v _WPUB0 `Vb ~T0 @X0 0 e@4200 ]
+"4367
+[v _INTE `Vb ~T0 @X0 0 e@92 ]
+"4371
+[v _INTF `Vb ~T0 @X0 0 e@89 ]
+"68 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
+[v _setRF_ReceiveGO `(v ~T0 @X0 0 ef2`uc`uc ]
+"2889 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _SSPADD `Vuc ~T0 @X0 0 e@530 ]
+"2963
+[v _SSPSTAT `Vuc ~T0 @X0 0 e@532 ]
+"3287
+[v _SSPCON2 `Vuc ~T0 @X0 0 e@534 ]
+"3084
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@533 ]
+"4589
+[v _SEN `Vb ~T0 @X0 0 e@4272 ]
+"4215
+[v _AHEN `Vb ~T0 @X0 0 e@4281 ]
+"4343
+[v _DHEN `Vb ~T0 @X0 0 e@4280 ]
+"4603
+[v _SSPIE `Vb ~T0 @X0 0 e@1163 ]
+"4605
+[v _SSPIF `Vb ~T0 @X0 0 e@139 ]
+"473 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _I2C_Slave_Mode `(v ~T0 @X0 0 ef ]
+"4539 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _RC0 `Vb ~T0 @X0 0 e@112 ]
+"475 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _I2C_SetData `(v ~T0 @X0 0 ef1`uc ]
+"4509 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
+[v _RA1 `Vb ~T0 @X0 0 e@97 ]
+"2852
+[v _SSPBUF `Vuc ~T0 @X0 0 e@529 ]
+"4259
+[v _BF `Vb ~T0 @X0 0 e@4256 ]
+"4185
+[v _ACKSTAT `Vb ~T0 @X0 0 e@4278 ]
+"4497
+[v _PEN `Vb ~T0 @X0 0 e@4274 ]
+"4555
+[v _RCEN `Vb ~T0 @X0 0 e@4275 ]
+"4183
+[v _ACKEN `Vb ~T0 @X0 0 e@4276 ]
+"4573
+[v _R_nW `Vb ~T0 @X0 0 e@4258 ]
+"4615
+[v _SSPOV `Vb ~T0 @X0 0 e@4270 ]
+"4323
+[v _CKP `Vb ~T0 @X0 0 e@4268 ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -2469,780 +2537,975 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 473: void I2C_Slave_Mode();
 [; ;MCU_B1.h: 474: void I2C_Main();
 [; ;MCU_B1.h: 475: void I2C_SetData(char);
-"30 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c
-[v _CC2500_TxData `(v ~T0 @X0 1 ef ]
-"31
+"14 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+[p x FOSC=INTOSC ]
+[p x WDTE=OFF ]
+"15
+[p x WRT=BOOT ]
+"24
+[v _Mcu_Initialization `(v ~T0 @X0 1 ef ]
+"25
 {
-[; ;CC2500_B1.c: 30: void CC2500_TxData()
-[; ;CC2500_B1.c: 31: {
-[e :U _CC2500_TxData ]
+[; ;MCU_B1.c: 14: __config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF");
+[; ;MCU_B1.c: 15: __config("__CONFIG", "pic", "VCAPEN_OFF & WRT_BOOT");
+[; ;MCU_B1.c: 24: void Mcu_Initialization()
+[; ;MCU_B1.c: 25: {
+[e :U _Mcu_Initialization ]
 [f ]
-"32
-[v _loop_e `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 32: unsigned char loop_e;
-[; ;CC2500_B1.c: 34: RB5=0;
-"34
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 35: SPI0Buffer=0x3F+0x40;
-"35
-[e = _SPI0Buffer -> + -> 63 `i -> 64 `i `uc ]
-[; ;CC2500_B1.c: 36: while(RB3==1);
-"36
-[e $U 241  ]
-[e :U 242 ]
-[e :U 241 ]
-[e $ == -> _RB3 `i -> 1 `i 242  ]
-[e :U 243 ]
-[; ;CC2500_B1.c: 37: CC2500_WriteByte();
-"37
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 38: SPI0Buffer=Tx_Length;
-"38
-[e = _SPI0Buffer _Tx_Length ]
-[; ;CC2500_B1.c: 39: CC2500_WriteByte();
+[; ;MCU_B1.c: 27: OSCCON=0x78; ;;
+"27
+[e = _OSCCON -> -> 120 `i `uc ]
+[; ;MCU_B1.c: 29: IO_Set();
+"29
+[e ( _IO_Set ..  ]
+[; ;MCU_B1.c: 31: ;;
+[; ;MCU_B1.c: 33: TMR1_Set();
+"33
+[e ( _TMR1_Set ..  ]
+[; ;MCU_B1.c: 35: ;;
+[; ;MCU_B1.c: 39: INT_Set();
 "39
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 40: for(loop_e=0;loop_e<Tx_Length;loop_e++)
-"40
-{
-[e = _loop_e -> -> 0 `i `uc ]
-[e $U 247  ]
-"41
-[e :U 244 ]
-[; ;CC2500_B1.c: 41: {
-{
-[; ;CC2500_B1.c: 42: SPI0Buffer=RF_Data[loop_e];
-"42
-[e = _SPI0Buffer *U + &U _RF_Data * -> _loop_e `ux -> -> # *U &U _RF_Data `ui `ux ]
-[; ;CC2500_B1.c: 43: CC2500_WriteByte();
+[e ( _INT_Set ..  ]
+[; ;MCU_B1.c: 41: ;;
+[; ;MCU_B1.c: 43: I2C_Set();
 "43
-[e ( _CC2500_WriteByte ..  ]
-"44
-}
-"40
-[e ++ _loop_e -> -> 1 `i `uc ]
-[e :U 247 ]
-[e $ < -> _loop_e `i -> _Tx_Length `i 244  ]
-[e :U 245 ]
-"44
-}
-[; ;CC2500_B1.c: 44: }
-[; ;CC2500_B1.c: 45: RB5=1;
-"45
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 46: CC2500_WriteCommand(0x35);
-"46
-[e ( _CC2500_WriteCommand (1 -> -> 53 `i `uc ]
-[; ;CC2500_B1.c: 47: while(RB0==0);
-"47
-[e $U 248  ]
-[e :U 249 ]
-[e :U 248 ]
-[e $ == -> _RB0 `i -> 0 `i 249  ]
-[e :U 250 ]
-[; ;CC2500_B1.c: 48: while(RB0==1);
+[e ( _I2C_Set ..  ]
+[; ;MCU_B1.c: 45: ;;
+[; ;MCU_B1.c: 47: ;;
+[; ;MCU_B1.c: 48: }
 "48
-[e $U 251  ]
-[e :U 252 ]
-[e :U 251 ]
-[e $ == -> _RB0 `i -> 1 `i 252  ]
-[e :U 253 ]
-[; ;CC2500_B1.c: 49: CC2500_WriteCommand(0x36);
-"49
-[e ( _CC2500_WriteCommand (1 -> -> 54 `i `uc ]
-[; ;CC2500_B1.c: 50: CC2500_WriteCommand(0x3B);
-"50
-[e ( _CC2500_WriteCommand (1 -> -> 59 `i `uc ]
-[; ;CC2500_B1.c: 51: Transceive_OK=1;
-"51
-[e = _Transceive_OK -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 52: }
-"52
 [e :UE 240 ]
 }
-"56
-[v _CC2500_RxData `(v ~T0 @X0 1 ef ]
-"57
+"50
+[v _IO_Set `(v ~T0 @X0 1 ef ]
+"51
 {
-[; ;CC2500_B1.c: 56: void CC2500_RxData(void)
-[; ;CC2500_B1.c: 57: {
-[e :U _CC2500_RxData ]
+[; ;MCU_B1.c: 50: void IO_Set()
+[; ;MCU_B1.c: 51: {
+[e :U _IO_Set ]
 [f ]
-"58
-[v _loop_f `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 58: unsigned char loop_f;
-[; ;CC2500_B1.c: 62: if(RB0 == 1)
-"62
-[e $ ! == -> _RB0 `i -> 1 `i 255  ]
-[; ;CC2500_B1.c: 63: {
-"63
-{
-[; ;CC2500_B1.c: 64: while(RB0 == 1);
+[; ;MCU_B1.c: 64: TRISA=0b00000000;;
 "64
-[e $U 256  ]
-[e :U 257 ]
-[e :U 256 ]
-[e $ == -> _RB0 `i -> 1 `i 257  ]
-[e :U 258 ]
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 65: TRISB=0b00011001;;
 "65
-}
-[e :U 255 ]
-[; ;CC2500_B1.c: 65: }
-[; ;CC2500_B1.c: 66: CC2500_ReadStatus(0x3B);
+[e = _TRISB -> -> 25 `i `uc ]
+[; ;MCU_B1.c: 66: TRISC=0b00011000;;
 "66
-[e ( _CC2500_ReadStatus (1 -> -> 59 `i `uc ]
-[; ;CC2500_B1.c: 67: if(s_data != 0)
+[e = _TRISC -> -> 24 `i `uc ]
+[; ;MCU_B1.c: 67: LATA=0b00000000;;
 "67
-[e $ ! != -> _s_data `i -> 0 `i 259  ]
-[; ;CC2500_B1.c: 69: {
+[e = _LATA -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 68: LATB=0b00000000;;
+"68
+[e = _LATB -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 69: LATC=0b00000000;;
 "69
-{
-[; ;CC2500_B1.c: 70: RB5=0;
+[e = _LATC -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 70: ANSELA=0b00000000;;
 "70
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 71: SPI0Buffer=0x3F+0xC0;
+[e = _ANSELA -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 71: ANSELB=0b00000000;;
 "71
-[e = _SPI0Buffer -> + -> 63 `i -> 192 `i `uc ]
-[; ;CC2500_B1.c: 72: while(RB3==1);
+[e = _ANSELB -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 72: ANSELC=0b00000000;;
 "72
-[e $U 260  ]
-[e :U 261 ]
-[e :U 260 ]
-[e $ == -> _RB3 `i -> 1 `i 261  ]
-[e :U 262 ]
-[; ;CC2500_B1.c: 73: CC2500_WriteByte();
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 73: PORTA=0b00000000;;
 "73
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 75: CC2500_ReadByte();
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 74: PORTB=0b00011001;;
+"74
+[e = _PORTB -> -> 25 `i `uc ]
+[; ;MCU_B1.c: 75: PORTC=0b00011000;;
 "75
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 76: Rx_Length=SPI0Buffer;
-"76
-[e = _Rx_Length _SPI0Buffer ]
-[; ;CC2500_B1.c: 77: for(loop_f=0;loop_f<Rx_Length;loop_f++)
-"77
-{
-[e = _loop_f -> -> 0 `i `uc ]
-[e $U 266  ]
-"78
-[e :U 263 ]
-[; ;CC2500_B1.c: 78: {
-{
-[; ;CC2500_B1.c: 79: CC2500_ReadByte();
-"79
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 80: RF_Data[loop_f]=SPI0Buffer;
-"80
-[e = *U + &U _RF_Data * -> _loop_f `ux -> -> # *U &U _RF_Data `ui `ux _SPI0Buffer ]
-"81
-}
-"77
-[e ++ _loop_f -> -> 1 `i `uc ]
-[e :U 266 ]
-[e $ < -> _loop_f `i -> _Rx_Length `i 263  ]
-[e :U 264 ]
-"81
-}
-[; ;CC2500_B1.c: 81: }
-[; ;CC2500_B1.c: 82: CC2500_ReadByte();
-"82
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 83: RSSI=SPI0Buffer;
-"83
-[e = _RSSI _SPI0Buffer ]
-[; ;CC2500_B1.c: 84: CC2500_ReadByte();
-"84
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 85: CRC=SPI0Buffer;
-"85
-[e = _CRC _SPI0Buffer ]
-[; ;CC2500_B1.c: 86: RB5=1;
-"86
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 87: if(CRC & 0x80)
-"87
-[e $ ! != & -> _CRC `i -> 128 `i -> 0 `i 267  ]
-[; ;CC2500_B1.c: 88: Receive_OK=1;
-"88
-[e = _Receive_OK -> -> 1 `i `b ]
-[e :U 267 ]
-"89
-}
-[e :U 259 ]
-[; ;CC2500_B1.c: 89: }
-[; ;CC2500_B1.c: 90: CC2500_WriteCommand(0x36);
-"90
-[e ( _CC2500_WriteCommand (1 -> -> 54 `i `uc ]
-[; ;CC2500_B1.c: 91: CC2500_WriteCommand(0x3A);
-"91
-[e ( _CC2500_WriteCommand (1 -> -> 58 `i `uc ]
-[; ;CC2500_B1.c: 92: setRF_RxStatus(1,0);
+[e = _PORTC -> -> 24 `i `uc ]
+[; ;MCU_B1.c: 92: }
 "92
-[e ( _setRF_RxStatus (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;CC2500_B1.c: 93: }
-"93
-[e :UE 254 ]
+[e :UE 241 ]
 }
+[v F2057 `(v ~T0 @X0 1 tf ]
 "97
-[v _CC2500_PowerOnInitial `(v ~T0 @X0 1 ef ]
+[v _ISR `IF2057 ~T0 @X0 1 e@3 ]
 "98
 {
-[; ;CC2500_B1.c: 97: void CC2500_PowerOnInitial()
-[; ;CC2500_B1.c: 98: {
-[e :U _CC2500_PowerOnInitial ]
+[; ;MCU_B1.c: 97: void ISR(void) interrupt 0
+[; ;MCU_B1.c: 98: {
+[e :U _ISR ]
 [f ]
-[; ;CC2500_B1.c: 99: CC2500_PowerRST();
-"99
-[e ( _CC2500_PowerRST ..  ]
-[; ;CC2500_B1.c: 100: CC2500_InitSetREG();
-"100
-[e ( _CC2500_InitSetREG ..  ]
-[; ;CC2500_B1.c: 101: CC2500_InitPATable();
-"101
-[e ( _CC2500_InitPATable ..  ]
-[; ;CC2500_B1.c: 102: CC2500_ClearTXFIFO();
-"102
-[e ( _CC2500_ClearTXFIFO ..  ]
-[; ;CC2500_B1.c: 103: CC2500_ClearRXFIFO();
+[; ;MCU_B1.c: 99: ;;
+[; ;MCU_B1.c: 101: ;;
+[; ;MCU_B1.c: 103: TMR1_ISR();
 "103
-[e ( _CC2500_ClearRXFIFO ..  ]
-[; ;CC2500_B1.c: 104: CC2500_FrequencyCabr();
-"104
-[e ( _CC2500_FrequencyCabr ..  ]
-[; ;CC2500_B1.c: 105: CC2500_SIDLEMode();
-"105
-[e ( _CC2500_SIDLEMode ..  ]
-[; ;CC2500_B1.c: 106: }
-"106
+[e ( _TMR1_ISR ..  ]
+[; ;MCU_B1.c: 107: INT_ISR();
+"107
+[e ( _INT_ISR ..  ]
+[; ;MCU_B1.c: 109: ;;
+[; ;MCU_B1.c: 111: I2C_ISR();
+"111
+[e ( _I2C_ISR ..  ]
+[; ;MCU_B1.c: 112: }
+"112
+[e :UE 242 ]
+}
+"242
+[v _TMR1_Set `(v ~T0 @X0 1 ef ]
+"243
+{
+[; ;MCU_B1.c: 242: void TMR1_Set()
+[; ;MCU_B1.c: 243: {
+[e :U _TMR1_Set ]
+[f ]
+[; ;MCU_B1.c: 244: Timer1=&VarTimer1;
+"244
+[e = _Timer1 &U _VarTimer1 ]
+[; ;MCU_B1.c: 245: T1CON=(0x40 | 0x00 | 0x01);
+"245
+[e = _T1CON -> | | -> 64 `i -> 0 `i -> 1 `i `uc ]
+[; ;MCU_B1.c: 246: TMR1H=((65536-700)/256);
+"246
+[e = _TMR1H -> / - -> 65536 `l -> -> 700 `i `l -> -> 256 `i `l `uc ]
+[; ;MCU_B1.c: 247: TMR1L=((65536-700)%256);
+"247
+[e = _TMR1L -> % - -> 65536 `l -> -> 700 `i `l -> -> 256 `i `l `uc ]
+[; ;MCU_B1.c: 248: TMR1IE=1;
+"248
+[e = _TMR1IE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 249: PEIE=1;
+"249
+[e = _PEIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 250: GIE=1;
+"250
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 251: }
+"251
+[e :UE 243 ]
+}
+"253
+[v _TMR1_ISR `(v ~T0 @X0 1 ef ]
+"254
+{
+[; ;MCU_B1.c: 253: void TMR1_ISR()
+[; ;MCU_B1.c: 254: {
+[e :U _TMR1_ISR ]
+[f ]
+[; ;MCU_B1.c: 255: if(TMR1IE && TMR1IF)
+"255
+[e $ ! && _TMR1IE _TMR1IF 245  ]
+[; ;MCU_B1.c: 256: {
+"256
+{
+[; ;MCU_B1.c: 257: TMR1H=((65536-700)/256);
+"257
+[e = _TMR1H -> / - -> 65536 `l -> -> 700 `i `l -> -> 256 `i `l `uc ]
+[; ;MCU_B1.c: 258: TMR1L=((65536-700)%256);
+"258
+[e = _TMR1L -> % - -> 65536 `l -> -> 700 `i `l -> -> 256 `i `l `uc ]
+[; ;MCU_B1.c: 259: TMR1IF=0;
+"259
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 260: Timer1->Count++;
+"260
+[e ++ . *U _Timer1 1 -> -> 1 `i `ui ]
+[; ;MCU_B1.c: 261: if(Timer1->Count == 20)
+"261
+[e $ ! == . *U _Timer1 1 -> -> 20 `i `ui 246  ]
+[; ;MCU_B1.c: 262: {
+"262
+{
+[; ;MCU_B1.c: 263: Timer1->Count=0;
+"263
+[e = . *U _Timer1 1 -> -> 0 `i `ui ]
+[; ;MCU_B1.c: 264: TMain->T1_Timerout=1;
+"264
+[e = . *U _TMain 2 -> -> 1 `i `uc ]
+"265
+}
+[e :U 246 ]
+"266
+}
+[e :U 245 ]
+[; ;MCU_B1.c: 265: }
+[; ;MCU_B1.c: 266: }
+[; ;MCU_B1.c: 274: }
+"274
+[e :UE 244 ]
+}
+"283
+[v _INT_Set `(v ~T0 @X0 1 ef ]
+"284
+{
+[; ;MCU_B1.c: 283: void INT_Set()
+[; ;MCU_B1.c: 284: {
+[e :U _INT_Set ]
+[f ]
+[; ;MCU_B1.c: 285: WPUB0=0;
+"285
+[e = _WPUB0 -> -> 0 `i `b ]
+[; ;MCU_B1.c: 286: INTE=1;
+"286
+[e = _INTE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 287: PEIE=1;
+"287
+[e = _PEIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 288: GIE=1;
+"288
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 289: }
+"289
+[e :UE 247 ]
+}
+"291
+[v _INT_ISR `(v ~T0 @X0 1 ef ]
+"292
+{
+[; ;MCU_B1.c: 291: void INT_ISR()
+[; ;MCU_B1.c: 292: {
+[e :U _INT_ISR ]
+[f ]
+[; ;MCU_B1.c: 293: if(INTE && INTF)
+"293
+[e $ ! && _INTE _INTF 249  ]
+[; ;MCU_B1.c: 294: {
+"294
+{
+[; ;MCU_B1.c: 295: INTF=0;
+"295
+[e = _INTF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 296: INTE=0;
+"296
+[e = _INTE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 297: setRF_ReceiveGO(1,1);
+"297
+[e ( _setRF_ReceiveGO (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"298
+}
+[e :U 249 ]
+[; ;MCU_B1.c: 298: }
+[; ;MCU_B1.c: 299: }
+"299
+[e :UE 248 ]
+}
+"301
+[v _setINT_GO `(v ~T0 @X0 1 ef1`uc ]
+"302
+{
+[; ;MCU_B1.c: 301: void setINT_GO(char command)
+[; ;MCU_B1.c: 302: {
+[e :U _setINT_GO ]
+"301
+[v _command `uc ~T0 @X0 1 r1 ]
+"302
+[f ]
+[; ;MCU_B1.c: 303: INTF=0;
+"303
+[e = _INTF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 304: INTE=command;
+"304
+[e = _INTE -> _command `b ]
+[; ;MCU_B1.c: 305: }
+"305
+[e :UE 250 ]
+}
+"403
+[v _I2C_Set `(v ~T0 @X0 1 ef ]
+"404
+{
+[; ;MCU_B1.c: 403: void I2C_Set()
+[; ;MCU_B1.c: 404: {
+[e :U _I2C_Set ]
+[f ]
+[; ;MCU_B1.c: 405: I2C=&VarI2C;
+"405
+[e = _I2C &U _VarI2C ]
+[; ;MCU_B1.c: 415: SSPADD=0x10;
+"415
+[e = _SSPADD -> -> 16 `i `uc ]
+[; ;MCU_B1.c: 417: SSPSTAT = 0x80;
+"417
+[e = _SSPSTAT -> -> 128 `i `uc ]
+[; ;MCU_B1.c: 418: SSPCON2 = 0x80;
+"418
+[e = _SSPCON2 -> -> 128 `i `uc ]
+[; ;MCU_B1.c: 419: SSPCON1=0b100110;
+"419
+[e = _SSPCON1 -> -> 38 `i `uc ]
+[; ;MCU_B1.c: 421: SEN=1;
+"421
+[e = _SEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 422: AHEN=0;
+"422
+[e = _AHEN -> -> 0 `i `b ]
+[; ;MCU_B1.c: 423: DHEN=0;
+"423
+[e = _DHEN -> -> 0 `i `b ]
+[; ;MCU_B1.c: 424: SSPIE=1;
+"424
+[e = _SSPIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 425: PEIE=1;
+"425
+[e = _PEIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 426: GIE=1;
+"426
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 428: }
+"428
+[e :UE 251 ]
+}
+"430
+[v _I2C_ISR `(v ~T0 @X0 1 ef ]
+"431
+{
+[; ;MCU_B1.c: 430: void I2C_ISR()
+[; ;MCU_B1.c: 431: {
+[e :U _I2C_ISR ]
+[f ]
+[; ;MCU_B1.c: 432: if(SSPIE && SSPIF)
+"432
+[e $ ! && _SSPIE _SSPIF 253  ]
+[; ;MCU_B1.c: 433: {
+"433
+{
+[; ;MCU_B1.c: 434: SSPIE=0;
+"434
+[e = _SSPIE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 435: I2C->SlaveGO=1;
+"435
+[e = . *U _I2C 4 -> -> 1 `i `uc ]
+"441
+}
+[e :U 253 ]
+[; ;MCU_B1.c: 441: }
+[; ;MCU_B1.c: 442: }
+"442
+[e :UE 252 ]
+}
+"444
+[v _I2C_Main `(v ~T0 @X0 1 ef ]
+"445
+{
+[; ;MCU_B1.c: 444: void I2C_Main()
+[; ;MCU_B1.c: 445: {
+[e :U _I2C_Main ]
+[f ]
+"446
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 446: char i;
+[; ;MCU_B1.c: 448: if(I2C->SlaveGO)
+"448
+[e $ ! != -> . *U _I2C 4 `i -> -> -> 0 `i `uc `i 255  ]
+[; ;MCU_B1.c: 449: {
+"449
+{
+[; ;MCU_B1.c: 450: I2C->SlaveGO=0;
+"450
+[e = . *U _I2C 4 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 451: I2C_Slave_Mode();
+"451
+[e ( _I2C_Slave_Mode ..  ]
+[; ;MCU_B1.c: 452: SSPIE=1;
+"452
+[e = _SSPIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 454: if(I2C->SlaveTxGO)
+"454
+[e $ ! != -> . *U _I2C 6 `i -> -> -> 0 `i `uc `i 256  ]
+[; ;MCU_B1.c: 455: {
+"455
+{
+[; ;MCU_B1.c: 456: I2C->SlaveTxGO=0;
+"456
+[e = . *U _I2C 6 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 457: RC0=0;
+"457
+[e = _RC0 -> -> 0 `i `b ]
+[; ;MCU_B1.c: 458: I2C->SS=0;
+"458
+[e = . *U _I2C 9 -> -> 0 `i `uc ]
+"459
+}
+[e :U 256 ]
+[; ;MCU_B1.c: 459: }
+[; ;MCU_B1.c: 460: if(I2C->SlaveRxGO)
+"460
+[e $ ! != -> . *U _I2C 5 `i -> -> -> 0 `i `uc `i 257  ]
+[; ;MCU_B1.c: 461: {
+"461
+{
+[; ;MCU_B1.c: 462: I2C->SlaveRxGO=0;
+"462
+[e = . *U _I2C 5 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 463: I2C_SetData(0);
+"463
+[e ( _I2C_SetData (1 -> -> 0 `i `uc ]
+"464
+}
+[e :U 257 ]
+[; ;MCU_B1.c: 464: }
+[; ;MCU_B1.c: 465: RA1=~RA1;
+"465
+[e = _RA1 -> ~ -> _RA1 `ui `b ]
+"466
+}
+[e :U 255 ]
+[; ;MCU_B1.c: 466: }
+[; ;MCU_B1.c: 510: }
+"510
+[e :UE 254 ]
+}
+"511
+[v _I2C_SetData `(v ~T0 @X0 1 ef1`uc ]
+"512
+{
+[; ;MCU_B1.c: 511: void I2C_SetData(char command)
+[; ;MCU_B1.c: 512: {
+[e :U _I2C_SetData ]
+"511
+[v _command `uc ~T0 @X0 1 r1 ]
+"512
+[f ]
+"514
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 514: char i;
+[; ;MCU_B1.c: 515: if(command)
+"515
+[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 259  ]
+[; ;MCU_B1.c: 516: {
+"516
+{
+[; ;MCU_B1.c: 517: if(!I2C->SS)
+"517
+[e $ ! ! != -> . *U _I2C 9 `i -> -> -> 0 `i `uc `i 260  ]
+[; ;MCU_B1.c: 518: {
+"518
+{
+[; ;MCU_B1.c: 519: I2C->SS=1;
+"519
+[e = . *U _I2C 9 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 520: for(i=0 ;i< 21 ;i++)
+"520
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 21 `i 261  ]
+[e $U 262  ]
+"521
+[e :U 261 ]
+[; ;MCU_B1.c: 521: {
+{
+[; ;MCU_B1.c: 522: I2C->BufferWriter[i+1]=RF_Data[i];
+"522
+[e = *U + &U . *U _I2C 1 * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U . *U _I2C 1 `ui `ux *U + &U _RF_Data * -> _i `ux -> -> # *U &U _RF_Data `ui `ux ]
+"523
+}
+"520
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 21 `i 261  ]
+[e :U 262 ]
+"523
+}
+[; ;MCU_B1.c: 523: }
+[; ;MCU_B1.c: 524: I2C->BufferWriter[0]=Tx_Length;
+"524
+[e = *U + &U . *U _I2C 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _I2C 1 `ui `ux _Tx_Length ]
+[; ;MCU_B1.c: 525: I2C->BufferWriter[22]=RSSI;
+"525
+[e = *U + &U . *U _I2C 1 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _I2C 1 `ui `ux _RSSI ]
+[; ;MCU_B1.c: 526: I2C->BufferWriter[23]=CRC;
+"526
+[e = *U + &U . *U _I2C 1 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _I2C 1 `ui `ux _CRC ]
+[; ;MCU_B1.c: 527: RC0=1;
+"527
+[e = _RC0 -> -> 1 `i `b ]
+"528
+}
+[e :U 260 ]
+"529
+}
+[; ;MCU_B1.c: 528: }
+[; ;MCU_B1.c: 529: }
+[e $U 264  ]
+"530
+[e :U 259 ]
+[; ;MCU_B1.c: 530: else
+[; ;MCU_B1.c: 531: {
+"531
+{
+[; ;MCU_B1.c: 533: for(i=0;i<21;i++)
+"533
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 21 `i 265  ]
+[e $U 266  ]
+"534
+[e :U 265 ]
+[; ;MCU_B1.c: 534: {
+{
+[; ;MCU_B1.c: 535: RF_Data[i]=I2C->BufferReader[i];
+"535
+[e = *U + &U _RF_Data * -> _i `ux -> -> # *U &U _RF_Data `ui `ux *U + &U . *U _I2C 0 * -> _i `ux -> -> # *U &U . *U _I2C 0 `ui `ux ]
+"536
+}
+"533
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 21 `i 265  ]
+[e :U 266 ]
+"536
+}
+[; ;MCU_B1.c: 536: }
+[; ;MCU_B1.c: 537: RF->TransceiveGO=1;
+"537
+[e = . *U _RF 2 -> -> 1 `i `uc ]
+"539
+}
+[e :U 264 ]
+[; ;MCU_B1.c: 539: }
+[; ;MCU_B1.c: 542: }
+"542
+[e :UE 258 ]
+}
+"544
+[v _I2C_Master_Transmission `(v ~T0 @X0 1 ef ]
+"545
+{
+[; ;MCU_B1.c: 544: void I2C_Master_Transmission()
+[; ;MCU_B1.c: 545: {
+[e :U _I2C_Master_Transmission ]
+[f ]
+"546
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 546: char i;
+[; ;MCU_B1.c: 547: while(SEN);
+"547
+[e $U 269  ]
+[e :U 270 ]
+[e :U 269 ]
+[e $ _SEN 270  ]
+[e :U 271 ]
+[; ;MCU_B1.c: 548: SEN=1;
+"548
+[e = _SEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 550: while(SEN);
+"550
+[e $U 272  ]
+[e :U 273 ]
+[e :U 272 ]
+[e $ _SEN 273  ]
+[e :U 274 ]
+[; ;MCU_B1.c: 553: SSPBUF=0x10;
+"553
+[e = _SSPBUF -> -> 16 `i `uc ]
+[; ;MCU_B1.c: 554: while(BF);
+"554
+[e $U 275  ]
+[e :U 276 ]
+[e :U 275 ]
+[e $ _BF 276  ]
+[e :U 277 ]
+[; ;MCU_B1.c: 557: while(ACKSTAT);
+"557
+[e $U 278  ]
+[e :U 279 ]
+[e :U 278 ]
+[e $ _ACKSTAT 279  ]
+[e :U 280 ]
+[; ;MCU_B1.c: 559: for(i=0;i<32;i++)
+"559
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 281  ]
+[e $U 282  ]
+"560
+[e :U 281 ]
+[; ;MCU_B1.c: 560: {
+{
+[; ;MCU_B1.c: 561: while(SEN);
+"561
+[e $U 284  ]
+[e :U 285 ]
+[e :U 284 ]
+[e $ _SEN 285  ]
+[e :U 286 ]
+[; ;MCU_B1.c: 562: SSPBUF=I2C->BufferWriter[i];
+"562
+[e = _SSPBUF *U + &U . *U _I2C 1 * -> _i `ux -> -> # *U &U . *U _I2C 1 `ui `ux ]
+[; ;MCU_B1.c: 563: while(BF);
+"563
+[e $U 287  ]
+[e :U 288 ]
+[e :U 287 ]
+[e $ _BF 288  ]
+[e :U 289 ]
+[; ;MCU_B1.c: 566: while(ACKSTAT);
+"566
+[e $U 290  ]
+[e :U 291 ]
+[e :U 290 ]
+[e $ _ACKSTAT 291  ]
+[e :U 292 ]
+"567
+}
+"559
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 281  ]
+[e :U 282 ]
+"567
+}
+[; ;MCU_B1.c: 567: }
+[; ;MCU_B1.c: 569: while(SEN);
+"569
+[e $U 293  ]
+[e :U 294 ]
+[e :U 293 ]
+[e $ _SEN 294  ]
+[e :U 295 ]
+[; ;MCU_B1.c: 570: while(!PEN)
+"570
+[e $U 296  ]
+[e :U 297 ]
+[; ;MCU_B1.c: 571: PEN=1;
+"571
+[e = _PEN -> -> 1 `i `b ]
+[e :U 296 ]
+"570
+[e $ ! _PEN 297  ]
+[e :U 298 ]
+[; ;MCU_B1.c: 572: while(PEN);
+"572
+[e $U 299  ]
+[e :U 300 ]
+[e :U 299 ]
+[e $ _PEN 300  ]
+[e :U 301 ]
+[; ;MCU_B1.c: 575: }
+"575
 [e :UE 268 ]
 }
-"110
-[v _CC2500_PowerRST `(v ~T0 @X0 1 ef ]
-"111
+"577
+[v _I2C_Master_Reception `(v ~T0 @X0 1 ef ]
+"578
 {
-[; ;CC2500_B1.c: 110: void CC2500_PowerRST(void)
-[; ;CC2500_B1.c: 111: {
-[e :U _CC2500_PowerRST ]
+[; ;MCU_B1.c: 577: void I2C_Master_Reception()
+[; ;MCU_B1.c: 578: {
+[e :U _I2C_Master_Reception ]
 [f ]
-[; ;CC2500_B1.c: 112: RB2=0;
-"112
-[e = _RB2 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 113: RB1=0;
-"113
-[e = _RB1 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 114: RB5=1;
-"114
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 115: DelayTime_1us(10);
-"115
-[e ( _DelayTime_1us (1 -> 10 `i ]
-[; ;CC2500_B1.c: 116: RB5=0;
-"116
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 117: DelayTime_1us(10);
-"117
-[e ( _DelayTime_1us (1 -> 10 `i ]
-[; ;CC2500_B1.c: 118: RB5=1;
-"118
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 119: DelayTime_1us(40);
-"119
-[e ( _DelayTime_1us (1 -> 40 `i ]
-[; ;CC2500_B1.c: 120: RB5=0;
-"120
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 121: SPI0Buffer=0x30;
-"121
-[e = _SPI0Buffer -> -> 48 `i `uc ]
-[; ;CC2500_B1.c: 122: while(RB3==1);
-"122
-[e $U 270  ]
-[e :U 271 ]
-[e :U 270 ]
-[e $ == -> _RB3 `i -> 1 `i 271  ]
-[e :U 272 ]
-[; ;CC2500_B1.c: 123: CC2500_WriteByte();
-"123
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 124: while(RB3==1);
-"124
-[e $U 273  ]
-[e :U 274 ]
-[e :U 273 ]
-[e $ == -> _RB3 `i -> 1 `i 274  ]
-[e :U 275 ]
-[; ;CC2500_B1.c: 125: RB1=0;
-"125
-[e = _RB1 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 126: RB5=1;
-"126
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 127: }
-"127
-[e :UE 269 ]
-}
-"131
-[v _CC2500_InitSetREG `(v ~T0 @X0 1 ef ]
-"132
-{
-[; ;CC2500_B1.c: 131: void CC2500_InitSetREG(void)
-[; ;CC2500_B1.c: 132: {
-[e :U _CC2500_InitSetREG ]
-[f ]
-"133
-[v _loop_c `uc ~T0 @X0 1 a ]
-"134
-[v _temp1 `uc ~T0 @X0 1 a ]
-[v _temp2 `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 133: unsigned char loop_c;
-[; ;CC2500_B1.c: 134: unsigned char temp1,temp2;
-[; ;CC2500_B1.c: 136: for(loop_c=0;loop_c<47;loop_c++)
-"136
-{
-[e = _loop_c -> -> 0 `i `uc ]
-[e $ < -> _loop_c `i -> 47 `i 277  ]
-[e $U 278  ]
-"137
-[e :U 277 ]
-[; ;CC2500_B1.c: 137: {
-{
-[; ;CC2500_B1.c: 138: temp1 = CC2500_registers_address[loop_c];
-"138
-[e = _temp1 *U + &U _CC2500_registers_address * -> _loop_c `ux -> -> # *U &U _CC2500_registers_address `ui `ux ]
-[; ;CC2500_B1.c: 139: temp2 = CC2500_rfSettings[loop_c];
-"139
-[e = _temp2 *U + &U _CC2500_rfSettings * -> _loop_c `ux -> -> # *U &U _CC2500_rfSettings `ui `ux ]
-[; ;CC2500_B1.c: 141: CC2500_WriteREG(temp1,temp2);
-"141
-[e ( _CC2500_WriteREG (2 , _temp1 _temp2 ]
-"142
-}
-"136
-[e ++ _loop_c -> -> 1 `i `uc ]
-[e $ < -> _loop_c `i -> 47 `i 277  ]
-[e :U 278 ]
-"142
-}
-[; ;CC2500_B1.c: 142: }
-[; ;CC2500_B1.c: 143: }
-"143
-[e :UE 276 ]
-}
-"147
-[v _CC2500_InitPATable `(v ~T0 @X0 1 ef ]
-"148
-{
-[; ;CC2500_B1.c: 147: void CC2500_InitPATable(void)
-[; ;CC2500_B1.c: 148: {
-[e :U _CC2500_InitPATable ]
-[f ]
-"149
-[v _loop_d `uc ~T0 @X0 1 a ]
-"150
-[v _temp `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 149: unsigned char loop_d;
-[; ;CC2500_B1.c: 150: unsigned char temp;
-[; ;CC2500_B1.c: 152: for(loop_d=0;loop_d<8;loop_d++)
-"152
-{
-[e = _loop_d -> -> 0 `i `uc ]
-[e $ < -> _loop_d `i -> 8 `i 281  ]
-[e $U 282  ]
-"153
-[e :U 281 ]
-[; ;CC2500_B1.c: 153: {
-{
-[; ;CC2500_B1.c: 154: temp=CC2500_patable_vaule[loop_d];
-"154
-[e = _temp *U + &U _CC2500_patable_vaule * -> _loop_d `ux -> -> # *U &U _CC2500_patable_vaule `ui `ux ]
-[; ;CC2500_B1.c: 155: CC2500_WriteREG(0x3E,temp);
-"155
-[e ( _CC2500_WriteREG (2 , -> -> 62 `i `uc _temp ]
-"156
-}
-"152
-[e ++ _loop_d -> -> 1 `i `uc ]
-[e $ < -> _loop_d `i -> 8 `i 281  ]
-[e :U 282 ]
-"156
-}
-[; ;CC2500_B1.c: 156: }
-[; ;CC2500_B1.c: 157: }
-"157
-[e :UE 280 ]
-}
-"161
-[v _CC2500_ClearTXFIFO `(v ~T0 @X0 1 ef ]
-"162
-{
-[; ;CC2500_B1.c: 161: void CC2500_ClearTXFIFO(void)
-[; ;CC2500_B1.c: 162: {
-[e :U _CC2500_ClearTXFIFO ]
-[f ]
-[; ;CC2500_B1.c: 163: CC2500_WriteCommand(0x3B);
-"163
-[e ( _CC2500_WriteCommand (1 -> -> 59 `i `uc ]
-[; ;CC2500_B1.c: 164: }
-"164
-[e :UE 284 ]
-}
-"168
-[v _CC2500_ClearRXFIFO `(v ~T0 @X0 1 ef ]
-"169
-{
-[; ;CC2500_B1.c: 168: void CC2500_ClearRXFIFO(void)
-[; ;CC2500_B1.c: 169: {
-[e :U _CC2500_ClearRXFIFO ]
-[f ]
-[; ;CC2500_B1.c: 170: CC2500_WriteCommand(0x3A);
-"170
-[e ( _CC2500_WriteCommand (1 -> -> 58 `i `uc ]
-[; ;CC2500_B1.c: 171: }
-"171
-[e :UE 285 ]
-}
-"175
-[v _CC2500_FrequencyCabr `(v ~T0 @X0 1 ef ]
-"176
-{
-[; ;CC2500_B1.c: 175: void CC2500_FrequencyCabr(void)
-[; ;CC2500_B1.c: 176: {
-[e :U _CC2500_FrequencyCabr ]
-[f ]
-[; ;CC2500_B1.c: 177: CC2500_WriteCommand(0x33);
-"177
-[e ( _CC2500_WriteCommand (1 -> -> 51 `i `uc ]
-[; ;CC2500_B1.c: 178: DelayTime_1us(1000);
-"178
-[e ( _DelayTime_1us (1 -> 1000 `i ]
-[; ;CC2500_B1.c: 179: }
-"179
-[e :UE 286 ]
-}
-"183
-[v _CC2500_SIDLEMode `(v ~T0 @X0 1 ef ]
-"184
-{
-[; ;CC2500_B1.c: 183: void CC2500_SIDLEMode(void)
-[; ;CC2500_B1.c: 184: {
-[e :U _CC2500_SIDLEMode ]
-[f ]
-[; ;CC2500_B1.c: 185: CC2500_WriteCommand(0x36);
-"185
-[e ( _CC2500_WriteCommand (1 -> -> 54 `i `uc ]
-[; ;CC2500_B1.c: 186: }
-"186
-[e :UE 287 ]
-}
-"193
-[v _CC2500_WriteByte `(v ~T0 @X0 1 ef ]
-"194
-{
-[; ;CC2500_B1.c: 193: void CC2500_WriteByte(void)
-[; ;CC2500_B1.c: 194: {
-[e :U _CC2500_WriteByte ]
-[f ]
-"195
-[v _loop_a `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 195: unsigned char loop_a;
-[; ;CC2500_B1.c: 196: for(loop_a=0;loop_a<8;loop_a++)
-"196
-{
-[e = _loop_a -> -> 0 `i `uc ]
-[e $ < -> _loop_a `i -> 8 `i 289  ]
-[e $U 290  ]
-"197
-[e :U 289 ]
-[; ;CC2500_B1.c: 197: {
-{
-[; ;CC2500_B1.c: 198: if(SPI0Buffer&0x80)
-"198
-[e $ ! != & -> _SPI0Buffer `i -> 128 `i -> 0 `i 292  ]
-[; ;CC2500_B1.c: 199: RB1=1;
-"199
-[e = _RB1 -> -> 1 `i `b ]
-[e $U 293  ]
-"200
-[e :U 292 ]
-[; ;CC2500_B1.c: 200: else
-[; ;CC2500_B1.c: 201: RB1=0;
-"201
-[e = _RB1 -> -> 0 `i `b ]
-[e :U 293 ]
-[; ;CC2500_B1.c: 202: RB2=1;
-"202
-[e = _RB2 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 203: SPI0Buffer<<=1;
-"203
-[e =<< _SPI0Buffer -> 1 `i ]
-[; ;CC2500_B1.c: 204: RB2=0;
-"204
-[e = _RB2 -> -> 0 `i `b ]
-"205
-}
-"196
-[e ++ _loop_a -> -> 1 `i `uc ]
-[e $ < -> _loop_a `i -> 8 `i 289  ]
-[e :U 290 ]
-"205
-}
-[; ;CC2500_B1.c: 205: }
-[; ;CC2500_B1.c: 206: }
-"206
-[e :UE 288 ]
-}
-"210
-[v _CC2500_ReadByte `(v ~T0 @X0 1 ef ]
-"211
-{
-[; ;CC2500_B1.c: 210: void CC2500_ReadByte(void)
-[; ;CC2500_B1.c: 211: {
-[e :U _CC2500_ReadByte ]
-[f ]
-"212
-[v _loop_b `uc ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 212: unsigned char loop_b;
-[; ;CC2500_B1.c: 213: for(loop_b=0;loop_b<8;loop_b++)
-"213
-{
-[e = _loop_b -> -> 0 `i `uc ]
-[e $ < -> _loop_b `i -> 8 `i 295  ]
-[e $U 296  ]
-"214
-[e :U 295 ]
-[; ;CC2500_B1.c: 214: {
-{
-[; ;CC2500_B1.c: 215: RB2=1;
-"215
-[e = _RB2 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 216: SPI0Buffer<<=1;
-"216
-[e =<< _SPI0Buffer -> 1 `i ]
-[; ;CC2500_B1.c: 217: if(RB3 == 1)
-"217
-[e $ ! == -> _RB3 `i -> 1 `i 298  ]
-[; ;CC2500_B1.c: 218: SPI0Buffer |= 0x01;
-"218
-[e =| _SPI0Buffer -> -> 1 `i `uc ]
-[e $U 299  ]
-"219
-[e :U 298 ]
-[; ;CC2500_B1.c: 219: else
-[; ;CC2500_B1.c: 220: SPI0Buffer &= 0xFE;
-"220
-[e =& _SPI0Buffer -> -> 254 `i `uc ]
-[e :U 299 ]
-[; ;CC2500_B1.c: 221: RB2=0;
-"221
-[e = _RB2 -> -> 0 `i `b ]
-"222
-}
-"213
-[e ++ _loop_b -> -> 1 `i `uc ]
-[e $ < -> _loop_b `i -> 8 `i 295  ]
-[e :U 296 ]
-"222
-}
-[; ;CC2500_B1.c: 222: }
-[; ;CC2500_B1.c: 223: }
-"223
-[e :UE 294 ]
-}
-"227
-[v _CC2500_WriteREG `(v ~T0 @X0 1 ef2`uc`uc ]
-"228
-{
-[; ;CC2500_B1.c: 227: void CC2500_WriteREG(unsigned char w_addr, unsigned char value)
-[; ;CC2500_B1.c: 228: {
-[e :U _CC2500_WriteREG ]
-"227
-[v _w_addr `uc ~T0 @X0 1 r1 ]
-[v _value `uc ~T0 @X0 1 r2 ]
-"228
-[f ]
-[; ;CC2500_B1.c: 229: RB5=0;
-"229
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 230: SPI0Buffer=w_addr;
-"230
-[e = _SPI0Buffer _w_addr ]
-[; ;CC2500_B1.c: 231: while(RB3==1);
-"231
-[e $U 301  ]
-[e :U 302 ]
-[e :U 301 ]
-[e $ == -> _RB3 `i -> 1 `i 302  ]
+"579
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 579: char i;
+[; ;MCU_B1.c: 580: while(SEN);
+"580
+[e $U 303  ]
+[e :U 304 ]
 [e :U 303 ]
-[; ;CC2500_B1.c: 232: CC2500_WriteByte();
-"232
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 233: SPI0Buffer=value;
-"233
-[e = _SPI0Buffer _value ]
-[; ;CC2500_B1.c: 234: CC2500_WriteByte();
-"234
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 235: RB5=1;
-"235
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 236: }
-"236
-[e :UE 300 ]
-}
-"240
-[v _CC2500_ReadREG `(v ~T0 @X0 1 ef1`uc ]
-"241
-{
-[; ;CC2500_B1.c: 240: void CC2500_ReadREG(unsigned char r_addr)
-[; ;CC2500_B1.c: 241: {
-[e :U _CC2500_ReadREG ]
-"240
-[v _r_addr `uc ~T0 @X0 1 r1 ]
-"241
-[f ]
-[; ;CC2500_B1.c: 242: RB5=0;
-"242
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 243: SPI0Buffer=r_addr+0x80;
-"243
-[e = _SPI0Buffer -> + -> _r_addr `i -> 128 `i `uc ]
-[; ;CC2500_B1.c: 244: while(RB3==1);
-"244
-[e $U 305  ]
-[e :U 306 ]
+[e $ _SEN 304  ]
 [e :U 305 ]
-[e $ == -> _RB3 `i -> 1 `i 306  ]
+[; ;MCU_B1.c: 581: SEN=1;
+"581
+[e = _SEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 582: while(SEN);
+"582
+[e $U 306  ]
 [e :U 307 ]
-[; ;CC2500_B1.c: 245: CC2500_WriteByte();
-"245
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 246: CC2500_ReadByte();
-"246
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 247: RB5=1;
-"247
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 248: r_data=SPI0Buffer;
-"248
-[e = _r_data _SPI0Buffer ]
-[; ;CC2500_B1.c: 249: }
-"249
-[e :UE 304 ]
-}
-"253
-[v _CC2500_WriteCommand `(v ~T0 @X0 1 ef1`uc ]
-"254
-{
-[; ;CC2500_B1.c: 253: void CC2500_WriteCommand(unsigned char command)
-[; ;CC2500_B1.c: 254: {
-[e :U _CC2500_WriteCommand ]
-"253
-[v _command `uc ~T0 @X0 1 r1 ]
-"254
-[f ]
-[; ;CC2500_B1.c: 255: RB5=0;
-"255
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 256: SPI0Buffer=command;
-"256
-[e = _SPI0Buffer _command ]
-[; ;CC2500_B1.c: 258: while(RB3==1);
-"258
+[e :U 306 ]
+[e $ _SEN 307  ]
+[e :U 308 ]
+[; ;MCU_B1.c: 585: SSPBUF=0x11;
+"585
+[e = _SSPBUF -> -> 17 `i `uc ]
+[; ;MCU_B1.c: 588: while(BF);
+"588
 [e $U 309  ]
 [e :U 310 ]
 [e :U 309 ]
-[e $ == -> _RB3 `i -> 1 `i 310  ]
+[e $ _BF 310  ]
 [e :U 311 ]
-[; ;CC2500_B1.c: 260: CC2500_WriteByte();
-"260
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 261: RB5=1;
-"261
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 263: }
-"263
-[e :UE 308 ]
-}
-"267
-[v _CC2500_ReadStatus `(v ~T0 @X0 1 ef1`uc ]
-"268
-{
-[; ;CC2500_B1.c: 267: void CC2500_ReadStatus(unsigned char status_addr)
-[; ;CC2500_B1.c: 268: {
-[e :U _CC2500_ReadStatus ]
-"267
-[v _status_addr `uc ~T0 @X0 1 r1 ]
-"268
-[f ]
-[; ;CC2500_B1.c: 269: RB5=0;
-"269
-[e = _RB5 -> -> 0 `i `b ]
-[; ;CC2500_B1.c: 270: SPI0Buffer=status_addr+0xC0;
-"270
-[e = _SPI0Buffer -> + -> _status_addr `i -> 192 `i `uc ]
-[; ;CC2500_B1.c: 272: while(RB3==1);
-"272
-[e $U 313  ]
-[e :U 314 ]
+[; ;MCU_B1.c: 589: while(ACKSTAT);
+"589
+[e $U 312  ]
 [e :U 313 ]
-[e $ == -> _RB3 `i -> 1 `i 314  ]
+[e :U 312 ]
+[e $ _ACKSTAT 313  ]
+[e :U 314 ]
+[; ;MCU_B1.c: 591: while(RCEN);
+"591
+[e $U 315  ]
+[e :U 316 ]
 [e :U 315 ]
-[; ;CC2500_B1.c: 274: CC2500_WriteByte();
-"274
-[e ( _CC2500_WriteByte ..  ]
-[; ;CC2500_B1.c: 275: CC2500_ReadByte();
-"275
-[e ( _CC2500_ReadByte ..  ]
-[; ;CC2500_B1.c: 276: RB5=1;
-"276
-[e = _RB5 -> -> 1 `i `b ]
-[; ;CC2500_B1.c: 278: s_data=SPI0Buffer;
-"278
-[e = _s_data _SPI0Buffer ]
-[; ;CC2500_B1.c: 279: }
-"279
-[e :UE 312 ]
-}
-"283
-[v _DelayTime_1us `(v ~T0 @X0 1 ef1`i ]
-"284
-{
-[; ;CC2500_B1.c: 283: void DelayTime_1us(int count)
-[; ;CC2500_B1.c: 284: {
-[e :U _DelayTime_1us ]
-"283
-[v _count `i ~T0 @X0 1 r1 ]
-"284
-[f ]
-"285
-[v _i `ui ~T0 @X0 1 a ]
-[v _j `ui ~T0 @X0 1 a ]
-[; ;CC2500_B1.c: 285: unsigned int i,j;
-[; ;CC2500_B1.c: 286: for(i=1;i<count;i++)
-"286
-{
-[e = _i -> -> 1 `i `ui ]
-[e $U 320  ]
-"287
+[e $ _RCEN 316  ]
 [e :U 317 ]
-[; ;CC2500_B1.c: 287: for(j=0;j<=1;j++);
-{
-[e = _j -> -> 0 `i `ui ]
-[e $ <= _j -> -> 1 `i `ui 321  ]
-[e $U 322  ]
-[e :U 321 ]
-[e ++ _j -> -> 1 `i `ui ]
-[e $ <= _j -> -> 1 `i `ui 321  ]
-[e :U 322 ]
-}
-"286
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 320 ]
-[e $ < _i -> _count `ui 317  ]
+[; ;MCU_B1.c: 592: RCEN=1;
+"592
+[e = _RCEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 593: while(RCEN);
+"593
+[e $U 318  ]
+[e :U 319 ]
 [e :U 318 ]
-"287
+[e $ _RCEN 319  ]
+[e :U 320 ]
+[; ;MCU_B1.c: 594: I2C->Address=SSPBUF;
+"594
+[e = . *U _I2C 3 _SSPBUF ]
+[; ;MCU_B1.c: 595: while(!ACKEN)
+"595
+[e $U 321  ]
+[e :U 322 ]
+[; ;MCU_B1.c: 596: ACKEN=1;
+"596
+[e = _ACKEN -> -> 1 `i `b ]
+[e :U 321 ]
+"595
+[e $ ! _ACKEN 322  ]
+[e :U 323 ]
+[; ;MCU_B1.c: 597: while(ACKEN);
+"597
+[e $U 324  ]
+[e :U 325 ]
+[e :U 324 ]
+[e $ _ACKEN 325  ]
+[e :U 326 ]
+[; ;MCU_B1.c: 598: while(RCEN);
+"598
+[e $U 327  ]
+[e :U 328 ]
+[e :U 327 ]
+[e $ _RCEN 328  ]
+[e :U 329 ]
+[; ;MCU_B1.c: 599: for(i=0;i<32;i++)
+"599
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 330  ]
+[e $U 331  ]
+"600
+[e :U 330 ]
+[; ;MCU_B1.c: 600: {
+{
+[; ;MCU_B1.c: 601: while(SEN);
+"601
+[e $U 333  ]
+[e :U 334 ]
+[e :U 333 ]
+[e $ _SEN 334  ]
+[e :U 335 ]
+[; ;MCU_B1.c: 602: while(RCEN);
+"602
+[e $U 336  ]
+[e :U 337 ]
+[e :U 336 ]
+[e $ _RCEN 337  ]
+[e :U 338 ]
+[; ;MCU_B1.c: 603: RCEN=1;
+"603
+[e = _RCEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 604: while(RCEN);
+"604
+[e $U 339  ]
+[e :U 340 ]
+[e :U 339 ]
+[e $ _RCEN 340  ]
+[e :U 341 ]
+[; ;MCU_B1.c: 605: I2C->BufferReader[i]=SSPBUF;
+"605
+[e = *U + &U . *U _I2C 0 * -> _i `ux -> -> # *U &U . *U _I2C 0 `ui `ux _SSPBUF ]
+[; ;MCU_B1.c: 606: while(!ACKEN)
+"606
+[e $U 342  ]
+[e :U 343 ]
+[; ;MCU_B1.c: 607: ACKEN=1;
+"607
+[e = _ACKEN -> -> 1 `i `b ]
+[e :U 342 ]
+"606
+[e $ ! _ACKEN 343  ]
+[e :U 344 ]
+[; ;MCU_B1.c: 608: while(ACKEN);
+"608
+[e $U 345  ]
+[e :U 346 ]
+[e :U 345 ]
+[e $ _ACKEN 346  ]
+[e :U 347 ]
+"610
 }
-[; ;CC2500_B1.c: 288: }
-"288
-[e :UE 316 ]
+"599
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 330  ]
+[e :U 331 ]
+"610
+}
+[; ;MCU_B1.c: 610: }
+[; ;MCU_B1.c: 618: RCEN=1;
+"618
+[e = _RCEN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 619: while(RCEN);
+"619
+[e $U 348  ]
+[e :U 349 ]
+[e :U 348 ]
+[e $ _RCEN 349  ]
+[e :U 350 ]
+[; ;MCU_B1.c: 621: while(SEN);
+"621
+[e $U 351  ]
+[e :U 352 ]
+[e :U 351 ]
+[e $ _SEN 352  ]
+[e :U 353 ]
+[; ;MCU_B1.c: 622: while(!PEN)
+"622
+[e $U 354  ]
+[e :U 355 ]
+[; ;MCU_B1.c: 623: PEN=1;
+"623
+[e = _PEN -> -> 1 `i `b ]
+[e :U 354 ]
+"622
+[e $ ! _PEN 355  ]
+[e :U 356 ]
+[; ;MCU_B1.c: 624: while(PEN);
+"624
+[e $U 357  ]
+[e :U 358 ]
+[e :U 357 ]
+[e $ _PEN 358  ]
+[e :U 359 ]
+[; ;MCU_B1.c: 627: }
+"627
+[e :UE 302 ]
+}
+"629
+[v _I2C_Slave_Mode `(v ~T0 @X0 1 ef ]
+"630
+{
+[; ;MCU_B1.c: 629: void I2C_Slave_Mode()
+[; ;MCU_B1.c: 630: {
+[e :U _I2C_Slave_Mode ]
+[f ]
+"631
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 631: char i;
+[; ;MCU_B1.c: 632: SSPIF=0;
+"632
+[e = _SSPIF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 633: I2C->Address=SSPBUF;
+"633
+[e = . *U _I2C 3 _SSPBUF ]
+[; ;MCU_B1.c: 635: if(R_nW)
+"635
+[e $ ! _R_nW 361  ]
+[; ;MCU_B1.c: 636: {
+"636
+{
+[; ;MCU_B1.c: 637: SSPOV=0;
+"637
+[e = _SSPOV -> -> 0 `i `b ]
+[; ;MCU_B1.c: 639: for(i=0;i<32;i++)
+"639
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 362  ]
+[e $U 363  ]
+"640
+[e :U 362 ]
+[; ;MCU_B1.c: 640: {
+{
+[; ;MCU_B1.c: 641: SSPBUF=I2C->BufferWriter[i];
+"641
+[e = _SSPBUF *U + &U . *U _I2C 1 * -> _i `ux -> -> # *U &U . *U _I2C 1 `ui `ux ]
+[; ;MCU_B1.c: 643: CKP=1;
+"643
+[e = _CKP -> -> 1 `i `b ]
+[; ;MCU_B1.c: 644: while(!SSPIF);
+"644
+[e $U 365  ]
+[e :U 366 ]
+[e :U 365 ]
+[e $ ! _SSPIF 366  ]
+[e :U 367 ]
+[; ;MCU_B1.c: 645: SSPIF=0;
+"645
+[e = _SSPIF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 646: while(ACKSTAT);
+"646
+[e $U 368  ]
+[e :U 369 ]
+[e :U 368 ]
+[e $ _ACKSTAT 369  ]
+[e :U 370 ]
+"647
+}
+"639
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 362  ]
+[e :U 363 ]
+"647
+}
+[; ;MCU_B1.c: 647: }
+[; ;MCU_B1.c: 648: CKP=1;
+"648
+[e = _CKP -> -> 1 `i `b ]
+[; ;MCU_B1.c: 650: I2C->SlaveTxGO=1;
+"650
+[e = . *U _I2C 6 -> -> 1 `i `uc ]
+"651
+}
+[; ;MCU_B1.c: 651: }
+[e $U 371  ]
+"652
+[e :U 361 ]
+[; ;MCU_B1.c: 652: else
+[; ;MCU_B1.c: 653: {
+"653
+{
+[; ;MCU_B1.c: 655: CKP=1;
+"655
+[e = _CKP -> -> 1 `i `b ]
+[; ;MCU_B1.c: 656: for(i=0;i<32;i++)
+"656
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 372  ]
+[e $U 373  ]
+"657
+[e :U 372 ]
+[; ;MCU_B1.c: 657: {
+{
+[; ;MCU_B1.c: 658: while(!SSPIF);
+"658
+[e $U 375  ]
+[e :U 376 ]
+[e :U 375 ]
+[e $ ! _SSPIF 376  ]
+[e :U 377 ]
+[; ;MCU_B1.c: 659: SSPIF=0;
+"659
+[e = _SSPIF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 660: I2C->BufferReader[i]=SSPBUF;
+"660
+[e = *U + &U . *U _I2C 0 * -> _i `ux -> -> # *U &U . *U _I2C 0 `ui `ux _SSPBUF ]
+[; ;MCU_B1.c: 662: CKP=1;
+"662
+[e = _CKP -> -> 1 `i `b ]
+"663
+}
+"656
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 372  ]
+[e :U 373 ]
+"663
+}
+[; ;MCU_B1.c: 663: }
+[; ;MCU_B1.c: 665: CKP=1;
+"665
+[e = _CKP -> -> 1 `i `b ]
+[; ;MCU_B1.c: 666: I2C->SlaveRxGO=1;
+"666
+[e = . *U _I2C 5 -> -> 1 `i `uc ]
+"667
+}
+[e :U 371 ]
+[; ;MCU_B1.c: 667: }
+[; ;MCU_B1.c: 670: }
+"670
+[e :UE 360 ]
 }

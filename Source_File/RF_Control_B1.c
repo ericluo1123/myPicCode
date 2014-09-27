@@ -82,6 +82,7 @@
 						CC2500_RxData();
 						#if I2C_use == 1
 							I2C_SetData(1);
+						//	LED2=~LED2;	
 						#elif UART_use == 1
 							UART_SetData();
 						#else 

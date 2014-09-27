@@ -292,6 +292,7 @@ unsigned Debounce:1;
 unsigned Learn:1;
 unsigned Key:1;
 unsigned char DebounceTime;
+unsigned Sleep:1;
 };
 struct RF *RF;
 
@@ -314,7 +315,7 @@ void setRF_Learn(char,char);
 void setRF_ReceiveGO(char,char);
 void setRF_RxStatus(char,char);
 
-# 76
+# 77
 struct RFSW
 {
 unsigned Status:1;
@@ -2811,11 +2812,11 @@ extern unsigned int flash_read(unsigned short addr);
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h"
-void Mcu_Initial();
+# 11 "C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h"
+void Mcu_Initialization();
 void IO_Set();
 
-# 242
+# 412
 struct Timer1
 {
 unsigned Timeout:1;
@@ -2827,12 +2828,12 @@ struct Timer1 *Timer1;
 void TMR1_Set();
 void TMR1_ISR();
 
-# 261
+# 431
 void INT_Set();
 void INT_ISR();
 void setINT_GO(char);
 
-# 380
+# 453
 struct I2C
 {
 unsigned char BufferReader[32];
@@ -2861,7 +2862,7 @@ void I2C_SetData(char);
 void main()
 {
 MainT_Initial();
-Mcu_Initial();
+Mcu_Initialization();
 ;;
 RF_Initialization();
 CC2500_PowerOnInitial();
@@ -2918,27 +2919,17 @@ if(TMain->Count1 == 1000)
 TMain->Count1=0;
 RA0=~RA0;
 
-# 78
+# 76
 if(TMain->Flag == 0)
 {
 
 
 }
 
-if(TMain->Test)
-{
-;;
-I2C->Count++;
-if(I2C->Count==32)
-{
-I2C->Count=0;
-}
+# 104
 }
 
-# 105
-}
-
-# 127
+# 126
 }
 }
 

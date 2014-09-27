@@ -6,33 +6,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO PowerCount Count Count1 Count2 Count3 IOC_Count Test FirstOpen First i j k l m n o p q r ]
 "37 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
-[s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 ]
-[n S4 RF Enable ReceiveGO TransceiveGO RxStatus TxStatus Debounce Learn Key DebounceTime ]
-"76
+[s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 :1 `uc 1 ]
+[n S4 RF Enable ReceiveGO TransceiveGO RxStatus TxStatus Debounce Learn Key DebounceTime Sleep ]
+"77
 [s S5 :1 `uc 1 ]
 [n S5 RFSW Status ]
-"242 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
+"412 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [s S238 :1 `uc 1 `ui 1 ]
 [n S238 Timer1 Timeout Count ]
-"380
+"453
 [s S239 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S239 I2C BufferReader BufferWriter Count Address SlaveGO SlaveRxGO SlaveTxGO MasterTxGO MasterRxGO SS ]
 [p mainexit ]
 "276 C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h
 [v _MainT_Initial `(v ~T0 @X0 0 ef ]
-"11 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
-[v _Mcu_Initial `(v ~T0 @X0 0 ef ]
-"56 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
+"11 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _Mcu_Initialization `(v ~T0 @X0 0 ef ]
+"57 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _RF_Initialization `(v ~T0 @X0 0 ef ]
 "294 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\CC2500_B1.h
 [v _CC2500_PowerOnInitial `(v ~T0 @X0 0 ef ]
 "277 C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release\../Release/myDevelopment-B.h
 [v _MainT `(v ~T0 @X0 0 ef ]
-"57 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
+"58 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _RF_Main `(v ~T0 @X0 0 ef ]
-"401 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
+"474 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _I2C_Main `(v ~T0 @X0 0 ef ]
-"62 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
+"63 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
 "4507 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
 [v _RA0 `Vb ~T0 @X0 0 e@96 ]
@@ -556,38 +556,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;RF_Control_B1.h: 45: unsigned Learn:1;
 [; ;RF_Control_B1.h: 46: unsigned Key:1;
 [; ;RF_Control_B1.h: 47: unsigned char DebounceTime;
-[; ;RF_Control_B1.h: 48: };
-"49 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
+[; ;RF_Control_B1.h: 48: unsigned Sleep:1;
+[; ;RF_Control_B1.h: 49: };
+"50 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _RF `*S4 ~T0 @X0 1 e ]
-[; ;RF_Control_B1.h: 49: struct RF *RF;
-"52
+[; ;RF_Control_B1.h: 50: struct RF *RF;
+"53
 [v _RF1 `S4 ~T0 @X0 1 e ]
-[; ;RF_Control_B1.h: 52: struct RF RF1;
-[; ;RF_Control_B1.h: 55: void RfPointSelect(char);
-[; ;RF_Control_B1.h: 56: void RF_Initialization();
-[; ;RF_Control_B1.h: 57: void RF_Main();
-[; ;RF_Control_B1.h: 58: void setRF_Initialization(char);
-[; ;RF_Control_B1.h: 59: void setRF_Main(char);
-[; ;RF_Control_B1.h: 60: void setTxData(char);
-[; ;RF_Control_B1.h: 61: void getRxData(char);
-[; ;RF_Control_B1.h: 62: void setRF_Enable(char,char);
-[; ;RF_Control_B1.h: 63: void setLog_Code(char);
-[; ;RF_Control_B1.h: 64: void setControl_Lights_Table(char);
-[; ;RF_Control_B1.h: 65: void RF_RxDisable(char);
-[; ;RF_Control_B1.h: 66: void setRF_Learn(char,char);
-[; ;RF_Control_B1.h: 67: void setRF_ReceiveGO(char,char);
-[; ;RF_Control_B1.h: 68: void setRF_RxStatus(char,char);
-[; ;RF_Control_B1.h: 76: struct RFSW
-[; ;RF_Control_B1.h: 77: {
-[; ;RF_Control_B1.h: 78: unsigned Status:1;
-[; ;RF_Control_B1.h: 79: };
-"80
+[; ;RF_Control_B1.h: 53: struct RF RF1;
+[; ;RF_Control_B1.h: 56: void RfPointSelect(char);
+[; ;RF_Control_B1.h: 57: void RF_Initialization();
+[; ;RF_Control_B1.h: 58: void RF_Main();
+[; ;RF_Control_B1.h: 59: void setRF_Initialization(char);
+[; ;RF_Control_B1.h: 60: void setRF_Main(char);
+[; ;RF_Control_B1.h: 61: void setTxData(char);
+[; ;RF_Control_B1.h: 62: void getRxData(char);
+[; ;RF_Control_B1.h: 63: void setRF_Enable(char,char);
+[; ;RF_Control_B1.h: 64: void setLog_Code(char);
+[; ;RF_Control_B1.h: 65: void setControl_Lights_Table(char);
+[; ;RF_Control_B1.h: 66: void RF_RxDisable(char);
+[; ;RF_Control_B1.h: 67: void setRF_Learn(char,char);
+[; ;RF_Control_B1.h: 68: void setRF_ReceiveGO(char,char);
+[; ;RF_Control_B1.h: 69: void setRF_RxStatus(char,char);
+[; ;RF_Control_B1.h: 77: struct RFSW
+[; ;RF_Control_B1.h: 78: {
+[; ;RF_Control_B1.h: 79: unsigned Status:1;
+[; ;RF_Control_B1.h: 80: };
+"81
 [v _RFSW `*S5 ~T0 @X0 1 e ]
-[; ;RF_Control_B1.h: 80: struct RFSW *RFSW;
-[; ;RF_Control_B1.h: 83: void RfSWPointSelect(char);
-[; ;RF_Control_B1.h: 84: void setRFSW_Control(char);
-[; ;RF_Control_B1.h: 85: void setRFSW_AdjControl(char);
-[; ;RF_Control_B1.h: 86: void setRFSW_Status(char,char);
+[; ;RF_Control_B1.h: 81: struct RFSW *RFSW;
+[; ;RF_Control_B1.h: 84: void RfSWPointSelect(char);
+[; ;RF_Control_B1.h: 85: void setRFSW_Control(char);
+[; ;RF_Control_B1.h: 86: void setRFSW_AdjControl(char);
+[; ;RF_Control_B1.h: 87: void setRFSW_Status(char,char);
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
 [; ;pic16f1516.h: 47: extern volatile unsigned char INDF0 @ 0x000;
@@ -2405,50 +2406,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 28: extern void __nop(void);
 [; ;pic.h: 80: extern unsigned int flash_read(unsigned short addr);
 [; ;pic.h: 154: extern __nonreentrant void _delay(unsigned long);
-[; ;MCU_16F1516_B1.h: 11: void Mcu_Initial();
-[; ;MCU_16F1516_B1.h: 12: void IO_Set();
-[; ;MCU_16F1516_B1.h: 242: struct Timer1
-[; ;MCU_16F1516_B1.h: 243: {
-[; ;MCU_16F1516_B1.h: 244: unsigned Timeout:1;
-[; ;MCU_16F1516_B1.h: 245: unsigned int Count;
-[; ;MCU_16F1516_B1.h: 246: };
-"247 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_16F1516_B1.h
+[; ;MCU_B1.h: 11: void Mcu_Initialization();
+[; ;MCU_B1.h: 12: void IO_Set();
+[; ;MCU_B1.h: 412: struct Timer1
+[; ;MCU_B1.h: 413: {
+[; ;MCU_B1.h: 414: unsigned Timeout:1;
+[; ;MCU_B1.h: 415: unsigned int Count;
+[; ;MCU_B1.h: 416: };
+"417 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarTimer1 `S238 ~T0 @X0 1 e ]
-[; ;MCU_16F1516_B1.h: 247: struct Timer1 VarTimer1;
-"248
+[; ;MCU_B1.h: 417: struct Timer1 VarTimer1;
+"418
 [v _Timer1 `*S238 ~T0 @X0 1 e ]
-[; ;MCU_16F1516_B1.h: 248: struct Timer1 *Timer1;
-[; ;MCU_16F1516_B1.h: 250: void TMR1_Set();
-[; ;MCU_16F1516_B1.h: 251: void TMR1_ISR();
-[; ;MCU_16F1516_B1.h: 261: void INT_Set();
-[; ;MCU_16F1516_B1.h: 262: void INT_ISR();
-[; ;MCU_16F1516_B1.h: 263: void setINT_GO(char);
-"393
+[; ;MCU_B1.h: 418: struct Timer1 *Timer1;
+[; ;MCU_B1.h: 420: void TMR1_Set();
+[; ;MCU_B1.h: 421: void TMR1_ISR();
+[; ;MCU_B1.h: 431: void INT_Set();
+[; ;MCU_B1.h: 432: void INT_ISR();
+[; ;MCU_B1.h: 433: void setINT_GO(char);
+"466
 [v _VarI2C `S239 ~T0 @X0 1 e ]
-[; ;MCU_16F1516_B1.h: 380: struct I2C
-[; ;MCU_16F1516_B1.h: 381: {
-[; ;MCU_16F1516_B1.h: 382: unsigned char BufferReader[32];
-[; ;MCU_16F1516_B1.h: 383: unsigned char BufferWriter[32];
-[; ;MCU_16F1516_B1.h: 384: unsigned char Count;
-[; ;MCU_16F1516_B1.h: 385: unsigned char Address;
-[; ;MCU_16F1516_B1.h: 386: unsigned SlaveGO:1;
-[; ;MCU_16F1516_B1.h: 387: unsigned SlaveRxGO:1;
-[; ;MCU_16F1516_B1.h: 388: unsigned SlaveTxGO:1;
-[; ;MCU_16F1516_B1.h: 389: unsigned MasterTxGO:1;
-[; ;MCU_16F1516_B1.h: 390: unsigned MasterRxGO:1;
-[; ;MCU_16F1516_B1.h: 391: unsigned SS:1;
-[; ;MCU_16F1516_B1.h: 392: }
-[; ;MCU_16F1516_B1.h: 393: struct I2C VarI2C;
-"394
+[; ;MCU_B1.h: 453: struct I2C
+[; ;MCU_B1.h: 454: {
+[; ;MCU_B1.h: 455: unsigned char BufferReader[32];
+[; ;MCU_B1.h: 456: unsigned char BufferWriter[32];
+[; ;MCU_B1.h: 457: unsigned char Count;
+[; ;MCU_B1.h: 458: unsigned char Address;
+[; ;MCU_B1.h: 459: unsigned SlaveGO:1;
+[; ;MCU_B1.h: 460: unsigned SlaveRxGO:1;
+[; ;MCU_B1.h: 461: unsigned SlaveTxGO:1;
+[; ;MCU_B1.h: 462: unsigned MasterTxGO:1;
+[; ;MCU_B1.h: 463: unsigned MasterRxGO:1;
+[; ;MCU_B1.h: 464: unsigned SS:1;
+[; ;MCU_B1.h: 465: }
+[; ;MCU_B1.h: 466: struct I2C VarI2C;
+"467
 [v _I2C `*S239 ~T0 @X0 1 e ]
-[; ;MCU_16F1516_B1.h: 394: struct I2C *I2C;
-[; ;MCU_16F1516_B1.h: 396: void I2C_Set();
-[; ;MCU_16F1516_B1.h: 397: void I2C_ISR();
-[; ;MCU_16F1516_B1.h: 398: void I2C_Master_Transmission();
-[; ;MCU_16F1516_B1.h: 399: void I2C_Master_Reception();
-[; ;MCU_16F1516_B1.h: 400: void I2C_Slave_Mode();
-[; ;MCU_16F1516_B1.h: 401: void I2C_Main();
-[; ;MCU_16F1516_B1.h: 402: void I2C_SetData(char);
+[; ;MCU_B1.h: 467: struct I2C *I2C;
+[; ;MCU_B1.h: 469: void I2C_Set();
+[; ;MCU_B1.h: 470: void I2C_ISR();
+[; ;MCU_B1.h: 471: void I2C_Master_Transmission();
+[; ;MCU_B1.h: 472: void I2C_Master_Reception();
+[; ;MCU_B1.h: 473: void I2C_Slave_Mode();
+[; ;MCU_B1.h: 474: void I2C_Main();
+[; ;MCU_B1.h: 475: void I2C_SetData(char);
 "6 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c
 [v _main `(v ~T0 @X0 1 ef ]
 "7
@@ -2460,9 +2461,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 8: MainT_Initial();
 "8
 [e ( _MainT_Initial ..  ]
-[; ;myMain.c: 9: Mcu_Initial();
+[; ;myMain.c: 9: Mcu_Initialization();
 "9
-[e ( _Mcu_Initial ..  ]
+[e ( _Mcu_Initialization ..  ]
 [; ;myMain.c: 10: ;;
 [; ;myMain.c: 11: RF_Initialization();
 "11
@@ -2606,52 +2607,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;myMain.c: 64: RA0=~RA0;
 "64
 [e = _RA0 -> ~ -> _RA0 `ui `b ]
-[; ;myMain.c: 78: if(TMain->Flag == 0)
-"78
+[; ;myMain.c: 76: if(TMain->Flag == 0)
+"76
 [e $ ! == -> . *U _TMain 3 `i -> 0 `i 252  ]
-[; ;myMain.c: 79: {
-"79
+[; ;myMain.c: 77: {
+"77
 {
-"82
+"80
 }
 [e :U 252 ]
-[; ;myMain.c: 82: }
-[; ;myMain.c: 84: if(TMain->Test)
-"84
-[e $ ! != -> . *U _TMain 11 `i -> -> -> 0 `i `uc `i 253  ]
-[; ;myMain.c: 85: {
-"85
-{
-[; ;myMain.c: 86: ;;
-[; ;myMain.c: 87: I2C->Count++;
-"87
-[e ++ . *U _I2C 2 -> -> 1 `i `uc ]
-[; ;myMain.c: 88: if(I2C->Count==32)
-"88
-[e $ ! == -> . *U _I2C 2 `i -> 32 `i 254  ]
-[; ;myMain.c: 89: {
-"89
-{
-[; ;myMain.c: 90: I2C->Count=0;
-"90
-[e = . *U _I2C 2 -> -> 0 `i `uc ]
-"91
-}
-[e :U 254 ]
-"92
-}
-[e :U 253 ]
-"105
+"104
 }
 [e :U 251 ]
-"127
+"126
 }
 [e :U 250 ]
-[; ;myMain.c: 91: }
-[; ;myMain.c: 92: }
-[; ;myMain.c: 105: }
+[; ;myMain.c: 80: }
+[; ;myMain.c: 104: }
+[; ;myMain.c: 126: }
 [; ;myMain.c: 127: }
-[; ;myMain.c: 128: }
-"128
+"127
 [e :UE 247 ]
 }

@@ -2637,7 +2637,7 @@ extern __nonreentrant void _delay(unsigned long);
 void Mcu_Initialization();
 void IO_Set();
 
-# 409
+# 412
 struct Timer1
 {
 unsigned Timeout:1;
@@ -2649,7 +2649,7 @@ struct Timer1 *Timer1;
 void TMR1_Set();
 void TMR1_ISR();
 
-# 450
+# 453
 struct I2C
 {
 unsigned char BufferReader[32];
@@ -2674,7 +2674,7 @@ void I2C_Slave_Mode();
 void I2C_Main();
 void I2C_SetData(char);
 
-# 542
+# 545
 struct UART
 {
 unsigned char TxData[32];
@@ -2759,14 +2759,14 @@ if(TMain->Count1 == 1000)
 TMain->Count1=0;
 RA2=~RA2;
 
-# 78
+# 76
 if(TMain->Flag == 0)
 {
 
 
 }
 
-# 105
+# 104
 }
 
 
@@ -2775,7 +2775,7 @@ if(TMain->Count2 == 2000)
 {
 TMain->Count2=0;
 
-# 124
+# 123
 }
 
 

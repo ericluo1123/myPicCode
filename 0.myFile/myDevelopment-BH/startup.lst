@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-                                                                                                           Wed Sep 17 23:33:51 2014
+                                                                                                           Sat Sep 27 20:35:19 2014
 
 
      1                           
@@ -14,141 +14,140 @@ Microchip Technology PIC Macro Assembler V1.33 build 59893
      8                           	; Compiler options:
      9                           	;
     10                           	; -omyDevelopment-BH.cof -mmyDevelopment-BH.map --summary=default \
-    11                           	; --output=default CC2500_B1.p1 MCU_16f1516_B1.p1 RF_Control_B1.p1 \
-    12                           	; myMain.p1 --chip=16F1516 \
-    13                           	; -IC:\Users\Eric\Documents\GitHub\myPicCode\Header_File \
-    14                           	; -IC:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release \
-    15                           	; -P --runtime=default --opt=default -D__DEBUG=1 -g --asmlist \
-    16                           	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
-    17                           	; --warnformat=Warning [%n] %f; %l.%c %s
-    18                           	;
+    11                           	; --output=default CC2500_B1.p1 RF_Control_B1.p1 myMain.p1 MCU_B1.p1 \
+    12                           	; --chip=16F1516 -IC:\Users\Eric\Documents\GitHub\myPicCode\Header_File \
+    13                           	; -IC:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release \
+    14                           	; -P --runtime=default --opt=default -D__DEBUG=1 -g --asmlist \
+    15                           	; --errformat=Error   [%n] %f; %l.%c %s --msgformat=Advisory[%n] %s \
+    16                           	; --warnformat=Warning [%n] %f; %l.%c %s
+    17                           	;
+    18                           
     19                           
-    20                           
-    21                           	processor	16F1516
-    22                           
-    23                           	global	_main,start,reset_vec
-    24                           	fnroot	_main
-    25                           	psect	config,class=CONFIG,delta=2,noexec
-    26                           	psect	idloc,class=IDLOC,delta=2,noexec
-    27                           	psect	code,class=CODE,delta=2
-    28                           	psect	powerup,class=CODE,delta=2
-    29                           	psect	reset_vec,class=CODE,delta=2
-    30                           	psect	maintext,class=CODE,delta=2
-    31  0000                     	Z	set	2
-    32  0002                     	PCL	set	2
-    33  0002                     	INDF	set	0
-    34  0000                     
-    35                           	STATUS	equ	3
-    36  0003                     	BSR	equ	8
-    37  0008                     	PCLATH	equ	0Ah
-    38  000A                     	psect	eeprom_data,class=EEDATA,delta=2,space=3,noexec
-    39                           	psect	strings,class=CODE,delta=2,reloc=256
-    40                           	psect	intentry,class=CODE,delta=2
-    41                           	psect	functab,class=CODE,delta=2
-    42                           	global	intlevel0,intlevel1,intlevel2, intlevel3, intlevel4, intlevel5
-    43                           intlevel0:
-    44  0000                     intlevel1:
-    45  0000                     intlevel2:
-    46  0000                     intlevel3:
-    47  0000                     intlevel4:
-    48  0000                     intlevel5:
-    49  0000                     	psect	init,class=CODE,delta=2
-    50                           	psect	cinit,class=CODE,delta=2
-    51                           	psect	text,class=CODE,delta=2
-    52                           	psect	end_init,class=CODE,delta=2
-    53                           	psect	clrtext,class=CODE,delta=2
-    54                           	INDF0	set	0
-    55  0000                     	INDF1	set	1
-    56  0001                     	PCL	set	2
-    57  0002                     	STATUS	set	3
-    58  0003                     	FSR0L	set	4
-    59  0004                     	FSR0H	set	5
-    60  0005                     	FSR1L	set	6
-    61  0006                     	FSR1H	set	7
-    62  0007                     	BSR	set	8
-    63  0008                     	WREG	set	9
-    64  0009                     	PCLATH	set	10
-    65  000A                     	INTCON	set	11
-    66  000B                     
-    67                           	psect	reset_vec
-    68                           reset_vec:
-    69  0000                     	; No powerup routine
-    70                           	global start
-    71                           
-    72                           ; jump to start
-    73                           	ljmp	start
-    74  0000  3180  2818         
-    75                           
-    76                           	psect	init
-    77                           start
-    78  0018                     
-    79                           ;Initialize the stack pointer (FSR1)
-    80                           ;Stack space: 020E3h-021EFh (269 bytes)
-    81                           
-    82                           	fsr1l	equ	6
-    83  0006                     	fsr1h	equ	7
-    84  0007                     	global stacklo, stackhi
-    85                           	stacklo	equ	020E3h
-    86  20E3                     	stackhi	equ	021EFh
-    87  21EF                     
-    88                           
-    89                           	psect	stack,class=STACK,space=2,noexec
-    90                           	global ___sp,___int_sp
-    91                           	___sp:
-    92  0000                     	___int_sp:
-    93  0000                     
-    94                           	psect	end_init
-    95                           	global start_initialization
-    96                           	ljmp start_initialization	;jump to C runtime clear & initialization
-    97  0018  3180  281A         
-    98                           ; Config register CONFIG1 @ 0x8007
-    99                           ;	Clock Out Enable
-   100                           ;	CLKOUTEN = 0x1, unprogrammed default
-   101                           ;	Watchdog Timer Enable
-   102                           ;	WDTE = OFF, WDT disabled
-   103                           ;	Power-up Timer Enable
-   104                           ;	PWRTE = 0x1, unprogrammed default
-   105                           ;	Flash Program Memory Code Protection
-   106                           ;	CP = 0x1, unprogrammed default
-   107                           ;	Brown-out Reset Enable
-   108                           ;	BOREN = 0x3, unprogrammed default
-   109                           ;	Fail-Safe Clock Monitor Enable
-   110                           ;	FCMEN = 0x1, unprogrammed default
-   111                           ;	MCLR Pin Function Select
-   112                           ;	MCLRE = 0x1, unprogrammed default
-   113                           ;	Internal/External Switchover
-   114                           ;	IESO = 0x1, unprogrammed default
-   115                           ;	Oscillator Selection
-   116                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
-   117                           
-   118                           	psect	config
-   119                           		org 0x0
-   120  8007                     		dw 0xFFE4
-   121  8007  FFE4               
-   122                           ; Config register CONFIG2 @ 0x8008
-   123                           ;	Stack Overflow/Underflow Reset Enable
-   124                           ;	STVREN = 0x1, unprogrammed default
-   125                           ;	Low-Power Brown Out Reset
-   126                           ;	LPBOR = 0x1, unprogrammed default
-   127                           ;	Brown-out Reset Voltage Selection
-   128                           ;	BORV = 0x1, unprogrammed default
-   129                           ;	Low-Voltage Programming Enable
-   130                           ;	LVP = 0x1, unprogrammed default
-   131                           ;	Voltage Regulator Capacitor Enable bit
-   132                           ;	VCAPEN = 0x1, unprogrammed default
-   133                           ;	Flash Memory Self-Write Protection
-   134                           ;	WRT = BOOT, 000h to 1FFh write protected, 200h to 1FFFh may be modified by EECON control
-   135                           
-   136                           	psect	config
-   137                           		org 0x1
-   138  8008                     		dw 0xFFFE
-   139  8008  FFFE               
+    20                           	processor	16F1516
+    21                           
+    22                           	global	_main,start,reset_vec
+    23                           	fnroot	_main
+    24                           	psect	config,class=CONFIG,delta=2,noexec
+    25                           	psect	idloc,class=IDLOC,delta=2,noexec
+    26                           	psect	code,class=CODE,delta=2
+    27                           	psect	powerup,class=CODE,delta=2
+    28                           	psect	reset_vec,class=CODE,delta=2
+    29                           	psect	maintext,class=CODE,delta=2
+    30  0000                     	Z	set	2
+    31  0002                     	PCL	set	2
+    32  0002                     	INDF	set	0
+    33  0000                     
+    34                           	STATUS	equ	3
+    35  0003                     	BSR	equ	8
+    36  0008                     	PCLATH	equ	0Ah
+    37  000A                     	psect	eeprom_data,class=EEDATA,delta=2,space=3,noexec
+    38                           	psect	strings,class=CODE,delta=2,reloc=256
+    39                           	psect	intentry,class=CODE,delta=2
+    40                           	psect	functab,class=CODE,delta=2
+    41                           	global	intlevel0,intlevel1,intlevel2, intlevel3, intlevel4, intlevel5
+    42                           intlevel0:
+    43  0000                     intlevel1:
+    44  0000                     intlevel2:
+    45  0000                     intlevel3:
+    46  0000                     intlevel4:
+    47  0000                     intlevel5:
+    48  0000                     	psect	init,class=CODE,delta=2
+    49                           	psect	cinit,class=CODE,delta=2
+    50                           	psect	text,class=CODE,delta=2
+    51                           	psect	end_init,class=CODE,delta=2
+    52                           	psect	clrtext,class=CODE,delta=2
+    53                           	INDF0	set	0
+    54  0000                     	INDF1	set	1
+    55  0001                     	PCL	set	2
+    56  0002                     	STATUS	set	3
+    57  0003                     	FSR0L	set	4
+    58  0004                     	FSR0H	set	5
+    59  0005                     	FSR1L	set	6
+    60  0006                     	FSR1H	set	7
+    61  0007                     	BSR	set	8
+    62  0008                     	WREG	set	9
+    63  0009                     	PCLATH	set	10
+    64  000A                     	INTCON	set	11
+    65  000B                     
+    66                           	psect	reset_vec
+    67                           reset_vec:
+    68  0000                     	; No powerup routine
+    69                           	global start
+    70                           
+    71                           ; jump to start
+    72                           	ljmp	start
+    73  0000  3180  2816         
+    74                           
+    75                           	psect	init
+    76                           start
+    77  0016                     
+    78                           ;Initialize the stack pointer (FSR1)
+    79                           ;Stack space: 020E3h-021EFh (269 bytes)
+    80                           
+    81                           	fsr1l	equ	6
+    82  0006                     	fsr1h	equ	7
+    83  0007                     	global stacklo, stackhi
+    84                           	stacklo	equ	020E3h
+    85  20E3                     	stackhi	equ	021EFh
+    86  21EF                     
+    87                           
+    88                           	psect	stack,class=STACK,space=2,noexec
+    89                           	global ___sp,___int_sp
+    90                           	___sp:
+    91  0000                     	___int_sp:
+    92  0000                     
+    93                           	psect	end_init
+    94                           	global start_initialization
+    95                           	ljmp start_initialization	;jump to C runtime clear & initialization
+    96  0016  3180  2818         
+    97                           ; Config register CONFIG1 @ 0x8007
+    98                           ;	Clock Out Enable
+    99                           ;	CLKOUTEN = 0x1, unprogrammed default
+   100                           ;	Watchdog Timer Enable
+   101                           ;	WDTE = OFF, WDT disabled
+   102                           ;	Power-up Timer Enable
+   103                           ;	PWRTE = 0x1, unprogrammed default
+   104                           ;	Flash Program Memory Code Protection
+   105                           ;	CP = 0x1, unprogrammed default
+   106                           ;	Brown-out Reset Enable
+   107                           ;	BOREN = 0x3, unprogrammed default
+   108                           ;	Fail-Safe Clock Monitor Enable
+   109                           ;	FCMEN = 0x1, unprogrammed default
+   110                           ;	MCLR Pin Function Select
+   111                           ;	MCLRE = 0x1, unprogrammed default
+   112                           ;	Internal/External Switchover
+   113                           ;	IESO = 0x1, unprogrammed default
+   114                           ;	Oscillator Selection
+   115                           ;	FOSC = INTOSC, INTOSC oscillator: I/O function on CLKIN pin
+   116                           
+   117                           	psect	config
+   118                           		org 0x0
+   119  8007                     		dw 0xFFE4
+   120  8007  FFE4               
+   121                           ; Config register CONFIG2 @ 0x8008
+   122                           ;	Stack Overflow/Underflow Reset Enable
+   123                           ;	STVREN = 0x1, unprogrammed default
+   124                           ;	Low-Power Brown Out Reset
+   125                           ;	LPBOR = 0x1, unprogrammed default
+   126                           ;	Brown-out Reset Voltage Selection
+   127                           ;	BORV = 0x1, unprogrammed default
+   128                           ;	Low-Voltage Programming Enable
+   129                           ;	LVP = 0x1, unprogrammed default
+   130                           ;	Voltage Regulator Capacitor Enable bit
+   131                           ;	VCAPEN = 0x1, unprogrammed default
+   132                           ;	Flash Memory Self-Write Protection
+   133                           ;	WRT = BOOT, 000h to 1FFh write protected, 200h to 1FFFh may be modified by EECON control
+   134                           
+   135                           	psect	config
+   136                           		org 0x1
+   137  8008                     		dw 0xFFFE
+   138  8008  FFFE               
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-Symbol Table                                                                                               Wed Sep 17 23:33:51 2014
+Symbol Table                                                                                               Sat Sep 27 20:35:19 2014
 
-               ___sp 0000                 _main 0405                 start 0018               stackhi 21EF  
-             stacklo 20E3  start_initialization 001A             ___int_sp 0000             intlevel0 0000  
+               ___sp 0000                 _main 044E                 start 0016               stackhi 21EF  
+             stacklo 20E3  start_initialization 0018             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

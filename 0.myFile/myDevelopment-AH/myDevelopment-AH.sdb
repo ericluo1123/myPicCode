@@ -23,10 +23,8 @@
 [v ___attoft __attoft `(f  1 e 3 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-[v i1___awdiv __awdiv `(i  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-[v i1___awmod __awmod `(i  1 e 2 0 ]
 "32 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
 "464 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
@@ -85,41 +83,42 @@
 [v _IO_Set IO_Set `(v  1 e 0 0 ]
 "97
 [v _ISR ISR `II(v  1 e 0 @3 ]
-"238
+"242
 [v _TMR1_Set TMR1_Set `(v  1 e 0 0 ]
-"249
+"253
 [v _TMR1_ISR TMR1_ISR `(v  1 e 0 0 ]
-"399
+"403
 [v _I2C_Set I2C_Set `(v  1 e 0 0 ]
-"426
+"430
 [v _I2C_ISR I2C_ISR `(v  1 e 0 0 ]
-"441
+"444
 [v _I2C_Main I2C_Main `(v  1 e 0 0 ]
-"508
+"511
 [v _I2C_SetData I2C_SetData `(v  1 e 0 0 ]
-"541
+"544
 [v _I2C_Master_Transmission I2C_Master_Transmission `(v  1 e 0 0 ]
-"574
+"577
 [v _I2C_Master_Reception I2C_Master_Reception `(v  1 e 0 0 ]
-"618
+"629
 [v _I2C_Slave_Mode I2C_Slave_Mode `(v  1 e 0 0 ]
-"665
+"677
 [v _UART_Set UART_Set `(v  1 e 0 0 ]
-"683
+"695
 [v _UART_ISR UART_ISR `(v  1 e 0 0 ]
-"703
+"723
 [v _UART_Main UART_Main `(v  1 e 0 0 ]
-"721
+"741
 [v _UART_Transmit UART_Transmit `(v  1 e 0 0 ]
-"738
+"760
 [v _UART_Receive UART_Receive `(v  1 e 0 0 ]
-"764
+"786
 [v _UART_SetData UART_SetData `(v  1 e 0 0 ]
-"777
+"799
 [v _putch putch `(v  1 e 0 0 ]
-"785
+[v i1_putch putch `(v  1 e 0 0 ]
+"807
 [v _getch getch `(uc  1 e 1 0 ]
-"792
+"814
 [v _getche getche `(uc  1 e 1 0 ]
 "6 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c
 [v _main main `(v  1 e 0 0 ]
@@ -131,7 +130,6 @@
 [v _SegmentDisplay_Initial SegmentDisplay_Initial `(v  1 e 0 0 ]
 "20
 [v _setSegmentDisplayNumber setSegmentDisplayNumber `(v  1 e 0 0 ]
-[v i1_setSegmentDisplayNumber setSegmentDisplayNumber `(v  1 e 0 0 ]
 "72
 [v _SegmentDisplay_Main SegmentDisplay_Main `(v  1 e 0 0 ]
 "412 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
@@ -220,8 +218,6 @@
 [v _RC0 RC0 `VEb  1 e 0 @112 ]
 "4555
 [v _RCEN RCEN `VEb  1 e 0 @4275 ]
-"4557
-[v _RCIDL RCIDL `VEb  1 e 0 @3326 ]
 "4559
 [v _RCIE RCIE `VEb  1 e 0 @1165 ]
 "4561
@@ -252,8 +248,8 @@
 [v _TXIE TXIE `VEb  1 e 0 @1164 ]
 "4761
 [v _TXIF TXIF `VEb  1 e 0 @140 ]
-"362 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
-[v _hexpowers hexpowers `DCC[4]ui  1 s 8 hexpowers ]
+"354 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
+[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
 [s S19 Product 32 `[32]uc 1 Data 32 0 ]
 "244 C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-AH\Release\myDevelopment-A.h
 [v _Product Product `*.4S19  1 e 1 0 ]
@@ -282,10 +278,10 @@
 [v _TMain TMain `*.4S21  1 e 1 0 ]
 [s S56 Timer1 3 `uc 1 Timeout 1 0 :1:0 
 `ui 1 Count 2 1 ]
-"414 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+"417 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarTimer1 VarTimer1 `S56  1 e 3 0 ]
-"415
-[v _Timer1 Timer1 `*.4S56  1 e 1 0 ]
+"418
+[v _Timer1 Timer1 `*.1S56  1 e 1 0 ]
 [s S59 I2C 67 `[32]uc 1 BufferReader 32 0 `[32]uc 1 BufferWriter 32 32 `uc 1 Count 1 64 `uc 1 Address 1 65 `uc 1 SlaveGO 1 66 :1:0 
 `uc 1 SlaveRxGO 1 66 :1:1 
 `uc 1 SlaveTxGO 1 66 :1:2 
@@ -293,16 +289,16 @@
 `uc 1 MasterRxGO 1 66 :1:4 
 `uc 1 SS 1 66 :1:5 
 ]
-"463
+"466
 [v _VarI2C VarI2C `S59  1 e 67 0 ]
-"464
+"467
 [v _I2C I2C `*.5S59  1 e 1 0 ]
 [s S70 UART 68 `[32]uc 1 TxData 32 0 `[32]uc 1 RxData 32 32 `uc 1 Count 1 64 `uc 1 TxLength 1 65 `uc 1 RxLength 1 66 `uc 1 TxGO 1 67 :1:0 
 `uc 1 RxGO 1 67 :1:1 
 ]
-"552
+"555
 [v _UART UART `*.5S70  1 e 1 0 ]
-"553
+"556
 [v _VarUart VarUart `S70  1 e 68 0 ]
 [s S45 Segment 26 `[17]uc 1 Display 17 0 `[4]uc 1 Num 4 17 `uc 1 Enable 1 21 :1:0 
 `uc 1 GO 1 21 :1:1 
@@ -318,98 +314,108 @@
 {
 "30
 } 0
-"703 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"723 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _UART_Main UART_Main `(v  1 e 0 0 ]
 {
-"720
+"740
 } 0
 "20 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
 [v _setSegmentDisplayNumber setSegmentDisplayNumber `(v  1 e 0 0 ]
 {
 "22
-[v setSegmentDisplayNumber@i i `uc  1 a 1 20 ]
+[v setSegmentDisplayNumber@i i `uc  1 a 1 15 ]
 "20
-[v setSegmentDisplayNumber@number number `i  1 p 2 14 ]
+[v setSegmentDisplayNumber@number number `i  1 p 2 9 ]
 "70
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "11
-[v ___awmod@sign sign `uc  1 a 1 11 ]
-[v ___awmod@counter counter `uc  1 a 1 10 ]
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
 "6
-[v ___awmod@divisor divisor `i  1 p 2 5 ]
-[v ___awmod@dividend dividend `i  1 p 2 7 ]
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
 "35
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
-[v ___awdiv@quotient quotient `i  1 a 2 12 ]
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
 "12
-[v ___awdiv@sign sign `uc  1 a 1 11 ]
-[v ___awdiv@counter counter `uc  1 a 1 10 ]
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
 "6
-[v ___awdiv@divisor divisor `i  1 p 2 5 ]
-[v ___awdiv@dividend dividend `i  1 p 2 7 ]
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"721 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"741 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _UART_Transmit UART_Transmit `(v  1 e 0 0 ]
 {
-"723
-[v UART_Transmit@i i `uc  1 a 1 33 ]
-"737
+"744
+[v UART_Transmit@j j `i  1 a 2 33 ]
+"743
+[v UART_Transmit@i i `uc  1 a 1 35 ]
+"759
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
-"1509
-[v printf@idx idx `uc  1 a 1 22 ]
-[s S540 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+[s S548 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
 "533
-[u S543 . 4 `ui 1 _val 2 0 `S540 1 _str 4 0 ]
-[v printf@_val _val `S543  1 a 4 24 ]
+[u S551 . 4 `ui 1 _val 2 0 `S548 1 _str 4 0 ]
+[v printf@_val _val `S551  1 a 4 25 ]
 "499
 [v printf@c c `c  1 a 1 29 ]
 "506
-[v printf@prec prec `c  1 a 1 28 ]
-"466
-[v printf@ap ap `[1]*.4v  1 a 1 23 ]
+[v printf@prec prec `c  1 a 1 24 ]
 "508
-[v printf@flag flag `uc  1 a 1 21 ]
+[v printf@flag flag `uc  1 a 1 23 ]
+"466
+[v printf@ap ap `[1]*.4v  1 a 1 22 ]
 "464
-[v printf@f f `*.25DCCuc  1 p 2 13 ]
+[v printf@f f `*.25DCCuc  1 p 2 14 ]
 "1550
 } 0
-"777 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"799 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _putch putch `(v  1 e 0 0 ]
 {
 [v putch@byte byte `uc  1 a 1 wreg ]
 [v putch@byte byte `uc  1 a 1 wreg ]
-[v putch@byte byte `uc  1 a 1 5 ]
-"783
+[v putch@byte byte `uc  1 a 1 0 ]
+"805
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 13 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
+"26
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwdiv@quotient quotient `ui  1 a 2 10 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 6 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 12 ]
+[v ___lwdiv@counter counter `uc  1 a 1 5 ]
 "6
-[v ___lwdiv@divisor divisor `ui  1 p 2 5 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 7 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"738 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"760 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _UART_Receive UART_Receive `(v  1 e 0 0 ]
 {
-"740
-[v UART_Receive@i i `uc  1 a 1 8 ]
-"763
+"762
+[v UART_Receive@i i `uc  1 a 1 3 ]
+"785
 } 0
 "72 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
 [v _SegmentDisplay_Main SegmentDisplay_Main `(v  1 e 0 0 ]
@@ -426,25 +432,25 @@
 {
 "48
 } 0
-"665
+"677
 [v _UART_Set UART_Set `(v  1 e 0 0 ]
 {
-"681
+"693
 } 0
-"238
+"242
 [v _TMR1_Set TMR1_Set `(v  1 e 0 0 ]
 {
-"247
+"251
 } 0
 "50
 [v _IO_Set IO_Set `(v  1 e 0 0 ]
 {
 "92
 } 0
-"399
+"403
 [v _I2C_Set I2C_Set `(v  1 e 0 0 ]
 {
-"424
+"428
 } 0
 "33 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c
 [v _MainT_Initial MainT_Initial `(v  1 e 0 0 ]
@@ -454,67 +460,68 @@
 "41
 [v _MainT MainT `(v  1 e 0 0 ]
 {
-"128
+"127
 } 0
-"441 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"444 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [v _I2C_Main I2C_Main `(v  1 e 0 0 ]
 {
-"443
-[v I2C_Main@i i `uc  1 a 1 11 ]
-"507
+"446
+[v I2C_Main@i i `uc  1 a 1 6 ]
+"510
 } 0
-"541
+"544
 [v _I2C_Master_Transmission I2C_Master_Transmission `(v  1 e 0 0 ]
 {
-"543
-[v I2C_Master_Transmission@i i `uc  1 a 1 6 ]
-"572
+"546
+[v I2C_Master_Transmission@i i `uc  1 a 1 1 ]
+"575
 } 0
-"574
+"577
 [v _I2C_Master_Reception I2C_Master_Reception `(v  1 e 0 0 ]
 {
-"576
-[v I2C_Master_Reception@i i `uc  1 a 1 7 ]
-"616
+"579
+[v I2C_Master_Reception@i i `uc  1 a 1 2 ]
+"627
 } 0
 "97
 [v _ISR ISR `II(v  1 e 0 @3 ]
 {
-"110
+"112
 } 0
-"683
+"695
 [v _UART_ISR UART_ISR `(v  1 e 0 0 ]
 {
-"702
+"697
+[v UART_ISR@i i `uc  1 a 1 4 ]
+"722
 } 0
-"20 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
-[v i1_setSegmentDisplayNumber setSegmentDisplayNumber `(v  1 e 0 0 ]
+"814
+[v _getche getche `(uc  1 e 1 0 ]
 {
-[v i1setSegmentDisplayNumber@i setSegmentDisplayNumber `uc  1 a 1 11 ]
-[v i1setSegmentDisplayNumber@number number `i  1 p 2 9 ]
-"70
+"816
+[v getche@c c `uc  1 a 1 1 ]
+"819
 } 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
-[v i1___awmod __awmod `(i  1 e 2 0 ]
+"799
+[v i1_putch putch `(v  1 e 0 0 ]
 {
-[v i1___awmod@sign __awmod `uc  1 a 1 6 ]
-[v i1___awmod@counter __awmod `uc  1 a 1 5 ]
-[v i1___awmod@divisor divisor `i  1 p 2 0 ]
-[v i1___awmod@dividend dividend `i  1 p 2 2 ]
-"35
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 wreg ]
+[v i1putch@byte byte `uc  1 a 1 0 ]
+"805
 } 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awdiv.c
-[v i1___awdiv __awdiv `(i  1 e 2 0 ]
+"807
+[v _getch getch `(uc  1 e 1 0 ]
 {
-[v i1___awdiv@quotient __awdiv `i  1 a 2 7 ]
-[v i1___awdiv@sign __awdiv `uc  1 a 1 6 ]
-[v i1___awdiv@counter __awdiv `uc  1 a 1 5 ]
-[v i1___awdiv@divisor divisor `i  1 p 2 0 ]
-[v i1___awdiv@dividend dividend `i  1 p 2 2 ]
-"42
+"812
 } 0
-"249 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
+"253
 [v _TMR1_ISR TMR1_ISR `(v  1 e 0 0 ]
 {
-"270
+"274
+} 0
+"430
+[v _I2C_ISR I2C_ISR `(v  1 e 0 0 ]
+{
+"442
 } 0

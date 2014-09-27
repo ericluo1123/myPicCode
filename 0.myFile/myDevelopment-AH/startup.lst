@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-                                                                                                           Wed Sep 24 23:12:51 2014
+                                                                                                           Sun Sep 28 01:35:53 2014
 
 
      1                           
@@ -77,11 +77,11 @@ Microchip Technology PIC Macro Assembler V1.33 build 59893
     71                           
     72                           ; jump to start
     73                           	ljmp	start
-    74  0000  3180  2813         
+    74  0000  3180  2816         
     75                           
     76                           	psect	init
     77                           start
-    78  0013                     
+    78  0016                     
     79                           ;Initialize the stack pointer (FSR1)
     80                           ;Stack space: 02134h-021EFh (188 bytes)
     81                           
@@ -100,7 +100,7 @@ Microchip Technology PIC Macro Assembler V1.33 build 59893
     94                           	psect	end_init
     95                           	global start_initialization
     96                           	ljmp start_initialization	;jump to C runtime clear & initialization
-    97  0013  3180  2815         
+    97  0016  3180  2818         
     98                           ; Config register CONFIG1 @ 0x8007
     99                           ;	Clock Out Enable
    100                           ;	CLKOUTEN = 0x1, unprogrammed default
@@ -146,9 +146,9 @@ Microchip Technology PIC Macro Assembler V1.33 build 59893
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-Symbol Table                                                                                               Wed Sep 24 23:12:51 2014
+Symbol Table                                                                                               Sun Sep 28 01:35:53 2014
 
-               ___sp 0000                 _main 0741                 start 0013               stackhi 21EF  
-             stacklo 2134  start_initialization 0015             ___int_sp 0000             intlevel0 0000  
+               ___sp 0000                 _main 063D                 start 0016               stackhi 21EF  
+             stacklo 2134  start_initialization 0018             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

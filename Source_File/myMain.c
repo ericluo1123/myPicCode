@@ -63,12 +63,10 @@ void MainT()
 			TMain->Count1=0;
 			LED1=~LED1;
 			#if UART_use == 1
-		/*		printf("\n");
-				printf("\r");
-				for(i=0;i<21;i++)
-				{
-					printf("%d",UART->TxData[i]);
-				}*/
+	//			for(i=0;i<32;i++)
+	//			{
+	//				printf("%d,",i);
+	//			}
 	//	printf("\rUart Baue Rate=38400\n");
 	//	printf("\rReceiver Original Data:\n\r");
 
@@ -81,26 +79,27 @@ void MainT()
 		
 			}
 			#if I2C_use == 1
-			/*	if(TMain->Test)
-				{
-					setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
-					I2C->Count++;
-					if(I2C->Count==32)
+				#if Master_Mode == 1
+				//setSegmentDisplayNumber(I2C->BufferReader[0]);
+				/*	if(TMain->Test)
 					{
-						I2C->Count=0;
+						setSegmentDisplayNumber(I2C->BufferReader[I2C->Count]);
+						I2C->Count++;
+						if(I2C->Count==32)
+						{
+							I2C->Count=0;
+						}
+					}*/
+				#endif
+				#if Slave_Mode == 1
+			/*		for(i=0;i<21;i++){
+						RF_Data[i]=i+1;
 					}
-				}*/
-			#endif
-			#if UART_use == 1
-			/*	if(TMain->Test)
-				{
-					setSegmentDisplayNumber(UART->RxData[UART->Count]);
-					UART->Count++;
-					if(UART->Count == 32)
-					{
-						UART->Count=0;
-					}
-				}*/
+					Tx_Length=0;
+					RSSI=22;
+					CRC=23;
+					I2C_SetData(1);*/
+				#endif
 			#endif
 		}
 		#if Master_Mode == 1

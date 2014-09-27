@@ -107,6 +107,8 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	INT_ISR();
 	
 	UART_ISR();	
+
+	I2C_ISR();
 }
 //*********************************************************
 #if Timer0_use == 1
@@ -431,7 +433,6 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		{
 			SSPIE=0;
 			I2C->SlaveGO=1;
-
 		//	I2C_Slave_Mode();
 		//	while(!SSPIE)
 		//		SSPIE=1;
@@ -507,7 +508,7 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 
 		#endif
 	}
-	void I2C_SetData(char command)
+	void I2C_SetData(char command)//for slave mode
 	{
 		#if CC2500_use == 1
 			char i;
@@ -518,9 +519,9 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 					I2C->SS=1;
 					for(i=0 ;i< 21 ;i++)
 					{
-						I2C->BufferWriter[i]=RF_Data[i];
+						I2C->BufferWriter[i+1]=RF_Data[i];
 					}	
-					I2C->BufferWriter[21]=Tx_Length;
+					I2C->BufferWriter[0]=Tx_Length;
 					I2C->BufferWriter[22]=RSSI;
 					I2C->BufferWriter[23]=CRC;
 					SS1=1;
@@ -528,11 +529,11 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			}
 			else
 			{
-				for(i=0;i<21;i++)
-				{
-					RF_Data[i]=I2C->BufferReader[i];
-				}
 				#if CC2500_use == 1
+					for(i=0;i<21;i++)
+					{
+						RF_Data[i]=I2C->BufferReader[i];
+					}
 					RF->TransceiveGO=1;
 				#endif
 			}
@@ -587,7 +588,14 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		while(BF);
 		while(ACKSTAT);
 	
-
+		while(RCEN);
+		RCEN=1;
+		while(RCEN);
+		I2C->Address=SSPBUF;
+		while(!ACKEN)
+			ACKEN=1;
+		while(ACKEN);
+		while(RCEN);
 		for(i=0;i<32;i++)
 		{
 			while(SEN);	
@@ -598,14 +606,15 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 			while(!ACKEN)
 				ACKEN=1;
 			while(ACKEN);
+
 		}
-		while(RCEN);
+	/*	while(RCEN);
 		RCEN=1;
 		while(RCEN);
 		while(!ACKEN)
 			ACKEN=1;
 		while(ACKEN);
-		while(RCEN);
+		while(RCEN);*/
 		RCEN=1;
 		while(RCEN);
 
@@ -622,10 +631,11 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		char i;
 		SSPIF=0;
 		I2C->Address=SSPBUF;
-		
+	
 		if(R_nW)//¼g to master
 		{
 			SSPOV=0;
+		
 			for(i=0;i<32;i++)
 			{
 				SSPBUF=I2C->BufferWriter[i];
@@ -687,19 +697,27 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		char i;
 		if(RCIE && RCIF)
 		{
-			while(!RCIDL);
-		//	UART->RxData[UART->RxLength]=RCREG;
-			UART->RxData[0]=RCREG;
-	/*
+			RCIE=0; 
+			for(i=0;i<32;i++){
+				UART->RxData[i]=getche();
+
+			}
+			UART->RxGO=1;
+
+		/*	while(!RCIDL);
+			UART->RxData[UART->RxLength]=RCREG;
+		//	UART->RxData[1]=getche();
+	
 			UART->RxLength++;
 			if(UART->RxLength == 32)
 			{
 				UART->RxLength=0;
 				UART->RxGO=1;
 				RCIE=0;	
-			}	*/
+				setSegmentDisplayNumber(UART->RxData[1]);
+			}	
 			LED2=~LED2;
-			setSegmentDisplayNumber(UART->RxData[0]);
+			*/
 		}
 	}
 	void UART_Main()
@@ -708,8 +726,8 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 		{
 			UART->RxGO=0;
 			UART_Receive();
+			setSegmentDisplayNumber(UART->RxData[5]);
 			RCIE=1;	
-			setSegmentDisplayNumber(UART->RxData[0]);
 		}
 		else
 		{
@@ -723,11 +741,12 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	void UART_Transmit()
 	{
 		char i;
+		int j;
 
 		for(i=0;i<32;i++)
 		{	
 		//	printf("%d,",i);
-			printf("%x,",UART->TxData[i]);	
+			printf("%d,",UART->TxData[i]);	
 		//	while(!TRMT);
 		//	while(!TXIF)	/* set when register is empty */
 		//		continue;

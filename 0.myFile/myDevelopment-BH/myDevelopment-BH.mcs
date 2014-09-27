@@ -9,25 +9,12 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File001]
-Location=C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\MCU_16f1516_B1.p1
-Folder=Intermediary
-DeviceName=PIC16F1516
-LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
-LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=C9=6,5,4 
-TraceCmdString=
-DebugOptions=
-[File002]
 Location=C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\RF_Control_B1.p1
 Folder=Intermediary
 DeviceName=PIC16F1516
@@ -35,12 +22,12 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
-[File003]
+[File002]
 Location=C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\myMain.p1
 Folder=Intermediary
 DeviceName=PIC16F1516
@@ -48,9 +35,22 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
+TraceCmdString=
+DebugOptions=
+[File003]
+Location=C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\MCU_B1.p1
+Folder=Intermediary
+DeviceName=PIC16F1516
+LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
+LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File004]
@@ -61,9 +61,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File005]
@@ -74,9 +74,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File006]
@@ -87,9 +87,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File007]
@@ -100,9 +100,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File008]
@@ -113,9 +113,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File009]
@@ -126,9 +126,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File010]
@@ -139,9 +139,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File011]
@@ -152,9 +152,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File012]
@@ -165,9 +165,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File013]
@@ -178,9 +178,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File014]
@@ -191,9 +191,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File015]
@@ -204,9 +204,9 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=
 [File016]
@@ -217,8 +217,8 @@ LanguageToolSuiteID={507D93FD-16F1-4270-980F-0C7C0207E6D3}
 LanguageToolID={0F51667C-2BAF-4EF8-A2C9-AB83788A793D}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc8\v1.33\bin\xc8.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Users\Eric\Documents\GitHub\myPicCode\Header_File;C:\Users\Eric\Documents\GitHub\myPicCode\0.myFile\myDevelopment-BH\Release||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_16f1516_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\myMain.c|C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\MCU_B1.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=C9=6,5,4 
+ToolArgsString=C9=6,5,4
 TraceCmdString=
 DebugOptions=

@@ -8,13 +8,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "55 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\SegmentDisplay_A2.h
 [s S4 `uc -> 17 `i `uc -> 4 `i :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S4 Segment Display Num Enable GO Hex Dec ComCount DisplayCount Count Time ]
-"409 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+"412 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [s S237 :1 `uc 1 `ui 1 ]
 [n S237 Timer1 Timeout Count ]
-"450
+"453
 [s S238 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S238 I2C BufferReader BufferWriter Count Address SlaveGO SlaveRxGO SlaveTxGO MasterTxGO MasterRxGO SS ]
-"542
+"545
 [s S239 `uc -> 32 `i `uc -> 32 `i `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S239 UART TxData RxData Count TxLength RxLength TxGO RxGO ]
 "412 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f1516.h
@@ -2029,70 +2029,70 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 154: extern __nonreentrant void _delay(unsigned long);
 [; ;MCU_B1.h: 11: void Mcu_Initialization();
 [; ;MCU_B1.h: 12: void IO_Set();
-[; ;MCU_B1.h: 409: struct Timer1
-[; ;MCU_B1.h: 410: {
-[; ;MCU_B1.h: 411: unsigned Timeout:1;
-[; ;MCU_B1.h: 412: unsigned int Count;
-[; ;MCU_B1.h: 413: };
-"414 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[; ;MCU_B1.h: 412: struct Timer1
+[; ;MCU_B1.h: 413: {
+[; ;MCU_B1.h: 414: unsigned Timeout:1;
+[; ;MCU_B1.h: 415: unsigned int Count;
+[; ;MCU_B1.h: 416: };
+"417 C:\Users\Eric\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _VarTimer1 `S237 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 414: struct Timer1 VarTimer1;
-"415
+[; ;MCU_B1.h: 417: struct Timer1 VarTimer1;
+"418
 [v _Timer1 `*S237 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 415: struct Timer1 *Timer1;
-[; ;MCU_B1.h: 417: void TMR1_Set();
-[; ;MCU_B1.h: 418: void TMR1_ISR();
-"463
+[; ;MCU_B1.h: 418: struct Timer1 *Timer1;
+[; ;MCU_B1.h: 420: void TMR1_Set();
+[; ;MCU_B1.h: 421: void TMR1_ISR();
+"466
 [v _VarI2C `S238 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 450: struct I2C
-[; ;MCU_B1.h: 451: {
-[; ;MCU_B1.h: 452: unsigned char BufferReader[32];
-[; ;MCU_B1.h: 453: unsigned char BufferWriter[32];
-[; ;MCU_B1.h: 454: unsigned char Count;
-[; ;MCU_B1.h: 455: unsigned char Address;
-[; ;MCU_B1.h: 456: unsigned SlaveGO:1;
-[; ;MCU_B1.h: 457: unsigned SlaveRxGO:1;
-[; ;MCU_B1.h: 458: unsigned SlaveTxGO:1;
-[; ;MCU_B1.h: 459: unsigned MasterTxGO:1;
-[; ;MCU_B1.h: 460: unsigned MasterRxGO:1;
-[; ;MCU_B1.h: 461: unsigned SS:1;
-[; ;MCU_B1.h: 462: }
-[; ;MCU_B1.h: 463: struct I2C VarI2C;
-"464
+[; ;MCU_B1.h: 453: struct I2C
+[; ;MCU_B1.h: 454: {
+[; ;MCU_B1.h: 455: unsigned char BufferReader[32];
+[; ;MCU_B1.h: 456: unsigned char BufferWriter[32];
+[; ;MCU_B1.h: 457: unsigned char Count;
+[; ;MCU_B1.h: 458: unsigned char Address;
+[; ;MCU_B1.h: 459: unsigned SlaveGO:1;
+[; ;MCU_B1.h: 460: unsigned SlaveRxGO:1;
+[; ;MCU_B1.h: 461: unsigned SlaveTxGO:1;
+[; ;MCU_B1.h: 462: unsigned MasterTxGO:1;
+[; ;MCU_B1.h: 463: unsigned MasterRxGO:1;
+[; ;MCU_B1.h: 464: unsigned SS:1;
+[; ;MCU_B1.h: 465: }
+[; ;MCU_B1.h: 466: struct I2C VarI2C;
+"467
 [v _I2C `*S238 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 464: struct I2C *I2C;
-[; ;MCU_B1.h: 466: void I2C_Set();
-[; ;MCU_B1.h: 467: void I2C_ISR();
-[; ;MCU_B1.h: 468: void I2C_Master_Transmission();
-[; ;MCU_B1.h: 469: void I2C_Master_Reception();
-[; ;MCU_B1.h: 470: void I2C_Slave_Mode();
-[; ;MCU_B1.h: 471: void I2C_Main();
-[; ;MCU_B1.h: 472: void I2C_SetData(char);
-[; ;MCU_B1.h: 542: struct UART
-[; ;MCU_B1.h: 543: {
-[; ;MCU_B1.h: 544: unsigned char TxData[32];
-[; ;MCU_B1.h: 545: unsigned char RxData[32];
-[; ;MCU_B1.h: 546: unsigned char Count;
-[; ;MCU_B1.h: 547: unsigned char TxLength;
-[; ;MCU_B1.h: 548: unsigned char RxLength;
-[; ;MCU_B1.h: 549: unsigned TxGO:1;
-[; ;MCU_B1.h: 550: unsigned RxGO:1;
-[; ;MCU_B1.h: 551: };
-"552
+[; ;MCU_B1.h: 467: struct I2C *I2C;
+[; ;MCU_B1.h: 469: void I2C_Set();
+[; ;MCU_B1.h: 470: void I2C_ISR();
+[; ;MCU_B1.h: 471: void I2C_Master_Transmission();
+[; ;MCU_B1.h: 472: void I2C_Master_Reception();
+[; ;MCU_B1.h: 473: void I2C_Slave_Mode();
+[; ;MCU_B1.h: 474: void I2C_Main();
+[; ;MCU_B1.h: 475: void I2C_SetData(char);
+[; ;MCU_B1.h: 545: struct UART
+[; ;MCU_B1.h: 546: {
+[; ;MCU_B1.h: 547: unsigned char TxData[32];
+[; ;MCU_B1.h: 548: unsigned char RxData[32];
+[; ;MCU_B1.h: 549: unsigned char Count;
+[; ;MCU_B1.h: 550: unsigned char TxLength;
+[; ;MCU_B1.h: 551: unsigned char RxLength;
+[; ;MCU_B1.h: 552: unsigned TxGO:1;
+[; ;MCU_B1.h: 553: unsigned RxGO:1;
+[; ;MCU_B1.h: 554: };
+"555
 [v _UART `*S239 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 552: struct UART *UART;
-"553
+[; ;MCU_B1.h: 555: struct UART *UART;
+"556
 [v _VarUart `S239 ~T0 @X0 1 e ]
-[; ;MCU_B1.h: 553: struct UART VarUart;
-[; ;MCU_B1.h: 557: void putch(unsigned char);
-[; ;MCU_B1.h: 558: unsigned char getch(void);
-[; ;MCU_B1.h: 559: unsigned char getche(void);
-[; ;MCU_B1.h: 560: void UART_Set();
-[; ;MCU_B1.h: 561: void UART_ISR();
-[; ;MCU_B1.h: 562: void UART_Main();
-[; ;MCU_B1.h: 563: void UART_Transmit();
-[; ;MCU_B1.h: 564: void UART_Receive();
-[; ;MCU_B1.h: 565: void UART_SetData();
+[; ;MCU_B1.h: 556: struct UART VarUart;
+[; ;MCU_B1.h: 560: void putch(unsigned char);
+[; ;MCU_B1.h: 561: unsigned char getch(void);
+[; ;MCU_B1.h: 562: unsigned char getche(void);
+[; ;MCU_B1.h: 563: void UART_Set();
+[; ;MCU_B1.h: 564: void UART_ISR();
+[; ;MCU_B1.h: 565: void UART_Main();
+[; ;MCU_B1.h: 566: void UART_Transmit();
+[; ;MCU_B1.h: 567: void UART_Receive();
+[; ;MCU_B1.h: 568: void UART_SetData();
 "8 C:\Users\Eric\Documents\GitHub\myPicCode\Source_File\SegmentDisplay_A2.c
 [v _SegmentDisplay_Initial `(v ~T0 @X0 1 ef ]
 "9
