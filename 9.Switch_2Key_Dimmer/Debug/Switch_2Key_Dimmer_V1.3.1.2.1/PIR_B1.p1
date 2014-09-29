@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -137,7 +137,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"89
+"90
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -156,25 +156,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 73: unsigned int Count3;
 [; ;Main_B1.h: 74: unsigned char IOC_Count;
 [; ;Main_B1.h: 75: unsigned char Test;
-[; ;Main_B1.h: 77: unsigned i:1;
-[; ;Main_B1.h: 78: unsigned j:1;
-[; ;Main_B1.h: 79: unsigned k:1;
-[; ;Main_B1.h: 80: unsigned l:1;
-[; ;Main_B1.h: 81: unsigned m:1;
-[; ;Main_B1.h: 82: unsigned n:1;
-[; ;Main_B1.h: 83: unsigned o:1;
-[; ;Main_B1.h: 84: unsigned p:1;
-[; ;Main_B1.h: 85: unsigned q:1;
-[; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: unsigned ClockStop:1;
-[; ;Main_B1.h: 88: }
-[; ;Main_B1.h: 89: struct TMain VarTMain;
-"90
+[; ;Main_B1.h: 76: unsigned char ClockCount;
+[; ;Main_B1.h: 78: unsigned i:1;
+[; ;Main_B1.h: 79: unsigned j:1;
+[; ;Main_B1.h: 80: unsigned k:1;
+[; ;Main_B1.h: 81: unsigned l:1;
+[; ;Main_B1.h: 82: unsigned m:1;
+[; ;Main_B1.h: 83: unsigned n:1;
+[; ;Main_B1.h: 84: unsigned o:1;
+[; ;Main_B1.h: 85: unsigned p:1;
+[; ;Main_B1.h: 86: unsigned q:1;
+[; ;Main_B1.h: 87: unsigned r:1;
+[; ;Main_B1.h: 88: unsigned ClockStop:1;
+[; ;Main_B1.h: 89: }
+[; ;Main_B1.h: 90: struct TMain VarTMain;
+"91
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 90: struct TMain *TMain;
-[; ;Main_B1.h: 94: void MainT_Initialization();
-[; ;Main_B1.h: 95: void MainT();
-[; ;Main_B1.h: 96: void MainT_ResetClock();
+[; ;Main_B1.h: 91: struct TMain *TMain;
+[; ;Main_B1.h: 95: void MainT_Initialization();
+[; ;Main_B1.h: 96: void MainT();
+[; ;Main_B1.h: 97: void MainT_ResetClock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {

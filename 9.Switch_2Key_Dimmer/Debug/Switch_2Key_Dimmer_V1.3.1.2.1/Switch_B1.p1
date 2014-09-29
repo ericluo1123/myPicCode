@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -185,7 +185,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"89
+"90
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -204,25 +204,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 73: unsigned int Count3;
 [; ;Main_B1.h: 74: unsigned char IOC_Count;
 [; ;Main_B1.h: 75: unsigned char Test;
-[; ;Main_B1.h: 77: unsigned i:1;
-[; ;Main_B1.h: 78: unsigned j:1;
-[; ;Main_B1.h: 79: unsigned k:1;
-[; ;Main_B1.h: 80: unsigned l:1;
-[; ;Main_B1.h: 81: unsigned m:1;
-[; ;Main_B1.h: 82: unsigned n:1;
-[; ;Main_B1.h: 83: unsigned o:1;
-[; ;Main_B1.h: 84: unsigned p:1;
-[; ;Main_B1.h: 85: unsigned q:1;
-[; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: unsigned ClockStop:1;
-[; ;Main_B1.h: 88: }
-[; ;Main_B1.h: 89: struct TMain VarTMain;
-"90
+[; ;Main_B1.h: 76: unsigned char ClockCount;
+[; ;Main_B1.h: 78: unsigned i:1;
+[; ;Main_B1.h: 79: unsigned j:1;
+[; ;Main_B1.h: 80: unsigned k:1;
+[; ;Main_B1.h: 81: unsigned l:1;
+[; ;Main_B1.h: 82: unsigned m:1;
+[; ;Main_B1.h: 83: unsigned n:1;
+[; ;Main_B1.h: 84: unsigned o:1;
+[; ;Main_B1.h: 85: unsigned p:1;
+[; ;Main_B1.h: 86: unsigned q:1;
+[; ;Main_B1.h: 87: unsigned r:1;
+[; ;Main_B1.h: 88: unsigned ClockStop:1;
+[; ;Main_B1.h: 89: }
+[; ;Main_B1.h: 90: struct TMain VarTMain;
+"91
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 90: struct TMain *TMain;
-[; ;Main_B1.h: 94: void MainT_Initialization();
-[; ;Main_B1.h: 95: void MainT();
-[; ;Main_B1.h: 96: void MainT_ResetClock();
+[; ;Main_B1.h: 91: struct TMain *TMain;
+[; ;Main_B1.h: 95: void MainT_Initialization();
+[; ;Main_B1.h: 96: void MainT();
+[; ;Main_B1.h: 97: void MainT_ResetClock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -3080,559 +3081,562 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Switch_B1.c: 159: Sw_DimmerOnFunc(sw);
 "159
 [e ( _Sw_DimmerOnFunc (1 _sw ]
-"162
-}
-[e :U 268 ]
+[; ;Switch_B1.c: 160: TMain->ClockStop=1;
+"160
+[e = . *U _TMain 26 -> -> 1 `i `uc ]
 "163
 }
-[; ;Switch_B1.c: 162: }
-[; ;Switch_B1.c: 163: }
-[e $U 269  ]
+[e :U 268 ]
 "164
-[e :U 267 ]
-[; ;Switch_B1.c: 164: else
-[; ;Switch_B1.c: 165: {
-"165
-{
-[; ;Switch_B1.c: 166: if(!Sw->Hold1)
-"166
-[e $ ! ! != -> . *U _Sw 3 `i -> -> -> 0 `i `uc `i 270  ]
-[; ;Switch_B1.c: 167: {
-"167
-{
-[; ;Switch_B1.c: 168: Sw->Hold1Time++;
-"168
-[e ++ . *U _Sw 10 -> -> 1 `i `ui ]
-[; ;Switch_B1.c: 169: if(Sw->Hold1Time >= 150)
-"169
-[e $ ! >= . *U _Sw 10 -> -> 150 `i `ui 271  ]
-[; ;Switch_B1.c: 170: {
-"170
-{
-[; ;Switch_B1.c: 171: Sw->Hold1Time=0;
-"171
-[e = . *U _Sw 10 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 172: Sw->Hold1=1;
-"172
-[e = . *U _Sw 3 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 175: Sw_DimmerAdjFunc(sw);
-"175
-[e ( _Sw_DimmerAdjFunc (1 _sw ]
-"178
 }
-[e :U 271 ]
+[; ;Switch_B1.c: 163: }
+[; ;Switch_B1.c: 164: }
+[e $U 269  ]
+"165
+[e :U 267 ]
+[; ;Switch_B1.c: 165: else
+[; ;Switch_B1.c: 166: {
+"166
+{
+[; ;Switch_B1.c: 167: if(!Sw->Hold1)
+"167
+[e $ ! ! != -> . *U _Sw 3 `i -> -> -> 0 `i `uc `i 270  ]
+[; ;Switch_B1.c: 168: {
+"168
+{
+[; ;Switch_B1.c: 169: Sw->Hold1Time++;
+"169
+[e ++ . *U _Sw 10 -> -> 1 `i `ui ]
+[; ;Switch_B1.c: 170: if(Sw->Hold1Time >= 150)
+"170
+[e $ ! >= . *U _Sw 10 -> -> 150 `i `ui 271  ]
+[; ;Switch_B1.c: 171: {
+"171
+{
+[; ;Switch_B1.c: 172: Sw->Hold1Time=0;
+"172
+[e = . *U _Sw 10 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 173: Sw->Hold1=1;
+"173
+[e = . *U _Sw 3 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 176: Sw_DimmerAdjFunc(sw);
+"176
+[e ( _Sw_DimmerAdjFunc (1 _sw ]
 "179
 }
-[; ;Switch_B1.c: 178: }
-[; ;Switch_B1.c: 179: }
-[e $U 272  ]
+[e :U 271 ]
 "180
-[e :U 270 ]
-[; ;Switch_B1.c: 180: else
-[; ;Switch_B1.c: 181: {
+}
+[; ;Switch_B1.c: 179: }
+[; ;Switch_B1.c: 180: }
+[e $U 272  ]
 "181
-{
-[; ;Switch_B1.c: 182: if(!Sw->Hold2)
+[e :U 270 ]
+[; ;Switch_B1.c: 181: else
+[; ;Switch_B1.c: 182: {
 "182
-[e $ ! ! != -> . *U _Sw 4 `i -> -> -> 0 `i `uc `i 273  ]
-[; ;Switch_B1.c: 183: {
+{
+[; ;Switch_B1.c: 183: if(!Sw->Hold2)
 "183
-{
-[; ;Switch_B1.c: 184: Sw->Hold2Time++;
+[e $ ! ! != -> . *U _Sw 4 `i -> -> -> 0 `i `uc `i 273  ]
+[; ;Switch_B1.c: 184: {
 "184
-[e ++ . *U _Sw 11 -> -> 1 `i `ui ]
-[; ;Switch_B1.c: 185: if(Sw->Hold2Time >= 150)
+{
+[; ;Switch_B1.c: 185: Sw->Hold2Time++;
 "185
-[e $ ! >= . *U _Sw 11 -> -> 150 `i `ui 274  ]
-[; ;Switch_B1.c: 186: {
+[e ++ . *U _Sw 11 -> -> 1 `i `ui ]
+[; ;Switch_B1.c: 186: if(Sw->Hold2Time >= 150)
 "186
-{
-[; ;Switch_B1.c: 187: Sw->Hold2Time=0;
+[e $ ! >= . *U _Sw 11 -> -> 150 `i `ui 274  ]
+[; ;Switch_B1.c: 187: {
 "187
-[e = . *U _Sw 11 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 188: Sw->Hold2=1;
-"188
-[e = . *U _Sw 4 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 192: setRF_Learn(1,1);
-"192
-[e ( _setRF_Learn (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 194: if(TMain->First)
-"194
-[e $ ! != -> . *U _TMain 8 `i -> -> -> 0 `i `uc `i 275  ]
-[; ;Switch_B1.c: 195: {
-"195
 {
-[; ;Switch_B1.c: 196: setBuz(2,100);
+[; ;Switch_B1.c: 188: Sw->Hold2Time=0;
+"188
+[e = . *U _Sw 11 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 189: Sw->Hold2=1;
+"189
+[e = . *U _Sw 4 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 193: setRF_Learn(1,1);
+"193
+[e ( _setRF_Learn (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 195: if(TMain->First)
+"195
+[e $ ! != -> . *U _TMain 8 `i -> -> -> 0 `i `uc `i 275  ]
+[; ;Switch_B1.c: 196: {
 "196
-[e ( _setBuz (2 , -> -> 2 `i `uc -> 100 `i ]
+{
+[; ;Switch_B1.c: 197: setBuz(2,100);
 "197
+[e ( _setBuz (2 , -> -> 2 `i `uc -> 100 `i ]
+"198
 }
 [e :U 275 ]
-"199
-}
-[e :U 274 ]
 "200
 }
-[; ;Switch_B1.c: 197: }
-[; ;Switch_B1.c: 199: }
-[; ;Switch_B1.c: 200: }
-[e $U 276  ]
+[e :U 274 ]
 "201
-[e :U 273 ]
-[; ;Switch_B1.c: 201: else
-[; ;Switch_B1.c: 202: {
-"202
-{
-[; ;Switch_B1.c: 203: if(!Sw->Hold3)
-"203
-[e $ ! ! != -> . *U _Sw 5 `i -> -> -> 0 `i `uc `i 277  ]
-[; ;Switch_B1.c: 204: {
-"204
-{
-[; ;Switch_B1.c: 205: Sw->Hold3Time++;
-"205
-[e ++ . *U _Sw 12 -> -> 1 `i `ui ]
-[; ;Switch_B1.c: 206: if(Sw->Hold3Time >= 300)
-"206
-[e $ ! >= . *U _Sw 12 -> -> 300 `i `ui 278  ]
-[; ;Switch_B1.c: 207: {
-"207
-{
-[; ;Switch_B1.c: 208: Sw->Hold3Time=0;
-"208
-[e = . *U _Sw 12 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 209: Sw->Hold3=1;
-"209
-[e = . *U _Sw 5 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 212: setRF_Learn(1,0);
-"212
-[e ( _setRF_Learn (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"215
 }
-[e :U 278 ]
+[; ;Switch_B1.c: 198: }
+[; ;Switch_B1.c: 200: }
+[; ;Switch_B1.c: 201: }
+[e $U 276  ]
+"202
+[e :U 273 ]
+[; ;Switch_B1.c: 202: else
+[; ;Switch_B1.c: 203: {
+"203
+{
+[; ;Switch_B1.c: 204: if(!Sw->Hold3)
+"204
+[e $ ! ! != -> . *U _Sw 5 `i -> -> -> 0 `i `uc `i 277  ]
+[; ;Switch_B1.c: 205: {
+"205
+{
+[; ;Switch_B1.c: 206: Sw->Hold3Time++;
+"206
+[e ++ . *U _Sw 12 -> -> 1 `i `ui ]
+[; ;Switch_B1.c: 207: if(Sw->Hold3Time >= 300)
+"207
+[e $ ! >= . *U _Sw 12 -> -> 300 `i `ui 278  ]
+[; ;Switch_B1.c: 208: {
+"208
+{
+[; ;Switch_B1.c: 209: Sw->Hold3Time=0;
+"209
+[e = . *U _Sw 12 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 210: Sw->Hold3=1;
+"210
+[e = . *U _Sw 5 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 213: setRF_Learn(1,0);
+"213
+[e ( _setRF_Learn (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 "216
 }
-[e :U 277 ]
+[e :U 278 ]
 "217
 }
-[e :U 276 ]
+[e :U 277 ]
 "218
 }
-[e :U 272 ]
+[e :U 276 ]
 "219
 }
-[e :U 269 ]
+[e :U 272 ]
 "220
 }
-[; ;Switch_B1.c: 215: }
+[e :U 269 ]
+"221
+}
 [; ;Switch_B1.c: 216: }
 [; ;Switch_B1.c: 217: }
 [; ;Switch_B1.c: 218: }
 [; ;Switch_B1.c: 219: }
 [; ;Switch_B1.c: 220: }
+[; ;Switch_B1.c: 221: }
 [e $U 279  ]
-"221
-[e :U 266 ]
-[; ;Switch_B1.c: 221: else
-[; ;Switch_B1.c: 222: {
 "222
-{
-[; ;Switch_B1.c: 223: if(Sw->Debounce)
+[e :U 266 ]
+[; ;Switch_B1.c: 222: else
+[; ;Switch_B1.c: 223: {
 "223
-[e $ ! != -> . *U _Sw 2 `i -> -> -> 0 `i `uc `i 280  ]
-[; ;Switch_B1.c: 224: {
+{
+[; ;Switch_B1.c: 224: if(Sw->Debounce)
 "224
-{
-[; ;Switch_B1.c: 225: Sw->DebounceTime++;
+[e $ ! != -> . *U _Sw 2 `i -> -> -> 0 `i `uc `i 280  ]
+[; ;Switch_B1.c: 225: {
 "225
-[e ++ . *U _Sw 9 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 226: if(Sw->DebounceTime >= 5)
-"226
-[e $ ! >= -> . *U _Sw 9 `i -> 5 `i 281  ]
-[; ;Switch_B1.c: 227: {
-"227
 {
-[; ;Switch_B1.c: 228: Sw->DebounceTime=0;
+[; ;Switch_B1.c: 226: Sw->DebounceTime++;
+"226
+[e ++ . *U _Sw 9 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 227: if(Sw->DebounceTime >= 5)
+"227
+[e $ ! >= -> . *U _Sw 9 `i -> 5 `i 281  ]
+[; ;Switch_B1.c: 228: {
 "228
-[e = . *U _Sw 9 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 229: Sw->Debounce=0;
+{
+[; ;Switch_B1.c: 229: Sw->DebounceTime=0;
 "229
-[e = . *U _Sw 2 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 230: Sw->Hold1Time=0;
+[e = . *U _Sw 9 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 230: Sw->Debounce=0;
 "230
-[e = . *U _Sw 10 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 231: Sw->Hold1=0;
+[e = . *U _Sw 2 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 231: Sw->Hold1Time=0;
 "231
-[e = . *U _Sw 3 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 232: Sw->Hold2Time=0;
+[e = . *U _Sw 10 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 232: Sw->Hold1=0;
 "232
-[e = . *U _Sw 11 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 233: Sw->Hold2=0;
+[e = . *U _Sw 3 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 233: Sw->Hold2Time=0;
 "233
-[e = . *U _Sw 4 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 234: Sw->Hold3Time=0;
+[e = . *U _Sw 11 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 234: Sw->Hold2=0;
 "234
-[e = . *U _Sw 12 -> -> 0 `i `ui ]
-[; ;Switch_B1.c: 235: Sw->Hold3=0;
+[e = . *U _Sw 4 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 235: Sw->Hold3Time=0;
 "235
+[e = . *U _Sw 12 -> -> 0 `i `ui ]
+[; ;Switch_B1.c: 236: Sw->Hold3=0;
+"236
 [e = . *U _Sw 5 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 238: Sw_DimmerOffFunc(sw);
-"238
+[; ;Switch_B1.c: 239: Sw_DimmerOffFunc(sw);
+"239
 [e ( _Sw_DimmerOffFunc (1 _sw ]
-[; ;Switch_B1.c: 243: setRF_Learn(1,0);
-"243
+[; ;Switch_B1.c: 244: setRF_Learn(1,0);
+"244
 [e ( _setRF_Learn (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"245
-}
-[e :U 281 ]
 "246
 }
-[e :U 280 ]
+[e :U 281 ]
 "247
 }
-[e :U 279 ]
+[e :U 280 ]
 "248
 }
+[e :U 279 ]
+"249
+}
 [e :U 262 ]
-[; ;Switch_B1.c: 245: }
 [; ;Switch_B1.c: 246: }
 [; ;Switch_B1.c: 247: }
 [; ;Switch_B1.c: 248: }
 [; ;Switch_B1.c: 249: }
-"249
+[; ;Switch_B1.c: 250: }
+"250
 [e :UE 261 ]
 }
-"251
+"252
 [v _Sw_DimmerOnFunc `(v ~T0 @X0 1 ef1`uc ]
-"252
-{
-[; ;Switch_B1.c: 251: void Sw_DimmerOnFunc(char sw)
-[; ;Switch_B1.c: 252: {
-[e :U _Sw_DimmerOnFunc ]
-"251
-[v _sw `uc ~T0 @X0 1 r1 ]
-"252
-[f ]
 "253
+{
+[; ;Switch_B1.c: 252: void Sw_DimmerOnFunc(char sw)
+[; ;Switch_B1.c: 253: {
+[e :U _Sw_DimmerOnFunc ]
+"252
+[v _sw `uc ~T0 @X0 1 r1 ]
+"253
+[f ]
+"254
 [v _Idle `uc ~T0 @X0 1 a ]
-[; ;Switch_B1.c: 253: char Idle=1;
+[; ;Switch_B1.c: 254: char Idle=1;
 [e = _Idle -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 270: if(sw == 1)
-"270
-[e $ ! == -> _sw `i -> 1 `i 283  ]
-[; ;Switch_B1.c: 271: {
+[; ;Switch_B1.c: 271: if(sw == 1)
 "271
-{
-[; ;Switch_B1.c: 272: Idle=(DimmerLights22->AdjGo)?0:1;
+[e $ ! == -> _sw `i -> 1 `i 283  ]
+[; ;Switch_B1.c: 272: {
 "272
-[e = _Idle -> ? != -> . *U _DimmerLights22 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
-"273
-}
-[; ;Switch_B1.c: 273: }
-[e $U 284  ]
-"274
-[e :U 283 ]
-[; ;Switch_B1.c: 274: else if(sw == 2)
-[e $ ! == -> _sw `i -> 2 `i 285  ]
-[; ;Switch_B1.c: 275: {
-"275
 {
-[; ;Switch_B1.c: 276: Idle=(DimmerLights11->AdjGo)?0:1;
+[; ;Switch_B1.c: 273: Idle=(DimmerLights22->AdjGo)?0:1;
+"273
+[e = _Idle -> ? != -> . *U _DimmerLights22 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+"274
+}
+[; ;Switch_B1.c: 274: }
+[e $U 284  ]
+"275
+[e :U 283 ]
+[; ;Switch_B1.c: 275: else if(sw == 2)
+[e $ ! == -> _sw `i -> 2 `i 285  ]
+[; ;Switch_B1.c: 276: {
 "276
-[e = _Idle -> ? != -> . *U _DimmerLights11 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+{
+[; ;Switch_B1.c: 277: Idle=(DimmerLights11->AdjGo)?0:1;
 "277
+[e = _Idle -> ? != -> . *U _DimmerLights11 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+"278
 }
 [e :U 285 ]
-"280
-[e :U 284 ]
-[; ;Switch_B1.c: 277: }
-[; ;Switch_B1.c: 280: if(Idle)
-[e $ ! != -> _Idle `i -> -> -> 0 `i `uc `i 286  ]
-[; ;Switch_B1.c: 281: {
 "281
-{
-[; ;Switch_B1.c: 282: Sw->Flag=1;
+[e :U 284 ]
+[; ;Switch_B1.c: 278: }
+[; ;Switch_B1.c: 281: if(Idle)
+[e $ ! != -> _Idle `i -> -> -> 0 `i `uc `i 286  ]
+[; ;Switch_B1.c: 282: {
 "282
-[e = . *U _Sw 7 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 283: setBuz(1,100);
+{
+[; ;Switch_B1.c: 283: Sw->Flag=1;
 "283
-[e ( _setBuz (2 , -> -> 1 `i `uc -> 100 `i ]
-[; ;Switch_B1.c: 284: if(!Sw->Status)
+[e = . *U _Sw 7 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 284: setBuz(1,100);
 "284
-[e $ ! ! != -> . *U _Sw 6 `i -> -> -> 0 `i `uc `i 287  ]
-[; ;Switch_B1.c: 285: {
+[e ( _setBuz (2 , -> -> 1 `i `uc -> 100 `i ]
+[; ;Switch_B1.c: 285: if(!Sw->Status)
 "285
-{
-[; ;Switch_B1.c: 286: Sw->Status=1;
+[e $ ! ! != -> . *U _Sw 6 `i -> -> -> 0 `i `uc `i 287  ]
+[; ;Switch_B1.c: 286: {
 "286
-[e = . *U _Sw 6 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 287: setRFSW_Status(sw,1);
-"287
-[e ( _setRFSW_Status (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 289: setDimmerLights_Trigger(sw,1);
-"289
-[e ( _setDimmerLights_Trigger (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 290: setDimmerLights_Switch(sw,1);
-"290
-[e ( _setDimmerLights_Switch (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 292: setRF_DimmerLights(sw,Sw->Status);
-"292
-[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
-[; ;Switch_B1.c: 293: setTxData(1);
-"293
-[e ( _setTxData (1 -> -> 1 `i `uc ]
-"294
-}
-[; ;Switch_B1.c: 294: }
-[e $U 288  ]
-"295
-[e :U 287 ]
-[; ;Switch_B1.c: 295: else
-[; ;Switch_B1.c: 296: {
-"296
 {
-[; ;Switch_B1.c: 297: Sw->Status=0;
-"297
-[e = . *U _Sw 6 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 298: setRFSW_Status(sw,Sw->Status);
-"298
-[e ( _setRFSW_Status (2 , _sw . *U _Sw 6 ]
-"299
+[; ;Switch_B1.c: 287: Sw->Status=1;
+"287
+[e = . *U _Sw 6 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 288: setRFSW_Status(sw,1);
+"288
+[e ( _setRFSW_Status (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 290: setDimmerLights_Trigger(sw,1);
+"290
+[e ( _setDimmerLights_Trigger (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 291: setDimmerLights_Switch(sw,1);
+"291
+[e ( _setDimmerLights_Switch (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 293: setRF_DimmerLights(sw,Sw->Status);
+"293
+[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
+[; ;Switch_B1.c: 294: setTxData(1);
+"294
+[e ( _setTxData (1 -> -> 1 `i `uc ]
+"295
 }
-[e :U 288 ]
+[; ;Switch_B1.c: 295: }
+[e $U 288  ]
+"296
+[e :U 287 ]
+[; ;Switch_B1.c: 296: else
+[; ;Switch_B1.c: 297: {
+"297
+{
+[; ;Switch_B1.c: 298: Sw->Status=0;
+"298
+[e = . *U _Sw 6 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 299: setRFSW_Status(sw,Sw->Status);
+"299
+[e ( _setRFSW_Status (2 , _sw . *U _Sw 6 ]
 "300
 }
+[e :U 288 ]
+"301
+}
 [e :U 286 ]
-[; ;Switch_B1.c: 299: }
 [; ;Switch_B1.c: 300: }
 [; ;Switch_B1.c: 301: }
-"301
+[; ;Switch_B1.c: 302: }
+"302
 [e :UE 282 ]
 }
-"303
+"304
 [v _Sw_DimmerOffFunc `(v ~T0 @X0 1 ef1`uc ]
-"304
-{
-[; ;Switch_B1.c: 303: void Sw_DimmerOffFunc(char sw)
-[; ;Switch_B1.c: 304: {
-[e :U _Sw_DimmerOffFunc ]
-"303
-[v _sw `uc ~T0 @X0 1 r1 ]
-"304
-[f ]
-[; ;Switch_B1.c: 305: if(Sw->Flag)
 "305
-[e $ ! != -> . *U _Sw 7 `i -> -> -> 0 `i `uc `i 290  ]
-[; ;Switch_B1.c: 306: {
+{
+[; ;Switch_B1.c: 304: void Sw_DimmerOffFunc(char sw)
+[; ;Switch_B1.c: 305: {
+[e :U _Sw_DimmerOffFunc ]
+"304
+[v _sw `uc ~T0 @X0 1 r1 ]
+"305
+[f ]
+[; ;Switch_B1.c: 306: if(Sw->Flag)
 "306
-{
-[; ;Switch_B1.c: 307: Sw->Flag=0;
+[e $ ! != -> . *U _Sw 7 `i -> -> -> 0 `i `uc `i 290  ]
+[; ;Switch_B1.c: 307: {
 "307
-[e = . *U _Sw 7 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 308: if(Sw->Status)
+{
+[; ;Switch_B1.c: 308: Sw->Flag=0;
 "308
-[e $ ! != -> . *U _Sw 6 `i -> -> -> 0 `i `uc `i 291  ]
-[; ;Switch_B1.c: 309: {
+[e = . *U _Sw 7 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 309: if(Sw->Status)
 "309
-{
-[; ;Switch_B1.c: 310: if(Sw->Adj)
+[e $ ! != -> . *U _Sw 6 `i -> -> -> 0 `i `uc `i 291  ]
+[; ;Switch_B1.c: 310: {
 "310
-[e $ ! != -> . *U _Sw 8 `i -> -> -> 0 `i `uc `i 292  ]
-[; ;Switch_B1.c: 311: {
-"311
 {
-[; ;Switch_B1.c: 312: Sw->Adj=0;
+[; ;Switch_B1.c: 311: if(Sw->Adj)
+"311
+[e $ ! != -> . *U _Sw 8 `i -> -> -> 0 `i `uc `i 292  ]
+[; ;Switch_B1.c: 312: {
 "312
-[e = . *U _Sw 8 -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 313: setDimmerLights_TriggerAdj(sw,1);
+{
+[; ;Switch_B1.c: 313: Sw->Adj=0;
 "313
-[e ( _setDimmerLights_TriggerAdj (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 314: setDimmerLights_AdjGo(sw,0);
+[e = . *U _Sw 8 -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 314: setDimmerLights_TriggerAdj(sw,1);
 "314
+[e ( _setDimmerLights_TriggerAdj (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 315: setDimmerLights_AdjGo(sw,0);
+"315
 [e ( _setDimmerLights_AdjGo (2 , _sw -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 316: Product->Data[17]=Product->Data[26+sw];
-"316
-[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux *U + &U . *U _Product 0 * -> -> + -> 26 `i -> _sw `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;Switch_B1.c: 317: setRF_DimmerLights(sw,Sw->Status);
+[; ;Switch_B1.c: 317: Product->Data[17]=Product->Data[26+sw];
 "317
-[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
-[; ;Switch_B1.c: 318: setTxData(1);
+[e = *U + &U . *U _Product 0 * -> -> -> 17 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux *U + &U . *U _Product 0 * -> -> + -> 26 `i -> _sw `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
+[; ;Switch_B1.c: 318: setRF_DimmerLights(sw,Sw->Status);
 "318
+[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
+[; ;Switch_B1.c: 319: setTxData(1);
+"319
 [e ( _setTxData (1 -> -> 1 `i `uc ]
-"320
-}
-[e :U 292 ]
 "321
 }
-[; ;Switch_B1.c: 320: }
-[; ;Switch_B1.c: 321: }
-[e $U 293  ]
+[e :U 292 ]
 "322
-[e :U 291 ]
-[; ;Switch_B1.c: 322: else
-[; ;Switch_B1.c: 323: {
-"323
-{
-[; ;Switch_B1.c: 324: setDimmerLights_Trigger(sw,1);
-"324
-[e ( _setDimmerLights_Trigger (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 325: setDimmerLights_Switch(sw,0);
-"325
-[e ( _setDimmerLights_Switch (2 , _sw -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 327: setDelayOff_GO(sw,0,0);
-"327
-[e ( _setDelayOff_GO (3 , , _sw -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;Switch_B1.c: 328: setRF_DimmerLights(sw,Sw->Status);
-"328
-[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
-[; ;Switch_B1.c: 329: setTxData(1);
-"329
-[e ( _setTxData (1 -> -> 1 `i `uc ]
-"330
 }
-[e :U 293 ]
+[; ;Switch_B1.c: 321: }
+[; ;Switch_B1.c: 322: }
+[e $U 293  ]
+"323
+[e :U 291 ]
+[; ;Switch_B1.c: 323: else
+[; ;Switch_B1.c: 324: {
+"324
+{
+[; ;Switch_B1.c: 325: setDimmerLights_Trigger(sw,1);
+"325
+[e ( _setDimmerLights_Trigger (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 326: setDimmerLights_Switch(sw,0);
+"326
+[e ( _setDimmerLights_Switch (2 , _sw -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 328: setDelayOff_GO(sw,0,0);
+"328
+[e ( _setDelayOff_GO (3 , , _sw -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;Switch_B1.c: 329: setRF_DimmerLights(sw,Sw->Status);
+"329
+[e ( _setRF_DimmerLights (2 , _sw . *U _Sw 6 ]
+[; ;Switch_B1.c: 330: setTxData(1);
+"330
+[e ( _setTxData (1 -> -> 1 `i `uc ]
 "331
 }
+[e :U 293 ]
+"332
+}
 [e :U 290 ]
-[; ;Switch_B1.c: 330: }
 [; ;Switch_B1.c: 331: }
 [; ;Switch_B1.c: 332: }
-"332
+[; ;Switch_B1.c: 333: }
+"333
 [e :UE 289 ]
 }
-"334
+"335
 [v _Sw_DimmerAdjFunc `(v ~T0 @X0 1 ef1`uc ]
-"335
-{
-[; ;Switch_B1.c: 334: void Sw_DimmerAdjFunc(char sw)
-[; ;Switch_B1.c: 335: {
-[e :U _Sw_DimmerAdjFunc ]
-"334
-[v _sw `uc ~T0 @X0 1 r1 ]
-"335
-[f ]
 "336
+{
+[; ;Switch_B1.c: 335: void Sw_DimmerAdjFunc(char sw)
+[; ;Switch_B1.c: 336: {
+[e :U _Sw_DimmerAdjFunc ]
+"335
+[v _sw `uc ~T0 @X0 1 r1 ]
+"336
+[f ]
+"337
 [v _Idle `uc ~T0 @X0 1 a ]
-[; ;Switch_B1.c: 336: char Idle=1;
+[; ;Switch_B1.c: 337: char Idle=1;
 [e = _Idle -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 353: if(sw == 1)
-"353
-[e $ ! == -> _sw `i -> 1 `i 295  ]
-[; ;Switch_B1.c: 354: {
+[; ;Switch_B1.c: 354: if(sw == 1)
 "354
-{
-[; ;Switch_B1.c: 355: Idle=(DimmerLights22->AdjGo)?0:1;
+[e $ ! == -> _sw `i -> 1 `i 295  ]
+[; ;Switch_B1.c: 355: {
 "355
-[e = _Idle -> ? != -> . *U _DimmerLights22 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
-"356
-}
-[; ;Switch_B1.c: 356: }
-[e $U 296  ]
-"357
-[e :U 295 ]
-[; ;Switch_B1.c: 357: else if(sw == 2)
-[e $ ! == -> _sw `i -> 2 `i 297  ]
-[; ;Switch_B1.c: 358: {
-"358
 {
-[; ;Switch_B1.c: 359: Idle=(DimmerLights11->AdjGo)?0:1;
+[; ;Switch_B1.c: 356: Idle=(DimmerLights22->AdjGo)?0:1;
+"356
+[e = _Idle -> ? != -> . *U _DimmerLights22 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+"357
+}
+[; ;Switch_B1.c: 357: }
+[e $U 296  ]
+"358
+[e :U 295 ]
+[; ;Switch_B1.c: 358: else if(sw == 2)
+[e $ ! == -> _sw `i -> 2 `i 297  ]
+[; ;Switch_B1.c: 359: {
 "359
-[e = _Idle -> ? != -> . *U _DimmerLights11 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+{
+[; ;Switch_B1.c: 360: Idle=(DimmerLights11->AdjGo)?0:1;
 "360
+[e = _Idle -> ? != -> . *U _DimmerLights11 18 `i -> -> -> 0 `i `uc `i : -> 0 `i -> 1 `i `uc ]
+"361
 }
 [e :U 297 ]
-"363
-[e :U 296 ]
-[; ;Switch_B1.c: 360: }
-[; ;Switch_B1.c: 363: if(Idle)
-[e $ ! != -> _Idle `i -> -> -> 0 `i `uc `i 298  ]
-[; ;Switch_B1.c: 364: {
 "364
-{
-[; ;Switch_B1.c: 365: if(Sw->Flag)
+[e :U 296 ]
+[; ;Switch_B1.c: 361: }
+[; ;Switch_B1.c: 364: if(Idle)
+[e $ ! != -> _Idle `i -> -> -> 0 `i `uc `i 298  ]
+[; ;Switch_B1.c: 365: {
 "365
-[e $ ! != -> . *U _Sw 7 `i -> -> -> 0 `i `uc `i 299  ]
-[; ;Switch_B1.c: 366: {
-"366
 {
-[; ;Switch_B1.c: 367: Sw->Adj=1;
+[; ;Switch_B1.c: 366: if(Sw->Flag)
+"366
+[e $ ! != -> . *U _Sw 7 `i -> -> -> 0 `i `uc `i 299  ]
+[; ;Switch_B1.c: 367: {
 "367
-[e = . *U _Sw 8 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 368: Sw->Status=1;
+{
+[; ;Switch_B1.c: 368: Sw->Adj=1;
 "368
-[e = . *U _Sw 6 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 369: setRFSW_Status(sw,1);
+[e = . *U _Sw 8 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 369: Sw->Status=1;
 "369
+[e = . *U _Sw 6 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 370: setRFSW_Status(sw,1);
+"370
 [e ( _setRFSW_Status (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 371: setDimmerLights_TriggerAdj(sw,1);
-"371
-[e ( _setDimmerLights_TriggerAdj (2 , _sw -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 372: setDimmerLights_AdjGo(sw,1);
+[; ;Switch_B1.c: 372: setDimmerLights_TriggerAdj(sw,1);
 "372
+[e ( _setDimmerLights_TriggerAdj (2 , _sw -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 373: setDimmerLights_AdjGo(sw,1);
+"373
 [e ( _setDimmerLights_AdjGo (2 , _sw -> -> 1 `i `uc ]
-"374
-}
-[e :U 299 ]
 "375
 }
+[e :U 299 ]
+"376
+}
 [e :U 298 ]
-[; ;Switch_B1.c: 374: }
 [; ;Switch_B1.c: 375: }
 [; ;Switch_B1.c: 376: }
-"376
+[; ;Switch_B1.c: 377: }
+"377
 [e :UE 294 ]
 }
-"378
-[v _Sw_Detect `(v ~T0 @X0 1 ef ]
 "379
+[v _Sw_Detect `(v ~T0 @X0 1 ef ]
+"380
 {
-[; ;Switch_B1.c: 378: void Sw_Detect()
-[; ;Switch_B1.c: 379: {
+[; ;Switch_B1.c: 379: void Sw_Detect()
+[; ;Switch_B1.c: 380: {
 [e :U _Sw_Detect ]
 [f ]
-[; ;Switch_B1.c: 380: if(!0 && !getTemp_ERROR() && !getPF_ERROR() && TMain->SelfTest)
-"380
-[e $ ! && && && ! != -> 0 `i -> 0 `i ! != -> ( _getTemp_ERROR ..  `i -> -> -> 0 `i `uc `i ! != -> ( _getPF_ERROR ..  `i -> -> -> 0 `i `uc `i != -> . *U _TMain 7 `i -> -> -> 0 `i `uc `i 301  ]
-[; ;Switch_B1.c: 381: {
+[; ;Switch_B1.c: 381: if(!0 && !getTemp_ERROR() && !getPF_ERROR() && TMain->SelfTest)
 "381
+[e $ ! && && && ! != -> 0 `i -> 0 `i ! != -> ( _getTemp_ERROR ..  `i -> -> -> 0 `i `uc `i ! != -> ( _getPF_ERROR ..  `i -> -> -> 0 `i `uc `i != -> . *U _TMain 7 `i -> -> -> 0 `i `uc `i 301  ]
+[; ;Switch_B1.c: 382: {
+"382
 {
-[; ;Switch_B1.c: 383: SwPointSelect(1);
-"383
-[e ( _SwPointSelect (1 -> -> 1 `i `uc ]
-[; ;Switch_B1.c: 384: if(Sw->Enable == 0)
+[; ;Switch_B1.c: 384: SwPointSelect(1);
 "384
-[e $ ! == -> . *U _Sw 0 `i -> 0 `i 302  ]
-[; ;Switch_B1.c: 385: {
+[e ( _SwPointSelect (1 -> -> 1 `i `uc ]
+[; ;Switch_B1.c: 385: if(Sw->Enable == 0)
 "385
-{
-[; ;Switch_B1.c: 386: Sw->Enable=1;
+[e $ ! == -> . *U _Sw 0 `i -> 0 `i 302  ]
+[; ;Switch_B1.c: 386: {
 "386
-[e = . *U _Sw 0 -> -> 1 `i `uc ]
+{
+[; ;Switch_B1.c: 387: Sw->Enable=1;
 "387
+[e = . *U _Sw 0 -> -> 1 `i `uc ]
+"388
 }
 [e :U 302 ]
-[; ;Switch_B1.c: 387: }
-[; ;Switch_B1.c: 391: SwPointSelect(2);
-"391
-[e ( _SwPointSelect (1 -> -> 2 `i `uc ]
-[; ;Switch_B1.c: 392: if(Sw->Enable == 0)
+[; ;Switch_B1.c: 388: }
+[; ;Switch_B1.c: 392: SwPointSelect(2);
 "392
-[e $ ! == -> . *U _Sw 0 `i -> 0 `i 303  ]
-[; ;Switch_B1.c: 393: {
+[e ( _SwPointSelect (1 -> -> 2 `i `uc ]
+[; ;Switch_B1.c: 393: if(Sw->Enable == 0)
 "393
-{
-[; ;Switch_B1.c: 394: Sw->Enable=1;
+[e $ ! == -> . *U _Sw 0 `i -> 0 `i 303  ]
+[; ;Switch_B1.c: 394: {
 "394
-[e = . *U _Sw 0 -> -> 1 `i `uc ]
+{
+[; ;Switch_B1.c: 395: Sw->Enable=1;
 "395
+[e = . *U _Sw 0 -> -> 1 `i `uc ]
+"396
 }
 [e :U 303 ]
-"406
+"407
 }
 [e :U 301 ]
-[; ;Switch_B1.c: 395: }
-[; ;Switch_B1.c: 406: }
+[; ;Switch_B1.c: 396: }
 [; ;Switch_B1.c: 407: }
-"407
+[; ;Switch_B1.c: 408: }
+"408
 [e :UE 300 ]
 }

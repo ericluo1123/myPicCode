@@ -104,6 +104,7 @@ unsigned int Count2;
 unsigned int Count3;
 unsigned char IOC_Count;
 unsigned char Test;
+unsigned char ClockCount;
 
 unsigned i:1;
 unsigned j:1;
@@ -3297,6 +3298,7 @@ Sw->Debounce=1;
 
 
 Sw_DimmerOnFunc(sw);
+TMain->ClockStop=1;
 
 
 }
@@ -3392,7 +3394,7 @@ void Sw_DimmerOnFunc(char sw)
 {
 char Idle=1;
 
-# 270
+# 271
 if(sw == 1)
 {
 Idle=(DimmerLights22->AdjGo)?0:1;
@@ -3461,7 +3463,7 @@ void Sw_DimmerAdjFunc(char sw)
 {
 char Idle=1;
 
-# 353
+# 354
 if(sw == 1)
 {
 Idle=(DimmerLights22->AdjGo)?0:1;
@@ -3506,7 +3508,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 406
+# 407
 }
 }
 

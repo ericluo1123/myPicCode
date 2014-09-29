@@ -72,7 +72,8 @@
 		unsigned int Count2;
 		unsigned int Count3;
 		unsigned char IOC_Count;
-		unsigned char Test;		
+		unsigned char Test;	
+		unsigned char ClockCount;	
 
 		unsigned i:1;
 		unsigned j:1;

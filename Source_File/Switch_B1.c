@@ -157,6 +157,7 @@
 						#if Dimmer_use == 1
 
 							Sw_DimmerOnFunc(sw);//key on function
+							TMain->ClockStop=1;
 
 						#endif
 					}

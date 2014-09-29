@@ -104,6 +104,7 @@ unsigned int Count2;
 unsigned int Count3;
 unsigned char IOC_Count;
 unsigned char Test;
+unsigned char ClockCount;
 
 unsigned i:1;
 unsigned j:1;
@@ -3339,14 +3340,18 @@ TMain->Flag=1;
 void MainT_ResetClock(){
 char i;
 if(!TMain->ClockStop){
+TMain->ClockCount++;
+if(TMain->ClockCount == 10){
+TMain->ClockCount=0;
 
 if(RB5){
 RB5=0;
-for(i=0 ;i<10 ; i++);
+for(i=0 ;i<20 ; i++);
 RB5=1;
 }
 
-# 209
+# 212
+}
 }
 }
 

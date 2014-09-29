@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -42,7 +42,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
 [p mainexit ]
-"94 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"95 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT_Initialization `(v ~T0 @X0 0 ef ]
 "11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Mcu_Initialization `(v ~T0 @X0 0 ef ]
@@ -72,9 +72,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _getPowerFault_AD `(v ~T0 @X0 0 ef1`uc ]
 "52 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
 [v _Buzzer_Main `(v ~T0 @X0 0 ef ]
-"95 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"96 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT `(v ~T0 @X0 0 ef ]
-"96
+"97
 [v _MainT_ResetClock `(v ~T0 @X0 0 ef ]
 "629 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Flash_Memory_Main `(v ~T0 @X0 0 ef ]
@@ -198,7 +198,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"89
+"90
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -217,25 +217,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 73: unsigned int Count3;
 [; ;Main_B1.h: 74: unsigned char IOC_Count;
 [; ;Main_B1.h: 75: unsigned char Test;
-[; ;Main_B1.h: 77: unsigned i:1;
-[; ;Main_B1.h: 78: unsigned j:1;
-[; ;Main_B1.h: 79: unsigned k:1;
-[; ;Main_B1.h: 80: unsigned l:1;
-[; ;Main_B1.h: 81: unsigned m:1;
-[; ;Main_B1.h: 82: unsigned n:1;
-[; ;Main_B1.h: 83: unsigned o:1;
-[; ;Main_B1.h: 84: unsigned p:1;
-[; ;Main_B1.h: 85: unsigned q:1;
-[; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: unsigned ClockStop:1;
-[; ;Main_B1.h: 88: }
-[; ;Main_B1.h: 89: struct TMain VarTMain;
-"90
+[; ;Main_B1.h: 76: unsigned char ClockCount;
+[; ;Main_B1.h: 78: unsigned i:1;
+[; ;Main_B1.h: 79: unsigned j:1;
+[; ;Main_B1.h: 80: unsigned k:1;
+[; ;Main_B1.h: 81: unsigned l:1;
+[; ;Main_B1.h: 82: unsigned m:1;
+[; ;Main_B1.h: 83: unsigned n:1;
+[; ;Main_B1.h: 84: unsigned o:1;
+[; ;Main_B1.h: 85: unsigned p:1;
+[; ;Main_B1.h: 86: unsigned q:1;
+[; ;Main_B1.h: 87: unsigned r:1;
+[; ;Main_B1.h: 88: unsigned ClockStop:1;
+[; ;Main_B1.h: 89: }
+[; ;Main_B1.h: 90: struct TMain VarTMain;
+"91
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 90: struct TMain *TMain;
-[; ;Main_B1.h: 94: void MainT_Initialization();
-[; ;Main_B1.h: 95: void MainT();
-[; ;Main_B1.h: 96: void MainT_ResetClock();
+[; ;Main_B1.h: 91: struct TMain *TMain;
+[; ;Main_B1.h: 95: void MainT_Initialization();
+[; ;Main_B1.h: 96: void MainT();
+[; ;Main_B1.h: 97: void MainT_ResetClock();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -3126,38 +3127,52 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 194: char i;
 [; ;main.c: 195: if(!TMain->ClockStop){
 "195
-[e $ ! ! != -> . *U _TMain 25 `i -> -> -> 0 `i `uc `i 264  ]
+[e $ ! ! != -> . *U _TMain 26 `i -> -> -> 0 `i `uc `i 264  ]
 {
-[; ;main.c: 197: if(RB5){
+[; ;main.c: 196: TMain->ClockCount++;
+"196
+[e ++ . *U _TMain 15 -> -> 1 `i `uc ]
+[; ;main.c: 197: if(TMain->ClockCount == 10){
 "197
-[e $ ! _RB5 265  ]
+[e $ ! == -> . *U _TMain 15 `i -> 10 `i 265  ]
 {
-[; ;main.c: 198: RB5=0;
+[; ;main.c: 198: TMain->ClockCount=0;
 "198
+[e = . *U _TMain 15 -> -> 0 `i `uc ]
+[; ;main.c: 200: if(RB5){
+"200
+[e $ ! _RB5 266  ]
+{
+[; ;main.c: 201: RB5=0;
+"201
 [e = _RB5 -> -> 0 `i `b ]
-[; ;main.c: 199: for(i=0 ;i<10 ; i++);
-"199
+[; ;main.c: 202: for(i=0 ;i<20 ; i++);
+"202
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 10 `i 266  ]
-[e $U 267  ]
-[e :U 266 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 10 `i 266  ]
+[e $ < -> _i `i -> 20 `i 267  ]
+[e $U 268  ]
 [e :U 267 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 20 `i 267  ]
+[e :U 268 ]
 }
-[; ;main.c: 200: RB5=1;
-"200
+[; ;main.c: 203: RB5=1;
+"203
 [e = _RB5 -> -> 1 `i `b ]
-"201
+"204
+}
+[e :U 266 ]
+"212
 }
 [e :U 265 ]
-"209
+"213
 }
 [e :U 264 ]
-[; ;main.c: 201: }
-[; ;main.c: 209: }
-[; ;main.c: 210: }
-"210
+[; ;main.c: 204: }
+[; ;main.c: 212: }
+[; ;main.c: 213: }
+[; ;main.c: 214: }
+"214
 [e :UE 263 ]
 }
