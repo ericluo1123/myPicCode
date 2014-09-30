@@ -196,7 +196,9 @@ void MainT_ResetClock(){
 		TMain->ClockCount++;
 		if(TMain->ClockCount == 10){
 			TMain->ClockCount=0;
-			#if ErrLED_ON == 0
+			clearingWDT();
+
+		/*	#if ErrLED_ON == 0
 				if(ErrLED){
 					ErrLED=0;
 					for(i=0 ;i<20 ; i++);
@@ -208,7 +210,7 @@ void MainT_ResetClock(){
 					for(i=0 ;i<20 ; i++);
 					ErrLED=0;
 				}
-			#endif
+			#endif*/
 		}
 	}
 }	

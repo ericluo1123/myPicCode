@@ -156,8 +156,7 @@
 						Sw->Debounce=1;
 						#if Dimmer_use == 1
 
-							Sw_DimmerOnFunc(sw);//key on function
-							TMain->ClockStop=1;
+							Sw_DimmerOnFunc(sw);//key on function							
 
 						#endif
 					}
@@ -292,6 +291,7 @@
 	
 				setRF_DimmerLights(sw,Sw->Status);
 				setTxData(1);
+				TMain->ClockStop=1;
 			}
 			else
 			{
@@ -327,7 +327,8 @@
 
 				setDelayOff_GO(sw,0,0);	
 				setRF_DimmerLights(sw,Sw->Status);
-				setTxData(1);		
+				setTxData(1);	
+				TMain->ClockStop=0;	
 			}	
 		}
 	}	
