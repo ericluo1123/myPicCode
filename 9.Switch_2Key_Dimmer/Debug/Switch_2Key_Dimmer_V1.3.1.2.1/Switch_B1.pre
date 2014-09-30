@@ -3189,6 +3189,10 @@ void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
 
+# 654
+void Watch_Dog_set();
+void clearingWDT();
+
 # 9 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 void TouchPower()
 {
@@ -3298,7 +3302,6 @@ Sw->Debounce=1;
 
 
 Sw_DimmerOnFunc(sw);
-TMain->ClockStop=1;
 
 
 }
@@ -3394,7 +3397,7 @@ void Sw_DimmerOnFunc(char sw)
 {
 char Idle=1;
 
-# 271
+# 270
 if(sw == 1)
 {
 Idle=(DimmerLights22->AdjGo)?0:1;
@@ -3419,6 +3422,7 @@ setDimmerLights_Switch(sw,1);
 
 setRF_DimmerLights(sw,Sw->Status);
 setTxData(1);
+TMain->ClockStop=1;
 }
 else
 {
@@ -3455,6 +3459,7 @@ setDimmerLights_Switch(sw,0);
 setDelayOff_GO(sw,0,0);
 setRF_DimmerLights(sw,Sw->Status);
 setTxData(1);
+TMain->ClockStop=0;
 }
 }
 }
@@ -3463,7 +3468,7 @@ void Sw_DimmerAdjFunc(char sw)
 {
 char Idle=1;
 
-# 354
+# 355
 if(sw == 1)
 {
 Idle=(DimmerLights22->AdjGo)?0:1;
@@ -3508,7 +3513,7 @@ if(Sw->Enable == 0)
 Sw->Enable=1;
 }
 
-# 407
+# 408
 }
 }
 

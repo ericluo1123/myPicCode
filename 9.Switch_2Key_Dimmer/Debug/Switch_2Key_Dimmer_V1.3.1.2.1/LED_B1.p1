@@ -2792,6 +2792,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
+[; ;MCU_B1.h: 654: void Watch_Dog_set();
+[; ;MCU_B1.h: 655: void clearingWDT();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\LED_B1.c
 [v _LedPointSelect `(v ~T0 @X0 1 ef1`uc ]
 "8

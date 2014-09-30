@@ -6,17 +6,17 @@
 //config
 
 	#ifdef _16F723A
-		__CONFIG(FOSC_INTOSCIO & WDTE_OFF & BOREN_OFF & PLEEN_Value);// v8.84
+		__CONFIG(FOSC_INTOSCIO & _WDTE & BOREN_OFF & PLEEN_Value);// v8.84
 		__CONFIG(VCAPEN_DIS);// WRT_OFF 
 	#endif
 
 	#ifdef _16F1516
-		__CONFIG(FOSC_INTOSC & WDTE_OFF);// v8.84
+		__CONFIG(FOSC_INTOSC & _WDTE );// v8.84
 		__CONFIG(VCAPEN_OFF &  WRT_BOOT);// WRT_OFF 
 	#endif
 
 	#ifdef _16F1518
-		 __CONFIG(FOSC_INTOSC & WDTE_OFF & BOREN_OFF);// v8.84
+		 __CONFIG(FOSC_INTOSC & _WDTE  & BOREN_OFF);// v8.84
 		 __CONFIG(VCAPEN_OFF &  WRT_HALF);// WRT_OFF WRT_BOOT WRT_HALF
 	#endif
 
@@ -45,6 +45,8 @@ void Mcu_Initialization()
 	UART_Set();
 	//Flash_Memory
 	Flash_Memory_Set();
+	//Watch dog
+	Watch_Dog_set();
 }
 //*********************************************************
 void IO_Set()
@@ -972,5 +974,18 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	}
 #endif
 //*********************************************************
+#if Watch_Dog_use == 1
+
+	void Watch_Dog_set(){
+		WDTCON=_WDTCON;
+	}
+	//*********************************************************
+	void clearingWDT(){
+		CLRWDT();
+	}
+#endif
+//*********************************************************
+
+//end file
 
 

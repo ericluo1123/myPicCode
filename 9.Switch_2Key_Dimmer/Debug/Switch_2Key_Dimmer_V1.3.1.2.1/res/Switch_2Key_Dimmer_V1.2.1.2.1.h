@@ -105,6 +105,8 @@
 	#define IOC_use 1
 	//FlashMemory_use
 	#define FlashMemory_use 1
+	//Watch dog
+	#define Watch_Dog_use 1
 
 	
 //Function Option

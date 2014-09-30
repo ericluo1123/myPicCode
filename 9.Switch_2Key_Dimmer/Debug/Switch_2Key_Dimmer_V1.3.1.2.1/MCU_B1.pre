@@ -3189,8 +3189,12 @@ void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
 
+# 654
+void Watch_Dog_set();
+void clearingWDT();
+
 # 19 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-__config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF & BOREN_OFF");
+__config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_SWDTEN & BOREN_OFF");
 __config("__CONFIG", "pic", "VCAPEN_OFF & WRT_HALF");
 
 
@@ -3219,12 +3223,14 @@ IOC_Set();
 ;;
 
 Memory=&VarMemory;
+
+Watch_Dog_set();
 }
 
 void IO_Set()
 {
 
-# 79
+# 81
 TRISA=0b01110111;;
 TRISB=0b00000111;;
 TRISC=0b00001100;;
@@ -3287,7 +3293,7 @@ if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (D
 
 if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } else { if(DimmerLights22->Flag) { DimmerLights22->Flag=0; if(DimmerLights22->Signal) { DimmerLights22->DimmingTime++; if(DimmerLights22->DimmingTime >= DimmerLights22->DimmingTimeValue) { DimmerLights22->DimmingTime=0; if(DimmerLights22->AdjFlag) { if(DimmerLights22->AdjStatus == 0) { if(DimmerLights22->DimmingValue > ((char)((100-55)*1.5))) { DimmerLights22->DimmingValue--; } else { DimmerLights22->AdjStatus=1; } } else { if(DimmerLights22->DimmingValue < ((char)((100-20)*1.5))) { DimmerLights22->DimmingValue++; } else { DimmerLights22->AdjStatus=0; } } } else if(DimmerLights22->AdjRF) { if(DimmerLights22->DimmingValue > DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue--; } else if(DimmerLights22->DimmingValue < DimmerLights22->MaxmumValue) { DimmerLights22->DimmingValue++; } if(DimmerLights22->DimmingValue == DimmerLights22->MaxmumValue) { DimmerLights22->AdjRF=0; DimmerLights22->Signal=0; } } else { if(DimmerLights22->Status) { DimmerLights22->DimmingValue--; if(DimmerLights22->DimmingValue <= DimmerLights22->MaxmumValue) { DimmerLights22->Signal=0; } } else { DimmerLights22->DimmingValue++; if(DimmerLights22->DimmingValue >= DimmerLights22->MinimumValue) { DimmerLights22->Signal=0; DimmerLights22->StatusFlag=0; DimmerLights22->Clear=1; Dimmer->Detect=1; RC7=0; ;; } } } } } } if(RB4) { DimmerLights22->TriacTime++; if(DimmerLights22->TriacTime >= (120-DimmerLights22->DimmingValue)) { DimmerLights22->TriacTime=0; RB4=0; } } } ;;
 
-# 148
+# 150
 Timer0->Count++;
 if(Timer0->Count == 200)
 {
@@ -3318,16 +3324,16 @@ if(!DimmerLights11->GO)
 DimmerLights11->GO=1;
 }
 
-# 200
+# 202
 if(!DimmerLights22->GO)
 {
 DimmerLights22->GO=1;
 }
 
-# 233
+# 235
 }
 
-# 283
+# 285
 void INT_Set()
 {
 WPUB0=0;
@@ -3352,7 +3358,7 @@ INTF=0;
 INTE=command;
 }
 
-# 312
+# 314
 void IOC_Set()
 {
 WPUB2=0;
@@ -3360,7 +3366,7 @@ WPUB2=0;
 IOCBP=0b00000100;
 IOCBN=0b00000100;
 
-# 332
+# 334
 IOCBF=0b00000000;
 
 IOCIE=1;
@@ -3390,12 +3396,12 @@ else
 Dimmer->Correction=8;
 }
 
-# 367
+# 369
 }
 }
 }
 
-# 377
+# 379
 void ADC_Set()
 {
 ADCON1=0xf2;
@@ -3411,7 +3417,7 @@ while(GO_nDONE);
 return ((ADRESH*256)+ADRESL);
 }
 
-# 826
+# 828
 void Flash_Memory_Initialization()
 {
 char i;
@@ -3421,7 +3427,7 @@ Product->Data[12]=Flash_Memory_Read(0);
 Product->Data[13]=Flash_Memory_Read(1);
 Product->Data[14]=Flash_Memory_Read(2);
 
-# 839
+# 841
 i=setPercentValue(((char)((100-55)*1.5)));
 Product->Data[21]=i;
 Product->Data[22]=i;
@@ -3540,7 +3546,7 @@ Memory->Data[0]=Product->Data[12];
 Memory->Data[1]=Product->Data[13];
 Memory->Data[2]=Product->Data[14];
 
-# 961
+# 963
 if(Memory->LoopSave)
 {
 Memory->LoopSave=0;
@@ -3552,5 +3558,16 @@ GIE=0;
 Flash_Memory_Erasing();
 Flash_Memory_Write();
 GIE=1;
+}
+
+
+
+
+void Watch_Dog_set(){
+WDTCON=0b00010111;;
+}
+
+void clearingWDT(){
+asm("clrwdt");
 }
 

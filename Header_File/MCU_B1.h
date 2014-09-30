@@ -643,6 +643,22 @@
 		#define Flash_Memory_Modify() ;
 		#define Flash_Memory_Main() ;
 	#endif 
+	//*********************************************************
+	//Watch dog
+	#if Watch_Dog_use == 1
+
+		#define _WDTE WDTE_SWDTEN
+		#define _WDTCON 0b00010111;		//WDTPS<4:0> =2s && WDT is turned on 
+		//controlled by the WDTE<1:0>
+
+		void Watch_Dog_set();
+		void clearingWDT();
+	#else
+		//NOP()
+		#define _WDTE WDTE_OFF
+		#define Watch_Dog_set() ;
+		#define clearingWDT() ;			
+	#endif
 
 //end file
 #endif

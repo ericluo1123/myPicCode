@@ -103,7 +103,7 @@ start
 ;	Clock Out Enable
 ;	CLKOUTEN = 0x1, unprogrammed default
 ;	Watchdog Timer Enable
-;	WDTE = OFF, WDT disabled
+;	WDTE = SWDTEN, WDT controlled by the SWDTEN bit in the WDTCON register
 ;	Power-up Timer Enable
 ;	PWRTE = 0x1, unprogrammed default
 ;	Flash Program Memory Code Protection
@@ -121,7 +121,7 @@ start
 
 	psect	config
 		org 0x0
-		dw 0xF9E4
+		dw 0xF9EC
 
 ; Config register CONFIG2 @ 0x8008
 ;	Stack Overflow/Underflow Reset Enable

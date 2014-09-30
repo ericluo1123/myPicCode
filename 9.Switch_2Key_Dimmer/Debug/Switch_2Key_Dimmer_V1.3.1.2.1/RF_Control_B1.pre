@@ -3189,6 +3189,10 @@ void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
 
+# 654
+void Watch_Dog_set();
+void clearingWDT();
+
 # 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 void RfPointSelect(char rf)
 {

@@ -100,8 +100,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
 "63 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
-"4533 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
-[v _RB5 `Vb ~T0 @X0 0 e@109 ]
+"655 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _clearingWDT `(v ~T0 @X0 0 ef ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -2841,6 +2841,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
+[; ;MCU_B1.h: 654: void Watch_Dog_set();
+[; ;MCU_B1.h: 655: void clearingWDT();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
 [v _main `(v ~T0 @X0 1 ef ]
 "8
@@ -3139,40 +3141,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 198: TMain->ClockCount=0;
 "198
 [e = . *U _TMain 15 -> -> 0 `i `uc ]
-[; ;main.c: 200: if(RB5){
-"200
-[e $ ! _RB5 266  ]
-{
-[; ;main.c: 201: RB5=0;
-"201
-[e = _RB5 -> -> 0 `i `b ]
-[; ;main.c: 202: for(i=0 ;i<20 ; i++);
-"202
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 20 `i 267  ]
-[e $U 268  ]
-[e :U 267 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 20 `i 267  ]
-[e :U 268 ]
-}
-[; ;main.c: 203: RB5=1;
-"203
-[e = _RB5 -> -> 1 `i `b ]
-"204
-}
-[e :U 266 ]
-"212
+[; ;main.c: 199: clearingWDT();
+"199
+[e ( _clearingWDT ..  ]
+"214
 }
 [e :U 265 ]
-"213
+"215
 }
 [e :U 264 ]
-[; ;main.c: 204: }
-[; ;main.c: 212: }
-[; ;main.c: 213: }
 [; ;main.c: 214: }
-"214
+[; ;main.c: 215: }
+[; ;main.c: 216: }
+"216
 [e :UE 263 ]
 }
