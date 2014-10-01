@@ -104,6 +104,7 @@ unsigned int Count2;
 unsigned int Count3;
 unsigned char IOC_Count;
 unsigned char Test;
+unsigned char ClockCount;
 
 unsigned i:1;
 unsigned j:1;
@@ -123,7 +124,6 @@ struct TMain *TMain;
 
 void MainT_Initialization();
 void MainT();
-void MainT_ResetClock();
 
 # 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
@@ -3234,6 +3234,19 @@ void Flash_Memory_Write();
 void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
+
+# 650
+struct WDT{
+unsigned Enable:1;
+unsigned char Count;
+};
+struct WDT _WDT;
+struct WDT *WDT;
+
+# 661
+void WDT_Set();
+void WDT_Main();
+void WDT_Clearing();
 
 # 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 void DimmerLightsPointSelect(char lights)

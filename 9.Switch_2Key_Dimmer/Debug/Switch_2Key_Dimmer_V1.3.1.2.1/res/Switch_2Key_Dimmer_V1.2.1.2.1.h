@@ -103,10 +103,10 @@
 	#define I2C_use 0
 	//IOC
 	#define IOC_use 1
-	//FlashMemory_use
+	//FlashMemory
 	#define FlashMemory_use 1
-	//Watch dog
-	#define Watch_Dog_use 1
+	//Watchdog timer 
+	#define WDT_use 1
 
 	
 //Function Option

@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -44,6 +44,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "588
 [s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+"650
+[s S249 :1 `uc 1 `uc 1 ]
+[n S249 WDT Enable Count ]
 "44 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\DelayOff_B1.h
 [v _DlyOff_Initialization `(v ~T0 @X0 0 ef1`uc ]
 "45
@@ -160,7 +163,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"88
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -179,24 +182,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 73: unsigned int Count3;
 [; ;Main_B1.h: 74: unsigned char IOC_Count;
 [; ;Main_B1.h: 75: unsigned char Test;
-[; ;Main_B1.h: 77: unsigned i:1;
-[; ;Main_B1.h: 78: unsigned j:1;
-[; ;Main_B1.h: 79: unsigned k:1;
-[; ;Main_B1.h: 80: unsigned l:1;
-[; ;Main_B1.h: 81: unsigned m:1;
-[; ;Main_B1.h: 82: unsigned n:1;
-[; ;Main_B1.h: 83: unsigned o:1;
-[; ;Main_B1.h: 84: unsigned p:1;
-[; ;Main_B1.h: 85: unsigned q:1;
-[; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: }
-[; ;Main_B1.h: 88: struct TMain VarTMain;
-"89
+[; ;Main_B1.h: 76: unsigned char ClockCount;
+[; ;Main_B1.h: 78: unsigned i:1;
+[; ;Main_B1.h: 79: unsigned j:1;
+[; ;Main_B1.h: 80: unsigned k:1;
+[; ;Main_B1.h: 81: unsigned l:1;
+[; ;Main_B1.h: 82: unsigned m:1;
+[; ;Main_B1.h: 83: unsigned n:1;
+[; ;Main_B1.h: 84: unsigned o:1;
+[; ;Main_B1.h: 85: unsigned p:1;
+[; ;Main_B1.h: 86: unsigned q:1;
+[; ;Main_B1.h: 87: unsigned r:1;
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 89: struct TMain *TMain;
-[; ;Main_B1.h: 93: void MainT_Initialization();
-[; ;Main_B1.h: 94: void MainT();
-[; ;Main_B1.h: 95: void MainT_ResetClock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2840,6 +2843,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
+[; ;MCU_B1.h: 650: struct WDT{
+[; ;MCU_B1.h: 651: unsigned Enable:1;
+[; ;MCU_B1.h: 652: unsigned char Count;
+[; ;MCU_B1.h: 653: };
+"654
+[v __WDT `S249 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 654: struct WDT _WDT;
+"655
+[v _WDT `*S249 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 655: struct WDT *WDT;
+[; ;MCU_B1.h: 661: void WDT_Set();
+[; ;MCU_B1.h: 662: void WDT_Main();
+[; ;MCU_B1.h: 663: void WDT_Clearing();
 "8 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c
 [v _DelayOffPointSelect `(v ~T0 @X0 1 ef1`uc ]
 "9
@@ -2853,7 +2869,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;DelayOff_B1.c: 11: if(sw == 1)
 "11
-[e $ ! == -> _sw `i -> 1 `i 250  ]
+[e $ ! == -> _sw `i -> 1 `i 251  ]
 [; ;DelayOff_B1.c: 12: {
 "12
 {
@@ -2862,11 +2878,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _DelayOff &U _DlySw1 ]
 "14
 }
-[e :U 250 ]
+[e :U 251 ]
 [; ;DelayOff_B1.c: 14: }
 [; ;DelayOff_B1.c: 28: }
 "28
-[e :UE 249 ]
+[e :UE 250 ]
 }
 "30
 [v _DelayOff_Initialization `(v ~T0 @X0 1 ef ]
@@ -2881,7 +2897,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DlyOff_Initialization (1 -> -> 1 `i `uc ]
 [; ;DelayOff_B1.c: 43: }
 "43
-[e :UE 251 ]
+[e :UE 252 ]
 }
 "45
 [v _DelayOff_Main `(v ~T0 @X0 1 ef ]
@@ -2896,7 +2912,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DlyOff_Main (1 -> -> 1 `i `uc ]
 [; ;DelayOff_B1.c: 58: }
 "58
-[e :UE 252 ]
+[e :UE 253 ]
 }
 "60
 [v _DlyOff_Initialization `(v ~T0 @X0 1 ef1`uc ]
@@ -2917,7 +2933,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DelayOff 0 -> -> 1 `i `uc ]
 [; ;DelayOff_B1.c: 64: }
 "64
-[e :UE 253 ]
+[e :UE 254 ]
 }
 "66
 [v _DlyOff_Main `(v ~T0 @X0 1 ef1`uc ]
@@ -2935,7 +2951,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DelayOffPointSelect (1 _sw ]
 [; ;DelayOff_B1.c: 69: if(DelayOff->GO)
 "69
-[e $ ! != -> . *U _DelayOff 1 `i -> -> -> 0 `i `uc `i 255  ]
+[e $ ! != -> . *U _DelayOff 1 `i -> -> -> 0 `i `uc `i 256  ]
 [; ;DelayOff_B1.c: 70: {
 "70
 {
@@ -2944,7 +2960,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _DelayOff 3 -> -> 1 `i `ui ]
 [; ;DelayOff_B1.c: 72: if(DelayOff->SecondTime >= 5600)
 "72
-[e $ ! >= . *U _DelayOff 3 -> -> 5600 `i `ui 256  ]
+[e $ ! >= . *U _DelayOff 3 -> -> 5600 `i `ui 257  ]
 [; ;DelayOff_B1.c: 73: {
 "73
 {
@@ -2956,7 +2972,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _DelayOff 4 -> -> 1 `i `uc ]
 [; ;DelayOff_B1.c: 76: if(DelayOff->MinuteTime >= DelayOff->Value)
 "76
-[e $ ! >= -> . *U _DelayOff 4 `i -> . *U _DelayOff 2 `i 257  ]
+[e $ ! >= -> . *U _DelayOff 4 `i -> . *U _DelayOff 2 `i 258  ]
 [; ;DelayOff_B1.c: 77: {
 "77
 {
@@ -2989,19 +3005,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setBuz (2 , -> -> 1 `i `uc -> 100 `i ]
 "87
 }
-[e :U 257 ]
+[e :U 258 ]
 "88
 }
-[e :U 256 ]
+[e :U 257 ]
 "89
 }
-[e :U 255 ]
+[e :U 256 ]
 [; ;DelayOff_B1.c: 87: }
 [; ;DelayOff_B1.c: 88: }
 [; ;DelayOff_B1.c: 89: }
 [; ;DelayOff_B1.c: 90: }
 "90
-[e :UE 254 ]
+[e :UE 255 ]
 }
 "92
 [v _setDelayOff_GO `(v ~T0 @X0 1 ef3`uc`uc`uc ]
@@ -3021,7 +3037,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DelayOffPointSelect (1 _sw ]
 [; ;DelayOff_B1.c: 95: if(DelayOff->Enable)
 "95
-[e $ ! != -> . *U _DelayOff 0 `i -> -> -> 0 `i `uc `i 259  ]
+[e $ ! != -> . *U _DelayOff 0 `i -> -> -> 0 `i `uc `i 260  ]
 [; ;DelayOff_B1.c: 96: {
 "96
 {
@@ -3030,7 +3046,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DelayOff 1 _command ]
 [; ;DelayOff_B1.c: 98: if(command)
 "98
-[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 260  ]
+[e $ ! != -> _command `i -> -> -> 0 `i `uc `i 261  ]
 [; ;DelayOff_B1.c: 99: {
 "99
 {
@@ -3039,7 +3055,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DelayOff 2 ( _DelayTimejudge (1 _value ]
 [; ;DelayOff_B1.c: 101: if(((value%16)==5 || !(value%16)) && value <= 0x25)
 "101
-[e $ ! && || == % -> _value `i -> 16 `i -> 5 `i ! != % -> _value `i -> 16 `i -> 0 `i <= -> _value `i -> 37 `i 261  ]
+[e $ ! && || == % -> _value `i -> 16 `i -> 5 `i ! != % -> _value `i -> 16 `i -> 0 `i <= -> _value `i -> 37 `i 262  ]
 [; ;DelayOff_B1.c: 102: {
 "102
 {
@@ -3049,9 +3065,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "104
 }
 [; ;DelayOff_B1.c: 104: }
-[e $U 262  ]
+[e $U 263  ]
 "105
-[e :U 261 ]
+[e :U 262 ]
 [; ;DelayOff_B1.c: 105: else
 [; ;DelayOff_B1.c: 106: {
 "106
@@ -3061,16 +3077,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> + -> 26 `i -> _sw `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 5 `i `uc ]
 "108
 }
-[e :U 262 ]
+[e :U 263 ]
 "109
 }
 [; ;DelayOff_B1.c: 108: }
 [; ;DelayOff_B1.c: 109: }
-[e $U 263  ]
+[e $U 264  ]
 "110
-[e :U 260 ]
+[e :U 261 ]
 [; ;DelayOff_B1.c: 110: else if(!command)
-[e $ ! ! != -> _command `i -> -> -> 0 `i `uc `i 264  ]
+[e $ ! ! != -> _command `i -> -> -> 0 `i `uc `i 265  ]
 [; ;DelayOff_B1.c: 111: {
 "111
 {
@@ -3079,9 +3095,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> + -> _sw `i -> 26 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux -> -> 0 `i `uc ]
 "113
 }
-[e :U 264 ]
+[e :U 265 ]
 "114
-[e :U 263 ]
+[e :U 264 ]
 [; ;DelayOff_B1.c: 113: }
 [; ;DelayOff_B1.c: 114: DelayOff->SecondTime=0;
 [e = . *U _DelayOff 3 -> -> 0 `i `ui ]
@@ -3090,11 +3106,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DelayOff 4 -> -> 0 `i `uc ]
 "116
 }
-[e :U 259 ]
+[e :U 260 ]
 [; ;DelayOff_B1.c: 116: }
 [; ;DelayOff_B1.c: 117: }
 "117
-[e :UE 258 ]
+[e :UE 259 ]
 }
 "119
 [v _DelayTimejudge `(uc ~T0 @X0 1 ef1`uc ]
@@ -3113,7 +3129,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _i -> -> 5 `i `uc ]
 [; ;DelayOff_B1.c: 122: if(value == 0x05)
 "122
-[e $ ! == -> _value `i -> 5 `i 266  ]
+[e $ ! == -> _value `i -> 5 `i 267  ]
 [; ;DelayOff_B1.c: 123: {
 "123
 {
@@ -3123,11 +3139,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "125
 }
 [; ;DelayOff_B1.c: 125: }
-[e $U 267  ]
+[e $U 268  ]
 "126
-[e :U 266 ]
+[e :U 267 ]
 [; ;DelayOff_B1.c: 126: else if(value == 0x10)
-[e $ ! == -> _value `i -> 16 `i 268  ]
+[e $ ! == -> _value `i -> 16 `i 269  ]
 [; ;DelayOff_B1.c: 127: {
 "127
 {
@@ -3137,11 +3153,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "129
 }
 [; ;DelayOff_B1.c: 129: }
-[e $U 269  ]
+[e $U 270  ]
 "130
-[e :U 268 ]
+[e :U 269 ]
 [; ;DelayOff_B1.c: 130: else if(value == 0x15)
-[e $ ! == -> _value `i -> 21 `i 270  ]
+[e $ ! == -> _value `i -> 21 `i 271  ]
 [; ;DelayOff_B1.c: 131: {
 "131
 {
@@ -3151,11 +3167,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "133
 }
 [; ;DelayOff_B1.c: 133: }
-[e $U 271  ]
+[e $U 272  ]
 "134
-[e :U 270 ]
+[e :U 271 ]
 [; ;DelayOff_B1.c: 134: else if(value == 0x20)
-[e $ ! == -> _value `i -> 32 `i 272  ]
+[e $ ! == -> _value `i -> 32 `i 273  ]
 [; ;DelayOff_B1.c: 135: {
 "135
 {
@@ -3165,11 +3181,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "137
 }
 [; ;DelayOff_B1.c: 137: }
-[e $U 273  ]
+[e $U 274  ]
 "138
-[e :U 272 ]
+[e :U 273 ]
 [; ;DelayOff_B1.c: 138: else if(value == 0x25)
-[e $ ! == -> _value `i -> 37 `i 274  ]
+[e $ ! == -> _value `i -> 37 `i 275  ]
 [; ;DelayOff_B1.c: 139: {
 "139
 {
@@ -3179,11 +3195,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "141
 }
 [; ;DelayOff_B1.c: 141: }
-[e $U 275  ]
+[e $U 276  ]
 "142
-[e :U 274 ]
+[e :U 275 ]
 [; ;DelayOff_B1.c: 142: else if(value == 0x30)
-[e $ ! == -> _value `i -> 48 `i 276  ]
+[e $ ! == -> _value `i -> 48 `i 277  ]
 [; ;DelayOff_B1.c: 143: {
 "143
 {
@@ -3192,18 +3208,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _i -> -> 30 `i `uc ]
 "145
 }
-[e :U 276 ]
+[e :U 277 ]
 "146
-[e :U 275 ]
-[e :U 273 ]
-[e :U 271 ]
-[e :U 269 ]
-[e :U 267 ]
+[e :U 276 ]
+[e :U 274 ]
+[e :U 272 ]
+[e :U 270 ]
+[e :U 268 ]
 [; ;DelayOff_B1.c: 145: }
 [; ;DelayOff_B1.c: 146: return i;
 [e ) _i ]
-[e $UE 265  ]
+[e $UE 266  ]
 [; ;DelayOff_B1.c: 147: }
 "147
-[e :UE 265 ]
+[e :UE 266 ]
 }

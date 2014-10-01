@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.32 build 58300 
-                                                                                                           Fri Sep 26 15:35:34 2014
+                                                                                                           Wed Oct 01 08:36:18 2014
 
 
      1                           
@@ -109,7 +109,7 @@ Microchip Technology PIC Macro Assembler V1.32 build 58300
    102                           ;	Clock Out Enable
    103                           ;	CLKOUTEN = 0x1, unprogrammed default
    104                           ;	Watchdog Timer Enable
-   105                           ;	WDTE = OFF, WDT disabled
+   105                           ;	WDTE = SWDTEN, WDT controlled by the SWDTEN bit in the WDTCON register
    106                           ;	Power-up Timer Enable
    107                           ;	PWRTE = 0x1, unprogrammed default
    108                           ;	Flash Program Memory Code Protection
@@ -127,8 +127,8 @@ Microchip Technology PIC Macro Assembler V1.32 build 58300
    120                           
    121                           	psect	config
    122                           		org 0x0
-   123  8007                     		dw 0xF9E4
-   124  8007  F9E4               
+   123  8007                     		dw 0xF9EC
+   124  8007  F9EC               
    125                           ; Config register CONFIG2 @ 0x8008
    126                           ;	Stack Overflow/Underflow Reset Enable
    127                           ;	STVREN = 0x1, unprogrammed default
@@ -150,7 +150,7 @@ Microchip Technology PIC Macro Assembler V1.32 build 58300
 
 
 Microchip Technology PIC Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                               Fri Sep 26 15:35:34 2014
+Symbol Table                                                                                               Wed Oct 01 08:36:18 2014
 
                ___sp 0000                 _main 1435                 start 0016               stackhi 231F  
              stacklo 2187  start_initialization 0018             ___int_sp 0000             intlevel0 0000  

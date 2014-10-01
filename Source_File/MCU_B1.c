@@ -46,7 +46,7 @@ void Mcu_Initialization()
 	//Flash_Memory
 	Flash_Memory_Set();
 	//Watch dog
-	Watch_Dog_set();
+	WDT_Set();
 }
 //*********************************************************
 void IO_Set()
@@ -974,13 +974,25 @@ void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
 	}
 #endif
 //*********************************************************
-#if Watch_Dog_use == 1
+#if WDT_use == 1
 
-	void Watch_Dog_set(){
+	void WDT_Set(){
 		WDTCON=_WDTCON;
+		WDT=&_WDT;
+		WDT->Enable=1;
+		WDT->Count=10;
 	}
 	//*********************************************************
-	void clearingWDT(){
+	void WDT_Main(){
+		if(WDT->Enable){
+			if(WDT->Count-- > 0){
+				WDT->Count=10;
+				WDT_Clearing();
+			}
+		}
+	}
+	//*********************************************************
+	void WDT_Clearing(){
 		CLRWDT();
 	}
 #endif

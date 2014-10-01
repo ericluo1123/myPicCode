@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -41,6 +41,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "588
 [s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+"650
+[s S248 :1 `uc 1 `uc 1 ]
+[n S248 WDT Enable Count ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -137,7 +140,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"90
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -167,15 +170,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 85: unsigned p:1;
 [; ;Main_B1.h: 86: unsigned q:1;
 [; ;Main_B1.h: 87: unsigned r:1;
-[; ;Main_B1.h: 88: unsigned ClockStop:1;
-[; ;Main_B1.h: 89: }
-[; ;Main_B1.h: 90: struct TMain VarTMain;
-"91
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 91: struct TMain *TMain;
-[; ;Main_B1.h: 95: void MainT_Initialization();
-[; ;Main_B1.h: 96: void MainT();
-[; ;Main_B1.h: 97: void MainT_ResetClock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2780,5 +2781,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
-[; ;MCU_B1.h: 654: void Watch_Dog_set();
-[; ;MCU_B1.h: 655: void clearingWDT();
+[; ;MCU_B1.h: 650: struct WDT{
+[; ;MCU_B1.h: 651: unsigned Enable:1;
+[; ;MCU_B1.h: 652: unsigned char Count;
+[; ;MCU_B1.h: 653: };
+"654
+[v __WDT `S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 654: struct WDT _WDT;
+"655
+[v _WDT `*S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 655: struct WDT *WDT;
+[; ;MCU_B1.h: 661: void WDT_Set();
+[; ;MCU_B1.h: 662: void WDT_Main();
+[; ;MCU_B1.h: 663: void WDT_Clearing();

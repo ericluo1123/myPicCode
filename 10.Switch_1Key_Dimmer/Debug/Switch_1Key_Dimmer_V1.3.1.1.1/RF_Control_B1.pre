@@ -104,6 +104,7 @@ unsigned int Count2;
 unsigned int Count3;
 unsigned char IOC_Count;
 unsigned char Test;
+unsigned char ClockCount;
 
 unsigned i:1;
 unsigned j:1;
@@ -123,7 +124,6 @@ struct TMain *TMain;
 
 void MainT_Initialization();
 void MainT();
-void MainT_ResetClock();
 
 # 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
@@ -3235,6 +3235,19 @@ void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
 
+# 650
+struct WDT{
+unsigned Enable:1;
+unsigned char Count;
+};
+struct WDT _WDT;
+struct WDT *WDT;
+
+# 661
+void WDT_Set();
+void WDT_Main();
+void WDT_Clearing();
+
 # 7 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 void RfPointSelect(char rf)
 {
@@ -3305,7 +3318,7 @@ if(RF->ReceiveGO)
 RF->ReceiveGO=0;
 CC2500_RxData();
 
-# 88
+# 89
 getRxData(1);
 
 
@@ -3350,7 +3363,7 @@ CC2500_TxData();
 }
 }
 
-# 137
+# 138
 }
 }
 
@@ -3365,7 +3378,7 @@ if(!RF->TransceiveGO)
 {
 RF->TransceiveGO=1;
 
-# 158
+# 159
 RF_Data[0]=0x63;
 RF_Data[1]=0x02;
 RF_Data[2]=Product->Data[2];
@@ -3458,7 +3471,7 @@ else if(RF_Data[0] == 0x0 && RF_Data[1] == 0x65)
 ;
 }
 
-# 253
+# 254
 }
 }
 
@@ -3487,7 +3500,7 @@ setDimmerLights(1,0);
 setRFSW_Status(1,0);
 setSw_Status(1,0);
 
-# 292
+# 293
 Product->Data[9]=0;
 Product->Data[11]=0;
 Product->Data[15]=0;
@@ -3513,7 +3526,7 @@ else if(RF_Data[15] == 0x11)
 setRFSW_AdjControl(1);
 }
 
-# 344
+# 345
 }
 
 void RfSWPointSelect(char sw)
@@ -3524,7 +3537,7 @@ if(sw == 1)
 RFSW=&RFSW1;
 }
 
-# 366
+# 367
 }
 
 void setRFSW_Control(char sw)

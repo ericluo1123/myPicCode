@@ -85,7 +85,6 @@
 		unsigned p:1;
 		unsigned q:1;
 		unsigned r:1;
-		unsigned ClockStop:1;
 	}
 	struct TMain VarTMain;
 	struct TMain *TMain;
@@ -94,7 +93,6 @@
 //Routine declaration
 	void MainT_Initialization();
 	void MainT();
-	void MainT_ResetClock();
 	//end
 
 

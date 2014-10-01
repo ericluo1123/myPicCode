@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -41,6 +41,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "588
 [s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+"650
+[s S248 :1 `uc 1 `uc 1 ]
+[n S248 WDT Enable Count ]
 "1499 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _OSCCON `Vuc ~T0 @X0 0 e@153 ]
 "12 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
@@ -53,8 +56,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INT_Set `(v ~T0 @X0 0 ef ]
 "444
 [v _IOC_Set `(v ~T0 @X0 0 ef ]
-"654
-[v _Watch_Dog_set `(v ~T0 @X0 0 ef ]
+"661
+[v _WDT_Set `(v ~T0 @X0 0 ef ]
 "1020 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1081
@@ -176,6 +179,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WREN `Vb ~T0 @X0 0 e@3242 ]
 "1441
 [v _WDTCON `Vuc ~T0 @X0 0 e@151 ]
+"663 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _WDT_Clearing `(v ~T0 @X0 0 ef ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -272,7 +277,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"90
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -302,15 +307,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 85: unsigned p:1;
 [; ;Main_B1.h: 86: unsigned q:1;
 [; ;Main_B1.h: 87: unsigned r:1;
-[; ;Main_B1.h: 88: unsigned ClockStop:1;
-[; ;Main_B1.h: 89: }
-[; ;Main_B1.h: 90: struct TMain VarTMain;
-"91
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 91: struct TMain *TMain;
-[; ;Main_B1.h: 95: void MainT_Initialization();
-[; ;Main_B1.h: 96: void MainT();
-[; ;Main_B1.h: 97: void MainT_ResetClock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2915,8 +2918,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
-[; ;MCU_B1.h: 654: void Watch_Dog_set();
-[; ;MCU_B1.h: 655: void clearingWDT();
+[; ;MCU_B1.h: 650: struct WDT{
+[; ;MCU_B1.h: 651: unsigned Enable:1;
+[; ;MCU_B1.h: 652: unsigned char Count;
+[; ;MCU_B1.h: 653: };
+"654
+[v __WDT `S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 654: struct WDT _WDT;
+"655
+[v _WDT `*S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 655: struct WDT *WDT;
+[; ;MCU_B1.h: 661: void WDT_Set();
+[; ;MCU_B1.h: 662: void WDT_Main();
+[; ;MCU_B1.h: 663: void WDT_Clearing();
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [p x FOSC=INTOSC ]
 [p x WDTE=SWDTEN ]
@@ -2957,12 +2971,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.c: 47: Memory=&VarMemory;
 "47
 [e = _Memory &U _VarMemory ]
-[; ;MCU_B1.c: 49: Watch_Dog_set();
+[; ;MCU_B1.c: 49: WDT_Set();
 "49
-[e ( _Watch_Dog_set ..  ]
+[e ( _WDT_Set ..  ]
 [; ;MCU_B1.c: 50: }
 "50
-[e :UE 248 ]
+[e :UE 249 ]
 }
 "52
 [v _IO_Set `(v ~T0 @X0 1 ef ]
@@ -3010,11 +3024,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _PORTC -> -> 12 `i `uc ]
 [; ;MCU_B1.c: 94: }
 "94
-[e :UE 249 ]
+[e :UE 250 ]
 }
-[v F2329 `(v ~T0 @X0 1 tf ]
+[v F2333 `(v ~T0 @X0 1 tf ]
 "99
-[v _ISR `IF2329 ~T0 @X0 1 e@3 ]
+[v _ISR `IF2333 ~T0 @X0 1 e@3 ]
 "100
 {
 [; ;MCU_B1.c: 99: void ISR(void) interrupt 0
@@ -3035,7 +3049,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.c: 113: ;;
 [; ;MCU_B1.c: 114: }
 "114
-[e :UE 250 ]
+[e :UE 251 ]
 }
 "118
 [v _TMR0_Set `(v ~T0 @X0 1 ef ]
@@ -3062,7 +3076,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GIE -> -> 1 `i `b ]
 [; ;MCU_B1.c: 125: }
 "125
-[e :UE 251 ]
+[e :UE 252 ]
 }
 "127
 [v _TMR0_ISR `(v ~T0 @X0 1 ef ]
@@ -3074,7 +3088,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;MCU_B1.c: 129: if(TMR0IE && TMR0IF)
 "129
-[e $ ! && _TMR0IE _TMR0IF 253  ]
+[e $ ! && _TMR0IE _TMR0IF 254  ]
 [; ;MCU_B1.c: 130: {
 "130
 {
@@ -3086,105 +3100,105 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TMR0IF -> -> 0 `i `b ]
 [; ;MCU_B1.c: 137: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } }
 "137
-[e $ ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 254  ]
+[e $ ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 255  ]
 {
 [e ++ . *U _DimmerLights11 10 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 10 `i - -> . *U _DimmerLights11 11 `i -> . *U _Dimmer 2 `i 255  ]
+[e $ ! >= -> . *U _DimmerLights11 10 `i - -> . *U _DimmerLights11 11 `i -> . *U _Dimmer 2 `i 256  ]
 {
 [e = . *U _DimmerLights11 10 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 0 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 14 -> -> 1 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 6 `i -> -> -> 0 `i `uc `i 256  ]
+[e $ ! != -> . *U _DimmerLights11 6 `i -> -> -> 0 `i `uc `i 257  ]
 {
 [e = _RA7 -> -> 1 `i `b ]
 }
+[e :U 257 ]
+}
 [e :U 256 ]
 }
+[e $U 258  ]
 [e :U 255 ]
-}
-[e $U 257  ]
-[e :U 254 ]
 {
-[e $ ! != -> . *U _DimmerLights11 14 `i -> -> -> 0 `i `uc `i 258  ]
+[e $ ! != -> . *U _DimmerLights11 14 `i -> -> -> 0 `i `uc `i 259  ]
 {
 [e = . *U _DimmerLights11 14 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 1 `i -> -> -> 0 `i `uc `i 259  ]
+[e $ ! != -> . *U _DimmerLights11 1 `i -> -> -> 0 `i `uc `i 260  ]
 {
 [e ++ . *U _DimmerLights11 8 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 8 `i -> . *U _DimmerLights11 9 `i 260  ]
+[e $ ! >= -> . *U _DimmerLights11 8 `i -> . *U _DimmerLights11 9 `i 261  ]
 {
 [e = . *U _DimmerLights11 8 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 3 `i -> -> -> 0 `i `uc `i 261  ]
+[e $ ! != -> . *U _DimmerLights11 3 `i -> -> -> 0 `i `uc `i 262  ]
 {
-[e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 262  ]
+[e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 263  ]
 {
-[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 263  ]
+[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 264  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 264  ]
-[e :U 263 ]
+[e $U 265  ]
+[e :U 264 ]
 {
 [e = . *U _DimmerLights11 4 -> -> 1 `i `uc ]
 }
-[e :U 264 ]
+[e :U 265 ]
 }
-[e $U 265  ]
-[e :U 262 ]
+[e $U 266  ]
+[e :U 263 ]
 {
-[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 266  ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 267  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 267  ]
-[e :U 266 ]
+[e $U 268  ]
+[e :U 267 ]
 {
 [e = . *U _DimmerLights11 4 -> -> 0 `i `uc ]
 }
-[e :U 267 ]
+[e :U 268 ]
 }
-[e :U 265 ]
+[e :U 266 ]
 }
-[e $U 268  ]
-[e :U 261 ]
-[e $ ! != -> . *U _DimmerLights11 2 `i -> -> -> 0 `i `uc `i 269  ]
+[e $U 269  ]
+[e :U 262 ]
+[e $ ! != -> . *U _DimmerLights11 2 `i -> -> -> 0 `i `uc `i 270  ]
 {
-[e $ ! > -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 270  ]
+[e $ ! > -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 271  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 271  ]
-[e :U 270 ]
-[e $ ! < -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 272  ]
+[e $U 272  ]
+[e :U 271 ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 273  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
+[e :U 273 ]
 [e :U 272 ]
-[e :U 271 ]
-[e $ ! == -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 273  ]
+[e $ ! == -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 274  ]
 {
 [e = . *U _DimmerLights11 2 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 }
-[e :U 273 ]
+[e :U 274 ]
 }
-[e $U 274  ]
-[e :U 269 ]
+[e $U 275  ]
+[e :U 270 ]
 {
-[e $ ! != -> . *U _DimmerLights11 5 `i -> -> -> 0 `i `uc `i 275  ]
+[e $ ! != -> . *U _DimmerLights11 5 `i -> -> -> 0 `i `uc `i 276  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
-[e $ ! <= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 276  ]
+[e $ ! <= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 277  ]
 {
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 }
-[e :U 276 ]
+[e :U 277 ]
 }
-[e $U 277  ]
-[e :U 275 ]
+[e $U 278  ]
+[e :U 276 ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 13 `i 278  ]
+[e $ ! >= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 13 `i 279  ]
 {
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 6 -> -> 0 `i `uc ]
@@ -3193,132 +3207,132 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RA3 -> -> 0 `i `b ]
 [e -> 1 `i ]
 }
+[e :U 279 ]
+}
 [e :U 278 ]
 }
-[e :U 277 ]
+[e :U 275 ]
+[e :U 269 ]
 }
-[e :U 274 ]
-[e :U 268 ]
+[e :U 261 ]
 }
 [e :U 260 ]
 }
 [e :U 259 ]
-}
-[e :U 258 ]
-[e $ ! _RA7 279  ]
+[e $ ! _RA7 280  ]
 {
 [e ++ . *U _DimmerLights11 15 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 15 `i - -> 120 `i -> . *U _DimmerLights11 11 `i 280  ]
+[e $ ! >= -> . *U _DimmerLights11 15 `i - -> 120 `i -> . *U _DimmerLights11 11 `i 281  ]
 {
 [e = . *U _DimmerLights11 15 -> -> 0 `i `uc ]
 [e = _RA7 -> -> 0 `i `b ]
 }
+[e :U 281 ]
+}
 [e :U 280 ]
 }
-[e :U 279 ]
-}
-[e :U 257 ]
+[e :U 258 ]
 [; ;MCU_B1.c: 141: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } el
 "141
-[e $ ! != -> . *U _DimmerLights22 0 `i -> -> -> 0 `i `uc `i 281  ]
+[e $ ! != -> . *U _DimmerLights22 0 `i -> -> -> 0 `i `uc `i 282  ]
 {
 [e ++ . *U _DimmerLights22 10 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights22 10 `i - -> . *U _DimmerLights22 11 `i -> . *U _Dimmer 2 `i 282  ]
+[e $ ! >= -> . *U _DimmerLights22 10 `i - -> . *U _DimmerLights22 11 `i -> . *U _Dimmer 2 `i 283  ]
 {
 [e = . *U _DimmerLights22 10 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights22 0 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights22 14 -> -> 1 `i `uc ]
-[e $ ! != -> . *U _DimmerLights22 6 `i -> -> -> 0 `i `uc `i 283  ]
+[e $ ! != -> . *U _DimmerLights22 6 `i -> -> -> 0 `i `uc `i 284  ]
 {
 [e = _RB4 -> -> 1 `i `b ]
 }
+[e :U 284 ]
+}
 [e :U 283 ]
 }
+[e $U 285  ]
 [e :U 282 ]
-}
-[e $U 284  ]
-[e :U 281 ]
 {
-[e $ ! != -> . *U _DimmerLights22 14 `i -> -> -> 0 `i `uc `i 285  ]
+[e $ ! != -> . *U _DimmerLights22 14 `i -> -> -> 0 `i `uc `i 286  ]
 {
 [e = . *U _DimmerLights22 14 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights22 1 `i -> -> -> 0 `i `uc `i 286  ]
+[e $ ! != -> . *U _DimmerLights22 1 `i -> -> -> 0 `i `uc `i 287  ]
 {
 [e ++ . *U _DimmerLights22 8 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights22 8 `i -> . *U _DimmerLights22 9 `i 287  ]
+[e $ ! >= -> . *U _DimmerLights22 8 `i -> . *U _DimmerLights22 9 `i 288  ]
 {
 [e = . *U _DimmerLights22 8 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights22 3 `i -> -> -> 0 `i `uc `i 288  ]
+[e $ ! != -> . *U _DimmerLights22 3 `i -> -> -> 0 `i `uc `i 289  ]
 {
-[e $ ! == -> . *U _DimmerLights22 4 `i -> 0 `i 289  ]
+[e $ ! == -> . *U _DimmerLights22 4 `i -> 0 `i 290  ]
 {
-[e $ ! > -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 290  ]
+[e $ ! > -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 291  ]
 {
 [e -- . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
-[e $U 291  ]
-[e :U 290 ]
+[e $U 292  ]
+[e :U 291 ]
 {
 [e = . *U _DimmerLights22 4 -> -> 1 `i `uc ]
 }
-[e :U 291 ]
+[e :U 292 ]
 }
-[e $U 292  ]
-[e :U 289 ]
+[e $U 293  ]
+[e :U 290 ]
 {
-[e $ ! < -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 293  ]
+[e $ ! < -> . *U _DimmerLights22 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 294  ]
 {
 [e ++ . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
-[e $U 294  ]
-[e :U 293 ]
+[e $U 295  ]
+[e :U 294 ]
 {
 [e = . *U _DimmerLights22 4 -> -> 0 `i `uc ]
 }
-[e :U 294 ]
+[e :U 295 ]
 }
-[e :U 292 ]
+[e :U 293 ]
 }
-[e $U 295  ]
-[e :U 288 ]
-[e $ ! != -> . *U _DimmerLights22 2 `i -> -> -> 0 `i `uc `i 296  ]
+[e $U 296  ]
+[e :U 289 ]
+[e $ ! != -> . *U _DimmerLights22 2 `i -> -> -> 0 `i `uc `i 297  ]
 {
-[e $ ! > -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 297  ]
+[e $ ! > -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 298  ]
 {
 [e -- . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
-[e $U 298  ]
-[e :U 297 ]
-[e $ ! < -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 299  ]
+[e $U 299  ]
+[e :U 298 ]
+[e $ ! < -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 300  ]
 {
 [e ++ . *U _DimmerLights22 11 -> -> 1 `i `uc ]
 }
+[e :U 300 ]
 [e :U 299 ]
-[e :U 298 ]
-[e $ ! == -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 300  ]
+[e $ ! == -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 301  ]
 {
 [e = . *U _DimmerLights22 2 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights22 1 -> -> 0 `i `uc ]
 }
-[e :U 300 ]
+[e :U 301 ]
 }
-[e $U 301  ]
-[e :U 296 ]
+[e $U 302  ]
+[e :U 297 ]
 {
-[e $ ! != -> . *U _DimmerLights22 5 `i -> -> -> 0 `i `uc `i 302  ]
+[e $ ! != -> . *U _DimmerLights22 5 `i -> -> -> 0 `i `uc `i 303  ]
 {
 [e -- . *U _DimmerLights22 11 -> -> 1 `i `uc ]
-[e $ ! <= -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 303  ]
+[e $ ! <= -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 12 `i 304  ]
 {
 [e = . *U _DimmerLights22 1 -> -> 0 `i `uc ]
 }
-[e :U 303 ]
+[e :U 304 ]
 }
-[e $U 304  ]
-[e :U 302 ]
+[e $U 305  ]
+[e :U 303 ]
 {
 [e ++ . *U _DimmerLights22 11 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 13 `i 305  ]
+[e $ ! >= -> . *U _DimmerLights22 11 `i -> . *U _DimmerLights22 13 `i 306  ]
 {
 [e = . *U _DimmerLights22 1 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights22 6 -> -> 0 `i `uc ]
@@ -3326,37 +3340,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Dimmer 0 -> -> 1 `i `uc ]
 [e = _RC7 -> -> 0 `i `b ]
 }
+[e :U 306 ]
+}
 [e :U 305 ]
 }
-[e :U 304 ]
+[e :U 302 ]
+[e :U 296 ]
 }
-[e :U 301 ]
-[e :U 295 ]
+[e :U 288 ]
 }
 [e :U 287 ]
 }
 [e :U 286 ]
-}
-[e :U 285 ]
-[e $ ! _RB4 306  ]
+[e $ ! _RB4 307  ]
 {
 [e ++ . *U _DimmerLights22 15 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights22 15 `i - -> 120 `i -> . *U _DimmerLights22 11 `i 307  ]
+[e $ ! >= -> . *U _DimmerLights22 15 `i - -> 120 `i -> . *U _DimmerLights22 11 `i 308  ]
 {
 [e = . *U _DimmerLights22 15 -> -> 0 `i `uc ]
 [e = _RB4 -> -> 0 `i `b ]
 }
+[e :U 308 ]
+}
 [e :U 307 ]
 }
-[e :U 306 ]
-}
-[e :U 284 ]
+[e :U 285 ]
 [; ;MCU_B1.c: 150: Timer0->Count++;
 "150
 [e ++ . *U _Timer0 1 -> -> 1 `i `ui ]
 [; ;MCU_B1.c: 151: if(Timer0->Count == 200)
 "151
-[e $ ! == . *U _Timer0 1 -> -> 200 `i `ui 308  ]
+[e $ ! == . *U _Timer0 1 -> -> 200 `i `ui 309  ]
 [; ;MCU_B1.c: 152: {
 "152
 {
@@ -3368,11 +3382,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 1 -> -> 1 `i `uc ]
 "155
 }
-[e :U 308 ]
+[e :U 309 ]
 [; ;MCU_B1.c: 155: }
 [; ;MCU_B1.c: 158: if(Buz->GO)
 "158
-[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 309  ]
+[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 310  ]
 [; ;MCU_B1.c: 159: {
 "159
 {
@@ -3381,15 +3395,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Buz 6 -> -> 1 `i `ui ]
 "161
 }
-[e :U 309 ]
+[e :U 310 ]
 "165
 }
-[e :U 253 ]
+[e :U 254 ]
 [; ;MCU_B1.c: 161: }
 [; ;MCU_B1.c: 165: }
 [; ;MCU_B1.c: 166: }
 "166
-[e :UE 252 ]
+[e :UE 253 ]
 }
 "168
 [v _setDimmerReClock `(v ~T0 @X0 1 ef ]
@@ -3404,7 +3418,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TMR0 -> -> 255 `i `uc ]
 [; ;MCU_B1.c: 175: if(!DimmerLights11->GO)
 "175
-[e $ ! ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 311  ]
+[e $ ! ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 312  ]
 [; ;MCU_B1.c: 176: {
 "176
 {
@@ -3413,11 +3427,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DimmerLights11 0 -> -> 1 `i `uc ]
 "178
 }
-[e :U 311 ]
+[e :U 312 ]
 [; ;MCU_B1.c: 178: }
 [; ;MCU_B1.c: 202: if(!DimmerLights22->GO)
 "202
-[e $ ! ! != -> . *U _DimmerLights22 0 `i -> -> -> 0 `i `uc `i 312  ]
+[e $ ! ! != -> . *U _DimmerLights22 0 `i -> -> -> 0 `i `uc `i 313  ]
 [; ;MCU_B1.c: 203: {
 "203
 {
@@ -3426,11 +3440,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _DimmerLights22 0 -> -> 1 `i `uc ]
 "205
 }
-[e :U 312 ]
+[e :U 313 ]
 [; ;MCU_B1.c: 205: }
 [; ;MCU_B1.c: 235: }
 "235
-[e :UE 310 ]
+[e :UE 311 ]
 }
 "285
 [v _INT_Set `(v ~T0 @X0 1 ef ]
@@ -3454,7 +3468,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GIE -> -> 1 `i `b ]
 [; ;MCU_B1.c: 291: }
 "291
-[e :UE 313 ]
+[e :UE 314 ]
 }
 "293
 [v _INT_ISR `(v ~T0 @X0 1 ef ]
@@ -3466,7 +3480,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;MCU_B1.c: 295: if(INTE && INTF)
 "295
-[e $ ! && _INTE _INTF 315  ]
+[e $ ! && _INTE _INTF 316  ]
 [; ;MCU_B1.c: 296: {
 "296
 {
@@ -3481,11 +3495,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setRF_ReceiveGO (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "300
 }
-[e :U 315 ]
+[e :U 316 ]
 [; ;MCU_B1.c: 300: }
 [; ;MCU_B1.c: 301: }
 "301
-[e :UE 314 ]
+[e :UE 315 ]
 }
 "303
 [v _setINT_GO `(v ~T0 @X0 1 ef1`uc ]
@@ -3506,7 +3520,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _INTE -> _command `b ]
 [; ;MCU_B1.c: 307: }
 "307
-[e :UE 316 ]
+[e :UE 317 ]
 }
 "314
 [v _IOC_Set `(v ~T0 @X0 1 ef ]
@@ -3542,7 +3556,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GIE -> -> 1 `i `b ]
 [; ;MCU_B1.c: 340: }
 "340
-[e :UE 317 ]
+[e :UE 318 ]
 }
 "342
 [v _IOC_ISR `(v ~T0 @X0 1 ef ]
@@ -3554,7 +3568,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;MCU_B1.c: 344: if(IOCIE && IOCBF2)
 "344
-[e $ ! && _IOCIE _IOCBF2 319  ]
+[e $ ! && _IOCIE _IOCBF2 320  ]
 [; ;MCU_B1.c: 345: {
 "345
 {
@@ -3566,7 +3580,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _IOCIF -> -> 0 `i `b ]
 [; ;MCU_B1.c: 348: if(TMain->PowerON)
 "348
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 320  ]
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 321  ]
 [; ;MCU_B1.c: 349: {
 "349
 {
@@ -3575,7 +3589,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setDimmerReClock ..  ]
 [; ;MCU_B1.c: 354: if(RB2)
 "354
-[e $ ! _RB2 321  ]
+[e $ ! _RB2 322  ]
 [; ;MCU_B1.c: 355: {
 "355
 {
@@ -3585,9 +3599,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "357
 }
 [; ;MCU_B1.c: 357: }
-[e $U 322  ]
+[e $U 323  ]
 "358
-[e :U 321 ]
+[e :U 322 ]
 [; ;MCU_B1.c: 358: else
 [; ;MCU_B1.c: 359: {
 "359
@@ -3597,19 +3611,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Dimmer 2 -> -> 8 `i `uc ]
 "361
 }
-[e :U 322 ]
+[e :U 323 ]
 "369
 }
-[e :U 320 ]
+[e :U 321 ]
 "370
 }
-[e :U 319 ]
+[e :U 320 ]
 [; ;MCU_B1.c: 361: }
 [; ;MCU_B1.c: 369: }
 [; ;MCU_B1.c: 370: }
 [; ;MCU_B1.c: 371: }
 "371
-[e :UE 318 ]
+[e :UE 319 ]
 }
 "379
 [v _ADC_Set `(v ~T0 @X0 1 ef ]
@@ -3627,7 +3641,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _FVRCON -> -> 192 `i `uc ]
 [; ;MCU_B1.c: 383: }
 "383
-[e :UE 323 ]
+[e :UE 324 ]
 }
 "385
 [v _getAD `(i ~T0 @X0 1 ef2`uc`uc ]
@@ -3652,18 +3666,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GO_nDONE -> -> 1 `i `b ]
 [; ;MCU_B1.c: 390: while(GO_nDONE);
 "390
-[e $U 325  ]
-[e :U 326 ]
-[e :U 325 ]
-[e $ _GO_nDONE 326  ]
+[e $U 326  ]
 [e :U 327 ]
+[e :U 326 ]
+[e $ _GO_nDONE 327  ]
+[e :U 328 ]
 [; ;MCU_B1.c: 391: return ((ADRESH*256)+ADRESL);
 "391
 [e ) + * -> _ADRESH `i -> 256 `i -> _ADRESL `i ]
-[e $UE 324  ]
+[e $UE 325  ]
 [; ;MCU_B1.c: 392: }
 "392
-[e :UE 324 ]
+[e :UE 325 ]
 }
 "828
 [v _Flash_Memory_Initialization `(v ~T0 @X0 1 ef ]
@@ -3678,7 +3692,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.c: 830: char i;
 [; ;MCU_B1.c: 831: if(Flash_Memory_Read(31) == 0xaa)
 "831
-[e $ ! == -> ( _Flash_Memory_Read (1 -> -> 31 `i `uc `i -> 170 `i 329  ]
+[e $ ! == -> ( _Flash_Memory_Read (1 -> -> 31 `i `uc `i -> 170 `i 330  ]
 [; ;MCU_B1.c: 832: {
 "832
 {
@@ -3705,7 +3719,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
 [; ;MCU_B1.c: 846: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 "846
-[e $ ! && && == -> *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i 330  ]
+[e $ ! && && == -> *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i 331  ]
 [; ;MCU_B1.c: 847: {
 "847
 {
@@ -3717,14 +3731,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 8 -> -> 1 `i `uc ]
 "850
 }
-[e :U 330 ]
+[e :U 331 ]
 "851
 }
 [; ;MCU_B1.c: 850: }
 [; ;MCU_B1.c: 851: }
-[e $U 331  ]
+[e $U 332  ]
 "852
-[e :U 329 ]
+[e :U 330 ]
 [; ;MCU_B1.c: 852: else
 [; ;MCU_B1.c: 853: {
 "853
@@ -3779,11 +3793,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 8 -> -> 1 `i `uc ]
 "870
 }
-[e :U 331 ]
+[e :U 332 ]
 [; ;MCU_B1.c: 870: }
 [; ;MCU_B1.c: 871: }
 "871
-[e :UE 328 ]
+[e :UE 329 ]
 }
 "873
 [v _Flash_Memory_Main `(v ~T0 @X0 1 ef ]
@@ -3795,13 +3809,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;MCU_B1.c: 875: if(Memory->GO)
 "875
-[e $ ! != -> . *U _Memory 4 `i -> -> -> 0 `i `uc `i 333  ]
+[e $ ! != -> . *U _Memory 4 `i -> -> -> 0 `i `uc `i 334  ]
 [; ;MCU_B1.c: 876: {
 "876
 {
 [; ;MCU_B1.c: 877: if(Memory->Modify)
 "877
-[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 334  ]
+[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 335  ]
 [; ;MCU_B1.c: 878: {
 "878
 {
@@ -3810,7 +3824,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _Memory 6 -> -> 1 `i `ui ]
 [; ;MCU_B1.c: 880: if(Memory->Time == 25)
 "880
-[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 335  ]
+[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 336  ]
 [; ;MCU_B1.c: 881: {
 "881
 {
@@ -3828,14 +3842,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _Flash_Memory_Modify ..  ]
 "887
 }
-[e :U 335 ]
+[e :U 336 ]
 "888
 }
 [; ;MCU_B1.c: 887: }
 [; ;MCU_B1.c: 888: }
-[e $U 336  ]
+[e $U 337  ]
 "889
-[e :U 334 ]
+[e :U 335 ]
 [; ;MCU_B1.c: 889: else
 [; ;MCU_B1.c: 890: {
 "890
@@ -3845,15 +3859,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _Memory 4 -> -> 0 `i `uc ]
 "892
 }
-[e :U 336 ]
+[e :U 337 ]
 "893
 }
-[e :U 333 ]
+[e :U 334 ]
 [; ;MCU_B1.c: 892: }
 [; ;MCU_B1.c: 893: }
 [; ;MCU_B1.c: 894: }
 "894
-[e :UE 332 ]
+[e :UE 333 ]
 }
 "896
 [v _Flash_Memory_Unlock `(v ~T0 @X0 1 ef ]
@@ -3880,7 +3894,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( ___nop ..  ]
 [; ;MCU_B1.c: 903: }
 "903
-[e :UE 337 ]
+[e :UE 338 ]
 }
 "905
 [v _Flash_Memory_Read `(uc ~T0 @X0 1 ef1`uc ]
@@ -3919,10 +3933,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.c: 914: return ret;
 "914
 [e ) _ret ]
-[e $UE 338  ]
+[e $UE 339  ]
 [; ;MCU_B1.c: 915: }
 "915
-[e :UE 338 ]
+[e :UE 339 ]
 }
 "917
 [v _Flash_Memory_Write `(v ~T0 @X0 1 ef ]
@@ -3957,10 +3971,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "926
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 340  ]
-[e $U 341  ]
+[e $ < -> _i `i -> 32 `i 341  ]
+[e $U 342  ]
 "927
-[e :U 340 ]
+[e :U 341 ]
 [; ;MCU_B1.c: 927: {
 {
 [; ;MCU_B1.c: 928: PMADRL=i;
@@ -3976,8 +3990,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "926
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 340  ]
-[e :U 341 ]
+[e $ < -> _i `i -> 32 `i 341  ]
+[e :U 342 ]
 "931
 }
 [; ;MCU_B1.c: 931: }
@@ -3992,7 +4006,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _WREN -> -> 0 `i `b ]
 [; ;MCU_B1.c: 935: }
 "935
-[e :UE 339 ]
+[e :UE 340 ]
 }
 "937
 [v _Flash_Memory_Erasing `(v ~T0 @X0 1 ef ]
@@ -4025,7 +4039,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _WREN -> -> 0 `i `b ]
 [; ;MCU_B1.c: 946: }
 "946
-[e :UE 343 ]
+[e :UE 344 ]
 }
 "948
 [v _Flash_Memory_Modify `(v ~T0 @X0 1 ef ]
@@ -4042,10 +4056,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "951
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 345  ]
-[e $U 346  ]
+[e $ < -> _i `i -> 32 `i 346  ]
+[e $U 347  ]
 "952
-[e :U 345 ]
+[e :U 346 ]
 [; ;MCU_B1.c: 952: {
 {
 [; ;MCU_B1.c: 953: Memory->Data[i]=Flash_Memory_Read(i);
@@ -4055,8 +4069,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "951
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 345  ]
-[e :U 346 ]
+[e $ < -> _i `i -> 32 `i 346  ]
+[e :U 347 ]
 "954
 }
 [; ;MCU_B1.c: 954: }
@@ -4071,7 +4085,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
 [; ;MCU_B1.c: 963: if(Memory->LoopSave)
 "963
-[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 348  ]
+[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 349  ]
 [; ;MCU_B1.c: 964: {
 "964
 {
@@ -4086,7 +4100,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 8 -> -> 0 `i `uc ]
 "969
 }
-[e :U 348 ]
+[e :U 349 ]
 [; ;MCU_B1.c: 969: }
 [; ;MCU_B1.c: 970: GIE=0;
 "970
@@ -4102,31 +4116,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GIE -> -> 1 `i `b ]
 [; ;MCU_B1.c: 974: }
 "974
-[e :UE 344 ]
+[e :UE 345 ]
 }
 "979
-[v _Watch_Dog_set `(v ~T0 @X0 1 ef ]
+[v _WDT_Set `(v ~T0 @X0 1 ef ]
 {
-[; ;MCU_B1.c: 979: void Watch_Dog_set(){
-[e :U _Watch_Dog_set ]
+[; ;MCU_B1.c: 979: void WDT_Set(){
+[e :U _WDT_Set ]
 [f ]
 [; ;MCU_B1.c: 980: WDTCON=0b00010111;;
 "980
 [e = _WDTCON -> -> 23 `i `uc ]
-[; ;MCU_B1.c: 981: }
+[; ;MCU_B1.c: 981: WDT=&_WDT;
 "981
-[e :UE 349 ]
-}
+[e = _WDT &U __WDT ]
+[; ;MCU_B1.c: 982: WDT->Enable=1;
+"982
+[e = . *U _WDT 0 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 983: WDT->Count=10;
 "983
-[v _clearingWDT `(v ~T0 @X0 1 ef ]
-{
-[; ;MCU_B1.c: 983: void clearingWDT(){
-[e :U _clearingWDT ]
-[f ]
-[; ;MCU_B1.c: 984: asm("clrwdt");
+[e = . *U _WDT 1 -> -> 10 `i `uc ]
+[; ;MCU_B1.c: 984: }
 "984
-[; <" clrwdt ;# ">
-[; ;MCU_B1.c: 985: }
-"985
 [e :UE 350 ]
+}
+"986
+[v _WDT_Main `(v ~T0 @X0 1 ef ]
+{
+[; ;MCU_B1.c: 986: void WDT_Main(){
+[e :U _WDT_Main ]
+[f ]
+[; ;MCU_B1.c: 987: if(WDT->Enable){
+"987
+[e $ ! != -> . *U _WDT 0 `i -> -> -> 0 `i `uc `i 352  ]
+{
+[; ;MCU_B1.c: 988: if(WDT->Count-- > 0){
+"988
+[e $ ! > -> -- . *U _WDT 1 -> -> 1 `i `uc `i -> 0 `i 353  ]
+{
+[; ;MCU_B1.c: 989: WDT->Count=10;
+"989
+[e = . *U _WDT 1 -> -> 10 `i `uc ]
+[; ;MCU_B1.c: 990: WDT_Clearing();
+"990
+[e ( _WDT_Clearing ..  ]
+"991
+}
+[e :U 353 ]
+"992
+}
+[e :U 352 ]
+[; ;MCU_B1.c: 991: }
+[; ;MCU_B1.c: 992: }
+[; ;MCU_B1.c: 993: }
+"993
+[e :UE 351 ]
+}
+"995
+[v _WDT_Clearing `(v ~T0 @X0 1 ef ]
+{
+[; ;MCU_B1.c: 995: void WDT_Clearing(){
+[e :U _WDT_Clearing ]
+[f ]
+[; ;MCU_B1.c: 996: asm("clrwdt");
+"996
+[; <" clrwdt ;# ">
+[; ;MCU_B1.c: 997: }
+"997
+[e :UE 354 ]
 }

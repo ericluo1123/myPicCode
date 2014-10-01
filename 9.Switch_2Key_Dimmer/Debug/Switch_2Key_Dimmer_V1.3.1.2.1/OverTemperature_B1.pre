@@ -116,7 +116,6 @@ unsigned o:1;
 unsigned p:1;
 unsigned q:1;
 unsigned r:1;
-unsigned ClockStop:1;
 }
 struct TMain VarTMain;
 struct TMain *TMain;
@@ -125,7 +124,6 @@ struct TMain *TMain;
 
 void MainT_Initialization();
 void MainT();
-void MainT_ResetClock();
 
 # 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
@@ -3189,9 +3187,18 @@ void Flash_Memory_Erasing();
 void Flash_Memory_Modify();
 void Flash_Memory_Main();
 
-# 654
-void Watch_Dog_set();
-void clearingWDT();
+# 650
+struct WDT{
+unsigned Enable:1;
+unsigned char Count;
+};
+struct WDT _WDT;
+struct WDT *WDT;
+
+# 661
+void WDT_Set();
+void WDT_Main();
+void WDT_Clearing();
 
 # 15 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 void Temp_Initialization()

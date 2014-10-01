@@ -64,7 +64,7 @@ void main()
 		{
 			TMain->T0_Timerout = 0;
 			MainT();	
-			MainT_ResetClock();
+			WDT_Main();
 			if(TMain->PowerON)
 			{
 				Flash_Memory_Main();
@@ -189,31 +189,7 @@ void MainT()
 		#endif
 	}		
 }
-
-void MainT_ResetClock(){
-	char i;
-	if(!TMain->ClockStop){
-		TMain->ClockCount++;
-		if(TMain->ClockCount == 10){
-			TMain->ClockCount=0;
-			clearingWDT();
-
-		/*	#if ErrLED_ON == 0
-				if(ErrLED){
-					ErrLED=0;
-					for(i=0 ;i<20 ; i++);
-					ErrLED=1;
-				}
-			#else
-				if(!ErrLED){
-					ErrLED=1;
-					for(i=0 ;i<20 ; i++);
-					ErrLED=0;
-				}
-			#endif*/
-		}
-	}
-}	
+	
 
 //End file
 

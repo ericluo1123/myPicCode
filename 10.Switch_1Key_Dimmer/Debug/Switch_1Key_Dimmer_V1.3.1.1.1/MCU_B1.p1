@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test i j k l m n o p q r ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -44,6 +44,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "588
 [s S248 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S248 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+"650
+[s S249 :1 `uc 1 `uc 1 ]
+[n S249 WDT Enable Count ]
 "1499 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _OSCCON `Vuc ~T0 @X0 0 e@153 ]
 "12 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
@@ -56,6 +59,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INT_Set `(v ~T0 @X0 0 ef ]
 "444
 [v _IOC_Set `(v ~T0 @X0 0 ef ]
+"661
+[v _WDT_Set `(v ~T0 @X0 0 ef ]
 "1020 C:\Program Files (x86)\Microchip\xc8\v1.32\include\pic16f1518.h
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
 "1081
@@ -177,6 +182,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LWLO `Vb ~T0 @X0 0 e@3245 ]
 "4799
 [v _WREN `Vb ~T0 @X0 0 e@3242 ]
+"1441
+[v _WDTCON `Vuc ~T0 @X0 0 e@151 ]
+"663 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _WDT_Clearing `(v ~T0 @X0 0 ef ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -273,7 +282,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"88
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -292,24 +301,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 73: unsigned int Count3;
 [; ;Main_B1.h: 74: unsigned char IOC_Count;
 [; ;Main_B1.h: 75: unsigned char Test;
-[; ;Main_B1.h: 77: unsigned i:1;
-[; ;Main_B1.h: 78: unsigned j:1;
-[; ;Main_B1.h: 79: unsigned k:1;
-[; ;Main_B1.h: 80: unsigned l:1;
-[; ;Main_B1.h: 81: unsigned m:1;
-[; ;Main_B1.h: 82: unsigned n:1;
-[; ;Main_B1.h: 83: unsigned o:1;
-[; ;Main_B1.h: 84: unsigned p:1;
-[; ;Main_B1.h: 85: unsigned q:1;
-[; ;Main_B1.h: 86: unsigned r:1;
-[; ;Main_B1.h: 87: }
-[; ;Main_B1.h: 88: struct TMain VarTMain;
-"89
+[; ;Main_B1.h: 76: unsigned char ClockCount;
+[; ;Main_B1.h: 78: unsigned i:1;
+[; ;Main_B1.h: 79: unsigned j:1;
+[; ;Main_B1.h: 80: unsigned k:1;
+[; ;Main_B1.h: 81: unsigned l:1;
+[; ;Main_B1.h: 82: unsigned m:1;
+[; ;Main_B1.h: 83: unsigned n:1;
+[; ;Main_B1.h: 84: unsigned o:1;
+[; ;Main_B1.h: 85: unsigned p:1;
+[; ;Main_B1.h: 86: unsigned q:1;
+[; ;Main_B1.h: 87: unsigned r:1;
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 89: struct TMain *TMain;
-[; ;Main_B1.h: 93: void MainT_Initialization();
-[; ;Main_B1.h: 94: void MainT();
-[; ;Main_B1.h: 95: void MainT_ResetClock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2953,9 +2962,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
+[; ;MCU_B1.h: 650: struct WDT{
+[; ;MCU_B1.h: 651: unsigned Enable:1;
+[; ;MCU_B1.h: 652: unsigned char Count;
+[; ;MCU_B1.h: 653: };
+"654
+[v __WDT `S249 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 654: struct WDT _WDT;
+"655
+[v _WDT `*S249 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 655: struct WDT *WDT;
+[; ;MCU_B1.h: 661: void WDT_Set();
+[; ;MCU_B1.h: 662: void WDT_Main();
+[; ;MCU_B1.h: 663: void WDT_Clearing();
 "19 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c
 [p x FOSC=INTOSC ]
-[p x WDTE=OFF ]
+[p x WDTE=SWDTEN ]
 [p x BOREN=OFF ]
 "20
 [p x WRT=HALF ]
@@ -2963,7 +2985,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Mcu_Initialization `(v ~T0 @X0 1 ef ]
 "25
 {
-[; ;MCU_B1.c: 19: __config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_OFF & BOREN_OFF");
+[; ;MCU_B1.c: 19: __config("__CONFIG", "pic", "FOSC_INTOSC & WDTE_SWDTEN & BOREN_OFF");
 [; ;MCU_B1.c: 20: __config("__CONFIG", "pic", "VCAPEN_OFF & WRT_HALF");
 [; ;MCU_B1.c: 24: void Mcu_Initialization()
 [; ;MCU_B1.c: 25: {
@@ -2993,231 +3015,235 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.c: 47: Memory=&VarMemory;
 "47
 [e = _Memory &U _VarMemory ]
-[; ;MCU_B1.c: 48: }
-"48
-[e :UE 249 ]
-}
+[; ;MCU_B1.c: 49: WDT_Set();
+"49
+[e ( _WDT_Set ..  ]
+[; ;MCU_B1.c: 50: }
 "50
-[v _IO_Set `(v ~T0 @X0 1 ef ]
-"51
-{
-[; ;MCU_B1.c: 50: void IO_Set()
-[; ;MCU_B1.c: 51: {
-[e :U _IO_Set ]
-[f ]
-[; ;MCU_B1.c: 79: TRISA=0b01110111;;
-"79
-[e = _TRISA -> -> 119 `i `uc ]
-[; ;MCU_B1.c: 80: TRISB=0b00000111;;
-"80
-[e = _TRISB -> -> 7 `i `uc ]
-[; ;MCU_B1.c: 81: TRISC=0b00001100;;
-"81
-[e = _TRISC -> -> 12 `i `uc ]
-[; ;MCU_B1.c: 82: LATA=0b00000000;;
-"82
-[e = _LATA -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 83: LATB=0b00000010;;
-"83
-[e = _LATB -> -> 2 `i `uc ]
-[; ;MCU_B1.c: 84: LATC=0b00000000;;
-"84
-[e = _LATC -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 85: ANSELA=0b00100010;;
-"85
-[e = _ANSELA -> -> 34 `i `uc ]
-[; ;MCU_B1.c: 86: ANSELB=0b00000000;;
-"86
-[e = _ANSELB -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 87: ANSELC=0b00000000;;
-"87
-[e = _ANSELC -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 88: PORTA=0b01110111;;
-"88
-[e = _PORTA -> -> 119 `i `uc ]
-[; ;MCU_B1.c: 89: PORTB=0b00000111;;
-"89
-[e = _PORTB -> -> 7 `i `uc ]
-[; ;MCU_B1.c: 90: PORTC=0b00001100;;
-"90
-[e = _PORTC -> -> 12 `i `uc ]
-[; ;MCU_B1.c: 92: }
-"92
 [e :UE 250 ]
 }
-[v F2377 `(v ~T0 @X0 1 tf ]
-"97
-[v _ISR `IF2377 ~T0 @X0 1 e@3 ]
-"98
+"52
+[v _IO_Set `(v ~T0 @X0 1 ef ]
+"53
 {
-[; ;MCU_B1.c: 97: void ISR(void) interrupt 0
-[; ;MCU_B1.c: 98: {
-[e :U _ISR ]
+[; ;MCU_B1.c: 52: void IO_Set()
+[; ;MCU_B1.c: 53: {
+[e :U _IO_Set ]
 [f ]
-[; ;MCU_B1.c: 99: IOC_ISR();
-"99
-[e ( _IOC_ISR ..  ]
-[; ;MCU_B1.c: 101: TMR0_ISR();
-"101
-[e ( _TMR0_ISR ..  ]
-[; ;MCU_B1.c: 103: ;;
-[; ;MCU_B1.c: 107: INT_ISR();
-"107
-[e ( _INT_ISR ..  ]
-[; ;MCU_B1.c: 109: ;;
-[; ;MCU_B1.c: 110: }
-"110
+[; ;MCU_B1.c: 81: TRISA=0b01110111;;
+"81
+[e = _TRISA -> -> 119 `i `uc ]
+[; ;MCU_B1.c: 82: TRISB=0b00000111;;
+"82
+[e = _TRISB -> -> 7 `i `uc ]
+[; ;MCU_B1.c: 83: TRISC=0b00001100;;
+"83
+[e = _TRISC -> -> 12 `i `uc ]
+[; ;MCU_B1.c: 84: LATA=0b00000000;;
+"84
+[e = _LATA -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 85: LATB=0b00000010;;
+"85
+[e = _LATB -> -> 2 `i `uc ]
+[; ;MCU_B1.c: 86: LATC=0b00000000;;
+"86
+[e = _LATC -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 87: ANSELA=0b00100010;;
+"87
+[e = _ANSELA -> -> 34 `i `uc ]
+[; ;MCU_B1.c: 88: ANSELB=0b00000000;;
+"88
+[e = _ANSELB -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 89: ANSELC=0b00000000;;
+"89
+[e = _ANSELC -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 90: PORTA=0b01110111;;
+"90
+[e = _PORTA -> -> 119 `i `uc ]
+[; ;MCU_B1.c: 91: PORTB=0b00000111;;
+"91
+[e = _PORTB -> -> 7 `i `uc ]
+[; ;MCU_B1.c: 92: PORTC=0b00001100;;
+"92
+[e = _PORTC -> -> 12 `i `uc ]
+[; ;MCU_B1.c: 94: }
+"94
 [e :UE 251 ]
 }
-"114
-[v _TMR0_Set `(v ~T0 @X0 1 ef ]
-"115
+[v F2385 `(v ~T0 @X0 1 tf ]
+"99
+[v _ISR `IF2385 ~T0 @X0 1 e@3 ]
+"100
 {
-[; ;MCU_B1.c: 114: void TMR0_Set()
-[; ;MCU_B1.c: 115: {
-[e :U _TMR0_Set ]
+[; ;MCU_B1.c: 99: void ISR(void) interrupt 0
+[; ;MCU_B1.c: 100: {
+[e :U _ISR ]
 [f ]
-[; ;MCU_B1.c: 116: Timer0=&VarTimer0;
-"116
-[e = _Timer0 &U _VarTimer0 ]
-[; ;MCU_B1.c: 117: OPTION_REG=0x00;
-"117
-[e = _OPTION_REG -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 118: TMR0=(256-90);
-"118
-[e = _TMR0 -> - -> 256 `i -> 90 `i `uc ]
-[; ;MCU_B1.c: 119: TMR0IE=1;
-"119
-[e = _TMR0IE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 120: GIE=1;
-"120
-[e = _GIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 121: }
-"121
+[; ;MCU_B1.c: 101: IOC_ISR();
+"101
+[e ( _IOC_ISR ..  ]
+[; ;MCU_B1.c: 103: TMR0_ISR();
+"103
+[e ( _TMR0_ISR ..  ]
+[; ;MCU_B1.c: 105: ;;
+[; ;MCU_B1.c: 109: INT_ISR();
+"109
+[e ( _INT_ISR ..  ]
+[; ;MCU_B1.c: 111: ;;
+[; ;MCU_B1.c: 113: ;;
+[; ;MCU_B1.c: 114: }
+"114
 [e :UE 252 ]
 }
-"123
-[v _TMR0_ISR `(v ~T0 @X0 1 ef ]
-"124
+"118
+[v _TMR0_Set `(v ~T0 @X0 1 ef ]
+"119
 {
-[; ;MCU_B1.c: 123: void TMR0_ISR()
-[; ;MCU_B1.c: 124: {
+[; ;MCU_B1.c: 118: void TMR0_Set()
+[; ;MCU_B1.c: 119: {
+[e :U _TMR0_Set ]
+[f ]
+[; ;MCU_B1.c: 120: Timer0=&VarTimer0;
+"120
+[e = _Timer0 &U _VarTimer0 ]
+[; ;MCU_B1.c: 121: OPTION_REG=0x00;
+"121
+[e = _OPTION_REG -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 122: TMR0=(256-90);
+"122
+[e = _TMR0 -> - -> 256 `i -> 90 `i `uc ]
+[; ;MCU_B1.c: 123: TMR0IE=1;
+"123
+[e = _TMR0IE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 124: GIE=1;
+"124
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 125: }
+"125
+[e :UE 253 ]
+}
+"127
+[v _TMR0_ISR `(v ~T0 @X0 1 ef ]
+"128
+{
+[; ;MCU_B1.c: 127: void TMR0_ISR()
+[; ;MCU_B1.c: 128: {
 [e :U _TMR0_ISR ]
 [f ]
-[; ;MCU_B1.c: 125: if(TMR0IE && TMR0IF)
-"125
-[e $ ! && _TMR0IE _TMR0IF 254  ]
-[; ;MCU_B1.c: 126: {
-"126
+[; ;MCU_B1.c: 129: if(TMR0IE && TMR0IF)
+"129
+[e $ ! && _TMR0IE _TMR0IF 255  ]
+[; ;MCU_B1.c: 130: {
+"130
 {
-[; ;MCU_B1.c: 127: TMR0=(256-90);
-"127
+[; ;MCU_B1.c: 131: TMR0=(256-90);
+"131
 [e = _TMR0 -> - -> 256 `i -> 90 `i `uc ]
-[; ;MCU_B1.c: 128: TMR0IF=0;
-"128
+[; ;MCU_B1.c: 132: TMR0IF=0;
+"132
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;MCU_B1.c: 133: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; RB4=1; }
-"133
-[e $ ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 255  ]
+[; ;MCU_B1.c: 137: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; RB4=1; }
+"137
+[e $ ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 256  ]
 {
 [e ++ . *U _DimmerLights11 10 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 10 `i - -> . *U _DimmerLights11 11 `i -> . *U _Dimmer 2 `i 256  ]
+[e $ ! >= -> . *U _DimmerLights11 10 `i - -> . *U _DimmerLights11 11 `i -> . *U _Dimmer 2 `i 257  ]
 {
 [e = . *U _DimmerLights11 10 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 0 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 14 -> -> 1 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 6 `i -> -> -> 0 `i `uc `i 257  ]
+[e $ ! != -> . *U _DimmerLights11 6 `i -> -> -> 0 `i `uc `i 258  ]
 {
 [e = _RA7 -> -> 1 `i `b ]
 [e = _RB4 -> -> 1 `i `b ]
 }
+[e :U 258 ]
+}
 [e :U 257 ]
 }
+[e $U 259  ]
 [e :U 256 ]
-}
-[e $U 258  ]
-[e :U 255 ]
 {
-[e $ ! != -> . *U _DimmerLights11 14 `i -> -> -> 0 `i `uc `i 259  ]
+[e $ ! != -> . *U _DimmerLights11 14 `i -> -> -> 0 `i `uc `i 260  ]
 {
 [e = . *U _DimmerLights11 14 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 1 `i -> -> -> 0 `i `uc `i 260  ]
+[e $ ! != -> . *U _DimmerLights11 1 `i -> -> -> 0 `i `uc `i 261  ]
 {
 [e ++ . *U _DimmerLights11 8 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 8 `i -> . *U _DimmerLights11 9 `i 261  ]
+[e $ ! >= -> . *U _DimmerLights11 8 `i -> . *U _DimmerLights11 9 `i 262  ]
 {
 [e = . *U _DimmerLights11 8 -> -> 0 `i `uc ]
-[e $ ! != -> . *U _DimmerLights11 3 `i -> -> -> 0 `i `uc `i 262  ]
+[e $ ! != -> . *U _DimmerLights11 3 `i -> -> -> 0 `i `uc `i 263  ]
 {
-[e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 263  ]
+[e $ ! == -> . *U _DimmerLights11 4 `i -> 0 `i 264  ]
 {
-[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 264  ]
+[e $ ! > -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc `i 265  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 265  ]
-[e :U 264 ]
+[e $U 266  ]
+[e :U 265 ]
 {
 [e = . *U _DimmerLights11 4 -> -> 1 `i `uc ]
 }
-[e :U 265 ]
+[e :U 266 ]
 }
-[e $U 266  ]
-[e :U 263 ]
+[e $U 267  ]
+[e :U 264 ]
 {
-[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 267  ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> -> * -> - -> 100 `i -> 20 `i `d .1.5 `uc `i 268  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 268  ]
-[e :U 267 ]
+[e $U 269  ]
+[e :U 268 ]
 {
 [e = . *U _DimmerLights11 4 -> -> 0 `i `uc ]
 }
-[e :U 268 ]
+[e :U 269 ]
 }
-[e :U 266 ]
+[e :U 267 ]
 }
-[e $U 269  ]
-[e :U 262 ]
-[e $ ! != -> . *U _DimmerLights11 2 `i -> -> -> 0 `i `uc `i 270  ]
+[e $U 270  ]
+[e :U 263 ]
+[e $ ! != -> . *U _DimmerLights11 2 `i -> -> -> 0 `i `uc `i 271  ]
 {
-[e $ ! > -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 271  ]
+[e $ ! > -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 272  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
-[e $U 272  ]
-[e :U 271 ]
-[e $ ! < -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 273  ]
+[e $U 273  ]
+[e :U 272 ]
+[e $ ! < -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 274  ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
 }
+[e :U 274 ]
 [e :U 273 ]
-[e :U 272 ]
-[e $ ! == -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 274  ]
+[e $ ! == -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 275  ]
 {
 [e = . *U _DimmerLights11 2 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 }
-[e :U 274 ]
+[e :U 275 ]
 }
-[e $U 275  ]
-[e :U 270 ]
+[e $U 276  ]
+[e :U 271 ]
 {
-[e $ ! != -> . *U _DimmerLights11 5 `i -> -> -> 0 `i `uc `i 276  ]
+[e $ ! != -> . *U _DimmerLights11 5 `i -> -> -> 0 `i `uc `i 277  ]
 {
 [e -- . *U _DimmerLights11 11 -> -> 1 `i `uc ]
-[e $ ! <= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 277  ]
+[e $ ! <= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 12 `i 278  ]
 {
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 }
-[e :U 277 ]
+[e :U 278 ]
 }
-[e $U 278  ]
-[e :U 276 ]
+[e $U 279  ]
+[e :U 277 ]
 {
 [e ++ . *U _DimmerLights11 11 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 13 `i 279  ]
+[e $ ! >= -> . *U _DimmerLights11 11 `i -> . *U _DimmerLights11 13 `i 280  ]
 {
 [e = . *U _DimmerLights11 1 -> -> 0 `i `uc ]
 [e = . *U _DimmerLights11 6 -> -> 0 `i `uc ]
@@ -3227,769 +3253,836 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RC7 ! != -> 1 `i -> 0 `i ]
 [e ( _setLoad_StatusOff (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 }
+[e :U 280 ]
+}
 [e :U 279 ]
 }
-[e :U 278 ]
+[e :U 276 ]
+[e :U 270 ]
 }
-[e :U 275 ]
-[e :U 269 ]
+[e :U 262 ]
 }
 [e :U 261 ]
 }
 [e :U 260 ]
-}
-[e :U 259 ]
-[e $ ! _RA7 280  ]
+[e $ ! _RA7 281  ]
 {
 [e ++ . *U _DimmerLights11 15 -> -> 1 `i `uc ]
-[e $ ! >= -> . *U _DimmerLights11 15 `i - -> 120 `i -> . *U _DimmerLights11 11 `i 281  ]
+[e $ ! >= -> . *U _DimmerLights11 15 `i - -> 120 `i -> . *U _DimmerLights11 11 `i 282  ]
 {
 [e = . *U _DimmerLights11 15 -> -> 0 `i `uc ]
 [e = _RA7 -> -> 0 `i `b ]
 [e = _RB4 -> -> 0 `i `b ]
 }
+[e :U 282 ]
+}
 [e :U 281 ]
 }
-[e :U 280 ]
-}
-[e :U 258 ]
-[; ;MCU_B1.c: 146: Timer0->Count++;
-"146
-[e ++ . *U _Timer0 1 -> -> 1 `i `ui ]
-[; ;MCU_B1.c: 147: if(Timer0->Count == 200)
-"147
-[e $ ! == . *U _Timer0 1 -> -> 200 `i `ui 282  ]
-[; ;MCU_B1.c: 148: {
-"148
-{
-[; ;MCU_B1.c: 149: Timer0->Count=0;
-"149
-[e = . *U _Timer0 1 -> -> 0 `i `ui ]
-[; ;MCU_B1.c: 150: TMain->T0_Timerout=1;
+[e :U 259 ]
+[; ;MCU_B1.c: 150: Timer0->Count++;
 "150
-[e = . *U _TMain 1 -> -> 1 `i `uc ]
+[e ++ . *U _Timer0 1 -> -> 1 `i `ui ]
+[; ;MCU_B1.c: 151: if(Timer0->Count == 200)
 "151
-}
-[e :U 282 ]
-[; ;MCU_B1.c: 151: }
-[; ;MCU_B1.c: 154: if(Buz->GO)
-"154
-[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 283  ]
-[; ;MCU_B1.c: 155: {
-"155
+[e $ ! == . *U _Timer0 1 -> -> 200 `i `ui 283  ]
+[; ;MCU_B1.c: 152: {
+"152
 {
-[; ;MCU_B1.c: 156: Buz->Time++;
-"156
-[e ++ . *U _Buz 6 -> -> 1 `i `ui ]
-"157
+[; ;MCU_B1.c: 153: Timer0->Count=0;
+"153
+[e = . *U _Timer0 1 -> -> 0 `i `ui ]
+[; ;MCU_B1.c: 154: TMain->T0_Timerout=1;
+"154
+[e = . *U _TMain 1 -> -> 1 `i `uc ]
+"155
 }
 [e :U 283 ]
+[; ;MCU_B1.c: 155: }
+[; ;MCU_B1.c: 158: if(Buz->GO)
+"158
+[e $ ! != -> . *U _Buz 1 `i -> -> -> 0 `i `uc `i 284  ]
+[; ;MCU_B1.c: 159: {
+"159
+{
+[; ;MCU_B1.c: 160: Buz->Time++;
+"160
+[e ++ . *U _Buz 6 -> -> 1 `i `ui ]
 "161
 }
-[e :U 254 ]
-[; ;MCU_B1.c: 157: }
-[; ;MCU_B1.c: 161: }
-[; ;MCU_B1.c: 162: }
-"162
-[e :UE 253 ]
-}
-"164
-[v _setDimmerReClock `(v ~T0 @X0 1 ef ]
+[e :U 284 ]
 "165
+}
+[e :U 255 ]
+[; ;MCU_B1.c: 161: }
+[; ;MCU_B1.c: 165: }
+[; ;MCU_B1.c: 166: }
+"166
+[e :UE 254 ]
+}
+"168
+[v _setDimmerReClock `(v ~T0 @X0 1 ef ]
+"169
 {
-[; ;MCU_B1.c: 164: void setDimmerReClock()
-[; ;MCU_B1.c: 165: {
+[; ;MCU_B1.c: 168: void setDimmerReClock()
+[; ;MCU_B1.c: 169: {
 [e :U _setDimmerReClock ]
 [f ]
-[; ;MCU_B1.c: 166: TMR0=255;
-"166
+[; ;MCU_B1.c: 170: TMR0=255;
+"170
 [e = _TMR0 -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 171: if(!DimmerLights11->GO)
-"171
-[e $ ! ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 285  ]
-[; ;MCU_B1.c: 172: {
-"172
+[; ;MCU_B1.c: 175: if(!DimmerLights11->GO)
+"175
+[e $ ! ! != -> . *U _DimmerLights11 0 `i -> -> -> 0 `i `uc `i 286  ]
+[; ;MCU_B1.c: 176: {
+"176
 {
-[; ;MCU_B1.c: 173: DimmerLights11->GO=1;
-"173
+[; ;MCU_B1.c: 177: DimmerLights11->GO=1;
+"177
 [e = . *U _DimmerLights11 0 -> -> 1 `i `uc ]
-"174
+"178
 }
-[e :U 285 ]
-[; ;MCU_B1.c: 174: }
-[; ;MCU_B1.c: 231: }
-"231
-[e :UE 284 ]
+[e :U 286 ]
+[; ;MCU_B1.c: 178: }
+[; ;MCU_B1.c: 235: }
+"235
+[e :UE 285 ]
 }
-"281
+"285
 [v _INT_Set `(v ~T0 @X0 1 ef ]
-"282
+"286
 {
-[; ;MCU_B1.c: 281: void INT_Set()
-[; ;MCU_B1.c: 282: {
+[; ;MCU_B1.c: 285: void INT_Set()
+[; ;MCU_B1.c: 286: {
 [e :U _INT_Set ]
 [f ]
-[; ;MCU_B1.c: 283: WPUB0=0;
-"283
-[e = _WPUB0 -> -> 0 `i `b ]
-[; ;MCU_B1.c: 284: INTE=1;
-"284
-[e = _INTE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 285: PEIE=1;
-"285
-[e = _PEIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 286: GIE=1;
-"286
-[e = _GIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 287: }
+[; ;MCU_B1.c: 287: WPUB0=0;
 "287
-[e :UE 286 ]
-}
+[e = _WPUB0 -> -> 0 `i `b ]
+[; ;MCU_B1.c: 288: INTE=1;
+"288
+[e = _INTE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 289: PEIE=1;
 "289
-[v _INT_ISR `(v ~T0 @X0 1 ef ]
+[e = _PEIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 290: GIE=1;
 "290
-{
-[; ;MCU_B1.c: 289: void INT_ISR()
-[; ;MCU_B1.c: 290: {
-[e :U _INT_ISR ]
-[f ]
-[; ;MCU_B1.c: 291: if(INTE && INTF)
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 291: }
 "291
-[e $ ! && _INTE _INTF 288  ]
-[; ;MCU_B1.c: 292: {
-"292
-{
-[; ;MCU_B1.c: 293: INTF=0;
-"293
-[e = _INTF -> -> 0 `i `b ]
-[; ;MCU_B1.c: 294: INTE=0;
-"294
-[e = _INTE -> -> 0 `i `b ]
-[; ;MCU_B1.c: 295: setRF_ReceiveGO(1,1);
-"295
-[e ( _setRF_ReceiveGO (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"296
-}
-[e :U 288 ]
-[; ;MCU_B1.c: 296: }
-[; ;MCU_B1.c: 297: }
-"297
 [e :UE 287 ]
 }
-"299
-[v _setINT_GO `(v ~T0 @X0 1 ef1`uc ]
-"300
+"293
+[v _INT_ISR `(v ~T0 @X0 1 ef ]
+"294
 {
-[; ;MCU_B1.c: 299: void setINT_GO(char command)
-[; ;MCU_B1.c: 300: {
-[e :U _setINT_GO ]
-"299
-[v _command `uc ~T0 @X0 1 r1 ]
-"300
+[; ;MCU_B1.c: 293: void INT_ISR()
+[; ;MCU_B1.c: 294: {
+[e :U _INT_ISR ]
 [f ]
-[; ;MCU_B1.c: 301: INTF=0;
-"301
+[; ;MCU_B1.c: 295: if(INTE && INTF)
+"295
+[e $ ! && _INTE _INTF 289  ]
+[; ;MCU_B1.c: 296: {
+"296
+{
+[; ;MCU_B1.c: 297: INTF=0;
+"297
 [e = _INTF -> -> 0 `i `b ]
-[; ;MCU_B1.c: 302: INTE=command;
-"302
-[e = _INTE -> _command `b ]
-[; ;MCU_B1.c: 303: }
-"303
-[e :UE 289 ]
+[; ;MCU_B1.c: 298: INTE=0;
+"298
+[e = _INTE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 299: setRF_ReceiveGO(1,1);
+"299
+[e ( _setRF_ReceiveGO (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"300
 }
-"310
-[v _IOC_Set `(v ~T0 @X0 1 ef ]
-"311
+[e :U 289 ]
+[; ;MCU_B1.c: 300: }
+[; ;MCU_B1.c: 301: }
+"301
+[e :UE 288 ]
+}
+"303
+[v _setINT_GO `(v ~T0 @X0 1 ef1`uc ]
+"304
 {
-[; ;MCU_B1.c: 310: void IOC_Set()
-[; ;MCU_B1.c: 311: {
-[e :U _IOC_Set ]
+[; ;MCU_B1.c: 303: void setINT_GO(char command)
+[; ;MCU_B1.c: 304: {
+[e :U _setINT_GO ]
+"303
+[v _command `uc ~T0 @X0 1 r1 ]
+"304
 [f ]
-[; ;MCU_B1.c: 312: WPUB2=0;
-"312
-[e = _WPUB2 -> -> 0 `i `b ]
-[; ;MCU_B1.c: 314: IOCBP=0b00000100;
-"314
-[e = _IOCBP -> -> 4 `i `uc ]
-[; ;MCU_B1.c: 315: IOCBN=0b00000100;
-"315
-[e = _IOCBN -> -> 4 `i `uc ]
-[; ;MCU_B1.c: 330: IOCBF=0b00000000;
-"330
-[e = _IOCBF -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 332: IOCIE=1;
-"332
-[e = _IOCIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 333: IOCIF=0;
-"333
-[e = _IOCIF -> -> 0 `i `b ]
-[; ;MCU_B1.c: 334: PEIE=1;
-"334
-[e = _PEIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 335: GIE=1;
-"335
-[e = _GIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 336: }
-"336
+[; ;MCU_B1.c: 305: INTF=0;
+"305
+[e = _INTF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 306: INTE=command;
+"306
+[e = _INTE -> _command `b ]
+[; ;MCU_B1.c: 307: }
+"307
 [e :UE 290 ]
 }
-"338
-[v _IOC_ISR `(v ~T0 @X0 1 ef ]
-"339
+"314
+[v _IOC_Set `(v ~T0 @X0 1 ef ]
+"315
 {
-[; ;MCU_B1.c: 338: void IOC_ISR()
-[; ;MCU_B1.c: 339: {
+[; ;MCU_B1.c: 314: void IOC_Set()
+[; ;MCU_B1.c: 315: {
+[e :U _IOC_Set ]
+[f ]
+[; ;MCU_B1.c: 316: WPUB2=0;
+"316
+[e = _WPUB2 -> -> 0 `i `b ]
+[; ;MCU_B1.c: 318: IOCBP=0b00000100;
+"318
+[e = _IOCBP -> -> 4 `i `uc ]
+[; ;MCU_B1.c: 319: IOCBN=0b00000100;
+"319
+[e = _IOCBN -> -> 4 `i `uc ]
+[; ;MCU_B1.c: 334: IOCBF=0b00000000;
+"334
+[e = _IOCBF -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 336: IOCIE=1;
+"336
+[e = _IOCIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 337: IOCIF=0;
+"337
+[e = _IOCIF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 338: PEIE=1;
+"338
+[e = _PEIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 339: GIE=1;
+"339
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 340: }
+"340
+[e :UE 291 ]
+}
+"342
+[v _IOC_ISR `(v ~T0 @X0 1 ef ]
+"343
+{
+[; ;MCU_B1.c: 342: void IOC_ISR()
+[; ;MCU_B1.c: 343: {
 [e :U _IOC_ISR ]
 [f ]
-[; ;MCU_B1.c: 340: if(IOCIE && IOCBF2)
-"340
-[e $ ! && _IOCIE _IOCBF2 292  ]
-[; ;MCU_B1.c: 341: {
-"341
-{
-[; ;MCU_B1.c: 342: IOCBF2=0;
-"342
-[e = _IOCBF2 -> -> 0 `i `b ]
-[; ;MCU_B1.c: 343: IOCIF=0;
-"343
-[e = _IOCIF -> -> 0 `i `b ]
-[; ;MCU_B1.c: 344: if(TMain->PowerON)
+[; ;MCU_B1.c: 344: if(IOCIE && IOCBF2)
 "344
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 293  ]
+[e $ ! && _IOCIE _IOCBF2 293  ]
 [; ;MCU_B1.c: 345: {
 "345
 {
-[; ;MCU_B1.c: 349: setDimmerReClock();
+[; ;MCU_B1.c: 346: IOCBF2=0;
+"346
+[e = _IOCBF2 -> -> 0 `i `b ]
+[; ;MCU_B1.c: 347: IOCIF=0;
+"347
+[e = _IOCIF -> -> 0 `i `b ]
+[; ;MCU_B1.c: 348: if(TMain->PowerON)
+"348
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 294  ]
+[; ;MCU_B1.c: 349: {
 "349
-[e ( _setDimmerReClock ..  ]
-[; ;MCU_B1.c: 350: if(RB2)
-"350
-[e $ ! _RB2 294  ]
-[; ;MCU_B1.c: 351: {
-"351
 {
-[; ;MCU_B1.c: 352: Dimmer->Correction=0;
-"352
-[e = . *U _Dimmer 2 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 353: setDimmerReClock();
 "353
-}
-[; ;MCU_B1.c: 353: }
-[e $U 295  ]
+[e ( _setDimmerReClock ..  ]
+[; ;MCU_B1.c: 354: if(RB2)
 "354
-[e :U 294 ]
-[; ;MCU_B1.c: 354: else
+[e $ ! _RB2 295  ]
 [; ;MCU_B1.c: 355: {
 "355
 {
-[; ;MCU_B1.c: 356: Dimmer->Correction=8;
+[; ;MCU_B1.c: 356: Dimmer->Correction=0;
 "356
-[e = . *U _Dimmer 2 -> -> 8 `i `uc ]
+[e = . *U _Dimmer 2 -> -> 0 `i `uc ]
 "357
 }
+[; ;MCU_B1.c: 357: }
+[e $U 296  ]
+"358
 [e :U 295 ]
-"365
+[; ;MCU_B1.c: 358: else
+[; ;MCU_B1.c: 359: {
+"359
+{
+[; ;MCU_B1.c: 360: Dimmer->Correction=8;
+"360
+[e = . *U _Dimmer 2 -> -> 8 `i `uc ]
+"361
+}
+[e :U 296 ]
+"369
+}
+[e :U 294 ]
+"370
 }
 [e :U 293 ]
-"366
+[; ;MCU_B1.c: 361: }
+[; ;MCU_B1.c: 369: }
+[; ;MCU_B1.c: 370: }
+[; ;MCU_B1.c: 371: }
+"371
+[e :UE 292 ]
 }
-[e :U 292 ]
-[; ;MCU_B1.c: 357: }
-[; ;MCU_B1.c: 365: }
-[; ;MCU_B1.c: 366: }
-[; ;MCU_B1.c: 367: }
-"367
-[e :UE 291 ]
-}
-"375
+"379
 [v _ADC_Set `(v ~T0 @X0 1 ef ]
-"376
+"380
 {
-[; ;MCU_B1.c: 375: void ADC_Set()
-[; ;MCU_B1.c: 376: {
+[; ;MCU_B1.c: 379: void ADC_Set()
+[; ;MCU_B1.c: 380: {
 [e :U _ADC_Set ]
 [f ]
-[; ;MCU_B1.c: 377: ADCON1=0xf2;
-"377
+[; ;MCU_B1.c: 381: ADCON1=0xf2;
+"381
 [e = _ADCON1 -> -> 242 `i `uc ]
-[; ;MCU_B1.c: 378: FVRCON=0xc0;
-"378
+[; ;MCU_B1.c: 382: FVRCON=0xc0;
+"382
 [e = _FVRCON -> -> 192 `i `uc ]
-[; ;MCU_B1.c: 379: }
-"379
-[e :UE 296 ]
-}
-"381
-[v _getAD `(i ~T0 @X0 1 ef2`uc`uc ]
-"382
-{
-[; ;MCU_B1.c: 381: ADtype getAD(char adcon0,char adcon1)
-[; ;MCU_B1.c: 382: {
-[e :U _getAD ]
-"381
-[v _adcon0 `uc ~T0 @X0 1 r1 ]
-[v _adcon1 `uc ~T0 @X0 1 r2 ]
-"382
-[f ]
-[; ;MCU_B1.c: 383: ADCON0=adcon0;
+[; ;MCU_B1.c: 383: }
 "383
-[e = _ADCON0 _adcon0 ]
-[; ;MCU_B1.c: 384: ADCON1=adcon1;
-"384
-[e = _ADCON1 _adcon1 ]
-[; ;MCU_B1.c: 385: GO_nDONE=1;
-"385
-[e = _GO_nDONE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 386: while(GO_nDONE);
-"386
-[e $U 298  ]
-[e :U 299 ]
-[e :U 298 ]
-[e $ _GO_nDONE 299  ]
-[e :U 300 ]
-[; ;MCU_B1.c: 387: return ((ADRESH*256)+ADRESL);
-"387
-[e ) + * -> _ADRESH `i -> 256 `i -> _ADRESL `i ]
-[e $UE 297  ]
-[; ;MCU_B1.c: 388: }
-"388
 [e :UE 297 ]
 }
-"807
-[v _Flash_Memory_Initialization `(v ~T0 @X0 1 ef ]
-"808
+"385
+[v _getAD `(i ~T0 @X0 1 ef2`uc`uc ]
+"386
 {
-[; ;MCU_B1.c: 807: void Flash_Memory_Initialization()
-[; ;MCU_B1.c: 808: {
+[; ;MCU_B1.c: 385: ADtype getAD(char adcon0,char adcon1)
+[; ;MCU_B1.c: 386: {
+[e :U _getAD ]
+"385
+[v _adcon0 `uc ~T0 @X0 1 r1 ]
+[v _adcon1 `uc ~T0 @X0 1 r2 ]
+"386
+[f ]
+[; ;MCU_B1.c: 387: ADCON0=adcon0;
+"387
+[e = _ADCON0 _adcon0 ]
+[; ;MCU_B1.c: 388: ADCON1=adcon1;
+"388
+[e = _ADCON1 _adcon1 ]
+[; ;MCU_B1.c: 389: GO_nDONE=1;
+"389
+[e = _GO_nDONE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 390: while(GO_nDONE);
+"390
+[e $U 299  ]
+[e :U 300 ]
+[e :U 299 ]
+[e $ _GO_nDONE 300  ]
+[e :U 301 ]
+[; ;MCU_B1.c: 391: return ((ADRESH*256)+ADRESL);
+"391
+[e ) + * -> _ADRESH `i -> 256 `i -> _ADRESL `i ]
+[e $UE 298  ]
+[; ;MCU_B1.c: 392: }
+"392
+[e :UE 298 ]
+}
+"828
+[v _Flash_Memory_Initialization `(v ~T0 @X0 1 ef ]
+"829
+{
+[; ;MCU_B1.c: 828: void Flash_Memory_Initialization()
+[; ;MCU_B1.c: 829: {
 [e :U _Flash_Memory_Initialization ]
 [f ]
-"809
-[v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_B1.c: 809: char i;
-[; ;MCU_B1.c: 810: if(Flash_Memory_Read(31) == 0xaa)
-"810
-[e $ ! == -> ( _Flash_Memory_Read (1 -> -> 31 `i `uc `i -> 170 `i 302  ]
-[; ;MCU_B1.c: 811: {
-"811
-{
-[; ;MCU_B1.c: 812: Product->Data[12]=Flash_Memory_Read(0);
-"812
-[e = *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 813: Product->Data[13]=Flash_Memory_Read(1);
-"813
-[e = *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 1 `i `uc ]
-[; ;MCU_B1.c: 814: Product->Data[14]=Flash_Memory_Read(2);
-"814
-[e = *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 2 `i `uc ]
-[; ;MCU_B1.c: 820: i=setPercentValue(((char)((100-55)*1.5)));
-"820
-[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc ]
-[; ;MCU_B1.c: 821: Product->Data[21]=i;
-"821
-[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 822: Product->Data[22]=i;
-"822
-[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 823: Product->Data[23]=i;
-"823
-[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 825: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
-"825
-[e $ ! && && == -> *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i 303  ]
-[; ;MCU_B1.c: 826: {
-"826
-{
-[; ;MCU_B1.c: 827: TMain->FirstOpen=1;
-"827
-[e = . *U _TMain 5 -> -> 1 `i `uc ]
-[; ;MCU_B1.c: 828: TMain->First=1;
-"828
-[e = . *U _TMain 8 -> -> 1 `i `uc ]
-"829
-}
-[e :U 303 ]
 "830
-}
-[; ;MCU_B1.c: 829: }
-[; ;MCU_B1.c: 830: }
-[e $U 304  ]
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 830: char i;
+[; ;MCU_B1.c: 831: if(Flash_Memory_Read(31) == 0xaa)
 "831
-[e :U 302 ]
-[; ;MCU_B1.c: 831: else
+[e $ ! == -> ( _Flash_Memory_Read (1 -> -> 31 `i `uc `i -> 170 `i 303  ]
 [; ;MCU_B1.c: 832: {
 "832
 {
-[; ;MCU_B1.c: 833: i=setPercentValue(((char)((100-55)*1.5)));
+[; ;MCU_B1.c: 833: Product->Data[12]=Flash_Memory_Read(0);
 "833
-[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc ]
-[; ;MCU_B1.c: 834: Memory->Data[0]=0xff;
+[e = *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 834: Product->Data[13]=Flash_Memory_Read(1);
 "834
-[e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 835: Memory->Data[1]=0xff;
+[e = *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 835: Product->Data[14]=Flash_Memory_Read(2);
 "835
-[e = *U + &U . *U _Memory 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 836: Memory->Data[2]=0xff;
-"836
-[e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 837: Memory->Data[3]=0xff;
-"837
-[e = *U + &U . *U _Memory 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 838: Memory->Data[4]=0xff;
-"838
-[e = *U + &U . *U _Memory 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 839: Memory->Data[5]=0xff;
-"839
-[e = *U + &U . *U _Memory 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
-[; ;MCU_B1.c: 840: Memory->Data[31]=0xaa;
-"840
-[e = *U + &U . *U _Memory 0 * -> -> -> 31 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 170 `i `uc ]
-[; ;MCU_B1.c: 841: Product->Data[21]=i;
+[e = *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ( _Flash_Memory_Read (1 -> -> 2 `i `uc ]
+[; ;MCU_B1.c: 841: i=setPercentValue(((char)((100-55)*1.5)));
 "841
-[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 842: Product->Data[22]=i;
+[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc ]
+[; ;MCU_B1.c: 842: Product->Data[21]=i;
 "842
-[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 843: Product->Data[23]=i;
+[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 843: Product->Data[22]=i;
 "843
-[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
-[; ;MCU_B1.c: 844: GIE=0;
+[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 844: Product->Data[23]=i;
 "844
-[e = _GIE -> -> 0 `i `b ]
-[; ;MCU_B1.c: 845: Flash_Memory_Write();
-"845
-[e ( _Flash_Memory_Write ..  ]
-[; ;MCU_B1.c: 846: GIE=1;
+[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 846: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 "846
-[e = _GIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 847: TMain->FirstOpen=1;
+[e $ ! && && == -> *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i == -> *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux `i -> 255 `i 304  ]
+[; ;MCU_B1.c: 847: {
 "847
-[e = . *U _TMain 5 -> -> 1 `i `uc ]
-[; ;MCU_B1.c: 848: TMain->First=1;
+{
+[; ;MCU_B1.c: 848: TMain->FirstOpen=1;
 "848
-[e = . *U _TMain 8 -> -> 1 `i `uc ]
+[e = . *U _TMain 5 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 849: TMain->First=1;
 "849
+[e = . *U _TMain 8 -> -> 1 `i `uc ]
+"850
 }
 [e :U 304 ]
-[; ;MCU_B1.c: 849: }
-[; ;MCU_B1.c: 850: }
-"850
-[e :UE 301 ]
+"851
 }
+[; ;MCU_B1.c: 850: }
+[; ;MCU_B1.c: 851: }
+[e $U 305  ]
 "852
-[v _Flash_Memory_Main `(v ~T0 @X0 1 ef ]
+[e :U 303 ]
+[; ;MCU_B1.c: 852: else
+[; ;MCU_B1.c: 853: {
 "853
 {
-[; ;MCU_B1.c: 852: void Flash_Memory_Main()
-[; ;MCU_B1.c: 853: {
+[; ;MCU_B1.c: 854: i=setPercentValue(((char)((100-55)*1.5)));
+"854
+[e = _i ( _setPercentValue (1 -> * -> - -> 100 `i -> 55 `i `d .1.5 `uc ]
+[; ;MCU_B1.c: 855: Memory->Data[0]=0xff;
+"855
+[e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 856: Memory->Data[1]=0xff;
+"856
+[e = *U + &U . *U _Memory 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 857: Memory->Data[2]=0xff;
+"857
+[e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 858: Memory->Data[3]=0xff;
+"858
+[e = *U + &U . *U _Memory 0 * -> -> -> 3 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 859: Memory->Data[4]=0xff;
+"859
+[e = *U + &U . *U _Memory 0 * -> -> -> 4 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 860: Memory->Data[5]=0xff;
+"860
+[e = *U + &U . *U _Memory 0 * -> -> -> 5 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 255 `i `uc ]
+[; ;MCU_B1.c: 861: Memory->Data[31]=0xaa;
+"861
+[e = *U + &U . *U _Memory 0 * -> -> -> 31 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux -> -> 170 `i `uc ]
+[; ;MCU_B1.c: 862: Product->Data[21]=i;
+"862
+[e = *U + &U . *U _Product 0 * -> -> -> 21 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 863: Product->Data[22]=i;
+"863
+[e = *U + &U . *U _Product 0 * -> -> -> 22 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 864: Product->Data[23]=i;
+"864
+[e = *U + &U . *U _Product 0 * -> -> -> 23 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux _i ]
+[; ;MCU_B1.c: 865: GIE=0;
+"865
+[e = _GIE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 866: Flash_Memory_Write();
+"866
+[e ( _Flash_Memory_Write ..  ]
+[; ;MCU_B1.c: 867: GIE=1;
+"867
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 868: TMain->FirstOpen=1;
+"868
+[e = . *U _TMain 5 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 869: TMain->First=1;
+"869
+[e = . *U _TMain 8 -> -> 1 `i `uc ]
+"870
+}
+[e :U 305 ]
+[; ;MCU_B1.c: 870: }
+[; ;MCU_B1.c: 871: }
+"871
+[e :UE 302 ]
+}
+"873
+[v _Flash_Memory_Main `(v ~T0 @X0 1 ef ]
+"874
+{
+[; ;MCU_B1.c: 873: void Flash_Memory_Main()
+[; ;MCU_B1.c: 874: {
 [e :U _Flash_Memory_Main ]
 [f ]
-[; ;MCU_B1.c: 854: if(Memory->GO)
-"854
-[e $ ! != -> . *U _Memory 4 `i -> -> -> 0 `i `uc `i 306  ]
-[; ;MCU_B1.c: 855: {
-"855
-{
-[; ;MCU_B1.c: 856: if(Memory->Modify)
-"856
-[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 307  ]
-[; ;MCU_B1.c: 857: {
-"857
-{
-[; ;MCU_B1.c: 858: Memory->Time++;
-"858
-[e ++ . *U _Memory 6 -> -> 1 `i `ui ]
-[; ;MCU_B1.c: 859: if(Memory->Time == 25)
-"859
-[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 308  ]
-[; ;MCU_B1.c: 860: {
-"860
-{
-[; ;MCU_B1.c: 861: Memory->Time=0;
-"861
-[e = . *U _Memory 6 -> -> 0 `i `ui ]
-[; ;MCU_B1.c: 862: Memory->Modify=0;
-"862
-[e = . *U _Memory 3 -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 863: Memory->GO=0;
-"863
-[e = . *U _Memory 4 -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 864: Flash_Memory_Modify();
-"864
-[e ( _Flash_Memory_Modify ..  ]
-"866
-}
-[e :U 308 ]
-"867
-}
-[; ;MCU_B1.c: 866: }
-[; ;MCU_B1.c: 867: }
-[e $U 309  ]
-"868
-[e :U 307 ]
-[; ;MCU_B1.c: 868: else
-[; ;MCU_B1.c: 869: {
-"869
-{
-[; ;MCU_B1.c: 870: Memory->GO=0;
-"870
-[e = . *U _Memory 4 -> -> 0 `i `uc ]
-"871
-}
-[e :U 309 ]
-"872
-}
-[e :U 306 ]
-[; ;MCU_B1.c: 871: }
-[; ;MCU_B1.c: 872: }
-[; ;MCU_B1.c: 873: }
-"873
-[e :UE 305 ]
-}
+[; ;MCU_B1.c: 875: if(Memory->GO)
 "875
-[v _Flash_Memory_Unlock `(v ~T0 @X0 1 ef ]
+[e $ ! != -> . *U _Memory 4 `i -> -> -> 0 `i `uc `i 307  ]
+[; ;MCU_B1.c: 876: {
 "876
 {
-[; ;MCU_B1.c: 875: void Flash_Memory_Unlock()
-[; ;MCU_B1.c: 876: {
-[e :U _Flash_Memory_Unlock ]
-[f ]
-[; ;MCU_B1.c: 877: PMCON2=0x55;
+[; ;MCU_B1.c: 877: if(Memory->Modify)
 "877
-[e = _PMCON2 -> -> 85 `i `uc ]
-[; ;MCU_B1.c: 878: PMCON2=0xaa;
+[e $ ! != -> . *U _Memory 3 `i -> -> -> 0 `i `uc `i 308  ]
+[; ;MCU_B1.c: 878: {
 "878
-[e = _PMCON2 -> -> 170 `i `uc ]
-[; ;MCU_B1.c: 879: WR=1;
-"879
-[e = _WR -> -> 1 `i `b ]
-[; ;MCU_B1.c: 880: __nop();
-"880
-[e ( ___nop ..  ]
-[; ;MCU_B1.c: 881: __nop();
-"881
-[e ( ___nop ..  ]
-[; ;MCU_B1.c: 882: }
-"882
-[e :UE 310 ]
-}
-"884
-[v _Flash_Memory_Read `(uc ~T0 @X0 1 ef1`uc ]
-"885
 {
-[; ;MCU_B1.c: 884: char Flash_Memory_Read(char address)
-[; ;MCU_B1.c: 885: {
-[e :U _Flash_Memory_Read ]
+[; ;MCU_B1.c: 879: Memory->Time++;
+"879
+[e ++ . *U _Memory 6 -> -> 1 `i `ui ]
+[; ;MCU_B1.c: 880: if(Memory->Time == 25)
+"880
+[e $ ! == . *U _Memory 6 -> -> 25 `i `ui 309  ]
+[; ;MCU_B1.c: 881: {
+"881
+{
+[; ;MCU_B1.c: 882: Memory->Time=0;
+"882
+[e = . *U _Memory 6 -> -> 0 `i `ui ]
+[; ;MCU_B1.c: 883: Memory->Modify=0;
+"883
+[e = . *U _Memory 3 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 884: Memory->GO=0;
 "884
-[v _address `uc ~T0 @X0 1 r1 ]
+[e = . *U _Memory 4 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 885: Flash_Memory_Modify();
 "885
-[f ]
-"886
-[v _i `uc ~T0 @X0 1 a ]
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;MCU_B1.c: 886: char i,ret=0;
-[e = _ret -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 887: PMADRH=0x30;
+[e ( _Flash_Memory_Modify ..  ]
 "887
-[e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_B1.c: 888: PMADRL=address;
+}
+[e :U 309 ]
 "888
-[e = _PMADRL _address ]
-[; ;MCU_B1.c: 889: CFGS=0;
+}
+[; ;MCU_B1.c: 887: }
+[; ;MCU_B1.c: 888: }
+[e $U 310  ]
 "889
-[e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_B1.c: 890: RD=1;
+[e :U 308 ]
+[; ;MCU_B1.c: 889: else
+[; ;MCU_B1.c: 890: {
 "890
-[e = _RD -> -> 1 `i `b ]
-[; ;MCU_B1.c: 891: i=PMDATH;
+{
+[; ;MCU_B1.c: 891: Memory->GO=0;
 "891
-[e = _i _PMDATH ]
-[; ;MCU_B1.c: 892: ret=PMDATL;
+[e = . *U _Memory 4 -> -> 0 `i `uc ]
 "892
-[e = _ret _PMDATL ]
-[; ;MCU_B1.c: 893: return ret;
+}
+[e :U 310 ]
 "893
-[e ) _ret ]
-[e $UE 311  ]
+}
+[e :U 307 ]
+[; ;MCU_B1.c: 892: }
+[; ;MCU_B1.c: 893: }
 [; ;MCU_B1.c: 894: }
 "894
-[e :UE 311 ]
+[e :UE 306 ]
 }
 "896
-[v _Flash_Memory_Write `(v ~T0 @X0 1 ef ]
+[v _Flash_Memory_Unlock `(v ~T0 @X0 1 ef ]
 "897
 {
-[; ;MCU_B1.c: 896: void Flash_Memory_Write()
+[; ;MCU_B1.c: 896: void Flash_Memory_Unlock()
 [; ;MCU_B1.c: 897: {
-[e :U _Flash_Memory_Write ]
+[e :U _Flash_Memory_Unlock ]
 [f ]
+[; ;MCU_B1.c: 898: PMCON2=0x55;
 "898
-[v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_B1.c: 898: char i;
-[; ;MCU_B1.c: 899: CFGS=0;
+[e = _PMCON2 -> -> 85 `i `uc ]
+[; ;MCU_B1.c: 899: PMCON2=0xaa;
 "899
-[e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_B1.c: 900: PMADRH=0x30;
+[e = _PMCON2 -> -> 170 `i `uc ]
+[; ;MCU_B1.c: 900: WR=1;
 "900
-[e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_B1.c: 901: PMDATH=0;
+[e = _WR -> -> 1 `i `b ]
+[; ;MCU_B1.c: 901: __nop();
 "901
-[e = _PMDATH -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 902: FREE=0;
+[e ( ___nop ..  ]
+[; ;MCU_B1.c: 902: __nop();
 "902
-[e = _FREE -> -> 0 `i `b ]
-[; ;MCU_B1.c: 903: LWLO=1;
+[e ( ___nop ..  ]
+[; ;MCU_B1.c: 903: }
 "903
-[e = _LWLO -> -> 1 `i `b ]
-[; ;MCU_B1.c: 904: WREN=1;
-"904
-[e = _WREN -> -> 1 `i `b ]
-[; ;MCU_B1.c: 905: for(i=0 ; i<32 ; i++)
+[e :UE 311 ]
+}
 "905
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 313  ]
-[e $U 314  ]
+[v _Flash_Memory_Read `(uc ~T0 @X0 1 ef1`uc ]
 "906
-[e :U 313 ]
-[; ;MCU_B1.c: 906: {
 {
-[; ;MCU_B1.c: 907: PMADRL=i;
-"907
-[e = _PMADRL _i ]
-[; ;MCU_B1.c: 908: PMDATL=Memory->Data[i];
-"908
-[e = _PMDATL *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ]
-[; ;MCU_B1.c: 909: Flash_Memory_Unlock();
-"909
-[e ( _Flash_Memory_Unlock ..  ]
-"910
-}
+[; ;MCU_B1.c: 905: char Flash_Memory_Read(char address)
+[; ;MCU_B1.c: 906: {
+[e :U _Flash_Memory_Read ]
 "905
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 313  ]
-[e :U 314 ]
+[v _address `uc ~T0 @X0 1 r1 ]
+"906
+[f ]
+"907
+[v _i `uc ~T0 @X0 1 a ]
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 907: char i,ret=0;
+[e = _ret -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 908: PMADRH=0x30;
+"908
+[e = _PMADRH -> -> 48 `i `uc ]
+[; ;MCU_B1.c: 909: PMADRL=address;
+"909
+[e = _PMADRL _address ]
+[; ;MCU_B1.c: 910: CFGS=0;
 "910
-}
-[; ;MCU_B1.c: 910: }
-[; ;MCU_B1.c: 911: LWLO=0;
+[e = _CFGS -> -> 0 `i `b ]
+[; ;MCU_B1.c: 911: RD=1;
 "911
-[e = _LWLO -> -> 0 `i `b ]
-[; ;MCU_B1.c: 912: Flash_Memory_Unlock();
+[e = _RD -> -> 1 `i `b ]
+[; ;MCU_B1.c: 912: i=PMDATH;
 "912
-[e ( _Flash_Memory_Unlock ..  ]
-[; ;MCU_B1.c: 913: WREN=0;
+[e = _i _PMDATH ]
+[; ;MCU_B1.c: 913: ret=PMDATL;
 "913
-[e = _WREN -> -> 0 `i `b ]
-[; ;MCU_B1.c: 914: }
+[e = _ret _PMDATL ]
+[; ;MCU_B1.c: 914: return ret;
 "914
+[e ) _ret ]
+[e $UE 312  ]
+[; ;MCU_B1.c: 915: }
+"915
 [e :UE 312 ]
 }
-"916
-[v _Flash_Memory_Erasing `(v ~T0 @X0 1 ef ]
 "917
-{
-[; ;MCU_B1.c: 916: void Flash_Memory_Erasing()
-[; ;MCU_B1.c: 917: {
-[e :U _Flash_Memory_Erasing ]
-[f ]
-[; ;MCU_B1.c: 918: CFGS=0;
+[v _Flash_Memory_Write `(v ~T0 @X0 1 ef ]
 "918
-[e = _CFGS -> -> 0 `i `b ]
-[; ;MCU_B1.c: 919: PMADRH=0x30;
-"919
-[e = _PMADRH -> -> 48 `i `uc ]
-[; ;MCU_B1.c: 920: PMADRL=0x00;
-"920
-[e = _PMADRL -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 921: FREE=1;
-"921
-[e = _FREE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 922: WREN=1;
-"922
-[e = _WREN -> -> 1 `i `b ]
-[; ;MCU_B1.c: 923: Flash_Memory_Unlock();
-"923
-[e ( _Flash_Memory_Unlock ..  ]
-[; ;MCU_B1.c: 924: WREN=0;
-"924
-[e = _WREN -> -> 0 `i `b ]
-[; ;MCU_B1.c: 925: }
-"925
-[e :UE 316 ]
-}
-"927
-[v _Flash_Memory_Modify `(v ~T0 @X0 1 ef ]
-"928
 {
-[; ;MCU_B1.c: 927: void Flash_Memory_Modify()
-[; ;MCU_B1.c: 928: {
-[e :U _Flash_Memory_Modify ]
+[; ;MCU_B1.c: 917: void Flash_Memory_Write()
+[; ;MCU_B1.c: 918: {
+[e :U _Flash_Memory_Write ]
 [f ]
-"929
+"919
 [v _i `uc ~T0 @X0 1 a ]
-[; ;MCU_B1.c: 929: char i;
-[; ;MCU_B1.c: 930: for(i=0;i<32;i++)
-"930
+[; ;MCU_B1.c: 919: char i;
+[; ;MCU_B1.c: 920: CFGS=0;
+"920
+[e = _CFGS -> -> 0 `i `b ]
+[; ;MCU_B1.c: 921: PMADRH=0x30;
+"921
+[e = _PMADRH -> -> 48 `i `uc ]
+[; ;MCU_B1.c: 922: PMDATH=0;
+"922
+[e = _PMDATH -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 923: FREE=0;
+"923
+[e = _FREE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 924: LWLO=1;
+"924
+[e = _LWLO -> -> 1 `i `b ]
+[; ;MCU_B1.c: 925: WREN=1;
+"925
+[e = _WREN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 926: for(i=0 ; i<32 ; i++)
+"926
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 32 `i 318  ]
-[e $U 319  ]
-"931
-[e :U 318 ]
-[; ;MCU_B1.c: 931: {
+[e $ < -> _i `i -> 32 `i 314  ]
+[e $U 315  ]
+"927
+[e :U 314 ]
+[; ;MCU_B1.c: 927: {
 {
-[; ;MCU_B1.c: 932: Memory->Data[i]=Flash_Memory_Read(i);
-"932
-[e = *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ( _Flash_Memory_Read (1 _i ]
-"933
-}
+[; ;MCU_B1.c: 928: PMADRL=i;
+"928
+[e = _PMADRL _i ]
+[; ;MCU_B1.c: 929: PMDATL=Memory->Data[i];
+"929
+[e = _PMDATL *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ]
+[; ;MCU_B1.c: 930: Flash_Memory_Unlock();
 "930
+[e ( _Flash_Memory_Unlock ..  ]
+"931
+}
+"926
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 32 `i 318  ]
-[e :U 319 ]
+[e $ < -> _i `i -> 32 `i 314  ]
+[e :U 315 ]
+"931
+}
+[; ;MCU_B1.c: 931: }
+[; ;MCU_B1.c: 932: LWLO=0;
+"932
+[e = _LWLO -> -> 0 `i `b ]
+[; ;MCU_B1.c: 933: Flash_Memory_Unlock();
 "933
-}
-[; ;MCU_B1.c: 933: }
-[; ;MCU_B1.c: 934: Memory->Data[0]=Product->Data[12];
+[e ( _Flash_Memory_Unlock ..  ]
+[; ;MCU_B1.c: 934: WREN=0;
 "934
-[e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_B1.c: 935: Memory->Data[1]=Product->Data[13];
+[e = _WREN -> -> 0 `i `b ]
+[; ;MCU_B1.c: 935: }
 "935
-[e = *U + &U . *U _Memory 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_B1.c: 936: Memory->Data[2]=Product->Data[14];
-"936
-[e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
-[; ;MCU_B1.c: 942: if(Memory->LoopSave)
-"942
-[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 321  ]
-[; ;MCU_B1.c: 943: {
-"943
-{
-[; ;MCU_B1.c: 944: Memory->LoopSave=0;
-"944
-[e = . *U _Memory 5 -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 945: TMain->FirstOpen=0;
-"945
-[e = . *U _TMain 5 -> -> 0 `i `uc ]
-[; ;MCU_B1.c: 946: TMain->First=0;
-"946
-[e = . *U _TMain 8 -> -> 0 `i `uc ]
-"948
+[e :UE 313 ]
 }
-[e :U 321 ]
-[; ;MCU_B1.c: 948: }
-[; ;MCU_B1.c: 949: GIE=0;
-"949
-[e = _GIE -> -> 0 `i `b ]
-[; ;MCU_B1.c: 950: Flash_Memory_Erasing();
-"950
-[e ( _Flash_Memory_Erasing ..  ]
-[; ;MCU_B1.c: 951: Flash_Memory_Write();
-"951
-[e ( _Flash_Memory_Write ..  ]
-[; ;MCU_B1.c: 952: GIE=1;
-"952
-[e = _GIE -> -> 1 `i `b ]
-[; ;MCU_B1.c: 953: }
-"953
+"937
+[v _Flash_Memory_Erasing `(v ~T0 @X0 1 ef ]
+"938
+{
+[; ;MCU_B1.c: 937: void Flash_Memory_Erasing()
+[; ;MCU_B1.c: 938: {
+[e :U _Flash_Memory_Erasing ]
+[f ]
+[; ;MCU_B1.c: 939: CFGS=0;
+"939
+[e = _CFGS -> -> 0 `i `b ]
+[; ;MCU_B1.c: 940: PMADRH=0x30;
+"940
+[e = _PMADRH -> -> 48 `i `uc ]
+[; ;MCU_B1.c: 941: PMADRL=0x00;
+"941
+[e = _PMADRL -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 942: FREE=1;
+"942
+[e = _FREE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 943: WREN=1;
+"943
+[e = _WREN -> -> 1 `i `b ]
+[; ;MCU_B1.c: 944: Flash_Memory_Unlock();
+"944
+[e ( _Flash_Memory_Unlock ..  ]
+[; ;MCU_B1.c: 945: WREN=0;
+"945
+[e = _WREN -> -> 0 `i `b ]
+[; ;MCU_B1.c: 946: }
+"946
 [e :UE 317 ]
+}
+"948
+[v _Flash_Memory_Modify `(v ~T0 @X0 1 ef ]
+"949
+{
+[; ;MCU_B1.c: 948: void Flash_Memory_Modify()
+[; ;MCU_B1.c: 949: {
+[e :U _Flash_Memory_Modify ]
+[f ]
+"950
+[v _i `uc ~T0 @X0 1 a ]
+[; ;MCU_B1.c: 950: char i;
+[; ;MCU_B1.c: 951: for(i=0;i<32;i++)
+"951
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 319  ]
+[e $U 320  ]
+"952
+[e :U 319 ]
+[; ;MCU_B1.c: 952: {
+{
+[; ;MCU_B1.c: 953: Memory->Data[i]=Flash_Memory_Read(i);
+"953
+[e = *U + &U . *U _Memory 0 * -> _i `ux -> -> # *U &U . *U _Memory 0 `ui `ux ( _Flash_Memory_Read (1 _i ]
+"954
+}
+"951
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 319  ]
+[e :U 320 ]
+"954
+}
+[; ;MCU_B1.c: 954: }
+[; ;MCU_B1.c: 955: Memory->Data[0]=Product->Data[12];
+"955
+[e = *U + &U . *U _Memory 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 12 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
+[; ;MCU_B1.c: 956: Memory->Data[1]=Product->Data[13];
+"956
+[e = *U + &U . *U _Memory 0 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 13 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
+[; ;MCU_B1.c: 957: Memory->Data[2]=Product->Data[14];
+"957
+[e = *U + &U . *U _Memory 0 * -> -> -> 2 `i `ui `ux -> -> # *U &U . *U _Memory 0 `ui `ux *U + &U . *U _Product 0 * -> -> -> 14 `i `ui `ux -> -> # *U &U . *U _Product 0 `ui `ux ]
+[; ;MCU_B1.c: 963: if(Memory->LoopSave)
+"963
+[e $ ! != -> . *U _Memory 5 `i -> -> -> 0 `i `uc `i 322  ]
+[; ;MCU_B1.c: 964: {
+"964
+{
+[; ;MCU_B1.c: 965: Memory->LoopSave=0;
+"965
+[e = . *U _Memory 5 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 966: TMain->FirstOpen=0;
+"966
+[e = . *U _TMain 5 -> -> 0 `i `uc ]
+[; ;MCU_B1.c: 967: TMain->First=0;
+"967
+[e = . *U _TMain 8 -> -> 0 `i `uc ]
+"969
+}
+[e :U 322 ]
+[; ;MCU_B1.c: 969: }
+[; ;MCU_B1.c: 970: GIE=0;
+"970
+[e = _GIE -> -> 0 `i `b ]
+[; ;MCU_B1.c: 971: Flash_Memory_Erasing();
+"971
+[e ( _Flash_Memory_Erasing ..  ]
+[; ;MCU_B1.c: 972: Flash_Memory_Write();
+"972
+[e ( _Flash_Memory_Write ..  ]
+[; ;MCU_B1.c: 973: GIE=1;
+"973
+[e = _GIE -> -> 1 `i `b ]
+[; ;MCU_B1.c: 974: }
+"974
+[e :UE 318 ]
+}
+"979
+[v _WDT_Set `(v ~T0 @X0 1 ef ]
+{
+[; ;MCU_B1.c: 979: void WDT_Set(){
+[e :U _WDT_Set ]
+[f ]
+[; ;MCU_B1.c: 980: WDTCON=0b00010111;;
+"980
+[e = _WDTCON -> -> 23 `i `uc ]
+[; ;MCU_B1.c: 981: WDT=&_WDT;
+"981
+[e = _WDT &U __WDT ]
+[; ;MCU_B1.c: 982: WDT->Enable=1;
+"982
+[e = . *U _WDT 0 -> -> 1 `i `uc ]
+[; ;MCU_B1.c: 983: WDT->Count=10;
+"983
+[e = . *U _WDT 1 -> -> 10 `i `uc ]
+[; ;MCU_B1.c: 984: }
+"984
+[e :UE 323 ]
+}
+"986
+[v _WDT_Main `(v ~T0 @X0 1 ef ]
+{
+[; ;MCU_B1.c: 986: void WDT_Main(){
+[e :U _WDT_Main ]
+[f ]
+[; ;MCU_B1.c: 987: if(WDT->Enable){
+"987
+[e $ ! != -> . *U _WDT 0 `i -> -> -> 0 `i `uc `i 325  ]
+{
+[; ;MCU_B1.c: 988: if(WDT->Count-- > 0){
+"988
+[e $ ! > -> -- . *U _WDT 1 -> -> 1 `i `uc `i -> 0 `i 326  ]
+{
+[; ;MCU_B1.c: 989: WDT->Count=10;
+"989
+[e = . *U _WDT 1 -> -> 10 `i `uc ]
+[; ;MCU_B1.c: 990: WDT_Clearing();
+"990
+[e ( _WDT_Clearing ..  ]
+"991
+}
+[e :U 326 ]
+"992
+}
+[e :U 325 ]
+[; ;MCU_B1.c: 991: }
+[; ;MCU_B1.c: 992: }
+[; ;MCU_B1.c: 993: }
+"993
+[e :UE 324 ]
+}
+"995
+[v _WDT_Clearing `(v ~T0 @X0 1 ef ]
+{
+[; ;MCU_B1.c: 995: void WDT_Clearing(){
+[e :U _WDT_Clearing ]
+[f ]
+[; ;MCU_B1.c: 996: asm("clrwdt");
+"996
+[; <" clrwdt ;# ">
+[; ;MCU_B1.c: 997: }
+"997
+[e :UE 327 ]
 }

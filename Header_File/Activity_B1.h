@@ -103,8 +103,12 @@
 	#if IOC_use == 1
 	#endif
 
-	//FlashMemory_use
+	//FlashMemory
 	#if FlashMemory_use == 1
+	#endif
+
+	//watchdog timer
+	#if WDT_use == 1
 	#endif
 
 //MCU end

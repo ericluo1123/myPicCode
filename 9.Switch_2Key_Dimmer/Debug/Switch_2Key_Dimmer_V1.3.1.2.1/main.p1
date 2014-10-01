@@ -3,8 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S2 `uc -> 32 `i ]
 [n S2 Product Data ]
 "58
-[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ClockStop ]
+[s S3 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 :1 `uc 1 :1 `uc 1 `ui 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3 TMain PowerON T0_Timerout T1_Timerout Flag GO FirstOpen PowerCount SelfTest First Count Count1 Count2 Count3 IOC_Count Test ClockCount i j k l m n o p q r ]
 "13 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h
 [s S4 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 ]
 [n S4 Switch Enable Touch Debounce Hold1 Hold2 Hold3 Status Flag Adj DebounceTime Hold1Time Hold2Time Hold3Time ]
@@ -41,8 +41,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "588
 [s S247 `uc -> 32 `i `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `ui 1 ]
 [n S247 FlashMemory Data ReadDataH ReadDataL Modify GO LoopSave Time ]
+"650
+[s S248 :1 `uc 1 `uc 1 ]
+[n S248 WDT Enable Count ]
 [p mainexit ]
-"95 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"94 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT_Initialization `(v ~T0 @X0 0 ef ]
 "11 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
 [v _Mcu_Initialization `(v ~T0 @X0 0 ef ]
@@ -72,11 +75,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _getPowerFault_AD `(v ~T0 @X0 0 ef1`uc ]
 "52 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Buzzer_B1.h
 [v _Buzzer_Main `(v ~T0 @X0 0 ef ]
-"96 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
+"95 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Main_B1.h
 [v _MainT `(v ~T0 @X0 0 ef ]
-"97
-[v _MainT_ResetClock `(v ~T0 @X0 0 ef ]
-"629 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+"662 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
+[v _WDT_Main `(v ~T0 @X0 0 ef ]
+"629
 [v _Flash_Memory_Main `(v ~T0 @X0 0 ef ]
 "51 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\LED_B1.h
 [v _LED_Main `(v ~T0 @X0 0 ef ]
@@ -100,8 +103,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _setSw_Enable `(v ~T0 @X0 0 ef1`uc ]
 "63 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\RF_Control_B1.h
 [v _setRF_Enable `(v ~T0 @X0 0 ef2`uc`uc ]
-"655 C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\MCU_B1.h
-[v _clearingWDT `(v ~T0 @X0 0 ef ]
 [; ;stdio.h: 8: typedef int ptrdiff_t;
 [; ;stdio.h: 9: typedef unsigned size_t;
 [; ;stdio.h: 10: typedef unsigned short wchar_t;
@@ -198,7 +199,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 20: 0x00,0x00
 [; ;Main_B1.h: 21: }
 [; ;Main_B1.h: 22: };
-"90
+"89
 [v _VarTMain `S3 ~T0 @X0 1 e ]
 [; ;Main_B1.h: 58: struct TMain
 [; ;Main_B1.h: 59: {
@@ -228,15 +229,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 85: unsigned p:1;
 [; ;Main_B1.h: 86: unsigned q:1;
 [; ;Main_B1.h: 87: unsigned r:1;
-[; ;Main_B1.h: 88: unsigned ClockStop:1;
-[; ;Main_B1.h: 89: }
-[; ;Main_B1.h: 90: struct TMain VarTMain;
-"91
+[; ;Main_B1.h: 88: }
+[; ;Main_B1.h: 89: struct TMain VarTMain;
+"90
 [v _TMain `*S3 ~T0 @X0 1 e ]
-[; ;Main_B1.h: 91: struct TMain *TMain;
-[; ;Main_B1.h: 95: void MainT_Initialization();
-[; ;Main_B1.h: 96: void MainT();
-[; ;Main_B1.h: 97: void MainT_ResetClock();
+[; ;Main_B1.h: 90: struct TMain *TMain;
+[; ;Main_B1.h: 94: void MainT_Initialization();
+[; ;Main_B1.h: 95: void MainT();
 [; ;Activity_B1.h: 59: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
@@ -2841,8 +2840,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;MCU_B1.h: 627: void Flash_Memory_Erasing();
 [; ;MCU_B1.h: 628: void Flash_Memory_Modify();
 [; ;MCU_B1.h: 629: void Flash_Memory_Main();
-[; ;MCU_B1.h: 654: void Watch_Dog_set();
-[; ;MCU_B1.h: 655: void clearingWDT();
+[; ;MCU_B1.h: 650: struct WDT{
+[; ;MCU_B1.h: 651: unsigned Enable:1;
+[; ;MCU_B1.h: 652: unsigned char Count;
+[; ;MCU_B1.h: 653: };
+"654
+[v __WDT `S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 654: struct WDT _WDT;
+"655
+[v _WDT `*S248 ~T0 @X0 1 e ]
+[; ;MCU_B1.h: 655: struct WDT *WDT;
+[; ;MCU_B1.h: 661: void WDT_Set();
+[; ;MCU_B1.h: 662: void WDT_Main();
+[; ;MCU_B1.h: 663: void WDT_Clearing();
 "7 C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c
 [v _main `(v ~T0 @X0 1 ef ]
 "8
@@ -2894,13 +2904,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _CC2500_PowerOnInitial ..  ]
 [; ;main.c: 30: while(1)
 "30
-[e :U 250 ]
+[e :U 251 ]
 [; ;main.c: 31: {
 "31
 {
 [; ;main.c: 32: if(TMain->PowerON)
 "32
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 252  ]
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 253  ]
 [; ;main.c: 33: {
 "33
 {
@@ -2917,11 +2927,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _Buzzer_Main ..  ]
 "61
 }
-[e :U 252 ]
+[e :U 253 ]
 [; ;main.c: 61: }
 [; ;main.c: 63: if(TMain->T0_Timerout)
 "63
-[e $ ! != -> . *U _TMain 1 `i -> -> -> 0 `i `uc `i 253  ]
+[e $ ! != -> . *U _TMain 1 `i -> -> -> 0 `i `uc `i 254  ]
 [; ;main.c: 64: {
 "64
 {
@@ -2931,12 +2941,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 66: MainT();
 "66
 [e ( _MainT ..  ]
-[; ;main.c: 67: MainT_ResetClock();
+[; ;main.c: 67: WDT_Main();
 "67
-[e ( _MainT_ResetClock ..  ]
+[e ( _WDT_Main ..  ]
 [; ;main.c: 68: if(TMain->PowerON)
 "68
-[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 254  ]
+[e $ ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 255  ]
 [; ;main.c: 69: {
 "69
 {
@@ -2971,22 +2981,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _DelayOff_Main ..  ]
 "87
 }
-[e :U 254 ]
+[e :U 255 ]
 "88
 }
-[e :U 253 ]
+[e :U 254 ]
 "89
 }
-[e :U 249 ]
+[e :U 250 ]
 "30
-[e $U 250  ]
-[e :U 251 ]
+[e $U 251  ]
+[e :U 252 ]
 [; ;main.c: 87: }
 [; ;main.c: 88: }
 [; ;main.c: 89: }
 [; ;main.c: 90: }
 "90
-[e :UE 248 ]
+[e :UE 249 ]
 }
 "93
 [v _MainT_Initialization `(v ~T0 @X0 1 ef ]
@@ -3007,7 +3017,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TMain &U _VarTMain ]
 [; ;main.c: 103: }
 "103
-[e :UE 255 ]
+[e :UE 256 ]
 }
 "105
 [v _MainT `(v ~T0 @X0 1 ef ]
@@ -3019,7 +3029,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;main.c: 108: if(!TMain->PowerON)
 "108
-[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 257  ]
+[e $ ! ! != -> . *U _TMain 0 `i -> -> -> 0 `i `uc `i 258  ]
 [; ;main.c: 109: {
 "109
 {
@@ -3028,7 +3038,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _TMain 6 -> -> 1 `i `ui ]
 [; ;main.c: 111: if(TMain->PowerCount == 150)
 "111
-[e $ ! == . *U _TMain 6 -> -> 150 `i `ui 258  ]
+[e $ ! == . *U _TMain 6 -> -> 150 `i `ui 259  ]
 [; ;main.c: 112: {
 "112
 {
@@ -3056,14 +3066,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _setRF_Enable (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "137
 }
-[e :U 258 ]
+[e :U 259 ]
 "138
 }
 [; ;main.c: 137: }
 [; ;main.c: 138: }
-[e $U 259  ]
+[e $U 260  ]
 "139
-[e :U 257 ]
+[e :U 258 ]
 [; ;main.c: 139: else
 [; ;main.c: 140: {
 "140
@@ -3073,7 +3083,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ++ . *U _TMain 10 -> -> 1 `i `ui ]
 [; ;main.c: 149: if(TMain->Count1 == 100)
 "149
-[e $ ! == . *U _TMain 10 -> -> 100 `i `ui 260  ]
+[e $ ! == . *U _TMain 10 -> -> 100 `i `ui 261  ]
 [; ;main.c: 150: {
 "150
 {
@@ -3082,7 +3092,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 10 -> -> 0 `i `ui ]
 [; ;main.c: 164: if(TMain->Flag)
 "164
-[e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 261  ]
+[e $ ! != -> . *U _TMain 3 `i -> -> -> 0 `i `uc `i 262  ]
 [; ;main.c: 165: {
 "165
 {
@@ -3092,9 +3102,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "175
 }
 [; ;main.c: 175: }
-[e $U 262  ]
+[e $U 263  ]
 "176
-[e :U 261 ]
+[e :U 262 ]
 [; ;main.c: 176: else
 [; ;main.c: 177: {
 "177
@@ -3104,55 +3114,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . *U _TMain 3 -> -> 1 `i `uc ]
 "187
 }
-[e :U 262 ]
+[e :U 263 ]
 "188
 }
-[e :U 260 ]
+[e :U 261 ]
 "190
 }
-[e :U 259 ]
+[e :U 260 ]
 [; ;main.c: 187: }
 [; ;main.c: 188: }
 [; ;main.c: 190: }
 [; ;main.c: 191: }
 "191
-[e :UE 256 ]
-}
-"193
-[v _MainT_ResetClock `(v ~T0 @X0 1 ef ]
-{
-[; ;main.c: 193: void MainT_ResetClock(){
-[e :U _MainT_ResetClock ]
-[f ]
-"194
-[v _i `uc ~T0 @X0 1 a ]
-[; ;main.c: 194: char i;
-[; ;main.c: 195: if(!TMain->ClockStop){
-"195
-[e $ ! ! != -> . *U _TMain 26 `i -> -> -> 0 `i `uc `i 264  ]
-{
-[; ;main.c: 196: TMain->ClockCount++;
-"196
-[e ++ . *U _TMain 15 -> -> 1 `i `uc ]
-[; ;main.c: 197: if(TMain->ClockCount == 10){
-"197
-[e $ ! == -> . *U _TMain 15 `i -> 10 `i 265  ]
-{
-[; ;main.c: 198: TMain->ClockCount=0;
-"198
-[e = . *U _TMain 15 -> -> 0 `i `uc ]
-[; ;main.c: 199: clearingWDT();
-"199
-[e ( _clearingWDT ..  ]
-"214
-}
-[e :U 265 ]
-"215
-}
-[e :U 264 ]
-[; ;main.c: 214: }
-[; ;main.c: 215: }
-[; ;main.c: 216: }
-"216
-[e :UE 263 ]
+[e :UE 257 ]
 }

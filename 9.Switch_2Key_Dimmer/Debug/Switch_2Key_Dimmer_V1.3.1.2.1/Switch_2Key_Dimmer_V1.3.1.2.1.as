@@ -3616,7 +3616,6 @@ TOSH equ 0FEFh ;#
 	FNCALL	_main,_LED_Main
 	FNCALL	_main,_MainT
 	FNCALL	_main,_MainT_Initialization
-	FNCALL	_main,_MainT_ResetClock
 	FNCALL	_main,_Mcu_Initialization
 	FNCALL	_main,_PowerFault_Initialization
 	FNCALL	_main,_PowerFault_Main
@@ -3626,10 +3625,12 @@ TOSH equ 0FEFh ;#
 	FNCALL	_main,_Switch_Main
 	FNCALL	_main,_Temp_Initialization
 	FNCALL	_main,_Temp_Main
+	FNCALL	_main,_WDT_Main
 	FNCALL	_main,_getPowerFault_AD
 	FNCALL	_main,_getTemp_AD
 	FNCALL	_getTemp_AD,_getAD
 	FNCALL	_getPowerFault_AD,_getAD
+	FNCALL	_WDT_Main,_WDT_Clearing
 	FNCALL	_Temp_Main,_setTemp_Main
 	FNCALL	_setTemp_Main,_getPF_Safe
 	FNCALL	_setTemp_Main,_setOverTemp_Exceptions
@@ -3748,8 +3749,7 @@ TOSH equ 0FEFh ;#
 	FNCALL	_Mcu_Initialization,_IOC_Set
 	FNCALL	_Mcu_Initialization,_IO_Set
 	FNCALL	_Mcu_Initialization,_TMR0_Set
-	FNCALL	_Mcu_Initialization,_Watch_Dog_set
-	FNCALL	_MainT_ResetClock,_clearingWDT
+	FNCALL	_Mcu_Initialization,_WDT_Set
 	FNCALL	_MainT,_setBuz
 	FNCALL	_MainT,_setRF_Enable
 	FNCALL	_MainT,_setSw_Enable
@@ -4044,6 +4044,7 @@ __end_of_CC2500_patable_vaule:
 	global	_VarLED2
 	global	_Dimmer1
 	global	_RF1
+	global	__WDT
 	global	_RFSW1
 	global	_RFSW2
 	global	_DimmerLights1
@@ -4075,6 +4076,10 @@ psect	nvBANK1,class=BANK1,space=1,noexec
 global __pnvBANK1
 __pnvBANK1:
 _Timer0:
+       ds      1
+
+	global	_WDT
+_WDT:
        ds      1
 
 	global	_PORTA
@@ -4350,6 +4355,9 @@ _Dimmer1:
 _RF1:
        ds      3
 
+__WDT:
+       ds      2
+
 _RFSW1:
        ds      1
 
@@ -4440,7 +4448,7 @@ psect cinit,class=CODE,delta=2,merge=1
 	movwf	fsr0l
 	movlw	high(__pbssBANK1)
 	movwf	fsr0h
-	movlw	04Ah
+	movlw	04Ch
 	fcall	clear_ram0
 ; Clear objects allocated to BANK2
 psect cinit,class=CODE,delta=2,merge=1
@@ -4502,25 +4510,29 @@ end_of_initialization:
 __end_of__initialization:	bcf	pic14e$flags,0 ;clear compiler interrupt flag
 movlb 0
 ljmp _main	;jump to C main() function
+psect	cstackBANK3,class=BANK3,space=1,noexec
+global __pcstackBANK3
+__pcstackBANK3:
+	global	setRF_Main@rf
+setRF_Main@rf:	; 1 bytes @ 0x0
+	global	_setSw_Main$4236
+_setSw_Main$4236:	; 1 bytes @ 0x0
+	ds	1
+	global	_setRF_Main$3911
+_setRF_Main$3911:	; 1 bytes @ 0x1
+	global	_setSw_Main$4237
+_setSw_Main$4237:	; 1 bytes @ 0x1
+	ds	1
+	global	setSw_Main@sw
+setSw_Main@sw:	; 1 bytes @ 0x2
+	ds	1
 psect	cstackBANK1,class=BANK1,space=1,noexec
 global __pcstackBANK1
 __pcstackBANK1:
 	global	getRxData@rf
 getRxData@rf:	; 1 bytes @ 0x0
-	global	_setSw_Main$4179
-_setSw_Main$4179:	; 1 bytes @ 0x0
 	ds	1
 ??_setRF_Main:	; 0 bytes @ 0x1
-	global	_setSw_Main$4180
-_setSw_Main$4180:	; 1 bytes @ 0x1
-	ds	1
-	global	setRF_Main@rf
-setRF_Main@rf:	; 1 bytes @ 0x2
-	global	setSw_Main@sw
-setSw_Main@sw:	; 1 bytes @ 0x2
-	ds	1
-	global	_setRF_Main$3858
-_setRF_Main$3858:	; 1 bytes @ 0x3
 	ds	1
 psect	cstackCOMMON,class=COMMON,space=1,noexec
 global __pcstackCOMMON
@@ -4555,7 +4567,7 @@ __pcstackCOMMON:
 ?_getTemp_AD:	; 0 bytes @ 0x0
 ?_getPowerFault_AD:	; 0 bytes @ 0x0
 ?_MainT:	; 0 bytes @ 0x0
-?_MainT_ResetClock:	; 0 bytes @ 0x0
+?_WDT_Main:	; 0 bytes @ 0x0
 ?_Flash_Memory_Main:	; 0 bytes @ 0x0
 ?_Temp_Main:	; 0 bytes @ 0x0
 ?_PowerFault_Main:	; 0 bytes @ 0x0
@@ -4563,13 +4575,12 @@ __pcstackCOMMON:
 ?_RF_Main:	; 0 bytes @ 0x0
 ?_setTemp_Enable:	; 0 bytes @ 0x0
 ?_setSw_Enable:	; 0 bytes @ 0x0
-?_clearingWDT:	; 0 bytes @ 0x0
 ?_IO_Set:	; 0 bytes @ 0x0
 ?_TMR0_Set:	; 0 bytes @ 0x0
 ?_ADC_Set:	; 0 bytes @ 0x0
 ?_INT_Set:	; 0 bytes @ 0x0
 ?_IOC_Set:	; 0 bytes @ 0x0
-?_Watch_Dog_set:	; 0 bytes @ 0x0
+?_WDT_Set:	; 0 bytes @ 0x0
 ?_IOC_ISR:	; 0 bytes @ 0x0
 ??_IOC_ISR:	; 0 bytes @ 0x0
 ?_TMR0_ISR:	; 0 bytes @ 0x0
@@ -4577,6 +4588,7 @@ __pcstackCOMMON:
 ?_INT_ISR:	; 0 bytes @ 0x0
 ?_Flash_Memory_Write:	; 0 bytes @ 0x0
 ?_Flash_Memory_Modify:	; 0 bytes @ 0x0
+?_WDT_Clearing:	; 0 bytes @ 0x0
 ?_setTemp_Initialization:	; 0 bytes @ 0x0
 ?_setTemp_Main:	; 0 bytes @ 0x0
 ?_setOverTemp_Exceptions:	; 0 bytes @ 0x0
@@ -4660,17 +4672,17 @@ __pcstackBANK0:
 ??_Dimmer_Initialization:	; 0 bytes @ 0x0
 ??_getDimmerLights_StatusFlag:	; 0 bytes @ 0x0
 ??_MainT_Initialization:	; 0 bytes @ 0x0
-??_MainT_ResetClock:	; 0 bytes @ 0x0
+??_WDT_Main:	; 0 bytes @ 0x0
 ??_setTemp_Enable:	; 0 bytes @ 0x0
-??_clearingWDT:	; 0 bytes @ 0x0
 ??_IO_Set:	; 0 bytes @ 0x0
 ??_TMR0_Set:	; 0 bytes @ 0x0
 ??_ADC_Set:	; 0 bytes @ 0x0
 ??_INT_Set:	; 0 bytes @ 0x0
 ??_IOC_Set:	; 0 bytes @ 0x0
-??_Watch_Dog_set:	; 0 bytes @ 0x0
+??_WDT_Set:	; 0 bytes @ 0x0
 ??_Flash_Memory_Read:	; 0 bytes @ 0x0
 ??_Flash_Memory_Write:	; 0 bytes @ 0x0
+??_WDT_Clearing:	; 0 bytes @ 0x0
 ??_setTemp_Initialization:	; 0 bytes @ 0x0
 ??_getPF_Safe:	; 0 bytes @ 0x0
 ??_setPowerFault_Initialization:	; 0 bytes @ 0x0
@@ -4762,8 +4774,8 @@ CC2500_WriteREG@value:	; 1 bytes @ 0x2
 DlyOff_Initialization@sw:	; 1 bytes @ 0x2
 	global	DelayTimejudge@value
 DelayTimejudge@value:	; 1 bytes @ 0x2
-	global	_getDimmerLights_StatusFlag$1629
-_getDimmerLights_StatusFlag$1629:	; 1 bytes @ 0x2
+	global	_getDimmerLights_StatusFlag$1650
+_getDimmerLights_StatusFlag$1650:	; 1 bytes @ 0x2
 	global	setDimmerLights_TriggerERROR@command
 setDimmerLights_TriggerERROR@command:	; 1 bytes @ 0x2
 	global	setDimmerLights_Switch@command
@@ -5127,17 +5139,17 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!    Strings     0
 ;!    Constant    102
 ;!    Data        32
-;!    BSS         217
-;!    Persistent  4
+;!    BSS         219
+;!    Persistent  5
 ;!    Stack       0
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
 ;!    COMMON           14      5      10
 ;!    BANK0            80     72      80
-;!    BANK1            80      4      79
+;!    BANK1            80      2      80
 ;!    BANK2            80      0      80
-;!    BANK3            80      0      49
+;!    BANK3            80      3      52
 ;!    BANK4            80      0      37
 ;!    BANK5            80      0       0
 ;!    BANK6            80      0       0
@@ -5168,6 +5180,9 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!
 ;!    Temp	PTR struct OverTemp size(1) Largest target is 14
 ;!		 -> NULL(NULL[0]), Temp1(BANK2[14]), 
+;!
+;!    WDT	PTR struct WDT size(1) Largest target is 2
+;!		 -> NULL(NULL[0]), _WDT(BANK1[2]), 
 ;!
 ;!    Timer0	PTR struct Timer0 size(1) Largest target is 9
 ;!		 -> NULL(NULL[0]), VarTimer0(BANK1[9]), 
@@ -5265,6 +5280,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!    _setDimmerLights_ERROR->_setSw_Status
 ;!    _PowerFault_Initialization->_setPowerFault_Initialization
 ;!    _Mcu_Initialization->_TMR0_Set
+;!    _Mcu_Initialization->_WDT_Set
 ;!    _MainT->_setBuz
 ;!    _setSw_Enable->_SwPointSelect
 ;!    _setRF_Enable->_RfPointSelect
@@ -5315,7 +5331,6 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!
 ;!Critical Paths under _main in BANK1
 ;!
-;!    _Switch_Main->_setSw_Main
 ;!    _RF_Main->_setRF_Main
 ;!    _setRF_Main->_getRxData
 ;!
@@ -5333,7 +5348,8 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!
 ;!Critical Paths under _main in BANK3
 ;!
-;!    None.
+;!    _Switch_Main->_setSw_Main
+;!    _RF_Main->_setRF_Main
 ;!
 ;!Critical Paths under _ISR in BANK3
 ;!
@@ -5435,7 +5451,6 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!                           _LED_Main
 ;!                              _MainT
 ;!               _MainT_Initialization
-;!                   _MainT_ResetClock
 ;!                 _Mcu_Initialization
 ;!          _PowerFault_Initialization
 ;!                    _PowerFault_Main
@@ -5445,6 +5460,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!                        _Switch_Main
 ;!                _Temp_Initialization
 ;!                          _Temp_Main
+;!                           _WDT_Main
 ;!                   _getPowerFault_AD
 ;!                         _getTemp_AD
 ;! ---------------------------------------------------------------------------------
@@ -5458,6 +5474,12 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;! ---------------------------------------------------------------------------------
 ;! (2) _getAD                                                4     1      3     192
 ;!                                              0 BANK0      4     1      3
+;! ---------------------------------------------------------------------------------
+;! (1) _WDT_Main                                             1     1      0       0
+;!                                              0 BANK0      1     1      0
+;!                       _WDT_Clearing
+;! ---------------------------------------------------------------------------------
+;! (2) _WDT_Clearing                                         0     0      0       0
 ;! ---------------------------------------------------------------------------------
 ;! (1) _Temp_Main                                            0     0      0    6658
 ;!                       _setTemp_Main
@@ -5488,7 +5510,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;! ---------------------------------------------------------------------------------
 ;! (2) _setSw_Main                                           5     5      0   22040
 ;!                                             69 BANK0      2     2      0
-;!                                              0 BANK1      3     3      0
+;!                                              0 BANK3      3     3      0
 ;!                      _SwPointSelect
 ;!                   _Sw_DimmerAdjFunc
 ;!                   _Sw_DimmerOffFunc
@@ -5547,7 +5569,8 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!                         _setRF_Main
 ;! ---------------------------------------------------------------------------------
 ;! (2) _setRF_Main                                           3     3      0   29561
-;!                                              1 BANK1      3     3      0
+;!                                              1 BANK1      1     1      0
+;!                                              0 BANK3      2     2      0
 ;!                      _CC2500_RxData
 ;!                      _CC2500_TxData
 ;!                _CC2500_WriteCommand
@@ -5716,9 +5739,10 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!                            _IOC_Set
 ;!                             _IO_Set
 ;!                           _TMR0_Set
-;!                      _Watch_Dog_set
+;!                            _WDT_Set
 ;! ---------------------------------------------------------------------------------
-;! (2) _Watch_Dog_set                                        0     0      0       0
+;! (2) _WDT_Set                                              1     1      0       0
+;!                                              0 BANK0      1     1      0
 ;! ---------------------------------------------------------------------------------
 ;! (2) _TMR0_Set                                             1     1      0       0
 ;!                                              0 BANK0      1     1      0
@@ -5730,12 +5754,6 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;! (2) _INT_Set                                              0     0      0       0
 ;! ---------------------------------------------------------------------------------
 ;! (2) _ADC_Set                                              0     0      0       0
-;! ---------------------------------------------------------------------------------
-;! (1) _MainT_ResetClock                                     2     2      0       0
-;!                                              0 BANK0      1     1      0
-;!                        _clearingWDT
-;! ---------------------------------------------------------------------------------
-;! (2) _clearingWDT                                          0     0      0       0
 ;! ---------------------------------------------------------------------------------
 ;! (1) _MainT_Initialization                                 1     1      0       0
 ;!                                              0 BANK0      1     1      0
@@ -6203,15 +6221,13 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!       _SwPointSelect
 ;!     _setTemp_Enable
 ;!   _MainT_Initialization
-;!   _MainT_ResetClock
-;!     _clearingWDT
 ;!   _Mcu_Initialization
 ;!     _ADC_Set
 ;!     _INT_Set
 ;!     _IOC_Set
 ;!     _IO_Set
 ;!     _TMR0_Set
-;!     _Watch_Dog_set
+;!     _WDT_Set
 ;!   _PowerFault_Initialization
 ;!     _setPowerFault_Initialization
 ;!   _PowerFault_Main
@@ -6500,6 +6516,8 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!           _setINT_GO
 ;!         _setSw_Enable
 ;!           _SwPointSelect
+;!   _WDT_Main
+;!     _WDT_Clearing
 ;!   _getPowerFault_AD
 ;!     _getAD
 ;!   _getTemp_AD
@@ -6538,7 +6556,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!BITBANK1            50      0       0       6        0.0%
 ;!BITSFR5              0      0       0       6        0.0%
 ;!SFR5                 0      0       0       6        0.0%
-;!BANK1               50      4      4F       7       98.8%
+;!BANK1               50      2      50       7      100.0%
 ;!BITSFR6              0      0       0       7        0.0%
 ;!SFR6                 0      0       0       7        0.0%
 ;!BITBANK2            50      0       0       8        0.0%
@@ -6550,7 +6568,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!BITBANK3            50      0       0      10        0.0%
 ;!BITSFR9              0      0       0      10        0.0%
 ;!SFR9                 0      0       0      10        0.0%
-;!BANK3               50      0      31      11       61.3%
+;!BANK3               50      3      34      11       65.0%
 ;!BITSFR10             0      0       0      11        0.0%
 ;!SFR10                0      0       0      11        0.0%
 ;!BITBANK4            50      0       0      12        0.0%
@@ -6579,7 +6597,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!SFR18                0      0       0      19        0.0%
 ;!BITSFR19             0      0       0      20        0.0%
 ;!SFR19                0      0       0      20        0.0%
-;!ABS                  0      0     14F      20        0.0%
+;!ABS                  0      0     153      20        0.0%
 ;!BITBANK8            50      0       0      21        0.0%
 ;!BITSFR20             0      0       0      21        0.0%
 ;!SFR20                0      0       0      21        0.0%
@@ -6612,7 +6630,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;!SFR29                0      0       0      30        0.0%
 ;!BITSFR30             0      0       0      31        0.0%
 ;!SFR30                0      0       0      31        0.0%
-;!DATA                 0      0     14F      31        0.0%
+;!DATA                 0      0     153      31        0.0%
 ;!BITSFR31             0      0       0      32        0.0%
 ;!SFR31                0      0       0      32        0.0%
 
@@ -6654,7 +6672,6 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;;		_LED_Main
 ;;		_MainT
 ;;		_MainT_Initialization
-;;		_MainT_ResetClock
 ;;		_Mcu_Initialization
 ;;		_PowerFault_Initialization
 ;;		_PowerFault_Main
@@ -6664,6 +6681,7 @@ setControl_Lights_Table@rf:	; 1 bytes @ 0x47
 ;;		_Switch_Main
 ;;		_Temp_Initialization
 ;;		_Temp_Main
+;;		_WDT_Main
 ;;		_getPowerFault_AD
 ;;		_getTemp_AD
 ;; This function is called by:
@@ -6687,54 +6705,36 @@ _main:
 ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	9
 	
-l9833:	
+l9855:	
 ;main.c: 9: MainT_Initialization();
 	fcall	_MainT_Initialization
 	line	10
-	
-l9835:	
 ;main.c: 10: Mcu_Initialization();
 	fcall	_Mcu_Initialization
 	line	11
-	
-l9837:	
 ;main.c: 11: Flash_Memory_Initialization();
 	fcall	_Flash_Memory_Initialization
 	line	12
-	
-l9839:	
 ;main.c: 12: LED_Initialization();
 	fcall	_LED_Initialization
 	line	13
-	
-l9841:	
 ;main.c: 13: Buzzer_Initialization();
 	fcall	_Buzzer_Initialization
 	line	16
-	
-l9843:	
 ;main.c: 15: ;;
 ;main.c: 16: Temp_Initialization();
 	fcall	_Temp_Initialization
 	line	18
-	
-l9845:	
 ;main.c: 17: ;;
 ;main.c: 18: PowerFault_Initialization();
 	fcall	_PowerFault_Initialization
 	line	19
-	
-l9847:	
 ;main.c: 19: DelayOff_Initialization();
 	fcall	_DelayOff_Initialization
 	line	21
-	
-l9849:	
 ;main.c: 21: DimmerLights_Initialization();
 	fcall	_DimmerLights_Initialization
 	line	26
-	
-l9851:	
 ;main.c: 22: ;;
 ;main.c: 23: ;;
 ;main.c: 24: ;;
@@ -6742,22 +6742,22 @@ l9851:
 	fcall	_Switch_Initialization
 	line	27
 	
-l9853:	
+l9857:	
 ;main.c: 27: RF_Initialization();
 	fcall	_RF_Initialization
 	line	28
 	
-l9855:	
+l9859:	
 ;main.c: 28: CC2500_PowerOnInitial();
 	fcall	_CC2500_PowerOnInitial
-	goto	l9857
+	goto	l9861
 	line	30
 ;main.c: 30: while(1)
 	
-l1307:	
+l1333:	
 	line	32
 	
-l9857:	
+l9861:	
 ;main.c: 31: {
 ;main.c: 32: if(TMain->PowerON)
 	movlb 0	; select bank0
@@ -6770,11 +6770,11 @@ l9857:
 	goto	u10231
 	goto	u10230
 u10231:
-	goto	l9861
+	goto	l9865
 u10230:
 	line	43
 	
-l9859:	
+l9863:	
 ;main.c: 33: {
 ;main.c: 35: ;;
 ;main.c: 39: ;;
@@ -6788,13 +6788,13 @@ l9859:
 	line	59
 ;main.c: 59: Buzzer_Main();
 	fcall	_Buzzer_Main
-	goto	l9861
+	goto	l9865
 	line	61
 	
-l1308:	
+l1334:	
 	line	63
 	
-l9861:	
+l9865:	
 ;main.c: 61: }
 ;main.c: 63: if(TMain->T0_Timerout)
 	movlb 0	; select bank0
@@ -6807,11 +6807,11 @@ l9861:
 	goto	u10241
 	goto	u10240
 u10241:
-	goto	l9857
+	goto	l9861
 u10240:
 	line	65
 	
-l9863:	
+l9867:	
 ;main.c: 64: {
 ;main.c: 65: TMain->T0_Timerout = 0;
 	movf	(_TMain),w
@@ -6822,14 +6822,14 @@ l9863:
 	bcf	indf1,1
 	line	66
 	
-l9865:	
+l9869:	
 ;main.c: 66: MainT();
 	fcall	_MainT
 	line	67
 	
-l9867:	
-;main.c: 67: MainT_ResetClock();
-	fcall	_MainT_ResetClock
+l9871:	
+;main.c: 67: WDT_Main();
+	fcall	_WDT_Main
 	line	68
 ;main.c: 68: if(TMain->PowerON)
 	movlb 0	; select bank0
@@ -6842,11 +6842,11 @@ l9867:
 	goto	u10251
 	goto	u10250
 u10251:
-	goto	l9857
+	goto	l9861
 u10250:
 	line	70
 	
-l9869:	
+l9873:	
 ;main.c: 69: {
 ;main.c: 70: Flash_Memory_Main();
 	fcall	_Flash_Memory_Main
@@ -6855,58 +6855,58 @@ l9869:
 	fcall	_LED_Main
 	line	75
 	
-l9871:	
+l9875:	
 ;main.c: 74: ;;
 ;main.c: 75: Temp_Main();
 	fcall	_Temp_Main
 	line	77
 	
-l9873:	
+l9877:	
 ;main.c: 76: ;;
 ;main.c: 77: PowerFault_Main();
 	fcall	_PowerFault_Main
 	line	80
 	
-l9875:	
+l9879:	
 ;main.c: 79: ;;
 ;main.c: 80: DimmerLights_Main();
 	fcall	_DimmerLights_Main
 	line	81
 	
-l9877:	
+l9881:	
 ;main.c: 81: Switch_Main();
 	fcall	_Switch_Main
 	line	85
 	
-l9879:	
+l9883:	
 ;main.c: 82: ;;
 ;main.c: 83: ;;
 ;main.c: 85: RF_Main();
 	fcall	_RF_Main
 	line	86
 	
-l9881:	
+l9885:	
 ;main.c: 86: DelayOff_Main();
 	fcall	_DelayOff_Main
-	goto	l9857
+	goto	l9861
 	line	87
 	
-l1310:	
-	goto	l9857
+l1336:	
+	goto	l9861
 	line	88
 	
-l1309:	
-	goto	l9857
+l1335:	
+	goto	l9861
 	line	89
 	
-l1311:	
+l1337:	
 	line	30
-	goto	l9857
+	goto	l9861
 	
-l1312:	
+l1338:	
 	line	90
 	
-l1313:	
+l1339:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -6964,7 +6964,7 @@ _getTemp_AD:
 	movwf	(getTemp_AD@channel)
 	line	37
 	
-l9733:	
+l9757:	
 ;OverTemperature_B1.c: 37: if(Temp->ADtoGO)
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -6975,11 +6975,11 @@ l9733:
 	goto	u10081
 	goto	u10080
 u10081:
-	goto	l1990
+	goto	l2030
 u10080:
 	line	39
 	
-l9735:	
+l9759:	
 ;OverTemperature_B1.c: 38: {
 ;OverTemperature_B1.c: 39: Temp->ADRES=getAD(channel,0xf0);
 	movlw	(0F0h)
@@ -7001,7 +7001,7 @@ l9735:
 	movwi	[1]fsr1
 	line	40
 	
-l9737:	
+l9761:	
 ;OverTemperature_B1.c: 40: if(Temp->ADH[0] < Temp->ADRES)
 	movf	(_Temp),w
 	addlw	0Ah
@@ -7034,11 +7034,11 @@ u10095:
 	goto	u10091
 	goto	u10090
 u10091:
-	goto	l9741
+	goto	l9765
 u10090:
 	line	42
 	
-l9739:	
+l9763:	
 ;OverTemperature_B1.c: 41: {
 ;OverTemperature_B1.c: 42: Temp->ADH[0]=Temp->ADRES;
 	movf	(_Temp),w
@@ -7059,12 +7059,12 @@ l9739:
 	movwi	[1]fsr0
 	line	43
 ;OverTemperature_B1.c: 43: }
-	goto	l1990
+	goto	l2030
 	line	44
 	
-l1987:	
+l2027:	
 	
-l9741:	
+l9765:	
 ;OverTemperature_B1.c: 44: else if(Temp->ADH[1] < Temp->ADRES)
 	movf	(_Temp),w
 	addlw	0Ah
@@ -7097,11 +7097,11 @@ u10105:
 	goto	u10101
 	goto	u10100
 u10101:
-	goto	l1990
+	goto	l2030
 u10100:
 	line	46
 	
-l9743:	
+l9767:	
 ;OverTemperature_B1.c: 45: {
 ;OverTemperature_B1.c: 46: Temp->ADH[1]=Temp->ADRES;
 	movf	(_Temp),w
@@ -7120,20 +7120,20 @@ l9743:
 	movwi	[0]fsr0
 	moviw	[1]fsr1
 	movwi	[1]fsr0
-	goto	l1990
+	goto	l2030
 	line	47
 	
-l1989:	
-	goto	l1990
+l2029:	
+	goto	l2030
 	line	48
 	
-l1988:	
-	goto	l1990
+l2028:	
+	goto	l2030
 	
-l1986:	
+l2026:	
 	line	49
 	
-l1990:	
+l2030:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getTemp_AD
@@ -7190,7 +7190,7 @@ _getPowerFault_AD:
 	movwf	(getPowerFault_AD@channel)
 	line	51
 	
-l9745:	
+l9769:	
 ;PowerFault_B1.c: 51: if(PF->ADtoGO)
 	movf	(_PF),w
 	movwf	fsr1l
@@ -7201,11 +7201,11 @@ l9745:
 	goto	u10111
 	goto	u10110
 u10111:
-	goto	l2289
+	goto	l2337
 u10110:
 	line	53
 	
-l9747:	
+l9771:	
 ;PowerFault_B1.c: 52: {
 ;PowerFault_B1.c: 53: PF->ADRES=getAD(channel,0xf0);
 	movlw	(0F0h)
@@ -7227,7 +7227,7 @@ l9747:
 	movwi	[1]fsr1
 	line	54
 	
-l9749:	
+l9773:	
 ;PowerFault_B1.c: 54: if(PF->AD < PF->ADRES)
 	movf	(_PF),w
 	addlw	03h
@@ -7259,11 +7259,11 @@ u10125:
 	goto	u10121
 	goto	u10120
 u10121:
-	goto	l2289
+	goto	l2337
 u10120:
 	line	56
 	
-l9751:	
+l9775:	
 ;PowerFault_B1.c: 55: {
 ;PowerFault_B1.c: 56: PF->AD=PF->ADRES;
 	movf	(_PF),w
@@ -7281,17 +7281,17 @@ l9751:
 	movwi	[0]fsr0
 	moviw	[1]fsr1
 	movwi	[1]fsr0
-	goto	l2289
+	goto	l2337
 	line	57
 	
-l2288:	
-	goto	l2289
+l2336:	
+	goto	l2337
 	line	58
 	
-l2287:	
+l2335:	
 	line	59
 	
-l2289:	
+l2337:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getPowerFault_AD
@@ -7350,7 +7350,7 @@ _getAD:
 	movwf	(getAD@adcon0)
 	line	387
 	
-l9271:	
+l9293:	
 ;MCU_B1.c: 387: ADCON0=adcon0;
 	movf	(getAD@adcon0),w
 	movlb 1	; select bank1
@@ -7363,28 +7363,28 @@ l9271:
 	movwf	(158)^080h	;volatile
 	line	389
 	
-l9273:	
+l9295:	
 ;MCU_B1.c: 389: GO_nDONE=1;
 	bsf	(1257/8)^080h,(1257)&7	;volatile
 	line	390
 ;MCU_B1.c: 390: while(GO_nDONE);
-	goto	l1681
+	goto	l1708
 	
-l1682:	
+l1709:	
 	
-l1681:	
+l1708:	
 	btfsc	(1257/8)^080h,(1257)&7	;volatile
 	goto	u9361
 	goto	u9360
 u9361:
-	goto	l1681
+	goto	l1708
 u9360:
-	goto	l9275
+	goto	l9297
 	
-l1683:	
+l1710:	
 	line	391
 	
-l9275:	
+l9297:	
 ;MCU_B1.c: 391: return ((ADRESH*256)+ADRESL);
 	movf	(156)^080h,w	;volatile
 	movlb 0	; select bank0
@@ -7396,17 +7396,190 @@ l9275:
 	clrf	(?_getAD)
 	addwf	(?_getAD)
 
-	goto	l1684
+	goto	l1711
 	
-l9277:	
+l9299:	
 	line	392
 	
-l1684:	
+l1711:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getAD
 	__end_of_getAD:
 	signat	_getAD,8314
+	global	_WDT_Main
+
+;; *************** function _WDT_Main *****************
+;; Defined at:
+;;		line 986 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;; Parameters:    Size  Location     Type
+;;		None
+;; Auto vars:     Size  Location     Type
+;;		None
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
+;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Temps:          0       1       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Totals:         0       1       0       0       0       0       0       0       0       0       0       0       0       0
+;;Total ram usage:        1 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    5
+;; This function calls:
+;;		_WDT_Clearing
+;; This function is called by:
+;;		_main
+;; This function uses a non-reentrant model
+;;
+psect	text4,local,class=CODE,delta=2,merge=1
+	line	986
+global __ptext4
+__ptext4:	;psect for function _WDT_Main
+psect	text4
+	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+	line	986
+	global	__size_of_WDT_Main
+	__size_of_WDT_Main	equ	__end_of_WDT_Main-_WDT_Main
+	
+_WDT_Main:	
+;incstack = 0
+	opt	stack 10
+; Regs used in _WDT_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
+	line	987
+	
+l9803:	
+;MCU_B1.c: 987: if(WDT->Enable){
+	movlb 1	; select bank1
+	movf	(_WDT)^080h,w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	btfss	indf1,0
+	goto	u10171
+	goto	u10170
+u10171:
+	goto	l1752
+u10170:
+	line	988
+	
+l9805:	
+;MCU_B1.c: 988: if(WDT->Count-- > 0){
+	incf	(_WDT)^080h,w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	movlw	low(01h)
+	subwf	indf1,f
+	movf	(indf1),w
+	xorlw	0FFh&0ffh
+	skipnz
+	goto	u10181
+	goto	u10180
+u10181:
+	goto	l1752
+u10180:
+	line	989
+	
+l9807:	
+;MCU_B1.c: 989: WDT->Count=10;
+	movlw	(0Ah)
+	movlb 0	; select bank0
+	movwf	(??_WDT_Main+0)+0
+	movlb 1	; select bank1
+	incf	(_WDT)^080h,w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	movlb 0	; select bank0
+	movf	(??_WDT_Main+0)+0,w
+	movwf	indf1
+	line	990
+	
+l9809:	
+;MCU_B1.c: 990: WDT_Clearing();
+	fcall	_WDT_Clearing
+	goto	l1752
+	line	991
+	
+l1751:	
+	goto	l1752
+	line	992
+	
+l1750:	
+	line	993
+	
+l1752:	
+	return
+	opt stack 0
+GLOBAL	__end_of_WDT_Main
+	__end_of_WDT_Main:
+	signat	_WDT_Main,88
+	global	_WDT_Clearing
+
+;; *************** function _WDT_Clearing *****************
+;; Defined at:
+;;		line 995 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;; Parameters:    Size  Location     Type
+;;		None
+;; Auto vars:     Size  Location     Type
+;;		None
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		None
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
+;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
+;;Total ram usage:        0 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    4
+;; This function calls:
+;;		Nothing
+;; This function is called by:
+;;		_WDT_Main
+;; This function uses a non-reentrant model
+;;
+psect	text5,local,class=CODE,delta=2,merge=1
+	line	995
+global __ptext5
+__ptext5:	;psect for function _WDT_Clearing
+psect	text5
+	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+	line	995
+	global	__size_of_WDT_Clearing
+	__size_of_WDT_Clearing	equ	__end_of_WDT_Clearing-_WDT_Clearing
+	
+_WDT_Clearing:	
+;incstack = 0
+	opt	stack 10
+; Regs used in _WDT_Clearing: []
+	line	996
+	
+l9325:	
+# 996 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+clrwdt ;# 
+psect	text5
+	line	997
+	
+l1755:	
+	return
+	opt stack 0
+GLOBAL	__end_of_WDT_Clearing
+	__end_of_WDT_Clearing:
+	signat	_WDT_Clearing,88
 	global	_Temp_Main
 
 ;; *************** function _Temp_Main *****************
@@ -7438,12 +7611,12 @@ GLOBAL	__end_of_getAD
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text4,local,class=CODE,delta=2,merge=1
+psect	text6,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	57
-global __ptext4
-__ptext4:	;psect for function _Temp_Main
-psect	text4
+global __ptext6
+__ptext6:	;psect for function _Temp_Main
+psect	text6
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	57
 	global	__size_of_Temp_Main
@@ -7455,12 +7628,12 @@ _Temp_Main:
 ; Regs used in _Temp_Main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	60
 	
-l9803:	
+l9825:	
 ;OverTemperature_B1.c: 60: setTemp_Main();
 	fcall	_setTemp_Main
 	line	62
 	
-l1996:	
+l2036:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Temp_Main
@@ -7498,11 +7671,11 @@ GLOBAL	__end_of_Temp_Main
 ;;		_Temp_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text5,local,class=CODE,delta=2,merge=1
+psect	text7,local,class=CODE,delta=2,merge=1
 	line	64
-global __ptext5
-__ptext5:	;psect for function _setTemp_Main
-psect	text5
+global __ptext7
+__ptext7:	;psect for function _setTemp_Main
+psect	text7
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	64
 	global	__size_of_setTemp_Main
@@ -7514,7 +7687,7 @@ _setTemp_Main:
 ; Regs used in _setTemp_Main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	66
 	
-l9307:	
+l9331:	
 ;OverTemperature_B1.c: 66: if(Temp->Enable)
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -7525,11 +7698,11 @@ l9307:
 	goto	u9401
 	goto	u9400
 u9401:
-	goto	l2015
+	goto	l2055
 u9400:
 	line	68
 	
-l9309:	
+l9333:	
 ;OverTemperature_B1.c: 67: {
 ;OverTemperature_B1.c: 68: if(Temp->ADtoGO == 0)
 	movf	(_Temp),w
@@ -7541,11 +7714,11 @@ l9309:
 	goto	u9411
 	goto	u9410
 u9411:
-	goto	l9321
+	goto	l9345
 u9410:
 	line	70
 	
-l9311:	
+l9335:	
 ;OverTemperature_B1.c: 69: {
 ;OverTemperature_B1.c: 70: Temp->Time++;
 	incf	(_Temp),w
@@ -7560,7 +7733,7 @@ l9311:
 	incf	indf1,f
 	line	71
 	
-l9313:	
+l9337:	
 ;OverTemperature_B1.c: 72: {
 ;OverTemperature_B1.c: 73: if(1 && getPF_Safe())
 	incf	(_Temp),w
@@ -7582,22 +7755,22 @@ l9313:
 	goto	u9421
 	goto	u9420
 u9421:
-	goto	l2015
+	goto	l2055
 u9420:
 	line	73
 	
-l9315:	
+l9339:	
 	fcall	_getPF_Safe
 	xorlw	0&0ffh
 	skipnz
 	goto	u9431
 	goto	u9430
 u9431:
-	goto	l9319
+	goto	l9343
 u9430:
 	line	75
 	
-l9317:	
+l9341:	
 ;OverTemperature_B1.c: 74: {
 ;OverTemperature_B1.c: 75: Temp->Time=0;
 	incf	(_Temp),w
@@ -7626,13 +7799,13 @@ l9317:
 	bcf	indf1,4
 	line	78
 ;OverTemperature_B1.c: 78: }
-	goto	l2015
+	goto	l2055
 	line	79
 	
-l2002:	
+l2042:	
 	line	81
 	
-l9319:	
+l9343:	
 ;OverTemperature_B1.c: 79: else
 ;OverTemperature_B1.c: 80: {
 ;OverTemperature_B1.c: 81: Temp->Time=1000;
@@ -7645,25 +7818,25 @@ l9319:
 	movwi	[0]fsr1
 	movlw	high(03E8h)
 	movwi	[1]fsr1
-	goto	l2015
+	goto	l2055
 	line	82
 	
-l2003:	
-	goto	l2015
+l2043:	
+	goto	l2055
 	line	83
 	
-l2001:	
+l2041:	
 	line	84
 ;OverTemperature_B1.c: 82: }
 ;OverTemperature_B1.c: 83: }
 ;OverTemperature_B1.c: 84: }
-	goto	l2015
+	goto	l2055
 	line	85
 	
-l2000:	
+l2040:	
 	line	87
 	
-l9321:	
+l9345:	
 ;OverTemperature_B1.c: 85: else
 ;OverTemperature_B1.c: 86: {
 ;OverTemperature_B1.c: 87: Temp->Time++;
@@ -7679,7 +7852,7 @@ l9321:
 	incf	indf1,f
 	line	88
 	
-l9323:	
+l9347:	
 ;OverTemperature_B1.c: 88: if(Temp->Time >= 4)
 	incf	(_Temp),w
 	movwf	fsr1l
@@ -7700,11 +7873,11 @@ l9323:
 	goto	u9441
 	goto	u9440
 u9441:
-	goto	l2015
+	goto	l2055
 u9440:
 	line	90
 	
-l9325:	
+l9349:	
 ;OverTemperature_B1.c: 89: {
 ;OverTemperature_B1.c: 90: Temp->Time=0;
 	incf	(_Temp),w
@@ -7725,7 +7898,7 @@ l9325:
 	bcf	indf1,2
 	line	92
 	
-l9327:	
+l9351:	
 ;OverTemperature_B1.c: 92: Temp->AD=Temp->ADH[1];
 	movf	(_Temp),w
 	addlw	08h
@@ -7745,7 +7918,7 @@ l9327:
 	movwi	[1]fsr0
 	line	93
 	
-l9329:	
+l9353:	
 ;OverTemperature_B1.c: 93: if(Temp->ERROR)
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -7756,11 +7929,11 @@ l9329:
 	goto	u9451
 	goto	u9450
 u9451:
-	goto	l9343
+	goto	l9367
 u9450:
 	line	95
 	
-l9331:	
+l9355:	
 ;OverTemperature_B1.c: 94: {
 ;OverTemperature_B1.c: 95: if(Temp->AD >= 600)
 	movf	(_Temp),w
@@ -7782,11 +7955,11 @@ l9331:
 	goto	u9461
 	goto	u9460
 u9461:
-	goto	l9341
+	goto	l9365
 u9460:
 	line	97
 	
-l9333:	
+l9357:	
 ;OverTemperature_B1.c: 96: {
 ;OverTemperature_B1.c: 97: Temp->Count++;
 	movlw	(01h)
@@ -7801,7 +7974,7 @@ l9333:
 	addwf	indf1,f
 	line	98
 	
-l9335:	
+l9359:	
 ;OverTemperature_B1.c: 98: if(Temp->Count >= 3)
 	movf	(_Temp),w
 	addlw	03h
@@ -7815,11 +7988,11 @@ l9335:
 	goto	u9471
 	goto	u9470
 u9471:
-	goto	l9355
+	goto	l9379
 u9470:
 	line	100
 	
-l9337:	
+l9361:	
 ;OverTemperature_B1.c: 99: {
 ;OverTemperature_B1.c: 100: Temp->Count=0;
 	movf	(_Temp),w
@@ -7831,24 +8004,24 @@ l9337:
 	clrf	indf1
 	line	101
 	
-l9339:	
+l9363:	
 ;OverTemperature_B1.c: 101: setOverTemp_Exceptions(0);
 	movlw	(0)
 	fcall	_setOverTemp_Exceptions
-	goto	l9355
+	goto	l9379
 	line	102
 	
-l2008:	
+l2048:	
 	line	103
 ;OverTemperature_B1.c: 102: }
 ;OverTemperature_B1.c: 103: }
-	goto	l9355
+	goto	l9379
 	line	104
 	
-l2007:	
+l2047:	
 	line	106
 	
-l9341:	
+l9365:	
 ;OverTemperature_B1.c: 104: else
 ;OverTemperature_B1.c: 105: {
 ;OverTemperature_B1.c: 106: Temp->Count=0;
@@ -7859,20 +8032,20 @@ l9341:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l9355
+	goto	l9379
 	line	107
 	
-l2009:	
+l2049:	
 	line	108
 ;OverTemperature_B1.c: 107: }
 ;OverTemperature_B1.c: 108: }
-	goto	l9355
+	goto	l9379
 	line	109
 	
-l2006:	
+l2046:	
 	line	111
 	
-l9343:	
+l9367:	
 ;OverTemperature_B1.c: 109: else
 ;OverTemperature_B1.c: 110: {
 ;OverTemperature_B1.c: 111: if(Temp->AD <= 550)
@@ -7896,11 +8069,11 @@ l9343:
 	goto	u9481
 	goto	u9480
 u9481:
-	goto	l9353
+	goto	l9377
 u9480:
 	line	113
 	
-l9345:	
+l9369:	
 ;OverTemperature_B1.c: 112: {
 ;OverTemperature_B1.c: 113: Temp->Count++;
 	movlw	(01h)
@@ -7915,7 +8088,7 @@ l9345:
 	addwf	indf1,f
 	line	114
 	
-l9347:	
+l9371:	
 ;OverTemperature_B1.c: 114: if(Temp->Count >= 3)
 	movf	(_Temp),w
 	addlw	03h
@@ -7929,11 +8102,11 @@ l9347:
 	goto	u9491
 	goto	u9490
 u9491:
-	goto	l9355
+	goto	l9379
 u9490:
 	line	116
 	
-l9349:	
+l9373:	
 ;OverTemperature_B1.c: 115: {
 ;OverTemperature_B1.c: 116: Temp->Count=0;
 	movf	(_Temp),w
@@ -7945,24 +8118,24 @@ l9349:
 	clrf	indf1
 	line	117
 	
-l9351:	
+l9375:	
 ;OverTemperature_B1.c: 117: setOverTemp_Exceptions(1);
 	movlw	(01h)
 	fcall	_setOverTemp_Exceptions
-	goto	l9355
+	goto	l9379
 	line	118
 	
-l2012:	
+l2052:	
 	line	119
 ;OverTemperature_B1.c: 118: }
 ;OverTemperature_B1.c: 119: }
-	goto	l9355
+	goto	l9379
 	line	120
 	
-l2011:	
+l2051:	
 	line	122
 	
-l9353:	
+l9377:	
 ;OverTemperature_B1.c: 120: else
 ;OverTemperature_B1.c: 121: {
 ;OverTemperature_B1.c: 122: Temp->Count=0;
@@ -7973,17 +8146,17 @@ l9353:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l9355
+	goto	l9379
 	line	123
 	
-l2013:	
-	goto	l9355
+l2053:	
+	goto	l9379
 	line	124
 	
-l2010:	
+l2050:	
 	line	125
 	
-l9355:	
+l9379:	
 ;OverTemperature_B1.c: 123: }
 ;OverTemperature_B1.c: 124: }
 ;OverTemperature_B1.c: 125: if(Temp->ERROR == 0)
@@ -7996,11 +8169,11 @@ l9355:
 	goto	u9501
 	goto	u9500
 u9501:
-	goto	l9359
+	goto	l9383
 u9500:
 	line	127
 	
-l9357:	
+l9381:	
 ;OverTemperature_B1.c: 126: {
 ;OverTemperature_B1.c: 127: Temp->Safe=1;
 	movf	(_Temp),w
@@ -8009,13 +8182,13 @@ l9357:
 	movwf fsr1h	
 	
 	bsf	indf1,4
-	goto	l9359
+	goto	l9383
 	line	128
 	
-l2014:	
+l2054:	
 	line	129
 	
-l9359:	
+l9383:	
 ;OverTemperature_B1.c: 128: }
 ;OverTemperature_B1.c: 129: Product->Data[24]=Temp->AD >> 8;
 	movf	(_Temp),w
@@ -8041,7 +8214,7 @@ l9359:
 	movwf	indf1
 	line	130
 	
-l9361:	
+l9385:	
 ;OverTemperature_B1.c: 130: Product->Data[25]=Temp->AD;
 	movf	(_Temp),w
 	addlw	04h
@@ -8061,7 +8234,7 @@ l9361:
 	movwf	indf1
 	line	131
 	
-l9363:	
+l9387:	
 ;OverTemperature_B1.c: 131: Temp->ADH[0]=0;
 	movf	(_Temp),w
 	addlw	06h
@@ -8074,7 +8247,7 @@ l9363:
 	movwi	[1]fsr1
 	line	132
 	
-l9365:	
+l9389:	
 ;OverTemperature_B1.c: 132: Temp->ADH[1]=0;
 	movf	(_Temp),w
 	addlw	08h
@@ -8085,21 +8258,21 @@ l9365:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	goto	l2015
+	goto	l2055
 	line	133
 	
-l2005:	
-	goto	l2015
+l2045:	
+	goto	l2055
 	line	134
 	
-l2004:	
-	goto	l2015
+l2044:	
+	goto	l2055
 	line	135
 	
-l1999:	
+l2039:	
 	line	136
 	
-l2015:	
+l2055:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setTemp_Main
@@ -8140,11 +8313,11 @@ GLOBAL	__end_of_setTemp_Main
 ;;		_setTemp_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text6,local,class=CODE,delta=2,merge=1
+psect	text8,local,class=CODE,delta=2,merge=1
 	line	138
-global __ptext6
-__ptext6:	;psect for function _setOverTemp_Exceptions
-psect	text6
+global __ptext8
+__ptext8:	;psect for function _setOverTemp_Exceptions
+psect	text8
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	138
 	global	__size_of_setOverTemp_Exceptions
@@ -8159,7 +8332,7 @@ _setOverTemp_Exceptions:
 	movwf	(setOverTemp_Exceptions@command)
 	line	140
 	
-l8885:	
+l8909:	
 ;OverTemperature_B1.c: 140: Temp->ERROR=command;
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -8172,7 +8345,7 @@ l8885:
 	bsf	indf1,1
 	line	141
 	
-l8887:	
+l8911:	
 ;OverTemperature_B1.c: 141: Temp->Safe=(~command) & 0x01;
 	comf	(setOverTemp_Exceptions@command),w
 	andlw	01h
@@ -8190,29 +8363,29 @@ l8887:
 	movwf	indf1
 	line	142
 	
-l8889:	
+l8913:	
 ;OverTemperature_B1.c: 142: if(command)
 	movf	(setOverTemp_Exceptions@command),w
 	skipz
 	goto	u8870
-	goto	l8893
+	goto	l8917
 u8870:
 	line	144
 	
-l8891:	
+l8915:	
 ;OverTemperature_B1.c: 143: {
 ;OverTemperature_B1.c: 144: DimmerLights_Exceptions(1);
 	movlw	(01h)
 	fcall	_DimmerLights_Exceptions
 	line	148
 ;OverTemperature_B1.c: 148: }
-	goto	l2019
+	goto	l2059
 	line	149
 	
-l2018:	
+l2058:	
 	line	151
 	
-l8893:	
+l8917:	
 ;OverTemperature_B1.c: 149: else
 ;OverTemperature_B1.c: 150: {
 ;OverTemperature_B1.c: 151: setBuz(2,100);
@@ -8225,7 +8398,7 @@ l8893:
 	fcall	_setBuz
 	line	152
 	
-l2019:	
+l2059:	
 	line	155
 ;OverTemperature_B1.c: 152: }
 ;OverTemperature_B1.c: 155: setLED(99,command+10);
@@ -8255,7 +8428,7 @@ l2019:
 	fcall	_setRF_Enable
 	line	162
 	
-l2020:	
+l2060:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setOverTemp_Exceptions
@@ -8292,12 +8465,12 @@ GLOBAL	__end_of_setOverTemp_Exceptions
 ;;		_setTemp_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text7,local,class=CODE,delta=2,merge=1
+psect	text9,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	40
-global __ptext7
-__ptext7:	;psect for function _getPF_Safe
-psect	text7
+global __ptext9
+__ptext9:	;psect for function _getPF_Safe
+psect	text9
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	40
 	global	__size_of_getPF_Safe
@@ -8309,7 +8482,7 @@ _getPF_Safe:
 ; Regs used in _getPF_Safe: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	42
 	
-l8881:	
+l8905:	
 ;PowerFault_B1.c: 42: return PF->Safe;
 	movf	(_PF),w
 	movwf	fsr1l
@@ -8319,12 +8492,12 @@ l8881:
 	rrf	indf1,w
 	rrf	wreg,f
 	andlw	(1<<1)-1
-	goto	l2281
+	goto	l2329
 	
-l8883:	
+l8907:	
 	line	43
 	
-l2281:	
+l2329:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getPF_Safe
@@ -8361,12 +8534,12 @@ GLOBAL	__end_of_getPF_Safe
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text8,local,class=CODE,delta=2,merge=1
+psect	text10,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	15
-global __ptext8
-__ptext8:	;psect for function _Temp_Initialization
-psect	text8
+global __ptext10
+__ptext10:	;psect for function _Temp_Initialization
+psect	text10
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	15
 	global	__size_of_Temp_Initialization
@@ -8378,12 +8551,12 @@ _Temp_Initialization:
 ; Regs used in _Temp_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	18
 	
-l9719:	
+l9743:	
 ;OverTemperature_B1.c: 18: setTemp_Initialization();
 	fcall	_setTemp_Initialization
 	line	20
 	
-l1974:	
+l2014:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Temp_Initialization
@@ -8420,11 +8593,11 @@ GLOBAL	__end_of_Temp_Initialization
 ;;		_Temp_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text9,local,class=CODE,delta=2,merge=1
+psect	text11,local,class=CODE,delta=2,merge=1
 	line	51
-global __ptext9
-__ptext9:	;psect for function _setTemp_Initialization
-psect	text9
+global __ptext11
+__ptext11:	;psect for function _setTemp_Initialization
+psect	text11
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	51
 	global	__size_of_setTemp_Initialization
@@ -8436,7 +8609,7 @@ _setTemp_Initialization:
 ; Regs used in _setTemp_Initialization: [wregfsr1]
 	line	53
 	
-l9303:	
+l9327:	
 ;OverTemperature_B1.c: 53: Temp=&Temp1;
 	movlw	(_Temp1)&0ffh
 	movlb 0	; select bank0
@@ -8445,7 +8618,7 @@ l9303:
 	movwf	(_Temp)
 	line	54
 	
-l9305:	
+l9329:	
 ;OverTemperature_B1.c: 54: Temp->Safe=1;
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -8455,7 +8628,7 @@ l9305:
 	bsf	indf1,4
 	line	55
 	
-l1993:	
+l2033:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setTemp_Initialization
@@ -8492,12 +8665,12 @@ GLOBAL	__end_of_setTemp_Initialization
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text10,local,class=CODE,delta=2,merge=1
+psect	text12,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	62
-global __ptext10
-__ptext10:	;psect for function _Switch_Main
-psect	text10
+global __ptext12
+__ptext12:	;psect for function _Switch_Main
+psect	text12
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	62
 	global	__size_of_Switch_Main
@@ -8509,7 +8682,7 @@ _Switch_Main:
 ; Regs used in _Switch_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	65
 	
-l9807:	
+l9829:	
 ;Switch_B1.c: 65: setSw_Main(1);
 	movlw	(01h)
 	fcall	_setSw_Main
@@ -8519,7 +8692,7 @@ l9807:
 	fcall	_setSw_Main
 	line	76
 	
-l2776:	
+l2832:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Switch_Main
@@ -8533,7 +8706,7 @@ GLOBAL	__end_of_Switch_Main
 ;; Parameters:    Size  Location     Type
 ;;  sw              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  sw              1    2[BANK1 ] unsigned char 
+;;  sw              1    2[BANK3 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -8544,9 +8717,9 @@ GLOBAL	__end_of_Switch_Main
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Locals:         0       0       3       0       0       0       0       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       3       0       0       0       0       0       0       0       0       0
 ;;      Temps:          0       2       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Totals:         0       2       3       0       0       0       0       0       0       0       0       0       0       0
+;;      Totals:         0       2       0       0       3       0       0       0       0       0       0       0       0       0
 ;;Total ram usage:        5 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    9
@@ -8561,11 +8734,11 @@ GLOBAL	__end_of_Switch_Main
 ;;		_Switch_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text11,local,class=CODE,delta=2,merge=1
+psect	text13,local,class=CODE,delta=2,merge=1
 	line	112
-global __ptext11
-__ptext11:	;psect for function _setSw_Main
-psect	text11
+global __ptext13
+__ptext13:	;psect for function _setSw_Main
+psect	text13
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	112
 	global	__size_of_setSw_Main
@@ -8576,11 +8749,11 @@ _setSw_Main:
 	opt	stack 5
 ; Regs used in _setSw_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 ;setSw_Main@sw stored from wreg
-	movlb 1	; select bank1
-	movwf	(setSw_Main@sw)^080h
+	movlb 3	; select bank3
+	movwf	(setSw_Main@sw)^0180h
 	line	114
 	
-l9491:	
+l9515:	
 ;Switch_B1.c: 114: if(Sw->Enable)
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -8591,137 +8764,137 @@ l9491:
 	goto	u9781
 	goto	u9780
 u9781:
-	goto	l2812
+	goto	l2868
 u9780:
 	line	116
 	
-l9493:	
+l9517:	
 ;Switch_B1.c: 115: {
 ;Switch_B1.c: 116: SwPointSelect(sw);
-	movf	(setSw_Main@sw)^080h,w
+	movf	(setSw_Main@sw)^0180h,w
 	fcall	_SwPointSelect
 	line	133
 	
-l9495:	
+l9519:	
 ;Switch_B1.c: 133: if(sw == 1)
-	movlb 1	; select bank1
-	movf	(setSw_Main@sw)^080h,w
+	movlb 3	; select bank3
+	movf	(setSw_Main@sw)^0180h,w
 	xorlw	01h&0ffh
 	skipz
 	goto	u9791
 	goto	u9790
 u9791:
-	goto	l9505
+	goto	l9529
 u9790:
 	line	135
 	
-l9497:	
+l9521:	
 ;Switch_B1.c: 134: {
 ;Switch_B1.c: 135: Sw->Touch=(RA6 || RA4)?1:0;
-	clrf	(_setSw_Main$4179)^080h
-	incf	(_setSw_Main$4179)^080h,f
+	clrf	(_setSw_Main$4236)^0180h
+	incf	(_setSw_Main$4236)^0180h,f
 	movlb 0	; select bank0
 	btfsc	(102/8),(102)&7	;volatile
 	goto	u9801
 	goto	u9800
 u9801:
-	goto	l9503
+	goto	l9527
 u9800:
 	
-l9499:	
+l9523:	
 	btfsc	(100/8),(100)&7	;volatile
 	goto	u9811
 	goto	u9810
 u9811:
-	goto	l9503
+	goto	l9527
 u9810:
 	
-l9501:	
-	movlb 1	; select bank1
-	clrf	(_setSw_Main$4179)^080h
-	goto	l9503
+l9525:	
+	movlb 3	; select bank3
+	clrf	(_setSw_Main$4236)^0180h
+	goto	l9527
 	
-l2791:	
+l2847:	
 	
-l9503:	
+l9527:	
 	movf	(_Sw),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
-	movlb 1	; select bank1
-	movf	(_setSw_Main$4179)^080h,w
+	movlb 3	; select bank3
+	movf	(_setSw_Main$4236)^0180h,w
 	bcf	indf1,1
 	skipz
 	bsf	indf1,1
 	line	136
 ;Switch_B1.c: 136: }
-	goto	l9515
+	goto	l9539
 	line	137
 	
-l2789:	
+l2845:	
 	
-l9505:	
+l9529:	
 ;Switch_B1.c: 137: else if(sw == 2)
-	movf	(setSw_Main@sw)^080h,w
+	movf	(setSw_Main@sw)^0180h,w
 	xorlw	02h&0ffh
 	skipz
 	goto	u9821
 	goto	u9820
 u9821:
-	goto	l9515
+	goto	l9539
 u9820:
 	line	139
 	
-l9507:	
+l9531:	
 ;Switch_B1.c: 138: {
 ;Switch_B1.c: 139: Sw->Touch=(RA0 || RB1)?1:0;
-	clrf	(_setSw_Main$4180)^080h
-	incf	(_setSw_Main$4180)^080h,f
+	clrf	(_setSw_Main$4237)^0180h
+	incf	(_setSw_Main$4237)^0180h,f
 	movlb 0	; select bank0
 	btfsc	(96/8),(96)&7	;volatile
 	goto	u9831
 	goto	u9830
 u9831:
-	goto	l9513
+	goto	l9537
 u9830:
 	
-l9509:	
+l9533:	
 	btfsc	(105/8),(105)&7	;volatile
 	goto	u9841
 	goto	u9840
 u9841:
-	goto	l9513
+	goto	l9537
 u9840:
 	
-l9511:	
-	movlb 1	; select bank1
-	clrf	(_setSw_Main$4180)^080h
-	goto	l9513
+l9535:	
+	movlb 3	; select bank3
+	clrf	(_setSw_Main$4237)^0180h
+	goto	l9537
 	
-l2795:	
+l2851:	
 	
-l9513:	
+l9537:	
 	movf	(_Sw),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
-	movlb 1	; select bank1
-	movf	(_setSw_Main$4180)^080h,w
+	movlb 3	; select bank3
+	movf	(_setSw_Main$4237)^0180h,w
 	bcf	indf1,1
 	skipz
 	bsf	indf1,1
-	goto	l9515
+	goto	l9539
 	line	140
 	
-l2793:	
-	goto	l9515
+l2849:	
+	goto	l9539
 	line	148
 	
-l2792:	
+l2848:	
 	
-l9515:	
+l9539:	
 ;Switch_B1.c: 140: }
 ;Switch_B1.c: 148: if(Sw->Touch)
 	movf	(_Sw),w
@@ -8733,11 +8906,11 @@ l9515:
 	goto	u9851
 	goto	u9850
 u9851:
-	goto	l9563
+	goto	l9587
 u9850:
 	line	150
 	
-l9517:	
+l9541:	
 ;Switch_B1.c: 149: {
 ;Switch_B1.c: 150: if(!Sw->Debounce)
 	movf	(_Sw),w
@@ -8749,11 +8922,11 @@ l9517:
 	goto	u9861
 	goto	u9860
 u9861:
-	goto	l9529
+	goto	l9553
 u9860:
 	line	152
 	
-l9519:	
+l9543:	
 ;Switch_B1.c: 151: {
 ;Switch_B1.c: 152: Sw->DebounceTime++;
 	movlw	(01h)
@@ -8769,7 +8942,7 @@ l9519:
 	addwf	indf1,f
 	line	153
 	
-l9521:	
+l9545:	
 ;Switch_B1.c: 153: if(Sw->DebounceTime >= 5)
 	movf	(_Sw),w
 	addlw	02h
@@ -8783,11 +8956,11 @@ l9521:
 	goto	u9871
 	goto	u9870
 u9871:
-	goto	l2812
+	goto	l2868
 u9870:
 	line	155
 	
-l9523:	
+l9547:	
 ;Switch_B1.c: 154: {
 ;Switch_B1.c: 155: Sw->DebounceTime=0;
 	movf	(_Sw),w
@@ -8799,7 +8972,7 @@ l9523:
 	clrf	indf1
 	line	156
 	
-l9525:	
+l9549:	
 ;Switch_B1.c: 156: Sw->Debounce=1;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -8809,25 +8982,25 @@ l9525:
 	bsf	indf1,2
 	line	159
 	
-l9527:	
+l9551:	
 ;Switch_B1.c: 159: Sw_DimmerOnFunc(sw);
-	movlb 1	; select bank1
-	movf	(setSw_Main@sw)^080h,w
+	movlb 3	; select bank3
+	movf	(setSw_Main@sw)^0180h,w
 	fcall	_Sw_DimmerOnFunc
-	goto	l2812
+	goto	l2868
 	line	162
 	
-l2798:	
+l2854:	
 	line	163
 ;Switch_B1.c: 162: }
 ;Switch_B1.c: 163: }
-	goto	l2812
+	goto	l2868
 	line	164
 	
-l2797:	
+l2853:	
 	line	166
 	
-l9529:	
+l9553:	
 ;Switch_B1.c: 164: else
 ;Switch_B1.c: 165: {
 ;Switch_B1.c: 166: if(!Sw->Hold1)
@@ -8840,11 +9013,11 @@ l9529:
 	goto	u9881
 	goto	u9880
 u9881:
-	goto	l9539
+	goto	l9563
 u9880:
 	line	168
 	
-l9531:	
+l9555:	
 ;Switch_B1.c: 167: {
 ;Switch_B1.c: 168: Sw->Hold1Time++;
 	movf	(_Sw),w
@@ -8860,7 +9033,7 @@ l9531:
 	incf	indf1,f
 	line	169
 	
-l9533:	
+l9557:	
 ;Switch_B1.c: 169: if(Sw->Hold1Time >= 150)
 	movf	(_Sw),w
 	addlw	03h
@@ -8882,11 +9055,11 @@ l9533:
 	goto	u9891
 	goto	u9890
 u9891:
-	goto	l2812
+	goto	l2868
 u9890:
 	line	171
 	
-l9535:	
+l9559:	
 ;Switch_B1.c: 170: {
 ;Switch_B1.c: 171: Sw->Hold1Time=0;
 	movf	(_Sw),w
@@ -8908,25 +9081,25 @@ l9535:
 	bsf	indf1,3
 	line	175
 	
-l9537:	
+l9561:	
 ;Switch_B1.c: 175: Sw_DimmerAdjFunc(sw);
-	movlb 1	; select bank1
-	movf	(setSw_Main@sw)^080h,w
+	movlb 3	; select bank3
+	movf	(setSw_Main@sw)^0180h,w
 	fcall	_Sw_DimmerAdjFunc
-	goto	l2812
+	goto	l2868
 	line	178
 	
-l2801:	
+l2857:	
 	line	179
 ;Switch_B1.c: 178: }
 ;Switch_B1.c: 179: }
-	goto	l2812
+	goto	l2868
 	line	180
 	
-l2800:	
+l2856:	
 	line	182
 	
-l9539:	
+l9563:	
 ;Switch_B1.c: 180: else
 ;Switch_B1.c: 181: {
 ;Switch_B1.c: 182: if(!Sw->Hold2)
@@ -8939,11 +9112,11 @@ l9539:
 	goto	u9901
 	goto	u9900
 u9901:
-	goto	l9553
+	goto	l9577
 u9900:
 	line	184
 	
-l9541:	
+l9565:	
 ;Switch_B1.c: 183: {
 ;Switch_B1.c: 184: Sw->Hold2Time++;
 	movf	(_Sw),w
@@ -8959,7 +9132,7 @@ l9541:
 	incf	indf1,f
 	line	185
 	
-l9543:	
+l9567:	
 ;Switch_B1.c: 185: if(Sw->Hold2Time >= 150)
 	movf	(_Sw),w
 	addlw	05h
@@ -8981,11 +9154,11 @@ l9543:
 	goto	u9911
 	goto	u9910
 u9911:
-	goto	l2812
+	goto	l2868
 u9910:
 	line	187
 	
-l9545:	
+l9569:	
 ;Switch_B1.c: 186: {
 ;Switch_B1.c: 187: Sw->Hold2Time=0;
 	movf	(_Sw),w
@@ -9007,7 +9180,7 @@ l9545:
 	bsf	indf1,4
 	line	192
 	
-l9547:	
+l9571:	
 ;Switch_B1.c: 192: setRF_Learn(1,1);
 	clrf	(setRF_Learn@command)
 	incf	(setRF_Learn@command),f
@@ -9015,7 +9188,7 @@ l9547:
 	fcall	_setRF_Learn
 	line	194
 	
-l9549:	
+l9573:	
 ;Switch_B1.c: 194: if(TMain->First)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -9028,11 +9201,11 @@ l9549:
 	goto	u9921
 	goto	u9920
 u9921:
-	goto	l2812
+	goto	l2868
 u9920:
 	line	196
 	
-l9551:	
+l9575:	
 ;Switch_B1.c: 195: {
 ;Switch_B1.c: 196: setBuz(2,100);
 	movlw	low(064h)
@@ -9041,25 +9214,25 @@ l9551:
 	movwf	((setBuz@time))+1
 	movlw	(02h)
 	fcall	_setBuz
-	goto	l2812
+	goto	l2868
 	line	197
 	
-l2805:	
-	goto	l2812
+l2861:	
+	goto	l2868
 	line	199
 	
-l2804:	
+l2860:	
 	line	200
 ;Switch_B1.c: 197: }
 ;Switch_B1.c: 199: }
 ;Switch_B1.c: 200: }
-	goto	l2812
+	goto	l2868
 	line	201
 	
-l2803:	
+l2859:	
 	line	203
 	
-l9553:	
+l9577:	
 ;Switch_B1.c: 201: else
 ;Switch_B1.c: 202: {
 ;Switch_B1.c: 203: if(!Sw->Hold3)
@@ -9072,11 +9245,11 @@ l9553:
 	goto	u9931
 	goto	u9930
 u9931:
-	goto	l2812
+	goto	l2868
 u9930:
 	line	205
 	
-l9555:	
+l9579:	
 ;Switch_B1.c: 204: {
 ;Switch_B1.c: 205: Sw->Hold3Time++;
 	movf	(_Sw),w
@@ -9092,7 +9265,7 @@ l9555:
 	incf	indf1,f
 	line	206
 	
-l9557:	
+l9581:	
 ;Switch_B1.c: 206: if(Sw->Hold3Time >= 300)
 	movf	(_Sw),w
 	addlw	07h
@@ -9114,11 +9287,11 @@ l9557:
 	goto	u9941
 	goto	u9940
 u9941:
-	goto	l2812
+	goto	l2868
 u9940:
 	line	208
 	
-l9559:	
+l9583:	
 ;Switch_B1.c: 207: {
 ;Switch_B1.c: 208: Sw->Hold3Time=0;
 	movf	(_Sw),w
@@ -9140,31 +9313,31 @@ l9559:
 	bsf	indf1,5
 	line	212
 	
-l9561:	
+l9585:	
 ;Switch_B1.c: 212: setRF_Learn(1,0);
 	clrf	(setRF_Learn@command)
 	movlw	(01h)
 	fcall	_setRF_Learn
-	goto	l2812
+	goto	l2868
 	line	215
 	
-l2808:	
-	goto	l2812
+l2864:	
+	goto	l2868
 	line	216
 	
-l2807:	
-	goto	l2812
+l2863:	
+	goto	l2868
 	line	217
 	
-l2806:	
-	goto	l2812
+l2862:	
+	goto	l2868
 	line	218
 	
-l2802:	
-	goto	l2812
+l2858:	
+	goto	l2868
 	line	219
 	
-l2799:	
+l2855:	
 	line	220
 ;Switch_B1.c: 215: }
 ;Switch_B1.c: 216: }
@@ -9172,13 +9345,13 @@ l2799:
 ;Switch_B1.c: 218: }
 ;Switch_B1.c: 219: }
 ;Switch_B1.c: 220: }
-	goto	l2812
+	goto	l2868
 	line	221
 	
-l2796:	
+l2852:	
 	line	223
 	
-l9563:	
+l9587:	
 ;Switch_B1.c: 221: else
 ;Switch_B1.c: 222: {
 ;Switch_B1.c: 223: if(Sw->Debounce)
@@ -9191,11 +9364,11 @@ l9563:
 	goto	u9951
 	goto	u9950
 u9951:
-	goto	l2812
+	goto	l2868
 u9950:
 	line	225
 	
-l9565:	
+l9589:	
 ;Switch_B1.c: 224: {
 ;Switch_B1.c: 225: Sw->DebounceTime++;
 	movlw	(01h)
@@ -9211,7 +9384,7 @@ l9565:
 	addwf	indf1,f
 	line	226
 	
-l9567:	
+l9591:	
 ;Switch_B1.c: 226: if(Sw->DebounceTime >= 5)
 	movf	(_Sw),w
 	addlw	02h
@@ -9225,11 +9398,11 @@ l9567:
 	goto	u9961
 	goto	u9960
 u9961:
-	goto	l2812
+	goto	l2868
 u9960:
 	line	228
 	
-l9569:	
+l9593:	
 ;Switch_B1.c: 227: {
 ;Switch_B1.c: 228: Sw->DebounceTime=0;
 	movf	(_Sw),w
@@ -9241,7 +9414,7 @@ l9569:
 	clrf	indf1
 	line	229
 	
-l9571:	
+l9595:	
 ;Switch_B1.c: 229: Sw->Debounce=0;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9251,7 +9424,7 @@ l9571:
 	bcf	indf1,2
 	line	230
 	
-l9573:	
+l9597:	
 ;Switch_B1.c: 230: Sw->Hold1Time=0;
 	movf	(_Sw),w
 	addlw	03h
@@ -9264,7 +9437,7 @@ l9573:
 	movwi	[1]fsr1
 	line	231
 	
-l9575:	
+l9599:	
 ;Switch_B1.c: 231: Sw->Hold1=0;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9274,7 +9447,7 @@ l9575:
 	bcf	indf1,3
 	line	232
 	
-l9577:	
+l9601:	
 ;Switch_B1.c: 232: Sw->Hold2Time=0;
 	movf	(_Sw),w
 	addlw	05h
@@ -9287,7 +9460,7 @@ l9577:
 	movwi	[1]fsr1
 	line	233
 	
-l9579:	
+l9603:	
 ;Switch_B1.c: 233: Sw->Hold2=0;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9297,7 +9470,7 @@ l9579:
 	bcf	indf1,4
 	line	234
 	
-l9581:	
+l9605:	
 ;Switch_B1.c: 234: Sw->Hold3Time=0;
 	movf	(_Sw),w
 	addlw	07h
@@ -9310,7 +9483,7 @@ l9581:
 	movwi	[1]fsr1
 	line	235
 	
-l9583:	
+l9607:	
 ;Switch_B1.c: 235: Sw->Hold3=0;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9320,38 +9493,38 @@ l9583:
 	bcf	indf1,5
 	line	238
 	
-l9585:	
+l9609:	
 ;Switch_B1.c: 238: Sw_DimmerOffFunc(sw);
-	movlb 1	; select bank1
-	movf	(setSw_Main@sw)^080h,w
+	movlb 3	; select bank3
+	movf	(setSw_Main@sw)^0180h,w
 	fcall	_Sw_DimmerOffFunc
 	line	243
 	
-l9587:	
+l9611:	
 ;Switch_B1.c: 243: setRF_Learn(1,0);
 	movlb 0	; select bank0
 	clrf	(setRF_Learn@command)
 	movlw	(01h)
 	fcall	_setRF_Learn
-	goto	l2812
+	goto	l2868
 	line	245
 	
-l2811:	
-	goto	l2812
+l2867:	
+	goto	l2868
 	line	246
 	
-l2810:	
-	goto	l2812
+l2866:	
+	goto	l2868
 	line	247
 	
-l2809:	
-	goto	l2812
+l2865:	
+	goto	l2868
 	line	248
 	
-l2788:	
+l2844:	
 	line	249
 	
-l2812:	
+l2868:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSw_Main
@@ -9389,12 +9562,12 @@ GLOBAL	__end_of_setSw_Main
 ;;		_setSw_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text12,local,class=CODE,delta=2,merge=1
+psect	text14,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	31
-global __ptext12
-__ptext12:	;psect for function _setRF_Learn
-psect	text12
+global __ptext14
+__ptext14:	;psect for function _setRF_Learn
+psect	text14
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	31
 	global	__size_of_setRF_Learn
@@ -9409,13 +9582,13 @@ _setRF_Learn:
 	movwf	(setRF_Learn@rf)
 	line	33
 	
-l8903:	
+l8927:	
 ;RF_Control_B1.c: 33: RfPointSelect(rf);
 	movf	(setRF_Learn@rf),w
 	fcall	_RfPointSelect
 	line	34
 	
-l8905:	
+l8929:	
 ;RF_Control_B1.c: 34: RF->Learn=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -9428,7 +9601,7 @@ l8905:
 	bsf	indf1,6
 	line	35
 	
-l2497:	
+l2549:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Learn
@@ -9471,12 +9644,12 @@ GLOBAL	__end_of_setRF_Learn
 ;;		_setSw_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text13,local,class=CODE,delta=2,merge=1
+psect	text15,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	251
-global __ptext13
-__ptext13:	;psect for function _Sw_DimmerOnFunc
-psect	text13
+global __ptext15
+__ptext15:	;psect for function _Sw_DimmerOnFunc
+psect	text15
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	251
 	global	__size_of_Sw_DimmerOnFunc
@@ -9491,13 +9664,13 @@ _Sw_DimmerOnFunc:
 	movwf	(Sw_DimmerOnFunc@sw)
 	line	253
 	
-l8963:	
+l8987:	
 ;Switch_B1.c: 253: char Idle=1;
 	clrf	(Sw_DimmerOnFunc@Idle)
 	incf	(Sw_DimmerOnFunc@Idle),f
 	line	270
 	
-l8965:	
+l8989:	
 ;Switch_B1.c: 270: if(sw == 1)
 	movf	(Sw_DimmerOnFunc@sw),w
 	xorlw	01h&0ffh
@@ -9505,11 +9678,11 @@ l8965:
 	goto	u9011
 	goto	u9010
 u9011:
-	goto	l8969
+	goto	l8993
 u9010:
 	line	272
 	
-l8967:	
+l8991:	
 ;Switch_B1.c: 271: {
 ;Switch_B1.c: 272: Idle=(DimmerLights22->AdjGo)?0:1;
 	movf	(_DimmerLights22),w
@@ -9527,12 +9700,12 @@ l8967:
 	movwf	(Sw_DimmerOnFunc@Idle)
 	line	273
 ;Switch_B1.c: 273: }
-	goto	l8973
+	goto	l8997
 	line	274
 	
-l2815:	
+l2871:	
 	
-l8969:	
+l8993:	
 ;Switch_B1.c: 274: else if(sw == 2)
 	movf	(Sw_DimmerOnFunc@sw),w
 	xorlw	02h&0ffh
@@ -9540,11 +9713,11 @@ l8969:
 	goto	u9021
 	goto	u9020
 u9021:
-	goto	l8973
+	goto	l8997
 u9020:
 	line	276
 	
-l8971:	
+l8995:	
 ;Switch_B1.c: 275: {
 ;Switch_B1.c: 276: Idle=(DimmerLights11->AdjGo)?0:1;
 	movf	(_DimmerLights11),w
@@ -9560,26 +9733,26 @@ l8971:
 	btfsc	status,0
 	movlw	1
 	movwf	(Sw_DimmerOnFunc@Idle)
-	goto	l8973
+	goto	l8997
 	line	277
 	
-l2817:	
-	goto	l8973
+l2873:	
+	goto	l8997
 	line	280
 	
-l2816:	
+l2872:	
 	
-l8973:	
+l8997:	
 ;Switch_B1.c: 277: }
 ;Switch_B1.c: 280: if(Idle)
 	movf	(Sw_DimmerOnFunc@Idle),w
 	skipz
 	goto	u9030
-	goto	l2821
+	goto	l2877
 u9030:
 	line	282
 	
-l8975:	
+l8999:	
 ;Switch_B1.c: 281: {
 ;Switch_B1.c: 282: Sw->Flag=1;
 	movf	(_Sw),w
@@ -9590,7 +9763,7 @@ l8975:
 	bsf	indf1,7
 	line	283
 	
-l8977:	
+l9001:	
 ;Switch_B1.c: 283: setBuz(1,100);
 	movlw	low(064h)
 	movwf	(setBuz@time)
@@ -9600,7 +9773,7 @@ l8977:
 	fcall	_setBuz
 	line	284
 	
-l8979:	
+l9003:	
 ;Switch_B1.c: 284: if(!Sw->Status)
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9611,11 +9784,11 @@ l8979:
 	goto	u9041
 	goto	u9040
 u9041:
-	goto	l8995
+	goto	l9017
 u9040:
 	line	286
 	
-l8981:	
+l9005:	
 ;Switch_B1.c: 285: {
 ;Switch_B1.c: 286: Sw->Status=1;
 	movf	(_Sw),w
@@ -9626,7 +9799,7 @@ l8981:
 	bsf	indf1,6
 	line	287
 	
-l8983:	
+l9007:	
 ;Switch_B1.c: 287: setRFSW_Status(sw,1);
 	movlb 0	; select bank0
 	clrf	(setRFSW_Status@command)
@@ -9635,7 +9808,7 @@ l8983:
 	fcall	_setRFSW_Status
 	line	289
 	
-l8985:	
+l9009:	
 ;Switch_B1.c: 289: setDimmerLights_Trigger(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Trigger@command)
@@ -9644,7 +9817,7 @@ l8985:
 	fcall	_setDimmerLights_Trigger
 	line	290
 	
-l8987:	
+l9011:	
 ;Switch_B1.c: 290: setDimmerLights_Switch(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Switch@command)
@@ -9653,7 +9826,7 @@ l8987:
 	fcall	_setDimmerLights_Switch
 	line	292
 	
-l8989:	
+l9013:	
 ;Switch_B1.c: 292: setRF_DimmerLights(sw,Sw->Status);
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9669,31 +9842,20 @@ l8989:
 	fcall	_setRF_DimmerLights
 	line	293
 	
-l8991:	
+l9015:	
 ;Switch_B1.c: 293: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
-	line	294
-	
-l8993:	
-;Switch_B1.c: 294: TMain->ClockStop=1;
-	movlb 0	; select bank0
-	movf	(_TMain),w
-	addlw	010h
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	bsf	indf1,2
 	line	295
 ;Switch_B1.c: 295: }
-	goto	l2821
+	movlb 0	; select bank0
+	goto	l2877
 	line	296
 	
-l2819:	
+l2875:	
 	line	298
 	
-l8995:	
+l9017:	
 ;Switch_B1.c: 296: else
 ;Switch_B1.c: 297: {
 ;Switch_B1.c: 298: Sw->Status=0;
@@ -9705,7 +9867,7 @@ l8995:
 	bcf	indf1,6
 	line	299
 	
-l8997:	
+l9019:	
 ;Switch_B1.c: 299: setRFSW_Status(sw,Sw->Status);
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9720,18 +9882,18 @@ l8997:
 	movf	(Sw_DimmerOnFunc@sw),w
 	fcall	_setRFSW_Status
 	movlb 0	; select bank0
-	goto	l2821
+	goto	l2877
 	line	300
 	
-l2820:	
+l2876:	
 	movlb 0	; select bank0
-	goto	l2821
+	goto	l2877
 	line	301
 	
-l2818:	
+l2874:	
 	line	302
 	
-l2821:	
+l2877:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Sw_DimmerOnFunc
@@ -9774,11 +9936,11 @@ GLOBAL	__end_of_Sw_DimmerOnFunc
 ;;		_setSw_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text14,local,class=CODE,delta=2,merge=1
+psect	text16,local,class=CODE,delta=2,merge=1
 	line	304
-global __ptext14
-__ptext14:	;psect for function _Sw_DimmerOffFunc
-psect	text14
+global __ptext16
+__ptext16:	;psect for function _Sw_DimmerOffFunc
+psect	text16
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	304
 	global	__size_of_Sw_DimmerOffFunc
@@ -9793,7 +9955,7 @@ _Sw_DimmerOffFunc:
 	movwf	(Sw_DimmerOffFunc@sw)
 	line	306
 	
-l9021:	
+l9043:	
 ;Switch_B1.c: 306: if(Sw->Flag)
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9804,11 +9966,11 @@ l9021:
 	goto	u9091
 	goto	u9090
 u9091:
-	goto	l2828
+	goto	l2884
 u9090:
 	line	308
 	
-l9023:	
+l9045:	
 ;Switch_B1.c: 307: {
 ;Switch_B1.c: 308: Sw->Flag=0;
 	movf	(_Sw),w
@@ -9828,11 +9990,11 @@ l9023:
 	goto	u9101
 	goto	u9100
 u9101:
-	goto	l9039
+	goto	l9061
 u9100:
 	line	311
 	
-l9025:	
+l9047:	
 ;Switch_B1.c: 310: {
 ;Switch_B1.c: 311: if(Sw->Adj)
 	incf	(_Sw),w
@@ -9844,11 +10006,11 @@ l9025:
 	goto	u9111
 	goto	u9110
 u9111:
-	goto	l2828
+	goto	l2884
 u9110:
 	line	313
 	
-l9027:	
+l9049:	
 ;Switch_B1.c: 312: {
 ;Switch_B1.c: 313: Sw->Adj=0;
 	incf	(_Sw),w
@@ -9859,7 +10021,7 @@ l9027:
 	bcf	indf1,0
 	line	314
 	
-l9029:	
+l9051:	
 ;Switch_B1.c: 314: setDimmerLights_TriggerAdj(sw,1);
 	clrf	(setDimmerLights_TriggerAdj@command)
 	incf	(setDimmerLights_TriggerAdj@command),f
@@ -9867,7 +10029,7 @@ l9029:
 	fcall	_setDimmerLights_TriggerAdj
 	line	315
 	
-l9031:	
+l9053:	
 ;Switch_B1.c: 315: setDimmerLights_AdjGo(sw,0);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_AdjGo@command)
@@ -9875,7 +10037,7 @@ l9031:
 	fcall	_setDimmerLights_AdjGo
 	line	317
 	
-l9033:	
+l9055:	
 ;Switch_B1.c: 317: Product->Data[17]=Product->Data[26+sw];
 	movlb 0	; select bank0
 	movf	(Sw_DimmerOffFunc@sw),w
@@ -9899,7 +10061,7 @@ l9033:
 	movwf	indf1
 	line	318
 	
-l9035:	
+l9057:	
 ;Switch_B1.c: 318: setRF_DimmerLights(sw,Sw->Status);
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -9914,24 +10076,24 @@ l9035:
 	fcall	_setRF_DimmerLights
 	line	319
 	
-l9037:	
+l9059:	
 ;Switch_B1.c: 319: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
-	goto	l2828
+	goto	l2884
 	line	321
 	
-l2826:	
+l2882:	
 	line	322
 ;Switch_B1.c: 321: }
 ;Switch_B1.c: 322: }
-	goto	l2828
+	goto	l2884
 	line	323
 	
-l2825:	
+l2881:	
 	line	325
 	
-l9039:	
+l9061:	
 ;Switch_B1.c: 323: else
 ;Switch_B1.c: 324: {
 ;Switch_B1.c: 325: setDimmerLights_Trigger(sw,1);
@@ -9971,29 +10133,17 @@ l9039:
 ;Switch_B1.c: 330: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
-	line	331
-	
-l9041:	
-;Switch_B1.c: 331: TMain->ClockStop=0;
-	movlb 0	; select bank0
-	movf	(_TMain),w
-	addlw	010h
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	bcf	indf1,2
-	goto	l2828
+	goto	l2884
 	line	332
 	
-l2827:	
-	goto	l2828
+l2883:	
+	goto	l2884
 	line	333
 	
-l2824:	
+l2880:	
 	line	334
 	
-l2828:	
+l2884:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Sw_DimmerOffFunc
@@ -10033,11 +10183,11 @@ GLOBAL	__end_of_Sw_DimmerOffFunc
 ;;		_setSw_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text15,local,class=CODE,delta=2,merge=1
+psect	text17,local,class=CODE,delta=2,merge=1
 	line	336
-global __ptext15
-__ptext15:	;psect for function _Sw_DimmerAdjFunc
-psect	text15
+global __ptext17
+__ptext17:	;psect for function _Sw_DimmerAdjFunc
+psect	text17
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	336
 	global	__size_of_Sw_DimmerAdjFunc
@@ -10052,13 +10202,13 @@ _Sw_DimmerAdjFunc:
 	movwf	(Sw_DimmerAdjFunc@sw)
 	line	338
 	
-l8999:	
+l9021:	
 ;Switch_B1.c: 338: char Idle=1;
 	clrf	(Sw_DimmerAdjFunc@Idle)
 	incf	(Sw_DimmerAdjFunc@Idle),f
 	line	355
 	
-l9001:	
+l9023:	
 ;Switch_B1.c: 355: if(sw == 1)
 	movf	(Sw_DimmerAdjFunc@sw),w
 	xorlw	01h&0ffh
@@ -10066,11 +10216,11 @@ l9001:
 	goto	u9051
 	goto	u9050
 u9051:
-	goto	l9005
+	goto	l9027
 u9050:
 	line	357
 	
-l9003:	
+l9025:	
 ;Switch_B1.c: 356: {
 ;Switch_B1.c: 357: Idle=(DimmerLights22->AdjGo)?0:1;
 	movf	(_DimmerLights22),w
@@ -10088,12 +10238,12 @@ l9003:
 	movwf	(Sw_DimmerAdjFunc@Idle)
 	line	358
 ;Switch_B1.c: 358: }
-	goto	l9009
+	goto	l9031
 	line	359
 	
-l2831:	
+l2887:	
 	
-l9005:	
+l9027:	
 ;Switch_B1.c: 359: else if(sw == 2)
 	movf	(Sw_DimmerAdjFunc@sw),w
 	xorlw	02h&0ffh
@@ -10101,11 +10251,11 @@ l9005:
 	goto	u9061
 	goto	u9060
 u9061:
-	goto	l9009
+	goto	l9031
 u9060:
 	line	361
 	
-l9007:	
+l9029:	
 ;Switch_B1.c: 360: {
 ;Switch_B1.c: 361: Idle=(DimmerLights11->AdjGo)?0:1;
 	movf	(_DimmerLights11),w
@@ -10121,26 +10271,26 @@ l9007:
 	btfsc	status,0
 	movlw	1
 	movwf	(Sw_DimmerAdjFunc@Idle)
-	goto	l9009
+	goto	l9031
 	line	362
 	
-l2833:	
-	goto	l9009
+l2889:	
+	goto	l9031
 	line	365
 	
-l2832:	
+l2888:	
 	
-l9009:	
+l9031:	
 ;Switch_B1.c: 362: }
 ;Switch_B1.c: 365: if(Idle)
 	movf	(Sw_DimmerAdjFunc@Idle),w
 	skipz
 	goto	u9070
-	goto	l2836
+	goto	l2892
 u9070:
 	line	367
 	
-l9011:	
+l9033:	
 ;Switch_B1.c: 366: {
 ;Switch_B1.c: 367: if(Sw->Flag)
 	movf	(_Sw),w
@@ -10152,11 +10302,11 @@ l9011:
 	goto	u9081
 	goto	u9080
 u9081:
-	goto	l2836
+	goto	l2892
 u9080:
 	line	369
 	
-l9013:	
+l9035:	
 ;Switch_B1.c: 368: {
 ;Switch_B1.c: 369: Sw->Adj=1;
 	incf	(_Sw),w
@@ -10175,7 +10325,7 @@ l9013:
 	bsf	indf1,6
 	line	371
 	
-l9015:	
+l9037:	
 ;Switch_B1.c: 371: setRFSW_Status(sw,1);
 	clrf	(setRFSW_Status@command)
 	incf	(setRFSW_Status@command),f
@@ -10183,7 +10333,7 @@ l9015:
 	fcall	_setRFSW_Status
 	line	373
 	
-l9017:	
+l9039:	
 ;Switch_B1.c: 373: setDimmerLights_TriggerAdj(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_TriggerAdj@command)
@@ -10192,7 +10342,7 @@ l9017:
 	fcall	_setDimmerLights_TriggerAdj
 	line	374
 	
-l9019:	
+l9041:	
 ;Switch_B1.c: 374: setDimmerLights_AdjGo(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_AdjGo@command)
@@ -10200,18 +10350,18 @@ l9019:
 	movf	(Sw_DimmerAdjFunc@sw),w
 	fcall	_setDimmerLights_AdjGo
 	movlb 0	; select bank0
-	goto	l2836
+	goto	l2892
 	line	376
 	
-l2835:	
+l2891:	
 	movlb 0	; select bank0
-	goto	l2836
+	goto	l2892
 	line	377
 	
-l2834:	
+l2890:	
 	line	378
 	
-l2836:	
+l2892:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Sw_DimmerAdjFunc
@@ -10250,12 +10400,12 @@ GLOBAL	__end_of_Sw_DimmerAdjFunc
 ;;		_Sw_DimmerAdjFunc
 ;; This function uses a non-reentrant model
 ;;
-psect	text16,local,class=CODE,delta=2,merge=1
+psect	text18,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	450
-global __ptext16
-__ptext16:	;psect for function _setDimmerLights_TriggerAdj
-psect	text16
+global __ptext18
+__ptext18:	;psect for function _setDimmerLights_TriggerAdj
+psect	text18
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	450
 	global	__size_of_setDimmerLights_TriggerAdj
@@ -10270,13 +10420,13 @@ _setDimmerLights_TriggerAdj:
 	movwf	(setDimmerLights_TriggerAdj@lights)
 	line	452
 	
-l8621:	
+l8645:	
 ;Dimmer_B1.c: 452: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_TriggerAdj@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	453
 	
-l8623:	
+l8647:	
 ;Dimmer_B1.c: 453: DimmerLights->TriggerAdj=command;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -10291,7 +10441,7 @@ l8623:
 	bsf	indf1,3
 	line	454
 	
-l940:	
+l960:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_TriggerAdj
@@ -10330,11 +10480,11 @@ GLOBAL	__end_of_setDimmerLights_TriggerAdj
 ;;		_Sw_DimmerAdjFunc
 ;; This function uses a non-reentrant model
 ;;
-psect	text17,local,class=CODE,delta=2,merge=1
+psect	text19,local,class=CODE,delta=2,merge=1
 	line	440
-global __ptext17
-__ptext17:	;psect for function _setDimmerLights_AdjGo
-psect	text17
+global __ptext19
+__ptext19:	;psect for function _setDimmerLights_AdjGo
+psect	text19
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	440
 	global	__size_of_setDimmerLights_AdjGo
@@ -10349,13 +10499,13 @@ _setDimmerLights_AdjGo:
 	movwf	(setDimmerLights_AdjGo@lights)
 	line	442
 	
-l8617:	
+l8641:	
 ;Dimmer_B1.c: 442: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_AdjGo@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	443
 	
-l8619:	
+l8643:	
 ;Dimmer_B1.c: 443: DimmerLights->AdjGo=command;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -10370,7 +10520,7 @@ l8619:
 	bsf	indf1,2
 	line	444
 	
-l934:	
+l954:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_AdjGo
@@ -10408,12 +10558,12 @@ GLOBAL	__end_of_setDimmerLights_AdjGo
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text18,local,class=CODE,delta=2,merge=1
+psect	text20,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	38
-global __ptext18
-__ptext18:	;psect for function _Switch_Initialization
-psect	text18
+global __ptext20
+__ptext20:	;psect for function _Switch_Initialization
+psect	text20
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	38
 	global	__size_of_Switch_Initialization
@@ -10425,30 +10575,30 @@ _Switch_Initialization:
 ; Regs used in _Switch_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	40
 	
-l9723:	
+l9747:	
 ;Switch_B1.c: 40: TouchPower();
 	fcall	_TouchPower
 	line	42
 	
-l9725:	
+l9749:	
 ;Switch_B1.c: 42: WPUB1=0;
 	movlb 4	; select bank4
 	bcf	(4201/8)^0200h,(4201)&7	;volatile
 	line	51
 	
-l9727:	
+l9751:	
 ;Switch_B1.c: 51: setSw_Initialization(1);
 	movlw	(01h)
 	fcall	_setSw_Initialization
 	line	54
 	
-l9729:	
+l9753:	
 ;Switch_B1.c: 54: setSw_Initialization(2);
 	movlw	(02h)
 	fcall	_setSw_Initialization
 	line	60
 	
-l2773:	
+l2829:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Switch_Initialization
@@ -10485,11 +10635,11 @@ GLOBAL	__end_of_Switch_Initialization
 ;;		_Switch_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text19,local,class=CODE,delta=2,merge=1
+psect	text21,local,class=CODE,delta=2,merge=1
 	line	78
-global __ptext19
-__ptext19:	;psect for function _setSw_Initialization
-psect	text19
+global __ptext21
+__ptext21:	;psect for function _setSw_Initialization
+psect	text21
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	78
 	global	__size_of_setSw_Initialization
@@ -10504,7 +10654,7 @@ _setSw_Initialization:
 	movwf	(setSw_Initialization@sw)
 	line	80
 	
-l9489:	
+l9513:	
 ;Switch_B1.c: 80: setLED(sw,1);
 	clrf	(setLED@command)
 	incf	(setLED@command),f
@@ -10512,7 +10662,7 @@ l9489:
 	fcall	_setLED
 	line	84
 	
-l2779:	
+l2835:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSw_Initialization
@@ -10549,11 +10699,11 @@ GLOBAL	__end_of_setSw_Initialization
 ;;		_Switch_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text20,local,class=CODE,delta=2,merge=1
+psect	text22,local,class=CODE,delta=2,merge=1
 	line	9
-global __ptext20
-__ptext20:	;psect for function _TouchPower
-psect	text20
+global __ptext22
+__ptext22:	;psect for function _TouchPower
+psect	text22
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Switch_B1.c"
 	line	9
 	global	__size_of_TouchPower
@@ -10565,30 +10715,30 @@ _TouchPower:
 ; Regs used in _TouchPower: []
 	line	11
 	
-l9487:	
+l9511:	
 ;Switch_B1.c: 11: while(!RC5)
-	goto	l2761
+	goto	l2817
 	
-l2762:	
+l2818:	
 	line	12
 ;Switch_B1.c: 12: RC5=1;
 	bsf	(117/8),(117)&7	;volatile
 	
-l2761:	
+l2817:	
 	line	11
 	movlb 0	; select bank0
 	btfss	(117/8),(117)&7	;volatile
 	goto	u9771
 	goto	u9770
 u9771:
-	goto	l2762
+	goto	l2818
 u9770:
-	goto	l2764
+	goto	l2820
 	
-l2763:	
+l2819:	
 	line	13
 	
-l2764:	
+l2820:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TouchPower
@@ -10625,12 +10775,12 @@ GLOBAL	__end_of_TouchPower
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text21,local,class=CODE,delta=2,merge=1
+psect	text23,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	24
-global __ptext21
-__ptext21:	;psect for function _RF_Main
-psect	text21
+global __ptext23
+__ptext23:	;psect for function _RF_Main
+psect	text23
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	24
 	global	__size_of_RF_Main
@@ -10642,13 +10792,13 @@ _RF_Main:
 ; Regs used in _RF_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	27
 	
-l9809:	
+l9831:	
 ;RF_Control_B1.c: 27: setRF_Main(1);
 	movlw	(01h)
 	fcall	_setRF_Main
 	line	29
 	
-l2494:	
+l2546:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RF_Main
@@ -10662,7 +10812,7 @@ GLOBAL	__end_of_RF_Main
 ;; Parameters:    Size  Location     Type
 ;;  rf              1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  rf              1    2[BANK1 ] unsigned char 
+;;  rf              1    0[BANK3 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -10673,9 +10823,9 @@ GLOBAL	__end_of_RF_Main
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Locals:         0       0       2       0       0       0       0       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       2       0       0       0       0       0       0       0       0       0
 ;;      Temps:          0       0       1       0       0       0       0       0       0       0       0       0       0       0
-;;      Totals:         0       0       3       0       0       0       0       0       0       0       0       0       0       0
+;;      Totals:         0       0       1       0       2       0       0       0       0       0       0       0       0       0
 ;;Total ram usage:        3 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:   12
@@ -10691,11 +10841,11 @@ GLOBAL	__end_of_RF_Main
 ;;		_RF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text22,local,class=CODE,delta=2,merge=1
+psect	text24,local,class=CODE,delta=2,merge=1
 	line	58
-global __ptext22
-__ptext22:	;psect for function _setRF_Main
-psect	text22
+global __ptext24
+__ptext24:	;psect for function _setRF_Main
+psect	text24
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	58
 	global	__size_of_setRF_Main
@@ -10706,17 +10856,17 @@ _setRF_Main:
 	opt	stack 2
 ; Regs used in _setRF_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 ;setRF_Main@rf stored from wreg
-	movlb 1	; select bank1
-	movwf	(setRF_Main@rf)^080h
+	movlb 3	; select bank3
+	movwf	(setRF_Main@rf)^0180h
 	line	60
 	
-l9427:	
+l9451:	
 ;RF_Control_B1.c: 60: RfPointSelect(rf);
-	movf	(setRF_Main@rf)^080h,w
+	movf	(setRF_Main@rf)^0180h,w
 	fcall	_RfPointSelect
 	line	61
 	
-l9429:	
+l9453:	
 ;RF_Control_B1.c: 61: if(RF->Enable)
 	movf	(_RF),w
 	movwf	fsr1l
@@ -10726,53 +10876,53 @@ l9429:
 	goto	u9641
 	goto	u9640
 u9641:
-	goto	l2522
+	goto	l2574
 u9640:
 	line	69
 	
-l9431:	
+l9455:	
 ;RF_Control_B1.c: 62: {
 ;RF_Control_B1.c: 69: RF->Key=((RA6 || RA4 || RA0 || RB1 ) && !RF->Learn)?1:0;
-	movlb 1	; select bank1
-	clrf	(_setRF_Main$3858)^080h
+	movlb 3	; select bank3
+	clrf	(_setRF_Main$3911)^0180h
 	
-l9433:	
+l9457:	
 	movlb 0	; select bank0
 	btfsc	(102/8),(102)&7	;volatile
 	goto	u9651
 	goto	u9650
 u9651:
-	goto	l9441
+	goto	l9465
 u9650:
 	
-l9435:	
+l9459:	
 	btfsc	(100/8),(100)&7	;volatile
 	goto	u9661
 	goto	u9660
 u9661:
-	goto	l9441
+	goto	l9465
 u9660:
 	
-l9437:	
+l9461:	
 	btfsc	(96/8),(96)&7	;volatile
 	goto	u9671
 	goto	u9670
 u9671:
-	goto	l9441
+	goto	l9465
 u9670:
 	
-l9439:	
+l9463:	
 	btfss	(105/8),(105)&7	;volatile
 	goto	u9681
 	goto	u9680
 u9681:
-	goto	l9445
+	goto	l9469
 u9680:
-	goto	l9441
+	goto	l9465
 	
-l7917:	
+l7941:	
 	
-l9441:	
+l9465:	
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -10781,24 +10931,24 @@ l9441:
 	goto	u9691
 	goto	u9690
 u9691:
-	goto	l9445
+	goto	l9469
 u9690:
 	
-l9443:	
-	movlb 1	; select bank1
-	clrf	(_setRF_Main$3858)^080h
-	incf	(_setRF_Main$3858)^080h,f
-	goto	l9445
+l9467:	
+	movlb 3	; select bank3
+	clrf	(_setRF_Main$3911)^0180h
+	incf	(_setRF_Main$3911)^0180h,f
+	goto	l9469
 	
-l2511:	
+l2563:	
 	
-l9445:	
+l9469:	
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
-	movlb 1	; select bank1
-	movf	(_setRF_Main$3858)^080h,w
+	movlb 3	; select bank3
+	movf	(_setRF_Main$3911)^0180h,w
 	bcf	indf1,7
 	skipz
 	bsf	indf1,7
@@ -10812,11 +10962,11 @@ l9445:
 	goto	u9701
 	goto	u9700
 u9701:
-	goto	l9467
+	goto	l9491
 u9700:
 	line	79
 	
-l9447:	
+l9471:	
 ;RF_Control_B1.c: 78: {
 ;RF_Control_B1.c: 79: if(RF->ReceiveGO)
 	movf	(_RF),w
@@ -10827,11 +10977,11 @@ l9447:
 	goto	u9711
 	goto	u9710
 u9711:
-	goto	l9455
+	goto	l9479
 u9710:
 	line	81
 	
-l9449:	
+l9473:	
 ;RF_Control_B1.c: 80: {
 ;RF_Control_B1.c: 81: RF->ReceiveGO=0;
 	movf	(_RF),w
@@ -10841,24 +10991,24 @@ l9449:
 	bcf	indf1,1
 	line	82
 	
-l9451:	
+l9475:	
 ;RF_Control_B1.c: 82: CC2500_RxData();
 	fcall	_CC2500_RxData
 	line	89
 	
-l9453:	
+l9477:	
 ;RF_Control_B1.c: 89: getRxData(1);
 	movlw	(01h)
 	fcall	_getRxData
 	line	92
 ;RF_Control_B1.c: 92: }
-	goto	l9469
+	goto	l9493
 	line	93
 	
-l2513:	
+l2565:	
 	line	95
 	
-l9455:	
+l9479:	
 ;RF_Control_B1.c: 93: else
 ;RF_Control_B1.c: 94: {
 ;RF_Control_B1.c: 95: if(!RF->TransceiveGO)
@@ -10870,11 +11020,11 @@ l9455:
 	goto	u9721
 	goto	u9720
 u9721:
-	goto	l9469
+	goto	l9493
 u9720:
 	line	98
 	
-l9457:	
+l9481:	
 ;RF_Control_B1.c: 96: {
 ;RF_Control_B1.c: 98: if(!RF->RxStatus)
 	movf	(_RF),w
@@ -10885,11 +11035,11 @@ l9457:
 	goto	u9731
 	goto	u9730
 u9731:
-	goto	l9469
+	goto	l9493
 u9730:
 	line	100
 	
-l9459:	
+l9483:	
 ;RF_Control_B1.c: 99: {
 ;RF_Control_B1.c: 100: RF->RxStatus=1;
 	movf	(_RF),w
@@ -10899,58 +11049,58 @@ l9459:
 	bsf	indf1,3
 	line	101
 	
-l9461:	
+l9485:	
 ;RF_Control_B1.c: 101: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
 	line	102
 	
-l9463:	
+l9487:	
 ;RF_Control_B1.c: 102: CC2500_WriteCommand(0x34);
 	movlw	(034h)
 	fcall	_CC2500_WriteCommand
 	line	103
 	
-l9465:	
+l9489:	
 ;RF_Control_B1.c: 103: setINT_GO(1);
 	movlw	(01h)
 	fcall	_setINT_GO
-	goto	l9469
+	goto	l9493
 	line	104
 	
-l2516:	
-	goto	l9469
+l2568:	
+	goto	l9493
 	line	106
 	
-l2515:	
-	goto	l9469
+l2567:	
+	goto	l9493
 	line	107
 	
-l2514:	
+l2566:	
 	line	108
 ;RF_Control_B1.c: 104: }
 ;RF_Control_B1.c: 106: }
 ;RF_Control_B1.c: 107: }
 ;RF_Control_B1.c: 108: }
-	goto	l9469
+	goto	l9493
 	line	109
 	
-l2512:	
+l2564:	
 	line	111
 	
-l9467:	
+l9491:	
 ;RF_Control_B1.c: 109: else
 ;RF_Control_B1.c: 110: {
 ;RF_Control_B1.c: 111: RF_RxDisable(1);
 	movlw	(01h)
 	fcall	_RF_RxDisable
-	goto	l9469
+	goto	l9493
 	line	112
 	
-l2517:	
+l2569:	
 	line	113
 	
-l9469:	
+l9493:	
 ;RF_Control_B1.c: 112: }
 ;RF_Control_B1.c: 113: if(RF->TransceiveGO)
 	movf	(_RF),w
@@ -10961,18 +11111,18 @@ l9469:
 	goto	u9741
 	goto	u9740
 u9741:
-	goto	l2522
+	goto	l2574
 u9740:
 	line	115
 	
-l9471:	
+l9495:	
 ;RF_Control_B1.c: 114: {
 ;RF_Control_B1.c: 115: RF_RxDisable(1);
 	movlw	(01h)
 	fcall	_RF_RxDisable
 	line	116
 	
-l9473:	
+l9497:	
 ;RF_Control_B1.c: 116: if(!RF->Debounce)
 	movf	(_RF),w
 	movwf	fsr1l
@@ -10982,11 +11132,11 @@ l9473:
 	goto	u9751
 	goto	u9750
 u9751:
-	goto	l9483
+	goto	l9507
 u9750:
 	line	118
 	
-l9475:	
+l9499:	
 ;RF_Control_B1.c: 117: {
 ;RF_Control_B1.c: 118: RF->DebounceTime++;
 	movlw	(01h)
@@ -11000,7 +11150,7 @@ l9475:
 	addwf	indf1,f
 	line	119
 	
-l9477:	
+l9501:	
 ;RF_Control_B1.c: 119: if(RF->DebounceTime == 25)
 	incf	(_RF),w
 	movwf	fsr1l
@@ -11012,11 +11162,11 @@ l9477:
 	goto	u9761
 	goto	u9760
 u9761:
-	goto	l2522
+	goto	l2574
 u9760:
 	line	121
 	
-l9479:	
+l9503:	
 ;RF_Control_B1.c: 120: {
 ;RF_Control_B1.c: 121: RF->DebounceTime=0;
 	incf	(_RF),w
@@ -11026,27 +11176,27 @@ l9479:
 	clrf	indf1
 	line	122
 	
-l9481:	
+l9505:	
 ;RF_Control_B1.c: 122: RF->Debounce=1;
 	movf	(_RF),w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bsf	indf1,5
-	goto	l2522
+	goto	l2574
 	line	123
 	
-l2520:	
+l2572:	
 	line	124
 ;RF_Control_B1.c: 123: }
 ;RF_Control_B1.c: 124: }
-	goto	l2522
+	goto	l2574
 	line	125
 	
-l2519:	
+l2571:	
 	line	127
 	
-l9483:	
+l9507:	
 ;RF_Control_B1.c: 125: else
 ;RF_Control_B1.c: 126: {
 ;RF_Control_B1.c: 127: RF->Debounce=0;
@@ -11064,24 +11214,24 @@ l9483:
 	bcf	indf1,2
 	line	129
 	
-l9485:	
+l9509:	
 ;RF_Control_B1.c: 129: CC2500_TxData();
 	fcall	_CC2500_TxData
-	goto	l2522
+	goto	l2574
 	line	130
 	
-l2521:	
-	goto	l2522
+l2573:	
+	goto	l2574
 	line	131
 	
-l2518:	
-	goto	l2522
+l2570:	
+	goto	l2574
 	line	138
 	
-l2509:	
+l2561:	
 	line	139
 	
-l2522:	
+l2574:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Main
@@ -11121,11 +11271,11 @@ GLOBAL	__end_of_setRF_Main
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text23,local,class=CODE,delta=2,merge=1
+psect	text25,local,class=CODE,delta=2,merge=1
 	line	215
-global __ptext23
-__ptext23:	;psect for function _getRxData
-psect	text23
+global __ptext25
+__ptext25:	;psect for function _getRxData
+psect	text25
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	215
 	global	__size_of_getRxData
@@ -11140,14 +11290,14 @@ _getRxData:
 	movwf	(getRxData@rf)^080h
 	line	218
 	
-l8907:	
+l8931:	
 ;RF_Control_B1.c: 217: unsigned char i;
 ;RF_Control_B1.c: 218: RfPointSelect(rf);
 	movf	(getRxData@rf)^080h,w
 	fcall	_RfPointSelect
 	line	219
 	
-l8909:	
+l8933:	
 ;RF_Control_B1.c: 219: if(RF->Learn)
 	movf	(_RF),w
 	movwf	fsr1l
@@ -11157,11 +11307,11 @@ l8909:
 	goto	u8891
 	goto	u8890
 u8891:
-	goto	l8917
+	goto	l8941
 u8890:
 	line	221
 	
-l8911:	
+l8935:	
 ;RF_Control_B1.c: 220: {
 ;RF_Control_B1.c: 221: if(RF_Data[0] == 0x0 && RF_Data[1] == 0x64)
 	movlb 1	; select bank1
@@ -11170,39 +11320,39 @@ l8911:
 	goto	u8901
 	goto	u8900
 u8901:
-	goto	l2548
+	goto	l2600
 u8900:
 	
-l8913:	
+l8937:	
 	movf	0+(_RF_Data)^080h+01h,w
 	xorlw	064h&0ffh
 	skipz
 	goto	u8911
 	goto	u8910
 u8911:
-	goto	l2548
+	goto	l2600
 u8910:
 	line	223
 	
-l8915:	
+l8939:	
 ;RF_Control_B1.c: 222: {
 ;RF_Control_B1.c: 223: setLog_Code(1);
 	movlw	(01h)
 	fcall	_setLog_Code
-	goto	l2548
+	goto	l2600
 	line	224
 	
-l2538:	
+l2590:	
 	line	225
 ;RF_Control_B1.c: 224: }
 ;RF_Control_B1.c: 225: }
-	goto	l2548
+	goto	l2600
 	line	226
 	
-l2537:	
+l2589:	
 	line	228
 	
-l8917:	
+l8941:	
 ;RF_Control_B1.c: 226: else
 ;RF_Control_B1.c: 227: {
 ;RF_Control_B1.c: 228: if(RF_Data[0] == 0x00 && RF_Data[1] == 0x02)
@@ -11212,21 +11362,21 @@ l8917:
 	goto	u8921
 	goto	u8920
 u8921:
-	goto	l2548
+	goto	l2600
 u8920:
 	
-l8919:	
+l8943:	
 	movf	0+(_RF_Data)^080h+01h,w
 	xorlw	02h&0ffh
 	skipz
 	goto	u8931
 	goto	u8930
 u8931:
-	goto	l2548
+	goto	l2600
 u8930:
 	line	230
 	
-l8921:	
+l8945:	
 ;RF_Control_B1.c: 229: {
 ;RF_Control_B1.c: 230: if(RF_Data[12] == 0xff && RF_Data[13] == 0xff && RF_Data[14] == 0xff)
 	movf	0+(_RF_Data)^080h+0Ch,w
@@ -11235,31 +11385,31 @@ l8921:
 	goto	u8941
 	goto	u8940
 u8941:
-	goto	l8929
+	goto	l8953
 u8940:
 	
-l8923:	
+l8947:	
 	movf	0+(_RF_Data)^080h+0Dh,w
 	xorlw	0FFh&0ffh
 	skipz
 	goto	u8951
 	goto	u8950
 u8951:
-	goto	l8929
+	goto	l8953
 u8950:
 	
-l8925:	
+l8949:	
 	movf	0+(_RF_Data)^080h+0Eh,w
 	xorlw	0FFh&0ffh
 	skipz
 	goto	u8961
 	goto	u8960
 u8961:
-	goto	l8929
+	goto	l8953
 u8960:
 	line	232
 	
-l8927:	
+l8951:	
 ;RF_Control_B1.c: 231: {
 ;RF_Control_B1.c: 232: __nop();
 	opt	asmopt_off
@@ -11267,13 +11417,13 @@ l8927:
 	opt	asmopt_on
 	line	233
 ;RF_Control_B1.c: 233: }
-	goto	l2548
+	goto	l2600
 	line	234
 	
-l2541:	
+l2593:	
 	line	236
 	
-l8929:	
+l8953:	
 ;RF_Control_B1.c: 234: else
 ;RF_Control_B1.c: 235: {
 ;RF_Control_B1.c: 236: if(RF_Data[12] == Product->Data[12] && RF_Data[13] == Product->Data[13] && RF_Data[14] == Product->Data[14])
@@ -11291,10 +11441,10 @@ l8929:
 	goto	u8971
 	goto	u8970
 u8971:
-	goto	l2548
+	goto	l2600
 u8970:
 	
-l8931:	
+l8955:	
 	movlb 0	; select bank0
 	movf	(_Product),w
 	addlw	0Dh
@@ -11309,10 +11459,10 @@ l8931:
 	goto	u8981
 	goto	u8980
 u8981:
-	goto	l2548
+	goto	l2600
 u8980:
 	
-l8933:	
+l8957:	
 	movlb 0	; select bank0
 	movf	(_Product),w
 	addlw	0Eh
@@ -11327,73 +11477,73 @@ l8933:
 	goto	u8991
 	goto	u8990
 u8991:
-	goto	l2548
+	goto	l2600
 u8990:
 	line	238
 	
-l8935:	
+l8959:	
 ;RF_Control_B1.c: 237: {
 ;RF_Control_B1.c: 238: setControl_Lights_Table(1);
 	movlw	(01h)
 	fcall	_setControl_Lights_Table
-	goto	l2548
+	goto	l2600
 	line	239
 	
-l2543:	
-	goto	l2548
+l2595:	
+	goto	l2600
 	line	240
 	
-l2542:	
+l2594:	
 	line	241
 ;RF_Control_B1.c: 239: }
 ;RF_Control_B1.c: 240: }
 ;RF_Control_B1.c: 241: }
-	goto	l2548
+	goto	l2600
 	line	242
 	
-l2540:	
-	goto	l2548
+l2592:	
+	goto	l2600
 	
-l8937:	
-	goto	l2548
+l8961:	
+	goto	l2600
 	
-l8939:	
-	goto	l2548
+l8963:	
+	goto	l2600
 	line	245
 	
-l8941:	
+l8965:	
 ;RF_Control_B1.c: 243: {
 ;RF_Control_B1.c: 244: ;
 ;RF_Control_B1.c: 245: }
-	goto	l2548
+	goto	l2600
 	line	246
 	
-l2545:	
-	goto	l2548
+l2597:	
+	goto	l2600
 	
-l8943:	
-	goto	l2548
+l8967:	
+	goto	l2600
 	
-l8945:	
-	goto	l2548
+l8969:	
+	goto	l2600
 	line	249
 ;RF_Control_B1.c: 247: {
 ;RF_Control_B1.c: 248: ;
 	
-l2547:	
-	goto	l2548
+l2599:	
+	goto	l2600
 	line	254
 	
-l2546:	
-	goto	l2548
+l2598:	
+	goto	l2600
 	
-l2544:	
-	goto	l2548
+l2596:	
+	goto	l2600
 	
-l2539:	
+l2591:	
 	line	255
 	
-l2548:	
+l2600:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getRxData
@@ -11431,11 +11581,11 @@ GLOBAL	__end_of_getRxData
 ;;		_getRxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text24,local,class=CODE,delta=2,merge=1
+psect	text26,local,class=CODE,delta=2,merge=1
 	line	257
-global __ptext24
-__ptext24:	;psect for function _setLog_Code
-psect	text24
+global __ptext26
+__ptext26:	;psect for function _setLog_Code
+psect	text26
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	257
 	global	__size_of_setLog_Code
@@ -11450,13 +11600,13 @@ _setLog_Code:
 	movwf	(setLog_Code@rf)
 	line	259
 	
-l8657:	
+l8681:	
 ;RF_Control_B1.c: 259: RfPointSelect(rf);
 	movf	(setLog_Code@rf),w
 	fcall	_RfPointSelect
 	line	260
 	
-l8659:	
+l8683:	
 ;RF_Control_B1.c: 260: Product->Data[12]=RF_Data[12];
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Ch,w
@@ -11472,7 +11622,7 @@ l8659:
 	movwf	indf1
 	line	261
 	
-l8661:	
+l8685:	
 ;RF_Control_B1.c: 261: Product->Data[13]=RF_Data[13];
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Dh,w
@@ -11488,7 +11638,7 @@ l8661:
 	movwf	indf1
 	line	262
 	
-l8663:	
+l8687:	
 ;RF_Control_B1.c: 262: Product->Data[14]=RF_Data[14];
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Eh,w
@@ -11504,7 +11654,7 @@ l8663:
 	movwf	indf1
 	line	263
 	
-l8665:	
+l8689:	
 ;RF_Control_B1.c: 263: setBuz(1,100);
 	movlw	low(064h)
 	movwf	(setBuz@time)
@@ -11514,7 +11664,7 @@ l8665:
 	fcall	_setBuz
 	line	264
 	
-l8667:	
+l8691:	
 ;RF_Control_B1.c: 264: RF->Learn=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -11523,7 +11673,7 @@ l8667:
 	bcf	indf1,6
 	line	265
 	
-l8669:	
+l8693:	
 ;RF_Control_B1.c: 265: if(TMain->First)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -11536,11 +11686,11 @@ l8669:
 	goto	u8621
 	goto	u8620
 u8621:
-	goto	l2551
+	goto	l2603
 u8620:
 	line	267
 	
-l8671:	
+l8695:	
 ;RF_Control_B1.c: 266: {
 ;RF_Control_B1.c: 267: Memory->LoopSave=1;
 	movf	(_Memory),w
@@ -11552,7 +11702,7 @@ l8671:
 	bsf	indf1,2
 	line	268
 	
-l2551:	
+l2603:	
 	line	269
 ;RF_Control_B1.c: 268: }
 ;RF_Control_B1.c: 269: Memory->Modify=1;
@@ -11565,7 +11715,7 @@ l2551:
 	bsf	indf1,0
 	line	270
 	
-l2552:	
+l2604:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setLog_Code
@@ -11609,11 +11759,11 @@ GLOBAL	__end_of_setLog_Code
 ;;		_getRxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text25,local,class=CODE,delta=2,merge=1
+psect	text27,local,class=CODE,delta=2,merge=1
 	line	272
-global __ptext25
-__ptext25:	;psect for function _setControl_Lights_Table
-psect	text25
+global __ptext27
+__ptext27:	;psect for function _setControl_Lights_Table
+psect	text27
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	272
 	global	__size_of_setControl_Lights_Table
@@ -11628,13 +11778,13 @@ _setControl_Lights_Table:
 	movwf	(setControl_Lights_Table@rf)
 	line	274
 	
-l8673:	
+l8697:	
 ;RF_Control_B1.c: 274: RfPointSelect(rf);
 	movf	(setControl_Lights_Table@rf),w
 	fcall	_RfPointSelect
 	line	275
 	
-l8675:	
+l8699:	
 ;RF_Control_B1.c: 275: if(RF_Data[15] == 0x00)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,f
@@ -11642,11 +11792,11 @@ l8675:
 	goto	u8631
 	goto	u8630
 u8631:
-	goto	l8687
+	goto	l8711
 u8630:
 	line	278
 	
-l8677:	
+l8701:	
 ;RF_Control_B1.c: 276: {
 ;RF_Control_B1.c: 278: setDimmerLights(1,0);
 	movlb 0	; select bank0
@@ -11685,7 +11835,7 @@ l8677:
 	fcall	_setSw_Status
 	line	293
 	
-l8679:	
+l8703:	
 ;RF_Control_B1.c: 293: Product->Data[9]=0;
 	movlb 0	; select bank0
 	movf	(_Product),w
@@ -11697,7 +11847,7 @@ l8679:
 	clrf	indf1
 	line	294
 	
-l8681:	
+l8705:	
 ;RF_Control_B1.c: 294: Product->Data[11]=0;
 	movf	(_Product),w
 	addlw	0Bh
@@ -11708,7 +11858,7 @@ l8681:
 	clrf	indf1
 	line	295
 	
-l8683:	
+l8707:	
 ;RF_Control_B1.c: 295: Product->Data[15]=0;
 	movf	(_Product),w
 	addlw	0Fh
@@ -11719,7 +11869,7 @@ l8683:
 	clrf	indf1
 	line	296
 	
-l8685:	
+l8709:	
 ;RF_Control_B1.c: 296: Product->Data[17]=0;
 	movf	(_Product),w
 	addlw	011h
@@ -11742,12 +11892,12 @@ l8685:
 	fcall	_setTxData
 	line	299
 ;RF_Control_B1.c: 299: }
-	goto	l2566
+	goto	l2618
 	line	300
 	
-l2555:	
+l2607:	
 	
-l8687:	
+l8711:	
 ;RF_Control_B1.c: 300: else if(RF_Data[15] == 0x20)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,w
@@ -11756,11 +11906,11 @@ l8687:
 	goto	u8641
 	goto	u8640
 u8641:
-	goto	l8693
+	goto	l8717
 u8640:
 	line	302
 	
-l8689:	
+l8713:	
 ;RF_Control_B1.c: 301: {
 ;RF_Control_B1.c: 302: Product->Data[9]=0;
 	movlb 0	; select bank0
@@ -11791,18 +11941,18 @@ l8689:
 	clrf	indf1
 	line	305
 	
-l8691:	
+l8715:	
 ;RF_Control_B1.c: 305: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
 	line	306
 ;RF_Control_B1.c: 306: }
-	goto	l2566
+	goto	l2618
 	line	308
 	
-l2557:	
+l2609:	
 	
-l8693:	
+l8717:	
 ;RF_Control_B1.c: 308: else if(RF_Data[15] == 0x01)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,w
@@ -11811,23 +11961,23 @@ l8693:
 	goto	u8651
 	goto	u8650
 u8651:
-	goto	l8697
+	goto	l8721
 u8650:
 	line	310
 	
-l8695:	
+l8719:	
 ;RF_Control_B1.c: 309: {
 ;RF_Control_B1.c: 310: setRFSW_Control(1);
 	movlw	(01h)
 	fcall	_setRFSW_Control
 	line	311
 ;RF_Control_B1.c: 311: }
-	goto	l2566
+	goto	l2618
 	line	313
 	
-l2559:	
+l2611:	
 	
-l8697:	
+l8721:	
 ;RF_Control_B1.c: 313: else if(RF_Data[15] == 0x11)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,w
@@ -11836,23 +11986,23 @@ l8697:
 	goto	u8661
 	goto	u8660
 u8661:
-	goto	l8701
+	goto	l8725
 u8660:
 	line	315
 	
-l8699:	
+l8723:	
 ;RF_Control_B1.c: 314: {
 ;RF_Control_B1.c: 315: setRFSW_AdjControl(1);
 	movlw	(01h)
 	fcall	_setRFSW_AdjControl
 	line	316
 ;RF_Control_B1.c: 316: }
-	goto	l2566
+	goto	l2618
 	line	321
 	
-l2561:	
+l2613:	
 	
-l8701:	
+l8725:	
 ;RF_Control_B1.c: 321: else if(RF_Data[15] == 0x02)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,w
@@ -11861,23 +12011,23 @@ l8701:
 	goto	u8671
 	goto	u8670
 u8671:
-	goto	l8705
+	goto	l8729
 u8670:
 	line	323
 	
-l8703:	
+l8727:	
 ;RF_Control_B1.c: 322: {
 ;RF_Control_B1.c: 323: setRFSW_Control(2);
 	movlw	(02h)
 	fcall	_setRFSW_Control
 	line	324
 ;RF_Control_B1.c: 324: }
-	goto	l2566
+	goto	l2618
 	line	326
 	
-l2563:	
+l2615:	
 	
-l8705:	
+l8729:	
 ;RF_Control_B1.c: 326: else if(RF_Data[15] == 0x21)
 	movlb 1	; select bank1
 	movf	0+(_RF_Data)^080h+0Fh,w
@@ -11886,37 +12036,37 @@ l8705:
 	goto	u8681
 	goto	u8680
 u8681:
-	goto	l2566
+	goto	l2618
 u8680:
 	line	328
 	
-l8707:	
+l8731:	
 ;RF_Control_B1.c: 327: {
 ;RF_Control_B1.c: 328: setRFSW_AdjControl(2);
 	movlw	(02h)
 	fcall	_setRFSW_AdjControl
-	goto	l2566
+	goto	l2618
 	line	329
 	
-l2565:	
-	goto	l2566
+l2617:	
+	goto	l2618
 	line	345
 	
-l2564:	
-	goto	l2566
+l2616:	
+	goto	l2618
 	
-l2562:	
-	goto	l2566
+l2614:	
+	goto	l2618
 	
-l2560:	
-	goto	l2566
+l2612:	
+	goto	l2618
 	
-l2558:	
-	goto	l2566
+l2610:	
+	goto	l2618
 	
-l2556:	
+l2608:	
 	
-l2566:	
+l2618:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setControl_Lights_Table
@@ -11960,11 +12110,11 @@ GLOBAL	__end_of_setControl_Lights_Table
 ;;		_setControl_Lights_Table
 ;; This function uses a non-reentrant model
 ;;
-psect	text26,local,class=CODE,delta=2,merge=1
+psect	text28,local,class=CODE,delta=2,merge=1
 	line	369
-global __ptext26
-__ptext26:	;psect for function _setRFSW_Control
-psect	text26
+global __ptext28
+__ptext28:	;psect for function _setRFSW_Control
+psect	text28
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	369
 	global	__size_of_setRFSW_Control
@@ -11979,13 +12129,13 @@ _setRFSW_Control:
 	movwf	(setRFSW_Control@sw)
 	line	371
 	
-l8527:	
+l8551:	
 ;RF_Control_B1.c: 371: RfSWPointSelect(sw);
 	movf	(setRFSW_Control@sw),w
 	fcall	_RfSWPointSelect
 	line	372
 	
-l8529:	
+l8553:	
 ;RF_Control_B1.c: 372: if(!RFSW->Status)
 	movlb 1	; select bank1
 	movf	(_RFSW)^080h,w
@@ -11996,11 +12146,11 @@ l8529:
 	goto	u8511
 	goto	u8510
 u8511:
-	goto	l8545
+	goto	l8569
 u8510:
 	line	374
 	
-l8531:	
+l8555:	
 ;RF_Control_B1.c: 373: {
 ;RF_Control_B1.c: 374: if(RF_Data[16] == 0x80)
 	movf	0+(_RF_Data)^080h+010h,w
@@ -12009,11 +12159,11 @@ l8531:
 	goto	u8521
 	goto	u8520
 u8521:
-	goto	l8535
+	goto	l8559
 u8520:
 	line	376
 	
-l8533:	
+l8557:	
 ;RF_Control_B1.c: 375: {
 ;RF_Control_B1.c: 376: setDelayOff_GO(sw,1,RF_Data[17]);
 	movlb 0	; select bank0
@@ -12027,13 +12177,13 @@ l8533:
 	movwf	(setDelayOff_GO@value)
 	movf	(setRFSW_Control@sw),w
 	fcall	_setDelayOff_GO
-	goto	l8535
+	goto	l8559
 	line	377
 	
-l2575:	
+l2627:	
 	line	378
 	
-l8535:	
+l8559:	
 ;RF_Control_B1.c: 377: }
 ;RF_Control_B1.c: 378: RFSW->Status=1;
 	movlb 1	; select bank1
@@ -12044,7 +12194,7 @@ l8535:
 	bsf	indf1,0
 	line	379
 	
-l8537:	
+l8561:	
 ;RF_Control_B1.c: 379: setSw_Status(sw,1);
 	movlb 0	; select bank0
 	clrf	(setSw_Status@command)
@@ -12053,7 +12203,7 @@ l8537:
 	fcall	_setSw_Status
 	line	381
 	
-l8539:	
+l8563:	
 ;RF_Control_B1.c: 381: setDimmerLights_Trigger(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Trigger@command)
@@ -12062,7 +12212,7 @@ l8539:
 	fcall	_setDimmerLights_Trigger
 	line	382
 	
-l8541:	
+l8565:	
 ;RF_Control_B1.c: 382: setDimmerLights_Switch(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Switch@command)
@@ -12071,7 +12221,7 @@ l8541:
 	fcall	_setDimmerLights_Switch
 	line	384
 	
-l8543:	
+l8567:	
 ;RF_Control_B1.c: 384: setRF_DimmerLights(sw,RFSW->Status);
 	movlb 1	; select bank1
 	movf	(_RFSW)^080h,w
@@ -12087,13 +12237,13 @@ l8543:
 	fcall	_setRF_DimmerLights
 	line	385
 ;RF_Control_B1.c: 385: }
-	goto	l8561
+	goto	l8585
 	line	386
 	
-l2574:	
+l2626:	
 	line	388
 	
-l8545:	
+l8569:	
 ;RF_Control_B1.c: 386: else
 ;RF_Control_B1.c: 387: {
 ;RF_Control_B1.c: 388: if(RF_Data[16] == 0x80)
@@ -12104,11 +12254,11 @@ l8545:
 	goto	u8531
 	goto	u8530
 u8531:
-	goto	l8549
+	goto	l8573
 u8530:
 	line	390
 	
-l8547:	
+l8571:	
 ;RF_Control_B1.c: 389: {
 ;RF_Control_B1.c: 390: setDelayOff_GO(sw,1,RF_Data[17]);
 	movlb 0	; select bank0
@@ -12131,13 +12281,13 @@ l8547:
 	fcall	_setRF_DimmerLights
 	line	392
 ;RF_Control_B1.c: 392: }
-	goto	l8561
+	goto	l8585
 	line	393
 	
-l2577:	
+l2629:	
 	line	395
 	
-l8549:	
+l8573:	
 ;RF_Control_B1.c: 393: else
 ;RF_Control_B1.c: 394: {
 ;RF_Control_B1.c: 395: RFSW->Status=0;
@@ -12149,7 +12299,7 @@ l8549:
 	bcf	indf1,0
 	line	396
 	
-l8551:	
+l8575:	
 ;RF_Control_B1.c: 396: setSw_Status(sw,0);
 	movlb 0	; select bank0
 	clrf	(setSw_Status@command)
@@ -12157,7 +12307,7 @@ l8551:
 	fcall	_setSw_Status
 	line	398
 	
-l8553:	
+l8577:	
 ;RF_Control_B1.c: 398: setDimmerLights_Trigger(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Trigger@command)
@@ -12166,7 +12316,7 @@ l8553:
 	fcall	_setDimmerLights_Trigger
 	line	399
 	
-l8555:	
+l8579:	
 ;RF_Control_B1.c: 399: setDimmerLights_Switch(sw,RFSW->Status);
 	movlb 1	; select bank1
 	movf	(_RFSW)^080h,w
@@ -12182,7 +12332,7 @@ l8555:
 	fcall	_setDimmerLights_Switch
 	line	401
 	
-l8557:	
+l8581:	
 ;RF_Control_B1.c: 401: setDelayOff_GO(sw,0,0);
 	movlb 0	; select bank0
 	clrf	(setDelayOff_GO@command)
@@ -12191,23 +12341,23 @@ l8557:
 	fcall	_setDelayOff_GO
 	line	402
 	
-l8559:	
+l8583:	
 ;RF_Control_B1.c: 402: setRF_DimmerLights(sw,0);
 	movlb 0	; select bank0
 	clrf	(setRF_DimmerLights@on)
 	movf	(setRFSW_Control@sw),w
 	fcall	_setRF_DimmerLights
-	goto	l8561
+	goto	l8585
 	line	403
 	
-l2578:	
-	goto	l8561
+l2630:	
+	goto	l8585
 	line	404
 	
-l2576:	
+l2628:	
 	line	405
 	
-l8561:	
+l8585:	
 ;RF_Control_B1.c: 403: }
 ;RF_Control_B1.c: 404: }
 ;RF_Control_B1.c: 405: setBuz(1,100);
@@ -12220,13 +12370,13 @@ l8561:
 	fcall	_setBuz
 	line	406
 	
-l8563:	
+l8587:	
 ;RF_Control_B1.c: 406: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
 	line	407
 	
-l2579:	
+l2631:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRFSW_Control
@@ -12267,12 +12417,12 @@ GLOBAL	__end_of_setRFSW_Control
 ;;		_Sw_DimmerOffFunc
 ;; This function uses a non-reentrant model
 ;;
-psect	text27,local,class=CODE,delta=2,merge=1
+psect	text29,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c"
 	line	92
-global __ptext27
-__ptext27:	;psect for function _setDelayOff_GO
-psect	text27
+global __ptext29
+__ptext29:	;psect for function _setDelayOff_GO
+psect	text29
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c"
 	line	92
 	global	__size_of_setDelayOff_GO
@@ -12287,13 +12437,13 @@ _setDelayOff_GO:
 	movwf	(setDelayOff_GO@sw)
 	line	94
 	
-l8341:	
+l8365:	
 ;DelayOff_B1.c: 94: DelayOffPointSelect(sw);
 	movf	(setDelayOff_GO@sw),w
 	fcall	_DelayOffPointSelect
 	line	95
 	
-l8343:	
+l8367:	
 ;DelayOff_B1.c: 95: if(DelayOff->Enable)
 	movlb 0	; select bank0
 	movf	(_DelayOff),w
@@ -12304,11 +12454,11 @@ l8343:
 	goto	u8181
 	goto	u8180
 u8181:
-	goto	l686
+	goto	l702
 u8180:
 	line	97
 	
-l8345:	
+l8369:	
 ;DelayOff_B1.c: 96: {
 ;DelayOff_B1.c: 97: DelayOff->GO=command;
 	movf	(_DelayOff),w
@@ -12321,16 +12471,16 @@ l8345:
 	bsf	indf1,1
 	line	98
 	
-l8347:	
+l8371:	
 ;DelayOff_B1.c: 98: if(command)
 	movf	(setDelayOff_GO@command),w
 	skipz
 	goto	u8190
-	goto	l8361
+	goto	l8385
 u8190:
 	line	100
 	
-l8349:	
+l8373:	
 ;DelayOff_B1.c: 99: {
 ;DelayOff_B1.c: 100: DelayOff->Value=DelayTimejudge(value);
 	movf	(setDelayOff_GO@value),w
@@ -12345,7 +12495,7 @@ l8349:
 	movwf	indf1
 	line	101
 	
-l8351:	
+l8375:	
 ;DelayOff_B1.c: 101: if(((value%16)==5 || !(value%16)) && value <= 0x25)
 	movlw	(0Fh)
 	andwf	(setDelayOff_GO@value),w
@@ -12356,34 +12506,34 @@ l8351:
 	goto	u8201
 	goto	u8200
 u8201:
-	goto	l8355
+	goto	l8379
 u8200:
 	
-l8353:	
+l8377:	
 	movf	(setDelayOff_GO@value),w
 	andlw	0Fh
 	btfss	status,2
 	goto	u8211
 	goto	u8210
 u8211:
-	goto	l8359
+	goto	l8383
 u8210:
-	goto	l8355
+	goto	l8379
 	
-l682:	
+l698:	
 	
-l8355:	
+l8379:	
 	movlw	(026h)
 	subwf	(setDelayOff_GO@value),w
 	skipnc
 	goto	u8221
 	goto	u8220
 u8221:
-	goto	l8359
+	goto	l8383
 u8220:
 	line	103
 	
-l8357:	
+l8381:	
 ;DelayOff_B1.c: 102: {
 ;DelayOff_B1.c: 103: Product->Data[26+sw]=value;
 	movf	(setDelayOff_GO@value),w
@@ -12401,13 +12551,13 @@ l8357:
 	movwf	indf1
 	line	104
 ;DelayOff_B1.c: 104: }
-	goto	l8365
+	goto	l8389
 	line	105
 	
-l680:	
+l696:	
 	line	107
 	
-l8359:	
+l8383:	
 ;DelayOff_B1.c: 105: else
 ;DelayOff_B1.c: 106: {
 ;DelayOff_B1.c: 107: Product->Data[26+sw]=0x05;
@@ -12424,30 +12574,30 @@ l8359:
 	
 	movf	(??_setDelayOff_GO+0)+0,w
 	movwf	indf1
-	goto	l8365
+	goto	l8389
 	line	108
 	
-l683:	
+l699:	
 	line	109
 ;DelayOff_B1.c: 108: }
 ;DelayOff_B1.c: 109: }
-	goto	l8365
+	goto	l8389
 	line	110
 	
-l679:	
+l695:	
 	
-l8361:	
+l8385:	
 ;DelayOff_B1.c: 110: else if(!command)
 	movf	(setDelayOff_GO@command),f
 	skipz
 	goto	u8231
 	goto	u8230
 u8231:
-	goto	l8365
+	goto	l8389
 u8230:
 	line	112
 	
-l8363:	
+l8387:	
 ;DelayOff_B1.c: 111: {
 ;DelayOff_B1.c: 112: Product->Data[sw+26]=0;
 	movf	(setDelayOff_GO@sw),w
@@ -12460,16 +12610,16 @@ l8363:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l8365
+	goto	l8389
 	line	113
 	
-l685:	
-	goto	l8365
+l701:	
+	goto	l8389
 	line	114
 	
-l684:	
+l700:	
 	
-l8365:	
+l8389:	
 ;DelayOff_B1.c: 113: }
 ;DelayOff_B1.c: 114: DelayOff->SecondTime=0;
 	movf	(_DelayOff),w
@@ -12482,7 +12632,7 @@ l8365:
 	movwi	[1]fsr1
 	line	115
 	
-l8367:	
+l8391:	
 ;DelayOff_B1.c: 115: DelayOff->MinuteTime=0;
 	movf	(_DelayOff),w
 	addlw	04h
@@ -12490,13 +12640,13 @@ l8367:
 	clrf fsr1h	
 	
 	clrf	indf1
-	goto	l686
+	goto	l702
 	line	116
 	
-l678:	
+l694:	
 	line	117
 	
-l686:	
+l702:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDelayOff_GO
@@ -12534,11 +12684,11 @@ GLOBAL	__end_of_setDelayOff_GO
 ;;		_setDelayOff_GO
 ;; This function uses a non-reentrant model
 ;;
-psect	text28,local,class=CODE,delta=2,merge=1
+psect	text30,local,class=CODE,delta=2,merge=1
 	line	119
-global __ptext28
-__ptext28:	;psect for function _DelayTimejudge
-psect	text28
+global __ptext30
+__ptext30:	;psect for function _DelayTimejudge
+psect	text30
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\DelayOff_B1.c"
 	line	119
 	global	__size_of_DelayTimejudge
@@ -12553,7 +12703,7 @@ _DelayTimejudge:
 	movwf	(DelayTimejudge@value)
 	line	121
 	
-l8191:	
+l8215:	
 ;DelayOff_B1.c: 121: char i=5;
 	movlw	(05h)
 	movwf	(??_DelayTimejudge+0)+0
@@ -12567,11 +12717,11 @@ l8191:
 	goto	u7921
 	goto	u7920
 u7921:
-	goto	l8195
+	goto	l8219
 u7920:
 	line	124
 	
-l8193:	
+l8217:	
 ;DelayOff_B1.c: 123: {
 ;DelayOff_B1.c: 124: i=5;
 	movlw	(05h)
@@ -12580,12 +12730,12 @@ l8193:
 	movwf	(DelayTimejudge@i)
 	line	125
 ;DelayOff_B1.c: 125: }
-	goto	l690
+	goto	l706
 	line	126
 	
-l689:	
+l705:	
 	
-l8195:	
+l8219:	
 ;DelayOff_B1.c: 126: else if(value == 0x10)
 	movf	(DelayTimejudge@value),w
 	xorlw	010h&0ffh
@@ -12593,11 +12743,11 @@ l8195:
 	goto	u7931
 	goto	u7930
 u7931:
-	goto	l8199
+	goto	l8223
 u7930:
 	line	128
 	
-l8197:	
+l8221:	
 ;DelayOff_B1.c: 127: {
 ;DelayOff_B1.c: 128: i=10;
 	movlw	(0Ah)
@@ -12606,12 +12756,12 @@ l8197:
 	movwf	(DelayTimejudge@i)
 	line	129
 ;DelayOff_B1.c: 129: }
-	goto	l690
+	goto	l706
 	line	130
 	
-l691:	
+l707:	
 	
-l8199:	
+l8223:	
 ;DelayOff_B1.c: 130: else if(value == 0x15)
 	movf	(DelayTimejudge@value),w
 	xorlw	015h&0ffh
@@ -12619,11 +12769,11 @@ l8199:
 	goto	u7941
 	goto	u7940
 u7941:
-	goto	l8203
+	goto	l8227
 u7940:
 	line	132
 	
-l8201:	
+l8225:	
 ;DelayOff_B1.c: 131: {
 ;DelayOff_B1.c: 132: i=15;
 	movlw	(0Fh)
@@ -12632,12 +12782,12 @@ l8201:
 	movwf	(DelayTimejudge@i)
 	line	133
 ;DelayOff_B1.c: 133: }
-	goto	l690
+	goto	l706
 	line	134
 	
-l693:	
+l709:	
 	
-l8203:	
+l8227:	
 ;DelayOff_B1.c: 134: else if(value == 0x20)
 	movf	(DelayTimejudge@value),w
 	xorlw	020h&0ffh
@@ -12645,11 +12795,11 @@ l8203:
 	goto	u7951
 	goto	u7950
 u7951:
-	goto	l8207
+	goto	l8231
 u7950:
 	line	136
 	
-l8205:	
+l8229:	
 ;DelayOff_B1.c: 135: {
 ;DelayOff_B1.c: 136: i=20;
 	movlw	(014h)
@@ -12658,12 +12808,12 @@ l8205:
 	movwf	(DelayTimejudge@i)
 	line	137
 ;DelayOff_B1.c: 137: }
-	goto	l690
+	goto	l706
 	line	138
 	
-l695:	
+l711:	
 	
-l8207:	
+l8231:	
 ;DelayOff_B1.c: 138: else if(value == 0x25)
 	movf	(DelayTimejudge@value),w
 	xorlw	025h&0ffh
@@ -12671,11 +12821,11 @@ l8207:
 	goto	u7961
 	goto	u7960
 u7961:
-	goto	l8211
+	goto	l8235
 u7960:
 	line	140
 	
-l8209:	
+l8233:	
 ;DelayOff_B1.c: 139: {
 ;DelayOff_B1.c: 140: i=25;
 	movlw	(019h)
@@ -12684,12 +12834,12 @@ l8209:
 	movwf	(DelayTimejudge@i)
 	line	141
 ;DelayOff_B1.c: 141: }
-	goto	l690
+	goto	l706
 	line	142
 	
-l697:	
+l713:	
 	
-l8211:	
+l8235:	
 ;DelayOff_B1.c: 142: else if(value == 0x30)
 	movf	(DelayTimejudge@value),w
 	xorlw	030h&0ffh
@@ -12697,45 +12847,45 @@ l8211:
 	goto	u7971
 	goto	u7970
 u7971:
-	goto	l690
+	goto	l706
 u7970:
 	line	144
 	
-l8213:	
+l8237:	
 ;DelayOff_B1.c: 143: {
 ;DelayOff_B1.c: 144: i=30;
 	movlw	(01Eh)
 	movwf	(??_DelayTimejudge+0)+0
 	movf	(??_DelayTimejudge+0)+0,w
 	movwf	(DelayTimejudge@i)
-	goto	l690
+	goto	l706
 	line	145
 	
-l699:	
-	goto	l690
+l715:	
+	goto	l706
 	line	146
 	
-l698:	
-	goto	l690
+l714:	
+	goto	l706
 	
-l696:	
-	goto	l690
+l712:	
+	goto	l706
 	
-l694:	
-	goto	l690
+l710:	
+	goto	l706
 	
-l692:	
+l708:	
 	
-l690:	
+l706:	
 ;DelayOff_B1.c: 145: }
 ;DelayOff_B1.c: 146: return i;
 	movf	(DelayTimejudge@i),w
-	goto	l700
+	goto	l716
 	
-l8215:	
+l8239:	
 	line	147
 	
-l700:	
+l716:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayTimejudge
@@ -12774,12 +12924,12 @@ GLOBAL	__end_of_DelayTimejudge
 ;;		_setControl_Lights_Table
 ;; This function uses a non-reentrant model
 ;;
-psect	text29,local,class=CODE,delta=2,merge=1
+psect	text31,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	409
-global __ptext29
-__ptext29:	;psect for function _setRFSW_AdjControl
-psect	text29
+global __ptext31
+__ptext31:	;psect for function _setRFSW_AdjControl
+psect	text31
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	409
 	global	__size_of_setRFSW_AdjControl
@@ -12794,13 +12944,13 @@ _setRFSW_AdjControl:
 	movwf	(setRFSW_AdjControl@sw)
 	line	411
 	
-l8565:	
+l8589:	
 ;RF_Control_B1.c: 411: RfSWPointSelect(sw);
 	movf	(setRFSW_AdjControl@sw),w
 	fcall	_RfSWPointSelect
 	line	412
 	
-l8567:	
+l8591:	
 ;RF_Control_B1.c: 412: if(RFSW->Status)
 	movlb 1	; select bank1
 	movf	(_RFSW)^080h,w
@@ -12811,11 +12961,11 @@ l8567:
 	goto	u8541
 	goto	u8540
 u8541:
-	goto	l8573
+	goto	l8597
 u8540:
 	line	414
 	
-l8569:	
+l8593:	
 ;RF_Control_B1.c: 413: {
 ;RF_Control_B1.c: 414: Memory->Modify=1;
 	movlb 0	; select bank0
@@ -12828,19 +12978,19 @@ l8569:
 	bsf	indf1,0
 	line	415
 	
-l8571:	
+l8595:	
 ;RF_Control_B1.c: 415: setRF_DimmerValue(sw);
 	movf	(setRFSW_AdjControl@sw),w
 	fcall	_setRF_DimmerValue
 	line	416
 ;RF_Control_B1.c: 416: }
-	goto	l2583
+	goto	l2635
 	line	417
 	
-l2582:	
+l2634:	
 	line	419
 	
-l8573:	
+l8597:	
 ;RF_Control_B1.c: 417: else
 ;RF_Control_B1.c: 418: {
 ;RF_Control_B1.c: 419: Product->Data[9]=Product->Data[20+sw];
@@ -12866,7 +13016,7 @@ l8573:
 	movwf	indf1
 	line	420
 	
-l2583:	
+l2635:	
 	line	421
 ;RF_Control_B1.c: 420: }
 ;RF_Control_B1.c: 421: Product->Data[17]=Product->Data[26+sw];
@@ -12892,13 +13042,13 @@ l2583:
 	movwf	indf1
 	line	422
 	
-l8575:	
+l8599:	
 ;RF_Control_B1.c: 422: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
 	line	423
 	
-l2584:	
+l2636:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRFSW_AdjControl
@@ -12935,11 +13085,11 @@ GLOBAL	__end_of_setRFSW_AdjControl
 ;;		_setRFSW_AdjControl
 ;; This function uses a non-reentrant model
 ;;
-psect	text30,local,class=CODE,delta=2,merge=1
+psect	text32,local,class=CODE,delta=2,merge=1
 	line	433
-global __ptext30
-__ptext30:	;psect for function _setRF_DimmerValue
-psect	text30
+global __ptext32
+__ptext32:	;psect for function _setRF_DimmerValue
+psect	text32
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	433
 	global	__size_of_setRF_DimmerValue
@@ -12954,7 +13104,7 @@ _setRF_DimmerValue:
 	movwf	(setRF_DimmerValue@lights)
 	line	435
 	
-l8419:	
+l8443:	
 ;RF_Control_B1.c: 435: if(RF_Data[9] > 0x64)
 	movlw	(065h)
 	movlb 1	; select bank1
@@ -12963,11 +13113,11 @@ l8419:
 	goto	u8371
 	goto	u8370
 u8371:
-	goto	l8423
+	goto	l8447
 u8370:
 	line	437
 	
-l8421:	
+l8445:	
 ;RF_Control_B1.c: 436: {
 ;RF_Control_B1.c: 437: RF_Data[9]=0x64;
 	movlw	(064h)
@@ -12976,13 +13126,13 @@ l8421:
 	movf	(??_setRF_DimmerValue+0)+0,w
 	movlb 1	; select bank1
 	movwf	0+(_RF_Data)^080h+09h
-	goto	l8423
+	goto	l8447
 	line	438
 	
-l2590:	
+l2642:	
 	line	439
 	
-l8423:	
+l8447:	
 ;RF_Control_B1.c: 438: }
 ;RF_Control_B1.c: 439: Product->Data[9]=RF_Data[9];
 	movf	0+(_RF_Data)^080h+09h,w
@@ -12998,7 +13148,7 @@ l8423:
 	movwf	indf1
 	line	440
 	
-l8425:	
+l8449:	
 ;RF_Control_B1.c: 440: Product->Data[11]=lights;
 	movf	(setRF_DimmerValue@lights),w
 	movwf	(??_setRF_DimmerValue+0)+0
@@ -13012,7 +13162,7 @@ l8425:
 	movwf	indf1
 	line	441
 	
-l8427:	
+l8451:	
 ;RF_Control_B1.c: 441: Product->Data[(20+lights)]=Product->Data[9];
 	movf	(_Product),w
 	addlw	09h
@@ -13035,13 +13185,13 @@ l8427:
 	movwf	indf1
 	line	442
 	
-l8429:	
+l8453:	
 ;RF_Control_B1.c: 442: setDimmerLights_AdjRF(lights);
 	movf	(setRF_DimmerValue@lights),w
 	fcall	_setDimmerLights_AdjRF
 	line	443
 	
-l2591:	
+l2643:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_DimmerValue
@@ -13079,12 +13229,12 @@ GLOBAL	__end_of_setRF_DimmerValue
 ;;		_setRF_DimmerValue
 ;; This function uses a non-reentrant model
 ;;
-psect	text31,local,class=CODE,delta=2,merge=1
+psect	text33,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	423
-global __ptext31
-__ptext31:	;psect for function _setDimmerLights_AdjRF
-psect	text31
+global __ptext33
+__ptext33:	;psect for function _setDimmerLights_AdjRF
+psect	text33
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	423
 	global	__size_of_setDimmerLights_AdjRF
@@ -13099,13 +13249,13 @@ _setDimmerLights_AdjRF:
 	movwf	(setDimmerLights_AdjRF@lights)
 	line	425
 	
-l8217:	
+l8241:	
 ;Dimmer_B1.c: 425: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_AdjRF@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	426
 	
-l8219:	
+l8243:	
 ;Dimmer_B1.c: 426: DimmerLights->AdjRF=1;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -13116,7 +13266,7 @@ l8219:
 	bsf	indf1,2
 	line	427
 	
-l8221:	
+l8245:	
 ;Dimmer_B1.c: 427: DimmerLights->Signal=1;
 	movf	(_DimmerLights),w
 	movwf	fsr1l
@@ -13126,7 +13276,7 @@ l8221:
 	bsf	indf1,1
 	line	428
 	
-l8223:	
+l8247:	
 ;Dimmer_B1.c: 428: DimmerLights->MaxmumValue=getPercentValue(Product->Data[9]);
 	movf	(_Product),w
 	addlw	09h
@@ -13148,7 +13298,7 @@ l8223:
 	movwf	indf1
 	line	429
 	
-l925:	
+l945:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_AdjRF
@@ -13190,11 +13340,11 @@ GLOBAL	__end_of_setDimmerLights_AdjRF
 ;;		_setDimmerLights_AdjRF
 ;; This function uses a non-reentrant model
 ;;
-psect	text32,local,class=CODE,delta=2,merge=1
+psect	text34,local,class=CODE,delta=2,merge=1
 	line	490
-global __ptext32
-__ptext32:	;psect for function _getPercentValue
-psect	text32
+global __ptext34
+__ptext34:	;psect for function _getPercentValue
+psect	text34
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	490
 	global	__size_of_getPercentValue
@@ -13209,7 +13359,7 @@ _getPercentValue:
 	movwf	(getPercentValue@value)
 	line	493
 	
-l8175:	
+l8199:	
 ;Dimmer_B1.c: 493: float i=((char)((100-20)*1.5))-((char)((100-55)*1.5));
 	movlw	0x0
 	movwf	(getPercentValue@i)
@@ -13219,7 +13369,7 @@ l8175:
 	movwf	(getPercentValue@i+2)
 	line	494
 	
-l8177:	
+l8201:	
 ;Dimmer_B1.c: 494: i/=100;
 	movlw	0x0
 	movwf	(___ftdiv@f2)
@@ -13243,7 +13393,7 @@ l8177:
 	movwf	(getPercentValue@i+2)
 	line	495
 	
-l8179:	
+l8203:	
 ;Dimmer_B1.c: 495: return (char)(((100-value)*i)+((char)((100-55)*1.5)));
 	movf	(getPercentValue@value),w
 	movwf	(??_getPercentValue+0)+0
@@ -13298,12 +13448,12 @@ l8179:
 	fcall	___fttol
 	movlb 0	; select bank0
 	movf	0+(((0+(?___fttol)))),w
-	goto	l946
+	goto	l966
 	
-l8181:	
+l8205:	
 	line	503
 	
-l946:	
+l966:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getPercentValue
@@ -13344,12 +13494,12 @@ GLOBAL	__end_of_getPercentValue
 ;;		_getPercentValue
 ;; This function uses a non-reentrant model
 ;;
-psect	text33,local,class=CODE,delta=2,merge=1
+psect	text35,local,class=CODE,delta=2,merge=1
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftmul.c"
 	line	62
-global __ptext33
-__ptext33:	;psect for function ___ftmul
-psect	text33
+global __ptext35
+__ptext35:	;psect for function ___ftmul
+psect	text35
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftmul.c"
 	line	62
 	global	__size_of___ftmul
@@ -13361,7 +13511,7 @@ ___ftmul:
 ; Regs used in ___ftmul: [wreg+status,2+status,0+pclath+cstack]
 	line	67
 	
-l8075:	
+l8099:	
 	movlb 0	; select bank0
 	movf	(___ftmul@f1),w
 	movwf	((??___ftmul+0)+0)
@@ -13380,26 +13530,26 @@ l8075:
 	goto	u7661
 	goto	u7660
 u7661:
-	goto	l8081
+	goto	l8105
 u7660:
 	line	68
 	
-l8077:	
+l8101:	
 	movlw	0x0
 	movwf	(?___ftmul)
 	movlw	0x0
 	movwf	(?___ftmul+1)
 	movlw	0x0
 	movwf	(?___ftmul+2)
-	goto	l3296
+	goto	l3360
 	
-l8079:	
-	goto	l3296
+l8103:	
+	goto	l3360
 	
-l3295:	
+l3359:	
 	line	69
 	
-l8081:	
+l8105:	
 	movf	(___ftmul@f2),w
 	movwf	((??___ftmul+0)+0)
 	movf	(___ftmul@f2+1),w
@@ -13417,26 +13567,26 @@ l8081:
 	goto	u7671
 	goto	u7670
 u7671:
-	goto	l8087
+	goto	l8111
 u7670:
 	line	70
 	
-l8083:	
+l8107:	
 	movlw	0x0
 	movwf	(?___ftmul)
 	movlw	0x0
 	movwf	(?___ftmul+1)
 	movlw	0x0
 	movwf	(?___ftmul+2)
-	goto	l3296
+	goto	l3360
 	
-l8085:	
-	goto	l3296
+l8109:	
+	goto	l3360
 	
-l3297:	
+l3361:	
 	line	71
 	
-l8087:	
+l8111:	
 	movf	(___ftmul@sign),w
 	addlw	07Bh
 	movwf	(??___ftmul+0)+0
@@ -13487,15 +13637,15 @@ u7690:
 	andwf	(___ftmul@sign),f
 	line	75
 	
-l8089:	
+l8113:	
 	bsf	(___ftmul@f1)+(15/8),(15)&7
 	line	77
 	
-l8091:	
+l8115:	
 	bsf	(___ftmul@f2)+(15/8),(15)&7
 	line	78
 	
-l8093:	
+l8117:	
 	movlw	0FFh
 	andwf	(___ftmul@f2),f
 	movlw	0FFh
@@ -13504,7 +13654,7 @@ l8093:
 	andwf	(___ftmul@f2+2),f
 	line	79
 	
-l8095:	
+l8119:	
 	movlw	0
 	movwf	(___ftmul@f3_as_product)
 	movlw	0
@@ -13513,39 +13663,39 @@ l8095:
 	movwf	(___ftmul@f3_as_product+2)
 	line	134
 	
-l8097:	
+l8121:	
 	movlw	(07h)
 	movwf	(??___ftmul+0)+0
 	movf	(??___ftmul+0)+0,w
 	movwf	(___ftmul@cntr)
-	goto	l8099
+	goto	l8123
 	line	135
 	
-l3298:	
+l3362:	
 	line	136
 	
-l8099:	
+l8123:	
 	btfss	(___ftmul@f1),(0)&7
 	goto	u7701
 	goto	u7700
 u7701:
-	goto	l8103
+	goto	l8127
 u7700:
 	line	137
 	
-l8101:	
+l8125:	
 	movf	(___ftmul@f2),w
 	addwf	(___ftmul@f3_as_product),f
 	movf	(___ftmul@f2+1),w
 	addwfc	(___ftmul@f3_as_product+1),f
 	movf	(___ftmul@f2+2),w
 	addwfc	(___ftmul@f3_as_product+2),f
-	goto	l8103
+	goto	l8127
 	
-l3299:	
+l3363:	
 	line	138
 	
-l8103:	
+l8127:	
 	movlw	01h
 u7715:
 	lsrf	(___ftmul@f1+2),f
@@ -13556,7 +13706,7 @@ u7715:
 
 	line	139
 	
-l8105:	
+l8129:	
 	movlw	01h
 u7725:
 	lslf	(___ftmul@f2),f
@@ -13566,53 +13716,53 @@ u7725:
 	goto	u7725
 	line	140
 	
-l8107:	
+l8131:	
 	movlw	low(01h)
 	subwf	(___ftmul@cntr),f
 	btfss	status,2
 	goto	u7731
 	goto	u7730
 u7731:
-	goto	l8099
+	goto	l8123
 u7730:
-	goto	l8109
+	goto	l8133
 	
-l3300:	
+l3364:	
 	line	143
 	
-l8109:	
+l8133:	
 	movlw	(09h)
 	movwf	(??___ftmul+0)+0
 	movf	(??___ftmul+0)+0,w
 	movwf	(___ftmul@cntr)
-	goto	l8111
+	goto	l8135
 	line	144
 	
-l3301:	
+l3365:	
 	line	145
 	
-l8111:	
+l8135:	
 	btfss	(___ftmul@f1),(0)&7
 	goto	u7741
 	goto	u7740
 u7741:
-	goto	l8115
+	goto	l8139
 u7740:
 	line	146
 	
-l8113:	
+l8137:	
 	movf	(___ftmul@f2),w
 	addwf	(___ftmul@f3_as_product),f
 	movf	(___ftmul@f2+1),w
 	addwfc	(___ftmul@f3_as_product+1),f
 	movf	(___ftmul@f2+2),w
 	addwfc	(___ftmul@f3_as_product+2),f
-	goto	l8115
+	goto	l8139
 	
-l3302:	
+l3366:	
 	line	147
 	
-l8115:	
+l8139:	
 	movlw	01h
 u7755:
 	lsrf	(___ftmul@f1+2),f
@@ -13623,7 +13773,7 @@ u7755:
 
 	line	148
 	
-l8117:	
+l8141:	
 	movlw	01h
 u7765:
 	lsrf	(___ftmul@f3_as_product+2),f
@@ -13634,21 +13784,21 @@ u7765:
 
 	line	149
 	
-l8119:	
+l8143:	
 	movlw	low(01h)
 	subwf	(___ftmul@cntr),f
 	btfss	status,2
 	goto	u7771
 	goto	u7770
 u7771:
-	goto	l8111
+	goto	l8135
 u7770:
-	goto	l8121
+	goto	l8145
 	
-l3303:	
+l3367:	
 	line	156
 	
-l8121:	
+l8145:	
 	movf	(___ftmul@f3_as_product),w
 	movwf	(___ftpack@arg)
 	movf	(___ftmul@f3_as_product+1),w
@@ -13671,12 +13821,12 @@ l8121:
 	movwf	(?___ftmul+1)
 	movf	(2+(?___ftpack)),w
 	movwf	(?___ftmul+2)
-	goto	l3296
+	goto	l3360
 	
-l8123:	
+l8147:	
 	line	157
 	
-l3296:	
+l3360:	
 	return
 	opt stack 0
 GLOBAL	__end_of___ftmul
@@ -13716,12 +13866,12 @@ GLOBAL	__end_of___ftmul
 ;;		_getPercentValue
 ;; This function uses a non-reentrant model
 ;;
-psect	text34,local,class=CODE,delta=2,merge=1
+psect	text36,local,class=CODE,delta=2,merge=1
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftadd.c"
 	line	86
-global __ptext34
-__ptext34:	;psect for function ___ftadd
-psect	text34
+global __ptext36
+__ptext36:	;psect for function ___ftadd
+psect	text36
 	file	"C:\Program Files (x86)\Microchip\xc8\v1.32\sources\common\ftadd.c"
 	line	86
 	global	__size_of___ftadd
@@ -13733,7 +13883,7 @@ ___ftadd:
 ; Regs used in ___ftadd: [wreg+status,2+status,0+pclath+cstack]
 	line	90
 	
-l7961:	
+l7985:	
 	movlb 0	; select bank0
 	movf	(___ftadd@f1),w
 	movwf	((??___ftadd+0)+0)
@@ -13762,24 +13912,24 @@ l7961:
 	movwf	(___ftadd@exp2)
 	line	92
 	
-l7963:	
+l7987:	
 	movf	(___ftadd@exp1),w
 	skipz
 	goto	u7350
-	goto	l7969
+	goto	l7993
 u7350:
 	
-l7965:	
+l7989:	
 	movf	(___ftadd@exp2),w
 	subwf	(___ftadd@exp1),w
 	skipnc
 	goto	u7361
 	goto	u7360
 u7361:
-	goto	l7973
+	goto	l7997
 u7360:
 	
-l7967:	
+l7991:	
 	decf	(___ftadd@exp1),w
 	xorlw	0ffh
 	addwf	(___ftadd@exp2),w
@@ -13790,46 +13940,46 @@ l7967:
 	goto	u7371
 	goto	u7370
 u7371:
-	goto	l7973
+	goto	l7997
 u7370:
-	goto	l7969
+	goto	l7993
 	
-l3249:	
+l3313:	
 	line	93
 	
-l7969:	
+l7993:	
 	movf	(___ftadd@f2),w
 	movwf	(?___ftadd)
 	movf	(___ftadd@f2+1),w
 	movwf	(?___ftadd+1)
 	movf	(___ftadd@f2+2),w
 	movwf	(?___ftadd+2)
-	goto	l3250
+	goto	l3314
 	
-l7971:	
-	goto	l3250
+l7995:	
+	goto	l3314
 	
-l3247:	
+l3311:	
 	line	94
 	
-l7973:	
+l7997:	
 	movf	(___ftadd@exp2),w
 	skipz
 	goto	u7380
-	goto	l3253
+	goto	l3317
 u7380:
 	
-l7975:	
+l7999:	
 	movf	(___ftadd@exp1),w
 	subwf	(___ftadd@exp2),w
 	skipnc
 	goto	u7391
 	goto	u7390
 u7391:
-	goto	l7979
+	goto	l8003
 u7390:
 	
-l7977:	
+l8001:	
 	decf	(___ftadd@exp2),w
 	xorlw	0ffh
 	addwf	(___ftadd@exp1),w
@@ -13840,54 +13990,54 @@ l7977:
 	goto	u7401
 	goto	u7400
 u7401:
-	goto	l7979
+	goto	l8003
 u7400:
 	
-l3253:	
+l3317:	
 	line	95
-	goto	l3250
+	goto	l3314
 	
-l3251:	
+l3315:	
 	line	96
 	
-l7979:	
+l8003:	
 	movlw	(06h)
 	movwf	(??___ftadd+0)+0
 	movf	(??___ftadd+0)+0,w
 	movwf	(___ftadd@sign)
 	line	97
 	
-l7981:	
+l8005:	
 	btfss	(___ftadd@f1+2),(23)&7
 	goto	u7411
 	goto	u7410
 u7411:
-	goto	l3254
+	goto	l3318
 u7410:
 	line	98
 	
-l7983:	
+l8007:	
 	bsf	(___ftadd@sign)+(7/8),(7)&7
 	
-l3254:	
+l3318:	
 	line	99
 	btfss	(___ftadd@f2+2),(23)&7
 	goto	u7421
 	goto	u7420
 u7421:
-	goto	l3255
+	goto	l3319
 u7420:
 	line	100
 	
-l7985:	
+l8009:	
 	bsf	(___ftadd@sign)+(6/8),(6)&7
 	
-l3255:	
+l3319:	
 	line	101
 	bsf	(___ftadd@f1)+(15/8),(15)&7
 	line	102
 	
-l7987:	
+l8011:	
 	movlw	0FFh
 	andwf	(___ftadd@f1),f
 	movlw	0FFh
@@ -13896,7 +14046,7 @@ l7987:
 	andwf	(___ftadd@f1+2),f
 	line	103
 	
-l7989:	
+l8013:	
 	bsf	(___ftadd@f2)+(15/8),(15)&7
 	line	104
 	movlw	0FFh
@@ -13912,15 +14062,15 @@ l7989:
 	goto	u7431
 	goto	u7430
 u7431:
-	goto	l8001
+	goto	l8025
 u7430:
-	goto	l7991
+	goto	l8015
 	line	109
 	
-l3257:	
+l3321:	
 	line	110
 	
-l7991:	
+l8015:	
 	movlw	01h
 u7445:
 	lslf	(___ftadd@f2),f
@@ -13933,17 +14083,17 @@ u7445:
 	subwf	(___ftadd@exp2),f
 	line	112
 	
-l7993:	
+l8017:	
 	movf	(___ftadd@exp2),w
 	xorwf	(___ftadd@exp1),w
 	skipnz
 	goto	u7451
 	goto	u7450
 u7451:
-	goto	l7999
+	goto	l8023
 u7450:
 	
-l7995:	
+l8019:	
 	movlw	low(01h)
 	subwf	(___ftadd@sign),f
 	movf	((___ftadd@sign)),w
@@ -13952,21 +14102,21 @@ l7995:
 	goto	u7461
 	goto	u7460
 u7461:
-	goto	l7991
+	goto	l8015
 u7460:
-	goto	l7999
+	goto	l8023
 	
-l3259:	
-	goto	l7999
+l3323:	
+	goto	l8023
 	
-l3260:	
+l3324:	
 	line	113
-	goto	l7999
+	goto	l8023
 	
-l3262:	
+l3326:	
 	line	114
 	
-l7997:	
+l8021:	
 	movlw	01h
 u7475:
 	lsrf	(___ftadd@f1+2),f
@@ -13980,45 +14130,45 @@ u7475:
 	movwf	(??___ftadd+0)+0
 	movf	(??___ftadd+0)+0,w
 	addwf	(___ftadd@exp1),f
-	goto	l7999
+	goto	l8023
 	line	116
 	
-l3261:	
+l3325:	
 	line	113
 	
-l7999:	
+l8023:	
 	movf	(___ftadd@exp1),w
 	xorwf	(___ftadd@exp2),w
 	skipz
 	goto	u7481
 	goto	u7480
 u7481:
-	goto	l7997
+	goto	l8021
 u7480:
-	goto	l3264
+	goto	l3328
 	
-l3263:	
+l3327:	
 	line	117
-	goto	l3264
+	goto	l3328
 	
-l3256:	
+l3320:	
 	
-l8001:	
+l8025:	
 	movf	(___ftadd@exp1),w
 	subwf	(___ftadd@exp2),w
 	skipnc
 	goto	u7491
 	goto	u7490
 u7491:
-	goto	l3264
+	goto	l3328
 u7490:
-	goto	l8003
+	goto	l8027
 	line	120
 	
-l3266:	
+l3330:	
 	line	121
 	
-l8003:	
+l8027:	
 	movlw	01h
 u7505:
 	lslf	(___ftadd@f1),f
@@ -14031,17 +14181,17 @@ u7505:
 	subwf	(___ftadd@exp1),f
 	line	123
 	
-l8005:	
+l8029:	
 	movf	(___ftadd@exp2),w
 	xorwf	(___ftadd@exp1),w
 	skipnz
 	goto	u7511
 	goto	u7510
 u7511:
-	goto	l8011
+	goto	l8035
 u7510:
 	
-l8007:	
+l8031:	
 	movlw	low(01h)
 	subwf	(___ftadd@sign),f
 	movf	((___ftadd@sign)),w
@@ -14050,21 +14200,21 @@ l8007:
 	goto	u7521
 	goto	u7520
 u7521:
-	goto	l8003
+	goto	l8027
 u7520:
-	goto	l8011
+	goto	l8035
 	
-l3268:	
-	goto	l8011
+l3332:	
+	goto	l8035
 	
-l3269:	
+l3333:	
 	line	124
-	goto	l8011
+	goto	l8035
 	
-l3271:	
+l3335:	
 	line	125
 	
-l8009:	
+l8033:	
 	movlw	01h
 u7535:
 	lsrf	(___ftadd@f2+2),f
@@ -14078,40 +14228,40 @@ u7535:
 	movwf	(??___ftadd+0)+0
 	movf	(??___ftadd+0)+0,w
 	addwf	(___ftadd@exp2),f
-	goto	l8011
+	goto	l8035
 	line	127
 	
-l3270:	
+l3334:	
 	line	124
 	
-l8011:	
+l8035:	
 	movf	(___ftadd@exp1),w
 	xorwf	(___ftadd@exp2),w
 	skipz
 	goto	u7541
 	goto	u7540
 u7541:
-	goto	l8009
+	goto	l8033
 u7540:
-	goto	l3264
+	goto	l3328
 	
-l3272:	
-	goto	l3264
+l3336:	
+	goto	l3328
 	line	128
 	
-l3265:	
+l3329:	
 	line	129
 	
-l3264:	
+l3328:	
 	btfss	(___ftadd@sign),(7)&7
 	goto	u7551
 	goto	u7550
 u7551:
-	goto	l8015
+	goto	l8039
 u7550:
 	line	131
 	
-l8013:	
+l8037:	
 	movlw	0FFh
 	xorwf	(___ftadd@f1),f
 	movlw	0FFh
@@ -14129,22 +14279,22 @@ movlw 1
 	skipnc
 movlw 1
 	addwf	(___ftadd@f1+2),f
-	goto	l8015
+	goto	l8039
 	line	133
 	
-l3273:	
+l3337:	
 	line	134
 	
-l8015:	
+l8039:	
 	btfss	(___ftadd@sign),(6)&7
 	goto	u7561
 	goto	u7560
 u7561:
-	goto	l8019
+	goto	l8043
 u7560:
 	line	136
 	
-l8017:	
+l8041:	
 	movlw	0FFh
 	xorwf	(___ftadd@f2),f
 	movlw	0FFh
@@ -14162,17 +14312,17 @@ movlw 1
 	skipnc
 movlw 1
 	addwf	(___ftadd@f2+2),f
-	goto	l8019
+	goto	l8043
 	line	138
 	
-l3274:	
+l3338:	
 	line	139
 	
-l8019:	
+l8043:	
 	clrf	(___ftadd@sign)
 	line	140
 	
-l8021:	
+l8045:	
 	movf	(___ftadd@f1),w
 	addwf	(___ftadd@f2),f
 	movf	(___ftadd@f1+1),w
@@ -14181,16 +14331,16 @@ l8021:
 	addwfc	(___ftadd@f2+2),f
 	line	141
 	
-l8023:	
+l8047:	
 	btfss	(___ftadd@f2+2),(23)&7
 	goto	u7571
 	goto	u7570
 u7571:
-	goto	l8029
+	goto	l8053
 u7570:
 	line	142
 	
-l8025:	
+l8049:	
 	movlw	0FFh
 	xorwf	(___ftadd@f2),f
 	movlw	0FFh
@@ -14210,16 +14360,16 @@ movlw 1
 	addwf	(___ftadd@f2+2),f
 	line	144
 	
-l8027:	
+l8051:	
 	clrf	(___ftadd@sign)
 	incf	(___ftadd@sign),f
-	goto	l8029
+	goto	l8053
 	line	145
 	
-l3275:	
+l3339:	
 	line	146
 	
-l8029:	
+l8053:	
 	movf	(___ftadd@f2),w
 	movwf	(___ftpack@arg)
 	movf	(___ftadd@f2+1),w
@@ -14242,12 +14392,12 @@ l8029:
 	movwf	(?___ftadd+1)
 	movf	(2+(?___ftpack)),w
 	movwf	(?___ftadd+2)
-	goto	l3250
+	goto	l3314
 	
-l8031:	
+l8055:	
 	line	148
 	
-l3250:	
+l3314:	
 	return
 	opt stack 0
 GLOBAL	__end_of___ftadd
@@ -14286,12 +14436,12 @@ GLOBAL	__end_of___ftadd
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text35,local,class=CODE,delta=2,merge=1
+psect	text37,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	199
-global __ptext35
-__ptext35:	;psect for function _RF_RxDisable
-psect	text35
+global __ptext37
+__ptext37:	;psect for function _RF_RxDisable
+psect	text37
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	199
 	global	__size_of_RF_RxDisable
@@ -14306,13 +14456,13 @@ _RF_RxDisable:
 	movwf	(RF_RxDisable@rf)
 	line	201
 	
-l8947:	
+l8971:	
 ;RF_Control_B1.c: 201: RfPointSelect(rf);
 	movf	(RF_RxDisable@rf),w
 	fcall	_RfPointSelect
 	line	203
 	
-l8949:	
+l8973:	
 ;RF_Control_B1.c: 203: if(RF->RxStatus)
 	movf	(_RF),w
 	movwf	fsr1l
@@ -14322,11 +14472,11 @@ l8949:
 	goto	u9001
 	goto	u9000
 u9001:
-	goto	l2534
+	goto	l2586
 u9000:
 	line	205
 	
-l8951:	
+l8975:	
 ;RF_Control_B1.c: 204: {
 ;RF_Control_B1.c: 205: RF->RxStatus=0;
 	movf	(_RF),w
@@ -14343,7 +14493,7 @@ l8951:
 	bcf	indf1,1
 	line	207
 	
-l8953:	
+l8977:	
 ;RF_Control_B1.c: 207: RF->DebounceTime=0;
 	incf	(_RF),w
 	movwf	fsr1l
@@ -14352,7 +14502,7 @@ l8953:
 	clrf	indf1
 	line	208
 	
-l8955:	
+l8979:	
 ;RF_Control_B1.c: 208: RF->Debounce=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -14361,29 +14511,29 @@ l8955:
 	bcf	indf1,5
 	line	209
 	
-l8957:	
+l8981:	
 ;RF_Control_B1.c: 209: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
 	line	210
 	
-l8959:	
+l8983:	
 ;RF_Control_B1.c: 210: CC2500_WriteCommand(0x3A);
 	movlw	(03Ah)
 	fcall	_CC2500_WriteCommand
 	line	211
 	
-l8961:	
+l8985:	
 ;RF_Control_B1.c: 211: setINT_GO(0);
 	movlw	(0)
 	fcall	_setINT_GO
-	goto	l2534
+	goto	l2586
 	line	212
 	
-l2533:	
+l2585:	
 	line	213
 	
-l2534:	
+l2586:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RF_RxDisable
@@ -14421,12 +14571,12 @@ GLOBAL	__end_of_RF_RxDisable
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text36,local,class=CODE,delta=2,merge=1
+psect	text38,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	30
-global __ptext36
-__ptext36:	;psect for function _CC2500_TxData
-psect	text36
+global __ptext38
+__ptext38:	;psect for function _CC2500_TxData
+psect	text38
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	30
 	global	__size_of_CC2500_TxData
@@ -14438,14 +14588,14 @@ _CC2500_TxData:
 ; Regs used in _CC2500_TxData: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	34
 	
-l8709:	
+l8733:	
 ;CC2500_B1.c: 32: unsigned char loop_e;
 ;CC2500_B1.c: 34: RC4=0;
 	movlb 0	; select bank0
 	bcf	(116/8),(116)&7	;volatile
 	line	35
 	
-l8711:	
+l8735:	
 ;CC2500_B1.c: 35: SPI0Buffer=0x3F+0x40;
 	movlw	(07Fh)
 	movwf	(??_CC2500_TxData+0)+0
@@ -14454,29 +14604,29 @@ l8711:
 	movwf	(_SPI0Buffer)^080h
 	line	36
 ;CC2500_B1.c: 36: while(RC2==1);
-	goto	l299
+	goto	l307
 	
-l300:	
+l308:	
 	
-l299:	
+l307:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u8691
 	goto	u8690
 u8691:
-	goto	l299
+	goto	l307
 u8690:
-	goto	l8713
+	goto	l8737
 	
-l301:	
+l309:	
 	line	37
 	
-l8713:	
+l8737:	
 ;CC2500_B1.c: 37: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	38
 	
-l8715:	
+l8739:	
 ;CC2500_B1.c: 38: SPI0Buffer=Tx_Length;
 	movlb 1	; select bank1
 	movf	(_Tx_Length)^080h,w
@@ -14487,22 +14637,22 @@ l8715:
 	movwf	(_SPI0Buffer)^080h
 	line	39
 	
-l8717:	
+l8741:	
 ;CC2500_B1.c: 39: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	40
 	
-l8719:	
+l8743:	
 ;CC2500_B1.c: 40: for(loop_e=0;loop_e<Tx_Length;loop_e++)
 	movlb 0	; select bank0
 	clrf	(CC2500_TxData@loop_e)
-	goto	l8727
+	goto	l8751
 	line	41
 	
-l303:	
+l311:	
 	line	42
 	
-l8721:	
+l8745:	
 ;CC2500_B1.c: 41: {
 ;CC2500_B1.c: 42: SPI0Buffer=RF_Data[loop_e];
 	movf	(CC2500_TxData@loop_e),w
@@ -14517,22 +14667,22 @@ l8721:
 	movwf	(_SPI0Buffer)^080h
 	line	43
 	
-l8723:	
+l8747:	
 ;CC2500_B1.c: 43: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	40
 	
-l8725:	
+l8749:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_TxData+0)+0
 	movf	(??_CC2500_TxData+0)+0,w
 	addwf	(CC2500_TxData@loop_e),f
-	goto	l8727
+	goto	l8751
 	
-l302:	
+l310:	
 	
-l8727:	
+l8751:	
 	movlb 1	; select bank1
 	movf	(_Tx_Length)^080h,w
 	movlb 0	; select bank0
@@ -14541,56 +14691,56 @@ l8727:
 	goto	u8701
 	goto	u8700
 u8701:
-	goto	l8721
+	goto	l8745
 u8700:
 	
-l304:	
+l312:	
 	line	45
 ;CC2500_B1.c: 44: }
 ;CC2500_B1.c: 45: RC4=1;
 	bsf	(116/8),(116)&7	;volatile
 	line	46
 	
-l8729:	
+l8753:	
 ;CC2500_B1.c: 46: CC2500_WriteCommand(0x35);
 	movlw	(035h)
 	fcall	_CC2500_WriteCommand
 	line	47
 ;CC2500_B1.c: 47: while(RB0==0);
-	goto	l305
+	goto	l313
 	
-l306:	
+l314:	
 	
-l305:	
+l313:	
 	movlb 0	; select bank0
 	btfss	(104/8),(104)&7	;volatile
 	goto	u8711
 	goto	u8710
 u8711:
-	goto	l305
+	goto	l313
 u8710:
-	goto	l308
+	goto	l316
 	
-l307:	
+l315:	
 	line	48
 ;CC2500_B1.c: 48: while(RB0==1);
-	goto	l308
+	goto	l316
 	
-l309:	
+l317:	
 	
-l308:	
+l316:	
 	btfsc	(104/8),(104)&7	;volatile
 	goto	u8721
 	goto	u8720
 u8721:
-	goto	l308
+	goto	l316
 u8720:
-	goto	l8731
+	goto	l8755
 	
-l310:	
+l318:	
 	line	49
 	
-l8731:	
+l8755:	
 ;CC2500_B1.c: 49: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
@@ -14600,12 +14750,12 @@ l8731:
 	fcall	_CC2500_WriteCommand
 	line	51
 	
-l8733:	
+l8757:	
 ;CC2500_B1.c: 51: Transceive_OK=1;
 	bsf	(_Transceive_OK/8),(_Transceive_OK)&7
 	line	52
 	
-l311:	
+l319:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_TxData
@@ -14646,11 +14796,11 @@ GLOBAL	__end_of_CC2500_TxData
 ;;		_setRF_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text37,local,class=CODE,delta=2,merge=1
+psect	text39,local,class=CODE,delta=2,merge=1
 	line	56
-global __ptext37
-__ptext37:	;psect for function _CC2500_RxData
-psect	text37
+global __ptext39
+__ptext39:	;psect for function _CC2500_RxData
+psect	text39
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	56
 	global	__size_of_CC2500_RxData
@@ -14662,7 +14812,7 @@ _CC2500_RxData:
 ; Regs used in _CC2500_RxData: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	62
 	
-l8735:	
+l8759:	
 ;CC2500_B1.c: 58: unsigned char loop_f;
 ;CC2500_B1.c: 62: if(RB0 == 1)
 	movlb 0	; select bank0
@@ -14670,59 +14820,59 @@ l8735:
 	goto	u8731
 	goto	u8730
 u8731:
-	goto	l8739
+	goto	l8763
 u8730:
-	goto	l315
+	goto	l323
 	line	64
 	
-l8737:	
+l8761:	
 ;CC2500_B1.c: 63: {
 ;CC2500_B1.c: 64: while(RB0 == 1);
-	goto	l315
+	goto	l323
 	
-l316:	
+l324:	
 	
-l315:	
+l323:	
 	btfsc	(104/8),(104)&7	;volatile
 	goto	u8741
 	goto	u8740
 u8741:
-	goto	l315
+	goto	l323
 u8740:
-	goto	l8739
+	goto	l8763
 	
-l317:	
-	goto	l8739
+l325:	
+	goto	l8763
 	line	65
 	
-l314:	
+l322:	
 	line	66
 	
-l8739:	
+l8763:	
 ;CC2500_B1.c: 65: }
 ;CC2500_B1.c: 66: CC2500_ReadStatus(0x3B);
 	movlw	(03Bh)
 	fcall	_CC2500_ReadStatus
 	line	67
 	
-l8741:	
+l8765:	
 ;CC2500_B1.c: 67: if(s_data != 0)
 	movlb 1	; select bank1
 	movf	(_s_data)^080h,w
 	skipz
 	goto	u8750
-	goto	l8773
+	goto	l8797
 u8750:
 	line	70
 	
-l8743:	
+l8767:	
 ;CC2500_B1.c: 69: {
 ;CC2500_B1.c: 70: RC4=0;
 	movlb 0	; select bank0
 	bcf	(116/8),(116)&7	;volatile
 	line	71
 	
-l8745:	
+l8769:	
 ;CC2500_B1.c: 71: SPI0Buffer=0x3F+0xC0;
 	movlw	(0FFh)
 	movwf	(??_CC2500_RxData+0)+0
@@ -14731,24 +14881,24 @@ l8745:
 	movwf	(_SPI0Buffer)^080h
 	line	72
 ;CC2500_B1.c: 72: while(RC2==1);
-	goto	l319
+	goto	l327
 	
-l320:	
+l328:	
 	
-l319:	
+l327:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u8761
 	goto	u8760
 u8761:
-	goto	l319
+	goto	l327
 u8760:
-	goto	l8747
+	goto	l8771
 	
-l321:	
+l329:	
 	line	73
 	
-l8747:	
+l8771:	
 ;CC2500_B1.c: 73: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	75
@@ -14756,7 +14906,7 @@ l8747:
 	fcall	_CC2500_ReadByte
 	line	76
 	
-l8749:	
+l8773:	
 ;CC2500_B1.c: 76: Rx_Length=SPI0Buffer;
 	movlb 1	; select bank1
 	movf	(_SPI0Buffer)^080h,w
@@ -14767,23 +14917,23 @@ l8749:
 	movwf	(_Rx_Length)^080h
 	line	77
 	
-l8751:	
+l8775:	
 ;CC2500_B1.c: 77: for(loop_f=0;loop_f<Rx_Length;loop_f++)
 	movlb 0	; select bank0
 	clrf	(CC2500_RxData@loop_f)
-	goto	l8759
+	goto	l8783
 	line	78
 	
-l323:	
+l331:	
 	line	79
 	
-l8753:	
+l8777:	
 ;CC2500_B1.c: 78: {
 ;CC2500_B1.c: 79: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	80
 	
-l8755:	
+l8779:	
 ;CC2500_B1.c: 80: RF_Data[loop_f]=SPI0Buffer;
 	movlb 1	; select bank1
 	movf	(_SPI0Buffer)^080h,w
@@ -14798,16 +14948,16 @@ l8755:
 	movwf	indf1
 	line	77
 	
-l8757:	
+l8781:	
 	movlw	(01h)
 	movwf	(??_CC2500_RxData+0)+0
 	movf	(??_CC2500_RxData+0)+0,w
 	addwf	(CC2500_RxData@loop_f),f
-	goto	l8759
+	goto	l8783
 	
-l322:	
+l330:	
 	
-l8759:	
+l8783:	
 	movlb 1	; select bank1
 	movf	(_Rx_Length)^080h,w
 	movlb 0	; select bank0
@@ -14816,20 +14966,20 @@ l8759:
 	goto	u8771
 	goto	u8770
 u8771:
-	goto	l8753
+	goto	l8777
 u8770:
-	goto	l8761
+	goto	l8785
 	
-l324:	
+l332:	
 	line	82
 	
-l8761:	
+l8785:	
 ;CC2500_B1.c: 81: }
 ;CC2500_B1.c: 82: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	83
 	
-l8763:	
+l8787:	
 ;CC2500_B1.c: 83: RSSI=SPI0Buffer;
 	movlb 1	; select bank1
 	movf	(_SPI0Buffer)^080h,w
@@ -14840,7 +14990,7 @@ l8763:
 	movwf	(_RSSI)^080h
 	line	84
 	
-l8765:	
+l8789:	
 ;CC2500_B1.c: 84: CC2500_ReadByte();
 	fcall	_CC2500_ReadByte
 	line	85
@@ -14854,36 +15004,36 @@ l8765:
 	movwf	(_CRC)^080h
 	line	86
 	
-l8767:	
+l8791:	
 ;CC2500_B1.c: 86: RC4=1;
 	movlb 0	; select bank0
 	bsf	(116/8),(116)&7	;volatile
 	line	87
 	
-l8769:	
+l8793:	
 ;CC2500_B1.c: 87: if(CRC & 0x80)
 	movlb 1	; select bank1
 	btfss	(_CRC)^080h,(7)&7
 	goto	u8781
 	goto	u8780
 u8781:
-	goto	l8773
+	goto	l8797
 u8780:
 	line	88
 	
-l8771:	
+l8795:	
 ;CC2500_B1.c: 88: Receive_OK=1;
 	bsf	(_Receive_OK/8),(_Receive_OK)&7
-	goto	l8773
+	goto	l8797
 	
-l325:	
-	goto	l8773
+l333:	
+	goto	l8797
 	line	89
 	
-l318:	
+l326:	
 	line	90
 	
-l8773:	
+l8797:	
 ;CC2500_B1.c: 89: }
 ;CC2500_B1.c: 90: CC2500_WriteCommand(0x36);
 	movlw	(036h)
@@ -14894,7 +15044,7 @@ l8773:
 	fcall	_CC2500_WriteCommand
 	line	92
 	
-l8775:	
+l8799:	
 ;CC2500_B1.c: 92: setRF_RxStatus(1,0);
 	movlb 0	; select bank0
 	clrf	(setRF_RxStatus@command)
@@ -14902,7 +15052,7 @@ l8775:
 	fcall	_setRF_RxStatus
 	line	93
 	
-l326:	
+l334:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_RxData
@@ -14940,12 +15090,12 @@ GLOBAL	__end_of_CC2500_RxData
 ;;		_CC2500_RxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text38,local,class=CODE,delta=2,merge=1
+psect	text40,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	43
-global __ptext38
-__ptext38:	;psect for function _setRF_RxStatus
-psect	text38
+global __ptext40
+__ptext40:	;psect for function _setRF_RxStatus
+psect	text40
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	43
 	global	__size_of_setRF_RxStatus
@@ -14960,13 +15110,13 @@ _setRF_RxStatus:
 	movwf	(setRF_RxStatus@rf)
 	line	45
 	
-l8595:	
+l8619:	
 ;RF_Control_B1.c: 45: RfPointSelect(rf);
 	movf	(setRF_RxStatus@rf),w
 	fcall	_RfPointSelect
 	line	46
 	
-l8597:	
+l8621:	
 ;RF_Control_B1.c: 46: RF->RxStatus=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -14979,7 +15129,7 @@ l8597:
 	bsf	indf1,3
 	line	47
 	
-l2503:	
+l2555:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_RxStatus
@@ -15017,12 +15167,12 @@ GLOBAL	__end_of_setRF_RxStatus
 ;;		_CC2500_RxData
 ;; This function uses a non-reentrant model
 ;;
-psect	text39,local,class=CODE,delta=2,merge=1
+psect	text41,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	267
-global __ptext39
-__ptext39:	;psect for function _CC2500_ReadStatus
-psect	text39
+global __ptext41
+__ptext41:	;psect for function _CC2500_ReadStatus
+psect	text41
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	267
 	global	__size_of_CC2500_ReadStatus
@@ -15037,12 +15187,12 @@ _CC2500_ReadStatus:
 	movwf	(CC2500_ReadStatus@status_addr)
 	line	269
 	
-l8585:	
+l8609:	
 ;CC2500_B1.c: 269: RC4=0;
 	bcf	(116/8),(116)&7	;volatile
 	line	270
 	
-l8587:	
+l8611:	
 ;CC2500_B1.c: 270: SPI0Buffer=status_addr+0xC0;
 	movf	(CC2500_ReadStatus@status_addr),w
 	addlw	0C0h
@@ -15052,24 +15202,24 @@ l8587:
 	movwf	(_SPI0Buffer)^080h
 	line	272
 ;CC2500_B1.c: 272: while(RC2==1);
-	goto	l395
+	goto	l403
 	
-l396:	
+l404:	
 	
-l395:	
+l403:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u8561
 	goto	u8560
 u8561:
-	goto	l395
+	goto	l403
 u8560:
-	goto	l8589
+	goto	l8613
 	
-l397:	
+l405:	
 	line	274
 	
-l8589:	
+l8613:	
 ;CC2500_B1.c: 274: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	275
@@ -15077,13 +15227,13 @@ l8589:
 	fcall	_CC2500_ReadByte
 	line	276
 	
-l8591:	
+l8615:	
 ;CC2500_B1.c: 276: RC4=1;
 	movlb 0	; select bank0
 	bsf	(116/8),(116)&7	;volatile
 	line	278
 	
-l8593:	
+l8617:	
 ;CC2500_B1.c: 278: s_data=SPI0Buffer;
 	movlb 1	; select bank1
 	movf	(_SPI0Buffer)^080h,w
@@ -15094,7 +15244,7 @@ l8593:
 	movwf	(_s_data)^080h
 	line	279
 	
-l398:	
+l406:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ReadStatus
@@ -15133,11 +15283,11 @@ GLOBAL	__end_of_CC2500_ReadStatus
 ;;		_CC2500_ReadREG
 ;; This function uses a non-reentrant model
 ;;
-psect	text40,local,class=CODE,delta=2,merge=1
+psect	text42,local,class=CODE,delta=2,merge=1
 	line	210
-global __ptext40
-__ptext40:	;psect for function _CC2500_ReadByte
-psect	text40
+global __ptext42
+__ptext42:	;psect for function _CC2500_ReadByte
+psect	text42
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\CC2500_B1.c"
 	line	210
 	global	__size_of_CC2500_ReadByte
@@ -15149,35 +15299,35 @@ _CC2500_ReadByte:
 ; Regs used in _CC2500_ReadByte: [wreg+status,2+status,0]
 	line	213
 	
-l8447:	
+l8471:	
 ;CC2500_B1.c: 212: unsigned char loop_b;
 ;CC2500_B1.c: 213: for(loop_b=0;loop_b<8;loop_b++)
 	movlb 0	; select bank0
 	clrf	(CC2500_ReadByte@loop_b)
 	
-l8449:	
+l8473:	
 	movlw	(08h)
 	subwf	(CC2500_ReadByte@loop_b),w
 	skipc
 	goto	u8411
 	goto	u8410
 u8411:
-	goto	l370
+	goto	l378
 u8410:
-	goto	l374
+	goto	l382
 	
-l8451:	
-	goto	l374
+l8475:	
+	goto	l382
 	line	214
 	
-l370:	
+l378:	
 	line	215
 ;CC2500_B1.c: 214: {
 ;CC2500_B1.c: 215: RC1=1;
 	bsf	(113/8),(113)&7	;volatile
 	line	216
 	
-l8453:	
+l8477:	
 ;CC2500_B1.c: 216: SPI0Buffer<<=1;
 	clrc
 	movlb 1	; select bank1
@@ -15185,28 +15335,28 @@ l8453:
 
 	line	217
 	
-l8455:	
+l8479:	
 ;CC2500_B1.c: 217: if(RC2 == 1)
 	movlb 0	; select bank0
 	btfss	(114/8),(114)&7	;volatile
 	goto	u8421
 	goto	u8420
 u8421:
-	goto	l8459
+	goto	l8483
 u8420:
 	line	218
 	
-l8457:	
+l8481:	
 ;CC2500_B1.c: 218: SPI0Buffer |= 0x01;
 	movlb 1	; select bank1
 	bsf	(_SPI0Buffer)^080h+(0/8),(0)&7
-	goto	l8461
+	goto	l8485
 	line	219
 	
-l372:	
+l380:	
 	line	220
 	
-l8459:	
+l8483:	
 ;CC2500_B1.c: 219: else
 ;CC2500_B1.c: 220: SPI0Buffer &= 0xFE;
 	movlw	(0FEh)
@@ -15215,12 +15365,12 @@ l8459:
 	movf	(??_CC2500_ReadByte+0)+0,w
 	movlb 1	; select bank1
 	andwf	(_SPI0Buffer)^080h,f
-	goto	l8461
+	goto	l8485
 	
-l373:	
+l381:	
 	line	221
 	
-l8461:	
+l8485:	
 ;CC2500_B1.c: 221: RC1=0;
 	movlb 0	; select bank0
 	bcf	(113/8),(113)&7	;volatile
@@ -15230,21 +15380,21 @@ l8461:
 	movf	(??_CC2500_ReadByte+0)+0,w
 	addwf	(CC2500_ReadByte@loop_b),f
 	
-l8463:	
+l8487:	
 	movlw	(08h)
 	subwf	(CC2500_ReadByte@loop_b),w
 	skipc
 	goto	u8431
 	goto	u8430
 u8431:
-	goto	l370
+	goto	l378
 u8430:
-	goto	l374
+	goto	l382
 	
-l371:	
+l379:	
 	line	223
 	
-l374:	
+l382:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ReadByte
@@ -15281,12 +15431,12 @@ GLOBAL	__end_of_CC2500_ReadByte
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text41,local,class=CODE,delta=2,merge=1
+psect	text43,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	17
-global __ptext41
-__ptext41:	;psect for function _RF_Initialization
-psect	text41
+global __ptext43
+__ptext43:	;psect for function _RF_Initialization
+psect	text43
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	17
 	global	__size_of_RF_Initialization
@@ -15298,13 +15448,13 @@ _RF_Initialization:
 ; Regs used in _RF_Initialization: [wreg+status,2+status,0+pclath+cstack]
 	line	20
 	
-l9731:	
+l9755:	
 ;RF_Control_B1.c: 20: setRF_Initialization(1);
 	movlw	(01h)
 	fcall	_setRF_Initialization
 	line	22
 	
-l2491:	
+l2543:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RF_Initialization
@@ -15341,11 +15491,11 @@ GLOBAL	__end_of_RF_Initialization
 ;;		_RF_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text42,local,class=CODE,delta=2,merge=1
+psect	text44,local,class=CODE,delta=2,merge=1
 	line	50
-global __ptext42
-__ptext42:	;psect for function _setRF_Initialization
-psect	text42
+global __ptext44
+__ptext44:	;psect for function _setRF_Initialization
+psect	text44
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\RF_Control_B1.c"
 	line	50
 	global	__size_of_setRF_Initialization
@@ -15357,7 +15507,7 @@ _setRF_Initialization:
 ; Regs used in _setRF_Initialization: [wreg]
 	line	54
 	
-l9425:	
+l9449:	
 ;RF_Control_B1.c: 54: Tx_Length=21;
 	movlw	(015h)
 	movlb 0	; select bank0
@@ -15367,7 +15517,7 @@ l9425:
 	movwf	(_Tx_Length)^080h
 	line	56
 	
-l2506:	
+l2558:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Initialization
@@ -15404,12 +15554,12 @@ GLOBAL	__end_of_setRF_Initialization
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text43,local,class=CODE,delta=2,merge=1
+psect	text45,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	22
-global __ptext43
-__ptext43:	;psect for function _PowerFault_Main
-psect	text43
+global __ptext45
+__ptext45:	;psect for function _PowerFault_Main
+psect	text45
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	22
 	global	__size_of_PowerFault_Main
@@ -15421,12 +15571,12 @@ _PowerFault_Main:
 ; Regs used in _PowerFault_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	25
 	
-l9805:	
+l9827:	
 ;PowerFault_B1.c: 25: setPowerFault_Main();
 	fcall	_setPowerFault_Main
 	line	27
 	
-l2272:	
+l2320:	
 	return
 	opt stack 0
 GLOBAL	__end_of_PowerFault_Main
@@ -15464,11 +15614,11 @@ GLOBAL	__end_of_PowerFault_Main
 ;;		_PowerFault_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text44,local,class=CODE,delta=2,merge=1
+psect	text46,local,class=CODE,delta=2,merge=1
 	line	61
-global __ptext44
-__ptext44:	;psect for function _setPowerFault_Main
-psect	text44
+global __ptext46
+__ptext46:	;psect for function _setPowerFault_Main
+psect	text46
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	61
 	global	__size_of_setPowerFault_Main
@@ -15480,7 +15630,7 @@ _setPowerFault_Main:
 ; Regs used in _setPowerFault_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	63
 	
-l9373:	
+l9397:	
 ;PowerFault_B1.c: 63: if(PF->Enable)
 	movf	(_PF),w
 	movwf	fsr1l
@@ -15491,11 +15641,11 @@ l9373:
 	goto	u9511
 	goto	u9510
 u9511:
-	goto	l2310
+	goto	l2358
 u9510:
 	line	65
 	
-l9375:	
+l9399:	
 ;PowerFault_B1.c: 64: {
 ;PowerFault_B1.c: 65: if(PF->ADtoGO == 0)
 	movf	(_PF),w
@@ -15507,11 +15657,11 @@ l9375:
 	goto	u9521
 	goto	u9520
 u9521:
-	goto	l9387
+	goto	l9411
 u9520:
 	line	67
 	
-l9377:	
+l9401:	
 ;PowerFault_B1.c: 66: {
 ;PowerFault_B1.c: 67: PF->Time++;
 	movf	(_PF),w
@@ -15527,7 +15677,7 @@ l9377:
 	incf	indf1,f
 	line	68
 	
-l9379:	
+l9403:	
 ;PowerFault_B1.c: 69: {
 ;PowerFault_B1.c: 70: if(1 && getTemp_Safe())
 	movf	(_PF),w
@@ -15550,22 +15700,22 @@ l9379:
 	goto	u9531
 	goto	u9530
 u9531:
-	goto	l2310
+	goto	l2358
 u9530:
 	line	70
 	
-l9381:	
+l9405:	
 	fcall	_getTemp_Safe
 	xorlw	0&0ffh
 	skipnz
 	goto	u9541
 	goto	u9540
 u9541:
-	goto	l9385
+	goto	l9409
 u9540:
 	line	72
 	
-l9383:	
+l9407:	
 ;PowerFault_B1.c: 71: {
 ;PowerFault_B1.c: 72: PF->Time=0;
 	movf	(_PF),w
@@ -15595,13 +15745,13 @@ l9383:
 	bcf	indf1,2
 	line	75
 ;PowerFault_B1.c: 75: }
-	goto	l2310
+	goto	l2358
 	line	76
 	
-l2295:	
+l2343:	
 	line	78
 	
-l9385:	
+l9409:	
 ;PowerFault_B1.c: 76: else
 ;PowerFault_B1.c: 77: {
 ;PowerFault_B1.c: 78: PF->Time=700;
@@ -15615,25 +15765,25 @@ l9385:
 	movwi	[0]fsr1
 	movlw	high(02BCh)
 	movwi	[1]fsr1
-	goto	l2310
+	goto	l2358
 	line	79
 	
-l2296:	
-	goto	l2310
+l2344:	
+	goto	l2358
 	line	80
 	
-l2294:	
+l2342:	
 	line	81
 ;PowerFault_B1.c: 79: }
 ;PowerFault_B1.c: 80: }
 ;PowerFault_B1.c: 81: }
-	goto	l2310
+	goto	l2358
 	line	82
 	
-l2293:	
+l2341:	
 	line	84
 	
-l9387:	
+l9411:	
 ;PowerFault_B1.c: 82: else
 ;PowerFault_B1.c: 83: {
 ;PowerFault_B1.c: 84: PF->Time++;
@@ -15650,7 +15800,7 @@ l9387:
 	incf	indf1,f
 	line	85
 	
-l9389:	
+l9413:	
 ;PowerFault_B1.c: 85: if(PF->Time >= 2)
 	movf	(_PF),w
 	addlw	06h
@@ -15672,11 +15822,11 @@ l9389:
 	goto	u9551
 	goto	u9550
 u9551:
-	goto	l2310
+	goto	l2358
 u9550:
 	line	87
 	
-l9391:	
+l9415:	
 ;PowerFault_B1.c: 86: {
 ;PowerFault_B1.c: 87: PF->Time=0;
 	movf	(_PF),w
@@ -15707,11 +15857,11 @@ l9391:
 	goto	u9561
 	goto	u9560
 u9561:
-	goto	l9407
+	goto	l9431
 u9560:
 	line	92
 	
-l9393:	
+l9417:	
 ;PowerFault_B1.c: 91: {
 ;PowerFault_B1.c: 92: if(PF->AD <= (300+100) && PF->AD >= (300-100))
 	incf	(_PF),w
@@ -15732,10 +15882,10 @@ l9393:
 	goto	u9571
 	goto	u9570
 u9571:
-	goto	l9405
+	goto	l9429
 u9570:
 	
-l9395:	
+l9419:	
 	incf	(_PF),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -15754,11 +15904,11 @@ l9395:
 	goto	u9581
 	goto	u9580
 u9581:
-	goto	l9405
+	goto	l9429
 u9580:
 	line	94
 	
-l9397:	
+l9421:	
 ;PowerFault_B1.c: 93: {
 ;PowerFault_B1.c: 94: PF->Count++;
 	movlw	(01h)
@@ -15773,7 +15923,7 @@ l9397:
 	addwf	indf1,f
 	line	95
 	
-l9399:	
+l9423:	
 ;PowerFault_B1.c: 95: if(PF->Count > 1)
 	movf	(_PF),w
 	addlw	05h
@@ -15787,11 +15937,11 @@ l9399:
 	goto	u9591
 	goto	u9590
 u9591:
-	goto	l9421
+	goto	l9445
 u9590:
 	line	97
 	
-l9401:	
+l9425:	
 ;PowerFault_B1.c: 96: {
 ;PowerFault_B1.c: 97: PF->Count=0;
 	movf	(_PF),w
@@ -15803,24 +15953,24 @@ l9401:
 	clrf	indf1
 	line	98
 	
-l9403:	
+l9427:	
 ;PowerFault_B1.c: 98: setPowerFault_Exceptions(0);
 	movlw	(0)
 	fcall	_setPowerFault_Exceptions
-	goto	l9421
+	goto	l9445
 	line	99
 	
-l2301:	
+l2349:	
 	line	100
 ;PowerFault_B1.c: 99: }
 ;PowerFault_B1.c: 100: }
-	goto	l9421
+	goto	l9445
 	line	101
 	
-l2300:	
+l2348:	
 	line	103
 	
-l9405:	
+l9429:	
 ;PowerFault_B1.c: 101: else
 ;PowerFault_B1.c: 102: {
 ;PowerFault_B1.c: 103: PF->Count=0;
@@ -15831,20 +15981,20 @@ l9405:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l9421
+	goto	l9445
 	line	104
 	
-l2302:	
+l2350:	
 	line	105
 ;PowerFault_B1.c: 104: }
 ;PowerFault_B1.c: 105: }
-	goto	l9421
+	goto	l9445
 	line	106
 	
-l2299:	
+l2347:	
 	line	108
 	
-l9407:	
+l9431:	
 ;PowerFault_B1.c: 106: else
 ;PowerFault_B1.c: 107: {
 ;PowerFault_B1.c: 108: if(PF->AD >= (300+100) || PF->AD <= (310-100))
@@ -15867,10 +16017,10 @@ l9407:
 	goto	u9601
 	goto	u9600
 u9601:
-	goto	l9411
+	goto	l9435
 u9600:
 	
-l9409:	
+l9433:	
 	incf	(_PF),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -15889,14 +16039,14 @@ l9409:
 	goto	u9611
 	goto	u9610
 u9611:
-	goto	l9419
+	goto	l9443
 u9610:
-	goto	l9411
+	goto	l9435
 	
-l2306:	
+l2354:	
 	line	110
 	
-l9411:	
+l9435:	
 ;PowerFault_B1.c: 109: {
 ;PowerFault_B1.c: 110: PF->Count++;
 	movlw	(01h)
@@ -15911,7 +16061,7 @@ l9411:
 	addwf	indf1,f
 	line	111
 	
-l9413:	
+l9437:	
 ;PowerFault_B1.c: 111: if(PF->Count > 1)
 	movf	(_PF),w
 	addlw	05h
@@ -15925,11 +16075,11 @@ l9413:
 	goto	u9621
 	goto	u9620
 u9621:
-	goto	l9421
+	goto	l9445
 u9620:
 	line	113
 	
-l9415:	
+l9439:	
 ;PowerFault_B1.c: 112: {
 ;PowerFault_B1.c: 113: PF->Count=0;
 	movf	(_PF),w
@@ -15941,24 +16091,24 @@ l9415:
 	clrf	indf1
 	line	114
 	
-l9417:	
+l9441:	
 ;PowerFault_B1.c: 114: setPowerFault_Exceptions(1);
 	movlw	(01h)
 	fcall	_setPowerFault_Exceptions
-	goto	l9421
+	goto	l9445
 	line	115
 	
-l2307:	
+l2355:	
 	line	116
 ;PowerFault_B1.c: 115: }
 ;PowerFault_B1.c: 116: }
-	goto	l9421
+	goto	l9445
 	line	117
 	
-l2304:	
+l2352:	
 	line	119
 	
-l9419:	
+l9443:	
 ;PowerFault_B1.c: 117: else
 ;PowerFault_B1.c: 118: {
 ;PowerFault_B1.c: 119: PF->Count=0;
@@ -15969,17 +16119,17 @@ l9419:
 	movwf fsr1h	
 	
 	clrf	indf1
-	goto	l9421
+	goto	l9445
 	line	120
 	
-l2308:	
-	goto	l9421
+l2356:	
+	goto	l9445
 	line	122
 	
-l2303:	
+l2351:	
 	line	123
 	
-l9421:	
+l9445:	
 ;PowerFault_B1.c: 120: }
 ;PowerFault_B1.c: 122: }
 ;PowerFault_B1.c: 123: if(PF->ERROR == 0)
@@ -15992,11 +16142,11 @@ l9421:
 	goto	u9631
 	goto	u9630
 u9631:
-	goto	l2309
+	goto	l2357
 u9630:
 	line	125
 	
-l9423:	
+l9447:	
 ;PowerFault_B1.c: 124: {
 ;PowerFault_B1.c: 125: PF->Safe=1;
 	movf	(_PF),w
@@ -16007,7 +16157,7 @@ l9423:
 	bsf	indf1,2
 	line	126
 	
-l2309:	
+l2357:	
 	line	127
 ;PowerFault_B1.c: 126: }
 ;PowerFault_B1.c: 127: PF->AD=0;
@@ -16019,21 +16169,21 @@ l2309:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	goto	l2310
+	goto	l2358
 	line	128
 	
-l2298:	
-	goto	l2310
+l2346:	
+	goto	l2358
 	line	129
 	
-l2297:	
-	goto	l2310
+l2345:	
+	goto	l2358
 	line	130
 	
-l2292:	
+l2340:	
 	line	131
 	
-l2310:	
+l2358:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPowerFault_Main
@@ -16073,11 +16223,11 @@ GLOBAL	__end_of_setPowerFault_Main
 ;;		_setPowerFault_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text45,local,class=CODE,delta=2,merge=1
+psect	text47,local,class=CODE,delta=2,merge=1
 	line	133
-global __ptext45
-__ptext45:	;psect for function _setPowerFault_Exceptions
-psect	text45
+global __ptext47
+__ptext47:	;psect for function _setPowerFault_Exceptions
+psect	text47
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	133
 	global	__size_of_setPowerFault_Exceptions
@@ -16092,7 +16242,7 @@ _setPowerFault_Exceptions:
 	movwf	(setPowerFault_Exceptions@command)
 	line	135
 	
-l8895:	
+l8919:	
 ;PowerFault_B1.c: 135: PF->ERROR=command;
 	movf	(_PF),w
 	movwf	fsr1l
@@ -16105,7 +16255,7 @@ l8895:
 	bsf	indf1,1
 	line	136
 	
-l8897:	
+l8921:	
 ;PowerFault_B1.c: 136: PF->Safe=(~command) & 0x01;
 	comf	(setPowerFault_Exceptions@command),w
 	andlw	01h
@@ -16124,7 +16274,7 @@ l8897:
 	movwf	indf1
 	line	137
 	
-l8899:	
+l8923:	
 ;PowerFault_B1.c: 137: if(command == 1)
 	movf	(setPowerFault_Exceptions@command),w
 	xorlw	01h&0ffh
@@ -16132,18 +16282,18 @@ l8899:
 	goto	u8881
 	goto	u8880
 u8881:
-	goto	l2313
+	goto	l2361
 u8880:
 	line	139
 	
-l8901:	
+l8925:	
 ;PowerFault_B1.c: 138: {
 ;PowerFault_B1.c: 139: DimmerLights_Exceptions(3);
 	movlw	(03h)
 	fcall	_DimmerLights_Exceptions
 	line	143
 	
-l2313:	
+l2361:	
 	line	144
 ;PowerFault_B1.c: 143: }
 ;PowerFault_B1.c: 144: setLED(99,command+10);
@@ -16173,7 +16323,7 @@ l2313:
 	fcall	_setRF_Enable
 	line	151
 	
-l2314:	
+l2362:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPowerFault_Exceptions
@@ -16214,12 +16364,12 @@ GLOBAL	__end_of_setPowerFault_Exceptions
 ;;		_setPowerFault_Exceptions
 ;; This function uses a non-reentrant model
 ;;
-psect	text46,local,class=CODE,delta=2,merge=1
+psect	text48,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	246
-global __ptext46
-__ptext46:	;psect for function _DimmerLights_Exceptions
-psect	text46
+global __ptext48
+__ptext48:	;psect for function _DimmerLights_Exceptions
+psect	text48
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	246
 	global	__size_of_DimmerLights_Exceptions
@@ -16234,7 +16384,7 @@ _DimmerLights_Exceptions:
 	movwf	(DimmerLights_Exceptions@status)
 	line	248
 	
-l8599:	
+l8623:	
 ;Dimmer_B1.c: 248: if(status == 1)
 	movf	(DimmerLights_Exceptions@status),w
 	xorlw	01h&0ffh
@@ -16242,11 +16392,11 @@ l8599:
 	goto	u8571
 	goto	u8570
 u8571:
-	goto	l8605
+	goto	l8629
 u8570:
 	line	250
 	
-l8601:	
+l8625:	
 ;Dimmer_B1.c: 249: {
 ;Dimmer_B1.c: 250: if(getDimmerLights_StatusFlag())
 	fcall	_getDimmerLights_StatusFlag
@@ -16255,11 +16405,11 @@ l8601:
 	goto	u8581
 	goto	u8580
 u8581:
-	goto	l893
+	goto	l913
 u8580:
 	line	252
 	
-l8603:	
+l8627:	
 ;Dimmer_B1.c: 251: {
 ;Dimmer_B1.c: 252: setBuz(10,300);
 	movlw	low(012Ch)
@@ -16271,7 +16421,7 @@ l8603:
 	fcall	_setBuz
 	line	253
 	
-l893:	
+l913:	
 	line	256
 ;Dimmer_B1.c: 253: }
 ;Dimmer_B1.c: 256: setDimmerLights_ERROR(1);
@@ -16283,12 +16433,12 @@ l893:
 	fcall	_setDimmerLights_ERROR
 	line	264
 ;Dimmer_B1.c: 264: }
-	goto	l894
+	goto	l914
 	line	265
 	
-l892:	
+l912:	
 	
-l8605:	
+l8629:	
 ;Dimmer_B1.c: 265: else if(status == 2)
 	movlb 0	; select bank0
 	movf	(DimmerLights_Exceptions@status),w
@@ -16297,11 +16447,11 @@ l8605:
 	goto	u8591
 	goto	u8590
 u8591:
-	goto	l8609
+	goto	l8633
 u8590:
 	line	267
 	
-l8607:	
+l8631:	
 ;Dimmer_B1.c: 266: {
 ;Dimmer_B1.c: 267: setBuz(5,300);
 	movlw	low(012Ch)
@@ -16321,12 +16471,12 @@ l8607:
 	fcall	_setDimmerLights_ERROR
 	line	269
 ;Dimmer_B1.c: 269: }
-	goto	l894
+	goto	l914
 	line	270
 	
-l895:	
+l915:	
 	
-l8609:	
+l8633:	
 ;Dimmer_B1.c: 270: else if(status == 3)
 	movlb 0	; select bank0
 	movf	(DimmerLights_Exceptions@status),w
@@ -16335,11 +16485,11 @@ l8609:
 	goto	u8601
 	goto	u8600
 u8601:
-	goto	l894
+	goto	l914
 u8600:
 	line	273
 	
-l8611:	
+l8635:	
 ;Dimmer_B1.c: 271: {
 ;Dimmer_B1.c: 273: setDimmerLights_ERROR(1);
 	movlw	(01h)
@@ -16348,16 +16498,16 @@ l8611:
 ;Dimmer_B1.c: 276: setDimmerLights_ERROR(2);
 	movlw	(02h)
 	fcall	_setDimmerLights_ERROR
-	goto	l894
+	goto	l914
 	line	281
 	
-l897:	
-	goto	l894
+l917:	
+	goto	l914
 	line	284
 	
-l896:	
+l916:	
 	
-l894:	
+l914:	
 ;Dimmer_B1.c: 281: }
 ;Dimmer_B1.c: 284: setDimmerLights_TriggerERROR(1,0);
 	movlb 0	; select bank0
@@ -16372,7 +16522,7 @@ l894:
 	fcall	_setDimmerLights_TriggerERROR
 	line	293
 	
-l8613:	
+l8637:	
 ;Dimmer_B1.c: 293: if(TMain->SelfTest == 0)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -16385,11 +16535,11 @@ l8613:
 	goto	u8611
 	goto	u8610
 u8611:
-	goto	l899
+	goto	l919
 u8610:
 	line	295
 	
-l8615:	
+l8639:	
 ;Dimmer_B1.c: 294: {
 ;Dimmer_B1.c: 295: TMain->i=0;
 	movf	(_TMain),w
@@ -16428,13 +16578,13 @@ l8615:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	goto	l899
+	goto	l919
 	line	299
 	
-l898:	
+l918:	
 	line	300
 	
-l899:	
+l919:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DimmerLights_Exceptions
@@ -16472,11 +16622,11 @@ GLOBAL	__end_of_DimmerLights_Exceptions
 ;;		_DimmerLights_Exceptions
 ;; This function uses a non-reentrant model
 ;;
-psect	text47,local,class=CODE,delta=2,merge=1
+psect	text49,local,class=CODE,delta=2,merge=1
 	line	320
-global __ptext47
-__ptext47:	;psect for function _setDimmerLights_TriggerERROR
-psect	text47
+global __ptext49
+__ptext49:	;psect for function _setDimmerLights_TriggerERROR
+psect	text49
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	320
 	global	__size_of_setDimmerLights_TriggerERROR
@@ -16491,13 +16641,13 @@ _setDimmerLights_TriggerERROR:
 	movwf	(setDimmerLights_TriggerERROR@lights)
 	line	322
 	
-l8513:	
+l8537:	
 ;Dimmer_B1.c: 322: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_TriggerERROR@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	323
 	
-l8515:	
+l8539:	
 ;Dimmer_B1.c: 323: DimmerLights->Trigger=command;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -16512,7 +16662,7 @@ l8515:
 	bsf	indf1,1
 	line	324
 	
-l8517:	
+l8541:	
 ;Dimmer_B1.c: 324: DimmerLights->Switch=command;
 	movf	(_DimmerLights),w
 	addlw	09h
@@ -16526,7 +16676,7 @@ l8517:
 	bsf	indf1,0
 	line	325
 	
-l8519:	
+l8543:	
 ;Dimmer_B1.c: 325: DimmerLights->TriggerAdj=command;
 	movf	(_DimmerLights),w
 	addlw	09h
@@ -16540,7 +16690,7 @@ l8519:
 	bsf	indf1,3
 	line	326
 	
-l8521:	
+l8545:	
 ;Dimmer_B1.c: 326: DimmerLights->AdjGo=command;
 	movf	(_DimmerLights),w
 	addlw	09h
@@ -16554,7 +16704,7 @@ l8521:
 	bsf	indf1,2
 	line	327
 	
-l906:	
+l926:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_TriggerERROR
@@ -16594,11 +16744,11 @@ GLOBAL	__end_of_setDimmerLights_TriggerERROR
 ;;		_DimmerLights_Exceptions
 ;; This function uses a non-reentrant model
 ;;
-psect	text48,local,class=CODE,delta=2,merge=1
+psect	text50,local,class=CODE,delta=2,merge=1
 	line	302
-global __ptext48
-__ptext48:	;psect for function _setDimmerLights_ERROR
-psect	text48
+global __ptext50
+__ptext50:	;psect for function _setDimmerLights_ERROR
+psect	text50
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\Dimmer_B1.c"
 	line	302
 	global	__size_of_setDimmerLights_ERROR
@@ -16613,13 +16763,13 @@ _setDimmerLights_ERROR:
 	movwf	(setDimmerLights_ERROR@lights)
 	line	304
 	
-l8501:	
+l8525:	
 ;Dimmer_B1.c: 304: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_ERROR@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	305
 	
-l8503:	
+l8527:	
 ;Dimmer_B1.c: 305: if(DimmerLights->Status)
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -16631,11 +16781,11 @@ l8503:
 	goto	u8481
 	goto	u8480
 u8481:
-	goto	l903
+	goto	l923
 u8480:
 	line	307
 	
-l8505:	
+l8529:	
 ;Dimmer_B1.c: 306: {
 ;Dimmer_B1.c: 307: DimmerLights->Signal=0;
 	movf	(_DimmerLights),w
@@ -16708,7 +16858,7 @@ l8505:
 	bsf	indf1,0
 	line	315
 	
-l8507:	
+l8531:	
 ;Dimmer_B1.c: 314: ;;
 ;Dimmer_B1.c: 315: setLED(lights,1);
 	movlb 0	; select bank0
@@ -16718,7 +16868,7 @@ l8507:
 	fcall	_setLED
 	line	316
 	
-l8509:	
+l8533:	
 ;Dimmer_B1.c: 316: setSw_Status(lights,0);
 	movlb 0	; select bank0
 	clrf	(setSw_Status@command)
@@ -16726,19 +16876,19 @@ l8509:
 	fcall	_setSw_Status
 	line	317
 	
-l8511:	
+l8535:	
 ;Dimmer_B1.c: 317: setRFSW_Status(lights,0);
 	movlb 0	; select bank0
 	clrf	(setRFSW_Status@command)
 	movf	(setDimmerLights_ERROR@lights),w
 	fcall	_setRFSW_Status
-	goto	l903
+	goto	l923
 	line	318
 	
-l902:	
+l922:	
 	line	319
 	
-l903:	
+l923:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_ERROR
@@ -16775,12 +16925,12 @@ GLOBAL	__end_of_setDimmerLights_ERROR
 ;;		_setPowerFault_Main
 ;; This function uses a non-reentrant model
 ;;
-psect	text49,local,class=CODE,delta=2,merge=1
+psect	text51,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	26
-global __ptext49
-__ptext49:	;psect for function _getTemp_Safe
-psect	text49
+global __ptext51
+__ptext51:	;psect for function _getTemp_Safe
+psect	text51
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\OverTemperature_B1.c"
 	line	26
 	global	__size_of_getTemp_Safe
@@ -16792,7 +16942,7 @@ _getTemp_Safe:
 ; Regs used in _getTemp_Safe: [wreg+fsr1l+fsr1h+status,2+status,0]
 	line	28
 	
-l8877:	
+l8901:	
 ;OverTemperature_B1.c: 28: return Temp->Safe;
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -16801,12 +16951,12 @@ l8877:
 	
 	swapf	indf1,w
 	andlw	(1<<1)-1
-	goto	l1980
+	goto	l2020
 	
-l8879:	
+l8903:	
 	line	29
 	
-l1980:	
+l2020:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getTemp_Safe
@@ -16843,12 +16993,12 @@ GLOBAL	__end_of_getTemp_Safe
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text50,local,class=CODE,delta=2,merge=1
+psect	text52,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	15
-global __ptext50
-__ptext50:	;psect for function _PowerFault_Initialization
-psect	text50
+global __ptext52
+__ptext52:	;psect for function _PowerFault_Initialization
+psect	text52
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	15
 	global	__size_of_PowerFault_Initialization
@@ -16860,12 +17010,12 @@ _PowerFault_Initialization:
 ; Regs used in _PowerFault_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	18
 	
-l9721:	
+l9745:	
 ;PowerFault_B1.c: 18: setPowerFault_Initialization();
 	fcall	_setPowerFault_Initialization
 	line	20
 	
-l2269:	
+l2317:	
 	return
 	opt stack 0
 GLOBAL	__end_of_PowerFault_Initialization
@@ -16902,11 +17052,11 @@ GLOBAL	__end_of_PowerFault_Initialization
 ;;		_PowerFault_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text51,local,class=CODE,delta=2,merge=1
+psect	text53,local,class=CODE,delta=2,merge=1
 	line	29
-global __ptext51
-__ptext51:	;psect for function _setPowerFault_Initialization
-psect	text51
+global __ptext53
+__ptext53:	;psect for function _setPowerFault_Initialization
+psect	text53
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\PowerFault_B1.c"
 	line	29
 	global	__size_of_setPowerFault_Initialization
@@ -16918,7 +17068,7 @@ _setPowerFault_Initialization:
 ; Regs used in _setPowerFault_Initialization: [wregfsr1]
 	line	31
 	
-l9367:	
+l9391:	
 ;PowerFault_B1.c: 31: PF=&PF1;
 	movlw	(_PF1)&0ffh
 	movlb 0	; select bank0
@@ -16927,7 +17077,7 @@ l9367:
 	movwf	(_PF)
 	line	32
 	
-l9369:	
+l9393:	
 ;PowerFault_B1.c: 32: PF->Enable=1;
 	movf	(_PF),w
 	movwf	fsr1l
@@ -16937,7 +17087,7 @@ l9369:
 	bsf	indf1,0
 	line	33
 	
-l9371:	
+l9395:	
 ;PowerFault_B1.c: 33: PF->Safe=1;
 	movf	(_PF),w
 	movwf	fsr1l
@@ -16947,7 +17097,7 @@ l9371:
 	bsf	indf1,2
 	line	34
 	
-l2275:	
+l2323:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPowerFault_Initialization
@@ -16965,7 +17115,7 @@ GLOBAL	__end_of_setPowerFault_Initialization
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
-;;		wreg, status,2, status,0, pclath, cstack
+;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
@@ -16984,17 +17134,17 @@ GLOBAL	__end_of_setPowerFault_Initialization
 ;;		_IOC_Set
 ;;		_IO_Set
 ;;		_TMR0_Set
-;;		_Watch_Dog_set
+;;		_WDT_Set
 ;; This function is called by:
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text52,local,class=CODE,delta=2,merge=1
+psect	text54,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	24
-global __ptext52
-__ptext52:	;psect for function _Mcu_Initialization
-psect	text52
+global __ptext54
+__ptext54:	;psect for function _Mcu_Initialization
+psect	text54
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	24
 	global	__size_of_Mcu_Initialization
@@ -17003,27 +17153,27 @@ psect	text52
 _Mcu_Initialization:	
 ;incstack = 0
 	opt	stack 10
-; Regs used in _Mcu_Initialization: [wreg+status,2+status,0+pclath+cstack]
+; Regs used in _Mcu_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	27
 	
-l9655:	
+l9679:	
 ;MCU_B1.c: 27: OSCCON=0x78; ;;
 	movlw	(078h)
 	movlb 1	; select bank1
 	movwf	(153)^080h	;volatile
 	line	29
 	
-l9657:	
+l9681:	
 ;MCU_B1.c: 29: IO_Set();
 	fcall	_IO_Set
 	line	31
 	
-l9659:	
+l9683:	
 ;MCU_B1.c: 31: TMR0_Set();
 	fcall	_TMR0_Set
 	line	35
 	
-l9661:	
+l9685:	
 ;MCU_B1.c: 33: ;;
 ;MCU_B1.c: 35: ADC_Set();
 	fcall	_ADC_Set
@@ -17032,7 +17182,7 @@ l9661:
 	fcall	_INT_Set
 	line	41
 	
-l9663:	
+l9687:	
 ;MCU_B1.c: 41: IOC_Set();
 	fcall	_IOC_Set
 	line	47
@@ -17046,20 +17196,20 @@ l9663:
 	movwf	(_Memory)
 	line	49
 	
-l9665:	
-;MCU_B1.c: 49: Watch_Dog_set();
-	fcall	_Watch_Dog_set
+l9689:	
+;MCU_B1.c: 49: WDT_Set();
+	fcall	_WDT_Set
 	line	50
 	
-l1581:	
+l1608:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Mcu_Initialization
 	__end_of_Mcu_Initialization:
 	signat	_Mcu_Initialization,88
-	global	_Watch_Dog_set
+	global	_WDT_Set
 
-;; *************** function _Watch_Dog_set *****************
+;; *************** function _WDT_Set *****************
 ;; Defined at:
 ;;		line 979 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
@@ -17069,7 +17219,7 @@ GLOBAL	__end_of_Mcu_Initialization
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
-;;		wreg
+;;		wreg, fsr1l, fsr1h
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
@@ -17077,9 +17227,9 @@ GLOBAL	__end_of_Mcu_Initialization
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;Total ram usage:        0 bytes
+;;      Temps:          0       1       0       0       0       0       0       0       0       0       0       0       0       0
+;;      Totals:         0       1       0       0       0       0       0       0       0       0       0       0       0       0
+;;Total ram usage:        1 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    4
 ;; This function calls:
@@ -17088,35 +17238,67 @@ GLOBAL	__end_of_Mcu_Initialization
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text53,local,class=CODE,delta=2,merge=1
+psect	text55,local,class=CODE,delta=2,merge=1
 	line	979
-global __ptext53
-__ptext53:	;psect for function _Watch_Dog_set
-psect	text53
+global __ptext55
+__ptext55:	;psect for function _WDT_Set
+psect	text55
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	979
-	global	__size_of_Watch_Dog_set
-	__size_of_Watch_Dog_set	equ	__end_of_Watch_Dog_set-_Watch_Dog_set
+	global	__size_of_WDT_Set
+	__size_of_WDT_Set	equ	__end_of_WDT_Set-_WDT_Set
 	
-_Watch_Dog_set:	
+_WDT_Set:	
 ;incstack = 0
 	opt	stack 10
-; Regs used in _Watch_Dog_set: [wreg]
+; Regs used in _WDT_Set: [wregfsr1]
 	line	980
 	
-l9269:	
+l9287:	
 ;MCU_B1.c: 980: WDTCON=0b00010111;;
 	movlw	(017h)
 	movlb 1	; select bank1
 	movwf	(151)^080h	;volatile
 	line	981
+;MCU_B1.c: 981: WDT=&_WDT;
+	movlw	(__WDT)&0ffh
+	movlb 0	; select bank0
+	movwf	(??_WDT_Set+0)+0
+	movf	(??_WDT_Set+0)+0,w
+	movlb 1	; select bank1
+	movwf	(_WDT)^080h
+	line	982
 	
-l1720:	
+l9289:	
+;MCU_B1.c: 982: WDT->Enable=1;
+	movf	(_WDT)^080h,w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	bsf	indf1,0
+	line	983
+	
+l9291:	
+;MCU_B1.c: 983: WDT->Count=10;
+	movlw	(0Ah)
+	movlb 0	; select bank0
+	movwf	(??_WDT_Set+0)+0
+	movlb 1	; select bank1
+	incf	(_WDT)^080h,w
+	movwf	fsr1l
+	clrf fsr1h	
+	
+	movlb 0	; select bank0
+	movf	(??_WDT_Set+0)+0,w
+	movwf	indf1
+	line	984
+	
+l1747:	
 	return
 	opt stack 0
-GLOBAL	__end_of_Watch_Dog_set
-	__end_of_Watch_Dog_set:
-	signat	_Watch_Dog_set,88
+GLOBAL	__end_of_WDT_Set
+	__end_of_WDT_Set:
+	signat	_WDT_Set,88
 	global	_TMR0_Set
 
 ;; *************** function _TMR0_Set *****************
@@ -17148,11 +17330,11 @@ GLOBAL	__end_of_Watch_Dog_set
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text54,local,class=CODE,delta=2,merge=1
+psect	text56,local,class=CODE,delta=2,merge=1
 	line	118
-global __ptext54
-__ptext54:	;psect for function _TMR0_Set
-psect	text54
+global __ptext56
+__ptext56:	;psect for function _TMR0_Set
+psect	text56
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	118
 	global	__size_of_TMR0_Set
@@ -17164,7 +17346,7 @@ _TMR0_Set:
 ; Regs used in _TMR0_Set: [wreg+status,2]
 	line	120
 	
-l9241:	
+l9259:	
 ;MCU_B1.c: 120: Timer0=&VarTimer0;
 	movlw	(_VarTimer0)&0ffh
 	movlb 0	; select bank0
@@ -17174,29 +17356,29 @@ l9241:
 	movwf	(_Timer0)^080h
 	line	121
 	
-l9243:	
+l9261:	
 ;MCU_B1.c: 121: OPTION_REG=0x00;
 	clrf	(149)^080h	;volatile
 	line	122
 	
-l9245:	
+l9263:	
 ;MCU_B1.c: 122: TMR0=(256-90);
 	movlw	(0A6h)
 	movlb 0	; select bank0
 	movwf	(21)	;volatile
 	line	123
 	
-l9247:	
+l9265:	
 ;MCU_B1.c: 123: TMR0IE=1;
 	bsf	(93/8),(93)&7	;volatile
 	line	124
 	
-l9249:	
+l9267:	
 ;MCU_B1.c: 124: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	125
 	
-l1590:	
+l1617:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR0_Set
@@ -17233,11 +17415,11 @@ GLOBAL	__end_of_TMR0_Set
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text55,local,class=CODE,delta=2,merge=1
+psect	text57,local,class=CODE,delta=2,merge=1
 	line	52
-global __ptext55
-__ptext55:	;psect for function _IO_Set
-psect	text55
+global __ptext57
+__ptext57:	;psect for function _IO_Set
+psect	text57
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	52
 	global	__size_of_IO_Set
@@ -17249,7 +17431,7 @@ _IO_Set:
 ; Regs used in _IO_Set: [wreg+status,2]
 	line	81
 	
-l9223:	
+l9241:	
 ;MCU_B1.c: 81: TRISA=0b01110111;;
 	movlw	(077h)
 	movlb 1	; select bank1
@@ -17264,13 +17446,13 @@ l9223:
 	movwf	(142)^080h	;volatile
 	line	84
 	
-l9225:	
+l9243:	
 ;MCU_B1.c: 84: LATA=0b00000000;;
 	movlb 2	; select bank2
 	clrf	(268)^0100h	;volatile
 	line	85
 	
-l9227:	
+l9245:	
 ;MCU_B1.c: 85: LATB=0b00000010;;
 	movlw	(02h)
 	movwf	(269)^0100h	;volatile
@@ -17279,43 +17461,43 @@ l9227:
 	clrf	(270)^0100h	;volatile
 	line	87
 	
-l9229:	
+l9247:	
 ;MCU_B1.c: 87: ANSELA=0b00100010;;
 	movlw	(022h)
 	movlb 3	; select bank3
 	movwf	(396)^0180h	;volatile
 	line	88
 	
-l9231:	
+l9249:	
 ;MCU_B1.c: 88: ANSELB=0b00000000;;
 	clrf	(397)^0180h	;volatile
 	line	89
 	
-l9233:	
+l9251:	
 ;MCU_B1.c: 89: ANSELC=0b00000000;;
 	clrf	(398)^0180h	;volatile
 	line	90
 	
-l9235:	
+l9253:	
 ;MCU_B1.c: 90: PORTA=0b01110111;;
 	movlw	(077h)
 	movlb 0	; select bank0
 	movwf	(12)	;volatile
 	line	91
 	
-l9237:	
+l9255:	
 ;MCU_B1.c: 91: PORTB=0b00000111;;
 	movlw	(07h)
 	movwf	(13)	;volatile
 	line	92
 	
-l9239:	
+l9257:	
 ;MCU_B1.c: 92: PORTC=0b00001100;;
 	movlw	(0Ch)
 	movwf	(14)	;volatile
 	line	94
 	
-l1584:	
+l1611:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IO_Set
@@ -17352,11 +17534,11 @@ GLOBAL	__end_of_IO_Set
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text56,local,class=CODE,delta=2,merge=1
+psect	text58,local,class=CODE,delta=2,merge=1
 	line	314
-global __ptext56
-__ptext56:	;psect for function _IOC_Set
-psect	text56
+global __ptext58
+__ptext58:	;psect for function _IOC_Set
+psect	text58
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	314
 	global	__size_of_IOC_Set
@@ -17368,13 +17550,13 @@ _IOC_Set:
 ; Regs used in _IOC_Set: [wreg+status,2]
 	line	316
 	
-l9255:	
+l9273:	
 ;MCU_B1.c: 316: WPUB2=0;
 	movlb 4	; select bank4
 	bcf	(4202/8)^0200h,(4202)&7	;volatile
 	line	318
 	
-l9257:	
+l9275:	
 ;MCU_B1.c: 318: IOCBP=0b00000100;
 	movlw	(04h)
 	movlb 7	; select bank7
@@ -17385,32 +17567,32 @@ l9257:
 	movwf	(917)^0380h	;volatile
 	line	334
 	
-l9259:	
+l9277:	
 ;MCU_B1.c: 334: IOCBF=0b00000000;
 	clrf	(918)^0380h	;volatile
 	line	336
 	
-l9261:	
+l9279:	
 ;MCU_B1.c: 336: IOCIE=1;
 	bsf	(91/8),(91)&7	;volatile
 	line	337
 	
-l9263:	
+l9281:	
 ;MCU_B1.c: 337: IOCIF=0;
 	bcf	(88/8),(88)&7	;volatile
 	line	338
 	
-l9265:	
+l9283:	
 ;MCU_B1.c: 338: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
 	line	339
 	
-l9267:	
+l9285:	
 ;MCU_B1.c: 339: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	340
 	
-l1668:	
+l1695:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IOC_Set
@@ -17447,11 +17629,11 @@ GLOBAL	__end_of_IOC_Set
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text57,local,class=CODE,delta=2,merge=1
+psect	text59,local,class=CODE,delta=2,merge=1
 	line	285
-global __ptext57
-__ptext57:	;psect for function _INT_Set
-psect	text57
+global __ptext59
+__ptext59:	;psect for function _INT_Set
+psect	text59
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	285
 	global	__size_of_INT_Set
@@ -17463,7 +17645,7 @@ _INT_Set:
 ; Regs used in _INT_Set: []
 	line	287
 	
-l9253:	
+l9271:	
 ;MCU_B1.c: 287: WPUB0=0;
 	movlb 4	; select bank4
 	bcf	(4200/8)^0200h,(4200)&7	;volatile
@@ -17478,7 +17660,7 @@ l9253:
 	bsf	(95/8),(95)&7	;volatile
 	line	291
 	
-l1658:	
+l1685:	
 	return
 	opt stack 0
 GLOBAL	__end_of_INT_Set
@@ -17515,11 +17697,11 @@ GLOBAL	__end_of_INT_Set
 ;;		_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
-psect	text58,local,class=CODE,delta=2,merge=1
+psect	text60,local,class=CODE,delta=2,merge=1
 	line	379
-global __ptext58
-__ptext58:	;psect for function _ADC_Set
-psect	text58
+global __ptext60
+__ptext60:	;psect for function _ADC_Set
+psect	text60
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 	line	379
 	global	__size_of_ADC_Set
@@ -17531,7 +17713,7 @@ _ADC_Set:
 ; Regs used in _ADC_Set: [wreg]
 	line	381
 	
-l9251:	
+l9269:	
 ;MCU_B1.c: 381: ADCON1=0xf2;
 	movlw	(0F2h)
 	movlb 1	; select bank1
@@ -17543,200 +17725,12 @@ l9251:
 	movwf	(279)^0100h	;volatile
 	line	383
 	
-l1678:	
+l1705:	
 	return
 	opt stack 0
 GLOBAL	__end_of_ADC_Set
 	__end_of_ADC_Set:
 	signat	_ADC_Set,88
-	global	_MainT_ResetClock
-
-;; *************** function _MainT_ResetClock *****************
-;; Defined at:
-;;		line 193 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;  i               1    0        unsigned char 
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
-;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Temps:          0       1       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Totals:         0       1       0       0       0       0       0       0       0       0       0       0       0       0
-;;Total ram usage:        1 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    5
-;; This function calls:
-;;		_clearingWDT
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text59,local,class=CODE,delta=2,merge=1
-	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c"
-	line	193
-global __ptext59
-__ptext59:	;psect for function _MainT_ResetClock
-psect	text59
-	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\main.c"
-	line	193
-	global	__size_of_MainT_ResetClock
-	__size_of_MainT_ResetClock	equ	__end_of_MainT_ResetClock-_MainT_ResetClock
-	
-_MainT_ResetClock:	
-;incstack = 0
-	opt	stack 10
-; Regs used in _MainT_ResetClock: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	195
-	
-l9779:	
-;main.c: 194: char i;
-;main.c: 195: if(!TMain->ClockStop){
-	movlb 0	; select bank0
-	movf	(_TMain),w
-	addlw	010h
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	btfsc	indf1,2
-	goto	u10171
-	goto	u10170
-u10171:
-	goto	l1330
-u10170:
-	line	196
-	
-l9781:	
-;main.c: 196: TMain->ClockCount++;
-	movlw	(01h)
-	movwf	(??_MainT_ResetClock+0)+0
-	movf	(_TMain),w
-	addlw	0Eh
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	movf	(??_MainT_ResetClock+0)+0,w
-	addwf	indf1,f
-	line	197
-	
-l9783:	
-;main.c: 197: if(TMain->ClockCount == 10){
-	movf	(_TMain),w
-	addlw	0Eh
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	movf	indf1,w
-	xorlw	0Ah&0ffh
-	skipz
-	goto	u10181
-	goto	u10180
-u10181:
-	goto	l1330
-u10180:
-	line	198
-	
-l9785:	
-;main.c: 198: TMain->ClockCount=0;
-	movf	(_TMain),w
-	addlw	0Eh
-	movwf	fsr1l
-	movlw 1	; select bank2/3
-	movwf fsr1h	
-	
-	clrf	indf1
-	line	199
-	
-l9787:	
-;main.c: 199: clearingWDT();
-	fcall	_clearingWDT
-	goto	l1330
-	line	214
-	
-l1329:	
-	goto	l1330
-	line	215
-	
-l1328:	
-	line	216
-	
-l1330:	
-	return
-	opt stack 0
-GLOBAL	__end_of_MainT_ResetClock
-	__end_of_MainT_ResetClock:
-	signat	_MainT_ResetClock,88
-	global	_clearingWDT
-
-;; *************** function _clearingWDT *****************
-;; Defined at:
-;;		line 983 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		None
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12
-;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0
-;;Total ram usage:        0 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    4
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_MainT_ResetClock
-;; This function uses a non-reentrant model
-;;
-psect	text60,local,class=CODE,delta=2,merge=1
-	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	983
-global __ptext60
-__ptext60:	;psect for function _clearingWDT
-psect	text60
-	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	983
-	global	__size_of_clearingWDT
-	__size_of_clearingWDT	equ	__end_of_clearingWDT-_clearingWDT
-	
-_clearingWDT:	
-;incstack = 0
-	opt	stack 10
-; Regs used in _clearingWDT: []
-	line	984
-	
-l9221:	
-# 984 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-clrwdt ;# 
-psect	text60
-	line	985
-	
-l1723:	
-	return
-	opt stack 0
-GLOBAL	__end_of_clearingWDT
-	__end_of_clearingWDT:
-	signat	_clearingWDT,88
 	global	_MainT_Initialization
 
 ;; *************** function _MainT_Initialization *****************
@@ -17785,7 +17779,7 @@ _MainT_Initialization:
 ; Regs used in _MainT_Initialization: [wregfsr1]
 	line	96
 	
-l9649:	
+l9673:	
 ;main.c: 96: Product=&VarProduct;
 	movlw	(_VarProduct)&0ffh
 	movlb 0	; select bank0
@@ -17794,7 +17788,7 @@ l9649:
 	movwf	(_Product)
 	line	97
 	
-l9651:	
+l9675:	
 ;main.c: 97: Product->Data[20]=210;
 	movlw	(0D2h)
 	movwf	(??_MainT_Initialization+0)+0
@@ -17808,7 +17802,7 @@ l9651:
 	movwf	indf1
 	line	100
 	
-l9653:	
+l9677:	
 ;main.c: 100: TMain=&VarTMain;
 	movlw	(_VarTMain)&0ffh
 	movwf	(??_MainT_Initialization+0)+0
@@ -17816,7 +17810,7 @@ l9653:
 	movwf	(_TMain)
 	line	103
 	
-l1316:	
+l1342:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT_Initialization
@@ -17872,7 +17866,7 @@ _MainT:
 ; Regs used in _MainT: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	108
 	
-l9753:	
+l9777:	
 ;main.c: 108: if(!TMain->PowerON)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -17884,11 +17878,11 @@ l9753:
 	goto	u10131
 	goto	u10130
 u10131:
-	goto	l9769
+	goto	l9793
 u10130:
 	line	110
 	
-l9755:	
+l9779:	
 ;main.c: 109: {
 ;main.c: 110: TMain->PowerCount++;
 	incf	(_TMain),w
@@ -17903,7 +17897,7 @@ l9755:
 	incf	indf1,f
 	line	111
 	
-l9757:	
+l9781:	
 ;main.c: 111: if(TMain->PowerCount == 150)
 	incf	(_TMain),w
 	movwf	fsr1l
@@ -17921,11 +17915,11 @@ u10145:
 	goto	u10141
 	goto	u10140
 u10141:
-	goto	l1325
+	goto	l1351
 u10140:
 	line	113
 	
-l9759:	
+l9783:	
 ;main.c: 112: {
 ;main.c: 113: TMain->PowerCount=0;
 	incf	(_TMain),w
@@ -17946,13 +17940,13 @@ l9759:
 	bsf	indf1,0
 	line	117
 	
-l9761:	
+l9785:	
 ;main.c: 117: setTemp_Enable(1);
 	movlw	(01h)
 	fcall	_setTemp_Enable
 	line	127
 	
-l9763:	
+l9787:	
 ;main.c: 121: ;;
 ;main.c: 127: setBuz(3,50);
 	movlw	low(032h)
@@ -17974,33 +17968,33 @@ l9763:
 	bsf	indf1,0
 	line	130
 	
-l9765:	
+l9789:	
 ;main.c: 130: setSw_Enable(1);
 	movlw	(01h)
 	fcall	_setSw_Enable
 	line	133
 	
-l9767:	
+l9791:	
 ;main.c: 133: setRF_Enable(1,1);
 	movlb 0	; select bank0
 	clrf	(setRF_Enable@command)
 	incf	(setRF_Enable@command),f
 	movlw	(01h)
 	fcall	_setRF_Enable
-	goto	l1325
+	goto	l1351
 	line	137
 	
-l1320:	
+l1346:	
 	line	138
 ;main.c: 137: }
 ;main.c: 138: }
-	goto	l1325
+	goto	l1351
 	line	139
 	
-l1319:	
+l1345:	
 	line	148
 	
-l9769:	
+l9793:	
 ;main.c: 139: else
 ;main.c: 140: {
 ;main.c: 148: TMain->Count1++;
@@ -18018,7 +18012,7 @@ l9769:
 	incf	indf1,f
 	line	149
 	
-l9771:	
+l9795:	
 ;main.c: 149: if(TMain->Count1 == 100)
 	movf	(_TMain),w
 	addlw	06h
@@ -18037,11 +18031,11 @@ u10155:
 	goto	u10151
 	goto	u10150
 u10151:
-	goto	l1325
+	goto	l1351
 u10150:
 	line	151
 	
-l9773:	
+l9797:	
 ;main.c: 150: {
 ;main.c: 151: TMain->Count1=0;
 	movf	(_TMain),w
@@ -18064,11 +18058,11 @@ l9773:
 	goto	u10161
 	goto	u10160
 u10161:
-	goto	l9777
+	goto	l9801
 u10160:
 	line	166
 	
-l9775:	
+l9799:	
 ;main.c: 165: {
 ;main.c: 166: TMain->Flag=0;
 	movf	(_TMain),w
@@ -18079,13 +18073,13 @@ l9775:
 	bcf	indf1,3
 	line	175
 ;main.c: 175: }
-	goto	l1325
+	goto	l1351
 	line	176
 	
-l1323:	
+l1349:	
 	line	178
 	
-l9777:	
+l9801:	
 ;main.c: 176: else
 ;main.c: 177: {
 ;main.c: 178: TMain->Flag=1;
@@ -18095,21 +18089,21 @@ l9777:
 	movwf fsr1h	
 	
 	bsf	indf1,3
-	goto	l1325
+	goto	l1351
 	line	187
 	
-l1324:	
-	goto	l1325
+l1350:	
+	goto	l1351
 	line	188
 	
-l1322:	
-	goto	l1325
+l1348:	
+	goto	l1351
 	line	190
 	
-l1321:	
+l1347:	
 	line	191
 	
-l1325:	
+l1351:	
 	return
 	opt stack 0
 GLOBAL	__end_of_MainT
@@ -18166,7 +18160,7 @@ _setTemp_Enable:
 	movwf	(setTemp_Enable@command)
 	line	24
 	
-l9219:	
+l9239:	
 ;OverTemperature_B1.c: 24: Temp->Enable=command;
 	movf	(_Temp),w
 	movwf	fsr1l
@@ -18179,7 +18173,7 @@ l9219:
 	bsf	indf1,0
 	line	25
 	
-l1977:	
+l2017:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setTemp_Enable
@@ -18238,13 +18232,13 @@ _setSw_Enable:
 	movwf	(setSw_Enable@command)
 	line	90
 	
-l8625:	
+l8649:	
 ;Switch_B1.c: 90: SwPointSelect(1);
 	movlw	(01h)
 	fcall	_SwPointSelect
 	line	91
 	
-l8627:	
+l8651:	
 ;Switch_B1.c: 91: Sw->Enable=command;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -18258,7 +18252,7 @@ l8627:
 	bsf	indf1,0
 	line	95
 	
-l8629:	
+l8653:	
 ;Switch_B1.c: 95: SwPointSelect(2);
 	movlw	(02h)
 	fcall	_SwPointSelect
@@ -18276,7 +18270,7 @@ l8629:
 	bsf	indf1,0
 	line	104
 	
-l2782:	
+l2838:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSw_Enable
@@ -18337,13 +18331,13 @@ _setRF_Enable:
 	movwf	(setRF_Enable@rf)
 	line	188
 	
-l8631:	
+l8655:	
 ;RF_Control_B1.c: 188: RfPointSelect(rf);
 	movf	(setRF_Enable@rf),w
 	fcall	_RfPointSelect
 	line	189
 	
-l8633:	
+l8657:	
 ;RF_Control_B1.c: 189: RF->Enable=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18356,7 +18350,7 @@ l8633:
 	bsf	indf1,0
 	line	190
 	
-l8635:	
+l8659:	
 ;RF_Control_B1.c: 190: RF->Learn=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18365,7 +18359,7 @@ l8635:
 	bcf	indf1,6
 	line	191
 	
-l8637:	
+l8661:	
 ;RF_Control_B1.c: 191: RF->TransceiveGO=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18374,7 +18368,7 @@ l8637:
 	bcf	indf1,2
 	line	192
 	
-l8639:	
+l8663:	
 ;RF_Control_B1.c: 192: RF->RxStatus=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18383,7 +18377,7 @@ l8639:
 	bcf	indf1,3
 	line	193
 	
-l8641:	
+l8665:	
 ;RF_Control_B1.c: 193: RF->ReceiveGO=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18392,7 +18386,7 @@ l8641:
 	bcf	indf1,1
 	line	194
 	
-l8643:	
+l8667:	
 ;RF_Control_B1.c: 194: RF->DebounceTime=0;
 	incf	(_RF),w
 	movwf	fsr1l
@@ -18401,7 +18395,7 @@ l8643:
 	clrf	indf1
 	line	195
 	
-l8645:	
+l8669:	
 ;RF_Control_B1.c: 195: RF->Debounce=0;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -18410,13 +18404,13 @@ l8645:
 	bcf	indf1,5
 	line	196
 	
-l8647:	
+l8671:	
 ;RF_Control_B1.c: 196: setINT_GO(0);
 	movlw	(0)
 	fcall	_setINT_GO
 	line	197
 	
-l2530:	
+l2582:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_Enable
@@ -18475,12 +18469,12 @@ _setINT_GO:
 	movwf	(setINT_GO@command)
 	line	305
 	
-l8523:	
+l8547:	
 ;MCU_B1.c: 305: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
 	line	306
 	
-l8525:	
+l8549:	
 ;MCU_B1.c: 306: INTE=command;
 	btfsc	(setINT_GO@command),0
 	goto	u8491
@@ -18494,7 +18488,7 @@ u8490:
 u8504:
 	line	307
 	
-l1665:	
+l1692:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setINT_GO
@@ -18548,7 +18542,7 @@ _LED_Main:
 ; Regs used in _LED_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	54
 	
-l9647:	
+l9671:	
 ;LED_B1.c: 54: setLED_Main(1);
 	movlw	(01h)
 	fcall	_setLED_Main
@@ -18562,7 +18556,7 @@ l9647:
 	fcall	_setLED_Main
 	line	65
 	
-l1092:	
+l1116:	
 	return
 	opt stack 0
 GLOBAL	__end_of_LED_Main
@@ -18618,13 +18612,13 @@ _setLED_Main:
 	movwf	(setLED_Main@led)
 	line	216
 	
-l9197:	
+l9217:	
 ;LED_B1.c: 216: LedPointSelect(led);
 	movf	(setLED_Main@led),w
 	fcall	_LedPointSelect
 	line	217
 	
-l9199:	
+l9219:	
 ;LED_B1.c: 217: if(LED->GO)
 	movlb 1	; select bank1
 	movf	(_LED)^080h,w
@@ -18635,11 +18629,11 @@ l9199:
 	goto	u9311
 	goto	u9310
 u9311:
-	goto	l1130
+	goto	l1154
 u9310:
 	line	219
 	
-l9201:	
+l9221:	
 ;LED_B1.c: 218: {
 ;LED_B1.c: 219: LED->Time++;
 	incf	(_LED)^080h,w
@@ -18653,7 +18647,7 @@ l9201:
 	incf	indf1,f
 	line	220
 	
-l9203:	
+l9223:	
 ;LED_B1.c: 220: if(LED->Time >= 500/10)
 	incf	(_LED)^080h,w
 	movwf	fsr1l
@@ -18673,11 +18667,11 @@ l9203:
 	goto	u9321
 	goto	u9320
 u9321:
-	goto	l1130
+	goto	l1154
 u9320:
 	line	222
 	
-l9205:	
+l9225:	
 ;LED_B1.c: 221: {
 ;LED_B1.c: 222: LED->Time=0;
 	movlb 1	; select bank1
@@ -18690,7 +18684,7 @@ l9205:
 	movwi	[1]fsr1
 	line	224
 	
-l9207:	
+l9227:	
 ;LED_B1.c: 224: if(led == 1)
 	movlb 0	; select bank0
 	movf	(setLED_Main@led),w
@@ -18699,23 +18693,23 @@ l9207:
 	goto	u9331
 	goto	u9330
 u9331:
-	goto	l9211
+	goto	l9231
 u9330:
 	line	226
 	
-l9209:	
+l9229:	
 ;LED_B1.c: 225: {
 ;LED_B1.c: 226: RA3=~RA3;
 	movlw	1<<((99)&7)
 	xorwf	((99)/8),f
 	line	227
 ;LED_B1.c: 227: }
-	goto	l1130
+	goto	l1154
 	line	230
 	
-l1125:	
+l1149:	
 	
-l9211:	
+l9231:	
 ;LED_B1.c: 230: else if(led == 2)
 	movf	(setLED_Main@led),w
 	xorlw	02h&0ffh
@@ -18723,23 +18717,23 @@ l9211:
 	goto	u9341
 	goto	u9340
 u9341:
-	goto	l9215
+	goto	l9235
 u9340:
 	line	232
 	
-l9213:	
+l9233:	
 ;LED_B1.c: 231: {
 ;LED_B1.c: 232: RC7=~RC7;
 	movlw	1<<((119)&7)
 	xorwf	((119)/8),f
 	line	233
 ;LED_B1.c: 233: }
-	goto	l1130
+	goto	l1154
 	line	242
 	
-l1127:	
+l1151:	
 	
-l9215:	
+l9235:	
 ;LED_B1.c: 242: else if(led == 99)
 	movf	(setLED_Main@led),w
 	xorlw	063h&0ffh
@@ -18747,36 +18741,36 @@ l9215:
 	goto	u9351
 	goto	u9350
 u9351:
-	goto	l1130
+	goto	l1154
 u9350:
 	line	244
 	
-l9217:	
+l9237:	
 ;LED_B1.c: 243: {
 ;LED_B1.c: 244: RB5=~RB5;
 	movlw	1<<((109)&7)
 	xorwf	((109)/8),f
-	goto	l1130
+	goto	l1154
 	line	245
 	
-l1129:	
-	goto	l1130
+l1153:	
+	goto	l1154
 	line	247
 	
-l1128:	
-	goto	l1130
+l1152:	
+	goto	l1154
 	
-l1126:	
-	goto	l1130
+l1150:	
+	goto	l1154
 	
-l1124:	
-	goto	l1130
+l1148:	
+	goto	l1154
 	line	248
 	
-l1123:	
+l1147:	
 	line	249
 	
-l1130:	
+l1154:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setLED_Main
@@ -18829,7 +18823,7 @@ _LED_Initialization:
 ; Regs used in _LED_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	38
 	
-l9645:	
+l9669:	
 ;LED_B1.c: 38: setLED_Initialization(1);
 	movlw	(01h)
 	fcall	_setLED_Initialization
@@ -18843,7 +18837,7 @@ l9645:
 	fcall	_setLED_Initialization
 	line	49
 	
-l1089:	
+l1113:	
 	return
 	opt stack 0
 GLOBAL	__end_of_LED_Initialization
@@ -18900,13 +18894,13 @@ _setLED_Initialization:
 	movwf	(setLED_Initialization@led)
 	line	69
 	
-l9191:	
+l9211:	
 ;LED_B1.c: 69: LedPointSelect(led);
 	movf	(setLED_Initialization@led),w
 	fcall	_LedPointSelect
 	line	70
 	
-l9193:	
+l9213:	
 ;LED_B1.c: 70: LED->Enable=1;
 	movlb 1	; select bank1
 	movf	(_LED)^080h,w
@@ -18916,7 +18910,7 @@ l9193:
 	bsf	indf1,0
 	line	71
 	
-l9195:	
+l9215:	
 ;LED_B1.c: 71: setLED(led,0);
 	movlb 0	; select bank0
 	clrf	(setLED@command)
@@ -18924,7 +18918,7 @@ l9195:
 	fcall	_setLED
 	line	72
 	
-l1095:	
+l1119:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setLED_Initialization
@@ -18978,7 +18972,7 @@ _Flash_Memory_Main:
 ; Regs used in _Flash_Memory_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	875
 	
-l9789:	
+l9811:	
 ;MCU_B1.c: 875: if(Memory->GO)
 	movlb 0	; select bank0
 	movf	(_Memory),w
@@ -18991,11 +18985,11 @@ l9789:
 	goto	u10191
 	goto	u10190
 u10191:
-	goto	l1697
+	goto	l1724
 u10190:
 	line	877
 	
-l9791:	
+l9813:	
 ;MCU_B1.c: 876: {
 ;MCU_B1.c: 877: if(Memory->Modify)
 	movf	(_Memory),w
@@ -19008,11 +19002,11 @@ l9791:
 	goto	u10201
 	goto	u10200
 u10201:
-	goto	l9801
+	goto	l9823
 u10200:
 	line	879
 	
-l9793:	
+l9815:	
 ;MCU_B1.c: 878: {
 ;MCU_B1.c: 879: Memory->Time++;
 	movf	(_Memory),w
@@ -19028,7 +19022,7 @@ l9793:
 	incf	indf1,f
 	line	880
 	
-l9795:	
+l9817:	
 ;MCU_B1.c: 880: if(Memory->Time == 25)
 	movf	(_Memory),w
 	addlw	023h
@@ -19047,11 +19041,11 @@ u10215:
 	goto	u10211
 	goto	u10210
 u10211:
-	goto	l1697
+	goto	l1724
 u10210:
 	line	882
 	
-l9797:	
+l9819:	
 ;MCU_B1.c: 881: {
 ;MCU_B1.c: 882: Memory->Time=0;
 	movf	(_Memory),w
@@ -19083,23 +19077,23 @@ l9797:
 	bcf	indf1,1
 	line	885
 	
-l9799:	
+l9821:	
 ;MCU_B1.c: 885: Flash_Memory_Modify();
 	fcall	_Flash_Memory_Modify
-	goto	l1697
+	goto	l1724
 	line	887
 	
-l1695:	
+l1722:	
 	line	888
 ;MCU_B1.c: 887: }
 ;MCU_B1.c: 888: }
-	goto	l1697
+	goto	l1724
 	line	889
 	
-l1694:	
+l1721:	
 	line	891
 	
-l9801:	
+l9823:	
 ;MCU_B1.c: 889: else
 ;MCU_B1.c: 890: {
 ;MCU_B1.c: 891: Memory->GO=0;
@@ -19111,17 +19105,17 @@ l9801:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	l1697
+	goto	l1724
 	line	892
 	
-l1696:	
-	goto	l1697
+l1723:	
+	goto	l1724
 	line	893
 	
-l1693:	
+l1720:	
 	line	894
 	
-l1697:	
+l1724:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Main
@@ -19176,31 +19170,31 @@ _Flash_Memory_Modify:
 ; Regs used in _Flash_Memory_Modify: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	951
 	
-l9279:	
+l9301:	
 ;MCU_B1.c: 950: char i;
 ;MCU_B1.c: 951: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(Flash_Memory_Modify@i)
 	
-l9281:	
+l9303:	
 	movlw	(020h)
 	subwf	(Flash_Memory_Modify@i),w
 	skipc
 	goto	u9371
 	goto	u9370
 u9371:
-	goto	l9285
+	goto	l9307
 u9370:
-	goto	l9291
+	goto	l9313
 	
-l9283:	
-	goto	l9291
+l9305:	
+	goto	l9313
 	line	952
 	
-l1714:	
+l1741:	
 	line	953
 	
-l9285:	
+l9307:	
 ;MCU_B1.c: 952: {
 ;MCU_B1.c: 953: Memory->Data[i]=Flash_Memory_Read(i);
 	movf	(Flash_Memory_Modify@i),w
@@ -19219,27 +19213,27 @@ l9285:
 	movwf	indf1
 	line	951
 	
-l9287:	
+l9309:	
 	movlw	(01h)
 	movwf	(??_Flash_Memory_Modify+0)+0
 	movf	(??_Flash_Memory_Modify+0)+0,w
 	addwf	(Flash_Memory_Modify@i),f
 	
-l9289:	
+l9311:	
 	movlw	(020h)
 	subwf	(Flash_Memory_Modify@i),w
 	skipc
 	goto	u9381
 	goto	u9380
 u9381:
-	goto	l9285
+	goto	l9307
 u9380:
-	goto	l9291
+	goto	l9313
 	
-l1715:	
+l1742:	
 	line	955
 	
-l9291:	
+l9313:	
 ;MCU_B1.c: 954: }
 ;MCU_B1.c: 955: Memory->Data[0]=Product->Data[12];
 	movf	(_Product),w
@@ -19304,11 +19298,11 @@ l9291:
 	goto	u9391
 	goto	u9390
 u9391:
-	goto	l9295
+	goto	l9317
 u9390:
 	line	965
 	
-l9293:	
+l9315:	
 ;MCU_B1.c: 964: {
 ;MCU_B1.c: 965: Memory->LoopSave=0;
 	movf	(_Memory),w
@@ -19335,34 +19329,34 @@ l9293:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	l9295
+	goto	l9317
 	line	969
 	
-l1716:	
+l1743:	
 	line	970
 	
-l9295:	
+l9317:	
 ;MCU_B1.c: 969: }
 ;MCU_B1.c: 970: GIE=0;
 	bcf	(95/8),(95)&7	;volatile
 	line	971
 	
-l9297:	
+l9319:	
 ;MCU_B1.c: 971: Flash_Memory_Erasing();
 	fcall	_Flash_Memory_Erasing
 	line	972
 	
-l9299:	
+l9321:	
 ;MCU_B1.c: 972: Flash_Memory_Write();
 	fcall	_Flash_Memory_Write
 	line	973
 	
-l9301:	
+l9323:	
 ;MCU_B1.c: 973: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	974
 	
-l1717:	
+l1744:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Modify
@@ -19415,45 +19409,45 @@ _Flash_Memory_Erasing:
 ; Regs used in _Flash_Memory_Erasing: [wreg+status,2+status,0+pclath+cstack]
 	line	939
 	
-l8863:	
+l8887:	
 ;MCU_B1.c: 939: CFGS=0;
 	movlb 3	; select bank3
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
 	line	940
 	
-l8865:	
+l8889:	
 ;MCU_B1.c: 940: PMADRH=0x30;
 	movlw	(030h)
 	movwf	(402)^0180h	;volatile
 	line	941
 	
-l8867:	
+l8891:	
 ;MCU_B1.c: 941: PMADRL=0x00;
 	clrf	(401)^0180h	;volatile
 	line	942
 	
-l8869:	
+l8893:	
 ;MCU_B1.c: 942: FREE=1;
 	bsf	(3244/8)^0180h,(3244)&7	;volatile
 	line	943
 	
-l8871:	
+l8895:	
 ;MCU_B1.c: 943: WREN=1;
 	bsf	(3242/8)^0180h,(3242)&7	;volatile
 	line	944
 	
-l8873:	
+l8897:	
 ;MCU_B1.c: 944: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
 	line	945
 	
-l8875:	
+l8899:	
 ;MCU_B1.c: 945: WREN=0;
 	movlb 3	; select bank3
 	bcf	(3242/8)^0180h,(3242)&7	;volatile
 	line	946
 	
-l1711:	
+l1738:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Erasing
@@ -19508,7 +19502,7 @@ _Flash_Memory_Initialization:
 ; Regs used in _Flash_Memory_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	831
 	
-l9667:	
+l9691:	
 ;MCU_B1.c: 830: char i;
 ;MCU_B1.c: 831: if(Flash_Memory_Read(31) == 0xaa)
 	movlw	(01Fh)
@@ -19518,11 +19512,11 @@ l9667:
 	goto	u10041
 	goto	u10040
 u10041:
-	goto	l9687
+	goto	l9711
 u10040:
 	line	833
 	
-l9669:	
+l9693:	
 ;MCU_B1.c: 832: {
 ;MCU_B1.c: 833: Product->Data[12]=Flash_Memory_Read(0);
 	movlw	(0)
@@ -19567,7 +19561,7 @@ l9669:
 	movwf	indf1
 	line	841
 	
-l9671:	
+l9695:	
 ;MCU_B1.c: 841: i=setPercentValue(((char)((100-55)*1.5)));
 	movlw	(043h)
 	fcall	_setPercentValue
@@ -19577,7 +19571,7 @@ l9671:
 	movwf	(Flash_Memory_Initialization@i)
 	line	842
 	
-l9673:	
+l9697:	
 ;MCU_B1.c: 842: Product->Data[21]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19591,7 +19585,7 @@ l9673:
 	movwf	indf1
 	line	843
 	
-l9675:	
+l9699:	
 ;MCU_B1.c: 843: Product->Data[22]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19605,7 +19599,7 @@ l9675:
 	movwf	indf1
 	line	844
 	
-l9677:	
+l9701:	
 ;MCU_B1.c: 844: Product->Data[23]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19619,7 +19613,7 @@ l9677:
 	movwf	indf1
 	line	846
 	
-l9679:	
+l9703:	
 ;MCU_B1.c: 846: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 	movf	(_Product),w
 	addlw	0Ch
@@ -19633,10 +19627,10 @@ l9679:
 	goto	u10051
 	goto	u10050
 u10051:
-	goto	l1690
+	goto	l1717
 u10050:
 	
-l9681:	
+l9705:	
 	movf	(_Product),w
 	addlw	0Dh
 	movwf	fsr1l
@@ -19649,10 +19643,10 @@ l9681:
 	goto	u10061
 	goto	u10060
 u10061:
-	goto	l1690
+	goto	l1717
 u10060:
 	
-l9683:	
+l9707:	
 	movf	(_Product),w
 	addlw	0Eh
 	movwf	fsr1l
@@ -19665,11 +19659,11 @@ l9683:
 	goto	u10071
 	goto	u10070
 u10071:
-	goto	l1690
+	goto	l1717
 u10070:
 	line	848
 	
-l9685:	
+l9709:	
 ;MCU_B1.c: 847: {
 ;MCU_B1.c: 848: TMain->FirstOpen=1;
 	movf	(_TMain),w
@@ -19687,20 +19681,20 @@ l9685:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	goto	l1690
+	goto	l1717
 	line	850
 	
-l1688:	
+l1715:	
 	line	851
 ;MCU_B1.c: 850: }
 ;MCU_B1.c: 851: }
-	goto	l1690
+	goto	l1717
 	line	852
 	
-l1687:	
+l1714:	
 	line	854
 	
-l9687:	
+l9711:	
 ;MCU_B1.c: 852: else
 ;MCU_B1.c: 853: {
 ;MCU_B1.c: 854: i=setPercentValue(((char)((100-55)*1.5)));
@@ -19712,7 +19706,7 @@ l9687:
 	movwf	(Flash_Memory_Initialization@i)
 	line	855
 	
-l9689:	
+l9713:	
 ;MCU_B1.c: 855: Memory->Data[0]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19725,7 +19719,7 @@ l9689:
 	movwf	indf1
 	line	856
 	
-l9691:	
+l9715:	
 ;MCU_B1.c: 856: Memory->Data[1]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19738,7 +19732,7 @@ l9691:
 	movwf	indf1
 	line	857
 	
-l9693:	
+l9717:	
 ;MCU_B1.c: 857: Memory->Data[2]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19752,7 +19746,7 @@ l9693:
 	movwf	indf1
 	line	858
 	
-l9695:	
+l9719:	
 ;MCU_B1.c: 858: Memory->Data[3]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19766,7 +19760,7 @@ l9695:
 	movwf	indf1
 	line	859
 	
-l9697:	
+l9721:	
 ;MCU_B1.c: 859: Memory->Data[4]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19780,7 +19774,7 @@ l9697:
 	movwf	indf1
 	line	860
 	
-l9699:	
+l9723:	
 ;MCU_B1.c: 860: Memory->Data[5]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19794,7 +19788,7 @@ l9699:
 	movwf	indf1
 	line	861
 	
-l9701:	
+l9725:	
 ;MCU_B1.c: 861: Memory->Data[31]=0xaa;
 	movlw	(0AAh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19808,7 +19802,7 @@ l9701:
 	movwf	indf1
 	line	862
 	
-l9703:	
+l9727:	
 ;MCU_B1.c: 862: Product->Data[21]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19822,7 +19816,7 @@ l9703:
 	movwf	indf1
 	line	863
 	
-l9705:	
+l9729:	
 ;MCU_B1.c: 863: Product->Data[22]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19836,7 +19830,7 @@ l9705:
 	movwf	indf1
 	line	864
 	
-l9707:	
+l9731:	
 ;MCU_B1.c: 864: Product->Data[23]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
@@ -19850,22 +19844,22 @@ l9707:
 	movwf	indf1
 	line	865
 	
-l9709:	
+l9733:	
 ;MCU_B1.c: 865: GIE=0;
 	bcf	(95/8),(95)&7	;volatile
 	line	866
 	
-l9711:	
+l9735:	
 ;MCU_B1.c: 866: Flash_Memory_Write();
 	fcall	_Flash_Memory_Write
 	line	867
 	
-l9713:	
+l9737:	
 ;MCU_B1.c: 867: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
 	line	868
 	
-l9715:	
+l9739:	
 ;MCU_B1.c: 868: TMain->FirstOpen=1;
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -19876,7 +19870,7 @@ l9715:
 	bsf	indf1,5
 	line	869
 	
-l9717:	
+l9741:	
 ;MCU_B1.c: 869: TMain->First=1;
 	movf	(_TMain),w
 	addlw	03h
@@ -19885,13 +19879,13 @@ l9717:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	goto	l1690
+	goto	l1717
 	line	870
 	
-l1689:	
+l1716:	
 	line	871
 	
-l1690:	
+l1717:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Initialization
@@ -19945,40 +19939,40 @@ _Flash_Memory_Write:
 ; Regs used in _Flash_Memory_Write: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	920
 	
-l8833:	
+l8857:	
 ;MCU_B1.c: 919: char i;
 ;MCU_B1.c: 920: CFGS=0;
 	movlb 3	; select bank3
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
 	line	921
 	
-l8835:	
+l8859:	
 ;MCU_B1.c: 921: PMADRH=0x30;
 	movlw	(030h)
 	movwf	(402)^0180h	;volatile
 	line	922
 	
-l8837:	
+l8861:	
 ;MCU_B1.c: 922: PMDATH=0;
 	clrf	(404)^0180h	;volatile
 	line	923
 	
-l8839:	
+l8863:	
 ;MCU_B1.c: 923: FREE=0;
 	bcf	(3244/8)^0180h,(3244)&7	;volatile
 	line	924
 	
-l8841:	
+l8865:	
 ;MCU_B1.c: 924: LWLO=1;
 	bsf	(3245/8)^0180h,(3245)&7	;volatile
 	line	925
 	
-l8843:	
+l8867:	
 ;MCU_B1.c: 925: WREN=1;
 	bsf	(3242/8)^0180h,(3242)&7	;volatile
 	line	926
 	
-l8845:	
+l8869:	
 ;MCU_B1.c: 926: for(i=0 ; i<32 ; i++)
 	movlb 0	; select bank0
 	clrf	(Flash_Memory_Write@i)
@@ -19988,18 +19982,18 @@ l8845:
 	goto	u8851
 	goto	u8850
 u8851:
-	goto	l8849
+	goto	l8873
 u8850:
-	goto	l1707
+	goto	l1734
 	
-l8847:	
-	goto	l1707
+l8871:	
+	goto	l1734
 	line	927
 	
-l1706:	
+l1733:	
 	line	928
 	
-l8849:	
+l8873:	
 ;MCU_B1.c: 927: {
 ;MCU_B1.c: 928: PMADRL=i;
 	movf	(Flash_Memory_Write@i),w
@@ -20007,7 +20001,7 @@ l8849:
 	movwf	(401)^0180h	;volatile
 	line	929
 	
-l8851:	
+l8875:	
 ;MCU_B1.c: 929: PMDATL=Memory->Data[i];
 	movlb 0	; select bank0
 	movf	(Flash_Memory_Write@i),w
@@ -20023,29 +20017,29 @@ l8851:
 	movwf	(403)^0180h	;volatile
 	line	930
 	
-l8853:	
+l8877:	
 ;MCU_B1.c: 930: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
 	line	926
 	
-l8855:	
+l8879:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Write+0)+0
 	movf	(??_Flash_Memory_Write+0)+0,w
 	addwf	(Flash_Memory_Write@i),f
 	
-l8857:	
+l8881:	
 	movlw	(020h)
 	subwf	(Flash_Memory_Write@i),w
 	skipc
 	goto	u8861
 	goto	u8860
 u8861:
-	goto	l8849
+	goto	l8873
 u8860:
 	
-l1707:	
+l1734:	
 	line	932
 ;MCU_B1.c: 931: }
 ;MCU_B1.c: 932: LWLO=0;
@@ -20053,18 +20047,18 @@ l1707:
 	bcf	(3245/8)^0180h,(3245)&7	;volatile
 	line	933
 	
-l8859:	
+l8883:	
 ;MCU_B1.c: 933: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
 	line	934
 	
-l8861:	
+l8885:	
 ;MCU_B1.c: 934: WREN=0;
 	movlb 3	; select bank3
 	bcf	(3242/8)^0180h,(3242)&7	;volatile
 	line	935
 	
-l1708:	
+l1735:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Write
@@ -20118,7 +20112,7 @@ _Flash_Memory_Unlock:
 ; Regs used in _Flash_Memory_Unlock: [wreg]
 	line	898
 	
-l8649:	
+l8673:	
 ;MCU_B1.c: 898: PMCON2=0x55;
 	movlw	(055h)
 	movlb 3	; select bank3
@@ -20129,26 +20123,26 @@ l8649:
 	movwf	(406)^0180h	;volatile
 	line	900
 	
-l8651:	
+l8675:	
 ;MCU_B1.c: 900: WR=1;
 	bsf	(3241/8)^0180h,(3241)&7	;volatile
 	line	901
 	
-l8653:	
+l8677:	
 ;MCU_B1.c: 901: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	902
 	
-l8655:	
+l8679:	
 ;MCU_B1.c: 902: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	903
 	
-l1700:	
+l1727:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Unlock
@@ -20207,19 +20201,19 @@ _Flash_Memory_Read:
 	movwf	(Flash_Memory_Read@address)
 	line	907
 	
-l8815:	
+l8839:	
 ;MCU_B1.c: 907: char i,ret=0;
 	clrf	(Flash_Memory_Read@ret)
 	line	908
 	
-l8817:	
+l8841:	
 ;MCU_B1.c: 908: PMADRH=0x30;
 	movlw	(030h)
 	movlb 3	; select bank3
 	movwf	(402)^0180h	;volatile
 	line	909
 	
-l8819:	
+l8843:	
 ;MCU_B1.c: 909: PMADRL=address;
 	movlb 0	; select bank0
 	movf	(Flash_Memory_Read@address),w
@@ -20227,17 +20221,17 @@ l8819:
 	movwf	(401)^0180h	;volatile
 	line	910
 	
-l8821:	
+l8845:	
 ;MCU_B1.c: 910: CFGS=0;
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
 	line	911
 	
-l8823:	
+l8847:	
 ;MCU_B1.c: 911: RD=1;
 	bsf	(3240/8)^0180h,(3240)&7	;volatile
 	line	912
 	
-l8825:	
+l8849:	
 ;MCU_B1.c: 912: i=PMDATH;
 	movf	(404)^0180h,w	;volatile
 	movlb 0	; select bank0
@@ -20246,7 +20240,7 @@ l8825:
 	movwf	(Flash_Memory_Read@i)
 	line	913
 	
-l8827:	
+l8851:	
 ;MCU_B1.c: 913: ret=PMDATL;
 	movlb 3	; select bank3
 	movf	(403)^0180h,w	;volatile
@@ -20256,15 +20250,15 @@ l8827:
 	movwf	(Flash_Memory_Read@ret)
 	line	914
 	
-l8829:	
+l8853:	
 ;MCU_B1.c: 914: return ret;
 	movf	(Flash_Memory_Read@ret),w
-	goto	l1703
+	goto	l1730
 	
-l8831:	
+l8855:	
 	line	915
 	
-l1703:	
+l1730:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Flash_Memory_Read
@@ -20319,7 +20313,7 @@ _DimmerLights_Main:
 ; Regs used in _DimmerLights_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	117
 	
-l9643:	
+l9667:	
 ;Dimmer_B1.c: 117: setDimmerLights_Main(1);
 	movlw	(01h)
 	fcall	_setDimmerLights_Main
@@ -20332,7 +20326,7 @@ l9643:
 	fcall	_DimmerLights_Close
 	line	129
 	
-l864:	
+l884:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DimmerLights_Main
@@ -20392,19 +20386,19 @@ _setDimmerLights_Main:
 	movwf	(setDimmerLights_Main@lights)
 	line	133
 	
-l9151:	
+l9171:	
 ;Dimmer_B1.c: 133: char clear=1;
 	clrf	(setDimmerLights_Main@clear)
 	incf	(setDimmerLights_Main@clear),f
 	line	134
 	
-l9153:	
+l9173:	
 ;Dimmer_B1.c: 134: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Main@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	152
 	
-l9155:	
+l9175:	
 ;Dimmer_B1.c: 152: if(lights == 1)
 	movlb 0	; select bank0
 	movf	(setDimmerLights_Main@lights),w
@@ -20413,11 +20407,11 @@ l9155:
 	goto	u9231
 	goto	u9230
 u9231:
-	goto	l9159
+	goto	l9179
 u9230:
 	line	154
 	
-l9157:	
+l9177:	
 ;Dimmer_B1.c: 153: {
 ;Dimmer_B1.c: 154: clear=(!DimmerLights22->Clear)?0:1;
 	movf	(_DimmerLights22),w
@@ -20432,12 +20426,12 @@ l9157:
 	movwf	(setDimmerLights_Main@clear)
 	line	155
 ;Dimmer_B1.c: 155: }
-	goto	l9163
+	goto	l9183
 	line	156
 	
-l867:	
+l887:	
 	
-l9159:	
+l9179:	
 ;Dimmer_B1.c: 156: else if(lights == 2)
 	movf	(setDimmerLights_Main@lights),w
 	xorlw	02h&0ffh
@@ -20445,11 +20439,11 @@ l9159:
 	goto	u9241
 	goto	u9240
 u9241:
-	goto	l9163
+	goto	l9183
 u9240:
 	line	158
 	
-l9161:	
+l9181:	
 ;Dimmer_B1.c: 157: {
 ;Dimmer_B1.c: 158: clear=(!DimmerLights11->Clear)?0:1;
 	movf	(_DimmerLights11),w
@@ -20462,16 +20456,16 @@ l9161:
 	btfsc	indf1,0
 	movlw	1
 	movwf	(setDimmerLights_Main@clear)
-	goto	l9163
+	goto	l9183
 	line	159
 	
-l869:	
-	goto	l9163
+l889:	
+	goto	l9183
 	line	162
 	
-l868:	
+l888:	
 	
-l9163:	
+l9183:	
 ;Dimmer_B1.c: 159: }
 ;Dimmer_B1.c: 162: if(DimmerLights->Trigger)
 	movf	(_DimmerLights),w
@@ -20484,21 +20478,21 @@ l9163:
 	goto	u9251
 	goto	u9250
 u9251:
-	goto	l9177
+	goto	l9197
 u9250:
 	line	164
 	
-l9165:	
+l9185:	
 ;Dimmer_B1.c: 163: {
 ;Dimmer_B1.c: 164: if(clear)
 	movf	(setDimmerLights_Main@clear),w
 	skipz
 	goto	u9260
-	goto	l879
+	goto	l899
 u9260:
 	line	166
 	
-l9167:	
+l9187:	
 ;Dimmer_B1.c: 165: {
 ;Dimmer_B1.c: 166: if(DimmerLights->Switch)
 	movf	(_DimmerLights),w
@@ -20511,11 +20505,11 @@ l9167:
 	goto	u9271
 	goto	u9270
 u9271:
-	goto	l9173
+	goto	l9193
 u9270:
 	line	168
 	
-l9169:	
+l9189:	
 ;Dimmer_B1.c: 167: {
 ;Dimmer_B1.c: 168: DimmerLights->Trigger=0;
 	movf	(_DimmerLights),w
@@ -20527,7 +20521,7 @@ l9169:
 	bcf	indf1,1
 	line	169
 	
-l9171:	
+l9191:	
 ;Dimmer_B1.c: 169: setDimmerLights(lights,1);
 	clrf	(setDimmerLights@status)
 	incf	(setDimmerLights@status),f
@@ -20536,13 +20530,13 @@ l9171:
 	line	174
 ;Dimmer_B1.c: 174: }
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	175
 	
-l872:	
+l892:	
 	line	177
 	
-l9173:	
+l9193:	
 ;Dimmer_B1.c: 175: else
 ;Dimmer_B1.c: 176: {
 ;Dimmer_B1.c: 177: DimmerLights->Trigger=0;
@@ -20556,33 +20550,33 @@ l9173:
 	bcf	indf1,1
 	line	178
 	
-l9175:	
+l9195:	
 ;Dimmer_B1.c: 178: setDimmerLights(lights,0);
 	clrf	(setDimmerLights@status)
 	movf	(setDimmerLights_Main@lights),w
 	fcall	_setDimmerLights
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	183
 	
-l873:	
+l893:	
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	184
 	
-l871:	
+l891:	
 	line	185
 ;Dimmer_B1.c: 183: }
 ;Dimmer_B1.c: 184: }
 ;Dimmer_B1.c: 185: }
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	186
 	
-l870:	
+l890:	
 	line	188
 	
-l9177:	
+l9197:	
 ;Dimmer_B1.c: 186: else
 ;Dimmer_B1.c: 187: {
 ;Dimmer_B1.c: 188: if(DimmerLights->TriggerAdj)
@@ -20597,28 +20591,28 @@ l9177:
 	goto	u9281
 	goto	u9280
 u9281:
-	goto	l879
+	goto	l899
 u9280:
 	line	190
 	
-l9179:	
+l9199:	
 ;Dimmer_B1.c: 189: {
 ;Dimmer_B1.c: 190: if(clear)
 	movf	(setDimmerLights_Main@clear),w
 	skipz
 	goto	u9290
-	goto	l879
+	goto	l899
 u9290:
 	line	192
 	
-l9181:	
+l9201:	
 ;Dimmer_B1.c: 191: {
 ;Dimmer_B1.c: 192: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Main@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	193
 	
-l9183:	
+l9203:	
 ;Dimmer_B1.c: 193: DimmerLights->TriggerAdj=0;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -20630,7 +20624,7 @@ l9183:
 	bcf	indf1,3
 	line	194
 	
-l9185:	
+l9205:	
 ;Dimmer_B1.c: 194: if(DimmerLights->AdjGo)
 	movf	(_DimmerLights),w
 	addlw	09h
@@ -20642,11 +20636,11 @@ l9185:
 	goto	u9301
 	goto	u9300
 u9301:
-	goto	l9189
+	goto	l9209
 u9300:
 	line	196
 	
-l9187:	
+l9207:	
 ;Dimmer_B1.c: 195: {
 ;Dimmer_B1.c: 196: setDimmerLights_Adj(lights,1);
 	clrf	(setDimmerLights_Adj@status)
@@ -20665,13 +20659,13 @@ l9187:
 	line	198
 ;Dimmer_B1.c: 198: }
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	199
 	
-l877:	
+l897:	
 	line	201
 	
-l9189:	
+l9209:	
 ;Dimmer_B1.c: 199: else
 ;Dimmer_B1.c: 200: {
 ;Dimmer_B1.c: 201: setDimmerLights_Adj(lights,0);
@@ -20680,28 +20674,28 @@ l9189:
 	movf	(setDimmerLights_Main@lights),w
 	fcall	_setDimmerLights_Adj
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	202
 	
-l878:	
+l898:	
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	203
 	
-l876:	
+l896:	
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	204
 	
-l875:	
+l895:	
 	movlb 0	; select bank0
-	goto	l879
+	goto	l899
 	line	205
 	
-l874:	
+l894:	
 	line	206
 	
-l879:	
+l899:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_Main
@@ -20760,23 +20754,23 @@ _setDimmerLights_Adj:
 	movwf	(setDimmerLights_Adj@lights)
 	line	390
 	
-l8801:	
+l8825:	
 ;Dimmer_B1.c: 390: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Adj@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	391
 	
-l8803:	
+l8827:	
 ;Dimmer_B1.c: 391: if(status)
 	movlb 0	; select bank0
 	movf	(setDimmerLights_Adj@status),w
 	skipz
 	goto	u8830
-	goto	l8807
+	goto	l8831
 u8830:
 	line	393
 	
-l8805:	
+l8829:	
 ;Dimmer_B1.c: 392: {
 ;Dimmer_B1.c: 393: DimmerLights->AdjFlag=1;
 	movf	(_DimmerLights),w
@@ -20795,13 +20789,13 @@ l8805:
 	bsf	indf1,1
 	line	395
 ;Dimmer_B1.c: 395: }
-	goto	l919
+	goto	l939
 	line	396
 	
-l916:	
+l936:	
 	line	398
 	
-l8807:	
+l8831:	
 ;Dimmer_B1.c: 396: else
 ;Dimmer_B1.c: 397: {
 ;Dimmer_B1.c: 398: if(DimmerLights->AdjFlag)
@@ -20814,11 +20808,11 @@ l8807:
 	goto	u8841
 	goto	u8840
 u8841:
-	goto	l919
+	goto	l939
 u8840:
 	line	400
 	
-l8809:	
+l8833:	
 ;Dimmer_B1.c: 399: {
 ;Dimmer_B1.c: 400: DimmerLights->Signal=0;
 	movf	(_DimmerLights),w
@@ -20856,7 +20850,7 @@ l8809:
 	movwf	indf1
 	line	411
 	
-l8811:	
+l8835:	
 ;Dimmer_B1.c: 411: setRF_DimmerLights(lights,1);
 	clrf	(setRF_DimmerLights@on)
 	incf	(setRF_DimmerLights@on),f
@@ -20864,21 +20858,21 @@ l8811:
 	fcall	_setRF_DimmerLights
 	line	412
 	
-l8813:	
+l8837:	
 ;Dimmer_B1.c: 412: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
-	goto	l919
+	goto	l939
 	line	413
 	
-l918:	
-	goto	l919
+l938:	
+	goto	l939
 	line	414
 	
-l917:	
+l937:	
 	line	415
 	
-l919:	
+l939:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_Adj
@@ -20937,13 +20931,13 @@ _setDimmerLights:
 	movwf	(setDimmerLights@lights)
 	line	332
 	
-l8481:	
+l8505:	
 ;Dimmer_B1.c: 332: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	333
 	
-l8483:	
+l8507:	
 ;Dimmer_B1.c: 333: Dimmer->Load=lights;
 	movlb 0	; select bank0
 	movf	(setDimmerLights@lights),w
@@ -20958,16 +20952,16 @@ l8483:
 	movwf	indf1
 	line	334
 	
-l8485:	
+l8509:	
 ;Dimmer_B1.c: 334: if(status)
 	movf	(setDimmerLights@status),w
 	skipz
 	goto	u8460
-	goto	l8499
+	goto	l8523
 u8460:
 	line	336
 	
-l8487:	
+l8511:	
 ;Dimmer_B1.c: 335: {
 ;Dimmer_B1.c: 336: DimmerLights->Status=1;
 	movf	(_DimmerLights),w
@@ -20978,14 +20972,14 @@ l8487:
 	bsf	indf1,5
 	line	337
 	
-l8489:	
+l8513:	
 ;Dimmer_B1.c: 337: setLED(lights,0);
 	clrf	(setLED@command)
 	movf	(setDimmerLights@lights),w
 	fcall	_setLED
 	line	341
 	
-l8491:	
+l8515:	
 ;Dimmer_B1.c: 339: ;;
 ;Dimmer_B1.c: 341: DimmerLights->Signal=1;
 	movlb 0	; select bank0
@@ -20997,7 +20991,7 @@ l8491:
 	bsf	indf1,1
 	line	342
 	
-l8493:	
+l8517:	
 ;Dimmer_B1.c: 342: DimmerLights->DimmingTimeValue=3;
 	movlw	(03h)
 	movwf	(??_setDimmerLights+0)+0
@@ -21011,7 +21005,7 @@ l8493:
 	movwf	indf1
 	line	344
 	
-l8495:	
+l8519:	
 ;Dimmer_B1.c: 344: if(!DimmerLights->StatusFlag)
 	movf	(_DimmerLights),w
 	movwf	fsr1l
@@ -21022,11 +21016,11 @@ l8495:
 	goto	u8471
 	goto	u8470
 u8471:
-	goto	l913
+	goto	l933
 u8470:
 	line	346
 	
-l8497:	
+l8521:	
 ;Dimmer_B1.c: 345: {
 ;Dimmer_B1.c: 346: DimmerLights->StatusFlag=1;
 	movf	(_DimmerLights),w
@@ -21055,7 +21049,7 @@ l8497:
 	movwi	[0]fsr1
 	movwi	[1]fsr1
 	
-l911:	
+l931:	
 	line	351
 ;Dimmer_B1.c: 351: DimmerLights->DimmingValue=DimmerLights->MaxmumValue;
 	movf	(_DimmerLights),w
@@ -21086,20 +21080,20 @@ l911:
 	
 	movf	(??_setDimmerLights+0)+0,w
 	movwf	indf1
-	goto	l913
+	goto	l933
 	line	357
 	
-l910:	
+l930:	
 	line	358
 ;Dimmer_B1.c: 357: }
 ;Dimmer_B1.c: 358: }
-	goto	l913
+	goto	l933
 	line	359
 	
-l909:	
+l929:	
 	line	361
 	
-l8499:	
+l8523:	
 ;Dimmer_B1.c: 359: else
 ;Dimmer_B1.c: 360: {
 ;Dimmer_B1.c: 361: DimmerLights->Status=0;
@@ -21163,13 +21157,13 @@ l8499:
 	
 	movf	(??_setDimmerLights+0)+0,w
 	movwf	indf1
-	goto	l913
+	goto	l933
 	line	385
 	
-l912:	
+l932:	
 	line	386
 	
-l913:	
+l933:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights
@@ -21232,13 +21226,13 @@ _setLED:
 	movwf	(setLED@led)
 	line	76
 	
-l8369:	
+l8393:	
 ;LED_B1.c: 76: LedPointSelect(led);
 	movf	(setLED@led),w
 	fcall	_LedPointSelect
 	line	77
 	
-l8371:	
+l8395:	
 ;LED_B1.c: 77: if(command == 0)
 	movlb 0	; select bank0
 	movf	(setLED@command),f
@@ -21246,11 +21240,11 @@ l8371:
 	goto	u8241
 	goto	u8240
 u8241:
-	goto	l8385
+	goto	l8409
 u8240:
 	line	80
 	
-l8373:	
+l8397:	
 ;LED_B1.c: 78: {
 ;LED_B1.c: 80: if(led == 1)
 	movf	(setLED@led),w
@@ -21259,22 +21253,22 @@ l8373:
 	goto	u8251
 	goto	u8250
 u8251:
-	goto	l8377
+	goto	l8401
 u8250:
 	line	85
 	
-l8375:	
+l8399:	
 ;LED_B1.c: 81: {
 ;LED_B1.c: 85: RA3=1;
 	bsf	(99/8),(99)&7	;volatile
 	line	87
 ;LED_B1.c: 87: }
-	goto	l1120
+	goto	l1144
 	line	90
 	
-l1099:	
+l1123:	
 	
-l8377:	
+l8401:	
 ;LED_B1.c: 90: else if(led == 2)
 	movf	(setLED@led),w
 	xorlw	02h&0ffh
@@ -21282,22 +21276,22 @@ l8377:
 	goto	u8261
 	goto	u8260
 u8261:
-	goto	l8381
+	goto	l8405
 u8260:
 	line	95
 	
-l8379:	
+l8403:	
 ;LED_B1.c: 91: {
 ;LED_B1.c: 95: RC7=1;
 	bsf	(119/8),(119)&7	;volatile
 	line	97
 ;LED_B1.c: 97: }
-	goto	l1120
+	goto	l1144
 	line	110
 	
-l1101:	
+l1125:	
 	
-l8381:	
+l8405:	
 ;LED_B1.c: 110: else if(led == 99)
 	movf	(setLED@led),w
 	xorlw	063h&0ffh
@@ -21305,33 +21299,33 @@ l8381:
 	goto	u8271
 	goto	u8270
 u8271:
-	goto	l1120
+	goto	l1144
 u8270:
 	line	115
 	
-l8383:	
+l8407:	
 ;LED_B1.c: 111: {
 ;LED_B1.c: 115: RB5=1;
 	bsf	(109/8),(109)&7	;volatile
-	goto	l1120
+	goto	l1144
 	line	117
 	
-l1103:	
-	goto	l1120
+l1127:	
+	goto	l1144
 	line	119
 	
-l1102:	
-	goto	l1120
+l1126:	
+	goto	l1144
 	
-l1100:	
+l1124:	
 ;LED_B1.c: 117: }
 ;LED_B1.c: 119: }
-	goto	l1120
+	goto	l1144
 	line	120
 	
-l1098:	
+l1122:	
 	
-l8385:	
+l8409:	
 ;LED_B1.c: 120: else if(command == 1)
 	movf	(setLED@command),w
 	xorlw	01h&0ffh
@@ -21339,11 +21333,11 @@ l8385:
 	goto	u8281
 	goto	u8280
 u8281:
-	goto	l8399
+	goto	l8423
 u8280:
 	line	123
 	
-l8387:	
+l8411:	
 ;LED_B1.c: 121: {
 ;LED_B1.c: 123: if(led == 1)
 	movf	(setLED@led),w
@@ -21352,22 +21346,22 @@ l8387:
 	goto	u8291
 	goto	u8290
 u8291:
-	goto	l8391
+	goto	l8415
 u8290:
 	line	128
 	
-l8389:	
+l8413:	
 ;LED_B1.c: 124: {
 ;LED_B1.c: 128: RA3=0;
 	bcf	(99/8),(99)&7	;volatile
 	line	130
 ;LED_B1.c: 130: }
-	goto	l1120
+	goto	l1144
 	line	133
 	
-l1106:	
+l1130:	
 	
-l8391:	
+l8415:	
 ;LED_B1.c: 133: else if(led == 2)
 	movf	(setLED@led),w
 	xorlw	02h&0ffh
@@ -21375,22 +21369,22 @@ l8391:
 	goto	u8301
 	goto	u8300
 u8301:
-	goto	l8395
+	goto	l8419
 u8300:
 	line	138
 	
-l8393:	
+l8417:	
 ;LED_B1.c: 134: {
 ;LED_B1.c: 138: RC7=0;
 	bcf	(119/8),(119)&7	;volatile
 	line	140
 ;LED_B1.c: 140: }
-	goto	l1120
+	goto	l1144
 	line	153
 	
-l1108:	
+l1132:	
 	
-l8395:	
+l8419:	
 ;LED_B1.c: 153: else if(led == 99)
 	movf	(setLED@led),w
 	xorlw	063h&0ffh
@@ -21398,33 +21392,33 @@ l8395:
 	goto	u8311
 	goto	u8310
 u8311:
-	goto	l1120
+	goto	l1144
 u8310:
 	line	158
 	
-l8397:	
+l8421:	
 ;LED_B1.c: 154: {
 ;LED_B1.c: 158: RB5=0;
 	bcf	(109/8),(109)&7	;volatile
-	goto	l1120
+	goto	l1144
 	line	160
 	
-l1110:	
-	goto	l1120
+l1134:	
+	goto	l1144
 	line	162
 	
-l1109:	
-	goto	l1120
+l1133:	
+	goto	l1144
 	
-l1107:	
+l1131:	
 ;LED_B1.c: 160: }
 ;LED_B1.c: 162: }
-	goto	l1120
+	goto	l1144
 	line	163
 	
-l1105:	
+l1129:	
 	
-l8399:	
+l8423:	
 ;LED_B1.c: 163: else if(command == 10)
 	movf	(setLED@command),w
 	xorlw	0Ah&0ffh
@@ -21432,11 +21426,11 @@ l8399:
 	goto	u8321
 	goto	u8320
 u8321:
-	goto	l8415
+	goto	l8439
 u8320:
 	line	165
 	
-l8401:	
+l8425:	
 ;LED_B1.c: 164: {
 ;LED_B1.c: 165: LED->GO=0;
 	movlb 1	; select bank1
@@ -21456,7 +21450,7 @@ l8401:
 	movwi	[1]fsr1
 	line	168
 	
-l8403:	
+l8427:	
 ;LED_B1.c: 168: if(led == 1)
 	movlb 0	; select bank0
 	movf	(setLED@led),w
@@ -21465,22 +21459,22 @@ l8403:
 	goto	u8331
 	goto	u8330
 u8331:
-	goto	l8407
+	goto	l8431
 u8330:
 	line	173
 	
-l8405:	
+l8429:	
 ;LED_B1.c: 169: {
 ;LED_B1.c: 173: RA3=1;
 	bsf	(99/8),(99)&7	;volatile
 	line	175
 ;LED_B1.c: 175: }
-	goto	l1120
+	goto	l1144
 	line	178
 	
-l1113:	
+l1137:	
 	
-l8407:	
+l8431:	
 ;LED_B1.c: 178: else if(led == 2)
 	movf	(setLED@led),w
 	xorlw	02h&0ffh
@@ -21488,22 +21482,22 @@ l8407:
 	goto	u8341
 	goto	u8340
 u8341:
-	goto	l8411
+	goto	l8435
 u8340:
 	line	183
 	
-l8409:	
+l8433:	
 ;LED_B1.c: 179: {
 ;LED_B1.c: 183: RC7=1;
 	bsf	(119/8),(119)&7	;volatile
 	line	185
 ;LED_B1.c: 185: }
-	goto	l1120
+	goto	l1144
 	line	198
 	
-l1115:	
+l1139:	
 	
-l8411:	
+l8435:	
 ;LED_B1.c: 198: else if(led == 99)
 	movf	(setLED@led),w
 	xorlw	063h&0ffh
@@ -21511,33 +21505,33 @@ l8411:
 	goto	u8351
 	goto	u8350
 u8351:
-	goto	l1120
+	goto	l1144
 u8350:
 	line	203
 	
-l8413:	
+l8437:	
 ;LED_B1.c: 199: {
 ;LED_B1.c: 203: RB5=1;
 	bsf	(109/8),(109)&7	;volatile
-	goto	l1120
+	goto	l1144
 	line	205
 	
-l1117:	
-	goto	l1120
+l1141:	
+	goto	l1144
 	line	207
 	
-l1116:	
-	goto	l1120
+l1140:	
+	goto	l1144
 	
-l1114:	
+l1138:	
 ;LED_B1.c: 205: }
 ;LED_B1.c: 207: }
-	goto	l1120
+	goto	l1144
 	line	208
 	
-l1112:	
+l1136:	
 	
-l8415:	
+l8439:	
 ;LED_B1.c: 208: else if(command == 11)
 	movf	(setLED@command),w
 	xorlw	0Bh&0ffh
@@ -21545,11 +21539,11 @@ l8415:
 	goto	u8361
 	goto	u8360
 u8361:
-	goto	l1120
+	goto	l1144
 u8360:
 	line	210
 	
-l8417:	
+l8441:	
 ;LED_B1.c: 209: {
 ;LED_B1.c: 210: LED->GO=1;
 	movlb 1	; select bank1
@@ -21558,22 +21552,22 @@ l8417:
 	clrf fsr1h	
 	
 	bsf	indf1,1
-	goto	l1120
+	goto	l1144
 	line	211
 	
-l1119:	
-	goto	l1120
+l1143:	
+	goto	l1144
 	line	212
 	
-l1118:	
-	goto	l1120
+l1142:	
+	goto	l1144
 	
-l1111:	
-	goto	l1120
+l1135:	
+	goto	l1144
 	
-l1104:	
+l1128:	
 	
-l1120:	
+l1144:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setLED
@@ -21631,7 +21625,7 @@ _LedPointSelect:
 	movwf	(LedPointSelect@led)
 	line	10
 	
-l8233:	
+l8257:	
 ;LED_B1.c: 10: if(led == 1)
 	movf	(LedPointSelect@led),w
 	xorlw	01h&0ffh
@@ -21639,11 +21633,11 @@ l8233:
 	goto	u7981
 	goto	u7980
 u7981:
-	goto	l8237
+	goto	l8261
 u7980:
 	line	12
 	
-l8235:	
+l8259:	
 ;LED_B1.c: 11: {
 ;LED_B1.c: 12: LED=&VarLED1;
 	movlw	(_VarLED1)&0ffh
@@ -21653,12 +21647,12 @@ l8235:
 	movwf	(_LED)^080h
 	line	13
 ;LED_B1.c: 13: }
-	goto	l1086
+	goto	l1110
 	line	16
 	
-l1081:	
+l1105:	
 	
-l8237:	
+l8261:	
 ;LED_B1.c: 16: else if(led == 2)
 	movlb 0	; select bank0
 	movf	(LedPointSelect@led),w
@@ -21667,11 +21661,11 @@ l8237:
 	goto	u7991
 	goto	u7990
 u7991:
-	goto	l8241
+	goto	l8265
 u7990:
 	line	18
 	
-l8239:	
+l8263:	
 ;LED_B1.c: 17: {
 ;LED_B1.c: 18: LED=&VarLED2;
 	movlw	(_VarLED2)&0ffh
@@ -21681,12 +21675,12 @@ l8239:
 	movwf	(_LED)^080h
 	line	19
 ;LED_B1.c: 19: }
-	goto	l1086
+	goto	l1110
 	line	28
 	
-l1083:	
+l1107:	
 	
-l8241:	
+l8265:	
 ;LED_B1.c: 28: else if(led == 99)
 	movlb 0	; select bank0
 	movf	(LedPointSelect@led),w
@@ -21695,11 +21689,11 @@ l8241:
 	goto	u8001
 	goto	u8000
 u8001:
-	goto	l1086
+	goto	l1110
 u8000:
 	line	30
 	
-l8243:	
+l8267:	
 ;LED_B1.c: 29: {
 ;LED_B1.c: 30: LED=&VarErrLED;
 	movlw	(_VarErrLED)&0ffh
@@ -21707,19 +21701,19 @@ l8243:
 	movf	(??_LedPointSelect+0)+0,w
 	movlb 1	; select bank1
 	movwf	(_LED)^080h
-	goto	l1086
+	goto	l1110
 	line	31
 	
-l1085:	
-	goto	l1086
+l1109:	
+	goto	l1110
 	line	33
 	
-l1084:	
-	goto	l1086
+l1108:	
+	goto	l1110
 	
-l1082:	
+l1106:	
 	
-l1086:	
+l1110:	
 	return
 	opt stack 0
 GLOBAL	__end_of_LedPointSelect
@@ -21773,7 +21767,7 @@ _DimmerLights_Close:
 ; Regs used in _DimmerLights_Close: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	103
 	
-l9141:	
+l9161:	
 ;Dimmer_B1.c: 103: if(Dimmer->Detect)
 	movlb 1	; select bank1
 	movf	(_Dimmer)^080h,w
@@ -21784,11 +21778,11 @@ l9141:
 	goto	u9211
 	goto	u9210
 u9211:
-	goto	l861
+	goto	l881
 u9210:
 	line	105
 	
-l9143:	
+l9163:	
 ;Dimmer_B1.c: 104: {
 ;Dimmer_B1.c: 105: Dimmer->Detect=0;
 	movf	(_Dimmer)^080h,w
@@ -21798,7 +21792,7 @@ l9143:
 	bcf	indf1,0
 	line	106
 	
-l9145:	
+l9165:	
 ;Dimmer_B1.c: 106: if(!getDimmerLights_StatusFlag())
 	fcall	_getDimmerLights_StatusFlag
 	iorlw	0
@@ -21806,11 +21800,11 @@ l9145:
 	goto	u9221
 	goto	u9220
 u9221:
-	goto	l861
+	goto	l881
 u9220:
 	line	109
 	
-l9147:	
+l9167:	
 ;Dimmer_B1.c: 107: {
 ;Dimmer_B1.c: 108: ;;
 ;Dimmer_B1.c: 109: Memory->GO=1; if(!1) { Memory->Time=1; } ;;
@@ -21822,9 +21816,9 @@ l9147:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	goto	l861
+	goto	l881
 	
-l9149:	
+l9169:	
 	movf	(_Memory),w
 	addlw	023h
 	movwf	fsr1l
@@ -21835,20 +21829,20 @@ l9149:
 	movwi	[0]fsr1
 	movlw	high(01h)
 	movwi	[1]fsr1
-	goto	l861
+	goto	l881
 	
-l860:	
-	goto	l861
+l880:	
+	goto	l881
 	line	110
 	
-l859:	
-	goto	l861
+l879:	
+	goto	l881
 	line	111
 	
-l858:	
+l878:	
 	line	112
 	
-l861:	
+l881:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DimmerLights_Close
@@ -21902,18 +21896,18 @@ _getDimmerLights_StatusFlag:
 ; Regs used in _getDimmerLights_StatusFlag: [wreg+fsr1l+fsr1h+status,2]
 	line	210
 	
-l8465:	
+l8489:	
 ;Dimmer_B1.c: 210: char Status=0;
 	movlb 0	; select bank0
 	clrf	(getDimmerLights_StatusFlag@Status)
 	line	217
 	
-l8467:	
+l8491:	
 ;Dimmer_B1.c: 217: Status=(DimmerLights11->StatusFlag || DimmerLights22->StatusFlag)?1:0;
-	clrf	(_getDimmerLights_StatusFlag$1629)
-	incf	(_getDimmerLights_StatusFlag$1629),f
+	clrf	(_getDimmerLights_StatusFlag$1650)
+	incf	(_getDimmerLights_StatusFlag$1650),f
 	
-l8469:	
+l8493:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -21923,10 +21917,10 @@ l8469:
 	goto	u8441
 	goto	u8440
 u8441:
-	goto	l8475
+	goto	l8499
 u8440:
 	
-l8471:	
+l8495:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -21936,31 +21930,31 @@ l8471:
 	goto	u8451
 	goto	u8450
 u8451:
-	goto	l8475
+	goto	l8499
 u8450:
 	
-l8473:	
-	clrf	(_getDimmerLights_StatusFlag$1629)
-	goto	l8475
+l8497:	
+	clrf	(_getDimmerLights_StatusFlag$1650)
+	goto	l8499
 	
-l883:	
+l903:	
 	
-l8475:	
-	movf	(_getDimmerLights_StatusFlag$1629),w
+l8499:	
+	movf	(_getDimmerLights_StatusFlag$1650),w
 	movwf	(??_getDimmerLights_StatusFlag+0)+0
 	movf	(??_getDimmerLights_StatusFlag+0)+0,w
 	movwf	(getDimmerLights_StatusFlag@Status)
 	line	224
 	
-l8477:	
+l8501:	
 ;Dimmer_B1.c: 224: return Status;
 	movf	(getDimmerLights_StatusFlag@Status),w
-	goto	l884
+	goto	l904
 	
-l8479:	
+l8503:	
 	line	225
 	
-l884:	
+l904:	
 	return
 	opt stack 0
 GLOBAL	__end_of_getDimmerLights_StatusFlag
@@ -22014,7 +22008,7 @@ _DimmerLights_Initialization:
 ; Regs used in _DimmerLights_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	44
 	
-l9635:	
+l9659:	
 ;Dimmer_B1.c: 44: DimmerLights11=&DimmerLights1;
 	movlw	(_DimmerLights1)&0ffh
 	movlb 0	; select bank0
@@ -22023,13 +22017,13 @@ l9635:
 	movwf	(_DimmerLights11)
 	line	45
 	
-l9637:	
+l9661:	
 ;Dimmer_B1.c: 45: setDimmerLights_Initialization(1);
 	movlw	(01h)
 	fcall	_setDimmerLights_Initialization
 	line	49
 	
-l9639:	
+l9663:	
 ;Dimmer_B1.c: 49: DimmerLights22=&DimmerLights2;
 	movlw	(_DimmerLights2)&0ffh
 	movlb 0	; select bank0
@@ -22042,12 +22036,12 @@ l9639:
 	fcall	_setDimmerLights_Initialization
 	line	59
 	
-l9641:	
+l9665:	
 ;Dimmer_B1.c: 59: Dimmer_Initialization();
 	fcall	_Dimmer_Initialization
 	line	62
 	
-l852:	
+l872:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DimmerLights_Initialization
@@ -22103,13 +22097,13 @@ _setDimmerLights_Initialization:
 	movwf	(setDimmerLights_Initialization@lights)
 	line	65
 	
-l9129:	
+l9149:	
 ;Dimmer_B1.c: 65: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Initialization@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	66
 	
-l9131:	
+l9151:	
 ;Dimmer_B1.c: 66: DimmerLights->Clear=1;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -22121,7 +22115,7 @@ l9131:
 	bsf	indf1,0
 	line	72
 	
-l9133:	
+l9153:	
 ;Dimmer_B1.c: 72: DimmerLights->MaxmumValue=((char)((100-55)*1.5));
 	movlw	(043h)
 	movwf	(??_setDimmerLights_Initialization+0)+0
@@ -22135,7 +22129,7 @@ l9133:
 	movwf	indf1
 	line	73
 	
-l9135:	
+l9155:	
 ;Dimmer_B1.c: 73: DimmerLights->MinimumValue=((char)((100-20)*1.5));
 	movlw	(078h)
 	movwf	(??_setDimmerLights_Initialization+0)+0
@@ -22149,7 +22143,7 @@ l9135:
 	movwf	indf1
 	line	83
 	
-l9137:	
+l9157:	
 ;Dimmer_B1.c: 83: DimmerLights->DimmingValue=DimmerLights->MinimumValue;
 	movf	(_DimmerLights),w
 	addlw	06h
@@ -22169,7 +22163,7 @@ l9137:
 	movwf	indf1
 	line	99
 	
-l855:	
+l875:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_Initialization
@@ -22222,7 +22216,7 @@ _Dimmer_Initialization:
 ; Regs used in _Dimmer_Initialization: [wreg]
 	line	522
 	
-l9139:	
+l9159:	
 ;Dimmer_B1.c: 522: Dimmer=&Dimmer1;
 	movlw	(_Dimmer1)&0ffh
 	movlb 0	; select bank0
@@ -22232,7 +22226,7 @@ l9139:
 	movwf	(_Dimmer)^080h
 	line	523
 	
-l952:	
+l972:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Dimmer_Initialization
@@ -22286,7 +22280,7 @@ _DelayOff_Main:
 ; Regs used in _DelayOff_Main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
 	line	48
 	
-l9633:	
+l9657:	
 ;DelayOff_B1.c: 48: DlyOff_Main(1);
 	movlw	(01h)
 	fcall	_DlyOff_Main
@@ -22296,7 +22290,7 @@ l9633:
 	fcall	_DlyOff_Main
 	line	58
 	
-l666:	
+l682:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayOff_Main
@@ -22359,13 +22353,13 @@ _DlyOff_Main:
 	movwf	(DlyOff_Main@sw)
 	line	68
 	
-l9097:	
+l9117:	
 ;DelayOff_B1.c: 68: DelayOffPointSelect(sw);
 	movf	(DlyOff_Main@sw),w
 	fcall	_DelayOffPointSelect
 	line	69
 	
-l9099:	
+l9119:	
 ;DelayOff_B1.c: 69: if(DelayOff->GO)
 	movlb 0	; select bank0
 	movf	(_DelayOff),w
@@ -22376,11 +22370,11 @@ l9099:
 	goto	u9181
 	goto	u9180
 u9181:
-	goto	l675
+	goto	l691
 u9180:
 	line	71
 	
-l9101:	
+l9121:	
 ;DelayOff_B1.c: 70: {
 ;DelayOff_B1.c: 71: DelayOff->SecondTime++;
 	movf	(_DelayOff),w
@@ -22395,7 +22389,7 @@ l9101:
 	incf	indf1,f
 	line	72
 	
-l9103:	
+l9123:	
 ;DelayOff_B1.c: 72: if(DelayOff->SecondTime >= 5650)
 	movf	(_DelayOff),w
 	addlw	02h
@@ -22415,11 +22409,11 @@ l9103:
 	goto	u9191
 	goto	u9190
 u9191:
-	goto	l675
+	goto	l691
 u9190:
 	line	74
 	
-l9105:	
+l9125:	
 ;DelayOff_B1.c: 73: {
 ;DelayOff_B1.c: 74: DelayOff->SecondTime=0;
 	movf	(_DelayOff),w
@@ -22432,7 +22426,7 @@ l9105:
 	movwi	[1]fsr1
 	line	75
 	
-l9107:	
+l9127:	
 ;DelayOff_B1.c: 75: DelayOff->MinuteTime++;
 	movlw	(01h)
 	movwf	(??_DlyOff_Main+0)+0
@@ -22445,7 +22439,7 @@ l9107:
 	addwf	indf1,f
 	line	76
 	
-l9109:	
+l9129:	
 ;DelayOff_B1.c: 76: if(DelayOff->MinuteTime >= DelayOff->Value)
 	movf	(_DelayOff),w
 	addlw	04h
@@ -22462,11 +22456,11 @@ l9109:
 	goto	u9201
 	goto	u9200
 u9201:
-	goto	l675
+	goto	l691
 u9200:
 	line	78
 	
-l9111:	
+l9131:	
 ;DelayOff_B1.c: 77: {
 ;DelayOff_B1.c: 78: DelayOff->MinuteTime=0;
 	movf	(_DelayOff),w
@@ -22477,7 +22471,7 @@ l9111:
 	clrf	indf1
 	line	79
 	
-l9113:	
+l9133:	
 ;DelayOff_B1.c: 79: DelayOff->GO=0;
 	movf	(_DelayOff),w
 	movwf	fsr1l
@@ -22486,14 +22480,14 @@ l9113:
 	bcf	indf1,1
 	line	80
 	
-l9115:	
+l9135:	
 ;DelayOff_B1.c: 80: setSw_Status(sw,0);
 	clrf	(setSw_Status@command)
 	movf	(DlyOff_Main@sw),w
 	fcall	_setSw_Status
 	line	81
 	
-l9117:	
+l9137:	
 ;DelayOff_B1.c: 81: setRFSW_Status(sw,0);
 	movlb 0	; select bank0
 	clrf	(setRFSW_Status@command)
@@ -22501,7 +22495,7 @@ l9117:
 	fcall	_setRFSW_Status
 	line	82
 	
-l9119:	
+l9139:	
 ;DelayOff_B1.c: 82: setRF_DimmerLights(sw,0);
 	movlb 0	; select bank0
 	clrf	(setRF_DimmerLights@on)
@@ -22509,7 +22503,7 @@ l9119:
 	fcall	_setRF_DimmerLights
 	line	83
 	
-l9121:	
+l9141:	
 ;DelayOff_B1.c: 83: setDimmerLights_Trigger(sw,1);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Trigger@command)
@@ -22518,7 +22512,7 @@ l9121:
 	fcall	_setDimmerLights_Trigger
 	line	84
 	
-l9123:	
+l9143:	
 ;DelayOff_B1.c: 84: setDimmerLights_Switch(sw,0);
 	movlb 0	; select bank0
 	clrf	(setDimmerLights_Switch@command)
@@ -22526,13 +22520,13 @@ l9123:
 	fcall	_setDimmerLights_Switch
 	line	85
 	
-l9125:	
+l9145:	
 ;DelayOff_B1.c: 85: setTxData(1);
 	movlw	(01h)
 	fcall	_setTxData
 	line	86
 	
-l9127:	
+l9147:	
 ;DelayOff_B1.c: 86: setBuz(1,100);
 	movlw	low(064h)
 	movlb 0	; select bank0
@@ -22541,21 +22535,21 @@ l9127:
 	movwf	((setBuz@time))+1
 	movlw	(01h)
 	fcall	_setBuz
-	goto	l675
+	goto	l691
 	line	87
 	
-l674:	
-	goto	l675
+l690:	
+	goto	l691
 	line	88
 	
-l673:	
-	goto	l675
+l689:	
+	goto	l691
 	line	89
 	
-l672:	
+l688:	
 	line	90
 	
-l675:	
+l691:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DlyOff_Main
@@ -22619,14 +22613,14 @@ _setTxData:
 	movwf	(setTxData@rf)
 	line	144
 	
-l8327:	
+l8351:	
 ;RF_Control_B1.c: 143: char i;
 ;RF_Control_B1.c: 144: RfPointSelect(rf);
 	movf	(setTxData@rf),w
 	fcall	_RfPointSelect
 	line	145
 	
-l8329:	
+l8353:	
 ;RF_Control_B1.c: 145: if(RF->Enable)
 	movf	(_RF),w
 	movwf	fsr1l
@@ -22636,11 +22630,11 @@ l8329:
 	goto	u8161
 	goto	u8160
 u8161:
-	goto	l2527
+	goto	l2579
 u8160:
 	line	148
 	
-l8331:	
+l8355:	
 ;RF_Control_B1.c: 146: {
 ;RF_Control_B1.c: 148: if(!RF->TransceiveGO)
 	movf	(_RF),w
@@ -22651,11 +22645,11 @@ l8331:
 	goto	u8171
 	goto	u8170
 u8171:
-	goto	l2527
+	goto	l2579
 u8170:
 	line	150
 	
-l8333:	
+l8357:	
 ;RF_Control_B1.c: 149: {
 ;RF_Control_B1.c: 150: RF->TransceiveGO=1;
 	movf	(_RF),w
@@ -22665,7 +22659,7 @@ l8333:
 	bsf	indf1,2
 	line	159
 	
-l8335:	
+l8359:	
 ;RF_Control_B1.c: 159: RF_Data[0]=0x63;
 	movlw	(063h)
 	movlb 0	; select bank0
@@ -22675,7 +22669,7 @@ l8335:
 	movwf	(_RF_Data)^080h
 	line	160
 	
-l8337:	
+l8361:	
 ;RF_Control_B1.c: 160: RF_Data[1]=0x02;
 	movlw	(02h)
 	movlb 0	; select bank0
@@ -22901,7 +22895,7 @@ l8337:
 	movwf	0+(_RF_Data)^080h+013h
 	line	179
 	
-l8339:	
+l8363:	
 ;RF_Control_B1.c: 179: RF_Data[20]=210;
 	movlw	(0D2h)
 	movlb 0	; select bank0
@@ -22909,17 +22903,17 @@ l8339:
 	movf	(??_setTxData+0)+0,w
 	movlb 1	; select bank1
 	movwf	0+(_RF_Data)^080h+014h
-	goto	l2527
+	goto	l2579
 	line	181
 	
-l2526:	
-	goto	l2527
+l2578:	
+	goto	l2579
 	line	183
 	
-l2525:	
+l2577:	
 	line	184
 	
-l2527:	
+l2579:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setTxData
@@ -22983,7 +22977,7 @@ _RfPointSelect:
 	movwf	(RfPointSelect@rf)
 	line	10
 	
-l8245:	
+l8269:	
 ;RF_Control_B1.c: 10: if(rf == 1)
 	movf	(RfPointSelect@rf),w
 	xorlw	01h&0ffh
@@ -22991,24 +22985,24 @@ l8245:
 	goto	u8011
 	goto	u8010
 u8011:
-	goto	l2488
+	goto	l2540
 u8010:
 	line	12
 	
-l8247:	
+l8271:	
 ;RF_Control_B1.c: 11: {
 ;RF_Control_B1.c: 12: RF=&RF1;
 	movlw	(_RF1)&0ffh
 	movwf	(??_RfPointSelect+0)+0
 	movf	(??_RfPointSelect+0)+0,w
 	movwf	(_RF)
-	goto	l2488
+	goto	l2540
 	line	13
 	
-l2487:	
+l2539:	
 	line	15
 	
-l2488:	
+l2540:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RfPointSelect
@@ -23069,13 +23063,13 @@ _setSw_Status:
 	movwf	(setSw_Status@sw)
 	line	108
 	
-l8293:	
+l8317:	
 ;Switch_B1.c: 108: SwPointSelect(sw);
 	movf	(setSw_Status@sw),w
 	fcall	_SwPointSelect
 	line	109
 	
-l8295:	
+l8319:	
 ;Switch_B1.c: 109: Sw->Status=command;
 	movf	(_Sw),w
 	movwf	fsr1l
@@ -23089,7 +23083,7 @@ l8295:
 	bsf	indf1,6
 	line	110
 	
-l2785:	
+l2841:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setSw_Status
@@ -23148,7 +23142,7 @@ _SwPointSelect:
 	movwf	(SwPointSelect@sw)
 	line	19
 	
-l8255:	
+l8279:	
 ;Switch_B1.c: 19: if(sw == 1)
 	movf	(SwPointSelect@sw),w
 	xorlw	01h&0ffh
@@ -23156,11 +23150,11 @@ l8255:
 	goto	u8041
 	goto	u8040
 u8041:
-	goto	l8259
+	goto	l8283
 u8040:
 	line	21
 	
-l8257:	
+l8281:	
 ;Switch_B1.c: 20: {
 ;Switch_B1.c: 21: Sw=&Sw1;
 	movlw	(_Sw1)&0ffh
@@ -23169,12 +23163,12 @@ l8257:
 	movwf	(_Sw)
 	line	22
 ;Switch_B1.c: 22: }
-	goto	l2770
+	goto	l2826
 	line	25
 	
-l2767:	
+l2823:	
 	
-l8259:	
+l8283:	
 ;Switch_B1.c: 25: else if(sw == 2)
 	movf	(SwPointSelect@sw),w
 	xorlw	02h&0ffh
@@ -23182,27 +23176,27 @@ l8259:
 	goto	u8051
 	goto	u8050
 u8051:
-	goto	l2770
+	goto	l2826
 u8050:
 	line	27
 	
-l8261:	
+l8285:	
 ;Switch_B1.c: 26: {
 ;Switch_B1.c: 27: Sw=&Sw2;
 	movlw	(_Sw2)&0ffh
 	movwf	(??_SwPointSelect+0)+0
 	movf	(??_SwPointSelect+0)+0,w
 	movwf	(_Sw)
-	goto	l2770
+	goto	l2826
 	line	28
 	
-l2769:	
-	goto	l2770
+l2825:	
+	goto	l2826
 	line	36
 	
-l2768:	
+l2824:	
 	
-l2770:	
+l2826:	
 	return
 	opt stack 0
 GLOBAL	__end_of_SwPointSelect
@@ -23265,14 +23259,14 @@ _setRF_DimmerLights:
 	movwf	(setRF_DimmerLights@lights)
 	line	448
 	
-l8301:	
+l8325:	
 ;RF_Control_B1.c: 447: char status;
 ;RF_Control_B1.c: 448: status=1;
 	clrf	(setRF_DimmerLights@status)
 	incf	(setRF_DimmerLights@status),f
 	line	449
 	
-l8303:	
+l8327:	
 ;RF_Control_B1.c: 449: status<<=(lights-1);
 	movf	(setRF_DimmerLights@lights),w
 	addlw	-1
@@ -23288,7 +23282,7 @@ u8140:
 	goto	u8145
 	line	450
 	
-l8305:	
+l8329:	
 ;RF_Control_B1.c: 450: Product->Data[11]=lights;
 	movf	(setRF_DimmerLights@lights),w
 	movwf	(??_setRF_DimmerLights+0)+0
@@ -23302,7 +23296,7 @@ l8305:
 	movwf	indf1
 	line	453
 	
-l8307:	
+l8331:	
 ;RF_Control_B1.c: 453: Product->Data[(20+lights)]=setPercentValue(((char)((100-55)*1.5)));
 	movlw	(043h)
 	fcall	_setPercentValue
@@ -23321,7 +23315,7 @@ l8307:
 	movwf	indf1
 	line	456
 	
-l8309:	
+l8333:	
 ;RF_Control_B1.c: 456: Product->Data[9]=Product->Data[20+lights];
 	movf	(setRF_DimmerLights@lights),w
 	addlw	014h
@@ -23344,7 +23338,7 @@ l8309:
 	movwf	indf1
 	line	457
 	
-l8311:	
+l8335:	
 ;RF_Control_B1.c: 457: Product->Data[17]=Product->Data[26+lights];
 	movf	(setRF_DimmerLights@lights),w
 	addlw	01Ah
@@ -23367,16 +23361,16 @@ l8311:
 	movwf	indf1
 	line	458
 	
-l8313:	
+l8337:	
 ;RF_Control_B1.c: 458: if(on)
 	movf	(setRF_DimmerLights@on),w
 	skipz
 	goto	u8150
-	goto	l8317
+	goto	l8341
 u8150:
 	line	460
 	
-l8315:	
+l8339:	
 ;RF_Control_B1.c: 459: {
 ;RF_Control_B1.c: 460: Product->Data[15]=(Product->Data[15]|status);
 	movf	(_Product),w
@@ -23398,13 +23392,13 @@ l8315:
 	movwf	indf1
 	line	461
 ;RF_Control_B1.c: 461: }
-	goto	l2596
+	goto	l2648
 	line	462
 	
-l2594:	
+l2646:	
 	line	464
 	
-l8317:	
+l8341:	
 ;RF_Control_B1.c: 462: else
 ;RF_Control_B1.c: 463: {
 ;RF_Control_B1.c: 464: Product->Data[15]=(Product->Data[15]&(~status));
@@ -23425,13 +23419,13 @@ l8317:
 	
 	movf	(??_setRF_DimmerLights+0)+0,w
 	movwf	indf1
-	goto	l2596
+	goto	l2648
 	line	465
 	
-l2595:	
+l2647:	
 	line	466
 	
-l2596:	
+l2648:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_DimmerLights
@@ -23492,7 +23486,7 @@ _setPercentValue:
 	movwf	(setPercentValue@value)
 	line	508
 	
-l8225:	
+l8249:	
 ;Dimmer_B1.c: 508: float i=((char)((100-20)*1.5))-((char)((100-55)*1.5));
 	movlw	0x0
 	movwf	(setPercentValue@i)
@@ -23502,7 +23496,7 @@ l8225:
 	movwf	(setPercentValue@i+2)
 	line	509
 	
-l8227:	
+l8251:	
 ;Dimmer_B1.c: 509: i/=100;
 	movlw	0x0
 	movwf	(___ftdiv@f2)
@@ -23526,7 +23520,7 @@ l8227:
 	movwf	(setPercentValue@i+2)
 	line	510
 	
-l8229:	
+l8253:	
 ;Dimmer_B1.c: 510: return (100-(char)((value-((char)((100-55)*1.5)))/i));
 	movf	(setPercentValue@value),w
 	addlw	low(-67)
@@ -23562,12 +23556,12 @@ l8229:
 	decf	0+(((0+(?___fttol)))),w
 	xorlw	0ffh
 	addlw	064h
-	goto	l949
+	goto	l969
 	
-l8231:	
+l8255:	
 	line	518
 	
-l949:	
+l969:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setPercentValue
@@ -23624,7 +23618,7 @@ ___fttol:
 ; Regs used in ___fttol: [wreg+status,2+status,0]
 	line	49
 	
-l8125:	
+l8149:	
 	movlb 0	; select bank0
 	movf	(___fttol@f1),w
 	movwf	((??___fttol+0)+0)
@@ -23643,11 +23637,11 @@ l8125:
 	goto	u7781
 	goto	u7780
 u7781:
-	goto	l8131
+	goto	l8155
 u7780:
 	line	50
 	
-l8127:	
+l8151:	
 	movlw	0
 	movwf	(?___fttol+3)
 	movlw	0
@@ -23657,15 +23651,15 @@ l8127:
 	movlw	0
 	movwf	(?___fttol)
 
-	goto	l3316
+	goto	l3380
 	
-l8129:	
-	goto	l3316
+l8153:	
+	goto	l3380
 	
-l3315:	
+l3379:	
 	line	51
 	
-l8131:	
+l8155:	
 	movf	(___fttol@f1),w
 	movwf	((??___fttol+0)+0)
 	movf	(___fttol@f1+1),w
@@ -23686,11 +23680,11 @@ u7790:
 	movwf	(___fttol@sign1)
 	line	52
 	
-l8133:	
+l8157:	
 	bsf	(___fttol@f1)+(15/8),(15)&7
 	line	53
 	
-l8135:	
+l8159:	
 	movlw	0FFh
 	andwf	(___fttol@f1),f
 	movlw	0FFh
@@ -23699,7 +23693,7 @@ l8135:
 	andwf	(___fttol@f1+2),f
 	line	54
 	
-l8137:	
+l8161:	
 	movf	(___fttol@f1),w
 	movwf	(___fttol@lval)
 	movf	(___fttol@f1+1),w
@@ -23709,21 +23703,21 @@ l8137:
 	clrf	((___fttol@lval))+3
 	line	55
 	
-l8139:	
+l8163:	
 	movlw	low(08Eh)
 	subwf	(___fttol@exp1),f
 	line	56
 	
-l8141:	
+l8165:	
 	btfss	(___fttol@exp1),7
 	goto	u7801
 	goto	u7800
 u7801:
-	goto	l8151
+	goto	l8175
 u7800:
 	line	57
 	
-l8143:	
+l8167:	
 	movf	(___fttol@exp1),w
 	xorlw	80h
 	addlw	-((-15)^80h)
@@ -23731,11 +23725,11 @@ l8143:
 	goto	u7811
 	goto	u7810
 u7811:
-	goto	l8149
+	goto	l8173
 u7810:
 	line	58
 	
-l8145:	
+l8169:	
 	movlw	0
 	movwf	(?___fttol+3)
 	movlw	0
@@ -23745,19 +23739,19 @@ l8145:
 	movlw	0
 	movwf	(?___fttol)
 
-	goto	l3316
+	goto	l3380
 	
-l8147:	
-	goto	l3316
+l8171:	
+	goto	l3380
 	
-l3318:	
-	goto	l8149
+l3382:	
+	goto	l8173
 	line	59
 	
-l3319:	
+l3383:	
 	line	60
 	
-l8149:	
+l8173:	
 	movlw	01h
 u7825:
 	lsrf	(___fttol@lval+3),f
@@ -23776,29 +23770,29 @@ u7825:
 	goto	u7831
 	goto	u7830
 u7831:
-	goto	l8149
+	goto	l8173
 u7830:
-	goto	l8161
+	goto	l8185
 	
-l3320:	
+l3384:	
 	line	62
-	goto	l8161
+	goto	l8185
 	
-l3317:	
+l3381:	
 	line	63
 	
-l8151:	
+l8175:	
 	movlw	(018h)
 	subwf	(___fttol@exp1),w
 	skipc
 	goto	u7841
 	goto	u7840
 u7841:
-	goto	l8159
+	goto	l8183
 u7840:
 	line	64
 	
-l8153:	
+l8177:	
 	movlw	0
 	movwf	(?___fttol+3)
 	movlw	0
@@ -23808,19 +23802,19 @@ l8153:
 	movlw	0
 	movwf	(?___fttol)
 
-	goto	l3316
+	goto	l3380
 	
-l8155:	
-	goto	l3316
+l8179:	
+	goto	l3380
 	
-l3322:	
+l3386:	
 	line	65
-	goto	l8159
+	goto	l8183
 	
-l3324:	
+l3388:	
 	line	66
 	
-l8157:	
+l8181:	
 	movlw	01h
 u7855:
 	lslf	(___fttol@lval),f
@@ -23832,38 +23826,38 @@ u7855:
 	line	67
 	movlw	low(01h)
 	subwf	(___fttol@exp1),f
-	goto	l8159
+	goto	l8183
 	line	68
 	
-l3323:	
+l3387:	
 	line	65
 	
-l8159:	
+l8183:	
 	movf	(___fttol@exp1),f
 	skipz
 	goto	u7861
 	goto	u7860
 u7861:
-	goto	l8157
+	goto	l8181
 u7860:
-	goto	l8161
+	goto	l8185
 	
-l3325:	
-	goto	l8161
+l3389:	
+	goto	l8185
 	line	69
 	
-l3321:	
+l3385:	
 	line	70
 	
-l8161:	
+l8185:	
 	movf	(___fttol@sign1),w
 	skipz
 	goto	u7870
-	goto	l8165
+	goto	l8189
 u7870:
 	line	71
 	
-l8163:	
+l8187:	
 	comf	(___fttol@lval),f
 	comf	(___fttol@lval+1),f
 	comf	(___fttol@lval+2),f
@@ -23875,12 +23869,12 @@ l8163:
 	incf	(___fttol@lval+2),f
 	skipnz
 	incf	(___fttol@lval+3),f
-	goto	l8165
+	goto	l8189
 	
-l3326:	
+l3390:	
 	line	72
 	
-l8165:	
+l8189:	
 	movf	(___fttol@lval+3),w
 	movwf	(?___fttol+3)
 	movf	(___fttol@lval+2),w
@@ -23890,12 +23884,12 @@ l8165:
 	movf	(___fttol@lval),w
 	movwf	(?___fttol)
 
-	goto	l3316
+	goto	l3380
 	
-l8167:	
+l8191:	
 	line	73
 	
-l3316:	
+l3380:	
 	return
 	opt stack 0
 GLOBAL	__end_of___fttol
@@ -23954,7 +23948,7 @@ ___ftdiv:
 ; Regs used in ___ftdiv: [wreg+status,2+status,0+pclath+cstack]
 	line	55
 	
-l8033:	
+l8057:	
 	movlb 0	; select bank0
 	movf	(___ftdiv@f1),w
 	movwf	((??___ftdiv+0)+0)
@@ -23973,26 +23967,26 @@ l8033:
 	goto	u7581
 	goto	u7580
 u7581:
-	goto	l8039
+	goto	l8063
 u7580:
 	line	56
 	
-l8035:	
+l8059:	
 	movlw	0x0
 	movwf	(?___ftdiv)
 	movlw	0x0
 	movwf	(?___ftdiv+1)
 	movlw	0x0
 	movwf	(?___ftdiv+2)
-	goto	l3281
+	goto	l3345
 	
-l8037:	
-	goto	l3281
+l8061:	
+	goto	l3345
 	
-l3280:	
+l3344:	
 	line	57
 	
-l8039:	
+l8063:	
 	movf	(___ftdiv@f2),w
 	movwf	((??___ftdiv+0)+0)
 	movf	(___ftdiv@f2+1),w
@@ -24010,26 +24004,26 @@ l8039:
 	goto	u7591
 	goto	u7590
 u7591:
-	goto	l8045
+	goto	l8069
 u7590:
 	line	58
 	
-l8041:	
+l8065:	
 	movlw	0x0
 	movwf	(?___ftdiv)
 	movlw	0x0
 	movwf	(?___ftdiv+1)
 	movlw	0x0
 	movwf	(?___ftdiv+2)
-	goto	l3281
+	goto	l3345
 	
-l8043:	
-	goto	l3281
+l8067:	
+	goto	l3345
 	
-l3282:	
+l3346:	
 	line	59
 	
-l8045:	
+l8069:	
 	movlw	0
 	movwf	(___ftdiv@f3)
 	movlw	0
@@ -24038,7 +24032,7 @@ l8045:
 	movwf	(___ftdiv@f3+2)
 	line	60
 	
-l8047:	
+l8071:	
 	movlw	(089h)
 	addwf	(___ftdiv@sign),w
 	movwf	(??___ftdiv+0)+0
@@ -24046,7 +24040,7 @@ l8047:
 	subwf	(___ftdiv@exp),f
 	line	61
 	
-l8049:	
+l8073:	
 	movf	(___ftdiv@f1),w
 	movwf	((??___ftdiv+0)+0)
 	movf	(___ftdiv@f1+1),w
@@ -24067,7 +24061,7 @@ u7600:
 	movwf	(___ftdiv@sign)
 	line	62
 	
-l8051:	
+l8075:	
 	movf	(___ftdiv@f2),w
 	movwf	((??___ftdiv+0)+0)
 	movf	(___ftdiv@f2+1),w
@@ -24088,14 +24082,14 @@ u7610:
 	xorwf	(___ftdiv@sign),f
 	line	63
 	
-l8053:	
+l8077:	
 	movlw	(080h)
 	movwf	(??___ftdiv+0)+0
 	movf	(??___ftdiv+0)+0,w
 	andwf	(___ftdiv@sign),f
 	line	64
 	
-l8055:	
+l8079:	
 	bsf	(___ftdiv@f1)+(15/8),(15)&7
 	line	65
 	movlw	0FFh
@@ -24106,7 +24100,7 @@ l8055:
 	andwf	(___ftdiv@f1+2),f
 	line	66
 	
-l8057:	
+l8081:	
 	bsf	(___ftdiv@f2)+(15/8),(15)&7
 	line	67
 	movlw	0FFh
@@ -24120,13 +24114,13 @@ l8057:
 	movwf	(??___ftdiv+0)+0
 	movf	(??___ftdiv+0)+0,w
 	movwf	(___ftdiv@cntr)
-	goto	l8059
+	goto	l8083
 	line	69
 	
-l3283:	
+l3347:	
 	line	70
 	
-l8059:	
+l8083:	
 	movlw	01h
 u7625:
 	lslf	(___ftdiv@f3),f
@@ -24136,7 +24130,7 @@ u7625:
 	goto	u7625
 	line	71
 	
-l8061:	
+l8085:	
 	movf	(___ftdiv@f2+2),w
 	subwf	(___ftdiv@f1+2),w
 	skipz
@@ -24152,11 +24146,11 @@ u7635:
 	goto	u7631
 	goto	u7630
 u7631:
-	goto	l8067
+	goto	l8091
 u7630:
 	line	72
 	
-l8063:	
+l8087:	
 	movf	(___ftdiv@f2),w
 	subwf	(___ftdiv@f1),f
 	movf	(___ftdiv@f2+1),w
@@ -24165,15 +24159,15 @@ l8063:
 	subwfb	(___ftdiv@f1+2),f
 	line	73
 	
-l8065:	
+l8089:	
 	bsf	(___ftdiv@f3)+(0/8),(0)&7
-	goto	l8067
+	goto	l8091
 	line	74
 	
-l3284:	
+l3348:	
 	line	75
 	
-l8067:	
+l8091:	
 	movlw	01h
 u7645:
 	lslf	(___ftdiv@f1),f
@@ -24183,21 +24177,21 @@ u7645:
 	goto	u7645
 	line	76
 	
-l8069:	
+l8093:	
 	movlw	low(01h)
 	subwf	(___ftdiv@cntr),f
 	btfss	status,2
 	goto	u7651
 	goto	u7650
 u7651:
-	goto	l8059
+	goto	l8083
 u7650:
-	goto	l8071
+	goto	l8095
 	
-l3285:	
+l3349:	
 	line	77
 	
-l8071:	
+l8095:	
 	movf	(___ftdiv@f3),w
 	movwf	(___ftpack@arg)
 	movf	(___ftdiv@f3+1),w
@@ -24220,12 +24214,12 @@ l8071:
 	movwf	(?___ftdiv+1)
 	movf	(2+(?___ftpack)),w
 	movwf	(?___ftdiv+2)
-	goto	l3281
+	goto	l3345
 	
-l8073:	
+l8097:	
 	line	78
 	
-l3281:	
+l3345:	
 	return
 	opt stack 0
 GLOBAL	__end_of___ftdiv
@@ -24280,21 +24274,21 @@ ___awtoft:
 ; Regs used in ___awtoft: [wreg+status,2+status,0+pclath+cstack]
 	line	36
 	
-l7949:	
+l7973:	
 	movlb 0	; select bank0
 	clrf	(___awtoft@sign)
 	line	37
 	
-l7951:	
+l7975:	
 	btfss	(___awtoft@c+1),7
 	goto	u7341
 	goto	u7340
 u7341:
-	goto	l7957
+	goto	l7981
 u7340:
 	line	38
 	
-l7953:	
+l7977:	
 	comf	(___awtoft@c),f
 	comf	(___awtoft@c+1),f
 	incf	(___awtoft@c),f
@@ -24302,16 +24296,16 @@ l7953:
 	incf	(___awtoft@c+1),f
 	line	39
 	
-l7955:	
+l7979:	
 	clrf	(___awtoft@sign)
 	incf	(___awtoft@sign),f
-	goto	l7957
+	goto	l7981
 	line	40
 	
-l3224:	
+l3288:	
 	line	41
 	
-l7957:	
+l7981:	
 	movf	(___awtoft@c),w
 	movwf	(___ftpack@arg)
 	movf	(___awtoft@c+1),w
@@ -24333,12 +24327,12 @@ l7957:
 	movwf	(?___awtoft+1)
 	movf	(2+(?___ftpack)),w
 	movwf	(?___awtoft+2)
-	goto	l3225
+	goto	l3289
 	
-l7959:	
+l7983:	
 	line	42
 	
-l3225:	
+l3289:	
 	return
 	opt stack 0
 GLOBAL	__end_of___awtoft
@@ -24397,15 +24391,15 @@ ___ftpack:
 ; Regs used in ___ftpack: [wreg+status,2+status,0]
 	line	64
 	
-l7919:	
+l7943:	
 	movlb 0	; select bank0
 	movf	(___ftpack@exp),w
 	skipz
 	goto	u7230
-	goto	l7923
+	goto	l7947
 u7230:
 	
-l7921:	
+l7945:	
 	movf	(___ftpack@arg+2),w
 	iorwf	(___ftpack@arg+1),w
 	iorwf	(___ftpack@arg),w
@@ -24413,33 +24407,33 @@ l7921:
 	goto	u7241
 	goto	u7240
 u7241:
-	goto	l7929
+	goto	l7953
 u7240:
-	goto	l7923
+	goto	l7947
 	
-l3230:	
+l3294:	
 	line	65
 	
-l7923:	
+l7947:	
 	movlw	0x0
 	movwf	(?___ftpack)
 	movlw	0x0
 	movwf	(?___ftpack+1)
 	movlw	0x0
 	movwf	(?___ftpack+2)
-	goto	l3231
+	goto	l3295
 	
-l7925:	
-	goto	l3231
+l7949:	
+	goto	l3295
 	
-l3228:	
+l3292:	
 	line	66
-	goto	l7929
+	goto	l7953
 	
-l3233:	
+l3297:	
 	line	67
 	
-l7927:	
+l7951:	
 	movlw	(01h)
 	movwf	(??___ftpack+0)+0
 	movf	(??___ftpack+0)+0,w
@@ -24453,38 +24447,38 @@ u7255:
 	decfsz	wreg,f
 	goto	u7255
 
-	goto	l7929
+	goto	l7953
 	line	69
 	
-l3232:	
+l3296:	
 	line	66
 	
-l7929:	
+l7953:	
 	movlw	low highword(0FE0000h)
 	andwf	(___ftpack@arg+2),w
 	btfss	status,2
 	goto	u7261
 	goto	u7260
 u7261:
-	goto	l7927
+	goto	l7951
 u7260:
-	goto	l3235
+	goto	l3299
 	
-l3234:	
+l3298:	
 	line	70
-	goto	l3235
+	goto	l3299
 	
-l3236:	
+l3300:	
 	line	71
 	
-l7931:	
+l7955:	
 	movlw	(01h)
 	movwf	(??___ftpack+0)+0
 	movf	(??___ftpack+0)+0,w
 	addwf	(___ftpack@exp),f
 	line	72
 	
-l7933:	
+l7957:	
 	movlw	01h
 	addwf	(___ftpack@arg),f
 	movlw	0
@@ -24497,7 +24491,7 @@ movlw 1
 	addwf	(___ftpack@arg+2),f
 	line	73
 	
-l7935:	
+l7959:	
 	movlw	01h
 u7275:
 	lsrf	(___ftpack@arg+2),f
@@ -24508,7 +24502,7 @@ u7275:
 
 	line	74
 	
-l3235:	
+l3299:	
 	line	70
 	movlw	low highword(0FF0000h)
 	andwf	(___ftpack@arg+2),w
@@ -24516,18 +24510,18 @@ l3235:
 	goto	u7281
 	goto	u7280
 u7281:
-	goto	l7931
+	goto	l7955
 u7280:
-	goto	l7939
+	goto	l7963
 	
-l3237:	
+l3301:	
 	line	75
-	goto	l7939
+	goto	l7963
 	
-l3239:	
+l3303:	
 	line	76
 	
-l7937:	
+l7961:	
 	movlw	low(01h)
 	subwf	(___ftpack@exp),f
 	line	77
@@ -24538,31 +24532,31 @@ u7295:
 	rlf	(___ftpack@arg+2),f
 	decfsz	wreg,f
 	goto	u7295
-	goto	l7939
+	goto	l7963
 	line	78
 	
-l3238:	
+l3302:	
 	line	75
 	
-l7939:	
+l7963:	
 	btfss	(___ftpack@arg+1),(15)&7
 	goto	u7301
 	goto	u7300
 u7301:
-	goto	l7937
+	goto	l7961
 u7300:
 	
-l3240:	
+l3304:	
 	line	79
 	btfsc	(___ftpack@exp),(0)&7
 	goto	u7311
 	goto	u7310
 u7311:
-	goto	l3241
+	goto	l3305
 u7310:
 	line	80
 	
-l7941:	
+l7965:	
 	movlw	0FFh
 	andwf	(___ftpack@arg),f
 	movlw	07Fh
@@ -24570,14 +24564,14 @@ l7941:
 	movlw	0FFh
 	andwf	(___ftpack@arg+2),f
 	
-l3241:	
+l3305:	
 	line	81
 	clrc
 	rrf	(___ftpack@exp),f
 
 	line	82
 	
-l7943:	
+l7967:	
 	movf	(___ftpack@exp),w
 	movwf	((??___ftpack+0)+0)
 	clrf	((??___ftpack+0)+0+1)
@@ -24598,22 +24592,22 @@ u7320:
 	iorwf	(___ftpack@arg+2),f
 	line	83
 	
-l7945:	
+l7969:	
 	movf	(___ftpack@sign),w
 	skipz
 	goto	u7330
-	goto	l3242
+	goto	l3306
 u7330:
 	line	84
 	
-l7947:	
+l7971:	
 	bsf	(___ftpack@arg)+(23/8),(23)&7
 	
-l3242:	
+l3306:	
 	line	85
 	line	86
 	
-l3231:	
+l3295:	
 	return
 	opt stack 0
 GLOBAL	__end_of___ftpack
@@ -24675,13 +24669,13 @@ _setRFSW_Status:
 	movwf	(setRFSW_Status@sw)
 	line	427
 	
-l8297:	
+l8321:	
 ;RF_Control_B1.c: 427: RfSWPointSelect(sw);
 	movf	(setRFSW_Status@sw),w
 	fcall	_RfSWPointSelect
 	line	428
 	
-l8299:	
+l8323:	
 ;RF_Control_B1.c: 428: RFSW->Status=command;
 	movlb 1	; select bank1
 	movf	(_RFSW)^080h,w
@@ -24695,7 +24689,7 @@ l8299:
 	bsf	indf1,0
 	line	429
 	
-l2587:	
+l2639:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRFSW_Status
@@ -24753,7 +24747,7 @@ _RfSWPointSelect:
 	movwf	(RfSWPointSelect@sw)
 	line	350
 	
-l8249:	
+l8273:	
 ;RF_Control_B1.c: 350: if(sw == 1)
 	movf	(RfSWPointSelect@sw),w
 	xorlw	01h&0ffh
@@ -24761,11 +24755,11 @@ l8249:
 	goto	u8021
 	goto	u8020
 u8021:
-	goto	l2569
+	goto	l2621
 u8020:
 	line	352
 	
-l8251:	
+l8275:	
 ;RF_Control_B1.c: 351: {
 ;RF_Control_B1.c: 352: RFSW=&RFSW1;
 	movlw	(_RFSW1)&0ffh
@@ -24775,7 +24769,7 @@ l8251:
 	movwf	(_RFSW)^080h
 	line	353
 	
-l2569:	
+l2621:	
 	line	356
 ;RF_Control_B1.c: 353: }
 ;RF_Control_B1.c: 356: if(sw == 2)
@@ -24786,11 +24780,11 @@ l2569:
 	goto	u8031
 	goto	u8030
 u8031:
-	goto	l2571
+	goto	l2623
 u8030:
 	line	358
 	
-l8253:	
+l8277:	
 ;RF_Control_B1.c: 357: {
 ;RF_Control_B1.c: 358: RFSW=&RFSW2;
 	movlw	(_RFSW2)&0ffh
@@ -24798,13 +24792,13 @@ l8253:
 	movf	(??_RfSWPointSelect+0)+0,w
 	movlb 1	; select bank1
 	movwf	(_RFSW)^080h
-	goto	l2571
+	goto	l2623
 	line	359
 	
-l2570:	
+l2622:	
 	line	367
 	
-l2571:	
+l2623:	
 	return
 	opt stack 0
 GLOBAL	__end_of_RfSWPointSelect
@@ -24865,13 +24859,13 @@ _setDimmerLights_Trigger:
 	movwf	(setDimmerLights_Trigger@lights)
 	line	447
 	
-l8319:	
+l8343:	
 ;Dimmer_B1.c: 447: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Trigger@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	448
 	
-l8321:	
+l8345:	
 ;Dimmer_B1.c: 448: DimmerLights->Trigger=command;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -24886,7 +24880,7 @@ l8321:
 	bsf	indf1,1
 	line	449
 	
-l937:	
+l957:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_Trigger
@@ -24946,13 +24940,13 @@ _setDimmerLights_Switch:
 	movwf	(setDimmerLights_Switch@lights)
 	line	437
 	
-l8323:	
+l8347:	
 ;Dimmer_B1.c: 437: DimmerLightsPointSelect(lights);
 	movf	(setDimmerLights_Switch@lights),w
 	fcall	_DimmerLightsPointSelect
 	line	438
 	
-l8325:	
+l8349:	
 ;Dimmer_B1.c: 438: DimmerLights->Switch=command;
 	movlb 0	; select bank0
 	movf	(_DimmerLights),w
@@ -24967,7 +24961,7 @@ l8325:
 	bsf	indf1,0
 	line	439
 	
-l931:	
+l951:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerLights_Switch
@@ -25036,7 +25030,7 @@ _DimmerLightsPointSelect:
 	movwf	(DimmerLightsPointSelect@lights)
 	line	10
 	
-l8169:	
+l8193:	
 ;Dimmer_B1.c: 10: if(lights == 1)
 	movf	(DimmerLightsPointSelect@lights),w
 	xorlw	01h&0ffh
@@ -25044,11 +25038,11 @@ l8169:
 	goto	u7881
 	goto	u7880
 u7881:
-	goto	l847
+	goto	l867
 u7880:
 	line	12
 	
-l8171:	
+l8195:	
 ;Dimmer_B1.c: 11: {
 ;Dimmer_B1.c: 12: DimmerLights=&DimmerLights1;
 	movlw	(_DimmerLights1)&0ffh
@@ -25057,7 +25051,7 @@ l8171:
 	movwf	(_DimmerLights)
 	line	13
 	
-l847:	
+l867:	
 	line	20
 ;Dimmer_B1.c: 13: }
 ;Dimmer_B1.c: 20: if(lights == 2)
@@ -25067,24 +25061,24 @@ l847:
 	goto	u7891
 	goto	u7890
 u7891:
-	goto	l849
+	goto	l869
 u7890:
 	line	22
 	
-l8173:	
+l8197:	
 ;Dimmer_B1.c: 21: {
 ;Dimmer_B1.c: 22: DimmerLights=&DimmerLights2;
 	movlw	(_DimmerLights2)&0ffh
 	movwf	(??_DimmerLightsPointSelect+0)+0
 	movf	(??_DimmerLightsPointSelect+0)+0,w
 	movwf	(_DimmerLights)
-	goto	l849
+	goto	l869
 	line	23
 	
-l848:	
+l868:	
 	line	38
 	
-l849:	
+l869:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DimmerLightsPointSelect
@@ -25151,7 +25145,7 @@ _setBuz:
 	movwf	(setBuz@count)
 	line	24
 	
-l8275:	
+l8299:	
 ;Buzzer_B1.c: 24: time*=20;
 	movlw	low(014h)
 	movwf	(___wmul@multiplier)
@@ -25175,7 +25169,7 @@ l8275:
 
 	line	25
 	
-l8277:	
+l8301:	
 ;Buzzer_B1.c: 25: if(Buz->Enable)
 	movf	(_Buz),w
 	movwf	fsr1l
@@ -25186,11 +25180,11 @@ l8277:
 	goto	u8101
 	goto	u8100
 u8101:
-	goto	l131
+	goto	l135
 u8100:
 	line	27
 	
-l8279:	
+l8303:	
 ;Buzzer_B1.c: 26: {
 ;Buzzer_B1.c: 27: if(!Buz->GO)
 	movf	(_Buz),w
@@ -25202,11 +25196,11 @@ l8279:
 	goto	u8111
 	goto	u8110
 u8111:
-	goto	l8285
+	goto	l8309
 u8110:
 	line	29
 	
-l8281:	
+l8305:	
 ;Buzzer_B1.c: 28: {
 ;Buzzer_B1.c: 29: Buz->GO=1;
 	movf	(_Buz),w
@@ -25241,18 +25235,18 @@ l8281:
 	movwi	[1]fsr1
 	line	33
 	
-l8283:	
+l8307:	
 ;Buzzer_B1.c: 33: RB3=1;
 	bsf	(107/8),(107)&7	;volatile
 	line	34
 ;Buzzer_B1.c: 34: }
-	goto	l131
+	goto	l135
 	line	35
 	
-l126:	
+l130:	
 	line	37
 	
-l8285:	
+l8309:	
 ;Buzzer_B1.c: 35: else
 ;Buzzer_B1.c: 36: {
 ;Buzzer_B1.c: 37: if(!Buz->BufferStatus1)
@@ -25265,11 +25259,11 @@ l8285:
 	goto	u8121
 	goto	u8120
 u8121:
-	goto	l8289
+	goto	l8313
 u8120:
 	line	39
 	
-l8287:	
+l8311:	
 ;Buzzer_B1.c: 38: {
 ;Buzzer_B1.c: 39: Buz->BufferStatus1=1;
 	movf	(_Buz),w
@@ -25304,12 +25298,12 @@ l8287:
 	movwi	[1]fsr1
 	line	42
 ;Buzzer_B1.c: 42: }
-	goto	l131
+	goto	l135
 	line	43
 	
-l128:	
+l132:	
 	
-l8289:	
+l8313:	
 ;Buzzer_B1.c: 43: else if(!Buz->BufferStatus2)
 	movf	(_Buz),w
 	movwf	fsr1l
@@ -25320,11 +25314,11 @@ l8289:
 	goto	u8131
 	goto	u8130
 u8131:
-	goto	l131
+	goto	l135
 u8130:
 	line	45
 	
-l8291:	
+l8315:	
 ;Buzzer_B1.c: 44: {
 ;Buzzer_B1.c: 45: Buz->BufferStatus2=1;
 	movf	(_Buz),w
@@ -25357,24 +25351,24 @@ l8291:
 	movwi	[0]fsr1
 	movf	(setBuz@time+1),w
 	movwi	[1]fsr1
-	goto	l131
+	goto	l135
 	line	48
 	
-l130:	
-	goto	l131
+l134:	
+	goto	l135
 	line	49
 	
-l129:	
-	goto	l131
-	
-l127:	
-	goto	l131
-	line	50
-	
-l125:	
-	line	51
+l133:	
+	goto	l135
 	
 l131:	
+	goto	l135
+	line	50
+	
+l129:	
+	line	51
+	
+l135:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setBuz
@@ -25429,32 +25423,32 @@ ___wmul:
 ; Regs used in ___wmul: [wreg+status,2+status,0]
 	line	43
 	
-l8263:	
+l8287:	
 	movlb 0	; select bank0
 	clrf	(___wmul@product)
 	clrf	(___wmul@product+1)
-	goto	l8265
+	goto	l8289
 	line	44
 	
-l3073:	
+l3137:	
 	line	45
 	
-l8265:	
+l8289:	
 	btfss	(___wmul@multiplier),(0)&7
 	goto	u8061
 	goto	u8060
 u8061:
-	goto	l3074
+	goto	l3138
 u8060:
 	line	46
 	
-l8267:	
+l8291:	
 	movf	(___wmul@multiplicand),w
 	addwf	(___wmul@product),f
 	movf	(___wmul@multiplicand+1),w
 	addwfc	(___wmul@product+1),f
 	
-l3074:	
+l3138:	
 	line	47
 	movlw	01h
 	
@@ -25465,7 +25459,7 @@ u8075:
 	goto	u8075
 	line	48
 	
-l8269:	
+l8293:	
 	movlw	01h
 	
 u8085:
@@ -25480,14 +25474,14 @@ u8085:
 	goto	u8091
 	goto	u8090
 u8091:
-	goto	l8265
+	goto	l8289
 u8090:
-	goto	l8271
+	goto	l8295
 	
-l3075:	
+l3139:	
 	line	52
 	
-l8271:	
+l8295:	
 	movf	(___wmul@product+1),w
 	clrf	(?___wmul+1)
 	addwf	(?___wmul+1)
@@ -25495,12 +25489,12 @@ l8271:
 	clrf	(?___wmul)
 	addwf	(?___wmul)
 
-	goto	l3076
+	goto	l3140
 	
-l8273:	
+l8297:	
 	line	53
 	
-l3076:	
+l3140:	
 	return
 	opt stack 0
 GLOBAL	__end_of___wmul
@@ -25554,7 +25548,7 @@ _DelayOff_Initialization:
 ; Regs used in _DelayOff_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	33
 	
-l9631:	
+l9655:	
 ;DelayOff_B1.c: 33: DlyOff_Initialization(1);
 	movlw	(01h)
 	fcall	_DlyOff_Initialization
@@ -25564,7 +25558,7 @@ l9631:
 	fcall	_DlyOff_Initialization
 	line	43
 	
-l663:	
+l679:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayOff_Initialization
@@ -25620,13 +25614,13 @@ _DlyOff_Initialization:
 	movwf	(DlyOff_Initialization@sw)
 	line	62
 	
-l9093:	
+l9113:	
 ;DelayOff_B1.c: 62: DelayOffPointSelect(sw);
 	movf	(DlyOff_Initialization@sw),w
 	fcall	_DelayOffPointSelect
 	line	63
 	
-l9095:	
+l9115:	
 ;DelayOff_B1.c: 63: DelayOff->Enable=1;
 	movlb 0	; select bank0
 	movf	(_DelayOff),w
@@ -25636,7 +25630,7 @@ l9095:
 	bsf	indf1,0
 	line	64
 	
-l669:	
+l685:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DlyOff_Initialization
@@ -25694,7 +25688,7 @@ _DelayOffPointSelect:
 	movwf	(DelayOffPointSelect@sw)
 	line	11
 	
-l8183:	
+l8207:	
 ;DelayOff_B1.c: 11: if(sw == 1)
 	movf	(DelayOffPointSelect@sw),w
 	xorlw	01h&0ffh
@@ -25702,11 +25696,11 @@ l8183:
 	goto	u7901
 	goto	u7900
 u7901:
-	goto	l8187
+	goto	l8211
 u7900:
 	line	13
 	
-l8185:	
+l8209:	
 ;DelayOff_B1.c: 12: {
 ;DelayOff_B1.c: 13: DelayOff=&DlySw1;
 	movlw	(_DlySw1)&0ffh
@@ -25715,12 +25709,12 @@ l8185:
 	movwf	(_DelayOff)
 	line	14
 ;DelayOff_B1.c: 14: }
-	goto	l660
+	goto	l676
 	line	17
 	
-l657:	
+l673:	
 	
-l8187:	
+l8211:	
 ;DelayOff_B1.c: 17: else if(sw == 2)
 	movf	(DelayOffPointSelect@sw),w
 	xorlw	02h&0ffh
@@ -25728,27 +25722,27 @@ l8187:
 	goto	u7911
 	goto	u7910
 u7911:
-	goto	l660
+	goto	l676
 u7910:
 	line	19
 	
-l8189:	
+l8213:	
 ;DelayOff_B1.c: 18: {
 ;DelayOff_B1.c: 19: DelayOff=&DlySw2;
 	movlw	(_DlySw2)&0ffh
 	movwf	(??_DelayOffPointSelect+0)+0
 	movf	(??_DelayOffPointSelect+0)+0,w
 	movwf	(_DelayOff)
-	goto	l660
+	goto	l676
 	line	20
 	
-l659:	
-	goto	l660
+l675:	
+	goto	l676
 	line	28
 	
-l658:	
+l674:	
 	
-l660:	
+l676:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayOffPointSelect
@@ -25808,17 +25802,17 @@ _CC2500_PowerOnInitial:
 ; Regs used in _CC2500_PowerOnInitial: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	99
 	
-l9625:	
+l9649:	
 ;CC2500_B1.c: 99: CC2500_PowerRST();
 	fcall	_CC2500_PowerRST
 	line	100
 	
-l9627:	
+l9651:	
 ;CC2500_B1.c: 100: CC2500_InitSetREG();
 	fcall	_CC2500_InitSetREG
 	line	101
 	
-l9629:	
+l9653:	
 ;CC2500_B1.c: 101: CC2500_InitPATable();
 	fcall	_CC2500_InitPATable
 	line	102
@@ -25835,7 +25829,7 @@ l9629:
 	fcall	_CC2500_SIDLEMode
 	line	106
 	
-l329:	
+l337:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_PowerOnInitial
@@ -25888,13 +25882,13 @@ _CC2500_SIDLEMode:
 ; Regs used in _CC2500_SIDLEMode: [wreg+status,2+status,0+pclath+cstack]
 	line	185
 	
-l9091:	
+l9111:	
 ;CC2500_B1.c: 185: CC2500_WriteCommand(0x36);
 	movlw	(036h)
 	fcall	_CC2500_WriteCommand
 	line	186
 	
-l360:	
+l368:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_SIDLEMode
@@ -25948,7 +25942,7 @@ _CC2500_PowerRST:
 ; Regs used in _CC2500_PowerRST: [wreg+status,2+status,0+pclath+cstack]
 	line	112
 	
-l9043:	
+l9063:	
 ;CC2500_B1.c: 112: RC1=0;
 	movlb 0	; select bank0
 	bcf	(113/8),(113)&7	;volatile
@@ -25960,7 +25954,7 @@ l9043:
 	bsf	(116/8),(116)&7	;volatile
 	line	115
 	
-l9045:	
+l9065:	
 ;CC2500_B1.c: 115: DelayTime_1us(10);
 	movlw	low(0Ah)
 	movwf	(DelayTime_1us@count)
@@ -25969,7 +25963,7 @@ l9045:
 	fcall	_DelayTime_1us
 	line	116
 	
-l9047:	
+l9067:	
 ;CC2500_B1.c: 116: RC4=0;
 	movlb 0	; select bank0
 	bcf	(116/8),(116)&7	;volatile
@@ -25982,7 +25976,7 @@ l9047:
 	fcall	_DelayTime_1us
 	line	118
 	
-l9049:	
+l9069:	
 ;CC2500_B1.c: 118: RC4=1;
 	movlb 0	; select bank0
 	bsf	(116/8),(116)&7	;volatile
@@ -25995,13 +25989,13 @@ l9049:
 	fcall	_DelayTime_1us
 	line	120
 	
-l9051:	
+l9071:	
 ;CC2500_B1.c: 120: RC4=0;
 	movlb 0	; select bank0
 	bcf	(116/8),(116)&7	;volatile
 	line	121
 	
-l9053:	
+l9073:	
 ;CC2500_B1.c: 121: SPI0Buffer=0x30;
 	movlw	(030h)
 	movwf	(??_CC2500_PowerRST+0)+0
@@ -26010,42 +26004,42 @@ l9053:
 	movwf	(_SPI0Buffer)^080h
 	line	122
 ;CC2500_B1.c: 122: while(RC2==1);
-	goto	l332
+	goto	l340
 	
-l333:	
+l341:	
 	
-l332:	
+l340:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u9121
 	goto	u9120
 u9121:
-	goto	l332
+	goto	l340
 u9120:
-	goto	l9055
+	goto	l9075
 	
-l334:	
+l342:	
 	line	123
 	
-l9055:	
+l9075:	
 ;CC2500_B1.c: 123: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	124
 ;CC2500_B1.c: 124: while(RC2==1);
-	goto	l335
+	goto	l343
 	
-l336:	
+l344:	
 	
-l335:	
+l343:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u9131
 	goto	u9130
 u9131:
-	goto	l335
+	goto	l343
 u9130:
 	
-l337:	
+l345:	
 	line	125
 ;CC2500_B1.c: 125: RC0=0;
 	bcf	(112/8),(112)&7	;volatile
@@ -26054,7 +26048,7 @@ l337:
 	bsf	(116/8),(116)&7	;volatile
 	line	127
 	
-l338:	
+l346:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_PowerRST
@@ -26109,32 +26103,32 @@ _CC2500_InitSetREG:
 ; Regs used in _CC2500_InitSetREG: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	136
 	
-l9057:	
+l9077:	
 ;CC2500_B1.c: 133: unsigned char loop_c;
 ;CC2500_B1.c: 134: unsigned char temp1,temp2;
 ;CC2500_B1.c: 136: for(loop_c=0;loop_c<47;loop_c++)
 	movlb 0	; select bank0
 	clrf	(CC2500_InitSetREG@loop_c)
 	
-l9059:	
+l9079:	
 	movlw	(02Fh)
 	subwf	(CC2500_InitSetREG@loop_c),w
 	skipc
 	goto	u9141
 	goto	u9140
 u9141:
-	goto	l9063
+	goto	l9083
 u9140:
-	goto	l343
+	goto	l351
 	
-l9061:	
-	goto	l343
+l9081:	
+	goto	l351
 	line	137
 	
-l341:	
+l349:	
 	line	138
 	
-l9063:	
+l9083:	
 ;CC2500_B1.c: 137: {
 ;CC2500_B1.c: 138: temp1 = CC2500_registers_address[loop_c];
 	movf	(CC2500_InitSetREG@loop_c),w
@@ -26163,7 +26157,7 @@ l9063:
 	movwf	(CC2500_InitSetREG@temp2)
 	line	141
 	
-l9065:	
+l9085:	
 ;CC2500_B1.c: 141: CC2500_WriteREG(temp1,temp2);
 	movf	(CC2500_InitSetREG@temp2),w
 	movwf	(??_CC2500_InitSetREG+0)+0
@@ -26173,28 +26167,28 @@ l9065:
 	fcall	_CC2500_WriteREG
 	line	136
 	
-l9067:	
+l9087:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_InitSetREG+0)+0
 	movf	(??_CC2500_InitSetREG+0)+0,w
 	addwf	(CC2500_InitSetREG@loop_c),f
 	
-l9069:	
+l9089:	
 	movlw	(02Fh)
 	subwf	(CC2500_InitSetREG@loop_c),w
 	skipc
 	goto	u9151
 	goto	u9150
 u9151:
-	goto	l9063
+	goto	l9083
 u9150:
-	goto	l343
+	goto	l351
 	
-l342:	
+l350:	
 	line	143
 	
-l343:	
+l351:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_InitSetREG
@@ -26248,32 +26242,32 @@ _CC2500_InitPATable:
 ; Regs used in _CC2500_InitPATable: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	152
 	
-l9071:	
+l9091:	
 ;CC2500_B1.c: 149: unsigned char loop_d;
 ;CC2500_B1.c: 150: unsigned char temp;
 ;CC2500_B1.c: 152: for(loop_d=0;loop_d<8;loop_d++)
 	movlb 0	; select bank0
 	clrf	(CC2500_InitPATable@loop_d)
 	
-l9073:	
+l9093:	
 	movlw	(08h)
 	subwf	(CC2500_InitPATable@loop_d),w
 	skipc
 	goto	u9161
 	goto	u9160
 u9161:
-	goto	l9077
+	goto	l9097
 u9160:
-	goto	l348
+	goto	l356
 	
-l9075:	
-	goto	l348
+l9095:	
+	goto	l356
 	line	153
 	
-l346:	
+l354:	
 	line	154
 	
-l9077:	
+l9097:	
 ;CC2500_B1.c: 153: {
 ;CC2500_B1.c: 154: temp=CC2500_patable_vaule[loop_d];
 	movf	(CC2500_InitPATable@loop_d),w
@@ -26289,7 +26283,7 @@ l9077:
 	movwf	(CC2500_InitPATable@temp)
 	line	155
 	
-l9079:	
+l9099:	
 ;CC2500_B1.c: 155: CC2500_WriteREG(0x3E,temp);
 	movf	(CC2500_InitPATable@temp),w
 	movwf	(??_CC2500_InitPATable+0)+0
@@ -26299,28 +26293,28 @@ l9079:
 	fcall	_CC2500_WriteREG
 	line	152
 	
-l9081:	
+l9101:	
 	movlw	(01h)
 	movlb 0	; select bank0
 	movwf	(??_CC2500_InitPATable+0)+0
 	movf	(??_CC2500_InitPATable+0)+0,w
 	addwf	(CC2500_InitPATable@loop_d),f
 	
-l9083:	
+l9103:	
 	movlw	(08h)
 	subwf	(CC2500_InitPATable@loop_d),w
 	skipc
 	goto	u9171
 	goto	u9170
 u9171:
-	goto	l9077
+	goto	l9097
 u9170:
-	goto	l348
+	goto	l356
 	
-l347:	
+l355:	
 	line	157
 	
-l348:	
+l356:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_InitPATable
@@ -26378,12 +26372,12 @@ _CC2500_WriteREG:
 	movwf	(CC2500_WriteREG@w_addr)
 	line	229
 	
-l8789:	
+l8813:	
 ;CC2500_B1.c: 229: RC4=0;
 	bcf	(116/8),(116)&7	;volatile
 	line	230
 	
-l8791:	
+l8815:	
 ;CC2500_B1.c: 230: SPI0Buffer=w_addr;
 	movf	(CC2500_WriteREG@w_addr),w
 	movwf	(??_CC2500_WriteREG+0)+0
@@ -26392,29 +26386,29 @@ l8791:
 	movwf	(_SPI0Buffer)^080h
 	line	231
 ;CC2500_B1.c: 231: while(RC2==1);
-	goto	l377
+	goto	l385
 	
-l378:	
+l386:	
 	
-l377:	
+l385:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u8821
 	goto	u8820
 u8821:
-	goto	l377
+	goto	l385
 u8820:
-	goto	l8793
+	goto	l8817
 	
-l379:	
+l387:	
 	line	232
 	
-l8793:	
+l8817:	
 ;CC2500_B1.c: 232: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	233
 	
-l8795:	
+l8819:	
 ;CC2500_B1.c: 233: SPI0Buffer=value;
 	movlb 0	; select bank0
 	movf	(CC2500_WriteREG@value),w
@@ -26424,18 +26418,18 @@ l8795:
 	movwf	(_SPI0Buffer)^080h
 	line	234
 	
-l8797:	
+l8821:	
 ;CC2500_B1.c: 234: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	235
 	
-l8799:	
+l8823:	
 ;CC2500_B1.c: 235: RC4=1;
 	movlb 0	; select bank0
 	bsf	(116/8),(116)&7	;volatile
 	line	236
 	
-l380:	
+l388:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteREG
@@ -26489,7 +26483,7 @@ _CC2500_FrequencyCabr:
 ; Regs used in _CC2500_FrequencyCabr: [wreg+status,2+status,0+pclath+cstack]
 	line	177
 	
-l9089:	
+l9109:	
 ;CC2500_B1.c: 177: CC2500_WriteCommand(0x33);
 	movlw	(033h)
 	fcall	_CC2500_WriteCommand
@@ -26503,7 +26497,7 @@ l9089:
 	fcall	_DelayTime_1us
 	line	179
 	
-l357:	
+l365:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_FrequencyCabr
@@ -26558,7 +26552,7 @@ _DelayTime_1us:
 ; Regs used in _DelayTime_1us: [wreg+status,2]
 	line	286
 	
-l8777:	
+l8801:	
 ;CC2500_B1.c: 285: unsigned int i,j;
 ;CC2500_B1.c: 286: for(i=1;i<count;i++)
 	movlw	low(01h)
@@ -26566,17 +26560,17 @@ l8777:
 	movwf	(DelayTime_1us@i)
 	movlw	high(01h)
 	movwf	((DelayTime_1us@i))+1
-	goto	l401
+	goto	l409
 	line	287
 	
-l402:	
+l410:	
 	
-l8779:	
+l8803:	
 ;CC2500_B1.c: 287: for(j=0;j<=1;j++);
 	clrf	(DelayTime_1us@j)
 	clrf	(DelayTime_1us@j+1)
 	
-l8781:	
+l8805:	
 	movlw	high(02h)
 	subwf	(DelayTime_1us@j+1),w
 	movlw	low(02h)
@@ -26586,16 +26580,16 @@ l8781:
 	goto	u8791
 	goto	u8790
 u8791:
-	goto	l8785
+	goto	l8809
 u8790:
-	goto	l8787
+	goto	l8811
 	
-l8783:	
-	goto	l8787
+l8807:	
+	goto	l8811
 	
-l403:	
+l411:	
 	
-l8785:	
+l8809:	
 	movlw	low(01h)
 	addwf	(DelayTime_1us@j),f
 	movlw	high(01h)
@@ -26609,20 +26603,20 @@ l8785:
 	goto	u8801
 	goto	u8800
 u8801:
-	goto	l8785
+	goto	l8809
 u8800:
-	goto	l8787
+	goto	l8811
 	
-l404:	
+l412:	
 	line	286
 	
-l8787:	
+l8811:	
 	movlw	low(01h)
 	addwf	(DelayTime_1us@i),f
 	movlw	high(01h)
 	addwfc	(DelayTime_1us@i+1),f
 	
-l401:	
+l409:	
 	movf	(DelayTime_1us@count+1),w
 	subwf	(DelayTime_1us@i+1),w
 	skipz
@@ -26634,14 +26628,14 @@ u8815:
 	goto	u8811
 	goto	u8810
 u8811:
-	goto	l8779
+	goto	l8803
 u8810:
-	goto	l406
+	goto	l414
 	
-l405:	
+l413:	
 	line	288
 	
-l406:	
+l414:	
 	return
 	opt stack 0
 GLOBAL	__end_of_DelayTime_1us
@@ -26694,13 +26688,13 @@ _CC2500_ClearTXFIFO:
 ; Regs used in _CC2500_ClearTXFIFO: [wreg+status,2+status,0+pclath+cstack]
 	line	163
 	
-l9085:	
+l9105:	
 ;CC2500_B1.c: 163: CC2500_WriteCommand(0x3B);
 	movlw	(03Bh)
 	fcall	_CC2500_WriteCommand
 	line	164
 	
-l351:	
+l359:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ClearTXFIFO
@@ -26753,13 +26747,13 @@ _CC2500_ClearRXFIFO:
 ; Regs used in _CC2500_ClearRXFIFO: [wreg+status,2+status,0+pclath+cstack]
 	line	170
 	
-l9087:	
+l9107:	
 ;CC2500_B1.c: 170: CC2500_WriteCommand(0x3A);
 	movlw	(03Ah)
 	fcall	_CC2500_WriteCommand
 	line	171
 	
-l354:	
+l362:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_ClearRXFIFO
@@ -26822,12 +26816,12 @@ _CC2500_WriteCommand:
 	movwf	(CC2500_WriteCommand@command)
 	line	255
 	
-l8577:	
+l8601:	
 ;CC2500_B1.c: 255: RC4=0;
 	bcf	(116/8),(116)&7	;volatile
 	line	256
 	
-l8579:	
+l8603:	
 ;CC2500_B1.c: 256: SPI0Buffer=command;
 	movf	(CC2500_WriteCommand@command),w
 	movwf	(??_CC2500_WriteCommand+0)+0
@@ -26836,35 +26830,35 @@ l8579:
 	movwf	(_SPI0Buffer)^080h
 	line	258
 ;CC2500_B1.c: 258: while(RC2==1);
-	goto	l389
+	goto	l397
 	
-l390:	
+l398:	
 	
-l389:	
+l397:	
 	movlb 0	; select bank0
 	btfsc	(114/8),(114)&7	;volatile
 	goto	u8551
 	goto	u8550
 u8551:
-	goto	l389
+	goto	l397
 u8550:
-	goto	l8581
+	goto	l8605
 	
-l391:	
+l399:	
 	line	260
 	
-l8581:	
+l8605:	
 ;CC2500_B1.c: 260: CC2500_WriteByte();
 	fcall	_CC2500_WriteByte
 	line	261
 	
-l8583:	
+l8607:	
 ;CC2500_B1.c: 261: RC4=1;
 	movlb 0	; select bank0
 	bsf	(116/8),(116)&7	;volatile
 	line	263
 	
-l392:	
+l400:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteCommand
@@ -26923,28 +26917,28 @@ _CC2500_WriteByte:
 ; Regs used in _CC2500_WriteByte: [wreg+status,2+status,0]
 	line	196
 	
-l8431:	
+l8455:	
 ;CC2500_B1.c: 195: unsigned char loop_a;
 ;CC2500_B1.c: 196: for(loop_a=0;loop_a<8;loop_a++)
 	movlb 0	; select bank0
 	clrf	(CC2500_WriteByte@loop_a)
 	
-l8433:	
+l8457:	
 	movlw	(08h)
 	subwf	(CC2500_WriteByte@loop_a),w
 	skipc
 	goto	u8381
 	goto	u8380
 u8381:
-	goto	l363
+	goto	l371
 u8380:
-	goto	l367
+	goto	l375
 	
-l8435:	
-	goto	l367
+l8459:	
+	goto	l375
 	line	197
 	
-l363:	
+l371:	
 	line	198
 ;CC2500_B1.c: 197: {
 ;CC2500_B1.c: 198: if(SPI0Buffer&0x80)
@@ -26953,31 +26947,31 @@ l363:
 	goto	u8391
 	goto	u8390
 u8391:
-	goto	l365
+	goto	l373
 u8390:
 	line	199
 	
-l8437:	
+l8461:	
 ;CC2500_B1.c: 199: RC0=1;
 	movlb 0	; select bank0
 	bsf	(112/8),(112)&7	;volatile
-	goto	l366
+	goto	l374
 	line	200
 	
-l365:	
+l373:	
 	line	201
 ;CC2500_B1.c: 200: else
 ;CC2500_B1.c: 201: RC0=0;
 	movlb 0	; select bank0
 	bcf	(112/8),(112)&7	;volatile
 	
-l366:	
+l374:	
 	line	202
 ;CC2500_B1.c: 202: RC1=1;
 	bsf	(113/8),(113)&7	;volatile
 	line	203
 	
-l8439:	
+l8463:	
 ;CC2500_B1.c: 203: SPI0Buffer<<=1;
 	clrc
 	movlb 1	; select bank1
@@ -26985,33 +26979,33 @@ l8439:
 
 	line	204
 	
-l8441:	
+l8465:	
 ;CC2500_B1.c: 204: RC1=0;
 	movlb 0	; select bank0
 	bcf	(113/8),(113)&7	;volatile
 	line	196
 	
-l8443:	
+l8467:	
 	movlw	(01h)
 	movwf	(??_CC2500_WriteByte+0)+0
 	movf	(??_CC2500_WriteByte+0)+0,w
 	addwf	(CC2500_WriteByte@loop_a),f
 	
-l8445:	
+l8469:	
 	movlw	(08h)
 	subwf	(CC2500_WriteByte@loop_a),w
 	skipc
 	goto	u8401
 	goto	u8400
 u8401:
-	goto	l363
+	goto	l371
 u8400:
-	goto	l367
+	goto	l375
 	
-l364:	
+l372:	
 	line	206
 	
-l367:	
+l375:	
 	return
 	opt stack 0
 GLOBAL	__end_of_CC2500_WriteByte
@@ -27065,7 +27059,7 @@ _Buzzer_Main:
 ; Regs used in _Buzzer_Main: [wreg-fsr1h+status,2+status,0]
 	line	55
 	
-l9593:	
+l9617:	
 ;Buzzer_B1.c: 55: Buz->Switch=(RB3)?1:0;
 	movlb 0	; select bank0
 	movf	(_Buz),w
@@ -27091,11 +27085,11 @@ u9975:
 	goto	u9981
 	goto	u9980
 u9981:
-	goto	l144
+	goto	l148
 u9980:
 	line	60
 	
-l9595:	
+l9619:	
 ;Buzzer_B1.c: 58: {
 ;Buzzer_B1.c: 60: if(Buz->Time >= Buz->TimeValue)
 	movf	(_Buz),w
@@ -27128,11 +27122,11 @@ u9995:
 	goto	u9991
 	goto	u9990
 u9991:
-	goto	l144
+	goto	l148
 u9990:
 	line	62
 	
-l9597:	
+l9621:	
 ;Buzzer_B1.c: 61: {
 ;Buzzer_B1.c: 62: Buz->Time=0;
 	incf	(_Buz),w
@@ -27154,11 +27148,11 @@ l9597:
 	goto	u10001
 	goto	u10000
 u10001:
-	goto	l9619
+	goto	l9643
 u10000:
 	line	65
 	
-l9599:	
+l9623:	
 ;Buzzer_B1.c: 64: {
 ;Buzzer_B1.c: 65: if(Buz->Count == 0)
 	movf	(_Buz),w
@@ -27172,11 +27166,11 @@ l9599:
 	goto	u10011
 	goto	u10010
 u10011:
-	goto	l9615
+	goto	l9639
 u10010:
 	line	67
 	
-l9601:	
+l9625:	
 ;Buzzer_B1.c: 66: {
 ;Buzzer_B1.c: 67: if(Buz->BufferStatus1)
 	movf	(_Buz),w
@@ -27188,11 +27182,11 @@ l9601:
 	goto	u10021
 	goto	u10020
 u10021:
-	goto	l9607
+	goto	l9631
 u10020:
 	line	69
 	
-l9603:	
+l9627:	
 ;Buzzer_B1.c: 68: {
 ;Buzzer_B1.c: 69: Buz->BufferStatus1=0;
 	movf	(_Buz),w
@@ -27221,7 +27215,7 @@ l9603:
 	movwf	indf1
 	line	71
 	
-l9605:	
+l9629:	
 ;Buzzer_B1.c: 71: Buz->TimeValue=Buz->TimeValueBuffer1;
 	movf	(_Buz),w
 	addlw	08h
@@ -27241,12 +27235,12 @@ l9605:
 	movwi	[1]fsr0
 	line	72
 ;Buzzer_B1.c: 72: }
-	goto	l144
+	goto	l148
 	line	73
 	
-l138:	
+l142:	
 	
-l9607:	
+l9631:	
 ;Buzzer_B1.c: 73: else if(Buz->BufferStatus2)
 	movf	(_Buz),w
 	movwf	fsr1l
@@ -27257,11 +27251,11 @@ l9607:
 	goto	u10031
 	goto	u10030
 u10031:
-	goto	l9613
+	goto	l9637
 u10030:
 	line	75
 	
-l9609:	
+l9633:	
 ;Buzzer_B1.c: 74: {
 ;Buzzer_B1.c: 75: Buz->BufferStatus2=0;
 	movf	(_Buz),w
@@ -27290,7 +27284,7 @@ l9609:
 	movwf	indf1
 	line	77
 	
-l9611:	
+l9635:	
 ;Buzzer_B1.c: 77: Buz->TimeValue=Buz->TimeValueBuffer2;
 	movf	(_Buz),w
 	addlw	0Ah
@@ -27310,13 +27304,13 @@ l9611:
 	movwi	[1]fsr0
 	line	78
 ;Buzzer_B1.c: 78: }
-	goto	l144
+	goto	l148
 	line	79
 	
-l140:	
+l144:	
 	line	81
 	
-l9613:	
+l9637:	
 ;Buzzer_B1.c: 79: else
 ;Buzzer_B1.c: 80: {
 ;Buzzer_B1.c: 81: Buz->GO=0;
@@ -27326,23 +27320,23 @@ l9613:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	l144
+	goto	l148
 	line	82
 	
-l141:	
-	goto	l144
+l145:	
+	goto	l148
 	
-l139:	
+l143:	
 	line	83
 ;Buzzer_B1.c: 82: }
 ;Buzzer_B1.c: 83: }
-	goto	l144
+	goto	l148
 	line	84
 	
-l137:	
+l141:	
 	line	86
 	
-l9615:	
+l9639:	
 ;Buzzer_B1.c: 84: else
 ;Buzzer_B1.c: 85: {
 ;Buzzer_B1.c: 86: Buz->Switch=1;
@@ -27354,23 +27348,23 @@ l9615:
 	bsf	indf1,5
 	line	88
 	
-l9617:	
+l9641:	
 ;Buzzer_B1.c: 88: RB3=1;
 	bsf	(107/8),(107)&7	;volatile
-	goto	l144
+	goto	l148
 	line	89
 	
-l142:	
+l146:	
 	line	90
 ;Buzzer_B1.c: 89: }
 ;Buzzer_B1.c: 90: }
-	goto	l144
+	goto	l148
 	line	91
 	
-l136:	
+l140:	
 	line	93
 	
-l9619:	
+l9643:	
 ;Buzzer_B1.c: 91: else
 ;Buzzer_B1.c: 92: {
 ;Buzzer_B1.c: 93: Buz->Switch=0;
@@ -27382,12 +27376,12 @@ l9619:
 	bcf	indf1,5
 	line	95
 	
-l9621:	
+l9645:	
 ;Buzzer_B1.c: 95: RB3=0;
 	bcf	(107/8),(107)&7	;volatile
 	line	97
 	
-l9623:	
+l9647:	
 ;Buzzer_B1.c: 97: Buz->Count--;
 	movf	(_Buz),w
 	addlw	03h
@@ -27397,21 +27391,21 @@ l9623:
 	
 	movlw	low(01h)
 	subwf	indf1,f
-	goto	l144
+	goto	l148
 	line	98
 	
-l143:	
-	goto	l144
+l147:	
+	goto	l148
 	line	99
 	
-l135:	
-	goto	l144
+l139:	
+	goto	l148
 	line	100
 	
-l134:	
+l138:	
 	line	101
 	
-l144:	
+l148:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Buzzer_Main
@@ -27464,7 +27458,7 @@ _Buzzer_Initialization:
 ; Regs used in _Buzzer_Initialization: [wregfsr1]
 	line	12
 	
-l9589:	
+l9613:	
 ;Buzzer_B1.c: 12: Buz=&Buz1;
 	movlw	(_Buz1)&0ffh
 	movlb 0	; select bank0
@@ -27473,7 +27467,7 @@ l9589:
 	movwf	(_Buz)
 	line	13
 	
-l9591:	
+l9615:	
 ;Buzzer_B1.c: 13: Buz->Enable=1;
 	movf	(_Buz),w
 	movwf	fsr1l
@@ -27483,7 +27477,7 @@ l9591:
 	bsf	indf1,0
 	line	14
 	
-l119:	
+l123:	
 	return
 	opt stack 0
 GLOBAL	__end_of_Buzzer_Initialization
@@ -27543,23 +27537,23 @@ psect	intentry
 	movwf	(??_ISR+0)
 	line	101
 	
-i1l7891:	
+i1l7915:	
 ;MCU_B1.c: 101: IOC_ISR();
 	fcall	_IOC_ISR
 	line	103
 	
-i1l7893:	
+i1l7917:	
 ;MCU_B1.c: 103: TMR0_ISR();
 	fcall	_TMR0_ISR
 	line	109
 	
-i1l7895:	
+i1l7919:	
 ;MCU_B1.c: 105: ;;
 ;MCU_B1.c: 109: INT_ISR();
 	fcall	_INT_ISR
 	line	114
 	
-i1l1587:	
+i1l1614:	
 	movf	(??_ISR+0),w
 	movlb 0	; select bank0
 	movwf	btemp+1
@@ -27615,25 +27609,25 @@ _TMR0_ISR:
 ; Regs used in _TMR0_ISR: [wreg-fsr1h+status,2+status,0]
 	line	129
 	
-i1l7615:	
+i1l7657:	
 ;MCU_B1.c: 129: if(TMR0IE && TMR0IF)
 	btfss	(93/8),(93)&7	;volatile
 	goto	u668_21
 	goto	u668_20
 u668_21:
-	goto	i1l1650
+	goto	i1l1677
 u668_20:
 	
-i1l7617:	
+i1l7659:	
 	btfss	(90/8),(90)&7	;volatile
 	goto	u669_21
 	goto	u669_20
 u669_21:
-	goto	i1l1650
+	goto	i1l1677
 u669_20:
 	line	131
 	
-i1l7619:	
+i1l7661:	
 ;MCU_B1.c: 130: {
 ;MCU_B1.c: 131: TMR0=(256-90);
 	movlw	(0A6h)
@@ -27641,12 +27635,12 @@ i1l7619:
 	movwf	(21)	;volatile
 	line	132
 	
-i1l7621:	
+i1l7663:	
 ;MCU_B1.c: 132: TMR0IF=0;
 	bcf	(90/8),(90)&7	;volatile
 	line	137
 	
-i1l7623:	
+i1l7665:	
 ;MCU_B1.c: 137: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } }
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
@@ -27657,10 +27651,10 @@ i1l7623:
 	goto	u670_21
 	goto	u670_20
 u670_21:
-	goto	i1l7637
+	goto	i1l7679
 u670_20:
 	
-i1l7625:	
+i1l7667:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights11),w
@@ -27718,10 +27712,10 @@ u671_25:
 	goto	u671_21
 	goto	u671_20
 u671_21:
-	goto	i1l7701
+	goto	i1l7743
 u671_20:
 	
-i1l7627:	
+i1l7669:	
 	movlb 0	; select bank0
 	movf	(_DimmerLights11),w
 	addlw	03h
@@ -27731,7 +27725,7 @@ i1l7627:
 	
 	clrf	indf1
 	
-i1l7629:	
+i1l7671:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27739,7 +27733,7 @@ i1l7629:
 	
 	bcf	indf1,0
 	
-i1l7631:	
+i1l7673:	
 	movf	(_DimmerLights11),w
 	addlw	07h
 	movwf	fsr1l
@@ -27748,7 +27742,7 @@ i1l7631:
 	
 	bsf	indf1,0
 	
-i1l7633:	
+i1l7675:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27758,22 +27752,22 @@ i1l7633:
 	goto	u672_21
 	goto	u672_20
 u672_21:
-	goto	i1l7701
+	goto	i1l7743
 u672_20:
 	
-i1l7635:	
+i1l7677:	
 	bsf	(103/8),(103)&7	;volatile
-	goto	i1l7701
+	goto	i1l7743
 	
-i1l1596:	
-	goto	i1l7701
+i1l1623:	
+	goto	i1l7743
 	
-i1l1595:	
-	goto	i1l7701
+i1l1622:	
+	goto	i1l7743
 	
-i1l1594:	
+i1l1621:	
 	
-i1l7637:	
+i1l7679:	
 	movf	(_DimmerLights11),w
 	addlw	07h
 	movwf	fsr1l
@@ -27784,10 +27778,10 @@ i1l7637:
 	goto	u673_21
 	goto	u673_20
 u673_21:
-	goto	i1l7693
+	goto	i1l7735
 u673_20:
 	
-i1l7639:	
+i1l7681:	
 	movf	(_DimmerLights11),w
 	addlw	07h
 	movwf	fsr1l
@@ -27804,10 +27798,10 @@ i1l7639:
 	goto	u674_21
 	goto	u674_20
 u674_21:
-	goto	i1l7693
+	goto	i1l7735
 u674_20:
 	
-i1l7641:	
+i1l7683:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	incf	(_DimmerLights11),w
@@ -27818,7 +27812,7 @@ i1l7641:
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
 	
-i1l7643:	
+i1l7685:	
 	incf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27836,10 +27830,10 @@ i1l7643:
 	goto	u675_21
 	goto	u675_20
 u675_21:
-	goto	i1l7693
+	goto	i1l7735
 u675_20:
 	
-i1l7645:	
+i1l7687:	
 	incf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27847,7 +27841,7 @@ i1l7645:
 	
 	clrf	indf1
 	
-i1l7647:	
+i1l7689:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27857,10 +27851,10 @@ i1l7647:
 	goto	u676_21
 	goto	u676_20
 u676_21:
-	goto	i1l7663
+	goto	i1l7705
 u676_20:
 	
-i1l7649:	
+i1l7691:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27870,10 +27864,10 @@ i1l7649:
 	goto	u677_21
 	goto	u677_20
 u677_21:
-	goto	i1l7657
+	goto	i1l7699
 u677_20:
 	
-i1l7651:	
+i1l7693:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -27886,10 +27880,10 @@ i1l7651:
 	goto	u678_21
 	goto	u678_20
 u678_21:
-	goto	i1l7655
+	goto	i1l7697
 u678_20:
 	
-i1l7653:	
+i1l7695:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -27898,25 +27892,25 @@ i1l7653:
 	
 	movlw	low(01h)
 	subwf	indf1,f
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1603:	
+i1l1630:	
 	
-i1l7655:	
+i1l7697:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bsf	indf1,4
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1604:	
-	goto	i1l7693
+i1l1631:	
+	goto	i1l7735
 	
-i1l1602:	
+i1l1629:	
 	
-i1l7657:	
+i1l7699:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -27929,10 +27923,10 @@ i1l7657:
 	goto	u679_21
 	goto	u679_20
 u679_21:
-	goto	i1l7661
+	goto	i1l7703
 u679_20:
 	
-i1l7659:	
+i1l7701:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights11),w
@@ -27943,28 +27937,28 @@ i1l7659:
 	
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1606:	
+i1l1633:	
 	
-i1l7661:	
+i1l7703:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bcf	indf1,4
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1607:	
-	goto	i1l7693
+i1l1634:	
+	goto	i1l7735
 	
-i1l1605:	
-	goto	i1l7693
+i1l1632:	
+	goto	i1l7735
 	
-i1l1601:	
+i1l1628:	
 	
-i1l7663:	
+i1l7705:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -27974,10 +27968,10 @@ i1l7663:
 	goto	u680_21
 	goto	u680_20
 u680_21:
-	goto	i1l7677
+	goto	i1l7719
 u680_20:
 	
-i1l7665:	
+i1l7707:	
 	movf	(_DimmerLights11),w
 	addlw	05h
 	movwf	fsr1l
@@ -27996,10 +27990,10 @@ i1l7665:
 	goto	u681_21
 	goto	u681_20
 u681_21:
-	goto	i1l7669
+	goto	i1l7711
 u681_20:
 	
-i1l7667:	
+i1l7709:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -28008,11 +28002,11 @@ i1l7667:
 	
 	movlw	low(01h)
 	subwf	indf1,f
-	goto	i1l7673
+	goto	i1l7715
 	
-i1l1610:	
+i1l1637:	
 	
-i1l7669:	
+i1l7711:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -28031,10 +28025,10 @@ i1l7669:
 	goto	u682_21
 	goto	u682_20
 u682_21:
-	goto	i1l7673
+	goto	i1l7715
 u682_20:
 	
-i1l7671:	
+i1l7713:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights11),w
@@ -28045,14 +28039,14 @@ i1l7671:
 	
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
-	goto	i1l7673
+	goto	i1l7715
 	
-i1l1612:	
-	goto	i1l7673
+i1l1639:	
+	goto	i1l7715
 	
-i1l1611:	
+i1l1638:	
 	
-i1l7673:	
+i1l7715:	
 	movf	(_DimmerLights11),w
 	addlw	05h
 	movwf	fsr1l
@@ -28071,10 +28065,10 @@ i1l7673:
 	goto	u683_21
 	goto	u683_20
 u683_21:
-	goto	i1l7693
+	goto	i1l7735
 u683_20:
 	
-i1l7675:	
+i1l7717:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28087,14 +28081,14 @@ i1l7675:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1613:	
-	goto	i1l7693
+i1l1640:	
+	goto	i1l7735
 	
-i1l1609:	
+i1l1636:	
 	
-i1l7677:	
+i1l7719:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28104,10 +28098,10 @@ i1l7677:
 	goto	u684_21
 	goto	u684_20
 u684_21:
-	goto	i1l7685
+	goto	i1l7727
 u684_20:
 	
-i1l7679:	
+i1l7721:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -28117,7 +28111,7 @@ i1l7679:
 	movlw	low(01h)
 	subwf	indf1,f
 	
-i1l7681:	
+i1l7723:	
 	movf	(_DimmerLights11),w
 	addlw	05h
 	movwf	fsr1l
@@ -28136,24 +28130,24 @@ i1l7681:
 	goto	u685_21
 	goto	u685_20
 u685_21:
-	goto	i1l7693
+	goto	i1l7735
 u685_20:
 	
-i1l7683:	
+i1l7725:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1616:	
-	goto	i1l7693
+i1l1643:	
+	goto	i1l7735
 	
-i1l1615:	
+i1l1642:	
 	
-i1l7685:	
+i1l7727:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights11),w
@@ -28165,7 +28159,7 @@ i1l7685:
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
 	
-i1l7687:	
+i1l7729:	
 	movf	(_DimmerLights11),w
 	addlw	04h
 	movwf	fsr1l
@@ -28184,10 +28178,10 @@ i1l7687:
 	goto	u686_21
 	goto	u686_20
 u686_21:
-	goto	i1l7693
+	goto	i1l7735
 u686_20:
 	
-i1l7689:	
+i1l7731:	
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28214,40 +28208,40 @@ i1l7689:
 	
 	bsf	indf1,0
 	
-i1l7691:	
+i1l7733:	
 	movlb 0	; select bank0
 	bcf	(99/8),(99)&7	;volatile
-	goto	i1l7693
+	goto	i1l7735
 	
-i1l1618:	
-	goto	i1l7693
+i1l1645:	
+	goto	i1l7735
 	
-i1l1617:	
-	goto	i1l7693
+i1l1644:	
+	goto	i1l7735
 	
-i1l1614:	
-	goto	i1l7693
+i1l1641:	
+	goto	i1l7735
 	
-i1l1608:	
-	goto	i1l7693
+i1l1635:	
+	goto	i1l7735
 	
-i1l1600:	
-	goto	i1l7693
+i1l1627:	
+	goto	i1l7735
 	
-i1l1599:	
-	goto	i1l7693
+i1l1626:	
+	goto	i1l7735
 	
-i1l1598:	
+i1l1625:	
 	
-i1l7693:	
+i1l7735:	
 	btfss	(103/8),(103)&7	;volatile
 	goto	u687_21
 	goto	u687_20
 u687_21:
-	goto	i1l7701
+	goto	i1l7743
 u687_20:
 	
-i1l7695:	
+i1l7737:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights11),w
@@ -28297,10 +28291,10 @@ u688_25:
 	goto	u688_21
 	goto	u688_20
 u688_21:
-	goto	i1l7701
+	goto	i1l7743
 u688_20:
 	
-i1l7697:	
+i1l7739:	
 	movlb 0	; select bank0
 	movf	(_DimmerLights11),w
 	addlw	08h
@@ -28310,20 +28304,20 @@ i1l7697:
 	
 	clrf	indf1
 	
-i1l7699:	
+i1l7741:	
 	bcf	(103/8),(103)&7	;volatile
-	goto	i1l7701
+	goto	i1l7743
 	
-i1l1620:	
-	goto	i1l7701
+i1l1647:	
+	goto	i1l7743
 	
-i1l1619:	
-	goto	i1l7701
+i1l1646:	
+	goto	i1l7743
 	
-i1l1597:	
+i1l1624:	
 	line	141
 	
-i1l7701:	
+i1l7743:	
 ;MCU_B1.c: 141: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } el
 	movlb 0	; select bank0
 	movf	(_DimmerLights22),w
@@ -28335,10 +28329,10 @@ i1l7701:
 	goto	u689_21
 	goto	u689_20
 u689_21:
-	goto	i1l7715
+	goto	i1l7757
 u689_20:
 	
-i1l7703:	
+i1l7745:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights22),w
@@ -28396,10 +28390,10 @@ u690_25:
 	goto	u690_21
 	goto	u690_20
 u690_21:
-	goto	i1l7779
+	goto	i1l7821
 u690_20:
 	
-i1l7705:	
+i1l7747:	
 	movlb 0	; select bank0
 	movf	(_DimmerLights22),w
 	addlw	03h
@@ -28409,7 +28403,7 @@ i1l7705:
 	
 	clrf	indf1
 	
-i1l7707:	
+i1l7749:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28417,7 +28411,7 @@ i1l7707:
 	
 	bcf	indf1,0
 	
-i1l7709:	
+i1l7751:	
 	movf	(_DimmerLights22),w
 	addlw	07h
 	movwf	fsr1l
@@ -28426,7 +28420,7 @@ i1l7709:
 	
 	bsf	indf1,0
 	
-i1l7711:	
+i1l7753:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28436,22 +28430,22 @@ i1l7711:
 	goto	u691_21
 	goto	u691_20
 u691_21:
-	goto	i1l7779
+	goto	i1l7821
 u691_20:
 	
-i1l7713:	
+i1l7755:	
 	bsf	(108/8),(108)&7	;volatile
-	goto	i1l7779
+	goto	i1l7821
 	
-i1l1623:	
-	goto	i1l7779
+i1l1650:	
+	goto	i1l7821
 	
-i1l1622:	
-	goto	i1l7779
+i1l1649:	
+	goto	i1l7821
 	
-i1l1621:	
+i1l1648:	
 	
-i1l7715:	
+i1l7757:	
 	movf	(_DimmerLights22),w
 	addlw	07h
 	movwf	fsr1l
@@ -28462,10 +28456,10 @@ i1l7715:
 	goto	u692_21
 	goto	u692_20
 u692_21:
-	goto	i1l7771
+	goto	i1l7813
 u692_20:
 	
-i1l7717:	
+i1l7759:	
 	movf	(_DimmerLights22),w
 	addlw	07h
 	movwf	fsr1l
@@ -28482,10 +28476,10 @@ i1l7717:
 	goto	u693_21
 	goto	u693_20
 u693_21:
-	goto	i1l7771
+	goto	i1l7813
 u693_20:
 	
-i1l7719:	
+i1l7761:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	incf	(_DimmerLights22),w
@@ -28496,7 +28490,7 @@ i1l7719:
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
 	
-i1l7721:	
+i1l7763:	
 	incf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28514,10 +28508,10 @@ i1l7721:
 	goto	u694_21
 	goto	u694_20
 u694_21:
-	goto	i1l7771
+	goto	i1l7813
 u694_20:
 	
-i1l7723:	
+i1l7765:	
 	incf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28525,7 +28519,7 @@ i1l7723:
 	
 	clrf	indf1
 	
-i1l7725:	
+i1l7767:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28535,10 +28529,10 @@ i1l7725:
 	goto	u695_21
 	goto	u695_20
 u695_21:
-	goto	i1l7741
+	goto	i1l7783
 u695_20:
 	
-i1l7727:	
+i1l7769:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28548,10 +28542,10 @@ i1l7727:
 	goto	u696_21
 	goto	u696_20
 u696_21:
-	goto	i1l7735
+	goto	i1l7777
 u696_20:
 	
-i1l7729:	
+i1l7771:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28564,10 +28558,10 @@ i1l7729:
 	goto	u697_21
 	goto	u697_20
 u697_21:
-	goto	i1l7733
+	goto	i1l7775
 u697_20:
 	
-i1l7731:	
+i1l7773:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28576,25 +28570,25 @@ i1l7731:
 	
 	movlw	low(01h)
 	subwf	indf1,f
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1630:	
+i1l1657:	
 	
-i1l7733:	
+i1l7775:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bsf	indf1,4
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1631:	
-	goto	i1l7771
+i1l1658:	
+	goto	i1l7813
 	
-i1l1629:	
+i1l1656:	
 	
-i1l7735:	
+i1l7777:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28607,10 +28601,10 @@ i1l7735:
 	goto	u698_21
 	goto	u698_20
 u698_21:
-	goto	i1l7739
+	goto	i1l7781
 u698_20:
 	
-i1l7737:	
+i1l7779:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights22),w
@@ -28621,28 +28615,28 @@ i1l7737:
 	
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1633:	
+i1l1660:	
 	
-i1l7739:	
+i1l7781:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bcf	indf1,4
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1634:	
-	goto	i1l7771
+i1l1661:	
+	goto	i1l7813
 	
-i1l1632:	
-	goto	i1l7771
+i1l1659:	
+	goto	i1l7813
 	
-i1l1628:	
+i1l1655:	
 	
-i1l7741:	
+i1l7783:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28652,10 +28646,10 @@ i1l7741:
 	goto	u699_21
 	goto	u699_20
 u699_21:
-	goto	i1l7755
+	goto	i1l7797
 u699_20:
 	
-i1l7743:	
+i1l7785:	
 	movf	(_DimmerLights22),w
 	addlw	05h
 	movwf	fsr1l
@@ -28674,10 +28668,10 @@ i1l7743:
 	goto	u700_21
 	goto	u700_20
 u700_21:
-	goto	i1l7747
+	goto	i1l7789
 u700_20:
 	
-i1l7745:	
+i1l7787:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28686,11 +28680,11 @@ i1l7745:
 	
 	movlw	low(01h)
 	subwf	indf1,f
-	goto	i1l7751
+	goto	i1l7793
 	
-i1l1637:	
+i1l1664:	
 	
-i1l7747:	
+i1l7789:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28709,10 +28703,10 @@ i1l7747:
 	goto	u701_21
 	goto	u701_20
 u701_21:
-	goto	i1l7751
+	goto	i1l7793
 u701_20:
 	
-i1l7749:	
+i1l7791:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights22),w
@@ -28723,14 +28717,14 @@ i1l7749:
 	
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
-	goto	i1l7751
+	goto	i1l7793
 	
-i1l1639:	
-	goto	i1l7751
+i1l1666:	
+	goto	i1l7793
 	
-i1l1638:	
+i1l1665:	
 	
-i1l7751:	
+i1l7793:	
 	movf	(_DimmerLights22),w
 	addlw	05h
 	movwf	fsr1l
@@ -28749,10 +28743,10 @@ i1l7751:
 	goto	u702_21
 	goto	u702_20
 u702_21:
-	goto	i1l7771
+	goto	i1l7813
 u702_20:
 	
-i1l7753:	
+i1l7795:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28765,14 +28759,14 @@ i1l7753:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1640:	
-	goto	i1l7771
+i1l1667:	
+	goto	i1l7813
 	
-i1l1636:	
+i1l1663:	
 	
-i1l7755:	
+i1l7797:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28782,10 +28776,10 @@ i1l7755:
 	goto	u703_21
 	goto	u703_20
 u703_21:
-	goto	i1l7763
+	goto	i1l7805
 u703_20:
 	
-i1l7757:	
+i1l7799:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28795,7 +28789,7 @@ i1l7757:
 	movlw	low(01h)
 	subwf	indf1,f
 	
-i1l7759:	
+i1l7801:	
 	movf	(_DimmerLights22),w
 	addlw	05h
 	movwf	fsr1l
@@ -28814,24 +28808,24 @@ i1l7759:
 	goto	u704_21
 	goto	u704_20
 u704_21:
-	goto	i1l7771
+	goto	i1l7813
 u704_20:
 	
-i1l7761:	
+i1l7803:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1643:	
-	goto	i1l7771
+i1l1670:	
+	goto	i1l7813
 	
-i1l1642:	
+i1l1669:	
 	
-i1l7763:	
+i1l7805:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights22),w
@@ -28843,7 +28837,7 @@ i1l7763:
 	movf	(??_TMR0_ISR+0)+0,w
 	addwf	indf1,f
 	
-i1l7765:	
+i1l7807:	
 	movf	(_DimmerLights22),w
 	addlw	04h
 	movwf	fsr1l
@@ -28862,10 +28856,10 @@ i1l7765:
 	goto	u705_21
 	goto	u705_20
 u705_21:
-	goto	i1l7771
+	goto	i1l7813
 u705_20:
 	
-i1l7767:	
+i1l7809:	
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28892,40 +28886,40 @@ i1l7767:
 	
 	bsf	indf1,0
 	
-i1l7769:	
+i1l7811:	
 	movlb 0	; select bank0
 	bcf	(119/8),(119)&7	;volatile
-	goto	i1l7771
+	goto	i1l7813
 	
-i1l1645:	
-	goto	i1l7771
+i1l1672:	
+	goto	i1l7813
 	
-i1l1644:	
-	goto	i1l7771
+i1l1671:	
+	goto	i1l7813
 	
-i1l1641:	
-	goto	i1l7771
+i1l1668:	
+	goto	i1l7813
 	
-i1l1635:	
-	goto	i1l7771
+i1l1662:	
+	goto	i1l7813
 	
-i1l1627:	
-	goto	i1l7771
+i1l1654:	
+	goto	i1l7813
 	
-i1l1626:	
-	goto	i1l7771
+i1l1653:	
+	goto	i1l7813
 	
-i1l1625:	
+i1l1652:	
 	
-i1l7771:	
+i1l7813:	
 	btfss	(108/8),(108)&7	;volatile
 	goto	u706_21
 	goto	u706_20
 u706_21:
-	goto	i1l7779
+	goto	i1l7821
 u706_20:
 	
-i1l7773:	
+i1l7815:	
 	movlw	(01h)
 	movwf	(??_TMR0_ISR+0)+0
 	movf	(_DimmerLights22),w
@@ -28975,10 +28969,10 @@ u707_25:
 	goto	u707_21
 	goto	u707_20
 u707_21:
-	goto	i1l7779
+	goto	i1l7821
 u707_20:
 	
-i1l7775:	
+i1l7817:	
 	movlb 0	; select bank0
 	movf	(_DimmerLights22),w
 	addlw	08h
@@ -28988,20 +28982,20 @@ i1l7775:
 	
 	clrf	indf1
 	
-i1l7777:	
+i1l7819:	
 	bcf	(108/8),(108)&7	;volatile
-	goto	i1l7779
+	goto	i1l7821
 	
-i1l1647:	
-	goto	i1l7779
+i1l1674:	
+	goto	i1l7821
 	
-i1l1646:	
-	goto	i1l7779
+i1l1673:	
+	goto	i1l7821
 	
-i1l1624:	
+i1l1651:	
 	line	150
 	
-i1l7779:	
+i1l7821:	
 ;MCU_B1.c: 150: Timer0->Count++;
 	movlb 1	; select bank1
 	incf	(_Timer0)^080h,w
@@ -29015,7 +29009,7 @@ i1l7779:
 	incf	indf1,f
 	line	151
 	
-i1l7781:	
+i1l7823:	
 ;MCU_B1.c: 151: if(Timer0->Count == 200)
 	incf	(_Timer0)^080h,w
 	movwf	fsr1l
@@ -29032,11 +29026,11 @@ u708_25:
 	goto	u708_21
 	goto	u708_20
 u708_21:
-	goto	i1l1648
+	goto	i1l1675
 u708_20:
 	line	153
 	
-i1l7783:	
+i1l7825:	
 ;MCU_B1.c: 152: {
 ;MCU_B1.c: 153: Timer0->Count=0;
 	incf	(_Timer0)^080h,w
@@ -29057,7 +29051,7 @@ i1l7783:
 	bsf	indf1,1
 	line	155
 	
-i1l1648:	
+i1l1675:	
 	line	158
 ;MCU_B1.c: 155: }
 ;MCU_B1.c: 158: if(Buz->GO)
@@ -29071,11 +29065,11 @@ i1l1648:
 	goto	u709_21
 	goto	u709_20
 u709_21:
-	goto	i1l1650
+	goto	i1l1677
 u709_20:
 	line	160
 	
-i1l7785:	
+i1l7827:	
 ;MCU_B1.c: 159: {
 ;MCU_B1.c: 160: Buz->Time++;
 	incf	(_Buz),w
@@ -29088,17 +29082,17 @@ i1l7785:
 	addfsr	fsr1,1
 	skipnc
 	incf	indf1,f
-	goto	i1l1650
+	goto	i1l1677
 	line	161
 	
-i1l1649:	
-	goto	i1l1650
+i1l1676:	
+	goto	i1l1677
 	line	165
 	
-i1l1593:	
+i1l1620:	
 	line	166
 	
-i1l1650:	
+i1l1677:	
 	return
 	opt stack 0
 GLOBAL	__end_of_TMR0_ISR
@@ -29151,26 +29145,26 @@ _IOC_ISR:
 ; Regs used in _IOC_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	344
 	
-i1l7599:	
+i1l7641:	
 ;MCU_B1.c: 344: if(IOCIE && IOCBF2)
 	btfss	(91/8),(91)&7	;volatile
 	goto	u664_21
 	goto	u664_20
 u664_21:
-	goto	i1l1675
+	goto	i1l1702
 u664_20:
 	
-i1l7601:	
+i1l7643:	
 	movlb 7	; select bank7
 	btfss	(7346/8)^0380h,(7346)&7	;volatile
 	goto	u665_21
 	goto	u665_20
 u665_21:
-	goto	i1l1675
+	goto	i1l1702
 u665_20:
 	line	346
 	
-i1l7603:	
+i1l7645:	
 ;MCU_B1.c: 345: {
 ;MCU_B1.c: 346: IOCBF2=0;
 	bcf	(7346/8)^0380h,(7346)&7	;volatile
@@ -29179,7 +29173,7 @@ i1l7603:
 	bcf	(88/8),(88)&7	;volatile
 	line	348
 	
-i1l7605:	
+i1l7647:	
 ;MCU_B1.c: 348: if(TMain->PowerON)
 	movlb 0	; select bank0
 	movf	(_TMain),w
@@ -29191,28 +29185,28 @@ i1l7605:
 	goto	u666_21
 	goto	u666_20
 u666_21:
-	goto	i1l1675
+	goto	i1l1702
 u666_20:
 	line	353
 	
-i1l7607:	
+i1l7649:	
 ;MCU_B1.c: 349: {
 ;MCU_B1.c: 353: setDimmerReClock();
 	fcall	_setDimmerReClock
 	line	354
 	
-i1l7609:	
+i1l7651:	
 ;MCU_B1.c: 354: if(RB2)
 	movlb 0	; select bank0
 	btfss	(106/8),(106)&7	;volatile
 	goto	u667_21
 	goto	u667_20
 u667_21:
-	goto	i1l7613
+	goto	i1l7655
 u667_20:
 	line	356
 	
-i1l7611:	
+i1l7653:	
 ;MCU_B1.c: 355: {
 ;MCU_B1.c: 356: Dimmer->Correction=0;
 	movlb 1	; select bank1
@@ -29224,13 +29218,13 @@ i1l7611:
 	clrf	indf1
 	line	357
 ;MCU_B1.c: 357: }
-	goto	i1l1675
+	goto	i1l1702
 	line	358
 	
-i1l1673:	
+i1l1700:	
 	line	360
 	
-i1l7613:	
+i1l7655:	
 ;MCU_B1.c: 358: else
 ;MCU_B1.c: 359: {
 ;MCU_B1.c: 360: Dimmer->Correction=8;
@@ -29244,21 +29238,21 @@ i1l7613:
 	
 	movf	(??_IOC_ISR+0)+0,w
 	movwf	indf1
-	goto	i1l1675
+	goto	i1l1702
 	line	361
 	
-i1l1674:	
-	goto	i1l1675
+i1l1701:	
+	goto	i1l1702
 	line	369
 	
-i1l1672:	
-	goto	i1l1675
+i1l1699:	
+	goto	i1l1702
 	line	370
 	
-i1l1671:	
+i1l1698:	
 	line	371
 	
-i1l1675:	
+i1l1702:	
 	return
 	opt stack 0
 GLOBAL	__end_of_IOC_ISR
@@ -29310,14 +29304,14 @@ _setDimmerReClock:
 ; Regs used in _setDimmerReClock: [wregfsr1]
 	line	170
 	
-i1l7047:	
+i1l7089:	
 ;MCU_B1.c: 170: TMR0=255;
 	movlw	(0FFh)
 	movlb 0	; select bank0
 	movwf	(21)	;volatile
 	line	175
 	
-i1l7049:	
+i1l7091:	
 ;MCU_B1.c: 175: if(!DimmerLights11->GO)
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
@@ -29328,11 +29322,11 @@ i1l7049:
 	goto	u576_21
 	goto	u576_20
 u576_21:
-	goto	i1l1653
+	goto	i1l1680
 u576_20:
 	line	177
 	
-i1l7051:	
+i1l7093:	
 ;MCU_B1.c: 176: {
 ;MCU_B1.c: 177: DimmerLights11->GO=1;
 	movf	(_DimmerLights11),w
@@ -29343,7 +29337,7 @@ i1l7051:
 	bsf	indf1,0
 	line	178
 	
-i1l1653:	
+i1l1680:	
 	line	202
 ;MCU_B1.c: 178: }
 ;MCU_B1.c: 202: if(!DimmerLights22->GO)
@@ -29356,11 +29350,11 @@ i1l1653:
 	goto	u577_21
 	goto	u577_20
 u577_21:
-	goto	i1l1655
+	goto	i1l1682
 u577_20:
 	line	204
 	
-i1l7053:	
+i1l7095:	
 ;MCU_B1.c: 203: {
 ;MCU_B1.c: 204: DimmerLights22->GO=1;
 	movf	(_DimmerLights22),w
@@ -29369,13 +29363,13 @@ i1l7053:
 	movwf fsr1h	
 	
 	bsf	indf1,0
-	goto	i1l1655
+	goto	i1l1682
 	line	205
 	
-i1l1654:	
+i1l1681:	
 	line	235
 	
-i1l1655:	
+i1l1682:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setDimmerReClock
@@ -29428,25 +29422,25 @@ _INT_ISR:
 ; Regs used in _INT_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
 	line	295
 	
-i1l7787:	
+i1l7829:	
 ;MCU_B1.c: 295: if(INTE && INTF)
 	btfss	(92/8),(92)&7	;volatile
 	goto	u710_21
 	goto	u710_20
 u710_21:
-	goto	i1l1662
+	goto	i1l1689
 u710_20:
 	
-i1l7789:	
+i1l7831:	
 	btfss	(89/8),(89)&7	;volatile
 	goto	u711_21
 	goto	u711_20
 u711_21:
-	goto	i1l1662
+	goto	i1l1689
 u711_20:
 	line	297
 	
-i1l7791:	
+i1l7833:	
 ;MCU_B1.c: 296: {
 ;MCU_B1.c: 297: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
@@ -29455,19 +29449,19 @@ i1l7791:
 	bcf	(92/8),(92)&7	;volatile
 	line	299
 	
-i1l7793:	
+i1l7835:	
 ;MCU_B1.c: 299: setRF_ReceiveGO(1,1);
 	clrf	(setRF_ReceiveGO@command)
 	incf	(setRF_ReceiveGO@command),f
 	movlw	(01h)
 	fcall	_setRF_ReceiveGO
-	goto	i1l1662
+	goto	i1l1689
 	line	300
 	
-i1l1661:	
+i1l1688:	
 	line	301
 	
-i1l1662:	
+i1l1689:	
 	return
 	opt stack 0
 GLOBAL	__end_of_INT_ISR
@@ -29524,13 +29518,13 @@ _setRF_ReceiveGO:
 	movwf	(setRF_ReceiveGO@rf)
 	line	39
 	
-i1l7055:	
+i1l7097:	
 ;RF_Control_B1.c: 39: RfPointSelect(rf);
 	movf	(setRF_ReceiveGO@rf),w
 	fcall	i1_RfPointSelect
 	line	40
 	
-i1l7057:	
+i1l7099:	
 ;RF_Control_B1.c: 40: RF->ReceiveGO=command;
 	movf	(_RF),w
 	movwf	fsr1l
@@ -29542,7 +29536,7 @@ i1l7057:
 	bsf	indf1,1
 	line	41
 	
-i1l2500:	
+i1l2552:	
 	return
 	opt stack 0
 GLOBAL	__end_of_setRF_ReceiveGO
@@ -29596,7 +29590,7 @@ i1_RfPointSelect:
 	movwf	(i1RfPointSelect@rf)
 	line	10
 	
-i1l6815:	
+i1l6855:	
 ;RF_Control_B1.c: 10: if(rf == 1)
 	movf	(i1RfPointSelect@rf),w
 	xorlw	01h&0ffh
@@ -29604,24 +29598,24 @@ i1l6815:
 	goto	u551_21
 	goto	u551_20
 u551_21:
-	goto	i1l2488
+	goto	i1l2540
 u551_20:
 	line	12
 	
-i1l6817:	
+i1l6857:	
 ;RF_Control_B1.c: 11: {
 ;RF_Control_B1.c: 12: RF=&RF1;
 	movlw	(_RF1)&0ffh
 	movwf	(??i1_RfPointSelect+0)+0
 	movf	(??i1_RfPointSelect+0)+0,w
 	movwf	(_RF)
-	goto	i1l2488
+	goto	i1l2540
 	line	13
 	
-i1l2487:	
+i1l2539:	
 	line	15
 	
-i1l2488:	
+i1l2540:	
 	return
 	opt stack 0
 GLOBAL	__end_ofi1_RfPointSelect
