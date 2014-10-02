@@ -1,4 +1,3 @@
-
 #ifndef _Activity_B1_H_
 #define _Activity_B1_H_
 

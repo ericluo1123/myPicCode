@@ -4,7 +4,6 @@
 #include "Select_File.h"
 
 //config
-
 	#ifdef _16F723A
 		__CONFIG(FOSC_INTOSCIO & _WDTE & BOREN_OFF & PLEEN_Value);// v8.84
 		__CONFIG(VCAPEN_DIS);// WRT_OFF 
@@ -96,7 +95,7 @@ void IO_Set()
 //*********************************************************
 
 //ISR
-void ISR(void) interrupt 0	// ISR (Interrupt Service Routines)
+void interrupt ISR(void)// interrupt 0	// ISR (Interrupt Service Routines)
 {	
 	IOC_ISR();
 	

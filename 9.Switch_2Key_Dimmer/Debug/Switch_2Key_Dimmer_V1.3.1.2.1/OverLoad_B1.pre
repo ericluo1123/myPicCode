@@ -125,7 +125,7 @@ struct TMain *TMain;
 void MainT_Initialization();
 void MainT();
 
-# 59 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
+# 58 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Activity_B1.h"
 typedef int ADtype;
 
 # 13 "C:\Users\taianluo\Documents\GitHub\myPicCode\Header_File\Switch_B1.h"

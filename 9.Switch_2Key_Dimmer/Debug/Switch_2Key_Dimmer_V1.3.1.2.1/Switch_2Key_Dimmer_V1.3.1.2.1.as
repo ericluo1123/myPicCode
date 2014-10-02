@@ -7301,7 +7301,7 @@ GLOBAL	__end_of_getPowerFault_AD
 
 ;; *************** function _getAD *****************
 ;; Defined at:
-;;		line 385 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 384 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  adcon0          1    wreg     unsigned char 
 ;;  adcon1          1    0[BANK0 ] unsigned char 
@@ -7332,12 +7332,12 @@ GLOBAL	__end_of_getPowerFault_AD
 ;;
 psect	text3,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	385
+	line	384
 global __ptext3
 __ptext3:	;psect for function _getAD
 psect	text3
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	385
+	line	384
 	global	__size_of_getAD
 	__size_of_getAD	equ	__end_of_getAD-_getAD
 	
@@ -7348,26 +7348,26 @@ _getAD:
 ;getAD@adcon0 stored from wreg
 	movlb 0	; select bank0
 	movwf	(getAD@adcon0)
-	line	387
+	line	386
 	
 l9293:	
-;MCU_B1.c: 387: ADCON0=adcon0;
+;MCU_B1.c: 386: ADCON0=adcon0;
 	movf	(getAD@adcon0),w
 	movlb 1	; select bank1
 	movwf	(157)^080h	;volatile
-	line	388
-;MCU_B1.c: 388: ADCON1=adcon1;
+	line	387
+;MCU_B1.c: 387: ADCON1=adcon1;
 	movlb 0	; select bank0
 	movf	(getAD@adcon1),w
 	movlb 1	; select bank1
 	movwf	(158)^080h	;volatile
-	line	389
+	line	388
 	
 l9295:	
-;MCU_B1.c: 389: GO_nDONE=1;
+;MCU_B1.c: 388: GO_nDONE=1;
 	bsf	(1257/8)^080h,(1257)&7	;volatile
-	line	390
-;MCU_B1.c: 390: while(GO_nDONE);
+	line	389
+;MCU_B1.c: 389: while(GO_nDONE);
 	goto	l1708
 	
 l1709:	
@@ -7382,10 +7382,10 @@ u9360:
 	goto	l9297
 	
 l1710:	
-	line	391
+	line	390
 	
 l9297:	
-;MCU_B1.c: 391: return ((ADRESH*256)+ADRESL);
+;MCU_B1.c: 390: return ((ADRESH*256)+ADRESL);
 	movf	(156)^080h,w	;volatile
 	movlb 0	; select bank0
 	clrf	(?_getAD+1)
@@ -7399,7 +7399,7 @@ l9297:
 	goto	l1711
 	
 l9299:	
-	line	392
+	line	391
 	
 l1711:	
 	return
@@ -7411,7 +7411,7 @@ GLOBAL	__end_of_getAD
 
 ;; *************** function _WDT_Main *****************
 ;; Defined at:
-;;		line 986 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 985 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7439,12 +7439,12 @@ GLOBAL	__end_of_getAD
 ;; This function uses a non-reentrant model
 ;;
 psect	text4,local,class=CODE,delta=2,merge=1
-	line	986
+	line	985
 global __ptext4
 __ptext4:	;psect for function _WDT_Main
 psect	text4
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	986
+	line	985
 	global	__size_of_WDT_Main
 	__size_of_WDT_Main	equ	__end_of_WDT_Main-_WDT_Main
 	
@@ -7452,10 +7452,10 @@ _WDT_Main:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _WDT_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	987
+	line	986
 	
 l9803:	
-;MCU_B1.c: 987: if(WDT->Enable){
+;MCU_B1.c: 986: if(WDT->Enable){
 	movlb 1	; select bank1
 	movf	(_WDT)^080h,w
 	movwf	fsr1l
@@ -7467,10 +7467,10 @@ l9803:
 u10171:
 	goto	l1752
 u10170:
-	line	988
+	line	987
 	
 l9805:	
-;MCU_B1.c: 988: if(WDT->Count-- > 0){
+;MCU_B1.c: 987: if(WDT->Count-- > 0){
 	incf	(_WDT)^080h,w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -7485,10 +7485,10 @@ l9805:
 u10181:
 	goto	l1752
 u10180:
-	line	989
+	line	988
 	
 l9807:	
-;MCU_B1.c: 989: WDT->Count=10;
+;MCU_B1.c: 988: WDT->Count=10;
 	movlw	(0Ah)
 	movlb 0	; select bank0
 	movwf	(??_WDT_Main+0)+0
@@ -7500,20 +7500,20 @@ l9807:
 	movlb 0	; select bank0
 	movf	(??_WDT_Main+0)+0,w
 	movwf	indf1
-	line	990
+	line	989
 	
 l9809:	
-;MCU_B1.c: 990: WDT_Clearing();
+;MCU_B1.c: 989: WDT_Clearing();
 	fcall	_WDT_Clearing
 	goto	l1752
-	line	991
+	line	990
 	
 l1751:	
 	goto	l1752
-	line	992
+	line	991
 	
 l1750:	
-	line	993
+	line	992
 	
 l1752:	
 	return
@@ -7525,7 +7525,7 @@ GLOBAL	__end_of_WDT_Main
 
 ;; *************** function _WDT_Clearing *****************
 ;; Defined at:
-;;		line 995 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 994 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -7553,12 +7553,12 @@ GLOBAL	__end_of_WDT_Main
 ;; This function uses a non-reentrant model
 ;;
 psect	text5,local,class=CODE,delta=2,merge=1
-	line	995
+	line	994
 global __ptext5
 __ptext5:	;psect for function _WDT_Clearing
 psect	text5
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	995
+	line	994
 	global	__size_of_WDT_Clearing
 	__size_of_WDT_Clearing	equ	__end_of_WDT_Clearing-_WDT_Clearing
 	
@@ -7566,13 +7566,13 @@ _WDT_Clearing:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _WDT_Clearing: []
-	line	996
+	line	995
 	
 l9325:	
-# 996 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+# 995 "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 clrwdt ;# 
 psect	text5
-	line	997
+	line	996
 	
 l1755:	
 	return
@@ -17107,7 +17107,7 @@ GLOBAL	__end_of_setPowerFault_Initialization
 
 ;; *************** function _Mcu_Initialization *****************
 ;; Defined at:
-;;		line 24 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 23 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17141,12 +17141,12 @@ GLOBAL	__end_of_setPowerFault_Initialization
 ;;
 psect	text54,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	24
+	line	23
 global __ptext54
 __ptext54:	;psect for function _Mcu_Initialization
 psect	text54
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	24
+	line	23
 	global	__size_of_Mcu_Initialization
 	__size_of_Mcu_Initialization	equ	__end_of_Mcu_Initialization-_Mcu_Initialization
 	
@@ -17154,52 +17154,52 @@ _Mcu_Initialization:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _Mcu_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	27
+	line	26
 	
 l9679:	
-;MCU_B1.c: 27: OSCCON=0x78; ;;
+;MCU_B1.c: 26: OSCCON=0x78; ;;
 	movlw	(078h)
 	movlb 1	; select bank1
 	movwf	(153)^080h	;volatile
-	line	29
+	line	28
 	
 l9681:	
-;MCU_B1.c: 29: IO_Set();
+;MCU_B1.c: 28: IO_Set();
 	fcall	_IO_Set
-	line	31
+	line	30
 	
 l9683:	
-;MCU_B1.c: 31: TMR0_Set();
+;MCU_B1.c: 30: TMR0_Set();
 	fcall	_TMR0_Set
-	line	35
+	line	34
 	
 l9685:	
-;MCU_B1.c: 33: ;;
-;MCU_B1.c: 35: ADC_Set();
+;MCU_B1.c: 32: ;;
+;MCU_B1.c: 34: ADC_Set();
 	fcall	_ADC_Set
-	line	39
-;MCU_B1.c: 39: INT_Set();
+	line	38
+;MCU_B1.c: 38: INT_Set();
 	fcall	_INT_Set
-	line	41
+	line	40
 	
 l9687:	
-;MCU_B1.c: 41: IOC_Set();
+;MCU_B1.c: 40: IOC_Set();
 	fcall	_IOC_Set
-	line	47
-;MCU_B1.c: 43: ;;
-;MCU_B1.c: 45: ;;
-;MCU_B1.c: 47: Memory=&VarMemory;
+	line	46
+;MCU_B1.c: 42: ;;
+;MCU_B1.c: 44: ;;
+;MCU_B1.c: 46: Memory=&VarMemory;
 	movlw	(_VarMemory)&0ffh
 	movlb 0	; select bank0
 	movwf	(??_Mcu_Initialization+0)+0
 	movf	(??_Mcu_Initialization+0)+0,w
 	movwf	(_Memory)
-	line	49
+	line	48
 	
 l9689:	
-;MCU_B1.c: 49: WDT_Set();
+;MCU_B1.c: 48: WDT_Set();
 	fcall	_WDT_Set
-	line	50
+	line	49
 	
 l1608:	
 	return
@@ -17211,7 +17211,7 @@ GLOBAL	__end_of_Mcu_Initialization
 
 ;; *************** function _WDT_Set *****************
 ;; Defined at:
-;;		line 979 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 978 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17239,12 +17239,12 @@ GLOBAL	__end_of_Mcu_Initialization
 ;; This function uses a non-reentrant model
 ;;
 psect	text55,local,class=CODE,delta=2,merge=1
-	line	979
+	line	978
 global __ptext55
 __ptext55:	;psect for function _WDT_Set
 psect	text55
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	979
+	line	978
 	global	__size_of_WDT_Set
 	__size_of_WDT_Set	equ	__end_of_WDT_Set-_WDT_Set
 	
@@ -17252,34 +17252,34 @@ _WDT_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _WDT_Set: [wregfsr1]
-	line	980
+	line	979
 	
 l9287:	
-;MCU_B1.c: 980: WDTCON=0b00010111;;
+;MCU_B1.c: 979: WDTCON=0b00010111;;
 	movlw	(017h)
 	movlb 1	; select bank1
 	movwf	(151)^080h	;volatile
-	line	981
-;MCU_B1.c: 981: WDT=&_WDT;
+	line	980
+;MCU_B1.c: 980: WDT=&_WDT;
 	movlw	(__WDT)&0ffh
 	movlb 0	; select bank0
 	movwf	(??_WDT_Set+0)+0
 	movf	(??_WDT_Set+0)+0,w
 	movlb 1	; select bank1
 	movwf	(_WDT)^080h
-	line	982
+	line	981
 	
 l9289:	
-;MCU_B1.c: 982: WDT->Enable=1;
+;MCU_B1.c: 981: WDT->Enable=1;
 	movf	(_WDT)^080h,w
 	movwf	fsr1l
 	clrf fsr1h	
 	
 	bsf	indf1,0
-	line	983
+	line	982
 	
 l9291:	
-;MCU_B1.c: 983: WDT->Count=10;
+;MCU_B1.c: 982: WDT->Count=10;
 	movlw	(0Ah)
 	movlb 0	; select bank0
 	movwf	(??_WDT_Set+0)+0
@@ -17291,7 +17291,7 @@ l9291:
 	movlb 0	; select bank0
 	movf	(??_WDT_Set+0)+0,w
 	movwf	indf1
-	line	984
+	line	983
 	
 l1747:	
 	return
@@ -17303,7 +17303,7 @@ GLOBAL	__end_of_WDT_Set
 
 ;; *************** function _TMR0_Set *****************
 ;; Defined at:
-;;		line 118 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 117 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17331,12 +17331,12 @@ GLOBAL	__end_of_WDT_Set
 ;; This function uses a non-reentrant model
 ;;
 psect	text56,local,class=CODE,delta=2,merge=1
-	line	118
+	line	117
 global __ptext56
 __ptext56:	;psect for function _TMR0_Set
 psect	text56
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	118
+	line	117
 	global	__size_of_TMR0_Set
 	__size_of_TMR0_Set	equ	__end_of_TMR0_Set-_TMR0_Set
 	
@@ -17344,39 +17344,39 @@ _TMR0_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _TMR0_Set: [wreg+status,2]
-	line	120
+	line	119
 	
 l9259:	
-;MCU_B1.c: 120: Timer0=&VarTimer0;
+;MCU_B1.c: 119: Timer0=&VarTimer0;
 	movlw	(_VarTimer0)&0ffh
 	movlb 0	; select bank0
 	movwf	(??_TMR0_Set+0)+0
 	movf	(??_TMR0_Set+0)+0,w
 	movlb 1	; select bank1
 	movwf	(_Timer0)^080h
-	line	121
+	line	120
 	
 l9261:	
-;MCU_B1.c: 121: OPTION_REG=0x00;
+;MCU_B1.c: 120: OPTION_REG=0x00;
 	clrf	(149)^080h	;volatile
-	line	122
+	line	121
 	
 l9263:	
-;MCU_B1.c: 122: TMR0=(256-90);
+;MCU_B1.c: 121: TMR0=(256-90);
 	movlw	(0A6h)
 	movlb 0	; select bank0
 	movwf	(21)	;volatile
-	line	123
+	line	122
 	
 l9265:	
-;MCU_B1.c: 123: TMR0IE=1;
+;MCU_B1.c: 122: TMR0IE=1;
 	bsf	(93/8),(93)&7	;volatile
-	line	124
+	line	123
 	
 l9267:	
-;MCU_B1.c: 124: GIE=1;
+;MCU_B1.c: 123: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
-	line	125
+	line	124
 	
 l1617:	
 	return
@@ -17388,7 +17388,7 @@ GLOBAL	__end_of_TMR0_Set
 
 ;; *************** function _IO_Set *****************
 ;; Defined at:
-;;		line 52 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 51 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17416,12 +17416,12 @@ GLOBAL	__end_of_TMR0_Set
 ;; This function uses a non-reentrant model
 ;;
 psect	text57,local,class=CODE,delta=2,merge=1
-	line	52
+	line	51
 global __ptext57
 __ptext57:	;psect for function _IO_Set
 psect	text57
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	52
+	line	51
 	global	__size_of_IO_Set
 	__size_of_IO_Set	equ	__end_of_IO_Set-_IO_Set
 	
@@ -17429,73 +17429,73 @@ _IO_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _IO_Set: [wreg+status,2]
-	line	81
+	line	80
 	
 l9241:	
-;MCU_B1.c: 81: TRISA=0b01110111;;
+;MCU_B1.c: 80: TRISA=0b01110111;;
 	movlw	(077h)
 	movlb 1	; select bank1
 	movwf	(140)^080h	;volatile
-	line	82
-;MCU_B1.c: 82: TRISB=0b00000111;;
+	line	81
+;MCU_B1.c: 81: TRISB=0b00000111;;
 	movlw	(07h)
 	movwf	(141)^080h	;volatile
-	line	83
-;MCU_B1.c: 83: TRISC=0b00001100;;
+	line	82
+;MCU_B1.c: 82: TRISC=0b00001100;;
 	movlw	(0Ch)
 	movwf	(142)^080h	;volatile
-	line	84
+	line	83
 	
 l9243:	
-;MCU_B1.c: 84: LATA=0b00000000;;
+;MCU_B1.c: 83: LATA=0b00000000;;
 	movlb 2	; select bank2
 	clrf	(268)^0100h	;volatile
-	line	85
+	line	84
 	
 l9245:	
-;MCU_B1.c: 85: LATB=0b00000010;;
+;MCU_B1.c: 84: LATB=0b00000010;;
 	movlw	(02h)
 	movwf	(269)^0100h	;volatile
-	line	86
-;MCU_B1.c: 86: LATC=0b00000000;;
+	line	85
+;MCU_B1.c: 85: LATC=0b00000000;;
 	clrf	(270)^0100h	;volatile
-	line	87
+	line	86
 	
 l9247:	
-;MCU_B1.c: 87: ANSELA=0b00100010;;
+;MCU_B1.c: 86: ANSELA=0b00100010;;
 	movlw	(022h)
 	movlb 3	; select bank3
 	movwf	(396)^0180h	;volatile
-	line	88
+	line	87
 	
 l9249:	
-;MCU_B1.c: 88: ANSELB=0b00000000;;
+;MCU_B1.c: 87: ANSELB=0b00000000;;
 	clrf	(397)^0180h	;volatile
-	line	89
+	line	88
 	
 l9251:	
-;MCU_B1.c: 89: ANSELC=0b00000000;;
+;MCU_B1.c: 88: ANSELC=0b00000000;;
 	clrf	(398)^0180h	;volatile
-	line	90
+	line	89
 	
 l9253:	
-;MCU_B1.c: 90: PORTA=0b01110111;;
+;MCU_B1.c: 89: PORTA=0b01110111;;
 	movlw	(077h)
 	movlb 0	; select bank0
 	movwf	(12)	;volatile
-	line	91
+	line	90
 	
 l9255:	
-;MCU_B1.c: 91: PORTB=0b00000111;;
+;MCU_B1.c: 90: PORTB=0b00000111;;
 	movlw	(07h)
 	movwf	(13)	;volatile
-	line	92
+	line	91
 	
 l9257:	
-;MCU_B1.c: 92: PORTC=0b00001100;;
+;MCU_B1.c: 91: PORTC=0b00001100;;
 	movlw	(0Ch)
 	movwf	(14)	;volatile
-	line	94
+	line	93
 	
 l1611:	
 	return
@@ -17507,7 +17507,7 @@ GLOBAL	__end_of_IO_Set
 
 ;; *************** function _IOC_Set *****************
 ;; Defined at:
-;;		line 314 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 313 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17535,12 +17535,12 @@ GLOBAL	__end_of_IO_Set
 ;; This function uses a non-reentrant model
 ;;
 psect	text58,local,class=CODE,delta=2,merge=1
-	line	314
+	line	313
 global __ptext58
 __ptext58:	;psect for function _IOC_Set
 psect	text58
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	314
+	line	313
 	global	__size_of_IOC_Set
 	__size_of_IOC_Set	equ	__end_of_IOC_Set-_IOC_Set
 	
@@ -17548,49 +17548,49 @@ _IOC_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _IOC_Set: [wreg+status,2]
-	line	316
+	line	315
 	
 l9273:	
-;MCU_B1.c: 316: WPUB2=0;
+;MCU_B1.c: 315: WPUB2=0;
 	movlb 4	; select bank4
 	bcf	(4202/8)^0200h,(4202)&7	;volatile
-	line	318
+	line	317
 	
 l9275:	
-;MCU_B1.c: 318: IOCBP=0b00000100;
+;MCU_B1.c: 317: IOCBP=0b00000100;
 	movlw	(04h)
 	movlb 7	; select bank7
 	movwf	(916)^0380h	;volatile
-	line	319
-;MCU_B1.c: 319: IOCBN=0b00000100;
+	line	318
+;MCU_B1.c: 318: IOCBN=0b00000100;
 	movlw	(04h)
 	movwf	(917)^0380h	;volatile
-	line	334
+	line	333
 	
 l9277:	
-;MCU_B1.c: 334: IOCBF=0b00000000;
+;MCU_B1.c: 333: IOCBF=0b00000000;
 	clrf	(918)^0380h	;volatile
-	line	336
+	line	335
 	
 l9279:	
-;MCU_B1.c: 336: IOCIE=1;
+;MCU_B1.c: 335: IOCIE=1;
 	bsf	(91/8),(91)&7	;volatile
-	line	337
+	line	336
 	
 l9281:	
-;MCU_B1.c: 337: IOCIF=0;
+;MCU_B1.c: 336: IOCIF=0;
 	bcf	(88/8),(88)&7	;volatile
-	line	338
+	line	337
 	
 l9283:	
-;MCU_B1.c: 338: PEIE=1;
+;MCU_B1.c: 337: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
-	line	339
+	line	338
 	
 l9285:	
-;MCU_B1.c: 339: GIE=1;
+;MCU_B1.c: 338: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
-	line	340
+	line	339
 	
 l1695:	
 	return
@@ -17602,7 +17602,7 @@ GLOBAL	__end_of_IOC_Set
 
 ;; *************** function _INT_Set *****************
 ;; Defined at:
-;;		line 285 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 284 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17630,12 +17630,12 @@ GLOBAL	__end_of_IOC_Set
 ;; This function uses a non-reentrant model
 ;;
 psect	text59,local,class=CODE,delta=2,merge=1
-	line	285
+	line	284
 global __ptext59
 __ptext59:	;psect for function _INT_Set
 psect	text59
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	285
+	line	284
 	global	__size_of_INT_Set
 	__size_of_INT_Set	equ	__end_of_INT_Set-_INT_Set
 	
@@ -17643,22 +17643,22 @@ _INT_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _INT_Set: []
-	line	287
+	line	286
 	
 l9271:	
-;MCU_B1.c: 287: WPUB0=0;
+;MCU_B1.c: 286: WPUB0=0;
 	movlb 4	; select bank4
 	bcf	(4200/8)^0200h,(4200)&7	;volatile
-	line	288
-;MCU_B1.c: 288: INTE=1;
+	line	287
+;MCU_B1.c: 287: INTE=1;
 	bsf	(92/8),(92)&7	;volatile
-	line	289
-;MCU_B1.c: 289: PEIE=1;
+	line	288
+;MCU_B1.c: 288: PEIE=1;
 	bsf	(94/8),(94)&7	;volatile
-	line	290
-;MCU_B1.c: 290: GIE=1;
+	line	289
+;MCU_B1.c: 289: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
-	line	291
+	line	290
 	
 l1685:	
 	return
@@ -17670,7 +17670,7 @@ GLOBAL	__end_of_INT_Set
 
 ;; *************** function _ADC_Set *****************
 ;; Defined at:
-;;		line 379 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 378 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -17698,12 +17698,12 @@ GLOBAL	__end_of_INT_Set
 ;; This function uses a non-reentrant model
 ;;
 psect	text60,local,class=CODE,delta=2,merge=1
-	line	379
+	line	378
 global __ptext60
 __ptext60:	;psect for function _ADC_Set
 psect	text60
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	379
+	line	378
 	global	__size_of_ADC_Set
 	__size_of_ADC_Set	equ	__end_of_ADC_Set-_ADC_Set
 	
@@ -17711,19 +17711,19 @@ _ADC_Set:
 ;incstack = 0
 	opt	stack 10
 ; Regs used in _ADC_Set: [wreg]
-	line	381
+	line	380
 	
 l9269:	
-;MCU_B1.c: 381: ADCON1=0xf2;
+;MCU_B1.c: 380: ADCON1=0xf2;
 	movlw	(0F2h)
 	movlb 1	; select bank1
 	movwf	(158)^080h	;volatile
-	line	382
-;MCU_B1.c: 382: FVRCON=0xc0;
+	line	381
+;MCU_B1.c: 381: FVRCON=0xc0;
 	movlw	(0C0h)
 	movlb 2	; select bank2
 	movwf	(279)^0100h	;volatile
-	line	383
+	line	382
 	
 l1705:	
 	return
@@ -18420,7 +18420,7 @@ GLOBAL	__end_of_setRF_Enable
 
 ;; *************** function _setINT_GO *****************
 ;; Defined at:
-;;		line 303 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 302 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  command         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -18451,12 +18451,12 @@ GLOBAL	__end_of_setRF_Enable
 ;;
 psect	text66,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	303
+	line	302
 global __ptext66
 __ptext66:	;psect for function _setINT_GO
 psect	text66
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	303
+	line	302
 	global	__size_of_setINT_GO
 	__size_of_setINT_GO	equ	__end_of_setINT_GO-_setINT_GO
 	
@@ -18467,15 +18467,15 @@ _setINT_GO:
 ;setINT_GO@command stored from wreg
 	movlb 0	; select bank0
 	movwf	(setINT_GO@command)
-	line	305
+	line	304
 	
 l8547:	
-;MCU_B1.c: 305: INTF=0;
+;MCU_B1.c: 304: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
-	line	306
+	line	305
 	
 l8549:	
-;MCU_B1.c: 306: INTE=command;
+;MCU_B1.c: 305: INTE=command;
 	btfsc	(setINT_GO@command),0
 	goto	u8491
 	goto	u8490
@@ -18486,7 +18486,7 @@ u8491:
 u8490:
 	bcf	(92/8),(92)&7	;volatile
 u8504:
-	line	307
+	line	306
 	
 l1692:	
 	return
@@ -18928,7 +18928,7 @@ GLOBAL	__end_of_setLED_Initialization
 
 ;; *************** function _Flash_Memory_Main *****************
 ;; Defined at:
-;;		line 873 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 872 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -18957,12 +18957,12 @@ GLOBAL	__end_of_setLED_Initialization
 ;;
 psect	text71,local,class=CODE,delta=2,merge=1
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	873
+	line	872
 global __ptext71
 __ptext71:	;psect for function _Flash_Memory_Main
 psect	text71
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	873
+	line	872
 	global	__size_of_Flash_Memory_Main
 	__size_of_Flash_Memory_Main	equ	__end_of_Flash_Memory_Main-_Flash_Memory_Main
 	
@@ -18970,10 +18970,10 @@ _Flash_Memory_Main:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	875
+	line	874
 	
 l9811:	
-;MCU_B1.c: 875: if(Memory->GO)
+;MCU_B1.c: 874: if(Memory->GO)
 	movlb 0	; select bank0
 	movf	(_Memory),w
 	addlw	022h
@@ -18987,11 +18987,11 @@ l9811:
 u10191:
 	goto	l1724
 u10190:
-	line	877
+	line	876
 	
 l9813:	
-;MCU_B1.c: 876: {
-;MCU_B1.c: 877: if(Memory->Modify)
+;MCU_B1.c: 875: {
+;MCU_B1.c: 876: if(Memory->Modify)
 	movf	(_Memory),w
 	addlw	022h
 	movwf	fsr1l
@@ -19004,11 +19004,11 @@ l9813:
 u10201:
 	goto	l9823
 u10200:
-	line	879
+	line	878
 	
 l9815:	
-;MCU_B1.c: 878: {
-;MCU_B1.c: 879: Memory->Time++;
+;MCU_B1.c: 877: {
+;MCU_B1.c: 878: Memory->Time++;
 	movf	(_Memory),w
 	addlw	023h
 	movwf	fsr1l
@@ -19020,10 +19020,10 @@ l9815:
 	addfsr	fsr1,1
 	skipnc
 	incf	indf1,f
-	line	880
+	line	879
 	
 l9817:	
-;MCU_B1.c: 880: if(Memory->Time == 25)
+;MCU_B1.c: 879: if(Memory->Time == 25)
 	movf	(_Memory),w
 	addlw	023h
 	movwf	fsr1l
@@ -19043,11 +19043,11 @@ u10215:
 u10211:
 	goto	l1724
 u10210:
-	line	882
+	line	881
 	
 l9819:	
-;MCU_B1.c: 881: {
-;MCU_B1.c: 882: Memory->Time=0;
+;MCU_B1.c: 880: {
+;MCU_B1.c: 881: Memory->Time=0;
 	movf	(_Memory),w
 	addlw	023h
 	movwf	fsr1l
@@ -19057,8 +19057,8 @@ l9819:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	line	883
-;MCU_B1.c: 883: Memory->Modify=0;
+	line	882
+;MCU_B1.c: 882: Memory->Modify=0;
 	movf	(_Memory),w
 	addlw	022h
 	movwf	fsr1l
@@ -19066,8 +19066,8 @@ l9819:
 	movwf fsr1h	
 	
 	bcf	indf1,0
-	line	884
-;MCU_B1.c: 884: Memory->GO=0;
+	line	883
+;MCU_B1.c: 883: Memory->GO=0;
 	movf	(_Memory),w
 	addlw	022h
 	movwf	fsr1l
@@ -19075,28 +19075,28 @@ l9819:
 	movwf fsr1h	
 	
 	bcf	indf1,1
-	line	885
+	line	884
 	
 l9821:	
-;MCU_B1.c: 885: Flash_Memory_Modify();
+;MCU_B1.c: 884: Flash_Memory_Modify();
 	fcall	_Flash_Memory_Modify
 	goto	l1724
-	line	887
+	line	886
 	
 l1722:	
-	line	888
+	line	887
+;MCU_B1.c: 886: }
 ;MCU_B1.c: 887: }
-;MCU_B1.c: 888: }
 	goto	l1724
-	line	889
+	line	888
 	
 l1721:	
-	line	891
+	line	890
 	
 l9823:	
-;MCU_B1.c: 889: else
-;MCU_B1.c: 890: {
-;MCU_B1.c: 891: Memory->GO=0;
+;MCU_B1.c: 888: else
+;MCU_B1.c: 889: {
+;MCU_B1.c: 890: Memory->GO=0;
 	movlb 0	; select bank0
 	movf	(_Memory),w
 	addlw	022h
@@ -19106,14 +19106,14 @@ l9823:
 	
 	bcf	indf1,1
 	goto	l1724
-	line	892
+	line	891
 	
 l1723:	
 	goto	l1724
-	line	893
+	line	892
 	
 l1720:	
-	line	894
+	line	893
 	
 l1724:	
 	return
@@ -19125,7 +19125,7 @@ GLOBAL	__end_of_Flash_Memory_Main
 
 ;; *************** function _Flash_Memory_Modify *****************
 ;; Defined at:
-;;		line 948 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 947 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -19155,12 +19155,12 @@ GLOBAL	__end_of_Flash_Memory_Main
 ;; This function uses a non-reentrant model
 ;;
 psect	text72,local,class=CODE,delta=2,merge=1
-	line	948
+	line	947
 global __ptext72
 __ptext72:	;psect for function _Flash_Memory_Modify
 psect	text72
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	948
+	line	947
 	global	__size_of_Flash_Memory_Modify
 	__size_of_Flash_Memory_Modify	equ	__end_of_Flash_Memory_Modify-_Flash_Memory_Modify
 	
@@ -19168,11 +19168,11 @@ _Flash_Memory_Modify:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Modify: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	951
+	line	950
 	
 l9301:	
-;MCU_B1.c: 950: char i;
-;MCU_B1.c: 951: for(i=0;i<32;i++)
+;MCU_B1.c: 949: char i;
+;MCU_B1.c: 950: for(i=0;i<32;i++)
 	movlb 0	; select bank0
 	clrf	(Flash_Memory_Modify@i)
 	
@@ -19189,14 +19189,14 @@ u9370:
 	
 l9305:	
 	goto	l9313
-	line	952
+	line	951
 	
 l1741:	
-	line	953
+	line	952
 	
 l9307:	
-;MCU_B1.c: 952: {
-;MCU_B1.c: 953: Memory->Data[i]=Flash_Memory_Read(i);
+;MCU_B1.c: 951: {
+;MCU_B1.c: 952: Memory->Data[i]=Flash_Memory_Read(i);
 	movf	(Flash_Memory_Modify@i),w
 	fcall	_Flash_Memory_Read
 	movlb 0	; select bank0
@@ -19211,7 +19211,7 @@ l9307:
 	
 	movf	(??_Flash_Memory_Modify+0)+0,w
 	movwf	indf1
-	line	951
+	line	950
 	
 l9309:	
 	movlw	(01h)
@@ -19231,11 +19231,11 @@ u9380:
 	goto	l9313
 	
 l1742:	
-	line	955
+	line	954
 	
 l9313:	
-;MCU_B1.c: 954: }
-;MCU_B1.c: 955: Memory->Data[0]=Product->Data[12];
+;MCU_B1.c: 953: }
+;MCU_B1.c: 954: Memory->Data[0]=Product->Data[12];
 	movf	(_Product),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -19251,8 +19251,8 @@ l9313:
 	
 	movf	(??_Flash_Memory_Modify+0)+0,w
 	movwf	indf1
-	line	956
-;MCU_B1.c: 956: Memory->Data[1]=Product->Data[13];
+	line	955
+;MCU_B1.c: 955: Memory->Data[1]=Product->Data[13];
 	movf	(_Product),w
 	addlw	0Dh
 	movwf	fsr1l
@@ -19268,8 +19268,8 @@ l9313:
 	
 	movf	(??_Flash_Memory_Modify+0)+0,w
 	movwf	indf1
-	line	957
-;MCU_B1.c: 957: Memory->Data[2]=Product->Data[14];
+	line	956
+;MCU_B1.c: 956: Memory->Data[2]=Product->Data[14];
 	movf	(_Product),w
 	addlw	0Eh
 	movwf	fsr1l
@@ -19286,8 +19286,8 @@ l9313:
 	
 	movf	(??_Flash_Memory_Modify+0)+0,w
 	movwf	indf1
-	line	963
-;MCU_B1.c: 963: if(Memory->LoopSave)
+	line	962
+;MCU_B1.c: 962: if(Memory->LoopSave)
 	movf	(_Memory),w
 	addlw	022h
 	movwf	fsr1l
@@ -19300,11 +19300,11 @@ l9313:
 u9391:
 	goto	l9317
 u9390:
-	line	965
+	line	964
 	
 l9315:	
-;MCU_B1.c: 964: {
-;MCU_B1.c: 965: Memory->LoopSave=0;
+;MCU_B1.c: 963: {
+;MCU_B1.c: 964: Memory->LoopSave=0;
 	movf	(_Memory),w
 	addlw	022h
 	movwf	fsr1l
@@ -19312,16 +19312,16 @@ l9315:
 	movwf fsr1h	
 	
 	bcf	indf1,2
-	line	966
-;MCU_B1.c: 966: TMain->FirstOpen=0;
+	line	965
+;MCU_B1.c: 965: TMain->FirstOpen=0;
 	movf	(_TMain),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bcf	indf1,5
-	line	967
-;MCU_B1.c: 967: TMain->First=0;
+	line	966
+;MCU_B1.c: 966: TMain->First=0;
 	movf	(_TMain),w
 	addlw	03h
 	movwf	fsr1l
@@ -19330,31 +19330,31 @@ l9315:
 	
 	bcf	indf1,1
 	goto	l9317
-	line	969
+	line	968
 	
 l1743:	
-	line	970
+	line	969
 	
 l9317:	
-;MCU_B1.c: 969: }
-;MCU_B1.c: 970: GIE=0;
+;MCU_B1.c: 968: }
+;MCU_B1.c: 969: GIE=0;
 	bcf	(95/8),(95)&7	;volatile
-	line	971
+	line	970
 	
 l9319:	
-;MCU_B1.c: 971: Flash_Memory_Erasing();
+;MCU_B1.c: 970: Flash_Memory_Erasing();
 	fcall	_Flash_Memory_Erasing
-	line	972
+	line	971
 	
 l9321:	
-;MCU_B1.c: 972: Flash_Memory_Write();
+;MCU_B1.c: 971: Flash_Memory_Write();
 	fcall	_Flash_Memory_Write
-	line	973
+	line	972
 	
 l9323:	
-;MCU_B1.c: 973: GIE=1;
+;MCU_B1.c: 972: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
-	line	974
+	line	973
 	
 l1744:	
 	return
@@ -19366,7 +19366,7 @@ GLOBAL	__end_of_Flash_Memory_Modify
 
 ;; *************** function _Flash_Memory_Erasing *****************
 ;; Defined at:
-;;		line 937 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 936 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -19394,12 +19394,12 @@ GLOBAL	__end_of_Flash_Memory_Modify
 ;; This function uses a non-reentrant model
 ;;
 psect	text73,local,class=CODE,delta=2,merge=1
-	line	937
+	line	936
 global __ptext73
 __ptext73:	;psect for function _Flash_Memory_Erasing
 psect	text73
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	937
+	line	936
 	global	__size_of_Flash_Memory_Erasing
 	__size_of_Flash_Memory_Erasing	equ	__end_of_Flash_Memory_Erasing-_Flash_Memory_Erasing
 	
@@ -19407,45 +19407,45 @@ _Flash_Memory_Erasing:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Erasing: [wreg+status,2+status,0+pclath+cstack]
-	line	939
+	line	938
 	
 l8887:	
-;MCU_B1.c: 939: CFGS=0;
+;MCU_B1.c: 938: CFGS=0;
 	movlb 3	; select bank3
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
-	line	940
+	line	939
 	
 l8889:	
-;MCU_B1.c: 940: PMADRH=0x30;
+;MCU_B1.c: 939: PMADRH=0x30;
 	movlw	(030h)
 	movwf	(402)^0180h	;volatile
-	line	941
+	line	940
 	
 l8891:	
-;MCU_B1.c: 941: PMADRL=0x00;
+;MCU_B1.c: 940: PMADRL=0x00;
 	clrf	(401)^0180h	;volatile
-	line	942
+	line	941
 	
 l8893:	
-;MCU_B1.c: 942: FREE=1;
+;MCU_B1.c: 941: FREE=1;
 	bsf	(3244/8)^0180h,(3244)&7	;volatile
-	line	943
+	line	942
 	
 l8895:	
-;MCU_B1.c: 943: WREN=1;
+;MCU_B1.c: 942: WREN=1;
 	bsf	(3242/8)^0180h,(3242)&7	;volatile
-	line	944
+	line	943
 	
 l8897:	
-;MCU_B1.c: 944: Flash_Memory_Unlock();
+;MCU_B1.c: 943: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
-	line	945
+	line	944
 	
 l8899:	
-;MCU_B1.c: 945: WREN=0;
+;MCU_B1.c: 944: WREN=0;
 	movlb 3	; select bank3
 	bcf	(3242/8)^0180h,(3242)&7	;volatile
-	line	946
+	line	945
 	
 l1738:	
 	return
@@ -19457,7 +19457,7 @@ GLOBAL	__end_of_Flash_Memory_Erasing
 
 ;; *************** function _Flash_Memory_Initialization *****************
 ;; Defined at:
-;;		line 828 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 827 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -19487,12 +19487,12 @@ GLOBAL	__end_of_Flash_Memory_Erasing
 ;; This function uses a non-reentrant model
 ;;
 psect	text74,local,class=CODE,delta=2,merge=1
-	line	828
+	line	827
 global __ptext74
 __ptext74:	;psect for function _Flash_Memory_Initialization
 psect	text74
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	828
+	line	827
 	global	__size_of_Flash_Memory_Initialization
 	__size_of_Flash_Memory_Initialization	equ	__end_of_Flash_Memory_Initialization-_Flash_Memory_Initialization
 	
@@ -19500,11 +19500,11 @@ _Flash_Memory_Initialization:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	831
+	line	830
 	
 l9691:	
-;MCU_B1.c: 830: char i;
-;MCU_B1.c: 831: if(Flash_Memory_Read(31) == 0xaa)
+;MCU_B1.c: 829: char i;
+;MCU_B1.c: 830: if(Flash_Memory_Read(31) == 0xaa)
 	movlw	(01Fh)
 	fcall	_Flash_Memory_Read
 	xorlw	0AAh&0ffh
@@ -19514,11 +19514,11 @@ l9691:
 u10041:
 	goto	l9711
 u10040:
-	line	833
+	line	832
 	
 l9693:	
-;MCU_B1.c: 832: {
-;MCU_B1.c: 833: Product->Data[12]=Flash_Memory_Read(0);
+;MCU_B1.c: 831: {
+;MCU_B1.c: 832: Product->Data[12]=Flash_Memory_Read(0);
 	movlw	(0)
 	fcall	_Flash_Memory_Read
 	movlb 0	; select bank0
@@ -19531,8 +19531,8 @@ l9693:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	834
-;MCU_B1.c: 834: Product->Data[13]=Flash_Memory_Read(1);
+	line	833
+;MCU_B1.c: 833: Product->Data[13]=Flash_Memory_Read(1);
 	movlw	(01h)
 	fcall	_Flash_Memory_Read
 	movlb 0	; select bank0
@@ -19545,8 +19545,8 @@ l9693:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	835
-;MCU_B1.c: 835: Product->Data[14]=Flash_Memory_Read(2);
+	line	834
+;MCU_B1.c: 834: Product->Data[14]=Flash_Memory_Read(2);
 	movlw	(02h)
 	fcall	_Flash_Memory_Read
 	movlb 0	; select bank0
@@ -19559,20 +19559,20 @@ l9693:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	841
+	line	840
 	
 l9695:	
-;MCU_B1.c: 841: i=setPercentValue(((char)((100-55)*1.5)));
+;MCU_B1.c: 840: i=setPercentValue(((char)((100-55)*1.5)));
 	movlw	(043h)
 	fcall	_setPercentValue
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	(Flash_Memory_Initialization@i)
-	line	842
+	line	841
 	
 l9697:	
-;MCU_B1.c: 842: Product->Data[21]=i;
+;MCU_B1.c: 841: Product->Data[21]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19583,10 +19583,10 @@ l9697:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	843
+	line	842
 	
 l9699:	
-;MCU_B1.c: 843: Product->Data[22]=i;
+;MCU_B1.c: 842: Product->Data[22]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19597,10 +19597,10 @@ l9699:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	844
+	line	843
 	
 l9701:	
-;MCU_B1.c: 844: Product->Data[23]=i;
+;MCU_B1.c: 843: Product->Data[23]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19611,10 +19611,10 @@ l9701:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	846
+	line	845
 	
 l9703:	
-;MCU_B1.c: 846: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
+;MCU_B1.c: 845: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[14]==0xff)
 	movf	(_Product),w
 	addlw	0Ch
 	movwf	fsr1l
@@ -19661,19 +19661,19 @@ l9707:
 u10071:
 	goto	l1717
 u10070:
-	line	848
+	line	847
 	
 l9709:	
-;MCU_B1.c: 847: {
-;MCU_B1.c: 848: TMain->FirstOpen=1;
+;MCU_B1.c: 846: {
+;MCU_B1.c: 847: TMain->FirstOpen=1;
 	movf	(_TMain),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bsf	indf1,5
-	line	849
-;MCU_B1.c: 849: TMain->First=1;
+	line	848
+;MCU_B1.c: 848: TMain->First=1;
 	movf	(_TMain),w
 	addlw	03h
 	movwf	fsr1l
@@ -19682,32 +19682,32 @@ l9709:
 	
 	bsf	indf1,1
 	goto	l1717
-	line	850
+	line	849
 	
 l1715:	
-	line	851
+	line	850
+;MCU_B1.c: 849: }
 ;MCU_B1.c: 850: }
-;MCU_B1.c: 851: }
 	goto	l1717
-	line	852
+	line	851
 	
 l1714:	
-	line	854
+	line	853
 	
 l9711:	
-;MCU_B1.c: 852: else
-;MCU_B1.c: 853: {
-;MCU_B1.c: 854: i=setPercentValue(((char)((100-55)*1.5)));
+;MCU_B1.c: 851: else
+;MCU_B1.c: 852: {
+;MCU_B1.c: 853: i=setPercentValue(((char)((100-55)*1.5)));
 	movlw	(043h)
 	fcall	_setPercentValue
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	(Flash_Memory_Initialization@i)
-	line	855
+	line	854
 	
 l9713:	
-;MCU_B1.c: 855: Memory->Data[0]=0xff;
+;MCU_B1.c: 854: Memory->Data[0]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19717,10 +19717,10 @@ l9713:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	856
+	line	855
 	
 l9715:	
-;MCU_B1.c: 856: Memory->Data[1]=0xff;
+;MCU_B1.c: 855: Memory->Data[1]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	incf	(_Memory),w
@@ -19730,10 +19730,10 @@ l9715:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	857
+	line	856
 	
 l9717:	
-;MCU_B1.c: 857: Memory->Data[2]=0xff;
+;MCU_B1.c: 856: Memory->Data[2]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19744,10 +19744,10 @@ l9717:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	858
+	line	857
 	
 l9719:	
-;MCU_B1.c: 858: Memory->Data[3]=0xff;
+;MCU_B1.c: 857: Memory->Data[3]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19758,10 +19758,10 @@ l9719:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	859
+	line	858
 	
 l9721:	
-;MCU_B1.c: 859: Memory->Data[4]=0xff;
+;MCU_B1.c: 858: Memory->Data[4]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19772,10 +19772,10 @@ l9721:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	860
+	line	859
 	
 l9723:	
-;MCU_B1.c: 860: Memory->Data[5]=0xff;
+;MCU_B1.c: 859: Memory->Data[5]=0xff;
 	movlw	(0FFh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19786,10 +19786,10 @@ l9723:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	861
+	line	860
 	
 l9725:	
-;MCU_B1.c: 861: Memory->Data[31]=0xaa;
+;MCU_B1.c: 860: Memory->Data[31]=0xaa;
 	movlw	(0AAh)
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Memory),w
@@ -19800,10 +19800,10 @@ l9725:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	862
+	line	861
 	
 l9727:	
-;MCU_B1.c: 862: Product->Data[21]=i;
+;MCU_B1.c: 861: Product->Data[21]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19814,10 +19814,10 @@ l9727:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	863
+	line	862
 	
 l9729:	
-;MCU_B1.c: 863: Product->Data[22]=i;
+;MCU_B1.c: 862: Product->Data[22]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19828,10 +19828,10 @@ l9729:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	864
+	line	863
 	
 l9731:	
-;MCU_B1.c: 864: Product->Data[23]=i;
+;MCU_B1.c: 863: Product->Data[23]=i;
 	movf	(Flash_Memory_Initialization@i),w
 	movwf	(??_Flash_Memory_Initialization+0)+0
 	movf	(_Product),w
@@ -19842,25 +19842,25 @@ l9731:
 	
 	movf	(??_Flash_Memory_Initialization+0)+0,w
 	movwf	indf1
-	line	865
+	line	864
 	
 l9733:	
-;MCU_B1.c: 865: GIE=0;
+;MCU_B1.c: 864: GIE=0;
 	bcf	(95/8),(95)&7	;volatile
-	line	866
+	line	865
 	
 l9735:	
-;MCU_B1.c: 866: Flash_Memory_Write();
+;MCU_B1.c: 865: Flash_Memory_Write();
 	fcall	_Flash_Memory_Write
-	line	867
+	line	866
 	
 l9737:	
-;MCU_B1.c: 867: GIE=1;
+;MCU_B1.c: 866: GIE=1;
 	bsf	(95/8),(95)&7	;volatile
-	line	868
+	line	867
 	
 l9739:	
-;MCU_B1.c: 868: TMain->FirstOpen=1;
+;MCU_B1.c: 867: TMain->FirstOpen=1;
 	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
@@ -19868,10 +19868,10 @@ l9739:
 	movwf fsr1h	
 	
 	bsf	indf1,5
-	line	869
+	line	868
 	
 l9741:	
-;MCU_B1.c: 869: TMain->First=1;
+;MCU_B1.c: 868: TMain->First=1;
 	movf	(_TMain),w
 	addlw	03h
 	movwf	fsr1l
@@ -19880,10 +19880,10 @@ l9741:
 	
 	bsf	indf1,1
 	goto	l1717
-	line	870
+	line	869
 	
 l1716:	
-	line	871
+	line	870
 	
 l1717:	
 	return
@@ -19895,7 +19895,7 @@ GLOBAL	__end_of_Flash_Memory_Initialization
 
 ;; *************** function _Flash_Memory_Write *****************
 ;; Defined at:
-;;		line 917 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 916 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -19924,12 +19924,12 @@ GLOBAL	__end_of_Flash_Memory_Initialization
 ;; This function uses a non-reentrant model
 ;;
 psect	text75,local,class=CODE,delta=2,merge=1
-	line	917
+	line	916
 global __ptext75
 __ptext75:	;psect for function _Flash_Memory_Write
 psect	text75
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	917
+	line	916
 	global	__size_of_Flash_Memory_Write
 	__size_of_Flash_Memory_Write	equ	__end_of_Flash_Memory_Write-_Flash_Memory_Write
 	
@@ -19937,43 +19937,43 @@ _Flash_Memory_Write:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Write: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	920
+	line	919
 	
 l8857:	
-;MCU_B1.c: 919: char i;
-;MCU_B1.c: 920: CFGS=0;
+;MCU_B1.c: 918: char i;
+;MCU_B1.c: 919: CFGS=0;
 	movlb 3	; select bank3
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
-	line	921
+	line	920
 	
 l8859:	
-;MCU_B1.c: 921: PMADRH=0x30;
+;MCU_B1.c: 920: PMADRH=0x30;
 	movlw	(030h)
 	movwf	(402)^0180h	;volatile
-	line	922
+	line	921
 	
 l8861:	
-;MCU_B1.c: 922: PMDATH=0;
+;MCU_B1.c: 921: PMDATH=0;
 	clrf	(404)^0180h	;volatile
-	line	923
+	line	922
 	
 l8863:	
-;MCU_B1.c: 923: FREE=0;
+;MCU_B1.c: 922: FREE=0;
 	bcf	(3244/8)^0180h,(3244)&7	;volatile
-	line	924
+	line	923
 	
 l8865:	
-;MCU_B1.c: 924: LWLO=1;
+;MCU_B1.c: 923: LWLO=1;
 	bsf	(3245/8)^0180h,(3245)&7	;volatile
-	line	925
+	line	924
 	
 l8867:	
-;MCU_B1.c: 925: WREN=1;
+;MCU_B1.c: 924: WREN=1;
 	bsf	(3242/8)^0180h,(3242)&7	;volatile
-	line	926
+	line	925
 	
 l8869:	
-;MCU_B1.c: 926: for(i=0 ; i<32 ; i++)
+;MCU_B1.c: 925: for(i=0 ; i<32 ; i++)
 	movlb 0	; select bank0
 	clrf	(Flash_Memory_Write@i)
 	movlw	(020h)
@@ -19988,21 +19988,21 @@ u8850:
 	
 l8871:	
 	goto	l1734
-	line	927
+	line	926
 	
 l1733:	
-	line	928
+	line	927
 	
 l8873:	
-;MCU_B1.c: 927: {
-;MCU_B1.c: 928: PMADRL=i;
+;MCU_B1.c: 926: {
+;MCU_B1.c: 927: PMADRL=i;
 	movf	(Flash_Memory_Write@i),w
 	movlb 3	; select bank3
 	movwf	(401)^0180h	;volatile
-	line	929
+	line	928
 	
 l8875:	
-;MCU_B1.c: 929: PMDATL=Memory->Data[i];
+;MCU_B1.c: 928: PMDATL=Memory->Data[i];
 	movlb 0	; select bank0
 	movf	(Flash_Memory_Write@i),w
 	addwf	(_Memory),w
@@ -20015,12 +20015,12 @@ l8875:
 	movf	indf1,w
 	movlb 3	; select bank3
 	movwf	(403)^0180h	;volatile
-	line	930
+	line	929
 	
 l8877:	
-;MCU_B1.c: 930: Flash_Memory_Unlock();
+;MCU_B1.c: 929: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
-	line	926
+	line	925
 	
 l8879:	
 	movlw	(01h)
@@ -20040,23 +20040,23 @@ u8861:
 u8860:
 	
 l1734:	
-	line	932
-;MCU_B1.c: 931: }
-;MCU_B1.c: 932: LWLO=0;
+	line	931
+;MCU_B1.c: 930: }
+;MCU_B1.c: 931: LWLO=0;
 	movlb 3	; select bank3
 	bcf	(3245/8)^0180h,(3245)&7	;volatile
-	line	933
+	line	932
 	
 l8883:	
-;MCU_B1.c: 933: Flash_Memory_Unlock();
+;MCU_B1.c: 932: Flash_Memory_Unlock();
 	fcall	_Flash_Memory_Unlock
-	line	934
+	line	933
 	
 l8885:	
-;MCU_B1.c: 934: WREN=0;
+;MCU_B1.c: 933: WREN=0;
 	movlb 3	; select bank3
 	bcf	(3242/8)^0180h,(3242)&7	;volatile
-	line	935
+	line	934
 	
 l1735:	
 	return
@@ -20068,7 +20068,7 @@ GLOBAL	__end_of_Flash_Memory_Write
 
 ;; *************** function _Flash_Memory_Unlock *****************
 ;; Defined at:
-;;		line 896 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 895 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -20097,12 +20097,12 @@ GLOBAL	__end_of_Flash_Memory_Write
 ;; This function uses a non-reentrant model
 ;;
 psect	text76,local,class=CODE,delta=2,merge=1
-	line	896
+	line	895
 global __ptext76
 __ptext76:	;psect for function _Flash_Memory_Unlock
 psect	text76
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	896
+	line	895
 	global	__size_of_Flash_Memory_Unlock
 	__size_of_Flash_Memory_Unlock	equ	__end_of_Flash_Memory_Unlock-_Flash_Memory_Unlock
 	
@@ -20110,37 +20110,37 @@ _Flash_Memory_Unlock:
 ;incstack = 0
 	opt	stack 8
 ; Regs used in _Flash_Memory_Unlock: [wreg]
-	line	898
+	line	897
 	
 l8673:	
-;MCU_B1.c: 898: PMCON2=0x55;
+;MCU_B1.c: 897: PMCON2=0x55;
 	movlw	(055h)
 	movlb 3	; select bank3
 	movwf	(406)^0180h	;volatile
-	line	899
-;MCU_B1.c: 899: PMCON2=0xaa;
+	line	898
+;MCU_B1.c: 898: PMCON2=0xaa;
 	movlw	(0AAh)
 	movwf	(406)^0180h	;volatile
-	line	900
+	line	899
 	
 l8675:	
-;MCU_B1.c: 900: WR=1;
+;MCU_B1.c: 899: WR=1;
 	bsf	(3241/8)^0180h,(3241)&7	;volatile
-	line	901
+	line	900
 	
 l8677:	
+;MCU_B1.c: 900: __nop();
+	opt	asmopt_off
+	nop
+	opt	asmopt_on
+	line	901
+	
+l8679:	
 ;MCU_B1.c: 901: __nop();
 	opt	asmopt_off
 	nop
 	opt	asmopt_on
 	line	902
-	
-l8679:	
-;MCU_B1.c: 902: __nop();
-	opt	asmopt_off
-	nop
-	opt	asmopt_on
-	line	903
 	
 l1727:	
 	return
@@ -20152,7 +20152,7 @@ GLOBAL	__end_of_Flash_Memory_Unlock
 
 ;; *************** function _Flash_Memory_Read *****************
 ;; Defined at:
-;;		line 905 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 904 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;  address         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -20183,12 +20183,12 @@ GLOBAL	__end_of_Flash_Memory_Unlock
 ;; This function uses a non-reentrant model
 ;;
 psect	text77,local,class=CODE,delta=2,merge=1
-	line	905
+	line	904
 global __ptext77
 __ptext77:	;psect for function _Flash_Memory_Read
 psect	text77
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	905
+	line	904
 	global	__size_of_Flash_Memory_Read
 	__size_of_Flash_Memory_Read	equ	__end_of_Flash_Memory_Read-_Flash_Memory_Read
 	
@@ -20199,64 +20199,64 @@ _Flash_Memory_Read:
 ;Flash_Memory_Read@address stored from wreg
 	movlb 0	; select bank0
 	movwf	(Flash_Memory_Read@address)
-	line	907
+	line	906
 	
 l8839:	
-;MCU_B1.c: 907: char i,ret=0;
+;MCU_B1.c: 906: char i,ret=0;
 	clrf	(Flash_Memory_Read@ret)
-	line	908
+	line	907
 	
 l8841:	
-;MCU_B1.c: 908: PMADRH=0x30;
+;MCU_B1.c: 907: PMADRH=0x30;
 	movlw	(030h)
 	movlb 3	; select bank3
 	movwf	(402)^0180h	;volatile
-	line	909
+	line	908
 	
 l8843:	
-;MCU_B1.c: 909: PMADRL=address;
+;MCU_B1.c: 908: PMADRL=address;
 	movlb 0	; select bank0
 	movf	(Flash_Memory_Read@address),w
 	movlb 3	; select bank3
 	movwf	(401)^0180h	;volatile
-	line	910
+	line	909
 	
 l8845:	
-;MCU_B1.c: 910: CFGS=0;
+;MCU_B1.c: 909: CFGS=0;
 	bcf	(3246/8)^0180h,(3246)&7	;volatile
-	line	911
+	line	910
 	
 l8847:	
-;MCU_B1.c: 911: RD=1;
+;MCU_B1.c: 910: RD=1;
 	bsf	(3240/8)^0180h,(3240)&7	;volatile
-	line	912
+	line	911
 	
 l8849:	
-;MCU_B1.c: 912: i=PMDATH;
+;MCU_B1.c: 911: i=PMDATH;
 	movf	(404)^0180h,w	;volatile
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Read+0)+0
 	movf	(??_Flash_Memory_Read+0)+0,w
 	movwf	(Flash_Memory_Read@i)
-	line	913
+	line	912
 	
 l8851:	
-;MCU_B1.c: 913: ret=PMDATL;
+;MCU_B1.c: 912: ret=PMDATL;
 	movlb 3	; select bank3
 	movf	(403)^0180h,w	;volatile
 	movlb 0	; select bank0
 	movwf	(??_Flash_Memory_Read+0)+0
 	movf	(??_Flash_Memory_Read+0)+0,w
 	movwf	(Flash_Memory_Read@ret)
-	line	914
+	line	913
 	
 l8853:	
-;MCU_B1.c: 914: return ret;
+;MCU_B1.c: 913: return ret;
 	movf	(Flash_Memory_Read@ret),w
 	goto	l1730
 	
 l8855:	
-	line	915
+	line	914
 	
 l1730:	
 	return
@@ -27487,7 +27487,7 @@ GLOBAL	__end_of_Buzzer_Initialization
 
 ;; *************** function _ISR *****************
 ;; Defined at:
-;;		line 99 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 98 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -27521,7 +27521,7 @@ global __pintentry
 __pintentry:
 psect	intentry
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	99
+	line	98
 	global	__size_of_ISR
 	__size_of_ISR	equ	__end_of_ISR-_ISR
 	
@@ -27535,23 +27535,23 @@ psect	intentry
 	movlb 0	; select bank0
 	movf	btemp+1,w
 	movwf	(??_ISR+0)
-	line	101
+	line	100
 	
 i1l7915:	
-;MCU_B1.c: 101: IOC_ISR();
+;MCU_B1.c: 100: IOC_ISR();
 	fcall	_IOC_ISR
-	line	103
+	line	102
 	
 i1l7917:	
-;MCU_B1.c: 103: TMR0_ISR();
+;MCU_B1.c: 102: TMR0_ISR();
 	fcall	_TMR0_ISR
-	line	109
+	line	108
 	
 i1l7919:	
-;MCU_B1.c: 105: ;;
-;MCU_B1.c: 109: INT_ISR();
+;MCU_B1.c: 104: ;;
+;MCU_B1.c: 108: INT_ISR();
 	fcall	_INT_ISR
-	line	114
+	line	113
 	
 i1l1614:	
 	movf	(??_ISR+0),w
@@ -27567,7 +27567,7 @@ GLOBAL	__end_of_ISR
 
 ;; *************** function _TMR0_ISR *****************
 ;; Defined at:
-;;		line 127 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 126 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -27594,12 +27594,12 @@ GLOBAL	__end_of_ISR
 ;; This function uses a non-reentrant model
 ;;
 psect	text126,local,class=CODE,delta=2,merge=1
-	line	127
+	line	126
 global __ptext126
 __ptext126:	;psect for function _TMR0_ISR
 psect	text126
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	127
+	line	126
 	global	__size_of_TMR0_ISR
 	__size_of_TMR0_ISR	equ	__end_of_TMR0_ISR-_TMR0_ISR
 	
@@ -27607,10 +27607,10 @@ _TMR0_ISR:
 ;incstack = 0
 	opt	stack 4
 ; Regs used in _TMR0_ISR: [wreg-fsr1h+status,2+status,0]
-	line	129
+	line	128
 	
 i1l7657:	
-;MCU_B1.c: 129: if(TMR0IE && TMR0IF)
+;MCU_B1.c: 128: if(TMR0IE && TMR0IF)
 	btfss	(93/8),(93)&7	;volatile
 	goto	u668_21
 	goto	u668_20
@@ -27625,23 +27625,23 @@ i1l7659:
 u669_21:
 	goto	i1l1677
 u669_20:
-	line	131
+	line	130
 	
 i1l7661:	
-;MCU_B1.c: 130: {
-;MCU_B1.c: 131: TMR0=(256-90);
+;MCU_B1.c: 129: {
+;MCU_B1.c: 130: TMR0=(256-90);
 	movlw	(0A6h)
 	movlb 0	; select bank0
 	movwf	(21)	;volatile
-	line	132
+	line	131
 	
 i1l7663:	
-;MCU_B1.c: 132: TMR0IF=0;
+;MCU_B1.c: 131: TMR0IF=0;
 	bcf	(90/8),(90)&7	;volatile
-	line	137
+	line	136
 	
 i1l7665:	
-;MCU_B1.c: 137: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } }
+;MCU_B1.c: 136: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Count >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; DimmerLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } } }
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -28315,10 +28315,10 @@ i1l1646:
 	goto	i1l7743
 	
 i1l1624:	
-	line	141
+	line	140
 	
 i1l7743:	
-;MCU_B1.c: 141: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } el
+;MCU_B1.c: 140: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Count >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; DimmerLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } el
 	movlb 0	; select bank0
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
@@ -28993,10 +28993,10 @@ i1l1673:
 	goto	i1l7821
 	
 i1l1651:	
-	line	150
+	line	149
 	
 i1l7821:	
-;MCU_B1.c: 150: Timer0->Count++;
+;MCU_B1.c: 149: Timer0->Count++;
 	movlb 1	; select bank1
 	incf	(_Timer0)^080h,w
 	movwf	fsr1l
@@ -29007,10 +29007,10 @@ i1l7821:
 	addfsr	fsr1,1
 	skipnc
 	incf	indf1,f
-	line	151
+	line	150
 	
 i1l7823:	
-;MCU_B1.c: 151: if(Timer0->Count == 200)
+;MCU_B1.c: 150: if(Timer0->Count == 200)
 	incf	(_Timer0)^080h,w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -29028,11 +29028,11 @@ u708_25:
 u708_21:
 	goto	i1l1675
 u708_20:
-	line	153
+	line	152
 	
 i1l7825:	
-;MCU_B1.c: 152: {
-;MCU_B1.c: 153: Timer0->Count=0;
+;MCU_B1.c: 151: {
+;MCU_B1.c: 152: Timer0->Count=0;
 	incf	(_Timer0)^080h,w
 	movwf	fsr1l
 	clrf fsr1h	
@@ -29040,8 +29040,8 @@ i1l7825:
 	movlw	0
 	movwi	[0]fsr1
 	movwi	[1]fsr1
-	line	154
-;MCU_B1.c: 154: TMain->T0_Timerout=1;
+	line	153
+;MCU_B1.c: 153: TMain->T0_Timerout=1;
 	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
@@ -29049,12 +29049,12 @@ i1l7825:
 	movwf fsr1h	
 	
 	bsf	indf1,1
-	line	155
+	line	154
 	
 i1l1675:	
-	line	158
-;MCU_B1.c: 155: }
-;MCU_B1.c: 158: if(Buz->GO)
+	line	157
+;MCU_B1.c: 154: }
+;MCU_B1.c: 157: if(Buz->GO)
 	movlb 0	; select bank0
 	movf	(_Buz),w
 	movwf	fsr1l
@@ -29067,11 +29067,11 @@ i1l1675:
 u709_21:
 	goto	i1l1677
 u709_20:
-	line	160
+	line	159
 	
 i1l7827:	
-;MCU_B1.c: 159: {
-;MCU_B1.c: 160: Buz->Time++;
+;MCU_B1.c: 158: {
+;MCU_B1.c: 159: Buz->Time++;
 	incf	(_Buz),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -29083,14 +29083,14 @@ i1l7827:
 	skipnc
 	incf	indf1,f
 	goto	i1l1677
-	line	161
+	line	160
 	
 i1l1676:	
 	goto	i1l1677
-	line	165
+	line	164
 	
 i1l1620:	
-	line	166
+	line	165
 	
 i1l1677:	
 	return
@@ -29102,7 +29102,7 @@ GLOBAL	__end_of_TMR0_ISR
 
 ;; *************** function _IOC_ISR *****************
 ;; Defined at:
-;;		line 342 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 341 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -29130,12 +29130,12 @@ GLOBAL	__end_of_TMR0_ISR
 ;; This function uses a non-reentrant model
 ;;
 psect	text127,local,class=CODE,delta=2,merge=1
-	line	342
+	line	341
 global __ptext127
 __ptext127:	;psect for function _IOC_ISR
 psect	text127
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	342
+	line	341
 	global	__size_of_IOC_ISR
 	__size_of_IOC_ISR	equ	__end_of_IOC_ISR-_IOC_ISR
 	
@@ -29143,10 +29143,10 @@ _IOC_ISR:
 ;incstack = 0
 	opt	stack 3
 ; Regs used in _IOC_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	344
+	line	343
 	
 i1l7641:	
-;MCU_B1.c: 344: if(IOCIE && IOCBF2)
+;MCU_B1.c: 343: if(IOCIE && IOCBF2)
 	btfss	(91/8),(91)&7	;volatile
 	goto	u664_21
 	goto	u664_20
@@ -29162,19 +29162,19 @@ i1l7643:
 u665_21:
 	goto	i1l1702
 u665_20:
-	line	346
+	line	345
 	
 i1l7645:	
-;MCU_B1.c: 345: {
-;MCU_B1.c: 346: IOCBF2=0;
+;MCU_B1.c: 344: {
+;MCU_B1.c: 345: IOCBF2=0;
 	bcf	(7346/8)^0380h,(7346)&7	;volatile
-	line	347
-;MCU_B1.c: 347: IOCIF=0;
+	line	346
+;MCU_B1.c: 346: IOCIF=0;
 	bcf	(88/8),(88)&7	;volatile
-	line	348
+	line	347
 	
 i1l7647:	
-;MCU_B1.c: 348: if(TMain->PowerON)
+;MCU_B1.c: 347: if(TMain->PowerON)
 	movlb 0	; select bank0
 	movf	(_TMain),w
 	movwf	fsr1l
@@ -29187,16 +29187,16 @@ i1l7647:
 u666_21:
 	goto	i1l1702
 u666_20:
-	line	353
+	line	352
 	
 i1l7649:	
-;MCU_B1.c: 349: {
-;MCU_B1.c: 353: setDimmerReClock();
+;MCU_B1.c: 348: {
+;MCU_B1.c: 352: setDimmerReClock();
 	fcall	_setDimmerReClock
-	line	354
+	line	353
 	
 i1l7651:	
-;MCU_B1.c: 354: if(RB2)
+;MCU_B1.c: 353: if(RB2)
 	movlb 0	; select bank0
 	btfss	(106/8),(106)&7	;volatile
 	goto	u667_21
@@ -29204,11 +29204,11 @@ i1l7651:
 u667_21:
 	goto	i1l7655
 u667_20:
-	line	356
+	line	355
 	
 i1l7653:	
-;MCU_B1.c: 355: {
-;MCU_B1.c: 356: Dimmer->Correction=0;
+;MCU_B1.c: 354: {
+;MCU_B1.c: 355: Dimmer->Correction=0;
 	movlb 1	; select bank1
 	movf	(_Dimmer)^080h,w
 	addlw	02h
@@ -29216,18 +29216,18 @@ i1l7653:
 	clrf fsr1h	
 	
 	clrf	indf1
-	line	357
-;MCU_B1.c: 357: }
+	line	356
+;MCU_B1.c: 356: }
 	goto	i1l1702
-	line	358
+	line	357
 	
 i1l1700:	
-	line	360
+	line	359
 	
 i1l7655:	
-;MCU_B1.c: 358: else
-;MCU_B1.c: 359: {
-;MCU_B1.c: 360: Dimmer->Correction=8;
+;MCU_B1.c: 357: else
+;MCU_B1.c: 358: {
+;MCU_B1.c: 359: Dimmer->Correction=8;
 	movlw	(08h)
 	movwf	(??_IOC_ISR+0)+0
 	movlb 1	; select bank1
@@ -29239,18 +29239,18 @@ i1l7655:
 	movf	(??_IOC_ISR+0)+0,w
 	movwf	indf1
 	goto	i1l1702
-	line	361
+	line	360
 	
 i1l1701:	
 	goto	i1l1702
-	line	369
+	line	368
 	
 i1l1699:	
 	goto	i1l1702
-	line	370
+	line	369
 	
 i1l1698:	
-	line	371
+	line	370
 	
 i1l1702:	
 	return
@@ -29262,7 +29262,7 @@ GLOBAL	__end_of_IOC_ISR
 
 ;; *************** function _setDimmerReClock *****************
 ;; Defined at:
-;;		line 168 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 167 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -29289,12 +29289,12 @@ GLOBAL	__end_of_IOC_ISR
 ;; This function uses a non-reentrant model
 ;;
 psect	text128,local,class=CODE,delta=2,merge=1
-	line	168
+	line	167
 global __ptext128
 __ptext128:	;psect for function _setDimmerReClock
 psect	text128
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	168
+	line	167
 	global	__size_of_setDimmerReClock
 	__size_of_setDimmerReClock	equ	__end_of_setDimmerReClock-_setDimmerReClock
 	
@@ -29302,17 +29302,17 @@ _setDimmerReClock:
 ;incstack = 0
 	opt	stack 3
 ; Regs used in _setDimmerReClock: [wregfsr1]
-	line	170
+	line	169
 	
 i1l7089:	
-;MCU_B1.c: 170: TMR0=255;
+;MCU_B1.c: 169: TMR0=255;
 	movlw	(0FFh)
 	movlb 0	; select bank0
 	movwf	(21)	;volatile
-	line	175
+	line	174
 	
 i1l7091:	
-;MCU_B1.c: 175: if(!DimmerLights11->GO)
+;MCU_B1.c: 174: if(!DimmerLights11->GO)
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -29324,23 +29324,23 @@ i1l7091:
 u576_21:
 	goto	i1l1680
 u576_20:
-	line	177
+	line	176
 	
 i1l7093:	
-;MCU_B1.c: 176: {
-;MCU_B1.c: 177: DimmerLights11->GO=1;
+;MCU_B1.c: 175: {
+;MCU_B1.c: 176: DimmerLights11->GO=1;
 	movf	(_DimmerLights11),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
 	movwf fsr1h	
 	
 	bsf	indf1,0
-	line	178
+	line	177
 	
 i1l1680:	
-	line	202
-;MCU_B1.c: 178: }
-;MCU_B1.c: 202: if(!DimmerLights22->GO)
+	line	201
+;MCU_B1.c: 177: }
+;MCU_B1.c: 201: if(!DimmerLights22->GO)
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -29352,11 +29352,11 @@ i1l1680:
 u577_21:
 	goto	i1l1682
 u577_20:
-	line	204
+	line	203
 	
 i1l7095:	
-;MCU_B1.c: 203: {
-;MCU_B1.c: 204: DimmerLights22->GO=1;
+;MCU_B1.c: 202: {
+;MCU_B1.c: 203: DimmerLights22->GO=1;
 	movf	(_DimmerLights22),w
 	movwf	fsr1l
 	movlw 1	; select bank2/3
@@ -29364,10 +29364,10 @@ i1l7095:
 	
 	bsf	indf1,0
 	goto	i1l1682
-	line	205
+	line	204
 	
 i1l1681:	
-	line	235
+	line	234
 	
 i1l1682:	
 	return
@@ -29379,7 +29379,7 @@ GLOBAL	__end_of_setDimmerReClock
 
 ;; *************** function _INT_ISR *****************
 ;; Defined at:
-;;		line 293 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+;;		line 292 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -29407,12 +29407,12 @@ GLOBAL	__end_of_setDimmerReClock
 ;; This function uses a non-reentrant model
 ;;
 psect	text129,local,class=CODE,delta=2,merge=1
-	line	293
+	line	292
 global __ptext129
 __ptext129:	;psect for function _INT_ISR
 psect	text129
 	file	"C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
-	line	293
+	line	292
 	global	__size_of_INT_ISR
 	__size_of_INT_ISR	equ	__end_of_INT_ISR-_INT_ISR
 	
@@ -29420,10 +29420,10 @@ _INT_ISR:
 ;incstack = 0
 	opt	stack 2
 ; Regs used in _INT_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
-	line	295
+	line	294
 	
 i1l7829:	
-;MCU_B1.c: 295: if(INTE && INTF)
+;MCU_B1.c: 294: if(INTE && INTF)
 	btfss	(92/8),(92)&7	;volatile
 	goto	u710_21
 	goto	u710_20
@@ -29438,28 +29438,28 @@ i1l7831:
 u711_21:
 	goto	i1l1689
 u711_20:
-	line	297
+	line	296
 	
 i1l7833:	
-;MCU_B1.c: 296: {
-;MCU_B1.c: 297: INTF=0;
+;MCU_B1.c: 295: {
+;MCU_B1.c: 296: INTF=0;
 	bcf	(89/8),(89)&7	;volatile
-	line	298
-;MCU_B1.c: 298: INTE=0;
+	line	297
+;MCU_B1.c: 297: INTE=0;
 	bcf	(92/8),(92)&7	;volatile
-	line	299
+	line	298
 	
 i1l7835:	
-;MCU_B1.c: 299: setRF_ReceiveGO(1,1);
+;MCU_B1.c: 298: setRF_ReceiveGO(1,1);
 	clrf	(setRF_ReceiveGO@command)
 	incf	(setRF_ReceiveGO@command),f
 	movlw	(01h)
 	fcall	_setRF_ReceiveGO
 	goto	i1l1689
-	line	300
+	line	299
 	
 i1l1688:	
-	line	301
+	line	300
 	
 i1l1689:	
 	return

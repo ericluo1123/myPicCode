@@ -179,7 +179,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main_B1.h: 90: struct TMain *TMain;
 [; ;Main_B1.h: 94: void MainT_Initialization();
 [; ;Main_B1.h: 95: void MainT();
-[; ;Activity_B1.h: 59: typedef int ADtype;
+[; ;Activity_B1.h: 58: typedef int ADtype;
 [; ;Switch_B1.h: 13: struct Switch
 [; ;Switch_B1.h: 14: {
 [; ;Switch_B1.h: 15: unsigned Enable:1;

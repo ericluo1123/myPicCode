@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.32 build 58300 
-                                                                                               Wed Oct 01 08:37:37 2014
+                                                                                               Thu Oct 02 15:40:37 2014
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 58300
      1                           	processor	16F1518
@@ -4172,7 +4172,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4151  1B72                     __ptext3:	
   4152 ;; *************** function _getAD *****************
   4153 ;; Defined at:
-  4154 ;;		line 385 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+  4154 ;;		line 384 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
   4155 ;; Parameters:    Size  Location     Type
   4156 ;;  adcon0          1    wreg     unsigned char 
   4157 ;;  adcon1          1    0[BANK0 ] unsigned char 
@@ -4217,26 +4217,26 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4191  1B72  0020               	movlb	0	; select bank0
   4192  1B73  00A3               	movwf	getAD@adcon0
   4193                           
-  4194                           ;MCU_B1.c: 387: ADCON0=adcon0;
+  4194                           ;MCU_B1.c: 386: ADCON0=adcon0;
   4195  1B74  0823               	movf	getAD@adcon0,w
   4196  1B75  0021               	movlb	1	; select bank1
   4197  1B76  009D               	movwf	29	;volatile
   4198                           
-  4199                           ;MCU_B1.c: 388: ADCON1=adcon1;
+  4199                           ;MCU_B1.c: 387: ADCON1=adcon1;
   4200  1B77  0020               	movlb	0	; select bank0
   4201  1B78  0820               	movf	getAD@adcon1,w
   4202  1B79  0021               	movlb	1	; select bank1
   4203  1B7A  009E               	movwf	30	;volatile
   4204                           
-  4205                           ;MCU_B1.c: 389: GO_nDONE=1;
+  4205                           ;MCU_B1.c: 388: GO_nDONE=1;
   4206  1B7B  149D               	bsf	29,1	;volatile
   4207  1B7C                     l1708:	
-  4208                           ;MCU_B1.c: 390: while(GO_nDONE);
+  4208                           ;MCU_B1.c: 389: while(GO_nDONE);
   4209                           
   4210  1B7C  189D               	btfsc	29,1	;volatile
   4211  1B7D  2B7C               	goto	l1708
   4212                           
-  4213                           ;MCU_B1.c: 391: return ((ADRESH*256)+ADRESL);
+  4213                           ;MCU_B1.c: 390: return ((ADRESH*256)+ADRESL);
   4214  1B7E  081C               	movf	28,w	;volatile
   4215  1B7F  0020               	movlb	0	; select bank0
   4216  1B80  01A1               	clrf	?_getAD+1
@@ -4253,7 +4253,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4227  1C6C                     __ptext4:	
   4228 ;; *************** function _WDT_Main *****************
   4229 ;; Defined at:
-  4230 ;;		line 986 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+  4230 ;;		line 985 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
   4231 ;; Parameters:    Size  Location     Type
   4232 ;;		None
   4233 ;; Auto vars:     Size  Location     Type
@@ -4290,7 +4290,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4259                           ;psect for function _WDT_Main
   4260  1C6C                     _WDT_Main:	
   4261                           
-  4262                           ;MCU_B1.c: 987: if(WDT->Enable){
+  4262                           ;MCU_B1.c: 986: if(WDT->Enable){
   4263                           
   4264                           ;incstack = 0
   4265                           ; Regs used in _WDT_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -4301,7 +4301,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4270  1C70  1C01               	btfss	1,0
   4271  1C71  0008               	return
   4272                           
-  4273                           ;MCU_B1.c: 988: if(WDT->Count-- > 0){
+  4273                           ;MCU_B1.c: 987: if(WDT->Count-- > 0){
   4274  1C72  0A6D               	incf	_WDT^(0+128),w
   4275  1C73  0086               	movwf	6
   4276  1C74  0187               	clrf	7
@@ -4312,7 +4312,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4281  1C79  1903               	skipnz
   4282  1C7A  0008               	return
   4283                           
-  4284                           ;MCU_B1.c: 989: WDT->Count=10;
+  4284                           ;MCU_B1.c: 988: WDT->Count=10;
   4285  1C7B  300A               	movlw	10
   4286  1C7C  0020               	movlb	0	; select bank0
   4287  1C7D  00A0               	movwf	??_WDT_Main
@@ -4324,7 +4324,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4293  1C83  0820               	movf	??_WDT_Main,w
   4294  1C84  0081               	movwf	1
   4295                           
-  4296                           ;MCU_B1.c: 990: WDT_Clearing();
+  4296                           ;MCU_B1.c: 989: WDT_Clearing();
   4297  1C85  3180  2002         	fcall	_WDT_Clearing
   4298  1C87  0008               	return
   4299  1C88                     __end_of_WDT_Main:	
@@ -4333,7 +4333,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
   4302  0002                     __ptext5:	
   4303 ;; *************** function _WDT_Clearing *****************
   4304 ;; Defined at:
-  4305 ;;		line 995 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+  4305 ;;		line 994 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
   4306 ;; Parameters:    Size  Location     Type
   4307 ;;		None
   4308 ;; Auto vars:     Size  Location     Type
@@ -11063,7 +11063,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10774  1C36                     __ptext54:	
  10775 ;; *************** function _Mcu_Initialization *****************
  10776 ;; Defined at:
- 10777 ;;		line 24 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 10777 ;;		line 23 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  10778 ;; Parameters:    Size  Location     Type
  10779 ;;		None
  10780 ;; Auto vars:     Size  Location     Type
@@ -11105,7 +11105,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10811                           ;psect for function _Mcu_Initialization
  10812  1C36                     _Mcu_Initialization:	
  10813                           
- 10814                           ;MCU_B1.c: 27: OSCCON=0x78; ;;
+ 10814                           ;MCU_B1.c: 26: OSCCON=0x78; ;;
  10815                           
  10816                           ;incstack = 0
  10817                           ; Regs used in _Mcu_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -11113,32 +11113,32 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10819  1C37  0021               	movlb	1	; select bank1
  10820  1C38  0099               	movwf	25	;volatile
  10821                           
- 10822                           ;MCU_B1.c: 29: IO_Set();
+ 10822                           ;MCU_B1.c: 28: IO_Set();
  10823  1C39  319C  2403  319C   	fcall	_IO_Set
  10824                           
- 10825                           ;MCU_B1.c: 31: TMR0_Set();
+ 10825                           ;MCU_B1.c: 30: TMR0_Set();
  10826  1C3C  319A  2209  319C   	fcall	_TMR0_Set
  10827                           
- 10828                           ;MCU_B1.c: 33: ;;
- 10829                           ;MCU_B1.c: 35: ADC_Set();
+ 10828                           ;MCU_B1.c: 32: ;;
+ 10829                           ;MCU_B1.c: 34: ADC_Set();
  10830  1C3F  3199  2119  319C   	fcall	_ADC_Set
  10831                           
- 10832                           ;MCU_B1.c: 39: INT_Set();
+ 10832                           ;MCU_B1.c: 38: INT_Set();
  10833  1C42  3199  2100  319C   	fcall	_INT_Set
  10834                           
- 10835                           ;MCU_B1.c: 41: IOC_Set();
+ 10835                           ;MCU_B1.c: 40: IOC_Set();
  10836  1C45  3199  21FC  319C   	fcall	_IOC_Set
  10837                           
- 10838                           ;MCU_B1.c: 43: ;;
- 10839                           ;MCU_B1.c: 45: ;;
- 10840                           ;MCU_B1.c: 47: Memory=&VarMemory;
+ 10838                           ;MCU_B1.c: 42: ;;
+ 10839                           ;MCU_B1.c: 44: ;;
+ 10840                           ;MCU_B1.c: 46: Memory=&VarMemory;
  10841  1C48  3020               	movlw	_VarMemory& (0+255)
  10842  1C49  0020               	movlb	0	; select bank0
  10843  1C4A  00A1               	movwf	??_Mcu_Initialization
  10844  1C4B  0821               	movf	??_Mcu_Initialization,w
  10845  1C4C  00ED               	movwf	_Memory
  10846                           
- 10847                           ;MCU_B1.c: 49: WDT_Set();
+ 10847                           ;MCU_B1.c: 48: WDT_Set();
  10848  1C4D  319B  23A0         	fcall	_WDT_Set
  10849  1C4F  0008               	return
  10850  1C50                     __end_of_Mcu_Initialization:	
@@ -11147,7 +11147,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10853  1BA0                     __ptext55:	
  10854 ;; *************** function _WDT_Set *****************
  10855 ;; Defined at:
- 10856 ;;		line 979 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 10856 ;;		line 978 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  10857 ;; Parameters:    Size  Location     Type
  10858 ;;		None
  10859 ;; Auto vars:     Size  Location     Type
@@ -11184,7 +11184,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10885                           ;psect for function _WDT_Set
  10886  1BA0                     _WDT_Set:	
  10887                           
- 10888                           ;MCU_B1.c: 980: WDTCON=0b00010111;;
+ 10888                           ;MCU_B1.c: 979: WDTCON=0b00010111;;
  10889                           
  10890                           ;incstack = 0
  10891                           ; Regs used in _WDT_Set: [wregfsr1]
@@ -11192,7 +11192,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10893  1BA1  0021               	movlb	1	; select bank1
  10894  1BA2  0097               	movwf	23	;volatile
  10895                           
- 10896                           ;MCU_B1.c: 981: WDT=&_WDT;
+ 10896                           ;MCU_B1.c: 980: WDT=&_WDT;
  10897  1BA3  30E8               	movlw	__WDT& (0+255)
  10898  1BA4  0020               	movlb	0	; select bank0
  10899  1BA5  00A0               	movwf	??_WDT_Set
@@ -11200,13 +11200,13 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10901  1BA7  0021               	movlb	1	; select bank1
  10902  1BA8  00ED               	movwf	_WDT^(0+128)
  10903                           
- 10904                           ;MCU_B1.c: 982: WDT->Enable=1;
+ 10904                           ;MCU_B1.c: 981: WDT->Enable=1;
  10905  1BA9  086D               	movf	_WDT^(0+128),w
  10906  1BAA  0086               	movwf	6
  10907  1BAB  0187               	clrf	7
  10908  1BAC  1401               	bsf	1,0
  10909                           
- 10910                           ;MCU_B1.c: 983: WDT->Count=10;
+ 10910                           ;MCU_B1.c: 982: WDT->Count=10;
  10911  1BAD  300A               	movlw	10
  10912  1BAE  0020               	movlb	0	; select bank0
  10913  1BAF  00A0               	movwf	??_WDT_Set
@@ -11224,7 +11224,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10925  1A09                     __ptext56:	
  10926 ;; *************** function _TMR0_Set *****************
  10927 ;; Defined at:
- 10928 ;;		line 118 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 10928 ;;		line 117 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  10929 ;; Parameters:    Size  Location     Type
  10930 ;;		None
  10931 ;; Auto vars:     Size  Location     Type
@@ -11261,7 +11261,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10957                           ;psect for function _TMR0_Set
  10958  1A09                     _TMR0_Set:	
  10959                           
- 10960                           ;MCU_B1.c: 120: Timer0=&VarTimer0;
+ 10960                           ;MCU_B1.c: 119: Timer0=&VarTimer0;
  10961                           
  10962                           ;incstack = 0
  10963                           ; Regs used in _TMR0_Set: [wreg+status,2]
@@ -11272,18 +11272,18 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10968  1A0D  0021               	movlb	1	; select bank1
  10969  1A0E  00EC               	movwf	_Timer0^(0+128)
  10970                           
- 10971                           ;MCU_B1.c: 121: OPTION_REG=0x00;
+ 10971                           ;MCU_B1.c: 120: OPTION_REG=0x00;
  10972  1A0F  0195               	clrf	21	;volatile
  10973                           
- 10974                           ;MCU_B1.c: 122: TMR0=(256-90);
+ 10974                           ;MCU_B1.c: 121: TMR0=(256-90);
  10975  1A10  30A6               	movlw	166
  10976  1A11  0020               	movlb	0	; select bank0
  10977  1A12  0095               	movwf	21	;volatile
  10978                           
- 10979                           ;MCU_B1.c: 123: TMR0IE=1;
+ 10979                           ;MCU_B1.c: 122: TMR0IE=1;
  10980  1A13  168B               	bsf	11,5	;volatile
  10981                           
- 10982                           ;MCU_B1.c: 124: GIE=1;
+ 10982                           ;MCU_B1.c: 123: GIE=1;
  10983  1A14  178B               	bsf	11,7	;volatile
  10984  1A15  0008               	return
  10985  1A16                     __end_of_TMR0_Set:	
@@ -11292,7 +11292,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  10988  1C03                     __ptext57:	
  10989 ;; *************** function _IO_Set *****************
  10990 ;; Defined at:
- 10991 ;;		line 52 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 10991 ;;		line 51 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  10992 ;; Parameters:    Size  Location     Type
  10993 ;;		None
  10994 ;; Auto vars:     Size  Location     Type
@@ -11329,7 +11329,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11020                           ;psect for function _IO_Set
  11021  1C03                     _IO_Set:	
  11022                           
- 11023                           ;MCU_B1.c: 81: TRISA=0b01110111;;
+ 11023                           ;MCU_B1.c: 80: TRISA=0b01110111;;
  11024                           
  11025                           ;incstack = 0
  11026                           ; Regs used in _IO_Set: [wreg+status,2]
@@ -11337,46 +11337,46 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11028  1C04  0021               	movlb	1	; select bank1
  11029  1C05  008C               	movwf	12	;volatile
  11030                           
- 11031                           ;MCU_B1.c: 82: TRISB=0b00000111;;
+ 11031                           ;MCU_B1.c: 81: TRISB=0b00000111;;
  11032  1C06  3007               	movlw	7
  11033  1C07  008D               	movwf	13	;volatile
  11034                           
- 11035                           ;MCU_B1.c: 83: TRISC=0b00001100;;
+ 11035                           ;MCU_B1.c: 82: TRISC=0b00001100;;
  11036  1C08  300C               	movlw	12
  11037  1C09  008E               	movwf	14	;volatile
  11038                           
- 11039                           ;MCU_B1.c: 84: LATA=0b00000000;;
+ 11039                           ;MCU_B1.c: 83: LATA=0b00000000;;
  11040  1C0A  0022               	movlb	2	; select bank2
  11041  1C0B  018C               	clrf	12	;volatile
  11042                           
- 11043                           ;MCU_B1.c: 85: LATB=0b00000010;;
+ 11043                           ;MCU_B1.c: 84: LATB=0b00000010;;
  11044  1C0C  3002               	movlw	2
  11045  1C0D  008D               	movwf	13	;volatile
  11046                           
- 11047                           ;MCU_B1.c: 86: LATC=0b00000000;;
+ 11047                           ;MCU_B1.c: 85: LATC=0b00000000;;
  11048  1C0E  018E               	clrf	14	;volatile
  11049                           
- 11050                           ;MCU_B1.c: 87: ANSELA=0b00100010;;
+ 11050                           ;MCU_B1.c: 86: ANSELA=0b00100010;;
  11051  1C0F  3022               	movlw	34
  11052  1C10  0023               	movlb	3	; select bank3
  11053  1C11  008C               	movwf	12	;volatile
  11054                           
- 11055                           ;MCU_B1.c: 88: ANSELB=0b00000000;;
+ 11055                           ;MCU_B1.c: 87: ANSELB=0b00000000;;
  11056  1C12  018D               	clrf	13	;volatile
  11057                           
- 11058                           ;MCU_B1.c: 89: ANSELC=0b00000000;;
+ 11058                           ;MCU_B1.c: 88: ANSELC=0b00000000;;
  11059  1C13  018E               	clrf	14	;volatile
  11060                           
- 11061                           ;MCU_B1.c: 90: PORTA=0b01110111;;
+ 11061                           ;MCU_B1.c: 89: PORTA=0b01110111;;
  11062  1C14  3077               	movlw	119
  11063  1C15  0020               	movlb	0	; select bank0
  11064  1C16  008C               	movwf	12	;volatile
  11065                           
- 11066                           ;MCU_B1.c: 91: PORTB=0b00000111;;
+ 11066                           ;MCU_B1.c: 90: PORTB=0b00000111;;
  11067  1C17  3007               	movlw	7
  11068  1C18  008D               	movwf	13	;volatile
  11069                           
- 11070                           ;MCU_B1.c: 92: PORTC=0b00001100;;
+ 11070                           ;MCU_B1.c: 91: PORTC=0b00001100;;
  11071  1C19  300C               	movlw	12
  11072  1C1A  008E               	movwf	14	;volatile
  11073  1C1B  0008               	return
@@ -11386,7 +11386,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11077  19FC                     __ptext58:	
  11078 ;; *************** function _IOC_Set *****************
  11079 ;; Defined at:
- 11080 ;;		line 314 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 11080 ;;		line 313 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  11081 ;; Parameters:    Size  Location     Type
  11082 ;;		None
  11083 ;; Auto vars:     Size  Location     Type
@@ -11423,35 +11423,35 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11109                           ;psect for function _IOC_Set
  11110  19FC                     _IOC_Set:	
  11111                           
- 11112                           ;MCU_B1.c: 316: WPUB2=0;
+ 11112                           ;MCU_B1.c: 315: WPUB2=0;
  11113                           
  11114                           ;incstack = 0
  11115                           ; Regs used in _IOC_Set: [wreg+status,2]
  11116  19FC  0024               	movlb	4	; select bank4
  11117  19FD  110D               	bcf	13,2	;volatile
  11118                           
- 11119                           ;MCU_B1.c: 318: IOCBP=0b00000100;
+ 11119                           ;MCU_B1.c: 317: IOCBP=0b00000100;
  11120  19FE  3004               	movlw	4
  11121  19FF  0027               	movlb	7	; select bank7
  11122  1A00  0094               	movwf	20	;volatile
  11123                           
- 11124                           ;MCU_B1.c: 319: IOCBN=0b00000100;
+ 11124                           ;MCU_B1.c: 318: IOCBN=0b00000100;
  11125  1A01  3004               	movlw	4
  11126  1A02  0095               	movwf	21	;volatile
  11127                           
- 11128                           ;MCU_B1.c: 334: IOCBF=0b00000000;
+ 11128                           ;MCU_B1.c: 333: IOCBF=0b00000000;
  11129  1A03  0196               	clrf	22	;volatile
  11130                           
- 11131                           ;MCU_B1.c: 336: IOCIE=1;
+ 11131                           ;MCU_B1.c: 335: IOCIE=1;
  11132  1A04  158B               	bsf	11,3	;volatile
  11133                           
- 11134                           ;MCU_B1.c: 337: IOCIF=0;
+ 11134                           ;MCU_B1.c: 336: IOCIF=0;
  11135  1A05  100B               	bcf	11,0	;volatile
  11136                           
- 11137                           ;MCU_B1.c: 338: PEIE=1;
+ 11137                           ;MCU_B1.c: 337: PEIE=1;
  11138  1A06  170B               	bsf	11,6	;volatile
  11139                           
- 11140                           ;MCU_B1.c: 339: GIE=1;
+ 11140                           ;MCU_B1.c: 338: GIE=1;
  11141  1A07  178B               	bsf	11,7	;volatile
  11142  1A08  0008               	return
  11143  1A09                     __end_of_IOC_Set:	
@@ -11460,7 +11460,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11146  1900                     __ptext59:	
  11147 ;; *************** function _INT_Set *****************
  11148 ;; Defined at:
- 11149 ;;		line 285 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 11149 ;;		line 284 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  11150 ;; Parameters:    Size  Location     Type
  11151 ;;		None
  11152 ;; Auto vars:     Size  Location     Type
@@ -11497,20 +11497,20 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11178                           ;psect for function _INT_Set
  11179  1900                     _INT_Set:	
  11180                           
- 11181                           ;MCU_B1.c: 287: WPUB0=0;
+ 11181                           ;MCU_B1.c: 286: WPUB0=0;
  11182                           
  11183                           ;incstack = 0
  11184                           ; Regs used in _INT_Set: []
  11185  1900  0024               	movlb	4	; select bank4
  11186  1901  100D               	bcf	13,0	;volatile
  11187                           
- 11188                           ;MCU_B1.c: 288: INTE=1;
+ 11188                           ;MCU_B1.c: 287: INTE=1;
  11189  1902  160B               	bsf	11,4	;volatile
  11190                           
- 11191                           ;MCU_B1.c: 289: PEIE=1;
+ 11191                           ;MCU_B1.c: 288: PEIE=1;
  11192  1903  170B               	bsf	11,6	;volatile
  11193                           
- 11194                           ;MCU_B1.c: 290: GIE=1;
+ 11194                           ;MCU_B1.c: 289: GIE=1;
  11195  1904  178B               	bsf	11,7	;volatile
  11196  1905  0008               	return
  11197  1906                     __end_of_INT_Set:	
@@ -11519,7 +11519,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11200  1919                     __ptext60:	
  11201 ;; *************** function _ADC_Set *****************
  11202 ;; Defined at:
- 11203 ;;		line 379 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 11203 ;;		line 378 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  11204 ;; Parameters:    Size  Location     Type
  11205 ;;		None
  11206 ;; Auto vars:     Size  Location     Type
@@ -11556,7 +11556,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11232                           ;psect for function _ADC_Set
  11233  1919                     _ADC_Set:	
  11234                           
- 11235                           ;MCU_B1.c: 381: ADCON1=0xf2;
+ 11235                           ;MCU_B1.c: 380: ADCON1=0xf2;
  11236                           
  11237                           ;incstack = 0
  11238                           ; Regs used in _ADC_Set: [wreg]
@@ -11564,7 +11564,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11240  191A  0021               	movlb	1	; select bank1
  11241  191B  009E               	movwf	30	;volatile
  11242                           
- 11243                           ;MCU_B1.c: 382: FVRCON=0xc0;
+ 11243                           ;MCU_B1.c: 381: FVRCON=0xc0;
  11244  191C  30C0               	movlw	192
  11245  191D  0022               	movlb	2	; select bank2
  11246  191E  0097               	movwf	23	;volatile
@@ -12104,7 +12104,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11755  195F                     __ptext66:	
  11756 ;; *************** function _setINT_GO *****************
  11757 ;; Defined at:
- 11758 ;;		line 303 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 11758 ;;		line 302 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  11759 ;; Parameters:    Size  Location     Type
  11760 ;;  command         1    wreg     unsigned char 
  11761 ;; Auto vars:     Size  Location     Type
@@ -12149,10 +12149,10 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  11795  195F  0020               	movlb	0	; select bank0
  11796  1960  00A0               	movwf	setINT_GO@command
  11797                           
- 11798                           ;MCU_B1.c: 305: INTF=0;
+ 11798                           ;MCU_B1.c: 304: INTF=0;
  11799  1961  108B               	bcf	11,1	;volatile
  11800                           
- 11801                           ;MCU_B1.c: 306: INTE=command;
+ 11801                           ;MCU_B1.c: 305: INTE=command;
  11802  1962  1C20               	btfss	setINT_GO@command,0
  11803  1963  2966               	goto	u8490
  11804  1964  160B               	bsf	11,4	;volatile
@@ -12491,7 +12491,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12116  114B                     __ptext71:	
  12117 ;; *************** function _Flash_Memory_Main *****************
  12118 ;; Defined at:
- 12119 ;;		line 873 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12119 ;;		line 872 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12120 ;; Parameters:    Size  Location     Type
  12121 ;;		None
  12122 ;; Auto vars:     Size  Location     Type
@@ -12528,7 +12528,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12148                           ;psect for function _Flash_Memory_Main
  12149  114B                     _Flash_Memory_Main:	
  12150                           
- 12151                           ;MCU_B1.c: 875: if(Memory->GO)
+ 12151                           ;MCU_B1.c: 874: if(Memory->GO)
  12152                           
  12153                           ;incstack = 0
  12154                           ; Regs used in _Flash_Memory_Main: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -12541,8 +12541,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12161  1151  1C81               	btfss	1,1
  12162  1152  0008               	return
  12163                           
- 12164                           ;MCU_B1.c: 876: {
- 12165                           ;MCU_B1.c: 877: if(Memory->Modify)
+ 12164                           ;MCU_B1.c: 875: {
+ 12165                           ;MCU_B1.c: 876: if(Memory->Modify)
  12166  1153  086D               	movf	_Memory,w
  12167  1154  3E22               	addlw	34
  12168  1155  0086               	movwf	6
@@ -12551,8 +12551,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12171  1158  1C01               	btfss	1,0
  12172  1159  2988               	goto	l9823
  12173                           
- 12174                           ;MCU_B1.c: 878: {
- 12175                           ;MCU_B1.c: 879: Memory->Time++;
+ 12174                           ;MCU_B1.c: 877: {
+ 12175                           ;MCU_B1.c: 878: Memory->Time++;
  12176  115A  086D               	movf	_Memory,w
  12177  115B  3E23               	addlw	35
  12178  115C  0086               	movwf	6
@@ -12564,7 +12564,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12184  1162  1803               	skipnc
  12185  1163  0A81               	incf	1,f
  12186                           
- 12187                           ;MCU_B1.c: 880: if(Memory->Time == 25)
+ 12187                           ;MCU_B1.c: 879: if(Memory->Time == 25)
  12188  1164  086D               	movf	_Memory,w
  12189  1165  3E23               	addlw	35
  12190  1166  0086               	movwf	6
@@ -12580,8 +12580,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12200  116F  1D03               	skipz
  12201  1170  0008               	return
  12202                           
- 12203                           ;MCU_B1.c: 881: {
- 12204                           ;MCU_B1.c: 882: Memory->Time=0;
+ 12203                           ;MCU_B1.c: 880: {
+ 12204                           ;MCU_B1.c: 881: Memory->Time=0;
  12205  1171  086D               	movf	_Memory,w
  12206  1172  3E23               	addlw	35
  12207  1173  0086               	movwf	6
@@ -12591,7 +12591,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12211  1177  3FC0               	movwi [0]fsr1
  12212  1178  3FC1               	movwi [1]fsr1
  12213                           
- 12214                           ;MCU_B1.c: 883: Memory->Modify=0;
+ 12214                           ;MCU_B1.c: 882: Memory->Modify=0;
  12215  1179  086D               	movf	_Memory,w
  12216  117A  3E22               	addlw	34
  12217  117B  0086               	movwf	6
@@ -12599,7 +12599,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12219  117D  0087               	movwf	7
  12220  117E  1001               	bcf	1,0
  12221                           
- 12222                           ;MCU_B1.c: 884: Memory->GO=0;
+ 12222                           ;MCU_B1.c: 883: Memory->GO=0;
  12223  117F  086D               	movf	_Memory,w
  12224  1180  3E22               	addlw	34
  12225  1181  0086               	movwf	6
@@ -12607,17 +12607,17 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12227  1183  0087               	movwf	7
  12228  1184  1081               	bcf	1,1
  12229                           
- 12230                           ;MCU_B1.c: 885: Flash_Memory_Modify();
+ 12230                           ;MCU_B1.c: 884: Flash_Memory_Modify();
  12231  1185  3194  2496         	fcall	_Flash_Memory_Modify
  12232                           
- 12233                           ;MCU_B1.c: 887: }
- 12234                           ;MCU_B1.c: 888: }
+ 12233                           ;MCU_B1.c: 886: }
+ 12234                           ;MCU_B1.c: 887: }
  12235  1187  0008               	return
  12236  1188                     l9823:	
  12237                           
- 12238                           ;MCU_B1.c: 889: else
- 12239                           ;MCU_B1.c: 890: {
- 12240                           ;MCU_B1.c: 891: Memory->GO=0;
+ 12238                           ;MCU_B1.c: 888: else
+ 12239                           ;MCU_B1.c: 889: {
+ 12240                           ;MCU_B1.c: 890: Memory->GO=0;
  12241  1188  0020               	movlb	0	; select bank0
  12242  1189  086D               	movf	_Memory,w
  12243  118A  3E22               	addlw	34
@@ -12632,7 +12632,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12252  1496                     __ptext72:	
  12253 ;; *************** function _Flash_Memory_Modify *****************
  12254 ;; Defined at:
- 12255 ;;		line 948 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12255 ;;		line 947 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12256 ;; Parameters:    Size  Location     Type
  12257 ;;		None
  12258 ;; Auto vars:     Size  Location     Type
@@ -12671,8 +12671,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12286                           ;psect for function _Flash_Memory_Modify
  12287  1496                     _Flash_Memory_Modify:	
  12288                           
- 12289                           ;MCU_B1.c: 950: char i;
- 12290                           ;MCU_B1.c: 951: for(i=0;i<32;i++)
+ 12289                           ;MCU_B1.c: 949: char i;
+ 12290                           ;MCU_B1.c: 950: for(i=0;i<32;i++)
  12291                           
  12292                           ;incstack = 0
  12293                           ; Regs used in _Flash_Memory_Modify: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -12684,8 +12684,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12299  149B  2CB3               	goto	l9313
  12300  149C                     l9307:	
  12301                           
- 12302                           ;MCU_B1.c: 952: {
- 12303                           ;MCU_B1.c: 953: Memory->Data[i]=Flash_Memory_Read(i);
+ 12302                           ;MCU_B1.c: 951: {
+ 12303                           ;MCU_B1.c: 952: Memory->Data[i]=Flash_Memory_Read(i);
  12304  149C  0826               	movf	Flash_Memory_Modify@i,w
  12305  149D  319B  23EA  3194   	fcall	_Flash_Memory_Read
  12306  14A0  0020               	movlb	0	; select bank0
@@ -12709,8 +12709,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12324  14B2  2C9C               	goto	l9307
  12325  14B3                     l9313:	
  12326                           
- 12327                           ;MCU_B1.c: 954: }
- 12328                           ;MCU_B1.c: 955: Memory->Data[0]=Product->Data[12];
+ 12327                           ;MCU_B1.c: 953: }
+ 12328                           ;MCU_B1.c: 954: Memory->Data[0]=Product->Data[12];
  12329  14B3  086E               	movf	_Product,w
  12330  14B4  3E0C               	addlw	12
  12331  14B5  0086               	movwf	6
@@ -12725,7 +12725,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12340  14BE  0824               	movf	??_Flash_Memory_Modify,w
  12341  14BF  0081               	movwf	1
  12342                           
- 12343                           ;MCU_B1.c: 956: Memory->Data[1]=Product->Data[13];
+ 12343                           ;MCU_B1.c: 955: Memory->Data[1]=Product->Data[13];
  12344  14C0  086E               	movf	_Product,w
  12345  14C1  3E0D               	addlw	13
  12346  14C2  0086               	movwf	6
@@ -12740,7 +12740,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12355  14CB  0824               	movf	??_Flash_Memory_Modify,w
  12356  14CC  0081               	movwf	1
  12357                           
- 12358                           ;MCU_B1.c: 957: Memory->Data[2]=Product->Data[14];
+ 12358                           ;MCU_B1.c: 956: Memory->Data[2]=Product->Data[14];
  12359  14CD  086E               	movf	_Product,w
  12360  14CE  3E0E               	addlw	14
  12361  14CF  0086               	movwf	6
@@ -12756,7 +12756,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12371  14D9  0824               	movf	??_Flash_Memory_Modify,w
  12372  14DA  0081               	movwf	1
  12373                           
- 12374                           ;MCU_B1.c: 963: if(Memory->LoopSave)
+ 12374                           ;MCU_B1.c: 962: if(Memory->LoopSave)
  12375  14DB  086D               	movf	_Memory,w
  12376  14DC  3E22               	addlw	34
  12377  14DD  0086               	movwf	6
@@ -12765,8 +12765,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12380  14E0  1D01               	btfss	1,2
  12381  14E1  2CF3               	goto	l9317
  12382                           
- 12383                           ;MCU_B1.c: 964: {
- 12384                           ;MCU_B1.c: 965: Memory->LoopSave=0;
+ 12383                           ;MCU_B1.c: 963: {
+ 12384                           ;MCU_B1.c: 964: Memory->LoopSave=0;
  12385  14E2  086D               	movf	_Memory,w
  12386  14E3  3E22               	addlw	34
  12387  14E4  0086               	movwf	6
@@ -12774,14 +12774,14 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12389  14E6  0087               	movwf	7
  12390  14E7  1101               	bcf	1,2
  12391                           
- 12392                           ;MCU_B1.c: 966: TMain->FirstOpen=0;
+ 12392                           ;MCU_B1.c: 965: TMain->FirstOpen=0;
  12393  14E8  086F               	movf	_TMain,w
  12394  14E9  0086               	movwf	6
  12395  14EA  3001               	movlw	1	; select bank2/3
  12396  14EB  0087               	movwf	7
  12397  14EC  1281               	bcf	1,5
  12398                           
- 12399                           ;MCU_B1.c: 967: TMain->First=0;
+ 12399                           ;MCU_B1.c: 966: TMain->First=0;
  12400  14ED  086F               	movf	_TMain,w
  12401  14EE  3E03               	addlw	3
  12402  14EF  0086               	movwf	6
@@ -12790,17 +12790,17 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12405  14F2  1081               	bcf	1,1
  12406  14F3                     l9317:	
  12407                           
- 12408                           ;MCU_B1.c: 969: }
- 12409                           ;MCU_B1.c: 970: GIE=0;
+ 12408                           ;MCU_B1.c: 968: }
+ 12409                           ;MCU_B1.c: 969: GIE=0;
  12410  14F3  138B               	bcf	11,7	;volatile
  12411                           
- 12412                           ;MCU_B1.c: 971: Flash_Memory_Erasing();
+ 12412                           ;MCU_B1.c: 970: Flash_Memory_Erasing();
  12413  14F4  3199  21D8  3194   	fcall	_Flash_Memory_Erasing
  12414                           
- 12415                           ;MCU_B1.c: 972: Flash_Memory_Write();
+ 12415                           ;MCU_B1.c: 971: Flash_Memory_Write();
  12416  14F7  319E  26B5         	fcall	_Flash_Memory_Write
  12417                           
- 12418                           ;MCU_B1.c: 973: GIE=1;
+ 12418                           ;MCU_B1.c: 972: GIE=1;
  12419  14F9  178B               	bsf	11,7	;volatile
  12420  14FA  0008               	return
  12421  14FB                     __end_of_Flash_Memory_Modify:	
@@ -12809,7 +12809,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12424  19D8                     __ptext73:	
  12425 ;; *************** function _Flash_Memory_Erasing *****************
  12426 ;; Defined at:
- 12427 ;;		line 937 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12427 ;;		line 936 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12428 ;; Parameters:    Size  Location     Type
  12429 ;;		None
  12430 ;; Auto vars:     Size  Location     Type
@@ -12846,30 +12846,30 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12456                           ;psect for function _Flash_Memory_Erasing
  12457  19D8                     _Flash_Memory_Erasing:	
  12458                           
- 12459                           ;MCU_B1.c: 939: CFGS=0;
+ 12459                           ;MCU_B1.c: 938: CFGS=0;
  12460                           
  12461                           ;incstack = 0
  12462                           ; Regs used in _Flash_Memory_Erasing: [wreg+status,2+status,0+pclath+cstack]
  12463  19D8  0023               	movlb	3	; select bank3
  12464  19D9  1315               	bcf	21,6	;volatile
  12465                           
- 12466                           ;MCU_B1.c: 940: PMADRH=0x30;
+ 12466                           ;MCU_B1.c: 939: PMADRH=0x30;
  12467  19DA  3030               	movlw	48
  12468  19DB  0092               	movwf	18	;volatile
  12469                           
- 12470                           ;MCU_B1.c: 941: PMADRL=0x00;
+ 12470                           ;MCU_B1.c: 940: PMADRL=0x00;
  12471  19DC  0191               	clrf	17	;volatile
  12472                           
- 12473                           ;MCU_B1.c: 942: FREE=1;
+ 12473                           ;MCU_B1.c: 941: FREE=1;
  12474  19DD  1615               	bsf	21,4	;volatile
  12475                           
- 12476                           ;MCU_B1.c: 943: WREN=1;
+ 12476                           ;MCU_B1.c: 942: WREN=1;
  12477  19DE  1515               	bsf	21,2	;volatile
  12478                           
- 12479                           ;MCU_B1.c: 944: Flash_Memory_Unlock();
+ 12479                           ;MCU_B1.c: 943: Flash_Memory_Unlock();
  12480  19DF  3199  2156         	fcall	_Flash_Memory_Unlock
  12481                           
- 12482                           ;MCU_B1.c: 945: WREN=0;
+ 12482                           ;MCU_B1.c: 944: WREN=0;
  12483  19E1  0023               	movlb	3	; select bank3
  12484  19E2  1115               	bcf	21,2	;volatile
  12485  19E3  0008               	return
@@ -12879,7 +12879,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12489  0E21                     __ptext74:	
  12490 ;; *************** function _Flash_Memory_Initialization *****************
  12491 ;; Defined at:
- 12492 ;;		line 828 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12492 ;;		line 827 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12493 ;; Parameters:    Size  Location     Type
  12494 ;;		None
  12495 ;; Auto vars:     Size  Location     Type
@@ -12918,8 +12918,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12523                           ;psect for function _Flash_Memory_Initialization
  12524  0E21                     _Flash_Memory_Initialization:	
  12525                           
- 12526                           ;MCU_B1.c: 830: char i;
- 12527                           ;MCU_B1.c: 831: if(Flash_Memory_Read(31) == 0xaa)
+ 12526                           ;MCU_B1.c: 829: char i;
+ 12527                           ;MCU_B1.c: 830: if(Flash_Memory_Read(31) == 0xaa)
  12528                           
  12529                           ;incstack = 0
  12530                           ; Regs used in _Flash_Memory_Initialization: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+
@@ -12930,8 +12930,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12534  0E26  1D03               	skipz
  12535  0E27  2E99               	goto	l9711
  12536                           
- 12537                           ;MCU_B1.c: 832: {
- 12538                           ;MCU_B1.c: 833: Product->Data[12]=Flash_Memory_Read(0);
+ 12537                           ;MCU_B1.c: 831: {
+ 12538                           ;MCU_B1.c: 832: Product->Data[12]=Flash_Memory_Read(0);
  12539  0E28  3000               	movlw	0
  12540  0E29  319B  23EA  318E   	fcall	_Flash_Memory_Read
  12541  0E2C  0020               	movlb	0	; select bank0
@@ -12944,7 +12944,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12548  0E33  085D               	movf	??_Flash_Memory_Initialization,w
  12549  0E34  0081               	movwf	1
  12550                           
- 12551                           ;MCU_B1.c: 834: Product->Data[13]=Flash_Memory_Read(1);
+ 12551                           ;MCU_B1.c: 833: Product->Data[13]=Flash_Memory_Read(1);
  12552  0E35  3001               	movlw	1
  12553  0E36  319B  23EA  318E   	fcall	_Flash_Memory_Read
  12554  0E39  0020               	movlb	0	; select bank0
@@ -12957,7 +12957,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12561  0E40  085D               	movf	??_Flash_Memory_Initialization,w
  12562  0E41  0081               	movwf	1
  12563                           
- 12564                           ;MCU_B1.c: 835: Product->Data[14]=Flash_Memory_Read(2);
+ 12564                           ;MCU_B1.c: 834: Product->Data[14]=Flash_Memory_Read(2);
  12565  0E42  3002               	movlw	2
  12566  0E43  319B  23EA  318E   	fcall	_Flash_Memory_Read
  12567  0E46  0020               	movlb	0	; select bank0
@@ -12970,7 +12970,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12574  0E4D  085D               	movf	??_Flash_Memory_Initialization,w
  12575  0E4E  0081               	movwf	1
  12576                           
- 12577                           ;MCU_B1.c: 841: i=setPercentValue(((char)((100-55)*1.5)));
+ 12577                           ;MCU_B1.c: 840: i=setPercentValue(((char)((100-55)*1.5)));
  12578  0E4F  3043               	movlw	67
  12579  0E50  3191  2190  318E   	fcall	_setPercentValue
  12580  0E53  0020               	movlb	0	; select bank0
@@ -12978,7 +12978,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12582  0E55  085D               	movf	??_Flash_Memory_Initialization,w
  12583  0E56  00DE               	movwf	Flash_Memory_Initialization@i
  12584                           
- 12585                           ;MCU_B1.c: 842: Product->Data[21]=i;
+ 12585                           ;MCU_B1.c: 841: Product->Data[21]=i;
  12586  0E57  085E               	movf	Flash_Memory_Initialization@i,w
  12587  0E58  00DD               	movwf	??_Flash_Memory_Initialization
  12588  0E59  086E               	movf	_Product,w
@@ -12989,7 +12989,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12593  0E5E  085D               	movf	??_Flash_Memory_Initialization,w
  12594  0E5F  0081               	movwf	1
  12595                           
- 12596                           ;MCU_B1.c: 843: Product->Data[22]=i;
+ 12596                           ;MCU_B1.c: 842: Product->Data[22]=i;
  12597  0E60  085E               	movf	Flash_Memory_Initialization@i,w
  12598  0E61  00DD               	movwf	??_Flash_Memory_Initialization
  12599  0E62  086E               	movf	_Product,w
@@ -13000,7 +13000,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12604  0E67  085D               	movf	??_Flash_Memory_Initialization,w
  12605  0E68  0081               	movwf	1
  12606                           
- 12607                           ;MCU_B1.c: 844: Product->Data[23]=i;
+ 12607                           ;MCU_B1.c: 843: Product->Data[23]=i;
  12608  0E69  085E               	movf	Flash_Memory_Initialization@i,w
  12609  0E6A  00DD               	movwf	??_Flash_Memory_Initialization
  12610  0E6B  086E               	movf	_Product,w
@@ -13011,7 +13011,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12615  0E70  085D               	movf	??_Flash_Memory_Initialization,w
  12616  0E71  0081               	movwf	1
  12617                           
- 12618                           ;MCU_B1.c: 846: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[1
+ 12618                           ;MCU_B1.c: 845: if(Product->Data[12]==0xff && Product->Data[13]==0xff && Product->Data[1
       +                          4]==0xff)
  12619  0E72  086E               	movf	_Product,w
  12620  0E73  3E0C               	addlw	12
@@ -13041,15 +13041,15 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12644  0E8B  1D03               	skipz
  12645  0E8C  0008               	return
  12646                           
- 12647                           ;MCU_B1.c: 847: {
- 12648                           ;MCU_B1.c: 848: TMain->FirstOpen=1;
+ 12647                           ;MCU_B1.c: 846: {
+ 12648                           ;MCU_B1.c: 847: TMain->FirstOpen=1;
  12649  0E8D  086F               	movf	_TMain,w
  12650  0E8E  0086               	movwf	6
  12651  0E8F  3001               	movlw	1	; select bank2/3
  12652  0E90  0087               	movwf	7
  12653  0E91  1681               	bsf	1,5
  12654                           
- 12655                           ;MCU_B1.c: 849: TMain->First=1;
+ 12655                           ;MCU_B1.c: 848: TMain->First=1;
  12656  0E92  086F               	movf	_TMain,w
  12657  0E93  3E03               	addlw	3
  12658  0E94  0086               	movwf	6
@@ -13057,14 +13057,14 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12660  0E96  0087               	movwf	7
  12661  0E97  1481               	bsf	1,1
  12662                           
- 12663                           ;MCU_B1.c: 850: }
- 12664                           ;MCU_B1.c: 851: }
+ 12663                           ;MCU_B1.c: 849: }
+ 12664                           ;MCU_B1.c: 850: }
  12665  0E98  0008               	return
  12666  0E99                     l9711:	
  12667                           
- 12668                           ;MCU_B1.c: 852: else
- 12669                           ;MCU_B1.c: 853: {
- 12670                           ;MCU_B1.c: 854: i=setPercentValue(((char)((100-55)*1.5)));
+ 12668                           ;MCU_B1.c: 851: else
+ 12669                           ;MCU_B1.c: 852: {
+ 12670                           ;MCU_B1.c: 853: i=setPercentValue(((char)((100-55)*1.5)));
  12671  0E99  3043               	movlw	67
  12672  0E9A  3191  2190  318E   	fcall	_setPercentValue
  12673  0E9D  0020               	movlb	0	; select bank0
@@ -13072,7 +13072,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12675  0E9F  085D               	movf	??_Flash_Memory_Initialization,w
  12676  0EA0  00DE               	movwf	Flash_Memory_Initialization@i
  12677                           
- 12678                           ;MCU_B1.c: 855: Memory->Data[0]=0xff;
+ 12678                           ;MCU_B1.c: 854: Memory->Data[0]=0xff;
  12679  0EA1  30FF               	movlw	255
  12680  0EA2  00DD               	movwf	??_Flash_Memory_Initialization
  12681  0EA3  086D               	movf	_Memory,w
@@ -13082,7 +13082,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12685  0EA7  085D               	movf	??_Flash_Memory_Initialization,w
  12686  0EA8  0081               	movwf	1
  12687                           
- 12688                           ;MCU_B1.c: 856: Memory->Data[1]=0xff;
+ 12688                           ;MCU_B1.c: 855: Memory->Data[1]=0xff;
  12689  0EA9  30FF               	movlw	255
  12690  0EAA  00DD               	movwf	??_Flash_Memory_Initialization
  12691  0EAB  0A6D               	incf	_Memory,w
@@ -13092,7 +13092,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12695  0EAF  085D               	movf	??_Flash_Memory_Initialization,w
  12696  0EB0  0081               	movwf	1
  12697                           
- 12698                           ;MCU_B1.c: 857: Memory->Data[2]=0xff;
+ 12698                           ;MCU_B1.c: 856: Memory->Data[2]=0xff;
  12699  0EB1  30FF               	movlw	255
  12700  0EB2  00DD               	movwf	??_Flash_Memory_Initialization
  12701  0EB3  086D               	movf	_Memory,w
@@ -13103,7 +13103,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12706  0EB8  085D               	movf	??_Flash_Memory_Initialization,w
  12707  0EB9  0081               	movwf	1
  12708                           
- 12709                           ;MCU_B1.c: 858: Memory->Data[3]=0xff;
+ 12709                           ;MCU_B1.c: 857: Memory->Data[3]=0xff;
  12710  0EBA  30FF               	movlw	255
  12711  0EBB  00DD               	movwf	??_Flash_Memory_Initialization
  12712  0EBC  086D               	movf	_Memory,w
@@ -13114,7 +13114,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12717  0EC1  085D               	movf	??_Flash_Memory_Initialization,w
  12718  0EC2  0081               	movwf	1
  12719                           
- 12720                           ;MCU_B1.c: 859: Memory->Data[4]=0xff;
+ 12720                           ;MCU_B1.c: 858: Memory->Data[4]=0xff;
  12721  0EC3  30FF               	movlw	255
  12722  0EC4  00DD               	movwf	??_Flash_Memory_Initialization
  12723  0EC5  086D               	movf	_Memory,w
@@ -13125,7 +13125,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12728  0ECA  085D               	movf	??_Flash_Memory_Initialization,w
  12729  0ECB  0081               	movwf	1
  12730                           
- 12731                           ;MCU_B1.c: 860: Memory->Data[5]=0xff;
+ 12731                           ;MCU_B1.c: 859: Memory->Data[5]=0xff;
  12732  0ECC  30FF               	movlw	255
  12733  0ECD  00DD               	movwf	??_Flash_Memory_Initialization
  12734  0ECE  086D               	movf	_Memory,w
@@ -13136,7 +13136,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12739  0ED3  085D               	movf	??_Flash_Memory_Initialization,w
  12740  0ED4  0081               	movwf	1
  12741                           
- 12742                           ;MCU_B1.c: 861: Memory->Data[31]=0xaa;
+ 12742                           ;MCU_B1.c: 860: Memory->Data[31]=0xaa;
  12743  0ED5  30AA               	movlw	170
  12744  0ED6  00DD               	movwf	??_Flash_Memory_Initialization
  12745  0ED7  086D               	movf	_Memory,w
@@ -13147,7 +13147,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12750  0EDC  085D               	movf	??_Flash_Memory_Initialization,w
  12751  0EDD  0081               	movwf	1
  12752                           
- 12753                           ;MCU_B1.c: 862: Product->Data[21]=i;
+ 12753                           ;MCU_B1.c: 861: Product->Data[21]=i;
  12754  0EDE  085E               	movf	Flash_Memory_Initialization@i,w
  12755  0EDF  00DD               	movwf	??_Flash_Memory_Initialization
  12756  0EE0  086E               	movf	_Product,w
@@ -13158,7 +13158,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12761  0EE5  085D               	movf	??_Flash_Memory_Initialization,w
  12762  0EE6  0081               	movwf	1
  12763                           
- 12764                           ;MCU_B1.c: 863: Product->Data[22]=i;
+ 12764                           ;MCU_B1.c: 862: Product->Data[22]=i;
  12765  0EE7  085E               	movf	Flash_Memory_Initialization@i,w
  12766  0EE8  00DD               	movwf	??_Flash_Memory_Initialization
  12767  0EE9  086E               	movf	_Product,w
@@ -13169,7 +13169,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12772  0EEE  085D               	movf	??_Flash_Memory_Initialization,w
  12773  0EEF  0081               	movwf	1
  12774                           
- 12775                           ;MCU_B1.c: 864: Product->Data[23]=i;
+ 12775                           ;MCU_B1.c: 863: Product->Data[23]=i;
  12776  0EF0  085E               	movf	Flash_Memory_Initialization@i,w
  12777  0EF1  00DD               	movwf	??_Flash_Memory_Initialization
  12778  0EF2  086E               	movf	_Product,w
@@ -13180,16 +13180,16 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12783  0EF7  085D               	movf	??_Flash_Memory_Initialization,w
  12784  0EF8  0081               	movwf	1
  12785                           
- 12786                           ;MCU_B1.c: 865: GIE=0;
+ 12786                           ;MCU_B1.c: 864: GIE=0;
  12787  0EF9  138B               	bcf	11,7	;volatile
  12788                           
- 12789                           ;MCU_B1.c: 866: Flash_Memory_Write();
+ 12789                           ;MCU_B1.c: 865: Flash_Memory_Write();
  12790  0EFA  319E  26B5         	fcall	_Flash_Memory_Write
  12791                           
- 12792                           ;MCU_B1.c: 867: GIE=1;
+ 12792                           ;MCU_B1.c: 866: GIE=1;
  12793  0EFC  178B               	bsf	11,7	;volatile
  12794                           
- 12795                           ;MCU_B1.c: 868: TMain->FirstOpen=1;
+ 12795                           ;MCU_B1.c: 867: TMain->FirstOpen=1;
  12796  0EFD  0020               	movlb	0	; select bank0
  12797  0EFE  086F               	movf	_TMain,w
  12798  0EFF  0086               	movwf	6
@@ -13197,7 +13197,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12800  0F01  0087               	movwf	7
  12801  0F02  1681               	bsf	1,5
  12802                           
- 12803                           ;MCU_B1.c: 869: TMain->First=1;
+ 12803                           ;MCU_B1.c: 868: TMain->First=1;
  12804  0F03  086F               	movf	_TMain,w
  12805  0F04  3E03               	addlw	3
  12806  0F05  0086               	movwf	6
@@ -13211,7 +13211,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12814  1EB5                     __ptext75:	
  12815 ;; *************** function _Flash_Memory_Write *****************
  12816 ;; Defined at:
- 12817 ;;		line 917 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12817 ;;		line 916 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12818 ;; Parameters:    Size  Location     Type
  12819 ;;		None
  12820 ;; Auto vars:     Size  Location     Type
@@ -13249,31 +13249,31 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12847                           ;psect for function _Flash_Memory_Write
  12848  1EB5                     _Flash_Memory_Write:	
  12849                           
- 12850                           ;MCU_B1.c: 919: char i;
- 12851                           ;MCU_B1.c: 920: CFGS=0;
+ 12850                           ;MCU_B1.c: 918: char i;
+ 12851                           ;MCU_B1.c: 919: CFGS=0;
  12852                           
  12853                           ;incstack = 0
  12854                           ; Regs used in _Flash_Memory_Write: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
  12855  1EB5  0023               	movlb	3	; select bank3
  12856  1EB6  1315               	bcf	21,6	;volatile
  12857                           
- 12858                           ;MCU_B1.c: 921: PMADRH=0x30;
+ 12858                           ;MCU_B1.c: 920: PMADRH=0x30;
  12859  1EB7  3030               	movlw	48
  12860  1EB8  0092               	movwf	18	;volatile
  12861                           
- 12862                           ;MCU_B1.c: 922: PMDATH=0;
+ 12862                           ;MCU_B1.c: 921: PMDATH=0;
  12863  1EB9  0194               	clrf	20	;volatile
  12864                           
- 12865                           ;MCU_B1.c: 923: FREE=0;
+ 12865                           ;MCU_B1.c: 922: FREE=0;
  12866  1EBA  1215               	bcf	21,4	;volatile
  12867                           
- 12868                           ;MCU_B1.c: 924: LWLO=1;
+ 12868                           ;MCU_B1.c: 923: LWLO=1;
  12869  1EBB  1695               	bsf	21,5	;volatile
  12870                           
- 12871                           ;MCU_B1.c: 925: WREN=1;
+ 12871                           ;MCU_B1.c: 924: WREN=1;
  12872  1EBC  1515               	bsf	21,2	;volatile
  12873                           
- 12874                           ;MCU_B1.c: 926: for(i=0 ; i<32 ; i++)
+ 12874                           ;MCU_B1.c: 925: for(i=0 ; i<32 ; i++)
  12875  1EBD  0020               	movlb	0	; select bank0
  12876  1EBE  01A1               	clrf	Flash_Memory_Write@i
  12877  1EBF  3020               	movlw	32
@@ -13282,13 +13282,13 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12880  1EC2  2EDD               	goto	l1734
  12881  1EC3                     l8873:	
  12882                           
- 12883                           ;MCU_B1.c: 927: {
- 12884                           ;MCU_B1.c: 928: PMADRL=i;
+ 12883                           ;MCU_B1.c: 926: {
+ 12884                           ;MCU_B1.c: 927: PMADRL=i;
  12885  1EC3  0821               	movf	Flash_Memory_Write@i,w
  12886  1EC4  0023               	movlb	3	; select bank3
  12887  1EC5  0091               	movwf	17	;volatile
  12888                           
- 12889                           ;MCU_B1.c: 929: PMDATL=Memory->Data[i];
+ 12889                           ;MCU_B1.c: 928: PMDATL=Memory->Data[i];
  12890  1EC6  0020               	movlb	0	; select bank0
  12891  1EC7  0821               	movf	Flash_Memory_Write@i,w
  12892  1EC8  076D               	addwf	_Memory,w
@@ -13301,7 +13301,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12899  1ECF  0023               	movlb	3	; select bank3
  12900  1ED0  0093               	movwf	19	;volatile
  12901                           
- 12902                           ;MCU_B1.c: 930: Flash_Memory_Unlock();
+ 12902                           ;MCU_B1.c: 929: Flash_Memory_Unlock();
  12903  1ED1  3199  2156  319E   	fcall	_Flash_Memory_Unlock
  12904  1ED4  3001               	movlw	1
  12905  1ED5  0020               	movlb	0	; select bank0
@@ -13314,15 +13314,15 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12912  1EDC  2EC3               	goto	l8873
  12913  1EDD                     l1734:	
  12914                           
- 12915                           ;MCU_B1.c: 931: }
- 12916                           ;MCU_B1.c: 932: LWLO=0;
+ 12915                           ;MCU_B1.c: 930: }
+ 12916                           ;MCU_B1.c: 931: LWLO=0;
  12917  1EDD  0023               	movlb	3	; select bank3
  12918  1EDE  1295               	bcf	21,5	;volatile
  12919                           
- 12920                           ;MCU_B1.c: 933: Flash_Memory_Unlock();
+ 12920                           ;MCU_B1.c: 932: Flash_Memory_Unlock();
  12921  1EDF  3199  2156         	fcall	_Flash_Memory_Unlock
  12922                           
- 12923                           ;MCU_B1.c: 934: WREN=0;
+ 12923                           ;MCU_B1.c: 933: WREN=0;
  12924  1EE1  0023               	movlb	3	; select bank3
  12925  1EE2  1115               	bcf	21,2	;volatile
  12926  1EE3  0008               	return
@@ -13332,7 +13332,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12930  1956                     __ptext76:	
  12931 ;; *************** function _Flash_Memory_Unlock *****************
  12932 ;; Defined at:
- 12933 ;;		line 896 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12933 ;;		line 895 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12934 ;; Parameters:    Size  Location     Type
  12935 ;;		None
  12936 ;; Auto vars:     Size  Location     Type
@@ -13370,7 +13370,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12963                           ;psect for function _Flash_Memory_Unlock
  12964  1956                     _Flash_Memory_Unlock:	
  12965                           
- 12966                           ;MCU_B1.c: 898: PMCON2=0x55;
+ 12966                           ;MCU_B1.c: 897: PMCON2=0x55;
  12967                           
  12968                           ;incstack = 0
  12969                           ; Regs used in _Flash_Memory_Unlock: [wreg]
@@ -13378,17 +13378,17 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12971  1957  0023               	movlb	3	; select bank3
  12972  1958  0096               	movwf	22	;volatile
  12973                           
- 12974                           ;MCU_B1.c: 899: PMCON2=0xaa;
+ 12974                           ;MCU_B1.c: 898: PMCON2=0xaa;
  12975  1959  30AA               	movlw	170
  12976  195A  0096               	movwf	22	;volatile
  12977                           
- 12978                           ;MCU_B1.c: 900: WR=1;
+ 12978                           ;MCU_B1.c: 899: WR=1;
  12979  195B  1495               	bsf	21,1	;volatile
  12980                           
- 12981                           ;MCU_B1.c: 901: __nop();
+ 12981                           ;MCU_B1.c: 900: __nop();
  12982  195C  0000               	nop
  12983                           
- 12984                           ;MCU_B1.c: 902: __nop();
+ 12984                           ;MCU_B1.c: 901: __nop();
  12985  195D  0000               	nop
  12986  195E  0008               	return
  12987  195F                     __end_of_Flash_Memory_Unlock:	
@@ -13397,7 +13397,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  12990  1BEA                     __ptext77:	
  12991 ;; *************** function _Flash_Memory_Read *****************
  12992 ;; Defined at:
- 12993 ;;		line 905 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 12993 ;;		line 904 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  12994 ;; Parameters:    Size  Location     Type
  12995 ;;  address         1    wreg     unsigned char 
  12996 ;; Auto vars:     Size  Location     Type
@@ -13443,34 +13443,34 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  13031  1BEA  0020               	movlb	0	; select bank0
  13032  1BEB  00A2               	movwf	Flash_Memory_Read@address
  13033                           
- 13034                           ;MCU_B1.c: 907: char i,ret=0;
+ 13034                           ;MCU_B1.c: 906: char i,ret=0;
  13035  1BEC  01A3               	clrf	Flash_Memory_Read@ret
  13036                           
- 13037                           ;MCU_B1.c: 908: PMADRH=0x30;
+ 13037                           ;MCU_B1.c: 907: PMADRH=0x30;
  13038  1BED  3030               	movlw	48
  13039  1BEE  0023               	movlb	3	; select bank3
  13040  1BEF  0092               	movwf	18	;volatile
  13041                           
- 13042                           ;MCU_B1.c: 909: PMADRL=address;
+ 13042                           ;MCU_B1.c: 908: PMADRL=address;
  13043  1BF0  0020               	movlb	0	; select bank0
  13044  1BF1  0822               	movf	Flash_Memory_Read@address,w
  13045  1BF2  0023               	movlb	3	; select bank3
  13046  1BF3  0091               	movwf	17	;volatile
  13047                           
- 13048                           ;MCU_B1.c: 910: CFGS=0;
+ 13048                           ;MCU_B1.c: 909: CFGS=0;
  13049  1BF4  1315               	bcf	21,6	;volatile
  13050                           
- 13051                           ;MCU_B1.c: 911: RD=1;
+ 13051                           ;MCU_B1.c: 910: RD=1;
  13052  1BF5  1415               	bsf	21,0	;volatile
  13053                           
- 13054                           ;MCU_B1.c: 912: i=PMDATH;
+ 13054                           ;MCU_B1.c: 911: i=PMDATH;
  13055  1BF6  0814               	movf	20,w	;volatile
  13056  1BF7  0020               	movlb	0	; select bank0
  13057  1BF8  00A0               	movwf	??_Flash_Memory_Read
  13058  1BF9  0820               	movf	??_Flash_Memory_Read,w
  13059  1BFA  00A1               	movwf	Flash_Memory_Read@i
  13060                           
- 13061                           ;MCU_B1.c: 913: ret=PMDATL;
+ 13061                           ;MCU_B1.c: 912: ret=PMDATL;
  13062  1BFB  0023               	movlb	3	; select bank3
  13063  1BFC  0813               	movf	19,w	;volatile
  13064  1BFD  0020               	movlb	0	; select bank0
@@ -13478,7 +13478,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  13066  1BFF  0820               	movf	??_Flash_Memory_Read,w
  13067  1C00  00A3               	movwf	Flash_Memory_Read@ret
  13068                           
- 13069                           ;MCU_B1.c: 914: return ret;
+ 13069                           ;MCU_B1.c: 913: return ret;
  13070  1C01  0823               	movf	Flash_Memory_Read@ret,w
  13071  1C02  0008               	return
  13072  1C03                     __end_of_Flash_Memory_Read:	
@@ -18746,7 +18746,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18091  0004                     __pintentry:	
  18092 ;; *************** function _ISR *****************
  18093 ;; Defined at:
- 18094 ;;		line 99 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 18094 ;;		line 98 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  18095 ;; Parameters:    Size  Location     Type
  18096 ;;		None
  18097 ;; Auto vars:     Size  Location     Type
@@ -18791,14 +18791,14 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18131  0007  087F               	movf	127,w
  18132  0008  00F5               	movwf	??_ISR
  18133                           
- 18134                           ;MCU_B1.c: 101: IOC_ISR();
+ 18134                           ;MCU_B1.c: 100: IOC_ISR();
  18135  0009  319D  2569  3180   	fcall	_IOC_ISR
  18136                           
- 18137                           ;MCU_B1.c: 103: TMR0_ISR();
+ 18137                           ;MCU_B1.c: 102: TMR0_ISR();
  18138  000C  3180  2051  3180   	fcall	_TMR0_ISR
  18139                           
- 18140                           ;MCU_B1.c: 105: ;;
- 18141                           ;MCU_B1.c: 109: INT_ISR();
+ 18140                           ;MCU_B1.c: 104: ;;
+ 18141                           ;MCU_B1.c: 108: INT_ISR();
  18142  000F  3199  21C0         	fcall	_INT_ISR
  18143  0011  0875               	movf	??_ISR,w
  18144  0012  0020               	movlb	0	; select bank0
@@ -18811,7 +18811,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18151  0051                     __ptext126:	
  18152 ;; *************** function _TMR0_ISR *****************
  18153 ;; Defined at:
- 18154 ;;		line 127 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 18154 ;;		line 126 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  18155 ;; Parameters:    Size  Location     Type
  18156 ;;		None
  18157 ;; Auto vars:     Size  Location     Type
@@ -18847,7 +18847,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18182                           ;psect for function _TMR0_ISR
  18183  0051                     _TMR0_ISR:	
  18184                           
- 18185                           ;MCU_B1.c: 129: if(TMR0IE && TMR0IF)
+ 18185                           ;MCU_B1.c: 128: if(TMR0IE && TMR0IF)
  18186                           
  18187                           ;incstack = 0
  18188                           ; Regs used in _TMR0_ISR: [wreg-fsr1h+status,2+status,0]
@@ -18856,16 +18856,16 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18191  0053  1D0B               	btfss	11,2	;volatile
  18192  0054  0008               	return
  18193                           
- 18194                           ;MCU_B1.c: 130: {
- 18195                           ;MCU_B1.c: 131: TMR0=(256-90);
+ 18194                           ;MCU_B1.c: 129: {
+ 18195                           ;MCU_B1.c: 130: TMR0=(256-90);
  18196  0055  30A6               	movlw	166
  18197  0056  0020               	movlb	0	; select bank0
  18198  0057  0095               	movwf	21	;volatile
  18199                           
- 18200                           ;MCU_B1.c: 132: TMR0IF=0;
+ 18200                           ;MCU_B1.c: 131: TMR0IF=0;
  18201  0058  110B               	bcf	11,2	;volatile
  18202                           
- 18203                           ;MCU_B1.c: 137: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Cou
+ 18203                           ;MCU_B1.c: 136: if(DimmerLights11->GO) { DimmerLights11->Count++; if(DimmerLights11->Cou
       +                          nt >= (DimmerLights11->DimmingValue-Dimmer->Correction)) { DimmerLights11->Count=0; Dimm
       +                          erLights11->GO=0; DimmerLights11->Flag=1; if(DimmerLights11->StatusFlag) { RA7=1; ;; } }
       +                           }
@@ -19272,7 +19272,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  18604  01DC  138C               	bcf	12,7	;volatile
  18605  01DD                     i1l7743:	
  18606                           
- 18607                           ;MCU_B1.c: 141: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Cou
+ 18607                           ;MCU_B1.c: 140: if(DimmerLights22->GO) { DimmerLights22->Count++; if(DimmerLights22->Cou
       +                          nt >= (DimmerLights22->DimmingValue-Dimmer->Correction)) { DimmerLights22->Count=0; Dimm
       +                          erLights22->GO=0; DimmerLights22->Flag=1; if(DimmerLights22->StatusFlag) { RB4=1; } } } 
       +                          el
@@ -19680,7 +19680,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19009  0361  120D               	bcf	13,4	;volatile
  19010  0362                     i1l7821:	
  19011                           
- 19012                           ;MCU_B1.c: 150: Timer0->Count++;
+ 19012                           ;MCU_B1.c: 149: Timer0->Count++;
  19013  0362  0021               	movlb	1	; select bank1
  19014  0363  0A6C               	incf	_Timer0^(0+128),w
  19015  0364  0086               	movwf	6
@@ -19691,7 +19691,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19020  0369  1803               	skipnc
  19021  036A  0A81               	incf	1,f
  19022                           
- 19023                           ;MCU_B1.c: 151: if(Timer0->Count == 200)
+ 19023                           ;MCU_B1.c: 150: if(Timer0->Count == 200)
  19024  036B  0A6C               	incf	_Timer0^(0+128),w
  19025  036C  0086               	movwf	6
  19026  036D  0187               	clrf	7
@@ -19705,8 +19705,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19034  0374  1D03               	skipz
  19035  0375  2B82               	goto	i1l1675
  19036                           
- 19037                           ;MCU_B1.c: 152: {
- 19038                           ;MCU_B1.c: 153: Timer0->Count=0;
+ 19037                           ;MCU_B1.c: 151: {
+ 19038                           ;MCU_B1.c: 152: Timer0->Count=0;
  19039  0376  0A6C               	incf	_Timer0^(0+128),w
  19040  0377  0086               	movwf	6
  19041  0378  0187               	clrf	7
@@ -19714,7 +19714,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19043  037A  3FC0               	movwi [0]fsr1
  19044  037B  3FC1               	movwi [1]fsr1
  19045                           
- 19046                           ;MCU_B1.c: 154: TMain->T0_Timerout=1;
+ 19046                           ;MCU_B1.c: 153: TMain->T0_Timerout=1;
  19047  037C  0020               	movlb	0	; select bank0
  19048  037D  086F               	movf	_TMain,w
  19049  037E  0086               	movwf	6
@@ -19723,8 +19723,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19052  0381  1481               	bsf	1,1
  19053  0382                     i1l1675:	
  19054                           
- 19055                           ;MCU_B1.c: 155: }
- 19056                           ;MCU_B1.c: 158: if(Buz->GO)
+ 19055                           ;MCU_B1.c: 154: }
+ 19056                           ;MCU_B1.c: 157: if(Buz->GO)
  19057  0382  0020               	movlb	0	; select bank0
  19058  0383  0868               	movf	_Buz,w
  19059  0384  0086               	movwf	6
@@ -19733,8 +19733,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19062  0387  1C81               	btfss	1,1
  19063  0388  0008               	return
  19064                           
- 19065                           ;MCU_B1.c: 159: {
- 19066                           ;MCU_B1.c: 160: Buz->Time++;
+ 19065                           ;MCU_B1.c: 158: {
+ 19066                           ;MCU_B1.c: 159: Buz->Time++;
  19067  0389  0A68               	incf	_Buz,w
  19068  038A  0086               	movwf	6
  19069  038B  3001               	movlw	1	; select bank2/3
@@ -19751,7 +19751,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19080  1D69                     __ptext127:	
  19081 ;; *************** function _IOC_ISR *****************
  19082 ;; Defined at:
- 19083 ;;		line 342 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 19083 ;;		line 341 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  19084 ;; Parameters:    Size  Location     Type
  19085 ;;		None
  19086 ;; Auto vars:     Size  Location     Type
@@ -19788,7 +19788,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19112                           ;psect for function _IOC_ISR
  19113  1D69                     _IOC_ISR:	
  19114                           
- 19115                           ;MCU_B1.c: 344: if(IOCIE && IOCBF2)
+ 19115                           ;MCU_B1.c: 343: if(IOCIE && IOCBF2)
  19116                           
  19117                           ;incstack = 0
  19118                           ; Regs used in _IOC_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -19798,14 +19798,14 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19122  1D6C  1D16               	btfss	22,2	;volatile
  19123  1D6D  0008               	return
  19124                           
- 19125                           ;MCU_B1.c: 345: {
- 19126                           ;MCU_B1.c: 346: IOCBF2=0;
+ 19125                           ;MCU_B1.c: 344: {
+ 19126                           ;MCU_B1.c: 345: IOCBF2=0;
  19127  1D6E  1116               	bcf	22,2	;volatile
  19128                           
- 19129                           ;MCU_B1.c: 347: IOCIF=0;
+ 19129                           ;MCU_B1.c: 346: IOCIF=0;
  19130  1D6F  100B               	bcf	11,0	;volatile
  19131                           
- 19132                           ;MCU_B1.c: 348: if(TMain->PowerON)
+ 19132                           ;MCU_B1.c: 347: if(TMain->PowerON)
  19133  1D70  0020               	movlb	0	; select bank0
  19134  1D71  086F               	movf	_TMain,w
  19135  1D72  0086               	movwf	6
@@ -19814,17 +19814,17 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19138  1D75  1C01               	btfss	1,0
  19139  1D76  0008               	return
  19140                           
- 19141                           ;MCU_B1.c: 349: {
- 19142                           ;MCU_B1.c: 353: setDimmerReClock();
+ 19141                           ;MCU_B1.c: 348: {
+ 19142                           ;MCU_B1.c: 352: setDimmerReClock();
  19143  1D77  319C  241C  319D   	fcall	_setDimmerReClock
  19144                           
- 19145                           ;MCU_B1.c: 354: if(RB2)
+ 19145                           ;MCU_B1.c: 353: if(RB2)
  19146  1D7A  0020               	movlb	0	; select bank0
  19147  1D7B  1D0D               	btfss	13,2	;volatile
  19148  1D7C  2D84               	goto	i1l7655
  19149                           
- 19150                           ;MCU_B1.c: 355: {
- 19151                           ;MCU_B1.c: 356: Dimmer->Correction=0;
+ 19150                           ;MCU_B1.c: 354: {
+ 19151                           ;MCU_B1.c: 355: Dimmer->Correction=0;
  19152  1D7D  0021               	movlb	1	; select bank1
  19153  1D7E  0838               	movf	_Dimmer^(0+128),w
  19154  1D7F  3E02               	addlw	2
@@ -19832,13 +19832,13 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19156  1D81  0187               	clrf	7
  19157  1D82  0181               	clrf	1
  19158                           
- 19159                           ;MCU_B1.c: 357: }
+ 19159                           ;MCU_B1.c: 356: }
  19160  1D83  0008               	return
  19161  1D84                     i1l7655:	
  19162                           
- 19163                           ;MCU_B1.c: 358: else
- 19164                           ;MCU_B1.c: 359: {
- 19165                           ;MCU_B1.c: 360: Dimmer->Correction=8;
+ 19163                           ;MCU_B1.c: 357: else
+ 19164                           ;MCU_B1.c: 358: {
+ 19165                           ;MCU_B1.c: 359: Dimmer->Correction=8;
  19166  1D84  3008               	movlw	8
  19167  1D85  00F1               	movwf	??_IOC_ISR
  19168  1D86  0021               	movlb	1	; select bank1
@@ -19855,7 +19855,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19179  1C1C                     __ptext128:	
  19180 ;; *************** function _setDimmerReClock *****************
  19181 ;; Defined at:
- 19182 ;;		line 168 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 19182 ;;		line 167 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  19183 ;; Parameters:    Size  Location     Type
  19184 ;;		None
  19185 ;; Auto vars:     Size  Location     Type
@@ -19891,7 +19891,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19210                           ;psect for function _setDimmerReClock
  19211  1C1C                     _setDimmerReClock:	
  19212                           
- 19213                           ;MCU_B1.c: 170: TMR0=255;
+ 19213                           ;MCU_B1.c: 169: TMR0=255;
  19214                           
  19215                           ;incstack = 0
  19216                           ; Regs used in _setDimmerReClock: [wregfsr1]
@@ -19899,7 +19899,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19218  1C1D  0020               	movlb	0	; select bank0
  19219  1C1E  0095               	movwf	21	;volatile
  19220                           
- 19221                           ;MCU_B1.c: 175: if(!DimmerLights11->GO)
+ 19221                           ;MCU_B1.c: 174: if(!DimmerLights11->GO)
  19222  1C1F  086B               	movf	_DimmerLights11,w
  19223  1C20  0086               	movwf	6
  19224  1C21  3001               	movlw	1	; select bank2/3
@@ -19907,8 +19907,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19226  1C23  1801               	btfsc	1,0
  19227  1C24  2C2A               	goto	i1l1680
  19228                           
- 19229                           ;MCU_B1.c: 176: {
- 19230                           ;MCU_B1.c: 177: DimmerLights11->GO=1;
+ 19229                           ;MCU_B1.c: 175: {
+ 19230                           ;MCU_B1.c: 176: DimmerLights11->GO=1;
  19231  1C25  086B               	movf	_DimmerLights11,w
  19232  1C26  0086               	movwf	6
  19233  1C27  3001               	movlw	1	; select bank2/3
@@ -19916,8 +19916,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19235  1C29  1401               	bsf	1,0
  19236  1C2A                     i1l1680:	
  19237                           
- 19238                           ;MCU_B1.c: 178: }
- 19239                           ;MCU_B1.c: 202: if(!DimmerLights22->GO)
+ 19238                           ;MCU_B1.c: 177: }
+ 19239                           ;MCU_B1.c: 201: if(!DimmerLights22->GO)
  19240  1C2A  086C               	movf	_DimmerLights22,w
  19241  1C2B  0086               	movwf	6
  19242  1C2C  3001               	movlw	1	; select bank2/3
@@ -19925,8 +19925,8 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19244  1C2E  1801               	btfsc	1,0
  19245  1C2F  0008               	return
  19246                           
- 19247                           ;MCU_B1.c: 203: {
- 19248                           ;MCU_B1.c: 204: DimmerLights22->GO=1;
+ 19247                           ;MCU_B1.c: 202: {
+ 19248                           ;MCU_B1.c: 203: DimmerLights22->GO=1;
  19249  1C30  086C               	movf	_DimmerLights22,w
  19250  1C31  0086               	movwf	6
  19251  1C32  3001               	movlw	1	; select bank2/3
@@ -19939,7 +19939,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19258  19C0                     __ptext129:	
  19259 ;; *************** function _INT_ISR *****************
  19260 ;; Defined at:
- 19261 ;;		line 293 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
+ 19261 ;;		line 292 in file "C:\Users\taianluo\Documents\GitHub\myPicCode\Source_File\MCU_B1.c"
  19262 ;; Parameters:    Size  Location     Type
  19263 ;;		None
  19264 ;; Auto vars:     Size  Location     Type
@@ -19976,7 +19976,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19290                           ;psect for function _INT_ISR
  19291  19C0                     _INT_ISR:	
  19292                           
- 19293                           ;MCU_B1.c: 295: if(INTE && INTF)
+ 19293                           ;MCU_B1.c: 294: if(INTE && INTF)
  19294                           
  19295                           ;incstack = 0
  19296                           ; Regs used in _INT_ISR: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -19985,14 +19985,14 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 58300
  19299  19C2  1C8B               	btfss	11,1	;volatile
  19300  19C3  0008               	return
  19301                           
- 19302                           ;MCU_B1.c: 296: {
- 19303                           ;MCU_B1.c: 297: INTF=0;
+ 19302                           ;MCU_B1.c: 295: {
+ 19303                           ;MCU_B1.c: 296: INTF=0;
  19304  19C4  108B               	bcf	11,1	;volatile
  19305                           
- 19306                           ;MCU_B1.c: 298: INTE=0;
+ 19306                           ;MCU_B1.c: 297: INTE=0;
  19307  19C5  120B               	bcf	11,4	;volatile
  19308                           
- 19309                           ;MCU_B1.c: 299: setRF_ReceiveGO(1,1);
+ 19309                           ;MCU_B1.c: 298: setRF_ReceiveGO(1,1);
  19310  19C6  01F3               	clrf	setRF_ReceiveGO@command
  19311  19C7  0AF3               	incf	setRF_ReceiveGO@command,f
  19312  19C8  3001               	movlw	1
@@ -21635,7 +21635,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.32 build 58300 
-Symbol Table                                                                                   Wed Oct 01 08:37:37 2014
+Symbol Table                                                                                   Thu Oct 02 15:40:37 2014
 
                    __size_of_Switch_Main 0008                    ?_Flash_Memory_Erasing 0071  
                            _WDT_Clearing 0002             ??_setDimmerLights_TriggerAdj 0023  
