@@ -35,6 +35,7 @@
 			#define KeyID 3
 		#endif
 	#endif
+inline 
 
 	//ADC 
 	#if ADC_use == 1
