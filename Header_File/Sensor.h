@@ -41,7 +41,7 @@ struct CDS *CDS;
 				;\
 				;\//cds singal AD
 				ADCON0=CDS_Signal_Channel;\
-	    	  	;\//sample time();
+                                ;\//sample time();
 				ADGO=1;\
 				while(ADGO);\
 				CDS->SignalAD=ADRES;\
